@@ -15,7 +15,7 @@ public class Enemy_Idle : StateMachineBehaviour {
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		if (Vector2.Distance(rb.position, player.position) <= Dwarf_walk.attackRange &&!animator.GetBool("isDead"))
+		if (Vector2.Distance(rb.position, player.position) <= Enemy_run.attackRange &&!animator.GetBool("isDead"))
         {
             
             if(Time.time>=Enemy.nextAttackTime){

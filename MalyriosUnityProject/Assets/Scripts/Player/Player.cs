@@ -16,12 +16,14 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     float horizontal;
 
+
     [SerializeField]
+    float playerSpeed = 1f;
     float speed;
 
     //Variables for Jumping
     public static bool isGrunded;
-    public static bool isOnPlatform1;
+
     public Transform feetPos;
     public float checkRadius;
     public LayerMask whatIsGround;
@@ -37,10 +39,6 @@ public class Player : MonoBehaviour
 
 
     bool landing = false;
-
-
-
-
 
 
 
@@ -72,7 +70,7 @@ public class Player : MonoBehaviour
 
 
         //apply input to player (moveing left, right)
-        rb.velocity = new Vector2(horizontal, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal*playerSpeed, rb.velocity.y);
 
 
 
@@ -93,7 +91,7 @@ public class Player : MonoBehaviour
 
         //Animation
         playerAnimator.SetFloat("Speed", speed);
-        playerAnimator.SetBool("isGrounded", (isOnPlatform1 || isGrunded));
+        playerAnimator.SetBool("isGrounded", (isGrunded));
         playerAnimator.SetBool("isFalling", isFalling);
 
     
@@ -108,9 +106,9 @@ public class Player : MonoBehaviour
 
         //check if player is on the Ground
         isGrunded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-        isOnPlatform1 = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsPlatform1);
+    
         //Jump
-        if ((isOnPlatform1 || isGrunded) && Input.GetKeyDown(KeyCode.Space))
+        if (isGrunded && Input.GetKeyDown(KeyCode.Space))
         {
             isGrunded = false;
             isJumping = true;
@@ -118,12 +116,12 @@ public class Player : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
         }
         //Check if player is falling for the animation
-        if (rb.velocity.y < -0.1 && !(isOnPlatform1 || isGrunded))
+        if (rb.velocity.y < -0.01 && !(isGrunded))
         {
             isFalling = true;
 
         }
-        else if ((isOnPlatform1 || isGrunded))
+        else if ((isGrunded))
         {
             isFalling = false;
         }

@@ -40,8 +40,9 @@ public class Enemy : MonoBehaviour
     private void Update()//-------------------------------------------------
     {
         //Recognize when Enemy has attacked, and set nextAttackTime
-        if(animator.GetBool("Attack")==true){
-            
+        if (animator.GetBool("Attack") == true)
+        {
+
             nextAttackTime = Time.time + 1f / attackRate;
         }
 
@@ -55,15 +56,13 @@ public class Enemy : MonoBehaviour
             enemyFlip();
         }
 
-        distToPlayer = Mathf.Abs(rb.position.x- player.position.x);
+        distToPlayer = Mathf.Abs(rb.position.x - player.position.x);
         animator.SetFloat("distToPlayer", distToPlayer);
 
-       /*  if(isGrounded){
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            print("Kinematic");
-        }else  */if(!isGrounded){
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            print("Dynamic");
+        if (distToPlayer <= Enemy_run.attackRange)
+        {
+            rb.velocity = new Vector2(0f, 0f);
+            rb.angularVelocity = 0f;
         }
 
 
@@ -101,16 +100,19 @@ public class Enemy : MonoBehaviour
         {
             c.enabled = false;
         }
-        
+
         //Disable Script after colliders (otherwise coliders dont get disabled)
         this.enabled = false;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.tag =="Ground"){
+        if (other.gameObject.tag == "Ground")
+        {
             isGrounded = true;
-        }else{
+        }
+        else
+        {
             isGrounded = false;
         }
     }

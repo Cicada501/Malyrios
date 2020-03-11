@@ -43,7 +43,7 @@ public class backgrShake : MonoBehaviour {
 				landing = true;
 				landingDuration = startLandingDuration;
 		}
-		else if (!Player.isFalling && !playerStoppedFalling && Player.isOnPlatform1)
+		else if (!Player.isFalling && !playerStoppedFalling )
         {
 				playerStoppedFalling = true;
 				landingOnPlattform1 = true;
