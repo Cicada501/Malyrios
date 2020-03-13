@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     public float jumpTime;
     private float jumpTimeCounter;
 
+    public static float fallingTime = 0;
+    public static float startfallingTime = 0;
+
 
 
     bool landing = false;
@@ -70,7 +73,7 @@ public class Player : MonoBehaviour
 
 
         //apply input to player (moveing left, right)
-        rb.velocity = new Vector2(horizontal*playerSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal * playerSpeed, rb.velocity.y);
 
 
 
@@ -94,7 +97,7 @@ public class Player : MonoBehaviour
         playerAnimator.SetBool("isGrounded", (isGrunded));
         playerAnimator.SetBool("isFalling", isFalling);
 
-    
+
 
     }
 
@@ -106,7 +109,7 @@ public class Player : MonoBehaviour
 
         //check if player is on the Ground
         isGrunded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-    
+
         //Jump
         if (isGrunded && Input.GetKeyDown(KeyCode.Space))
         {
@@ -118,12 +121,20 @@ public class Player : MonoBehaviour
         //Check if player is falling for the animation
         if (rb.velocity.y < -0.01 && !(isGrunded))
         {
-            isFalling = true;
+            if (!isFalling)
+            {
+                isFalling = true;
+                startfallingTime = Time.time;
+            }
 
         }
         else if ((isGrunded))
         {
             isFalling = false;
+        }
+
+        if(isFalling){
+            fallingTime = Time.time - startfallingTime;
         }
 
 

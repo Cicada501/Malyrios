@@ -8,8 +8,8 @@ public class PlayerHealth : MonoBehaviour
 {
 
 	public Slider healthBarSlider;
-    public int maxHealth = 100;
-    int currentHealth;
+    public float maxHealth = 100;
+    float currentHealth;
 
     public float flashTime;
     Color origionalColor;
@@ -35,12 +35,10 @@ public class PlayerHealth : MonoBehaviour
 		healthBarSlider.maxValue = maxHealth;
 		healthBarSlider.value = currentHealth;
 
-        if(currentHealth<=0){
+        if(currentHealth<=0 ||Player.fallingTime >2){
             Die();
         }
-        if(rb.velocity.y < -28){
-            Die();
-        }
+ 
     }
 
     public void TakeDamage(int damage)
@@ -70,6 +68,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void Die(){
+        Player.fallingTime = 0;
+        Player.startfallingTime =0;
 
         SceneManager.LoadScene("SampleScene");
 
