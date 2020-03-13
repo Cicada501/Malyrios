@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class changeMusic : MonoBehaviour
 {
+    public string changeMusicTo;
     // Start is called before the first frame update
-    public static bool playerInHell = false;
-    void OnTriggerEnter2D(Collider2D other){
+    public static string playerInZone;
+    void Start(){
+        playerInZone = "Normal";
+    }
+    void OnTriggerStay2D(Collider2D other){
         if(other.gameObject.tag =="Player"){
             
-            if(!playerInHell){
-                playerInHell = true;
+            
+            if(playerInZone != changeMusicTo){
+                playerInZone = changeMusicTo;
             }
-            else{
-                playerInHell = false;
-            }
+          
         }
     }
 

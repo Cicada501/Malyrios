@@ -35,10 +35,15 @@ public class PlayerHealth : MonoBehaviour
 		healthBarSlider.maxValue = maxHealth;
 		healthBarSlider.value = currentHealth;
 
-        if(currentHealth<=0 ||Player.fallingTime >2){
+        if(currentHealth<=0 ||rb.velocity.y < -35f){
             Die();
         }
  
+    }
+    void FixedUpdate(){
+        if(currentHealth<maxHealth){
+            currentHealth += 0.01f;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -68,8 +73,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void Die(){
-        Player.fallingTime = 0;
-        Player.startfallingTime =0;
 
         SceneManager.LoadScene("SampleScene");
 
