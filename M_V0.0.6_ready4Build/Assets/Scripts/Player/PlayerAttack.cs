@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         {
 
             isAttacking = false;
-            if (ButtonScript.receivedAttackInput)
+            if (Player.attackInput)
             {
                 Attack();
                 isAttacking = true;

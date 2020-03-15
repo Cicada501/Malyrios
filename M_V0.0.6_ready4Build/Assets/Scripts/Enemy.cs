@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float attackRate = 1.5f;
     public static float nextAttackTime;
     float distToPlayer;
+    float distToPlayerY;
 
     public Transform attackPoint;
     public float attackRadius;
@@ -42,6 +43,9 @@ public class Enemy : MonoBehaviour
 
     private void Update()//-------------------------------------------------
     {
+        if(distToPlayerY > 8){
+            distToPlayer = 0;
+        }
 
         //Recognize when Enemy has attacked, and set nextAttackTime
         if (animator.GetBool("Attack") == true)
@@ -61,6 +65,7 @@ public class Enemy : MonoBehaviour
         }
 
         distToPlayer = Mathf.Abs(rb.position.x - player.position.x);
+        distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
         animator.SetFloat("distToPlayer", distToPlayer);
 
         if (distToPlayer <= Enemy_run.attackRange)

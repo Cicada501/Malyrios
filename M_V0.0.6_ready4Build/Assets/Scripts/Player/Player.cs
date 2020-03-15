@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    [SerializeField]
+    public static bool androidMode = true;
     bool facingRight = true;
     SpriteRenderer spriteRenderer;
     [SerializeField]
     Animator playerAnimator;
 
-    [SerializeField]
-    Animator backgroundAnimator;
     [SerializeField]
     Rigidbody2D rb;
     float horizontal;
@@ -48,9 +49,15 @@ public class Player : MonoBehaviour
     //BackJump with Q
     bool usingPush = false;
     float usedBackJumpAt;
-    public float backJumpRate= 0.5f;
+    public float backJumpRate = 0.5f;
 
     public Joystick joystick;
+
+
+
+    bool jumpInput;
+    bool dodgeInput;
+    public static bool attackInput;
 
 
 
@@ -60,6 +67,7 @@ public class Player : MonoBehaviour
 
         playerAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -73,16 +81,29 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // Get input to variables
-            if(joystick.Horizontal < -0.2f){
-                horizontal = -1f;
-            }else if(joystick.Horizontal > 0.2f){
-                horizontal = 1f;
-            }else{
-                horizontal = 0f;
+            if (androidMode)
+            {
+                // Get input to variables
+                if (joystick.Horizontal < -0.2f)
+                {
+                    horizontal = -1f;
+                }
+                else if (joystick.Horizontal > 0.2f)
+                {
+                    horizontal = 1f;
+                }
+                else
+                {
+                    horizontal = 0f;
+                }
+                vertical = joystick.Vertical;
+
+            }else if(!androidMode){
+                joystick.gameObject.SetActive(false);
+               
+                horizontal = Input.GetAxis("Horizontal");
+                vertical = Input.GetAxis("Vertical");
             }
-            
-            vertical = joystick.Vertical;
             speed = Mathf.Abs(horizontal);
 
 
@@ -161,9 +182,22 @@ public class Player : MonoBehaviour
         Invoke("ResetVelocity", 0.2f);
     }
 
-    void Update()
+    //####################################################################################################
+    void Update()//#######################################################################################
     {
-        if (ButtonScript.receivedDodgeInput && Time.time-usedBackJumpAt >backJumpRate)
+        if (androidMode)
+        {
+            attackInput = ButtonScript.receivedAttackInput;
+            dodgeInput = ButtonScript.receivedDodgeInput;
+            jumpInput = ButtonScript.receivedJumpInput;
+        }else if(!androidMode){
+            attackInput = Input.GetMouseButtonDown(0);
+            dodgeInput = Input.GetKey(KeyCode.Q);
+            jumpInput = Input.GetKey(KeyCode.Space);
+        }
+
+
+        if (dodgeInput && Time.time - usedBackJumpAt > backJumpRate)
         {
             BackJump(facingRight);
             usedBackJumpAt = Time.time;
@@ -175,7 +209,7 @@ public class Player : MonoBehaviour
         isGrunded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         //Jump
-        if (isGrunded && ButtonScript.receivedJumpInput)
+        if (isGrunded && jumpInput)
         {
             isGrunded = false;
             isJumping = true;
@@ -205,7 +239,7 @@ public class Player : MonoBehaviour
 
 
         //Longer Jump on Space holding
-        if (ButtonScript.receivedJumpInput&& isJumping)
+        if (jumpInput && isJumping)
         {
 
             if (jumpTimeCounter > 0)
