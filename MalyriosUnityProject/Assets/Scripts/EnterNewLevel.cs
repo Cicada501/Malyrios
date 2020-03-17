@@ -3,25 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EnterNewLevel : MonoBehaviour
 {
-    public Text interactToEnter;
-    public string levelToEnter;
+    [SerializeField]
+    TextMeshProUGUI textMeshProUGUI;
+    [SerializeField]
+    string levelToEnter;
+    [SerializeField]
+    string displayText;
+
+    
+
+    bool ePressed = false;
+
+    private void Start() {
+        textMeshProUGUI.text = displayText;
+        
+    }
+
+    private void Update() {
+        ePressed = Input.GetKey(KeyCode.E);
+        
+    }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if(other.gameObject.tag =="Player"){
-            interactToEnter.gameObject.SetActive(true);
-            if(Input.GetKey(KeyCode.E)){
-                print("got Key");
+        if(other.gameObject.CompareTag("Player")){
+            //Player.spawnPoint = (0,0);
+            textMeshProUGUI.gameObject.SetActive(true);
+            if(ePressed){
                 SceneManager.LoadScene(levelToEnter);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-         if(other.gameObject.tag =="Player"){
-            interactToEnter.gameObject.SetActive(false);
+         if(other.gameObject.CompareTag("Player")){
+            textMeshProUGUI.gameObject.SetActive(false);
             
         }
     }
