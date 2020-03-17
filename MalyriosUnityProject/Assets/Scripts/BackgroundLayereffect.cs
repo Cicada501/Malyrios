@@ -15,8 +15,8 @@ public class BackgroundLayereffect : MonoBehaviour {
 		camPosY = cam.transform.position.y;
 		startposX = transform.position.x;
 		startposY = transform.position.y;
-		lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
-		lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
+		//lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
+		//lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
 	}
 	
 	// Update is called once per frame

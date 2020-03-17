@@ -7,69 +7,117 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
 
-	public Slider healthBarSlider;
-    public int maxHealth = 100;
-    int currentHealth;
-
+    public float maxHealth = 100;
+    public float healthRegen = 0.03f;
+    public float DamageBarDropSpeed = 0.8f;
     public float flashTime;
-    Color origionalColor;
-    public SpriteRenderer renderer;
-	Transform player;
+    public SpriteRenderer PlayerRenderer;
+    public Slider healthBarSlider;
+    public Slider healthBarDamageSlider;
+    public Image HealthFill;
+    public Animator CamAnimator;
+
+    float currentHealth;
+
+    Color playerOrigionalColor;
+    Color barFillOrigionalColor;
+    Transform player;
     Rigidbody2D rb;
+    
+    float tmpCurrentHealth;
 
     // Use this for initialization
     void Start()
     {
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
         currentHealth = maxHealth;
-		
-        origionalColor = renderer.color;
+
+        //Remember original colors to reset after Flash
+        playerOrigionalColor = PlayerRenderer.color;
+        barFillOrigionalColor = HealthFill.color;
 
         rb = GetComponent<Rigidbody2D>();
+
+        healthBarDamageSlider.maxValue = maxHealth;
+        healthBarDamageSlider.value = maxHealth;
+        healthBarSlider.maxValue = maxHealth;
+        tmpCurrentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-		healthBarSlider.maxValue = maxHealth;
-		healthBarSlider.value = currentHealth;
 
-        if(currentHealth<=0){
+        healthBarSlider.value = currentHealth;
+
+        if(currentHealth < tmpCurrentHealth){
+            tmpCurrentHealth = currentHealth;
+            CamAnimator.SetTrigger("Landing");
+        }
+
+
+        if (currentHealth <= 0 || rb.velocity.y < -35f)
+        {
             Die();
         }
-        if(rb.velocity.y < -28){
-            Die();
+
+    }
+    void FixedUpdate()
+    {
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += healthRegen;
         }
+
+        //DamageBar
+        if (healthBarDamageSlider.value > currentHealth)
+        {
+
+            healthBarDamageSlider.value -= DamageBarDropSpeed;
+        }else if(healthBarDamageSlider.value < currentHealth){
+            healthBarDamageSlider.value = currentHealth;
+        }
+
+        
+
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
+        
         //Let player blink red
-		FlashRed();
+        FlashOnDamage();
 
         if (currentHealth <= 50)
         {
-			player.GetComponent<Player>().GiveSuperJumps();
+            player.GetComponent<Player>().GiveSuperJumps();
             //Die animation 
             //UI asking to restart 
         }
     }
-
-    void FlashRed()
+    void ShrinkHealthDamageSlider()
     {
-        renderer.color = Color.red;
+
+        
+
+    }
+
+    void FlashOnDamage()
+    {
+        HealthFill.color = Color.white;
+        PlayerRenderer.color = Color.red;
         Invoke("ResetColor", flashTime);
     }
     void ResetColor()
     {
-       
-        renderer.color = origionalColor;
+        HealthFill.color = barFillOrigionalColor; 
+        PlayerRenderer.color = playerOrigionalColor;
     }
 
-    void Die(){
+    void Die()
+    {
 
         SceneManager.LoadScene("SampleScene");
 

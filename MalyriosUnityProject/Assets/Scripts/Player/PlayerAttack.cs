@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         {
 
             isAttacking = false;
-            if (Input.GetMouseButtonDown(0))
+            if (Player.attackInput)
             {
                 Attack();
                 isAttacking = true;
@@ -89,8 +89,11 @@ public class PlayerAttack : MonoBehaviour
         if (soundChoice == 0) { meeleeSound1.Play(); }
         else if (soundChoice == 1) { meeleeSound2.Play(); }
         else if (soundChoice == 2) { meeleeSound3.Play(); }
-
+        
+        //get list of all colliders in hit range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
+        //remember the gameobject of the collider, to only hit it once if it has multiple colliders
+        List<GameObject> enemiesGotHit = new List<GameObject>();
         if (hitEnemies.Length > 0)
         {
             enemyInDamagezone = true;
@@ -99,8 +102,10 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                print(enemy + "Got hit");
+                if(!enemiesGotHit.Contains(enemy.gameObject)){
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                enemiesGotHit.Add(enemy.gameObject);
+                }
             }
         }
 

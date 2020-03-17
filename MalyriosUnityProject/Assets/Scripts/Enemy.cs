@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public float gravityToFall = 8;
+    public float gravityToClimb = 2;
+
 
     public float attackRate = 1.5f;
     public static float nextAttackTime;
     float distToPlayer;
+    float distToPlayerY;
 
     public Transform attackPoint;
     public float attackRadius;
@@ -39,6 +43,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()//-------------------------------------------------
     {
+        if(distToPlayerY > 8){
+            distToPlayer = 0;
+        }
+
         //Recognize when Enemy has attacked, and set nextAttackTime
         if (animator.GetBool("Attack") == true)
         {
@@ -57,6 +65,7 @@ public class Enemy : MonoBehaviour
         }
 
         distToPlayer = Mathf.Abs(rb.position.x - player.position.x);
+        distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
         animator.SetFloat("distToPlayer", distToPlayer);
 
         if (distToPlayer <= Enemy_run.attackRange)
@@ -85,14 +94,14 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        //transform.position = transform.position - new Vector3(0, 0.06f, 0);
-        animator.SetBool("isDead", true);
+
+        isDead = true;
+        animator.SetBool("isDead", isDead);
 
         //dont move when dead
         rb.velocity = new Vector2(0f, 0f);
         rb.angularVelocity = 0f;
 
-        rb.mass = 0;
         rb.gravityScale = 0;
 
         //Disable all coliders when dead
@@ -140,6 +149,21 @@ public class Enemy : MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ground" && !isDead)
+        {
+            rb.gravityScale = gravityToClimb;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ground" && !isDead)
+        {
+            rb.gravityScale = gravityToFall;
+        }
     }
 
 
