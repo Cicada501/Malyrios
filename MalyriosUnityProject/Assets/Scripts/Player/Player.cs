@@ -65,10 +65,6 @@ public class Player : MonoBehaviour
     bool dodgeInput;
     public static bool attackInput;
 
-    /*     private void Awake() {
-
-        } */
-
 
     // Use this for initialization
     void Start()
@@ -79,30 +75,14 @@ public class Player : MonoBehaviour
 
         playerAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-/* 
-        if (SceneManager.GetActiveScene().name == "Cliffs")
-        {
-            StaticData.spawnPoint = new Vector3(0, -20, 0);
-        }
-        else if (SceneManager.GetActiveScene().name == "Cave")
-        {
-            StaticData.spawnPoint = new Vector3(0, 0, 0);
-        }
- */
+
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        print("Spawnpint: " + StaticData.spawnPoint);
-        print("PlayerSetToSpawn: " + StaticData.playerPutToSpawnPoint);
-        if (!StaticData.playerPutToSpawnPoint)
-        {
-            print("REPLACED");
-            transform.position = StaticData.spawnPoint;
-            StaticData.playerPutToSpawnPoint = true;
-        }
+
 
         if (PlayerAttack.isAttacking)
         {
@@ -199,6 +179,15 @@ public class Player : MonoBehaviour
     //####################################################################################################
     void Update()//#######################################################################################
     {
+        print("Spawnpint: " + StaticData.spawnPoint);
+        print("PlayerSetToSpawn: " + StaticData.playerPutToSpawnPoint);
+        if (!StaticData.playerPutToSpawnPoint)
+        {
+            print("REPLACED");
+            Invoke("PlayerSpawned",0.1f);
+            transform.position = StaticData.spawnPoint;
+            
+        }
 
 
 
@@ -260,13 +249,6 @@ public class Player : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
         //Longer Jump on Space holding
         if (jumpInput && isJumping)
         {
@@ -286,6 +268,16 @@ public class Player : MonoBehaviour
 
     }//########################################################################
      //#########################################################################
+
+
+
+    
+    void PlayerSpawned(){
+        StaticData.playerPutToSpawnPoint = true;
+    }
+
+
+    
     void ResetVelocity()
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
