@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class StaticData{
-    private static Vector3 _spawnPoint = new Vector3(0, -20, 0);
+    private static Vector3 _spawnPoint = new Vector3(0, 0, 0);
     private static bool _playerPutToSpawnPoint;
 
     public static Vector3 spawnPoint 
