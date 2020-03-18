@@ -119,7 +119,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Cliffs");
 
     }
 

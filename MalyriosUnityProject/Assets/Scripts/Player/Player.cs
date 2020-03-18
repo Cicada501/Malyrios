@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
 {
 
-    public static Transform spawnPoint;
+    //public static Transform spawnPoint;
     public ParticleSystem dust;
 
     [SerializeField]
@@ -64,22 +65,44 @@ public class Player : MonoBehaviour
     bool dodgeInput;
     public static bool attackInput;
 
+    /*     private void Awake() {
+
+        } */
 
 
     // Use this for initialization
     void Start()
     {
+        //neccecarry to use OnSceneLoaded (otherwise its not called)
+        //SceneManager.sceneLoaded += OnSceneLoaded;
         androidMode = setAndroidMode;
 
         playerAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+/* 
+        if (SceneManager.GetActiveScene().name == "Cliffs")
+        {
+            StaticData.spawnPoint = new Vector3(0, -20, 0);
+        }
+        else if (SceneManager.GetActiveScene().name == "Cave")
+        {
+            StaticData.spawnPoint = new Vector3(0, 0, 0);
+        }
+ */
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        print("Spawnpint: " + StaticData.spawnPoint);
+        print("PlayerSetToSpawn: " + StaticData.playerPutToSpawnPoint);
+        if (!StaticData.playerPutToSpawnPoint)
+        {
+            print("REPLACED");
+            transform.position = StaticData.spawnPoint;
+            StaticData.playerPutToSpawnPoint = true;
+        }
 
         if (PlayerAttack.isAttacking)
         {
@@ -176,7 +199,8 @@ public class Player : MonoBehaviour
     //####################################################################################################
     void Update()//#######################################################################################
     {
-         
+
+
 
         if (androidMode)
         {
@@ -222,20 +246,21 @@ public class Player : MonoBehaviour
                 isFalling = true;
             }
 
-        //Catch the moment, when player is falling and groundet => landing
-        }else if (rb.velocity.y > -0.01)
+            //Catch the moment, when player is falling and groundet => landing
+        }
+        else if (rb.velocity.y > -0.01)
         {
             isFalling = false;
         }
         cameraAnimator.ResetTrigger("Landing");
         if (isFalling && isGrunded)
         {
-           cameraAnimator.SetTrigger("Landing");
+            cameraAnimator.SetTrigger("Landing");
         }
 
-       
 
-        
+
+
 
 
 
@@ -260,7 +285,7 @@ public class Player : MonoBehaviour
 
 
     }//########################################################################
-    //#########################################################################
+     //#########################################################################
     void ResetVelocity()
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
@@ -292,20 +317,21 @@ public class Player : MonoBehaviour
 
     public void GiveSuperJumps()
     {
-  
+
     }
 
-    void CreateDust(){
+    void CreateDust()
+    {
         dust.Play();
     }
 
-/*     void OnCollisionEnter2D(Collision2D other)
-    {
-        print("Collide");
-        if (other.gameObject.tag == "Ground" &&!isGrunded)
+    /*     void OnCollisionEnter2D(Collision2D other)
         {
-            print("Shake");
-            
-        }
-    } */
+            print("Collide");
+            if (other.gameObject.tag == "Ground" &&!isGrunded)
+            {
+                print("Shake");
+
+            }
+        } */
 }
