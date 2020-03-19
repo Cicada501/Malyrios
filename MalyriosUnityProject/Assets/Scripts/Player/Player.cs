@@ -197,7 +197,7 @@ public class Player : MonoBehaviour
             dodgeInput = ButtonScript.receivedDodgeInput;
             jumpInput = ButtonScript.receivedJumpInput;
         }
-        else if (!androidMode)
+        else 
         {
             attackInput = Input.GetMouseButtonDown(0);
             dodgeInput = Input.GetKey(KeyCode.Q);
