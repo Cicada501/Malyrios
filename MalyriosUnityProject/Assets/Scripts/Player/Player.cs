@@ -64,11 +64,16 @@ public class Player : MonoBehaviour
     bool jumpInput;
     bool dodgeInput;
     public static bool attackInput;
-
+    public static bool interactInput;
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        
+    }
 
     // Use this for initialization
     void Start()
-    {
+        {
+        Invoke("PlayerToSpawnPoint", 0.05f);
         //neccecarry to use OnSceneLoaded (otherwise its not called)
         //SceneManager.sceneLoaded += OnSceneLoaded;
         androidMode = setAndroidMode;
@@ -179,29 +184,20 @@ public class Player : MonoBehaviour
     //####################################################################################################
     void Update()//#######################################################################################
     {
-        print("Spawnpint: " + StaticData.spawnPoint);
-        print("PlayerSetToSpawn: " + StaticData.playerPutToSpawnPoint);
-        if (!StaticData.playerPutToSpawnPoint)
-        {
-            print("REPLACED");
-            Invoke("PlayerSpawned",0.1f);
-            transform.position = StaticData.spawnPoint;
-            
-        }
-
-
 
         if (androidMode)
         {
             attackInput = ButtonScript.receivedAttackInput;
             dodgeInput = ButtonScript.receivedDodgeInput;
             jumpInput = ButtonScript.receivedJumpInput;
+            interactInput = ButtonScript.receivedInteractInput;
         }
         else 
         {
             attackInput = Input.GetMouseButtonDown(0);
             dodgeInput = Input.GetKey(KeyCode.Q);
             jumpInput = Input.GetKey(KeyCode.Space);
+            interactInput = Input.GetKey(KeyCode.E);
         }
 
 
@@ -272,8 +268,10 @@ public class Player : MonoBehaviour
 
 
     
-    void PlayerSpawned(){
-        StaticData.playerPutToSpawnPoint = true;
+
+
+    void PlayerToSpawnPoint(){
+         transform.position = StaticData.spawnPoint;
     }
 
 

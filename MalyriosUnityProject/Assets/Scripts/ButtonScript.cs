@@ -6,18 +6,24 @@ using UnityEngine.UI;
 public class ButtonScript : MonoBehaviour
 {
     public static bool receivedAttackInput;
+    public static bool receivedInteractInput;
     public static bool receivedJumpInput;
     public static bool receivedDodgeInput;
+    public  bool disableOnPC;
 
     Button buttons;
 
     void Start()
     {
         buttons = GetComponent<Button>();
+    receivedAttackInput = false;
+    receivedInteractInput = false;
+    receivedJumpInput = false;
+    receivedDodgeInput = false;
        
     }
     private void Update() {
-        if (!Player.androidMode){  
+        if (!Player.androidMode && disableOnPC){  
             buttons.gameObject.SetActive(false);
         }else{
             buttons.gameObject.SetActive(true);
@@ -34,6 +40,15 @@ public class ButtonScript : MonoBehaviour
     void StopAttackInput()
     {
         receivedAttackInput = false;
+    }
+    //Interact Button
+    public void ClickInteractButton()
+    {
+        receivedInteractInput = true;
+    }
+    public void ReleaseInteractButton()
+    {
+        receivedInteractInput = false;
     }
 
     //Dodge Button

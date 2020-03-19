@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class StaticData{
-    private static Vector3 _spawnPoint = new Vector3(3f, -6f, 0f);
-    private static bool _playerPutToSpawnPoint;
+    private static Vector3 _spawnPoint = new Vector3(0f, -20.07f, 0f);
 
     public static Vector3 spawnPoint 
     {
@@ -15,15 +14,6 @@ public static class StaticData{
         set 
         {
             _spawnPoint = value;
-        }
-    }
-    public static bool playerPutToSpawnPoint{
-        get{
-            return _playerPutToSpawnPoint;
-
-        }
-        set{
-            _playerPutToSpawnPoint = value;
         }
     }
 }
