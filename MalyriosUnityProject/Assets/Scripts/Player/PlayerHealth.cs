@@ -116,10 +116,10 @@ public class PlayerHealth : MonoBehaviour
         PlayerRenderer.color = playerOrigionalColor;
     }
 
-    void Die()
+    public void Die()
     {
 
-        SceneManager.LoadScene("Cliffs");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 
