@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     int currentHealth;
 
     bool isGrounded;
+    bool isAttacking;
 
 
 
@@ -43,7 +44,18 @@ public class Enemy : MonoBehaviour
 
     private void Update()//-------------------------------------------------
     {
-        if(distToPlayerY > 8){
+
+        print("Time: "+ Time.time+ "NextAttackAt: "+ nextAttackTime);
+        //print("isAttacking"+isAttacking);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            isAttacking = true;
+
+        }else{
+            isAttacking = false;
+        }
+        if (distToPlayerY > 8)
+        {
             distToPlayer = 0;
         }
 
@@ -55,11 +67,11 @@ public class Enemy : MonoBehaviour
         }
 
         //Look at Player
-        if (transform.position.x > player.position.x && facingRight)
+        if (transform.position.x > player.position.x && facingRight && !isAttacking)
         {
             enemyFlip();
         }
-        else if (transform.position.x < player.position.x && !facingRight)
+        else if (transform.position.x < player.position.x && !facingRight && !isAttacking)
         {
             enemyFlip();
         }
@@ -88,6 +100,8 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+        }else if(currentHealth < 0.4*maxHealth){
+            animator.SetBool("isEnraged", true);
         }
 
     }
@@ -133,6 +147,10 @@ public class Enemy : MonoBehaviour
 
     }
 
+    void Shake(){
+        CameraShake_Cinemachine.Shake(0.3f,0.33f,10f);
+    }
+
     public void DealDamage(int damage)
     {
         Collider2D[] thatGotHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
@@ -151,6 +169,7 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 
+    //chage graviy if upwards ground before 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ground" && !isDead)
