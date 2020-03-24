@@ -45,9 +45,9 @@ public class Enemy : MonoBehaviour
     private void Update()//-------------------------------------------------
     {
 
-        print("Time: "+ Time.time+ "NextAttackAt: "+ nextAttackTime);
+        //print("Time: "+ Time.time+ "NextAttackAt: "+ nextAttackTime);
         //print("isAttacking"+isAttacking);
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")||animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
         {
             isAttacking = true;
 
@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
         //Recognize when Enemy has attacked, and set nextAttackTime
         if (animator.GetBool("Attack") == true)
         {
+        
 
             nextAttackTime = Time.time + 1f / attackRate;
         }
@@ -128,7 +129,7 @@ public class Enemy : MonoBehaviour
         this.enabled = false;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+/*     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ground")
         {
@@ -138,7 +139,7 @@ public class Enemy : MonoBehaviour
         {
             isGrounded = false;
         }
-    }
+    } */
 
     void enemyFlip()
     {

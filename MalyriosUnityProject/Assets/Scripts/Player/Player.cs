@@ -314,14 +314,4 @@ public class Player : MonoBehaviour
     {
         dust.Play();
     }
-
-    /*     void OnCollisionEnter2D(Collision2D other)
-        {
-            print("Collide");
-            if (other.gameObject.tag == "Ground" &&!isGrunded)
-            {
-                print("Shake");
-
-            }
-        } */
 }

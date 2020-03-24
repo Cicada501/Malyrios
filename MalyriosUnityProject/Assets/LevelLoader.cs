@@ -13,7 +13,7 @@ public class LevelLoader : MonoBehaviour
 
 
     private void Update() {
-        print(loadLevel);
+        
         if(loadLevel){
             LoadNextLevel(levelToLoad);
             loadLevel = false;

@@ -17,9 +17,10 @@ public class TriggerFallingStones : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
-            print("stoneShouldFall");
+        
             rbStone.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
             rbStone.gravityScale = 5f;
+            StaticData.spawnPoint = new Vector3(24.5f,-10.8f,0f);
     
             
         }
