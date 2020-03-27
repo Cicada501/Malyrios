@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     bool dodgeInput;
     public static bool attackInput;
     public static bool interactInput;
+    public static bool inventoryInput;
     
     void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         
@@ -184,6 +185,7 @@ public class Player : MonoBehaviour
     //####################################################################################################
     void Update()//#######################################################################################
     {
+        print(interactInput);
 
         if (androidMode)
         {
@@ -191,9 +193,11 @@ public class Player : MonoBehaviour
             dodgeInput = ButtonScript.receivedDodgeInput;
             jumpInput = ButtonScript.receivedJumpInput;
             interactInput = ButtonScript.receivedInteractInput;
+            inventoryInput = ButtonScript.receivedOpenInventoryInput;
         }
         else 
         {
+            inventoryInput = Input.GetKey(KeyCode.I);
             attackInput = Input.GetMouseButtonDown(0);
             dodgeInput = Input.GetKey(KeyCode.Q);
             jumpInput = Input.GetKey(KeyCode.Space);

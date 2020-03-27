@@ -84,6 +84,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
+        print("ATTACK");
         playerAnimator.SetTrigger("Attack");
         soundChoice = Random.Range(0, 2);
         if (soundChoice == 0) { meeleeSound1.Play(); }

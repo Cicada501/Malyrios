@@ -38,6 +38,8 @@ public class EnterNewLevel : MonoBehaviour
     {
 
         currentScene = SceneManager.GetActiveScene();
+
+        //Disable other colliders with this script to avoid wrong beahviour
         if (colliding)
         {
             if (triggerCollider1 && triggerCollider2)
@@ -57,7 +59,7 @@ public class EnterNewLevel : MonoBehaviour
             if (Player.interactInput)
             {
             
-
+                //Set Spawnpoints to the right spot for the depending level
                 if (sceneToEnter == "Cliffs" && currentScene.name == "Cave")
                 {
                     StaticData.spawnPoint = new Vector3(-2.09f, -20f, 0f);
@@ -81,14 +83,12 @@ public class EnterNewLevel : MonoBehaviour
                     StaticData.spawnPoint = new Vector3(0, 0f, 0f);
 
                 }
+                StaticData.itemsStatic = Inventory.instance.items;
                 LevelLoader.levelToLoad = sceneToEnter;
                 LevelLoader.loadLevel = true;
             }
         }
-        else
-        {
-            textMeshProUGUI.gameObject.SetActive(false);
-        }
+
 
 
 
@@ -109,6 +109,7 @@ public class EnterNewLevel : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             colliding = false;
+            textMeshProUGUI.gameObject.SetActive(false);
         }
         if (triggerCollider2 && triggerCollider1)
         {

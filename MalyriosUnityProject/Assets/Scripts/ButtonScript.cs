@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonScript : MonoBehaviour
 {
     public static bool receivedAttackInput;
+    public static bool receivedOpenInventoryInput;
     public static bool receivedInteractInput;
     public static bool receivedJumpInput;
     public static bool receivedDodgeInput;
@@ -20,6 +21,7 @@ public class ButtonScript : MonoBehaviour
     receivedInteractInput = false;
     receivedJumpInput = false;
     receivedDodgeInput = false;
+    receivedOpenInventoryInput = false;
        
     }
     private void Update() {
@@ -28,6 +30,14 @@ public class ButtonScript : MonoBehaviour
         }else{
             buttons.gameObject.SetActive(true);
         }
+    }
+
+
+    //Open Inventory Button
+    public void OpenInventoryButton()
+    {
+        receivedOpenInventoryInput = true;
+       
     }
 
 
@@ -41,6 +51,7 @@ public class ButtonScript : MonoBehaviour
     {
         receivedAttackInput = false;
     }
+    
     //Interact Button
     public void ClickInteractButton()
     {
