@@ -29,7 +29,7 @@ public class PickUp : MonoBehaviour
         
 
         distance = Vector2.Distance(gameObject.transform.position, player.position);//Mathf.Abs(gameObject.transform.position.x - player.position.x);
-        if (distance < 0.3f)
+        if (distance < 0.15f)
         {
             ShowPickUpDialog();
             showText = true;

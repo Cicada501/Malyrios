@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
         //check if the attackrate allows the next attack
         if (Time.time >= nextAttackTime)
         {
-
+        
             isAttacking = false;
             if (Player.attackInput)
             {
