@@ -56,8 +56,7 @@ public class EnterNewLevel : MonoBehaviour
             }
             textMeshProUGUI.text = displayText;
             textMeshProUGUI.gameObject.SetActive(true);
-            if (Player.interactInput)
-            {
+            if (Player.interactInput){
             
                 //Set Spawnpoints to the right spot for the depending level
                 if (sceneToEnter == "Cliffs" && currentScene.name == "Cave")
@@ -83,10 +82,14 @@ public class EnterNewLevel : MonoBehaviour
                     StaticData.spawnPoint = new Vector3(0, 0f, 0f);
 
                 }
+
+                //Set static items list to inventry items list
                 StaticData.itemsStatic = Inventory.instance.items;
+                Inventory.itemsLoaded = false;
+
                 LevelLoader.levelToLoad = sceneToEnter;
                 LevelLoader.loadLevel = true;
-            }
+            }// END: Interacting
         }
 
 

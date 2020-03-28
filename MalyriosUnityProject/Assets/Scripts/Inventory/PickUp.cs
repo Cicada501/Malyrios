@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
 
     Transform player;
     float distance;
+    bool showText;
     [SerializeField]
     TextMeshProUGUI tmpText;
     public Item item;
@@ -30,19 +31,25 @@ public class PickUp : MonoBehaviour
         distance = Vector2.Distance(gameObject.transform.position, player.position);//Mathf.Abs(gameObject.transform.position.x - player.position.x);
         if (distance < 0.3f)
         {
+            ShowPickUpDialog();
+            showText = true;
 
             //Pick item Up, if player interacts with it
             if (Player.interactInput)
             {
                 PickUpItem();
             }
+
+        }else if(showText && distance >= 0.3f){
+             tmpText.gameObject.SetActive(false);
+             showText = false;
         }
         
     }
 
     void ShowPickUpDialog()
     {
-        print("shouldShowDialog");
+      
         tmpText.text = "Pick Up " + item.name;
         tmpText.gameObject.SetActive(true);
     }
@@ -59,12 +66,12 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+/*     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player"))
-            ShowPickUpDialog();
+            
     }
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player"))
             tmpText.gameObject.SetActive(false);
-    }
+    } */
 }

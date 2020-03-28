@@ -129,17 +129,10 @@ public class Enemy : MonoBehaviour
         this.enabled = false;
     }
 
-/*     private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
-    } */
+    void dropItems(){
+        
+    }
+
 
     void enemyFlip()
     {
@@ -148,6 +141,7 @@ public class Enemy : MonoBehaviour
 
     }
 
+    // used in animations
     void Shake(){
         CameraShake_Cinemachine.Shake(0.3f,0.33f,10f);
     }
@@ -161,6 +155,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+    //Draw enemy attack Circle
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -169,6 +165,7 @@ public class Enemy : MonoBehaviour
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
+
 
     //chage graviy if upwards ground before 
     void OnTriggerEnter2D(Collider2D other)

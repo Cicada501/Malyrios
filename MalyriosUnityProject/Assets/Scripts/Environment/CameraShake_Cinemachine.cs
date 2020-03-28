@@ -28,10 +28,10 @@ public class CameraShake_Cinemachine : MonoBehaviour {
     void Update()
     {
         // TODO: Replace with your trigger
-        if (Input.GetKey(KeyCode.S))
+        /* if (Input.GetKey(KeyCode.S))
         {
             ShakeElapsedTime = ShakeDuration;
-        }
+        } */
 
         // If the Cinemachine componet is not set, avoid update
         if (VirtualCamera != null && virtualCameraNoise != null)

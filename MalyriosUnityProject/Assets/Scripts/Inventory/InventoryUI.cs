@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     bool buttonPressed;
 
     InventorySlot[] slots;
+    bool itemsLoaded = false;
 
     void Start()
     {
@@ -23,6 +25,12 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!itemsLoaded){
+            UpdateUI();
+            itemsLoaded = true;
+        }
+
+        //Dont Open/Close inventory Very often on button hold
         if(Player.inventoryInput && !buttonPressed){
             changeInventoryOpened();
             buttonPressed = true;
