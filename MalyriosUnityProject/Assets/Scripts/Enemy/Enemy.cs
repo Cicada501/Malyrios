@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Item dropItem;
+
     public float gravityToFall = 8;
     public float gravityToClimb = 2;
-
 
     public float attackRate = 1.5f;
     public static float nextAttackTime;
@@ -127,10 +128,12 @@ public class Enemy : MonoBehaviour
 
         //Disable Script after colliders (otherwise coliders dont get disabled)
         this.enabled = false;
+
+        SpawnItem.Spawn(dropItem,transform.position,0f, 0f,0.5f);
     }
 
     void dropItems(){
-        
+
     }
 
 
