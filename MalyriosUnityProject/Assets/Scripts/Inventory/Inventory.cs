@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged OnItemChangedCallback;
 
-    public int slotCount = 20;
+    public int slotCount = 200;
     public List<Item> items = new List<Item>();
 
     public static bool itemsLoaded = false;
@@ -37,16 +37,6 @@ public class Inventory : MonoBehaviour
         items = StaticData.itemsStatic;
         
     }
-
-/*     void Update()//#############################################
-    {
-        print("itemsLoaded: "+ itemsLoaded);
-        if(!itemsLoaded){
-        print("Loading items");
-        OnItemChangedCallback.Invoke();
-        itemsLoaded = true;
-        }
-    } */
 
 
     public bool Add(Item item)

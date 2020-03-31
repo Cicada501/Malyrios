@@ -6,6 +6,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public Item dropItem;
+    public Item dropRareItem;
+    public int dropItemChance0 = 10; //chance to drop 0 times Item
+    public int dropItemChance1 = 60; //chance to drop 1 times Item
+    public int dropItemChance2 = 30;
+    public int dropRareItemChance0 = 50;
+    public int dropRareItemChance1 = 40; //chance to drop 1 times RareItem
+    public int dropRareItemChance2 = 10;  //chance to drop 2 times RareItem
 
     public float gravityToFall = 8;
     public float gravityToClimb = 2;
@@ -48,11 +55,13 @@ public class Enemy : MonoBehaviour
 
         //print("Time: "+ Time.time+ "NextAttackAt: "+ nextAttackTime);
         //print("isAttacking"+isAttacking);
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")||animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") || animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
         {
             isAttacking = true;
 
-        }else{
+        }
+        else
+        {
             isAttacking = false;
         }
         if (distToPlayerY > 8)
@@ -63,7 +72,7 @@ public class Enemy : MonoBehaviour
         //Recognize when Enemy has attacked, and set nextAttackTime
         if (animator.GetBool("Attack") == true)
         {
-        
+
 
             nextAttackTime = Time.time + 1f / attackRate;
         }
@@ -102,7 +111,9 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-        }else if(currentHealth < 0.4*maxHealth){
+        }
+        else if (currentHealth < 0.4 * maxHealth)
+        {
             animator.SetBool("isEnraged", true);
         }
 
@@ -129,11 +140,32 @@ public class Enemy : MonoBehaviour
         //Disable Script after colliders (otherwise coliders dont get disabled)
         this.enabled = false;
 
-        SpawnItem.Spawn(dropItem,transform.position,0f, 0f,0.5f);
-    }
+        //DROP ITEMS
+        //Item Normal
 
-    void dropItems(){
+        int dropchoice = Random.Range(0, 100);
+        if (dropchoice > dropItemChance0 && dropchoice <= dropItemChance1 + dropItemChance0)
+        {
+            SpawnItem.Spawn(dropItem, new Vector2(transform.position.x - 0.1f, transform.position.y));
 
+        }
+        else if (dropchoice > dropItemChance1 + dropItemChance0 && dropchoice <= dropItemChance2 + dropItemChance1 + dropItemChance0)
+        {
+            SpawnItem.Spawn(dropItem, transform.position);
+            SpawnItem.Spawn(dropItem, new Vector2(transform.position.x - 0.1f, transform.position.y));
+        }
+
+        //Item Rare
+        dropchoice = Random.Range(0, 100);
+        if (dropchoice > dropRareItemChance0 && dropchoice <= dropRareItemChance1 + dropRareItemChance0)
+        {
+            SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
+        }
+        else if (dropchoice > dropRareItemChance1 + dropRareItemChance0 && dropchoice <= dropRareItemChance2 + dropRareItemChance1 + dropRareItemChance0)
+        {
+            SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.2f, transform.position.y));
+            SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
+        }
     }
 
 
@@ -145,8 +177,9 @@ public class Enemy : MonoBehaviour
     }
 
     // used in animations
-    void Shake(){
-        CameraShake_Cinemachine.Shake(0.3f,0.33f,10f);
+    void Shake()
+    {
+        CameraShake_Cinemachine.Shake(0.3f, 0.33f, 10f);
     }
 
     public void DealDamage(int damage)
