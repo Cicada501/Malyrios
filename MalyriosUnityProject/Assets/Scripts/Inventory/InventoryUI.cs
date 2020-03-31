@@ -55,6 +55,7 @@ public class InventoryUI : MonoBehaviour
     void UpdateUI()
     {
 
+        print("_______________________________________________________________________");
         for (int i = 0; i < inventory.items.Count; i++){
 
             //gets position of items[i] in slots, if no slot has it yet, its -1
@@ -65,16 +66,25 @@ public class InventoryUI : MonoBehaviour
             if (pos == -1){
                 slots[i-d].AddItem(inventory.items[i]);
                 slots[i-d].amount = 1;
+                print("first");
 
             }
             //Collected Item to Stack
             else if (itemOccurrence == slots[pos].amount + 1){
                 slots[pos].amount++;              
                 d ++; //speichere Anzahl an items, die keinen eigenen Slot benötigen
+                print("second");
             }
-            print("Slot "+ i+ " amount is "+ slots[i].amount);
-            if(slots[i].amount == 0){
+            print("D: "+d+ " i:"+i+" slots[i].amount: "+slots[i].amount+ " Occurrence: "+itemOccurrence);
+            
+            /* if(slots[i].amount == 0){
                 slots[i].ClearSlot();
+            } */
+        }
+        foreach (InventorySlot slot in slots)
+        {
+            if(slot.amount == 0){
+                slot.ClearSlot();
             }
         }
         if(inventory.items.Count == 0){

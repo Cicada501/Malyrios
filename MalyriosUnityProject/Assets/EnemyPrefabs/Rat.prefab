@@ -149,6 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6a263d26a7ab04582bdbe935b07958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: {fileID: 11400000, guid: 577b76a859b038e439710562887922ff, type: 2}
+  dropRareItem: {fileID: 11400000, guid: bd1ee00ac86f441449819552a6196b49, type: 2}
+  dropItemChance0: 10
+  dropItemChance1: 60
+  dropItemChance2: 30
+  dropRareItemChance0: 50
+  dropRareItemChance1: 40
+  dropRareItemChance2: 10
   gravityToFall: 8
   gravityToClimb: 2
   attackRate: 1
