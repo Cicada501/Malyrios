@@ -17,7 +17,7 @@ public class InventoryUI : MonoBehaviour
     bool itemsLoaded = false;
     int itemCount;
 
-    int d;
+    public static int d;
 
     void Start()
     {
@@ -56,7 +56,7 @@ public class InventoryUI : MonoBehaviour
     {
 
         for (int i = 0; i < inventory.items.Count; i++){
-            
+
             //gets position of items[i] in slots, if no slot has it yet, its -1
             int pos = Array.IndexOf(slots.Select(x => x.item).ToArray(), inventory.items[i]);
             int itemOccurrence = GetOccurrences(inventory.items[i], inventory.items);
@@ -72,8 +72,17 @@ public class InventoryUI : MonoBehaviour
                 slots[pos].amount++;              
                 d ++; //speichere Anzahl an items, die keinen eigenen Slot benötigen
             }
-
+            print("Slot "+ i+ " amount is "+ slots[i].amount);
+            if(slots[i].amount == 0){
+                slots[i].ClearSlot();
+            }
         }
+        if(inventory.items.Count == 0){
+            foreach (InventorySlot slot in slots){
+                slot.ClearSlot();
+            }
+        }
+
 
     }
 

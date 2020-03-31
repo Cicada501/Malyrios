@@ -38,10 +38,10 @@ public class InventorySlot : MonoBehaviour
     }
 
     public void OnRemoveButton(){
+        if(amount >1 ) InventoryUI.d--;
         SpawnItem.Spawn(item, player.position, 0.3f, -1.2f, 1.5f);
         amount--;
-        if (amount == 0){
-            Inventory.instance.Remove(item);
-        }
+        Inventory.instance.Remove(item);
+        
     }
 }

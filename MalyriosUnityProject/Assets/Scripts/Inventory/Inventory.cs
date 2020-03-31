@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
         }
 
         items.Add(item);
-        print("items Count: "+items.Count);
+        
         if (OnItemChangedCallback != null)
         {
             OnItemChangedCallback.Invoke();
@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         items.Remove(item);
-        
+
         if (OnItemChangedCallback != null)
         {
             OnItemChangedCallback.Invoke();
