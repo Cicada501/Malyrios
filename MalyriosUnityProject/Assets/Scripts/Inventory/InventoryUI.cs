@@ -54,10 +54,6 @@ public class InventoryUI : MonoBehaviour
 
     void UpdateUI()
     {   
-        foreach (Item item in inventory.items)
-        {
-            print(item.name+ " ");
-        }
 
         for (int i = 0; i < inventory.items.Count; i++){
 

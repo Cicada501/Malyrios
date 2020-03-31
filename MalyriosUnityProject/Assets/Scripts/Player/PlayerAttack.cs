@@ -31,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     Animator playerAnimator;
+    public Animator cameraAnimator;
 
 
     // Use this for initialization
@@ -99,6 +100,7 @@ public class PlayerAttack : MonoBehaviour
         {
             enemyInDamagezone = true;
             hitmarkerSound.Play();
+            cameraAnimator.SetTrigger("EnemyHit");
 
 
             foreach (Collider2D enemy in hitEnemies)
