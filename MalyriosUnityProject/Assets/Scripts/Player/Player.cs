@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public AudioSource jumpStart;
+    public AudioSource landing1;
+    public AudioSource landing2;
 
-    //public static Transform spawnPoint;
     public ParticleSystem dust;
 
     [SerializeField]
@@ -66,14 +68,15 @@ public class Player : MonoBehaviour
     public static bool attackInput;
     public static bool interactInput;
     public static bool inventoryInput;
-    
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode){
-        
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
     }
 
     // Use this for initialization
     void Start()
-        {
+    {
         Invoke("PlayerToSpawnPoint", 0.05f);
         //neccecarry to use OnSceneLoaded (otherwise its not called)
         //SceneManager.sceneLoaded += OnSceneLoaded;
@@ -185,7 +188,7 @@ public class Player : MonoBehaviour
     //####################################################################################################
     void Update()//#######################################################################################
     {
-        
+
 
         if (androidMode)
         {
@@ -195,7 +198,7 @@ public class Player : MonoBehaviour
             interactInput = ButtonScript.receivedInteractInput;
             inventoryInput = ButtonScript.receivedOpenInventoryInput;
         }
-        else 
+        else
         {
             inventoryInput = Input.GetKey(KeyCode.I);
             attackInput = Input.GetMouseButtonDown(0);
@@ -219,6 +222,7 @@ public class Player : MonoBehaviour
         //Jump
         if (isGrunded && jumpInput)
         {
+            jumpStart.Play();
             CreateDust();
             isGrunded = false;
             isJumping = true;
@@ -228,7 +232,7 @@ public class Player : MonoBehaviour
 
 
         //Check if player is falling for the animation
-        if (rb.velocity.y < -0.01 && !(isGrunded) && !isClimbing)
+        if (rb.velocity.y < 0 && !(isGrunded) && !isClimbing)
         {
             if (!isFalling)
             {
@@ -245,6 +249,13 @@ public class Player : MonoBehaviour
         if (isFalling && isGrunded)
         {
             cameraAnimator.SetTrigger("Landing");
+            int landingSoundChoice = Random.Range(0, 1);
+            if (landingSoundChoice == 1) {
+                landing1.Play();
+                }
+            else { 
+                landing2.Play(); 
+                }
         }
 
 
@@ -271,15 +282,16 @@ public class Player : MonoBehaviour
 
 
 
-    
 
 
-    void PlayerToSpawnPoint(){
-         transform.position = StaticData.spawnPoint;
+
+    void PlayerToSpawnPoint()
+    {
+        transform.position = StaticData.spawnPoint;
     }
 
 
-    
+
     void ResetVelocity()
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
