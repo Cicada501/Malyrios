@@ -19,10 +19,8 @@ public class Inventory : MonoBehaviour
 
     public delegate void OnItemChanged();
     public OnItemChanged OnItemChangedCallback;
-
-    public int slotCount = 200;
+    
     public List<Item> items = new List<Item>();
-
     public static bool itemsLoaded = false;
 
 
@@ -41,11 +39,7 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Item item)
     {
-        if (items.Count >= slotCount)
-        {
-            Debug.Log("Inventory is full");
-            return false;
-        }
+
 
         items.Add(item);
         

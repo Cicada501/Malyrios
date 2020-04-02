@@ -34,6 +34,7 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!itemsLoaded)
         {
             UpdateUI();
@@ -60,15 +61,16 @@ public class InventoryUI : MonoBehaviour
             //gets position of items[i] in slots, if no slot has it yet, its -1
             int pos = Array.IndexOf(slots.Select(x => x.item).ToArray(), inventory.items[i]);
             int itemOccurrence = GetOccurrence(inventory.items[i], inventory.items);
-
+            int firstEmptySlot = Array.IndexOf(slots.Select(x => x.item).ToArray(), null);
+            print(firstEmptySlot);
             //Collected new Items
             if (pos == -1){
-                slots[i-d].AddItem(inventory.items[i]);
+                slots[firstEmptySlot].AddItem(inventory.items[i]);
                 if(itemOccurrence > 1){
-                    slots[i-d].amount = itemOccurrence - 1;
+                    slots[firstEmptySlot].amount = itemOccurrence - 1;
                     d += 1;
                 }else{
-                    slots[i-d].amount = 1;
+                    slots[firstEmptySlot].amount = 1;
                 }
                 print("first");
 
@@ -111,6 +113,8 @@ public class InventoryUI : MonoBehaviour
         return occurrences;
 
     }
+
+   
     public void changeInventoryOpened()
     {
         inventoryUI.SetActive(!inventoryUI.activeSelf);

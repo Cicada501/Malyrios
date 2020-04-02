@@ -249,13 +249,8 @@ public class Player : MonoBehaviour
         if (isFalling && isGrunded)
         {
             cameraAnimator.SetTrigger("Landing");
-            int landingSoundChoice = Random.Range(0, 1);
-            if (landingSoundChoice == 1) {
-                landing1.Play();
-                }
-            else { 
-                landing2.Play(); 
-                }
+            landing2.Play(); 
+
         }
 
 
