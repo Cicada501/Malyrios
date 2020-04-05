@@ -3,14 +3,12 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Image icon;
-    public Button removeButton;
-    public Text amountText;
-
+    [SerializeField] Image icon;
+    [SerializeField] Button removeButton;
+    [SerializeField] Text amountText;
     public Item item;
     public int amount = 0;
-
-    public Transform player;
+    [SerializeField] Transform player;
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.

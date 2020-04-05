@@ -6,10 +6,10 @@ public class BackgroundLayereffect : MonoBehaviour {
 
 	private float lengthX, startposX;
 	private float lengthY, startposY;
-	public GameObject cam;
+	[SerializeField] GameObject cam;
 	float camPosY;
-	public float parallaxEffectX;
-	public float parallaxEffectY;
+	[SerializeField] float parallaxEffectX;
+	[SerializeField] float parallaxEffectY;
 	// Use this for initialization
 	void Start () {
 		camPosY = cam.transform.position.y;

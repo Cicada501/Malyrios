@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerFallingStones : MonoBehaviour
 {
-    public  GameObject fallingStone;
+    [SerializeField]  GameObject fallingStone;
     Rigidbody2D rbStone;
 
     float stoneStartPos;

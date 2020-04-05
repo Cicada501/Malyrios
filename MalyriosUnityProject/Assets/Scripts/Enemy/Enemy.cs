@@ -5,26 +5,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Item dropItem;
-    public Item dropRareItem;
-    public int dropItemChance0 = 10; //chance to drop 0 times Item
-    public int dropItemChance1 = 60; //chance to drop 1 times Item
-    public int dropItemChance2 = 30;
-    public int dropRareItemChance0 = 50;
-    public int dropRareItemChance1 = 40; //chance to drop 1 times RareItem
-    public int dropRareItemChance2 = 10;  //chance to drop 2 times RareItem
+    [SerializeField] Item dropItem;
+    [SerializeField] Item dropRareItem;
+    [SerializeField] int dropItemChance0 = 10; //chance to drop 0 times Item
+    [SerializeField] int dropItemChance1 = 60; //chance to drop 1 times Item
+    [SerializeField] int dropItemChance2 = 30;
+    [SerializeField] int dropRareItemChance0 = 50;
+    [SerializeField] int dropRareItemChance1 = 40; //chance to drop 1 times RareItem
+    [SerializeField] int dropRareItemChance2 = 10;  //chance to drop 2 times RareItem
 
-    public float gravityToFall = 8;
-    public float gravityToClimb = 2;
+    [SerializeField] float gravityToFall = 8;
+    [SerializeField] float gravityToClimb = 2;
 
-    public float attackRate = 1.5f;
+    [SerializeField] float attackRate = 1.5f;
     public static float nextAttackTime;
     float distToPlayer;
     float distToPlayerY;
 
-    public Transform attackPoint;
-    public float attackRadius;
-    public LayerMask playerLayer;
+    [SerializeField] Transform attackPoint;
+    [SerializeField] float attackRadius;
+    [SerializeField] LayerMask playerLayer;
 
     Rigidbody2D rb;
     Transform player;
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     bool facingRight = true;
     Animator animator;
-    public int maxHealth = 100;
+    [SerializeField] int maxHealth = 100;
     int currentHealth;
 
     bool isGrounded;

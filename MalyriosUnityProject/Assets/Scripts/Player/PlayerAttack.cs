@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
 
-    public float startFreezingTime = 0.1f;
-    public float endFreezingTime = 0.2f;
+    [SerializeField] float startFreezingTime = 0.1f;
+    [SerializeField] float endFreezingTime = 0.2f;
     bool enemyInDamagezone = false;
     float timeForAnimPause = 0f;
     float timeForAnimResume = 0f;
@@ -18,20 +18,20 @@ public class PlayerAttack : MonoBehaviour
 
 
     int soundChoice;
-    public AudioSource meeleeSound1;
-    public AudioSource meeleeSound2;
-    public AudioSource meeleeSound3;
-    public AudioSource hitmarkerSound;
+    [SerializeField] AudioSource meeleeSound1;
+    [SerializeField] AudioSource meeleeSound2;
+    [SerializeField] AudioSource meeleeSound3;
+    [SerializeField] AudioSource hitmarkerSound;
 
 
-    public Transform attackPoint;
-    public float attackRadius = 0.5f;
-    public LayerMask enemyLayers;
-    public int attackDamage = 20;
+    [SerializeField] Transform attackPoint;
+    [SerializeField] float attackRadius = 0.5f;
+    [SerializeField] LayerMask enemyLayers;
+    [SerializeField] int attackDamage = 20;
 
 
     Animator playerAnimator;
-    public Animator cameraAnimator;
+    [SerializeField] Animator cameraAnimator;
 
 
     // Use this for initialization

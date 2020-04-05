@@ -7,9 +7,9 @@ using System.Linq;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemsParent;
+    [SerializeField] Transform itemsParent;
+    [SerializeField] GameObject inventoryUI;
     Inventory inventory;
-    public GameObject inventoryUI;
 
     bool buttonPressed;
 

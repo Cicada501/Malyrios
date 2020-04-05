@@ -9,8 +9,7 @@ public class PickUp : MonoBehaviour
     Transform player;
     float distance;
     bool showText;
-    [SerializeField]
-    TextMeshProUGUI tmpText;
+    [SerializeField] TextMeshProUGUI tmpText;
     public Item item;
     SpriteRenderer spriteRenderer;
 

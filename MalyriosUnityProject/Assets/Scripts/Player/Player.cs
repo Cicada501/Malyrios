@@ -6,48 +6,40 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public AudioSource jumpStart;
-    public AudioSource landing1;
-    public AudioSource landing2;
+    [SerializeField] AudioSource jumpStart;
+    [SerializeField] AudioSource landing1;
+    [SerializeField] AudioSource landing2;
+    [SerializeField] ParticleSystem dust;
 
-    public ParticleSystem dust;
-
-    [SerializeField]
-    bool setAndroidMode;
+    [SerializeField]bool setAndroidMode;
     public static bool androidMode;
     bool facingRight = true;
     SpriteRenderer spriteRenderer;
-    [SerializeField]
-    Animator playerAnimator;
-    [SerializeField]
-    Animator cameraAnimator;
+    [SerializeField] Animator playerAnimator;
+    [SerializeField] Animator cameraAnimator;
 
-    [SerializeField]
-    Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
     float horizontal;
     float vertical;
 
 
-    [SerializeField]
-    float horizontalSpeed = 1f;
-
-    [SerializeField]
-    float verticalSpeed = 1f;
+    [SerializeField] float horizontalSpeed = 1f;
+    [SerializeField] float verticalSpeed = 1f;
     float speed;
 
     //Variables for Jumping
     public static bool isGrunded;
 
-    public Transform feetPos;
-    public float checkRadius;
-    public LayerMask whatIsGround;
-    public LayerMask whatIsPlatform1;
+    [SerializeField] Transform feetPos;
+    [SerializeField] float checkRadius;
+    [SerializeField] LayerMask whatIsGround;
+    [SerializeField] LayerMask whatIsPlatform1;
 
     public float jumpForce;
 
     public static bool isFalling = false;
     private bool isJumping = false;
-    public float jumpTime;
+    [SerializeField] float jumpTime;
     private float jumpTimeCounter;
 
 
@@ -59,7 +51,7 @@ public class Player : MonoBehaviour
     float usedBackJumpAt;
     public float backJumpRate = 0.5f;
 
-    public Joystick joystick;
+    [SerializeField] Joystick joystick;
 
 
 

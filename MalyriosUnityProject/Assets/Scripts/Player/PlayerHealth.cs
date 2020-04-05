@@ -7,15 +7,15 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public float maxHealth = 100;
-    public float healthRegen = 0.03f;
-    public float DamageBarDropSpeed = 0.8f;
-    public float flashTime;
-    public SpriteRenderer PlayerRenderer;
-    public Slider healthBarSlider;
-    public Slider healthBarDamageSlider;
-    public Image HealthFill;
-    public Animator CamAnimator;
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] float healthRegen = 0.03f;
+    [SerializeField] float DamageBarDropSpeed = 0.8f;
+    [SerializeField] float flashTime;
+    [SerializeField] SpriteRenderer PlayerRenderer;
+    [SerializeField] Slider healthBarSlider;
+    [SerializeField] Slider healthBarDamageSlider;
+    [SerializeField] Image HealthFill;
+    [SerializeField] Animator CamAnimator;
 
     float currentHealth;
 

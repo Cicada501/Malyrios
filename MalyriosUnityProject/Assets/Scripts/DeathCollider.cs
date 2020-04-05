@@ -6,7 +6,7 @@ using UnityEngine;
 public class DeathCollider : MonoBehaviour
 
 {
-    public Vector3 spawnPoint;
+    [SerializeField] Vector3 spawnPoint;
     Transform player;
     private void Start() {
     player = GameObject.FindGameObjectWithTag("Player").transform;
