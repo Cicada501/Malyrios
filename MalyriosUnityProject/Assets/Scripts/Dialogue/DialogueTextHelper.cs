@@ -8,7 +8,7 @@ namespace Malyrios.Dialogue
     public struct DialogueText
     {
         [Header("An answer can jump to this Id")]
-        public int Id;
+        public int SentenceId;
         [TextArea(3, 10)]
         public List<string> Sentences;
         public List<DialogueAnswers> Answers;
@@ -17,8 +17,8 @@ namespace Malyrios.Dialogue
     [Serializable]
     public struct DialogueAnswers
     {
-        [Header("Which Id should be jumped to")]
-        public int LinksToId;
+        [Header("Which SentenceId should be jumped to")]
+        public int LinkedToSentenceId;
         [TextArea(3, 10)]
         public string AnswerDescription;
     }
