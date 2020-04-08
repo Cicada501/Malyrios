@@ -8,7 +8,7 @@ namespace Malyrios.Dialogue
         private Dialogue dialogue;
         private bool triggered;
 
-        private void Start()
+        private void Awake()
         {
             this.manager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
             this.dialogue = GetComponent<Dialogue>();

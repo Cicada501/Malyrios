@@ -12,6 +12,7 @@ namespace Malyrios.Dialogue
 
         #region Serialize Fields
 
+        [SerializeField] private float writingSpeed = 15f;
         [SerializeField] private GameObject answerButton;
         [SerializeField] private Transform content;
         [SerializeField] private TextMeshProUGUI sentence;
@@ -111,7 +112,11 @@ namespace Malyrios.Dialogue
             foreach (char letter in sentence.ToCharArray())
             {
                 this.sentence.text += letter;
-                yield return null;
+                if(letter == '.'){
+
+                yield return new WaitForSeconds(0.5f);
+                }
+                yield return new WaitForSeconds(1/writingSpeed);
             }
 
             ShowAnswers();
