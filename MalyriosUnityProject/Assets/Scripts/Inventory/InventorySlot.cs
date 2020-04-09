@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using Malyrios.Items;
+using Malyrios.UI;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Image icon;
     [SerializeField] Button removeButton;
@@ -18,16 +21,18 @@ public class InventorySlot : MonoBehaviour
         amountText.text = amount.ToString();
     }
 
-    public void AddItem(Item newItem){
+    public void AddItem(Item newItem)
+    {
         item = newItem;
 
-        icon.sprite = item.icon;
+        icon.sprite = item.Icon;
         icon.enabled = true;
         removeButton.interactable = true;
         amountText.gameObject.SetActive(true);
     }
 
-    public void ClearSlot(){
+    public void ClearSlot()
+    {
         item = null;
         icon.sprite = null;
         icon.enabled = false;
@@ -35,15 +40,32 @@ public class InventorySlot : MonoBehaviour
         amountText.gameObject.SetActive(false);
     }
 
-    public void OnRemoveButton(){
-        print("Remove. Amount: "+ amount);
-        if(amount > 1 ) InventoryUI.d--;
-        
+    public void OnRemoveButton()
+    {
+        print("Remove. Amount: " + amount);
+        if (amount > 1) InventoryUI.d--;
+
 
         SpawnItem.Spawn(item, player.position, 0.3f, -1.2f, 1.5f);
         amount--;
-        
+
         Inventory.instance.Remove(item);
-        
+
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (this.item != null)
+        {
+            UIManager.Instance.ShowTooltip(this.transform.position, this.item);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (this.item != null)
+        {
+            UIManager.Instance.HideTooltip();
+        }
     }
 }

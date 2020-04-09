@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
+using Malyrios.Items;
 
 public class InventoryUI : MonoBehaviour
 {

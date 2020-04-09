@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
-public class Item : ScriptableObject
+
+namespace Malyrios.Items
 {
-    new public string name = "New Item";
-    public Sprite icon = null;
+    [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
+    public class Item : ScriptableObject
+    {
+        [SerializeField] private string itemName;
+        [SerializeField] private Sprite icon;
+        [TextArea(3, 10)]
+        [SerializeField] private string description;
+
+        public string ItemName => this.itemName;
+        public Sprite Icon => this.icon;
+        public string Description => this.description;
+    }
 }

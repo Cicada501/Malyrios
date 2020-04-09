@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Items;
 using UnityEngine;
 
 public class SpawnItem : MonoBehaviour

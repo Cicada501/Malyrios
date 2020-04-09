@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Items;
 using UnityEngine;
 using TMPro;
 
@@ -19,7 +20,7 @@ public class PickUp : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = item.icon;
+        spriteRenderer.sprite = item.Icon;
     }
 
     // Update is called once per frame

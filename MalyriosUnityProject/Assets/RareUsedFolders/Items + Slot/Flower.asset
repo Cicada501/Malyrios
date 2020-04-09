@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536e585d2b223e54ab293529a1a9d25d, type: 3}
   m_Name: Flower
   m_EditorClassIdentifier: 
-  name: Flower
+  itemName: Flower
   icon: {fileID: 21300000, guid: ce07823a45f1e144f989e6329e6898f6, type: 3}
+  description: I am a red flower
