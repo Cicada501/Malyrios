@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] float startFreezingTime = 0.1f;
     [SerializeField] float endFreezingTime = 0.2f;
+    [SerializeField] GameObject sword;
     bool enemyInDamagezone = false;
     float timeForAnimPause = 0f;
     float timeForAnimResume = 0f;
@@ -32,12 +33,13 @@ public class PlayerAttack : MonoBehaviour
 
     Animator playerAnimator;
     [SerializeField] Animator cameraAnimator;
+    [SerializeField] Animator swordAnimator;
 
 
     // Use this for initialization
     void Start()
     {
-
+        sword.SetActive(false);
         playerAnimator = GetComponent<Animator>();
 
 
@@ -46,10 +48,20 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
+        if (swordAttack1Beahviour.swordActive)
+        {
+            sword.SetActive(true);
+        }
+        else
+        {
+            sword.SetActive(false);
+        }
+
         //check if the attackrate allows the next attack
         if (Time.time >= nextAttackTime)
         {
-        
+
             isAttacking = false;
             if (Player.attackInput)
             {
@@ -85,13 +97,14 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        
+        sword.SetActive(true);
         playerAnimator.SetTrigger("Attack");
+        swordAnimator.SetTrigger("Attack");
         soundChoice = Random.Range(0, 2);
         if (soundChoice == 0) { meeleeSound1.Play(); }
         else if (soundChoice == 1) { meeleeSound2.Play(); }
         else if (soundChoice == 2) { meeleeSound3.Play(); }
-        
+
         //get list of all colliders in hit range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
         //remember the gameobject of the collider, to only hit it once if it has multiple colliders
@@ -105,9 +118,10 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                if(!enemiesGotHit.Contains(enemy.gameObject)){
-                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-                enemiesGotHit.Add(enemy.gameObject);
+                if (!enemiesGotHit.Contains(enemy.gameObject))
+                {
+                    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                    enemiesGotHit.Add(enemy.gameObject);
                 }
             }
         }
