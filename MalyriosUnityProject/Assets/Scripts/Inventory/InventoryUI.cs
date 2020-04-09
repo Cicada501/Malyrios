@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
 using Malyrios.Items;
+using Malyrios.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -119,5 +120,10 @@ public class InventoryUI : MonoBehaviour
     public void changeInventoryOpened()
     {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+
+        if (!this.inventoryUI.activeSelf)
+        {
+            UIManager.Instance.HideTooltip();
+        }
     }
 }

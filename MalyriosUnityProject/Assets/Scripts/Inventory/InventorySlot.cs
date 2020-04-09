@@ -44,13 +44,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         print("Remove. Amount: " + amount);
         if (amount > 1) InventoryUI.d--;
-
+        else UIManager.Instance.HideTooltip();
 
         SpawnItem.Spawn(item, player.position, 0.3f, -1.2f, 1.5f);
         amount--;
 
         Inventory.instance.Remove(item);
-
     }
 
     public void OnPointerEnter(PointerEventData eventData)
