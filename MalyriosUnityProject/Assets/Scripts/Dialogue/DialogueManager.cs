@@ -109,14 +109,14 @@ namespace Malyrios.Dialogue
         private IEnumerator WriteSentence(string sentence)
         {
             this.sentence.text = $"{ this.dialogueText.NameOfNpc }: ";
-            foreach (char letter in sentence.ToCharArray())
+            foreach (char letter in sentence)
             {
                 this.sentence.text += letter;
-                if(letter == '.'){
-
-                yield return new WaitForSeconds(0.5f);
+                if(letter == '.')
+                {
+                    yield return new WaitForSeconds(0.5f);
                 }
-                yield return new WaitForSeconds(1/writingSpeed);
+                yield return new WaitForSeconds(1 / this.writingSpeed);
             }
 
             ShowAnswers();
