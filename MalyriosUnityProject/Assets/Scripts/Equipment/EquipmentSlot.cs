@@ -10,35 +10,32 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private GameObject weapon;
 
-    private GridLayoutGroup test;
+    private GridLayoutGroup gridLayoutGroup;
 
-    private GameObject t;
+    private GameObject child;
     
     private void Start()
     {
-        t = transform.GetChild(0).gameObject;
+        child = transform.GetChild(0).gameObject;
         BaseWeapon wp = weapon.GetComponent<BaseWeapon>();
-        test = transform.parent.GetComponent<GridLayoutGroup>();
-
-        t.GetComponent<Image>().sprite = wp.Icon;
+        gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
+        this.child.GetComponent<Image>().sprite = wp.Icon;
     }
 
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {
-            Debug.Log(gameObject.name + eventData.pointerDrag.transform.parent.name);
-
             if (gameObject.name != eventData.pointerDrag.transform.parent.name)
             {
-                this.t.GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
-                transform.GetChild(0).gameObject.SetActive(true);
                 eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
-                eventData.pointerDrag.SetActive(false);
+                this.child.GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
+                transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+                eventData.pointerDrag.GetComponent<Image>().enabled = false;
             }
 
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
-                this.test.GetComponent<RectTransform>().anchoredPosition;
+                this.gridLayoutGroup.GetComponent<RectTransform>().anchoredPosition;
         }
     }
 }

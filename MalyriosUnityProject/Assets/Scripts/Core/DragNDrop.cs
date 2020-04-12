@@ -10,6 +10,9 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
     private GameObject canvasUi;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
+
+    private Transform startParent;
+    private Vector3 startPosition;
     
     private void Start()
     {
@@ -33,11 +36,21 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
     {
         Debug.Log("OnBeginDrag");
         this.canvasGroup.blocksRaycasts = false;
+        this.startParent = this.transform.parent;
+        this.startPosition = this.transform.position;
+        this.transform.parent = this.canvasUi.transform;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
         this.canvasGroup.blocksRaycasts = true;
+        
+        if (this.transform.parent == this.canvasUi.transform)
+        {
+            Debug.Log("ParentChange");
+            this.transform.position = this.startPosition;
+            this.transform.parent = this.startParent;
+        }
     }
 }
