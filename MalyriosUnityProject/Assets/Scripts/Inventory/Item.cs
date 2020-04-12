@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Malyrios.Items
 {
     [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
-    public class Item : ScriptableObject
+    public class Item : ScriptableObject, IPointerDownHandler
     {
         [SerializeField] private string itemName;
         [SerializeField] private Sprite icon;
@@ -15,5 +16,9 @@ namespace Malyrios.Items
         public string ItemName => this.itemName;
         public Sprite Icon => this.icon;
         public string Description => this.description;
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            Debug.Log("test");
+        }
     }
 }

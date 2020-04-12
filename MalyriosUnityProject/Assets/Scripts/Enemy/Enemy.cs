@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
 
@@ -188,7 +189,7 @@ public class Enemy : MonoBehaviour
         Collider2D[] thatGotHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
         if (thatGotHit.Length > 0)
         {
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            player.GetComponent<IHealthController>().TakeDamage(damage);
         }
     }
 

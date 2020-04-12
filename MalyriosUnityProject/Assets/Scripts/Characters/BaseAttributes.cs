@@ -8,12 +8,14 @@ namespace Malyrios.Character
     public class BaseAttributes : MonoBehaviour
     {
         public static event Action<int> OnMaxHealthChanged;
-        public static event Action<float> OnCurrentHealthChanged;
+        public static event Action<float, int> OnCurrentHealthChanged;
         public static event Action<int> OnManaChanged;
         public static event Action<float> OnStrengthChanged;
         public static event Action<float> OnCritChanceChanged;
         public static event Action<float> OnHasteChanged;
         public static event Action<float> OnEnergyChanged;
+        public static event Action<float> OnBalanceChaned;
+        public static event Action<BaseAttributes> OnBaseAttributeChanged;
 
         [SerializeField] private int maxMaxHealth;
         [SerializeField] private int mana;
@@ -21,6 +23,7 @@ namespace Malyrios.Character
         [SerializeField] private float critChance;
         [SerializeField] private float haste;
         [SerializeField] private float energy;
+        [SerializeField] private float balance;
 
 
         private float currentHealth;
@@ -36,6 +39,7 @@ namespace Malyrios.Character
             {
                 this.maxMaxHealth = value;
                 OnMaxHealthChanged?.Invoke(this.maxMaxHealth);
+                OnBaseAttributeChanged?.Invoke(this);
             }
         }
 
@@ -49,7 +53,8 @@ namespace Malyrios.Character
             set
             {
                 this.currentHealth = value;
-                OnCurrentHealthChanged?.Invoke(this.currentHealth);
+                OnCurrentHealthChanged?.Invoke(this.currentHealth, this.maxMaxHealth);
+                OnBaseAttributeChanged?.Invoke(this);
             }
         }
 
@@ -64,6 +69,7 @@ namespace Malyrios.Character
             {
                 this.mana = value;
                 OnManaChanged?.Invoke(this.mana);
+                OnBaseAttributeChanged?.Invoke(this);
             }
         }
 
@@ -78,6 +84,7 @@ namespace Malyrios.Character
             {
                 this.strength = value;
                 OnStrengthChanged?.Invoke(this.strength);
+                OnBaseAttributeChanged?.Invoke(this);
             }
         }
 
@@ -92,6 +99,7 @@ namespace Malyrios.Character
             {
                 this.critChance = value;
                 OnCritChanceChanged?.Invoke(this.critChance);
+                OnBaseAttributeChanged?.Invoke(this);
             }
         }
 
@@ -106,6 +114,7 @@ namespace Malyrios.Character
             {
                 this.critChance = value;
                 OnHasteChanged?.Invoke(this.haste);
+                OnBaseAttributeChanged?.Invoke(this);
             }
         }
 
@@ -120,7 +129,23 @@ namespace Malyrios.Character
             {
                 this.energy = value;
                 OnEnergyChanged?.Invoke(this.energy);
+                OnBaseAttributeChanged?.Invoke(this);
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the balance.
+        /// Also fires an event OnBalanceChanged.
+        /// </summary>
+        public float Balance
+        {
+            get => balance;
+            set
+            {
+                this.balance = value;
+                OnBalanceChaned?.Invoke(this.balance);
+                OnBaseAttributeChanged?.Invoke(this);
+            } 
         }
 
         private void Start()

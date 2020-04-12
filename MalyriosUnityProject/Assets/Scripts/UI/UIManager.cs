@@ -36,7 +36,6 @@ namespace Malyrios.UI
             }
 
             BaseAttributes.OnCurrentHealthChanged += OnCurrentHealthChanged;
-            BaseAttributes.OnMaxHealthChanged += OnMaxHealthChanged;
         }
 
         #endregion
@@ -52,16 +51,10 @@ namespace Malyrios.UI
 
         #region Attribute Events
 
-        public void OnCurrentHealthChanged(float health)
+        public void OnCurrentHealthChanged(float health, int maxHealth)
         {
-            this.healthBarSlider.value = health;
-            Debug.Log("OnCurrentHealthChanged");
-        }
-
-        public void OnMaxHealthChanged(int maxHealth)
-        {
-            this.healthBarSlider.maxValue = maxHealth;
-            Debug.Log("OnMaxHealthChanged");
+            this.healthBarSlider.value = health / maxHealth;
+            Debug.Log($"OnCurrentHealthChanged: { health / 100f }");
         }
 
         #endregion

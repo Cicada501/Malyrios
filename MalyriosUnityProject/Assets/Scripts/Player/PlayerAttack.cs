@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-
     [SerializeField] float startFreezingTime = 0.1f;
     [SerializeField] float endFreezingTime = 0.2f;
+    
+    
     [SerializeField] GameObject sword;
+    [SerializeField] private GameObject weaponHolder;
+    
+    
     bool enemyInDamagezone = false;
     float timeForAnimPause = 0f;
     float timeForAnimResume = 0f;
@@ -15,10 +19,9 @@ public class PlayerAttack : MonoBehaviour
     public float attackRate = 1.5f;
     float nextAttackTime = 0f;
     public static bool isAttacking = false;
-
-
-
+    
     int soundChoice;
+    [Header("Attack Sound Properties")]
     [SerializeField] AudioSource meeleeSound1;
     [SerializeField] AudioSource meeleeSound2;
     [SerializeField] AudioSource meeleeSound3;
@@ -41,27 +44,17 @@ public class PlayerAttack : MonoBehaviour
     {
         sword.SetActive(false);
         playerAnimator = GetComponent<Animator>();
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
-        if (swordAttack1Beahviour.swordActive)
-        {
-            sword.SetActive(true);
-        }
-        else
-        {
-            sword.SetActive(false);
-        }
+        sword.SetActive(swordAttack1Beahviour.swordActive);
 
         //check if the attackrate allows the next attack
         if (Time.time >= nextAttackTime)
         {
-
             isAttacking = false;
             if (Player.attackInput)
             {
@@ -71,9 +64,8 @@ public class PlayerAttack : MonoBehaviour
                 timeForAnimPause = Time.time + startFreezingTime; //when to start freeze 
                 timeForAnimResume = Time.time + endFreezingTime; //when to end freeze
             }
-
-
         }
+        
         //if player hits an enemy, interrupt animation for a short time
         if (enemyInDamagezone)
         {
@@ -88,7 +80,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 playerAnimator.enabled = true;
                 enemyInDamagezone = false;
-
             }
         }
 
@@ -115,7 +106,6 @@ public class PlayerAttack : MonoBehaviour
             hitmarkerSound.Play();
             cameraAnimator.SetTrigger("EnemyHit");
 
-
             foreach (Collider2D enemy in hitEnemies)
             {
                 if (!enemiesGotHit.Contains(enemy.gameObject))
@@ -125,7 +115,6 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
-
     }
 
 
