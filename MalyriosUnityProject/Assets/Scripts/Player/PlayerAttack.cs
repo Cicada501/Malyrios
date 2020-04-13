@@ -4,10 +4,28 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] int activeSword = 0;
+    [SerializeField] int attackDamage = 20;
 
     [SerializeField] float startFreezingTime = 0.1f;
     [SerializeField] float endFreezingTime = 0.2f;
+
+    [SerializeField] Transform attackPoint;
+    [SerializeField] float attackRadius = 0.5f;
+    [SerializeField] LayerMask enemyLayers;
     [SerializeField] GameObject sword;
+
+    [SerializeField] AudioSource meeleeSound1;
+    [SerializeField] AudioSource meeleeSound2;
+    [SerializeField] AudioSource meeleeSound3;
+    [SerializeField] AudioSource hitmarkerSound;
+
+    [SerializeField] Animator cameraAnimator;
+    [SerializeField] Animator swordAnimator;
+
+
+    int soundChoice;
+    Animator playerAnimator;
     bool enemyInDamagezone = false;
     float timeForAnimPause = 0f;
     float timeForAnimResume = 0f;
@@ -15,26 +33,6 @@ public class PlayerAttack : MonoBehaviour
     public float attackRate = 1.5f;
     float nextAttackTime = 0f;
     public static bool isAttacking = false;
-
-
-
-    int soundChoice;
-    [SerializeField] AudioSource meeleeSound1;
-    [SerializeField] AudioSource meeleeSound2;
-    [SerializeField] AudioSource meeleeSound3;
-    [SerializeField] AudioSource hitmarkerSound;
-
-
-    [SerializeField] Transform attackPoint;
-    [SerializeField] float attackRadius = 0.5f;
-    [SerializeField] LayerMask enemyLayers;
-    [SerializeField] int attackDamage = 20;
-
-
-    Animator playerAnimator;
-    [SerializeField] Animator cameraAnimator;
-    [SerializeField] Animator swordAnimator;
-
 
     // Use this for initialization
     void Start()
@@ -97,9 +95,17 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
+
         sword.SetActive(true);
+        if (activeSword == 0)
+        {
+            swordAnimator.SetTrigger("AttackS0");
+        }
+        else if (activeSword == 1)
+        {
+            swordAnimator.SetTrigger("AttackS1");
+        }
         playerAnimator.SetTrigger("Attack");
-        swordAnimator.SetTrigger("Attack");
         soundChoice = Random.Range(0, 2);
         if (soundChoice == 0) { meeleeSound1.Play(); }
         else if (soundChoice == 1) { meeleeSound2.Play(); }
