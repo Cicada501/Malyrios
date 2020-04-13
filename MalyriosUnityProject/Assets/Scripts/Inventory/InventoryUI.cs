@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using Malyrios.Items;
 using Malyrios.UI;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -21,10 +22,11 @@ public class InventoryUI : MonoBehaviour
 
     public static int d;
 
-    void Start()
+    private void Start()
     {
         inventory = Inventory.instance;
         inventory.OnItemChangedCallback += UpdateUI;
+        inventory.OnItemAdded += UpdateUiNew;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         itemCount = inventory.items.Count;
@@ -34,12 +36,11 @@ public class InventoryUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
         if (!itemsLoaded)
         {
-            UpdateUI();
+            // UpdateUI();
             itemsLoaded = true;
         }
 
@@ -55,54 +56,87 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void UpdateUI()
-    {   
-
-        for (int i = 0; i < inventory.items.Count; i++){
-
-            //gets position of items[i] in slots, if no slot has it yet, its -1
-            int pos = Array.IndexOf(slots.Select(x => x.item).ToArray(), inventory.items[i]);
-            int itemOccurrence = GetOccurrence(inventory.items[i], inventory.items);
-            int firstEmptySlot = Array.IndexOf(slots.Select(x => x.item).ToArray(), null);
-            print(firstEmptySlot);
-            //Collected new Items
-            if (pos == -1){
-                slots[firstEmptySlot].AddItem(inventory.items[i]);
-                if(itemOccurrence > 1){
-                    slots[firstEmptySlot].amount = itemOccurrence - 1;
-                    d += 1;
-                }else{
-                    slots[firstEmptySlot].amount = 1;
-                }
-                print("first");
-
-            }
-            //Collected one Item to Stack
-            else if (itemOccurrence == slots[pos].amount + 1){
-                slots[pos].amount++;              
-                d ++; //speichere Anzahl an items, die keinen eigenen Slot benötigen
-                print("second");
-            }
-            print("D: "+d+ " i:"+i+" slots[i].amount: "+slots[i].amount+ " Occurrence: "+itemOccurrence);
-        
-        }
-        //Clear empty slots
-        foreach (InventorySlot slot in slots)
+    private void UpdateUiNew(BaseItem item)
+    {
+        // Suche ersten freien Platz im Inventar.
+        InventorySlot tryToStack = slots.FirstOrDefault(x => x.Item != null && x.Item.ItemName == item.ItemName && x.Item.IsStackable);
+        if (tryToStack != null)
         {
-            if(slot.amount == 0){
-                slot.ClearSlot();
+            if (!tryToStack.AddItemToStack(item))
+            {
+                InventorySlot freeSlot = slots.FirstOrDefault(x => x.Item == null);
+                if (freeSlot != null) freeSlot.SetItem(item);
             }
         }
-        if(inventory.items.Count == 0){
-            foreach (InventorySlot slot in slots){
-                slot.ClearSlot();
-            }
+        else
+        {
+            AddNewItem(item);
         }
-
-
     }
 
-    int GetOccurrence(Item item, List<Item> itemList)
+    private void AddNewItem(BaseItem item)
+    {
+        InventorySlot freeSlot = slots.FirstOrDefault(x => x.Item == null);
+        if (freeSlot != null) freeSlot.SetItem(item);
+    }
+
+    private void UpdateUI()
+    {
+        // slots[0].transform.GetChild(3).GetComponent<Image>().sprite = this.inventory.items[0].Icon;
+
+        // for (int i = 0; i < inventory.items.Count; i++)
+        // {
+        //     //gets position of items[i] in slots, if no slot has it yet, its -1
+        //     int pos = Array.IndexOf(slots.Select(x => x.item).ToArray(), inventory.items[i]);
+        //     int itemOccurrence = GetOccurrence(inventory.items[i], inventory.items);
+        //     int firstEmptySlot = Array.IndexOf(slots.Select(x => x.item).ToArray(), null);
+        //     print(firstEmptySlot);
+        //     //Collected new Items
+        //     if (pos == -1)
+        //     {
+        //         slots[firstEmptySlot].AddItem(inventory.items[i]);
+        //         if (itemOccurrence > 1)
+        //         {
+        //             slots[firstEmptySlot].amount = itemOccurrence - 1;
+        //             d += 1;
+        //         }
+        //         else
+        //         {
+        //             slots[firstEmptySlot].amount = 1;
+        //         }
+        //
+        //         print("first");
+        //     }
+        //     //Collected one Item to Stack
+        //     else if (itemOccurrence == slots[pos].amount + 1)
+        //     {
+        //         slots[pos].amount++;
+        //         d++; //speichere Anzahl an items, die keinen eigenen Slot benötigen
+        //         print("second");
+        //     }
+        //
+        //     print("D: " + d + " i:" + i + " slots[i].amount: " + slots[i].amount + " Occurrence: " + itemOccurrence);
+        // }
+        //
+        // //Clear empty slots
+        // foreach (InventorySlot slot in slots)
+        // {
+        //     if (slot.amount == 0)
+        //     {
+        //         slot.ClearSlot();
+        //     }
+        // }
+        //
+        // if (inventory.items.Count == 0)
+        // {
+        //     foreach (InventorySlot slot in slots)
+        //     {
+        //         slot.ClearSlot();
+        //     }
+        // }
+    }
+
+    private int GetOccurrence(Item item, List<Item> itemList)
     {
         int occurrences = 0;
         foreach (Item _item in itemList)
@@ -112,11 +146,11 @@ public class InventoryUI : MonoBehaviour
                 occurrences++;
             }
         }
-        return occurrences;
 
+        return occurrences;
     }
 
-   
+
     public void changeInventoryOpened()
     {
         inventoryUI.SetActive(!inventoryUI.activeSelf);

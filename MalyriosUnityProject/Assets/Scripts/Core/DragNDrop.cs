@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Malyrios.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,6 +12,8 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
     private Transform startParent;
     private Vector3 startPosition;
     
+    public BaseWeapon Weapon { get; set; }
+    
     private void Start()
     {
         this.rectTransform = GetComponent<RectTransform>();
@@ -24,7 +24,6 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -35,6 +34,7 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
+        
         this.canvasGroup.blocksRaycasts = false;
         this.startParent = this.transform.parent;
         this.startPosition = this.transform.position;
@@ -48,7 +48,6 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
         
         if (this.transform.parent == this.canvasUi.transform)
         {
-            Debug.Log("ParentChange");
             this.transform.position = this.startPosition;
             this.transform.parent = this.startParent;
         }

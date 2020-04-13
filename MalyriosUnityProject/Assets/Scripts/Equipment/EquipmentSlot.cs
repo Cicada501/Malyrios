@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class EquipmentSlot : MonoBehaviour, IDropHandler
 {
+    public static event Action OnItemSlotChanged;
+
     [SerializeField] private GameObject weapon;
 
     private GridLayoutGroup gridLayoutGroup;
@@ -17,9 +19,13 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
     private void Start()
     {
         child = transform.GetChild(0).gameObject;
-        BaseWeapon wp = weapon.GetComponent<BaseWeapon>();
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
-        this.child.GetComponent<Image>().sprite = wp.Icon;
+
+        if (weapon != null)
+        {
+            child.GetComponent<Image>().sprite = weapon.GetComponent<BaseWeapon>().Icon;
+            child.GetComponent<DragNDrop>().Weapon = weapon.GetComponent<BaseWeapon>();
+        }
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -30,8 +36,13 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
             {
                 eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 this.child.GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
-                transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+                this.child.GetComponent<DragNDrop>().Weapon = eventData.pointerDrag.GetComponent<DragNDrop>().Weapon;
+
+                transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true; // Schmeißt Fehler, da OnDrop vor OnEndDrag ausgeführt wird.
+                
                 eventData.pointerDrag.GetComponent<Image>().enabled = false;
+
+                Debug.Log($"AttackSpeed: {eventData.pointerDrag.GetComponent<DragNDrop>().Weapon.AttackSpeed}");
             }
 
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =

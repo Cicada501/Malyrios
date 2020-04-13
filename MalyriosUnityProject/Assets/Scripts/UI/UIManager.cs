@@ -65,7 +65,7 @@ namespace Malyrios.UI
             //this.healthBarSlider.value = maxHealth;
         }
 
-        public void ShowTooltip(Vector3 position, Item item)
+        public void ShowTooltip(Vector3 position, BaseItem item)
         {
             this.tooltip.SetActive(true);
             this.tooltip.transform.position = position;

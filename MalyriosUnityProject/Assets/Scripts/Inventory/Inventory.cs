@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Malyrios.Items;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
-
     #region Singleton
 
     public static Inventory instance;
@@ -15,13 +16,24 @@ public class Inventory : MonoBehaviour
     {
         instance = this;
     }
+
     #endregion
 
 
     public delegate void OnItemChanged();
+
     public OnItemChanged OnItemChangedCallback;
-    
+
     public List<Item> items = new List<Item>();
+
+    #region new inventory
+    
+    public List<BaseItem> Items = new List<BaseItem>();
+    
+    public event Action<BaseItem> OnItemAdded;
+    
+    #endregion
+    
     public static bool itemsLoaded = false;
 
 
@@ -34,22 +46,25 @@ public class Inventory : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         items = StaticData.itemsStatic;
-        
     }
 
 
     public bool Add(Item item)
     {
-
-
         items.Add(item);
-        
+
         if (OnItemChangedCallback != null)
         {
             OnItemChangedCallback.Invoke();
         }
-        return true;
 
+        return true;
+    }
+
+    public void AddItem(BaseItem item)
+    {
+        Items.Add(item);
+        OnItemAdded?.Invoke(item);
     }
 
     public void Remove(Item item)
@@ -61,6 +76,4 @@ public class Inventory : MonoBehaviour
             OnItemChangedCallback.Invoke();
         }
     }
-
-
 }

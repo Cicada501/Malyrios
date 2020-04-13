@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\felix\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\felix\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_MalyriosUnityProject.908701187.00" t="ExcludeRecursive" />
-    <e p="D:\Programmieren\Unity\Malyrios\MalyriosUnityProject" t="IncludeRecursive">
+    <e p="C:\Users\felix\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_MalyriosUnityProject.-1723363049.00" t="ExcludeRecursive" />
+    <e p="E:\source\Unity\Malyrios\MalyriosUnityProject" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -105,6 +105,7 @@
           <e p="Items" t="Include">
             <e p="BaseItem.cs" t="Include" />
             <e p="BaseWeapon.cs" t="Include" />
+            <e p="ItemAssets.cs" t="Include" />
             <e p="MeleeWeapon.cs" t="Include" />
           </e>
           <e p="LevelMangement" t="Include">

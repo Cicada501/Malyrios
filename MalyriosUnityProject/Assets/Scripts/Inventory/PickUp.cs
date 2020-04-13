@@ -6,14 +6,13 @@ using TMPro;
 
 public class PickUp : MonoBehaviour
 {
-
     Transform player;
     float distance;
     bool showText;
     [SerializeField] TextMeshProUGUI tmpText;
     public Item item;
     SpriteRenderer spriteRenderer;
-
+    [SerializeField] private BaseItem baseItem;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +20,20 @@ public class PickUp : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = item.Icon;
+
+        this.baseItem = ScriptableObject.CreateInstance<BaseItem>().InitItem(
+            "Red Flower", 
+            "Ich bin eine rote Blume", 
+            BaseItem.SpriteTypes.RedFlower,
+            true,
+            10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-        distance = Vector2.Distance(gameObject.transform.position, player.position);//Mathf.Abs(gameObject.transform.position.x - player.position.x);
+        distance = Vector2.Distance(gameObject.transform.position,
+            player.position); //Mathf.Abs(gameObject.transform.position.x - player.position.x);
         if (distance < 0.15f)
         {
             ShowPickUpDialog();
@@ -39,17 +44,16 @@ public class PickUp : MonoBehaviour
             {
                 PickUpItem();
             }
-
-        }else if(showText && distance >= 0.3f){
-             tmpText.gameObject.SetActive(false);
-             showText = false;
         }
-        
+        else if (showText && distance >= 0.3f)
+        {
+            tmpText.gameObject.SetActive(false);
+            showText = false;
+        }
     }
 
     void ShowPickUpDialog()
     {
-      
         tmpText.text = "Pick Up " + item.name;
         tmpText.gameObject.SetActive(true);
     }
@@ -57,13 +61,15 @@ public class PickUp : MonoBehaviour
 
     void PickUpItem()
     {
-
-        bool wasPickedUp = Inventory.instance.Add(item);
-        if (wasPickedUp){
-            ButtonScript.receivedInteractInput = false;
-            Destroy(gameObject);
-            tmpText.gameObject.SetActive(false);
-        }
+        // bool wasPickedUp = Inventory.instance.Add(item);
+        Inventory.instance.AddItem(this.baseItem);
+        // if (wasPickedUp)
+        // {
+        //     ButtonScript.receivedInteractInput = false;
+        //     Destroy(gameObject);
+        // }
+        
+        Destroy(gameObject);
+        tmpText.gameObject.SetActive(false);
     }
-
 }
