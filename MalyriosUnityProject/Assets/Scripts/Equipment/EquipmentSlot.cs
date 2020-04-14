@@ -10,8 +10,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
 {
     public static event Action OnItemSlotChanged;
 
-    [SerializeField] private GameObject weapon;
-
+    public BaseItem Item;
+    
     private GridLayoutGroup gridLayoutGroup;
 
     private GameObject child;
@@ -21,10 +21,12 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
         child = transform.GetChild(0).gameObject;
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
 
-        if (weapon != null)
+        if (Item != null)
         {
-            child.GetComponent<Image>().sprite = weapon.GetComponent<BaseWeapon>().Icon;
-            child.GetComponent<DragNDrop>().Weapon = weapon.GetComponent<BaseWeapon>();
+            // child.GetComponent<Image>().sprite = weapon.GetComponent<BaseWeapon>().Icon;
+            // child.GetComponent<DragNDrop>().Weapon = weapon.GetComponent<BaseWeapon>();
+            child.GetComponent<Image>().sprite = Item.Icon;
+            child.GetComponent<DragNDrop>().Item = Item;
         }
     }
 
@@ -36,13 +38,13 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
             {
                 eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 this.child.GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
-                this.child.GetComponent<DragNDrop>().Weapon = eventData.pointerDrag.GetComponent<DragNDrop>().Weapon;
+                this.child.GetComponent<DragNDrop>().Item = eventData.pointerDrag.GetComponent<DragNDrop>().Item;
 
                 transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true; // Schmeißt Fehler, da OnDrop vor OnEndDrag ausgeführt wird.
                 
                 eventData.pointerDrag.GetComponent<Image>().enabled = false;
 
-                Debug.Log($"AttackSpeed: {eventData.pointerDrag.GetComponent<DragNDrop>().Weapon.AttackSpeed}");
+                Debug.Log($"AttackSpeed: {eventData.pointerDrag.GetComponent<DragNDrop>().Item.ItemName}");
             }
 
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =

@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
     [SerializeField] Text amountText;
 
@@ -16,12 +16,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private Stack<BaseItem> itemStack = new Stack<BaseItem>();
 
     public BaseItem Item => this.item;
-
     
     public void SetItem(BaseItem baseItem)
     {
         this.item = baseItem;
-        this.transform.GetChild(3).GetComponent<Image>().sprite = baseItem.Icon;
+        Image img = this.transform.GetChild(3).GetComponent<Image>();
+        img.enabled = true;
+        img.sprite = baseItem.Icon;
+        this.transform.GetChild(3).GetComponent<DragNDrop>().Item = baseItem;
         if (baseItem.IsStackable)
         {
             this.itemStack.Push(baseItem);
@@ -38,6 +40,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return true;
         }
         return false;
+    }
+
+    public void OnRightMouseButtonClick()
+    {
     }
     
     public void OnPointerEnter(PointerEventData eventData)
@@ -56,10 +62,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
     
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Click");
-        Debug.Log(eventData.button);
     }
 
     // [SerializeField] Image icon;

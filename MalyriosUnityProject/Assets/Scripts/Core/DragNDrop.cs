@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler
 {
     private RectTransform rectTransform;
     private GameObject canvasUi;
@@ -12,7 +12,7 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
     private Transform startParent;
     private Vector3 startPosition;
     
-    public BaseWeapon Weapon { get; set; }
+    public BaseItem Item { get; set; }
     
     private void Start()
     {
@@ -50,6 +50,14 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegi
         {
             this.transform.position = this.startPosition;
             this.transform.parent = this.startParent;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            this.transform.parent.GetComponent<InventorySlot>().OnRightMouseButtonClick();
         }
     }
 }
