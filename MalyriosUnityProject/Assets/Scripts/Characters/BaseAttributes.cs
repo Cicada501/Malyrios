@@ -12,15 +12,17 @@ namespace Malyrios.Character
         public static event Action<int> OnManaChanged;
         public static event Action<float> OnStrengthChanged;
         public static event Action<float> OnCritChanceChanged;
+        public static event Action<float> OnCritDamageChanged;
         public static event Action<float> OnHasteChanged;
         public static event Action<float> OnEnergyChanged;
         public static event Action<float> OnBalanceChaned;
         public static event Action<BaseAttributes> OnBaseAttributeChanged;
 
-        [SerializeField] private int maxMaxHealth;
+        [SerializeField] private int maxHealth;
         [SerializeField] private int mana;
-        [SerializeField] private float strength;
+        [SerializeField] private int strength;
         [SerializeField] private float critChance;
+        [SerializeField] private float critDamage;
         [SerializeField] private float haste;
         [SerializeField] private float energy;
         [SerializeField] private float balance;
@@ -34,11 +36,11 @@ namespace Malyrios.Character
         /// </summary>
         public int MaxHealth
         {
-            get => this.maxMaxHealth;
+            get => this.maxHealth;
             set
             {
-                this.maxMaxHealth = value;
-                OnMaxHealthChanged?.Invoke(this.maxMaxHealth);
+                this.maxHealth = value;
+                OnMaxHealthChanged?.Invoke(this.maxHealth);
                 OnBaseAttributeChanged?.Invoke(this);
             }
         }
@@ -53,7 +55,7 @@ namespace Malyrios.Character
             set
             {
                 this.currentHealth = value;
-                OnCurrentHealthChanged?.Invoke(this.currentHealth, this.maxMaxHealth);
+                OnCurrentHealthChanged?.Invoke(this.currentHealth, this.maxHealth);
                 OnBaseAttributeChanged?.Invoke(this);
             }
         }
@@ -77,7 +79,7 @@ namespace Malyrios.Character
         /// Gets or sets the Strength.
         /// Also fired an event OnStrengthChanged.
         /// </summary>
-        public float Strength
+        public int Strength
         {
             get => this.strength;
             set
@@ -99,6 +101,17 @@ namespace Malyrios.Character
             {
                 this.critChance = value;
                 OnCritChanceChanged?.Invoke(this.critChance);
+                OnBaseAttributeChanged?.Invoke(this);
+            }
+        }
+
+        public float CritDamage
+        {
+            get => this.critDamage;
+            set
+            {
+                this.critDamage = value;
+                OnCritDamageChanged?.Invoke(this.critDamage);
                 OnBaseAttributeChanged?.Invoke(this);
             }
         }
@@ -148,10 +161,15 @@ namespace Malyrios.Character
             } 
         }
 
+        private void Awake()
+        {
+            EquipmentSlot.OnItemSlotChanged += (item) => { Debug.Log("W: "); };
+        }
+        
         private void Start()
         {
-            CurrentHealth = this.maxMaxHealth;
-            OnMaxHealthChanged?.Invoke(this.maxMaxHealth);
+            CurrentHealth = this.maxHealth;
+            OnMaxHealthChanged?.Invoke(this.maxHealth);
         }
     }
 }

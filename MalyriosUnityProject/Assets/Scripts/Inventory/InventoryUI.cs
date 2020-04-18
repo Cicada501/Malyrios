@@ -22,11 +22,11 @@ public class InventoryUI : MonoBehaviour
 
     public static int d;
 
-    private void Start()
+    private void Awake()
     {
-        inventory = Inventory.instance;
-        inventory.OnItemChangedCallback += UpdateUI;
+        inventory = Inventory.Instance;
         inventory.OnItemAdded += UpdateUiNew;
+        inventory.OnItemRemoved += OnItemRemoved;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         itemCount = inventory.items.Count;
@@ -78,10 +78,14 @@ public class InventoryUI : MonoBehaviour
         if (freeSlot != null) freeSlot.SetItem(item);
     }
 
+    private void OnItemRemoved(BaseItem item)
+    {
+        InventorySlot it = slots.FirstOrDefault(x => x.Item == item);
+        if (it != null) it.RemoveItem();
+    }
+
     private void UpdateUI()
     {
-        // slots[0].transform.GetChild(3).GetComponent<Image>().sprite = this.inventory.items[0].Icon;
-
         // for (int i = 0; i < inventory.items.Count; i++)
         // {
         //     //gets position of items[i] in slots, if no slot has it yet, its -1

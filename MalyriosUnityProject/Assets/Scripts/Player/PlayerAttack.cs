@@ -1,56 +1,65 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Character;
+using Malyrios.Items;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] float startFreezingTime = 0.1f;
     [SerializeField] float endFreezingTime = 0.2f;
-    
-    
-    [SerializeField] GameObject sword;
-    [SerializeField] private GameObject weaponHolder;
-    
-    
-    bool enemyInDamagezone = false;
-    float timeForAnimPause = 0f;
-    float timeForAnimResume = 0f;
 
-    public float attackRate = 1.5f;
+    [SerializeField] private GameObject weaponHolder;
+
+    private bool enemyInDamagezone = false;
+    private float timeForAnimPause = 0f;
+    private float timeForAnimResume = 0f;
+
     float nextAttackTime = 0f;
     public static bool isAttacking = false;
-    
+
+    private BaseWeapon equippedWeapon;
+    private Animator playerAnimator;
+    private Animator swordAnimator;
+
+    private BaseAttributes baseAttributes;
+
     int soundChoice;
-    [Header("Attack Sound Properties")]
-    [SerializeField] AudioSource meeleeSound1;
+
+    [Header("Attack Sound Properties")] [SerializeField]
+    AudioSource meeleeSound1;
+
     [SerializeField] AudioSource meeleeSound2;
     [SerializeField] AudioSource meeleeSound3;
     [SerializeField] AudioSource hitmarkerSound;
-
 
     [SerializeField] Transform attackPoint;
     [SerializeField] float attackRadius = 0.5f;
     [SerializeField] LayerMask enemyLayers;
     [SerializeField] int attackDamage = 20;
 
-
-    Animator playerAnimator;
     [SerializeField] Animator cameraAnimator;
-    [SerializeField] Animator swordAnimator;
 
+    private void Awake()
+    {
+        EquipmentSlot.OnWeaponChanged += OnWeaponChanged;
+    }
 
     // Use this for initialization
     void Start()
     {
-        sword.SetActive(false);
         playerAnimator = GetComponent<Animator>();
+        this.baseAttributes = GetComponent<BaseAttributes>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (this.equippedWeapon == null) return;
+
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
-        sword.SetActive(swordAttack1Beahviour.swordActive);
 
         //check if the attackrate allows the next attack
         if (Time.time >= nextAttackTime)
@@ -60,12 +69,12 @@ public class PlayerAttack : MonoBehaviour
             {
                 Attack();
                 isAttacking = true;
-                nextAttackTime = Time.time + 1f / attackRate;
+                nextAttackTime = Time.time + 1f / this.equippedWeapon.AttackSpeed;
                 timeForAnimPause = Time.time + startFreezingTime; //when to start freeze 
                 timeForAnimResume = Time.time + endFreezingTime; //when to end freeze
             }
         }
-        
+
         //if player hits an enemy, interrupt animation for a short time
         if (enemyInDamagezone)
         {
@@ -73,7 +82,6 @@ public class PlayerAttack : MonoBehaviour
             if (Time.time >= timeForAnimPause && Time.time <= timeForAnimResume)
             {
                 playerAnimator.enabled = false;
-
             }
             //happens afterwards
             else if (Time.time >= timeForAnimResume)
@@ -82,19 +90,27 @@ public class PlayerAttack : MonoBehaviour
                 enemyInDamagezone = false;
             }
         }
-
-
-    }//Update
+    }
 
     void Attack()
     {
-        sword.SetActive(true);
+        if (this.equippedWeapon == null) return;
+
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
         soundChoice = Random.Range(0, 2);
-        if (soundChoice == 0) { meeleeSound1.Play(); }
-        else if (soundChoice == 1) { meeleeSound2.Play(); }
-        else if (soundChoice == 2) { meeleeSound3.Play(); }
+        if (soundChoice == 0)
+        {
+            meeleeSound1.Play();
+        }
+        else if (soundChoice == 1)
+        {
+            meeleeSound2.Play();
+        }
+        else if (soundChoice == 2)
+        {
+            meeleeSound3.Play();
+        }
 
         //get list of all colliders in hit range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
@@ -110,11 +126,46 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (!enemiesGotHit.Contains(enemy.gameObject))
                 {
-                    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                    float crit = Random.Range(0f, 100f);
+                    int damage = Random.Range(this.equippedWeapon.MinDamage, this.equippedWeapon.MaxDamage);
+
+                    if (crit <= this.baseAttributes.CritChance)
+                    {
+                        damage = ((int)(this.equippedWeapon.MaxDamage + this.equippedWeapon.MaxDamage * 0.25) * (int)(1 + (this.baseAttributes.CritDamage / 100f)));
+                        Debug.Log("Ich bin ein Crit");
+                    }
+                    
+                    damage += this.baseAttributes.Strength;
+
+                    Debug.Log(damage);
+                    
+                    enemy.GetComponent<Enemy>().TakeDamage(damage);
                     enemiesGotHit.Add(enemy.gameObject);
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="weapon"></param>
+    private void OnWeaponChanged(BaseWeapon weapon)
+    {
+        if (this.weaponHolder.transform.transform.childCount > 0)
+        {
+            Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
+        }
+
+        if (weapon == null)
+        {
+            this.equippedWeapon = null;
+            return;
+        }
+
+        GameObject go = Instantiate(weapon.ItemPrefab, weaponHolder.transform);
+        this.swordAnimator = go.GetComponent<Animator>();
+        this.equippedWeapon = weapon;
     }
 
 
@@ -125,6 +176,7 @@ public class PlayerAttack : MonoBehaviour
         {
             return;
         }
+
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }

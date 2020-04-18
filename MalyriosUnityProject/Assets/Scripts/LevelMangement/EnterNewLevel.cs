@@ -81,7 +81,7 @@ public class EnterNewLevel : MonoBehaviour
                 }
 
                 //Set static items list to inventry items list
-                StaticData.itemsStatic = Inventory.instance.items;
+                StaticData.itemsStatic = Inventory.Instance.items;
                 Inventory.itemsLoaded = false;
 
                 LevelLoader.levelToLoad = sceneToEnter;

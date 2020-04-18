@@ -1,75 +1,74 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Malyrios.Items;
+﻿using Malyrios.Items;
 using UnityEngine;
 using TMPro;
 
 public class PickUp : MonoBehaviour
 {
-    Transform player;
-    float distance;
-    bool showText;
     [SerializeField] TextMeshProUGUI tmpText;
-    public Item item;
-    SpriteRenderer spriteRenderer;
+    [SerializeField] private float pickUpRadius = 0.2f;
     [SerializeField] private BaseItem baseItem;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = item.Icon;
+    private LayerMask whatCanPickMeUp;
+    private SpriteRenderer spriteRenderer;
+    private bool showText;
 
-        this.baseItem = ScriptableObject.CreateInstance<BaseItem>().InitItem(
-            "Red Flower", 
-            "Ich bin eine rote Blume", 
-            BaseItem.SpriteTypes.RedFlower,
-            true,
-            10);
+    public BaseItem BaseItem
+    {
+        get => this.baseItem;
+        set => this.baseItem = value;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Item item;
+
+    private void Start()
     {
-        distance = Vector2.Distance(gameObject.transform.position,
-            player.position); //Mathf.Abs(gameObject.transform.position.x - player.position.x);
-        if (distance < 0.15f)
+        this.whatCanPickMeUp = LayerMask.GetMask("Player");
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (this.baseItem != null)
+        {
+            spriteRenderer.sprite = this.baseItem.Icon;
+        }
+    }
+
+    private void Update()
+    {
+        bool collectable = Physics2D.OverlapCircle(transform.position, this.pickUpRadius, this.whatCanPickMeUp);
+        if (collectable)
         {
             ShowPickUpDialog();
-            showText = true;
-
-            //Pick item Up, if player interacts with it
+            this.showText = true;
+            
             if (Player.interactInput)
             {
                 PickUpItem();
             }
         }
-        else if (showText && distance >= 0.3f)
+        else
         {
-            tmpText.gameObject.SetActive(false);
-            showText = false;
+            if (this.showText)
+            {
+                this.tmpText.gameObject.SetActive(false);
+                this.showText = false;
+            }
         }
     }
 
-    void ShowPickUpDialog()
+    private void ShowPickUpDialog()
     {
-        tmpText.text = "Pick Up " + item.name;
+        tmpText.text = $"Pick Up { this.baseItem.ItemName }";
         tmpText.gameObject.SetActive(true);
     }
 
-
-    void PickUpItem()
+    private void PickUpItem()
     {
-        // bool wasPickedUp = Inventory.instance.Add(item);
-        Inventory.instance.AddItem(this.baseItem);
-        // if (wasPickedUp)
-        // {
-        //     ButtonScript.receivedInteractInput = false;
-        //     Destroy(gameObject);
-        // }
-        
+        Inventory.Instance.AddItem(this.baseItem);
         Destroy(gameObject);
         tmpText.gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, this.pickUpRadius);
     }
 }

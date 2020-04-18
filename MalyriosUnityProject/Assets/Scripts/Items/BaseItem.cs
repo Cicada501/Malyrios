@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Malyrios.Items
 {
@@ -6,20 +7,33 @@ namespace Malyrios.Items
     {
         public enum SpriteTypes
         {
-            RedFlower
+            RedFlower,
+            IronSword
         }
 
-        [Header("Base Item Properties")] [SerializeField]
-        private string itemName;
+        public enum ItemTypes
+        {
+            Weapon,
+            Head,
+            Body,
+            Feet,
+            Hand,
+            Plant,
+            None
+        }
 
-        [SerializeField] private string description;
-        [SerializeField] private Sprite icon;
-        [SerializeField] private int sellPrice;
-        [SerializeField] private int purchasePrice;
-        [SerializeField] private float dropChance;
-        [SerializeField] private bool isStackable;
-        [SerializeField] private int maxStackAmount;
-        [SerializeField] private SpriteTypes spriteType;
+        [Header("Base Item Properties")] 
+        [SerializeField] protected string itemName;
+        [SerializeField] protected string description;
+        [SerializeField] protected Sprite icon;
+        [SerializeField] protected int sellPrice;
+        [SerializeField] protected int purchasePrice;
+        [SerializeField] protected float dropChance;
+        [SerializeField] protected bool isStackable;
+        [SerializeField] protected int maxStackAmount;
+        [SerializeField] protected SpriteTypes spriteType;
+        [SerializeField] protected ItemTypes itemType;
+        [SerializeField] protected GameObject itemPrefab;
 
         public string ItemName => this.itemName;
         public string Description => description;
@@ -30,6 +44,8 @@ namespace Malyrios.Items
         public bool IsStackable => this.isStackable;
         public int MaxStackAmount => this.maxStackAmount;
         public SpriteTypes SpriteType => this.spriteType;
+        public ItemTypes ItemType => this.itemType;
+        public GameObject ItemPrefab => this.itemPrefab;
 
         public BaseItem InitItem(string name, string description, SpriteTypes spriteType, bool isStackable = false, int maxStackAmount = 0)
         {
@@ -38,16 +54,32 @@ namespace Malyrios.Items
             this.icon = GetSprite(spriteType);
             this.isStackable = isStackable;
             this.maxStackAmount = maxStackAmount;
+            this.itemType = ItemTypes.None;
 
             return this;
         }
 
-        private Sprite GetSprite(SpriteTypes spriteType)
+        protected Sprite GetSprite(SpriteTypes spriteType)
         {
             switch (spriteType)
             {
                 case SpriteTypes.RedFlower:
                     return ItemAssets.Instance.Flower;
+                case SpriteTypes.IronSword:
+                    return ItemAssets.Instance.IronSword;
+                default:
+                    return null;
+            }
+        }
+
+        protected GameObject GetItemPrefab(SpriteTypes spriteType)
+        {
+            switch (spriteType)
+            {
+                case SpriteTypes.RedFlower:
+                    return null;
+                case SpriteTypes.IronSword:
+                    return ItemAssets.Instance.IronSwordPrefab;
                 default:
                     return null;
             }

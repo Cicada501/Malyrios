@@ -54,7 +54,6 @@ namespace Malyrios.UI
         public void OnCurrentHealthChanged(float health, int maxHealth)
         {
             this.healthBarSlider.value = health / maxHealth;
-            Debug.Log($"OnCurrentHealthChanged: { health / 100f }");
         }
 
         #endregion
@@ -70,6 +69,14 @@ namespace Malyrios.UI
             this.tooltip.SetActive(true);
             this.tooltip.transform.position = position;
             this.tooltip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{ item.ItemName }\n{ item.Description }";
+        }
+
+        public void ShowTooltip(Vector3 position, IItemDescriber description)
+        {
+            this.tooltip.SetActive(true);
+            this.tooltip.transform.position = position;
+            this.tooltip.GetComponentInChildren<Text>().supportRichText = true;
+            this.tooltip.GetComponentInChildren<Text>().text = description.GetDescription();
         }
 
         public void HideTooltip()

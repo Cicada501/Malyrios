@@ -10,32 +10,35 @@ public class Inventory : MonoBehaviour
 {
     #region Singleton
 
-    public static Inventory instance;
+    public static Inventory Instance;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     #endregion
-
-
-    public delegate void OnItemChanged();
-
-    public OnItemChanged OnItemChangedCallback;
-
+    
     public List<Item> items = new List<Item>();
+    public static bool itemsLoaded = false;
 
     #region new inventory
     
     public List<BaseItem> Items = new List<BaseItem>();
     
     public event Action<BaseItem> OnItemAdded;
+    public event Action<BaseItem> OnItemRemoved;
+    private BaseWeapon testWeapon;
     
     #endregion
     
-    public static bool itemsLoaded = false;
-
+    
+    private void Start()
+    {
+        // This is just for test purposes
+        testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
+        AddItem(testWeapon);
+    }
 
     //Neccecary to use OnSceneLoaded
     void OnEnable()
@@ -47,33 +50,24 @@ public class Inventory : MonoBehaviour
     {
         items = StaticData.itemsStatic;
     }
-
-
-    public bool Add(Item item)
-    {
-        items.Add(item);
-
-        if (OnItemChangedCallback != null)
-        {
-            OnItemChangedCallback.Invoke();
-        }
-
-        return true;
-    }
-
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="item"></param>
     public void AddItem(BaseItem item)
     {
         Items.Add(item);
         OnItemAdded?.Invoke(item);
     }
 
-    public void Remove(Item item)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="item"></param>
+    public void Remove(BaseItem item)
     {
-        items.Remove(item);
-
-        if (OnItemChangedCallback != null)
-        {
-            OnItemChangedCallback.Invoke();
-        }
+        Items.Remove(item);
+        OnItemRemoved?.Invoke(item);
     }
 }

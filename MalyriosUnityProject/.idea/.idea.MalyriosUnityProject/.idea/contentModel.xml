@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\felix\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\felix\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_MalyriosUnityProject.908701187.00" t="ExcludeRecursive" />
-    <e p="D:\Programmieren\Unity\Malyrios\MalyriosUnityProject" t="IncludeRecursive">
+    <e p="C:\Users\felix\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_MalyriosUnityProject.-1723363049.00" t="ExcludeRecursive" />
+    <e p="E:\source\Unity\Malyrios\MalyriosUnityProject" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -67,11 +67,14 @@
         <e p="Scripts" t="Include">
           <e p="ButtonScript.cs" t="Include" />
           <e p="Characters" t="Include">
+            <e p="AttributeManager.cs" t="Include" />
             <e p="BaseAttributes.cs" t="Include" />
           </e>
           <e p="Core" t="Include">
             <e p="DragNDrop.cs" t="Include" />
             <e p="IHealthController.cs" t="Include" />
+            <e p="IOnSlotRightClick.cs" t="Include" />
+            <e p="ISlot.cs" t="Include" />
           </e>
           <e p="DeathCollider.cs" t="Include" />
           <e p="Dialogue" t="Include">
@@ -105,8 +108,11 @@
           <e p="Items" t="Include">
             <e p="BaseItem.cs" t="Include" />
             <e p="BaseWeapon.cs" t="Include" />
+            <e p="IItemDescriber.cs" t="Include" />
+            <e p="IItemGenerator.cs" t="Include" />
             <e p="ItemAssets.cs" t="Include" />
             <e p="MeleeWeapon.cs" t="Include" />
+            <e p="Plant.cs" t="Include" />
           </e>
           <e p="LevelMangement" t="Include">
             <e p="EnterNewLevel.cs" t="Include" />
