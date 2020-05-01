@@ -1,0 +1,716 @@
+fileFormatVersion: 2
+guid: 4d9e120bb8dcf06419c4303cb495101e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8498001810496342777
+    second: Nature_Assets_Woods_sharp_0
+  - first:
+      213: 13948370440515220
+    second: Nature_Assets_Woods_sharp_1
+  - first:
+      213: -506370659214949676
+    second: Nature_Assets_Woods_sharp_2
+  - first:
+      213: 7629188930183185963
+    second: Nature_Assets_Woods_sharp_3
+  - first:
+      213: 6097283362850169764
+    second: Nature_Assets_Woods_sharp_4
+  - first:
+      213: -2054976657490858534
+    second: Nature_Assets_Woods_sharp_5
+  - first:
+      213: 6910724035653937445
+    second: Nature_Assets_Woods_sharp_6
+  - first:
+      213: 1993047002464471863
+    second: Nature_Assets_Woods_sharp_7
+  - first:
+      213: 2116815041161976293
+    second: Nature_Assets_Woods_sharp_8
+  - first:
+      213: 377010442824148505
+    second: Nature_Assets_Woods_sharp_9
+  - first:
+      213: -4737361828624382489
+    second: Nature_Assets_Woods_sharp_10
+  - first:
+      213: -5148479264131220043
+    second: Nature_Assets_Woods_sharp_11
+  - first:
+      213: -2291359587216661431
+    second: Nature_Assets_Woods_sharp_12
+  - first:
+      213: -4972846129025538901
+    second: Nature_Assets_Woods_sharp_13
+  - first:
+      213: 7254013922829755151
+    second: Nature_Assets_Woods_sharp_14
+  - first:
+      213: 3997522528147611298
+    second: Nature_Assets_Woods_sharp_15
+  - first:
+      213: -3285864704916015121
+    second: Nature_Assets_Woods_sharp_16
+  - first:
+      213: -1428193711916864764
+    second: Nature_Assets_Woods_sharp_17
+  - first:
+      213: -367736025865176531
+    second: Nature_Assets_Woods_sharp_18
+  - first:
+      213: 1299105263025705237
+    second: Nature_Assets_Woods_sharp_19
+  - first:
+      213: -4902952695035331380
+    second: Nature_Assets_Woods_sharp_20
+  - first:
+      213: -4843448472491083298
+    second: Nature_Assets_Woods_sharp_21
+  - first:
+      213: 1898827626599173392
+    second: Nature_Assets_Woods_sharp_22
+  - first:
+      213: -3647302024450758979
+    second: Nature_Assets_Woods_sharp_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 511
+        width: 54
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7053db0b068011a80800000000000000
+      internalID: -8498001810496342777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 511
+        width: 51
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e6d4118fd813000800000000000000
+      internalID: 13948370440515220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_2
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 511
+        width: 40
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d200dc719209f8f0800000000000000
+      internalID: -506370659214949676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_3
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 504
+        width: 46
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2649eb29e250e960800000000000000
+      internalID: 7629188930183185963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_4
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 506
+        width: 45
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a36599e9e6ed9450800000000000000
+      internalID: 6097283362850169764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_5
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 504
+        width: 64
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adda9842e914b73e0800000000000000
+      internalID: -2054976657490858534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_6
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 365
+        width: 48
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52928e555e2d7ef50800000000000000
+      internalID: 6910724035653937445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_7
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 365
+        width: 46
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b4d8a60b9b8ab10800000000000000
+      internalID: 1993047002464471863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_8
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 365
+        width: 65
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9d9a78010706d10800000000000000
+      internalID: 2116815041161976293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_9
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 365
+        width: 53
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916652110096b3500800000000000000
+      internalID: 377010442824148505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_10
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 364
+        width: 50
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e549583482814eb0800000000000000
+      internalID: -4737361828624382489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_11
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 366
+        width: 40
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd7ef7136dec88b0800000000000000
+      internalID: -5148479264131220043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_12
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 325
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 944e34778947330e0800000000000000
+      internalID: -2291359587216661431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_13
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 325
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4a1ccfac6ecfab0800000000000000
+      internalID: -4972846129025538901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_14
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 325
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f03610aba3f6ba460800000000000000
+      internalID: 7254013922829755151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_15
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 325
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae1cdf3f8d0a7730800000000000000
+      internalID: 3997522528147611298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_16
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 325
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7bc7bc5734662d0800000000000000
+      internalID: -3285864704916015121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_17
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 236
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40bafbac2690e2ce0800000000000000
+      internalID: -1428193711916864764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_18
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 291
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2a3137680a85eaf0800000000000000
+      internalID: -367736025865176531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_19
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 291
+        width: 39
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511dc709a59570210800000000000000
+      internalID: 1299105263025705237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_20
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 291
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cccffd5308635fbb0800000000000000
+      internalID: -4902952695035331380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_21
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 291
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9b245a64d98ccb0800000000000000
+      internalID: -4843448472491083298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 320
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01d442d7aadf95a10800000000000000
+      internalID: 1898827626599173392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature_Assets_Woods_sharp_23
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 320
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db6ac0c022e226dc0800000000000000
+      internalID: -3647302024450758979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 008238ab18a6198479b8f51baa1249d5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

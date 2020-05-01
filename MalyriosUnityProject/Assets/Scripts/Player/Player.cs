@@ -241,7 +241,10 @@ public class Player : MonoBehaviour
         if (isFalling && isGrunded)
         {
             cameraAnimator.SetTrigger("Landing");
+            if(!landing2.isPlaying){
+
             landing2.Play(); 
+            }
 
         }
 
