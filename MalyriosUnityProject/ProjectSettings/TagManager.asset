@@ -5,10 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - EnterWood
-  - EnterCave
   - DialogueManager
   - CanvasUI
+  - LevelLoader
   layers:
   - Default
   - TransparentFX

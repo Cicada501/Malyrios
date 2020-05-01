@@ -97,7 +97,6 @@ public class PlayerAttack : MonoBehaviour
         if (this.equippedWeapon == null) return;
 
         playerAnimator.SetTrigger("Attack");
-        swordAnimator.SetTrigger("Attack");
         soundChoice = Random.Range(0, 2);
         if (soundChoice == 0)
         {

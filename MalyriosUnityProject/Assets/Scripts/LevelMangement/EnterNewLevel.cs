@@ -10,25 +10,16 @@ public class EnterNewLevel : MonoBehaviour
     [SerializeField] TextMeshProUGUI textMeshProUGUI;
     [SerializeField] string sceneToEnter;
     [SerializeField] string displayText;
+    [SerializeField] bool enterAutomatic = false;
+    [SerializeField] Vector3 spawnPoint = new Vector3(0,-20,0);
     Scene currentScene;
 
     bool colliding;
-
-    [SerializeField] GameObject triggerCollider1;
-    [SerializeField] GameObject triggerCollider2;
-
-    //Transform player;
-
-
-
+    GameObject[] LevelLoaderColliders;
 
     private void Start()
     {
-
-        //player = GameObject.FindGameObjectWithTag("Player").transform;
-
-
-
+        LevelLoaderColliders = GameObject.FindGameObjectsWithTag("LevelLoader");
     }
 
     private void Update()
@@ -39,46 +30,25 @@ public class EnterNewLevel : MonoBehaviour
         //Disable other colliders with this script to avoid wrong beahviour
         if (colliding)
         {
-            if (triggerCollider1 && triggerCollider2)
-            {
-                if (gameObject == triggerCollider2)
-                {
 
-                    triggerCollider1.SetActive(false);
-                }
-                else if (gameObject == triggerCollider1)
+            foreach (GameObject levelLoader in LevelLoaderColliders)
+            {
+                if (levelLoader == gameObject)
                 {
-                    triggerCollider2.SetActive(false);
+                    levelLoader.SetActive(true);
+                }
+                else
+                {
+                    levelLoader.SetActive(false);
                 }
             }
+
             textMeshProUGUI.text = displayText;
             textMeshProUGUI.gameObject.SetActive(true);
-            if (Player.interactInput){
-            
-                //Set Spawnpoints to the right spot for the depending level
-                if (sceneToEnter == "Cliffs" && currentScene.name == "Cave")
-                {
-                    StaticData.spawnPoint = new Vector3(-2.09f, -20f, 0f);
-
-                }
-                else if (sceneToEnter == "Cave" && currentScene.name == "Cliffs")
-                {
-
-                    StaticData.spawnPoint = new Vector3(-1f, 0f, 0f);
-
-                }
-                else if (sceneToEnter == "Cliffs" && currentScene.name == "Wood")
-                {
-
-                    StaticData.spawnPoint = new Vector3(3.5f, -6.5f, 0f);
-
-                }
-                else if (sceneToEnter == "Wood" && currentScene.name == "Cliffs")
-                {
-
-                    StaticData.spawnPoint = new Vector3(0, 0f, 0f);
-
-                }
+            if (Player.interactInput || enterAutomatic)
+            {
+                //Set point where to spawn in the loading scene
+                StaticData.spawnPoint = spawnPoint;
 
                 //Set static items list to inventry items list
                 StaticData.itemsStatic = Inventory.Instance.items;
@@ -111,10 +81,13 @@ public class EnterNewLevel : MonoBehaviour
             colliding = false;
             textMeshProUGUI.gameObject.SetActive(false);
         }
-        if (triggerCollider2 && triggerCollider1)
+        foreach (GameObject levelLoader in LevelLoaderColliders)
         {
-            triggerCollider2.SetActive(true);
-            triggerCollider1.SetActive(true);
+            if (levelLoader != gameObject)
+            {
+
+                levelLoader.SetActive(true);
+            }
         }
     }
 
