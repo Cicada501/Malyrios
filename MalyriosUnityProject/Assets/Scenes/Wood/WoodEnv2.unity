@@ -24852,8 +24852,11 @@ GameObject:
   - component: {fileID: 812036504}
   - component: {fileID: 812036503}
   - component: {fileID: 812036502}
+  - component: {fileID: 812036505}
+  - component: {fileID: 812036507}
+  - component: {fileID: 812036506}
   m_Layer: 0
-  m_Name: spritesheet_npc_hunter_witch_15
+  m_Name: NPC Witch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24937,12 +24940,109 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812036501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.759, y: -20.115, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.759, y: -20.079, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &812036505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812036501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a633a69e416433041a45328bb5290582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfNpc: Walinga
+  dialogueText:
+  - SentenceId: 0
+    Sentences:
+    - '*looks at you as if she is not really willing to talk'
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: Hello, you have some beatuful flowers, could i take some
+        of them with me?
+    - LinkedToSentenceId: 2
+      AnswerDescription: Hey do you live here all alone in the woods?
+    - LinkedToSentenceId: 3
+      AnswerDescription: Oh your little house is beautyful! And at such a wonderfull
+        place *looking around with a smile*
+  - SentenceId: 1
+    Sentences:
+    - NO!
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: okay okay, im sorry
+    - LinkedToSentenceId: -1
+      AnswerDescription: '-'
+  - SentenceId: 2
+    Sentences:
+    - Yes, i dont like the people. always talking much and doing unneccecary things
+      all day long... and i can see, that you are one of them *looking evil at you*
+      so i would appreciate if u leave me alone.
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Okay
+    - LinkedToSentenceId: 4
+      AnswerDescription: 'I bet there is a reason for you beeing out here, can''t
+        you tell me what it is? '
+  - SentenceId: 3
+    Sentences:
+    - Hehehe... This wood is my home. All you need in life is a place where you feel
+      good. But the peole in the Village will never understand this. They talk about
+      me like im retarded.
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Oh, well if they dont understand you there is no reason
+        to care about their opinion
+    - LinkedToSentenceId: 0
+      AnswerDescription: Well some people are just not able to see the beauy of life.
+        They are just in there everyday routines and do things the think they must
+        do..
+  - SentenceId: 4
+    Sentences:
+    - Yes, i dont like the people. always talking much and doing unneccecary things
+      all day long... and i can see, that you are one of them *looking evil at you*
+      so i would appreciate if u leave me alone.
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Okay
+    - LinkedToSentenceId: 0
+      AnswerDescription: 'I bet there is a reason for you beeing out here, can''t
+        you tell me what it is? '
+--- !u!58 &812036506
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812036501}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
+--- !u!114 &812036507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812036501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fb46ace51b6f947ab6a24a25beb072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &934385655
 GameObject:
   m_ObjectHideFlags: 0
@@ -25251,11 +25351,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicStructure
       objectReference: {fileID: 0}
-    - target: {fileID: 3103074465894259317, guid: f3c90893320e84e408149b241d2c1710,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.29
-      objectReference: {fileID: 0}
     - target: {fileID: 6151387718590978367, guid: f3c90893320e84e408149b241d2c1710,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25311,39 +25406,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6582599036223959380, guid: f3c90893320e84e408149b241d2c1710,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.7155769
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582599037392974090, guid: f3c90893320e84e408149b241d2c1710,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.227
-      objectReference: {fileID: 0}
     - target: {fileID: 6582599037843842908, guid: f3c90893320e84e408149b241d2c1710,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582599037958660203, guid: f3c90893320e84e408149b241d2c1710,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582599037958660203, guid: f3c90893320e84e408149b241d2c1710,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582599037958660203, guid: f3c90893320e84e408149b241d2c1710,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582599037958660203, guid: f3c90893320e84e408149b241d2c1710,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6582599038030922185, guid: f3c90893320e84e408149b241d2c1710,
