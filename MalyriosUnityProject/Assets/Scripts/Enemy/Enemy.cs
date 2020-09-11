@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] Item dropItem;
-    [SerializeField] Item dropRareItem;
+    [SerializeField] BaseItem dropItem;
+    [SerializeField] BaseItem dropRareItem;
     [SerializeField] int dropItemChance0 = 10; //chance to drop 0 times Item
     [SerializeField] int dropItemChance1 = 60; //chance to drop 1 times Item
     [SerializeField] int dropItemChance2 = 30;

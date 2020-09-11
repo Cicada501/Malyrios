@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] Transform itemsParent;
     [SerializeField] GameObject inventoryUI;
+    [SerializeField] GameObject EquipmentUI;
     Inventory inventory;
 
     bool buttonPressed;
@@ -156,6 +157,7 @@ public class InventoryUI : MonoBehaviour
     public void changeInventoryOpened()
     {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+        EquipmentUI.SetActive(!EquipmentUI.activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
 
         if (!this.inventoryUI.activeSelf)
         {

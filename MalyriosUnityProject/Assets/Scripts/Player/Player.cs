@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] Vector3 spawnPoint;
     [SerializeField] AudioSource jumpStart;
     [SerializeField] AudioSource landing1;
     [SerializeField] AudioSource landing2;
@@ -63,7 +64,7 @@ public class Player : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
+        StaticData.spawnPoint = spawnPoint;
     }
 
     // Use this for initialization
@@ -240,6 +241,7 @@ public class Player : MonoBehaviour
         cameraAnimator.ResetTrigger("Landing");
         if (isFalling && isGrunded)
         {
+            isFalling = false;
             cameraAnimator.SetTrigger("Landing");
             landing2.Play(); 
 
