@@ -65,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
         if (Time.time >= nextAttackTime)
         {
             isAttacking = false;
-            if (Player.attackInput)
+            if (Player.attackInput && !InventoryUI.inventoryOpen)
             {
                 Attack();
                 isAttacking = true;
@@ -132,12 +132,12 @@ public class PlayerAttack : MonoBehaviour
                     if (crit <= this.baseAttributes.CritChance)
                     {
                         damage = ((int)(this.equippedWeapon.MaxDamage + this.equippedWeapon.MaxDamage * 0.25) * (int)(1 + (this.baseAttributes.CritDamage / 100f)));
-                        Debug.Log("Ich bin ein Crit");
+                        //Debug.Log("Ich bin ein Crit");
                     }
                     
                     damage += this.baseAttributes.Strength;
 
-                    Debug.Log(damage);
+                    //Debug.Log(damage);
                     
                     enemy.GetComponent<Enemy>().TakeDamage(damage);
                     enemiesGotHit.Add(enemy.gameObject);

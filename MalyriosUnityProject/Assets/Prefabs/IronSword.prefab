@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 877694526288938094}
   - component: {fileID: 877694526288938092}
   - component: {fileID: 877694526288938095}
-  - component: {fileID: 6418062217263849723}
   m_Layer: 0
   m_Name: IronSword
   m_TagString: Untagged
@@ -102,22 +101,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6418062217263849723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877694526288938081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9900b898be9aa7409e53ddc722f6610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tmpText: {fileID: 0}
-  pickUpRadius: 0.2
-  whatCanPickMeUp:
-    serializedVersion: 2
-    m_Bits: 4096
-  baseItem: {fileID: 0}
-  item: {fileID: 0}

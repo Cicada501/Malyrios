@@ -21,6 +21,7 @@ public class InventoryUI : MonoBehaviour
     bool itemsLoaded = false;
     int itemCount;
 
+    public static bool inventoryOpen = false;
     public static int d;
 
     private void Awake()
@@ -156,6 +157,7 @@ public class InventoryUI : MonoBehaviour
 
     public void changeInventoryOpened()
     {
+        inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
         EquipmentUI.SetActive(!EquipmentUI.activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
 

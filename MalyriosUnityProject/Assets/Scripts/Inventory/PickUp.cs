@@ -55,7 +55,7 @@ public class PickUp : MonoBehaviour
 
     private void ShowPickUpDialog()
     {
-        tmpText.text = $"Pick Up { this.baseItem.ItemName }";
+        tmpText.text = $"Pick Up {this.baseItem.ItemName}";
         tmpText.gameObject.SetActive(true);
     }
 
@@ -63,6 +63,7 @@ public class PickUp : MonoBehaviour
     {
         Inventory.Instance.AddItem(this.baseItem);
         Destroy(gameObject);
+        ButtonScript.receivedInteractInput = false; //if Interactable text gets destroyed the RealeaseInteractButton() event is not triggerd anymore
         tmpText.gameObject.SetActive(false);
     }
 

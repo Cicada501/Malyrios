@@ -10,7 +10,7 @@ public class swordAttack1Beahviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         swordActive = true;
-        Debug.Log("swordActive");
+        //Debug.Log("swordActive");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -23,7 +23,7 @@ public class swordAttack1Beahviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         swordActive = false;
-                Debug.Log("swordNotActive");
+                //Debug.Log("swordNotActive");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -10,10 +10,11 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BaseAttributes))]
 public class PlayerHealth : MonoBehaviour, IHealthController
 {
-    [SerializeField] float healthRegen = 0.03f;
+    [SerializeField] float healthRegen = 0.1f;
     [SerializeField] float flashTime;
     [SerializeField] SpriteRenderer PlayerRenderer;
     [SerializeField] Image HealthFill;
+    [SerializeField] Image RegHealthFill;
     [SerializeField] Animator CamAnimator;
 
     private Rigidbody2D rb;
@@ -24,6 +25,8 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
     private Color playerOrigionalColor;
     private Color barFillOrigionalColor;
+
+    int regHealth;
 
 
     // Use this for initialization
@@ -37,6 +40,8 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         this.barFillOrigionalColor = HealthFill.color;
 
         UIManager.Instance.SetMaxHealth(this.baseAttributes.MaxHealth);
+
+        regHealth = baseAttributes.MaxHealth;
     }
 
     private void FixedUpdate()
@@ -63,6 +68,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void TakeDamage(int damage)
     {
         this.baseAttributes.CurrentHealth -= damage;
+        regHealth -= damage/2;
 
         FlashOnDamage();
         
