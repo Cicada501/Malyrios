@@ -54,13 +54,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] Joystick joystick = null;
 
-
-
     bool jumpInput;
     bool dodgeInput;
     public static bool attackInput;
     public static bool interactInput;
     public static bool inventoryInput;
+    public static bool ability1_Input;
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -84,7 +83,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
 
         if (PlayerAttack.isAttacking)
         {
@@ -190,6 +188,7 @@ public class Player : MonoBehaviour
             jumpInput = ButtonScript.receivedJumpInput;
             interactInput = ButtonScript.receivedInteractInput;
             inventoryInput = ButtonScript.receivedOpenInventoryInput;
+            ability1_Input = ButtonScript.receivedAbility1_input;
         }
         else
         {
@@ -199,7 +198,6 @@ public class Player : MonoBehaviour
             jumpInput = Input.GetKey(KeyCode.Space);
             interactInput = Input.GetKey(KeyCode.E);
         }
-
 
         if (dodgeInput && Time.time - usedBackJumpAt > backJumpRate)
         {

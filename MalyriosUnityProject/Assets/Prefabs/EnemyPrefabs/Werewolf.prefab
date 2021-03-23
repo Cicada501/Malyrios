@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8222385072045445962}
   m_Layer: 11
   m_Name: Werewolf
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6a263d26a7ab04582bdbe935b07958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItem: {fileID: 11400000, guid: e0ef1ae1df1cd0649a811080669dd63b, type: 2}
-  dropRareItem: {fileID: 11400000, guid: 035b0ea2686e0dc4c837e11e480c05b1, type: 2}
+  dropItem: {fileID: 0}
+  dropRareItem: {fileID: 0}
   dropItemChance0: 10
   dropItemChance1: 60
   dropItemChance2: 30

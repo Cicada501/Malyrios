@@ -8,11 +8,6 @@ using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] Transform fireBallSpawn = null;
-    [SerializeField] GameObject fireball = null;
-
-
-
     [SerializeField] float startFreezingTime = 0.1f;
     [SerializeField] float endFreezingTime = 0.2f;
 
@@ -64,6 +59,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (this.equippedWeapon == null) return;
 
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
@@ -99,11 +95,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        //Spawn Fireball
-        if(Input.GetKey(KeyCode.Q)){
-            print("SHOOT");
-            Instantiate(fireball);
-        }
+        
     }
 
     void Attack()

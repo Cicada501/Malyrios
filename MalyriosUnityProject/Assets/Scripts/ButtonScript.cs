@@ -10,6 +10,7 @@ public class ButtonScript : MonoBehaviour
     public static bool receivedInteractInput;
     public static bool receivedJumpInput;
     public static bool receivedDodgeInput;
+    public static bool receivedAbility1_input;
     [SerializeField]  bool disableOnPC = false;
 
     Button buttons;
@@ -22,6 +23,7 @@ public class ButtonScript : MonoBehaviour
     receivedJumpInput = false;
     receivedDodgeInput = false;
     receivedOpenInventoryInput = false;
+    receivedAbility1_input = false;
        
     }
     private void Update() {
@@ -83,6 +85,16 @@ public class ButtonScript : MonoBehaviour
         receivedJumpInput = false;
     }
 
+
+    //Ability 1 Button
+    public void ClickAbility1Button()
+    {
+        receivedAbility1_input = true;
+    }
+    public void ReleaseAbility1Button()
+    {
+        receivedAbility1_input = false;
+    }
 
 
 }
