@@ -6,20 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Vector3 spawnPoint;
-    [SerializeField] AudioSource jumpStart;
-    [SerializeField] AudioSource landing1;
-    [SerializeField] AudioSource landing2;
-    [SerializeField] ParticleSystem dust;
+    [SerializeField] Vector3 spawnPoint = new Vector3(0.0f,0.0f,0.0f);
+    [SerializeField] AudioSource jumpStart= null;
+    [SerializeField] AudioSource landing1= null;
+    [SerializeField] AudioSource landing2= null;
+    [SerializeField] ParticleSystem dust= null;
 
-    [SerializeField]bool setAndroidMode;
+    [SerializeField]bool setAndroidMode= false;
     public static bool androidMode;
     bool facingRight = true;
     SpriteRenderer spriteRenderer;
-    [SerializeField] Animator playerAnimator;
-    [SerializeField] Animator cameraAnimator;
+    [SerializeField] Animator playerAnimator= null;
+    [SerializeField] Animator cameraAnimator= null;
 
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb= null;
     float horizontal;
     float vertical;
 
@@ -31,16 +31,16 @@ public class Player : MonoBehaviour
     //Variables for Jumping
     public static bool isGrunded;
 
-    [SerializeField] Transform feetPos;
-    [SerializeField] float checkRadius;
-    [SerializeField] LayerMask whatIsGround;
-    [SerializeField] LayerMask whatIsPlatform1;
+    [SerializeField] Transform feetPos= null;
+    [SerializeField] float checkRadius = 0;
+    [SerializeField] LayerMask whatIsGround = 0;
+    [SerializeField] LayerMask whatIsPlatform1 = 0;
 
     public float jumpForce;
 
     public static bool isFalling = false;
     private bool isJumping = false;
-    [SerializeField] float jumpTime;
+    [SerializeField] float jumpTime = 0;
     private float jumpTimeCounter;
 
 
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     float usedBackJumpAt;
     public float backJumpRate = 0.5f;
 
-    [SerializeField] Joystick joystick;
+    [SerializeField] Joystick joystick = null;
 
 
 

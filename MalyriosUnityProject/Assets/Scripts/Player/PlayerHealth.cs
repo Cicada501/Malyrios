@@ -11,11 +11,11 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour, IHealthController
 {
     [SerializeField] float healthRegen = 0.1f;
-    [SerializeField] float flashTime;
-    [SerializeField] SpriteRenderer PlayerRenderer;
-    [SerializeField] Image HealthFill;
-    [SerializeField] Image RegHealthFill;
-    [SerializeField] Animator CamAnimator;
+    [SerializeField] float flashTime = 0.0f;
+    [SerializeField] SpriteRenderer PlayerRenderer = null;
+    [SerializeField] Image HealthFill = null;
+    [SerializeField] Image RegHealthFill = null;
+    //[SerializeField] Animator CamAnimator = null;
 
     private Rigidbody2D rb;
     private BaseAttributes baseAttributes;

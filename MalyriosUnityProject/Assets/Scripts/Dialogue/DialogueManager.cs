@@ -13,9 +13,9 @@ namespace Malyrios.Dialogue
         #region Serialize Fields
 
         [SerializeField] private float writingSpeed = 15f;
-        [SerializeField] private GameObject answerButton;
-        [SerializeField] private Transform content;
-        [SerializeField] private TextMeshProUGUI sentence;
+        [SerializeField] private GameObject answerButton = null;
+        [SerializeField] private Transform content = null;
+        [SerializeField] private TextMeshProUGUI sentence = null;
 
         #endregion
 

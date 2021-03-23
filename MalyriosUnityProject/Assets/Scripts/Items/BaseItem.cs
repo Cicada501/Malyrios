@@ -23,17 +23,17 @@ namespace Malyrios.Items
         }
 
         [Header("Base Item Properties")] 
-        [SerializeField] protected string itemName;
-        [SerializeField] protected string description;
-        [SerializeField] protected Sprite icon;
-        [SerializeField] protected int sellPrice;
-        [SerializeField] protected int purchasePrice;
-        [SerializeField] protected float dropChance;
-        [SerializeField] protected bool isStackable;
-        [SerializeField] protected int maxStackAmount;
-        [SerializeField] protected SpriteTypes spriteType;
-        [SerializeField] protected ItemTypes itemType;
-        [SerializeField] protected GameObject itemPrefab;
+        [SerializeField] protected string itemName = null;
+        [SerializeField] protected string description = null;
+        [SerializeField] protected Sprite icon = null;
+        [SerializeField] protected int sellPrice = 0;
+        [SerializeField] protected int purchasePrice = 0;
+        [SerializeField] protected float dropChance = 0;
+        [SerializeField] protected bool isStackable = false;
+        [SerializeField] protected int maxStackAmount = 0;
+        [SerializeField] protected SpriteTypes spriteType = 0;
+        [SerializeField] protected ItemTypes itemType = 0;
+        [SerializeField] protected GameObject itemPrefab = null;
 
         public string ItemName => this.itemName;
         public string Description => description;

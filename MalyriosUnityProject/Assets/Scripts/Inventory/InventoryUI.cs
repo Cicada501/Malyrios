@@ -10,9 +10,9 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] Transform itemsParent;
-    [SerializeField] GameObject inventoryUI;
-    [SerializeField] GameObject EquipmentUI;
+    [SerializeField] Transform itemsParent = null;
+    [SerializeField] GameObject inventoryUI = null;
+    [SerializeField] GameObject EquipmentUI = null;
     Inventory inventory;
 
     bool buttonPressed;

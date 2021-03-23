@@ -2,5 +2,5 @@
 
 public class Equipment : MonoBehaviour
 {
-    [SerializeField] private GameObject weaponSlot;
+    [SerializeField] private GameObject weaponSlot = null;
 }

@@ -18,14 +18,14 @@ namespace Malyrios.Character
         public static event Action<float> OnBalanceChaned;
         public static event Action<BaseAttributes> OnBaseAttributeChanged;
 
-        [SerializeField] private int maxHealth;
-        [SerializeField] private int mana;
-        [SerializeField] private int strength;
-        [SerializeField] private float critChance;
-        [SerializeField] private float critDamage;
-        [SerializeField] private float haste;
-        [SerializeField] private float energy;
-        [SerializeField] private float balance;
+        [SerializeField] private int maxHealth = 0;
+        [SerializeField] private int mana = 0;
+        [SerializeField] private int strength = 0;
+        [SerializeField] private float critChance = 0;
+        [SerializeField] private float critDamage = 0;
+        [SerializeField] private float haste = 0;
+        [SerializeField] private float energy = 0;
+        [SerializeField] private float balance = 0;
 
 
         private float currentHealth;

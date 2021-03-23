@@ -10,7 +10,7 @@ public class ButtonScript : MonoBehaviour
     public static bool receivedInteractInput;
     public static bool receivedJumpInput;
     public static bool receivedDodgeInput;
-    [SerializeField]  bool disableOnPC;
+    [SerializeField]  bool disableOnPC = false;
 
     Button buttons;
 

@@ -18,11 +18,11 @@ namespace Malyrios.Items
         }
 
         [Header("Sprite Assets")]
-        [SerializeField] private Sprite flower;
-        [SerializeField] private Sprite ironSword;
+        [SerializeField] private Sprite flower = null;
+        [SerializeField] private Sprite ironSword = null;
 
         [Header("Prefab Assets")]
-        [SerializeField] private GameObject ironSwordPrefab;
+        [SerializeField] private GameObject ironSwordPrefab = null;
 
         public Sprite Flower => this.flower;
         public Sprite IronSword => this.ironSword;

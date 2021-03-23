@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {   
     public static string levelToLoad;
-    [SerializeField] Animator transition;
+    [SerializeField] Animator transition = null;
     float transtionTime = 1f;
     public static bool loadLevel;
 

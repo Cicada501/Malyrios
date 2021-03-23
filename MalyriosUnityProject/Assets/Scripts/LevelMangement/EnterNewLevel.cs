@@ -7,15 +7,15 @@ using TMPro;
 
 public class EnterNewLevel : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textMeshProUGUI;
-    [SerializeField] string sceneToEnter;
-    [SerializeField] string displayText;
+    [SerializeField] TextMeshProUGUI textMeshProUGUI = null;
+    [SerializeField] string sceneToEnter = null;
+    [SerializeField] string displayText = null;
     Scene currentScene;
 
     bool colliding;
 
-    [SerializeField] GameObject triggerCollider1;
-    [SerializeField] GameObject triggerCollider2;
+    [SerializeField] GameObject triggerCollider1 = null;
+    [SerializeField] GameObject triggerCollider2 = null;
 
     //Transform player;
 

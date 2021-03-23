@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class AttributeManager : MonoBehaviour
 {
-    [SerializeField] private GameObject headArmorSlot;
-    [SerializeField] private GameObject bodyArmorSlot;
-    [SerializeField] private GameObject handArmorSlot;
-    [SerializeField] private GameObject feetArmorSlot;
-    [SerializeField] private GameObject weaponSlot;
+    [SerializeField] private GameObject headArmorSlot = null;
+    [SerializeField] private GameObject bodyArmorSlot = null;
+    [SerializeField] private GameObject handArmorSlot = null;
+    [SerializeField] private GameObject feetArmorSlot = null;
+    [SerializeField] private GameObject weaponSlot = null;
     
     private BaseAttributes baseAttributes;
 

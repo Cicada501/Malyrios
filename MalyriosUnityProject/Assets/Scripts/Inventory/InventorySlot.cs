@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler, IOnSlotRightClick, ISlot
 {
-    [SerializeField] Text amountText;
+    [SerializeField] Text amountText = null;
 
     private Stack<BaseItem> itemStack = new Stack<BaseItem>();
     private BaseItem item;

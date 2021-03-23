@@ -8,10 +8,17 @@ using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] Transform fireBallSpawn = null;
+    [SerializeField] GameObject fireball = null;
+
+
+
     [SerializeField] float startFreezingTime = 0.1f;
     [SerializeField] float endFreezingTime = 0.2f;
 
-    [SerializeField] private GameObject weaponHolder;
+    [SerializeField] private GameObject weaponHolder = null;
+
+
 
     private bool enemyInDamagezone = false;
     private float timeForAnimPause = 0f;
@@ -29,18 +36,18 @@ public class PlayerAttack : MonoBehaviour
     int soundChoice;
 
     [Header("Attack Sound Properties")] [SerializeField]
-    AudioSource meeleeSound1;
+    AudioSource meeleeSound1  = null;
 
-    [SerializeField] AudioSource meeleeSound2;
-    [SerializeField] AudioSource meeleeSound3;
-    [SerializeField] AudioSource hitmarkerSound;
+    [SerializeField] AudioSource meeleeSound2 = null;
+    [SerializeField] AudioSource meeleeSound3 = null;
+    [SerializeField] AudioSource hitmarkerSound = null;
 
-    [SerializeField] Transform attackPoint;
+    [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.5f;
-    [SerializeField] LayerMask enemyLayers;
-    [SerializeField] int attackDamage = 20;
+    [SerializeField] LayerMask enemyLayers = 0;
+    //[SerializeField] int attackDamage = 20;
 
-    [SerializeField] Animator cameraAnimator;
+    [SerializeField] Animator cameraAnimator = null;
 
     private void Awake()
     {
@@ -89,6 +96,13 @@ public class PlayerAttack : MonoBehaviour
                 playerAnimator.enabled = true;
                 enemyInDamagezone = false;
             }
+        }
+
+
+        //Spawn Fireball
+        if(Input.GetKey(KeyCode.Q)){
+            print("SHOOT");
+            Instantiate(fireball);
         }
     }
 

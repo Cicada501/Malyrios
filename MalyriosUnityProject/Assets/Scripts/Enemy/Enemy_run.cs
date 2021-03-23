@@ -9,7 +9,7 @@ public class Enemy_run : StateMachineBehaviour
     float speed;
 
     [SerializeField]
-    float initAttackRange;
+    float initAttackRange = 0;
     public static float attackRange;
     Rigidbody2D rb;
     Transform player;

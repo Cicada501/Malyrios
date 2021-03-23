@@ -13,14 +13,14 @@ namespace Malyrios.UI
         #region Serialize Fields Health UI
 
         [Header("Health UI")]
-        [SerializeField] private Slider healthBarSlider;
+        [SerializeField] private Slider healthBarSlider = null;
 
         #endregion
 
         #region Serialize Fields Inventory UI
 
         [Header("Inventory UI")]
-        [SerializeField] private GameObject tooltip;
+        [SerializeField] private GameObject tooltip = null;
 
         #endregion
 

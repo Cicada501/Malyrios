@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] BaseItem dropItem;
-    [SerializeField] BaseItem dropRareItem;
+    [SerializeField] BaseItem dropItem = null;
+    [SerializeField] BaseItem dropRareItem = null;
     [SerializeField] int dropItemChance0 = 10; //chance to drop 0 times Item
     [SerializeField] int dropItemChance1 = 60; //chance to drop 1 times Item
     [SerializeField] int dropItemChance2 = 30;
@@ -24,9 +24,9 @@ public class Enemy : MonoBehaviour
     float distToPlayer;
     float distToPlayerY;
 
-    [SerializeField] Transform attackPoint;
-    [SerializeField] float attackRadius;
-    [SerializeField] LayerMask playerLayer;
+    [SerializeField] Transform attackPoint = null;
+    [SerializeField] float attackRadius = 0.0f;
+    [SerializeField] LayerMask playerLayer = 0;
 
     Rigidbody2D rb;
     Transform player;

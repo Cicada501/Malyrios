@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpawnItem : MonoBehaviour
 {
-    [SerializeField] private GameObject initPhysicItem;
+    [SerializeField] private GameObject initPhysicItem = null;
     public static GameObject PhysicItem;
 
     static GameObject spawnedItem;

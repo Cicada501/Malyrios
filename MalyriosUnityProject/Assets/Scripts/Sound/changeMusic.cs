@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class changeMusic : MonoBehaviour
 {
-    [SerializeField] string changeMusicTo;
+    [SerializeField] string changeMusicTo = null;
     // Start is called before the first frame update
     public static string playerInZone;
     void Start(){

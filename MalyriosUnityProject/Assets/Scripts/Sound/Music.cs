@@ -6,9 +6,9 @@ public class Music : MonoBehaviour
 
 {
 
-    [SerializeField] AudioSource MusicNormal;
-    [SerializeField] AudioSource MusicDark;
-    [SerializeField] AudioSource MusicVillage;
+    [SerializeField] AudioSource MusicNormal = null;
+    [SerializeField] AudioSource MusicDark = null;
+    [SerializeField] AudioSource MusicVillage = null;
     string currentlyPlaying;
     // Start is called before the first frame update
     void Start()
