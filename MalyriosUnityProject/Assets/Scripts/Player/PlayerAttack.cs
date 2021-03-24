@@ -104,6 +104,8 @@ public class PlayerAttack : MonoBehaviour
 
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
+
+        //Attack Sound
         soundChoice = Random.Range(0, 2);
         if (soundChoice == 0)
         {

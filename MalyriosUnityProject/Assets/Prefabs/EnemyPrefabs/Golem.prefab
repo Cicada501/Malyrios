@@ -119,6 +119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6a263d26a7ab04582bdbe935b07958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: {fileID: 0}
+  dropRareItem: {fileID: 0}
+  dropItemChance0: 10
+  dropItemChance1: 60
+  dropItemChance2: 30
+  dropRareItemChance0: 50
+  dropRareItemChance1: 40
+  dropRareItemChance2: 10
   gravityToFall: 8
   gravityToClimb: 0.2
   attackRate: 0.5
@@ -127,6 +135,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
+  damageText: {fileID: 5239635712386450820, guid: 84c4b11787473e748994a74c5f9927f0,
+    type: 3}
+  damageTextSpawn: {fileID: 3465327599419503149}
   facingRight: 0
   maxHealth: 1000
 --- !u!50 &3465327599388064189

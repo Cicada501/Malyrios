@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6a263d26a7ab04582bdbe935b07958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItem: {fileID: 11400000, guid: 7b820dc21e1dafa4a83032793e765045, type: 2}
-  dropRareItem: {fileID: 11400000, guid: 4d3e2e19dea4e2c4bad3b6bf00258ccf, type: 2}
+  dropItem: {fileID: 0}
+  dropRareItem: {fileID: 0}
   dropItemChance0: 60
   dropItemChance1: 40
   dropItemChance2: 0
@@ -66,6 +66,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
+  damageText: {fileID: 5239635712386450820, guid: 84c4b11787473e748994a74c5f9927f0,
+    type: 3}
+  damageTextSpawn: {fileID: 3665614874453975450}
   facingRight: 0
   maxHealth: 150
 --- !u!212 &3469067647835135942

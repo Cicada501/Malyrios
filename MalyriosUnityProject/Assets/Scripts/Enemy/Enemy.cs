@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
+using TMPro;
+
 
 
 public class Enemy : MonoBehaviour
@@ -27,6 +29,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.0f;
     [SerializeField] LayerMask playerLayer = 0;
+    [SerializeField] TextMeshPro damageText = null;
+    [SerializeField] Transform damageTextSpawn = null;
 
     Rigidbody2D rb;
     Transform player;
@@ -50,13 +54,14 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        //damageText.transform.position = transform.up *10f;
     }
 
     private void Update()//-------------------------------------------------
     {
+        //Damage Text rising up
+        damageText.transform.position += new Vector3(10f,10f,0f)* Time.deltaTime;
 
-        //print("Time: "+ Time.time+ "NextAttackAt: "+ nextAttackTime);
-        //print("isAttacking"+isAttacking);
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") || animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
         {
             isAttacking = true;
@@ -98,12 +103,19 @@ public class Enemy : MonoBehaviour
             rb.velocity = new Vector2(0f, 0f);
             rb.angularVelocity = 0f;
         }
-
+        
+       
 
     }//----------------------END: Update -----------------------------------
 
+    void SpawnDamage(int damage){
+        damageText.SetText(damage.ToString());
+        Instantiate(damageText,damageTextSpawn.position,Quaternion.identity);
+    }
     public void TakeDamage(int damage)
     {
+        SpawnDamage(damage);
+
         currentHealth -= damage;
         if (!isDead)
         {

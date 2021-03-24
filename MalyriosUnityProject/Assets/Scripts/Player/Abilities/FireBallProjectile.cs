@@ -8,21 +8,21 @@ public class FireBallProjectile : MonoBehaviour
     [SerializeField] GameObject impactEffect;
     private Rigidbody2D rigidBody;
 
-    // Start is called before the first frame update
     void Start()
-    {
+    {   //rigidBody has continoous velocity forward
         rigidBody = GetComponent<Rigidbody2D>();
-        rigidBody.velocity = transform.right * projectileSpeed;
+        rigidBody.velocity = transform.right * projectileSpeed;   
     }
        
-   
-
-    private void OnTriggerEnter2D(Collider2D collision){
-        
+    //On Collision of Fireball with enemy
+    private void OnTriggerEnter2D(Collider2D collision){     
         if (collision.gameObject.tag == "Enemy")
         {
+            //Show impacteffect
             Instantiate(impactEffect,transform.position,Quaternion.identity);
-            Destroy(collision.gameObject);
+            //Deal damage
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(50);
+            //Destroy fireball
             Destroy(gameObject);
         }
     }
