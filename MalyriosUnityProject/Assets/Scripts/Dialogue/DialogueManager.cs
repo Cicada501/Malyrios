@@ -101,25 +101,30 @@ namespace Malyrios.Dialogue
             }
         }
 
+        bool isWriting = false;
         /// <summary>
         /// Show one letter every frame to get a animated text.
         /// </summary>
         /// <param name="sentence">The Sentence to be written.</param>
         /// <returns></returns>
         private IEnumerator WriteSentence(string sentence)
-        {
-            this.sentence.text = $"{ this.dialogueText.NameOfNpc }: ";
-            foreach (char letter in sentence)
-            {
-                this.sentence.text += letter;
-                if(letter == '.')
+        {   
+            if(!isWriting){
+                isWriting = true;
+                this.sentence.text = $"{ this.dialogueText.NameOfNpc }: ";
+                foreach (char letter in sentence)
                 {
-                    yield return new WaitForSeconds(0.5f);
+                    this.sentence.text += letter;
+                    if(letter == '.')
+                    {
+                        yield return new WaitForSeconds(0.5f);
+                    }
+                    yield return new WaitForSeconds(1 / this.writingSpeed);
                 }
-                yield return new WaitForSeconds(1 / this.writingSpeed);
-            }
 
-            ShowAnswers();
+                ShowAnswers();
+                isWriting = false;
+            }
         }
 
         /// <summary>

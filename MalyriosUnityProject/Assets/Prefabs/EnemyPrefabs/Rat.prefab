@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4406330404538021399}
   m_Layer: 11
   m_Name: Rat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6a263d26a7ab04582bdbe935b07958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItem: {fileID: 11400000, guid: 577b76a859b038e439710562887922ff, type: 2}
-  dropRareItem: {fileID: 11400000, guid: bd1ee00ac86f441449819552a6196b49, type: 2}
+  dropItem: {fileID: 0}
+  dropRareItem: {fileID: 0}
   dropItemChance0: 10
   dropItemChance1: 60
   dropItemChance2: 30
@@ -165,6 +165,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
+  damageText: {fileID: 0}
+  damageTextSpawn: {fileID: 0}
   facingRight: 0
   maxHealth: 100
 --- !u!50 &200069132668381809

@@ -59,7 +59,6 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (this.equippedWeapon == null) return;
 
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
@@ -70,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
             isAttacking = false;
             if (Player.attackInput && !InventoryUI.inventoryOpen)
             {
+                
                 Attack();
                 isAttacking = true;
                 nextAttackTime = Time.time + 1f / this.equippedWeapon.AttackSpeed;

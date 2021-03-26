@@ -7,11 +7,12 @@ public class FireBallProjectile : MonoBehaviour
     [SerializeField] private float projectileSpeed = 1f;
     [SerializeField] GameObject impactEffect;
     private Rigidbody2D rigidBody;
-
+    
     void Start()
     {   //rigidBody has continoous velocity forward
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.velocity = transform.right * projectileSpeed;   
+        
     }
        
     //On Collision of Fireball with enemy

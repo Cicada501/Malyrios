@@ -41,6 +41,8 @@ public class PickUp : MonoBehaviour
             if (Player.interactInput)
             {
                 PickUpItem();
+                //Dont pick up multiple items at once
+                Player.interactInput = false;
             }
         }
         else
