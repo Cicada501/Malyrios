@@ -19,10 +19,12 @@ namespace Malyrios.Items
             Feet,
             Hand,
             Plant,
-            None
+            Other
         }
 
         [Header("Base Item Properties")] 
+
+        [SerializeField] protected int itemID = 0;
         [SerializeField] protected string itemName = null;
         [SerializeField] protected string description = null;
         [SerializeField] protected Sprite icon = null;
@@ -35,6 +37,7 @@ namespace Malyrios.Items
         [SerializeField] protected ItemTypes itemType = 0;
         [SerializeField] protected GameObject itemPrefab = null;
 
+        public int ItemID => this.itemID;
         public string ItemName => this.itemName;
         public string Description => description;
         public Sprite Icon => this.icon;
@@ -47,14 +50,15 @@ namespace Malyrios.Items
         public ItemTypes ItemType => this.itemType;
         public GameObject ItemPrefab => this.itemPrefab;
 
-        public BaseItem InitItem(string name, string description, SpriteTypes spriteType, bool isStackable = false, int maxStackAmount = 0)
+        public BaseItem InitItem(int id,string name, string description, SpriteTypes spriteType, bool isStackable = false, int maxStackAmount = 0)
         {
+            this.itemID = id;
             this.itemName = name;
             this.description = description;
             this.icon = GetSprite(spriteType);
             this.isStackable = isStackable;
             this.maxStackAmount = maxStackAmount;
-            this.itemType = ItemTypes.None;
+            this.itemType = ItemTypes.Other;
 
             return this;
         }

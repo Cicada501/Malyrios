@@ -31,7 +31,7 @@ public class InventoryUI : MonoBehaviour
         inventory.OnItemRemoved += OnItemRemoved;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        itemCount = inventory.items.Count;
+        //itemCount = inventory.items.Count;
 
         // amount of items, that already existed in a Slot
         d = 0;

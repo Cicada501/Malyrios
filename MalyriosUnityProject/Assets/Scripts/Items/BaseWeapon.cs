@@ -21,6 +21,7 @@ namespace Malyrios.Items
         
         public BaseWeapon InitItem()
         {
+            base.itemID = 1;
             base.itemName = "Iron Sword";
             base.icon = GetSprite(SpriteTypes.IronSword);
             base.itemPrefab = GetItemPrefab(SpriteTypes.IronSword);

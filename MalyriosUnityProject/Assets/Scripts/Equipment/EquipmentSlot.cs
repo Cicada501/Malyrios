@@ -58,7 +58,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
                 break;
             case BaseItem.ItemTypes.Plant:
                 break;
-            case BaseItem.ItemTypes.None:
+            case BaseItem.ItemTypes.Other:
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

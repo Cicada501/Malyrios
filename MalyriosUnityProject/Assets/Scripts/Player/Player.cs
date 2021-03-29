@@ -69,7 +69,8 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Invoke("PlayerToSpawnPoint", 0.05f);
+        LoadPlayer();
+        //Invoke("PlayerToSpawnPoint", 0.05f);
         //neccecarry to use OnSceneLoaded (otherwise its not called)
         //SceneManager.sceneLoaded += OnSceneLoaded;
         androidMode = setAndroidMode;
@@ -230,7 +231,7 @@ public class Player : MonoBehaviour
                 isFalling = true;
             }
 
-            //Catch the moment, when player is falling and groundet => landing
+            //Catch the moment, when player is falling and grounded => landing
         }
         else if (rb.velocity.y > -0.01)
         {
@@ -268,14 +269,10 @@ public class Player : MonoBehaviour
      //#########################################################################
 
 
-
-
-
-
-    void PlayerToSpawnPoint()
+    /* void PlayerToSpawnPoint()
     {
         transform.position = StaticData.spawnPoint;
-    }
+    } */
 
 
 
@@ -308,13 +305,29 @@ public class Player : MonoBehaviour
 
     }
 
-    public void GiveSuperJumps()
-    {
-
-    }
-
     void CreateDust()
     {
         dust.Play();
+    }
+
+    //Save and Load
+    public void SavePlayer(){
+        SaveSystem.savePlayer(this);
+    }
+
+    //Called in Start() Should later only be called once at Application start
+    public void LoadPlayer(){
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+
+        transform.position = position;
+    }
+    void OnApplicationQuit()
+    {
+        SavePlayer();
     }
 }
