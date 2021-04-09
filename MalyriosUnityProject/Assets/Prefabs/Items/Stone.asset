@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0951208ce15da914fb1f480490559c35, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
+  itemID: 8
   itemName: Stone
   description: This stone is very heavy
   icon: {fileID: 21300000, guid: a933f3b6ec7e5ba469124f26b0b93ffb, type: 3}
@@ -19,7 +20,7 @@ MonoBehaviour:
   purchasePrice: 0
   dropChance: 0
   isStackable: 1
-  maxStackAmount: 4
+  maxStackAmount: 100
   spriteType: 0
   itemType: 5
   itemPrefab: {fileID: 0}

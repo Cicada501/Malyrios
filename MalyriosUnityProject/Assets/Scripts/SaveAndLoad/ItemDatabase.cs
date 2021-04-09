@@ -5,7 +5,8 @@ using Malyrios.Items;
 
 public class ItemDatabase : MonoBehaviour
 {
-[SerializeField] BaseItem[] Items;
+[SerializeField] BaseItem[] Items = null;
+[SerializeField] BaseWeapon[] Weapons = null;
 void Start(){
     
 }

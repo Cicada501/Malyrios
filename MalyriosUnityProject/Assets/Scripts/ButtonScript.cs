@@ -24,16 +24,17 @@ public class ButtonScript : MonoBehaviour
     receivedDodgeInput = false;
     receivedOpenInventoryInput = false;
     receivedAbility1_input = false;
+    buttons.gameObject.SetActive(true);
        
     }
-    private void Update() {
+    /* private void Update() {
         if (!Player.androidMode && disableOnPC){  
             buttons.gameObject.SetActive(false);
         }else{
             buttons.gameObject.SetActive(true);
         }
     }
-
+ */
 
     //Open Inventory Button
     public void OpenInventoryButton()

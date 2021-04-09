@@ -33,15 +33,17 @@ public class Inventory : MonoBehaviour
     
     #endregion
     
-    [SerializeField] private ItemDatabase database;
+    [SerializeField] private ItemDatabase database = null;
     
     private void Start()
-    {
-        InvokeRepeating("SaveInventory", 2f, 2f);  //1s delay, repeat every 1s
+    {   
+        LoadInventory();
+        //Save Inventory state each second
+        InvokeRepeating("SaveInventory", 2f, 2f);  //2s delay, repeat every 2s
         // This is just for test purposes
         testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
         AddItem(testWeapon);
-        LoadInventory();
+        
     }
 
     //Neccecary to use OnSceneLoaded

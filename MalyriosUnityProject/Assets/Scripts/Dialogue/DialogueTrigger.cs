@@ -6,7 +6,7 @@ namespace Malyrios.Dialogue
     public class DialogueTrigger : MonoBehaviour
     {
         [SerializeField] private float talkRadius = 0.2f;
-        [SerializeField] TextMeshProUGUI interactableText;
+        [SerializeField] TextMeshProUGUI interactableText = null;
         private DialogueManager manager;
         private Dialogue dialogue;
         private bool triggered;
@@ -41,7 +41,7 @@ namespace Malyrios.Dialogue
                 }
                
             }
-            if (this.triggered && Player.interactInput)
+            if (this.triggered && Player.interactInput && inTalkRange)
             {
                 Player.interactInput = false;
                 this.manager.StartDialogue(this.dialogue);

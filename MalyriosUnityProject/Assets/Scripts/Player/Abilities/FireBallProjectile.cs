@@ -5,8 +5,9 @@ using UnityEngine;
 public class FireBallProjectile : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed = 1f;
-    [SerializeField] GameObject impactEffect;
+    [SerializeField] GameObject impactEffect = null;
     private Rigidbody2D rigidBody;
+    
     
     void Start()
     {   //rigidBody has continoous velocity forward

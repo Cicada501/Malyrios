@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI positionText;
     [SerializeField] Vector3 spawnPoint = new Vector3(0.0f,0.0f,0.0f);
     [SerializeField] AudioSource jumpStart= null;
-    [SerializeField] AudioSource landing1= null;
+    //[SerializeField] AudioSource landing1= null;
     [SerializeField] AudioSource landing2= null;
     [SerializeField] ParticleSystem dust= null;
 
@@ -61,19 +63,21 @@ public class Player : MonoBehaviour
     public static bool inventoryInput;
     public static bool ability1_Input;
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    bool loadedPos = false;
+
+    /* void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StaticData.spawnPoint = spawnPoint;
-    }
+    } */
 
     // Use this for initialization
     void Start()
     {
         LoadPlayer();
-        //Invoke("PlayerToSpawnPoint", 0.05f);
+        InvokeRepeating("SavePlayer",1f,1f);
         //neccecarry to use OnSceneLoaded (otherwise its not called)
         //SceneManager.sceneLoaded += OnSceneLoaded;
-        androidMode = setAndroidMode;
+        //androidMode = setAndroidMode;
 
         playerAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -81,9 +85,26 @@ public class Player : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        StartCoroutine(loadPlayerDelayed());
+    }
+ 
+    IEnumerator loadPlayerDelayed()
+    {
+        yield return new WaitForSeconds(0.1f);
+        LoadPlayer();
+        Debug.Log("PlayerLoaded");
+    }
+
     void FixedUpdate()
     {
+        /* if(!loadedPos){
+            LoadPlayer();
+            loadedPos = true;
+        } */
+        
+        //positionText.text = transform.position.ToString();
 
         if (PlayerAttack.isAttacking)
         {
@@ -91,8 +112,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (androidMode)
-            {
+            /* if (androidMode)
+            { */
                 // Get input to variables
                 if (joystick.Horizontal < -0.2f)
                 {
@@ -107,6 +128,7 @@ public class Player : MonoBehaviour
                     horizontal = 0f;
                 }
                 vertical = joystick.Vertical;
+                /* 
 
             }
             else if (!androidMode)
@@ -115,7 +137,7 @@ public class Player : MonoBehaviour
 
                 horizontal = Input.GetAxis("Horizontal");
                 vertical = Input.GetAxis("Vertical");
-            }
+            } */
             speed = Mathf.Abs(horizontal);
 
 
@@ -182,23 +204,23 @@ public class Player : MonoBehaviour
     {
 
 
-        if (androidMode)
-        {
+        /* if (androidMode)
+        { */
             attackInput = ButtonScript.receivedAttackInput;
             dodgeInput = ButtonScript.receivedDodgeInput;
             jumpInput = ButtonScript.receivedJumpInput;
             interactInput = ButtonScript.receivedInteractInput;
             inventoryInput = ButtonScript.receivedOpenInventoryInput;
             ability1_Input = ButtonScript.receivedAbility1_input;
-        }
-        else
+        /*}
+         else
         {
             inventoryInput = Input.GetKey(KeyCode.I);
             attackInput = Input.GetMouseButtonDown(0);
             dodgeInput = Input.GetKey(KeyCode.Q);
             jumpInput = Input.GetKey(KeyCode.Space);
             interactInput = Input.GetKey(KeyCode.E);
-        }
+        } */
 
         if (dodgeInput && Time.time - usedBackJumpAt > backJumpRate)
         {
@@ -325,9 +347,10 @@ public class Player : MonoBehaviour
         position.z = data.position[2];
 
         transform.position = position;
+        positionText.text = position.ToString();
     }
-    void OnApplicationQuit()
+/*     void OnApplicationQuit()
     {
         SavePlayer();
-    }
+    } */
 }
