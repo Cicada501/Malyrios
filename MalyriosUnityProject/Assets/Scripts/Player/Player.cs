@@ -7,15 +7,14 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    
     [SerializeField] TextMeshProUGUI positionText;
-    [SerializeField] Vector3 spawnPoint = new Vector3(0.0f,0.0f,0.0f);
+    //public Vector3 spawnPoint = new Vector3(0.0f,0.0f,0.0f);
+    public Vector3 spawnPoint2 = new Vector3(0.0f,0.0f,0.0f);
     [SerializeField] AudioSource jumpStart= null;
     //[SerializeField] AudioSource landing1= null;
     [SerializeField] AudioSource landing2= null;
     [SerializeField] ParticleSystem dust= null;
-
-    [SerializeField]bool setAndroidMode= false;
-    public static bool androidMode;
     bool facingRight = true;
     SpriteRenderer spriteRenderer;
     [SerializeField] Animator playerAnimator= null;
@@ -63,18 +62,11 @@ public class Player : MonoBehaviour
     public static bool inventoryInput;
     public static bool ability1_Input;
 
-    bool loadedPos = false;
-
-    /* void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        StaticData.spawnPoint = spawnPoint;
-    } */
-
     // Use this for initialization
     void Start()
     {
         LoadPlayer();
-        InvokeRepeating("SavePlayer",1f,1f);
+        //InvokeRepeating("SavePlayer",1f,1f);
         //neccecarry to use OnSceneLoaded (otherwise its not called)
         //SceneManager.sceneLoaded += OnSceneLoaded;
         //androidMode = setAndroidMode;
@@ -92,19 +84,13 @@ public class Player : MonoBehaviour
  
     IEnumerator loadPlayerDelayed()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
         LoadPlayer();
         Debug.Log("PlayerLoaded");
     }
 
     void FixedUpdate()
-    {
-        /* if(!loadedPos){
-            LoadPlayer();
-            loadedPos = true;
-        } */
-        
-        //positionText.text = transform.position.ToString();
+    {       
 
         if (PlayerAttack.isAttacking)
         {
@@ -195,11 +181,7 @@ public class Player : MonoBehaviour
 
 
 
-    }//------------------------------------------------------------------------------------------------
-     //----------------------------------------------------------------------------------------------------
-
-
-    //####################################################################################################
+    }
     void Update()//#######################################################################################
     {
 
@@ -291,10 +273,7 @@ public class Player : MonoBehaviour
      //#########################################################################
 
 
-    /* void PlayerToSpawnPoint()
-    {
-        transform.position = StaticData.spawnPoint;
-    } */
+
 
 
 
@@ -349,8 +328,5 @@ public class Player : MonoBehaviour
         transform.position = position;
         positionText.text = position.ToString();
     }
-/*     void OnApplicationQuit()
-    {
-        SavePlayer();
-    } */
+
 }

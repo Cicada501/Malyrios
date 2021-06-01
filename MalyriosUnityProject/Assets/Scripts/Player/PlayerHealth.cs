@@ -26,6 +26,8 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     private Color playerOrigionalColor;
     private Color barFillOrigionalColor;
 
+    Player player;
+
     int regHealth;
 
 
@@ -33,6 +35,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     private void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
         this.baseAttributes = GetComponent<BaseAttributes>();
 
         //Remember original colors to reset after Flash
@@ -81,5 +84,18 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SavePlayer();
+        
+    }
+
+    IEnumerator savePlayerDelayed()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SavePlayer();
+        Debug.Log("PlayerSaved");
+    }
+
+    public void SavePlayer(){
+        SaveSystem.savePlayer(player);
     }
 }
