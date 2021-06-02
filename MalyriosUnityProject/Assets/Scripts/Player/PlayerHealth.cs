@@ -6,10 +6,12 @@ using Malyrios.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 [RequireComponent(typeof(BaseAttributes))]
 public class PlayerHealth : MonoBehaviour, IHealthController
 {
+    [SerializeField] GameObject[] spawnPoints = null;
     [SerializeField] float healthRegen = 0.1f;
     [SerializeField] float flashTime = 0.0f;
     [SerializeField] SpriteRenderer PlayerRenderer = null;
@@ -84,8 +86,29 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        player.spawnPoint2 = getLastSpawnPoint(spawnPoints);
         SavePlayer();
         
+    }
+
+    Vector3 getLastSpawnPoint(GameObject[] SpawnPoints){
+        float mindist = 1000;
+        GameObject nearestSpawnPoint = null;
+        float[] distances = new float[SpawnPoints.Length];
+        for(int i = 0; i < SpawnPoints.Length; i++)
+        {
+            distances[i] = Vector3.Distance(player.transform.position,SpawnPoints[i].transform.position);
+            if(distances[i] < mindist){
+                mindist = distances[i];
+                nearestSpawnPoint = spawnPoints[i];
+            }
+        }
+        print(SpawnPoints.Length);
+        print(Array.IndexOf(distances, mindist));
+        return nearestSpawnPoint.transform.position;
+        //lastSpawnPoint = ()
+        //spwanpoint = last Spawnpoint
     }
 
     IEnumerator savePlayerDelayed()

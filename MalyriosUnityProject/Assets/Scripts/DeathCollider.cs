@@ -14,7 +14,6 @@ public class DeathCollider : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
-            player.GetComponent<Player>().spawnPoint2 = spawnPoint;
             player.GetComponent<PlayerHealth>().Die();
         }
     }

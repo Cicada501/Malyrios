@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class TriggerFallingStones : MonoBehaviour
         
             rbStone.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
             rbStone.gravityScale = 5f;
-            StaticData.spawnPoint = new Vector3(24.5f,-10.8f,0f);
+            //StaticData.spawnPoint = new Vector3(24.5f,-10.8f,0f);
     
             
         }
