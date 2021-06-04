@@ -19,7 +19,6 @@ public class Inventory : MonoBehaviour
 
     #endregion
     
-    //public List<Item> items = new List<Item>();
     public static bool itemsLoaded = false;
 
     #region new inventory
@@ -45,40 +44,15 @@ public class Inventory : MonoBehaviour
         AddItem(testWeapon);
         
     }
+ 
 
-    //Neccecary to use OnSceneLoaded
-    /* void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    } */
-
-    /* void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        items = StaticData.itemsStatic;
-    } */
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="item"></param>
     public void AddItem(BaseItem item)
     {
         ItemIDs.Add(item.ItemID);
         Items.Add(item);
         OnItemAdded?.Invoke(item);
     }
-
-    void Update(){
-        foreach (var item in ItemIDs)
-        {
-            print("Item ID:"+ item);
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="item"></param>
+    
     public void Remove(BaseItem item)
     {
         

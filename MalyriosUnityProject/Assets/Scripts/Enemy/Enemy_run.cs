@@ -7,9 +7,7 @@ public class Enemy_run : StateMachineBehaviour
 
     public float basicSpeed = 1f;
     float speed;
-
-    [SerializeField]
-    float initAttackRange = 0;
+    [SerializeField] float initAttackRange = 0;
     public static float attackRange;
     Rigidbody2D rb;
     Transform player;
@@ -33,10 +31,8 @@ public class Enemy_run : StateMachineBehaviour
 
 		//if player is in range and enemy is alive, attack
         if (Vector2.Distance(rb.position, player.position) <= attackRange &&!animator.GetBool("isDead"))
-        {
-            
+        {            
             if(Time.time>=Enemy.nextAttackTime){
-
                 animator.SetTrigger("Attack");
                 speed = 0f;
             }
@@ -46,9 +42,7 @@ public class Enemy_run : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         animator.ResetTrigger("Attack");
-
     }
 
 

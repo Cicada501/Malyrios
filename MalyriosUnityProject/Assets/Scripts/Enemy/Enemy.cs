@@ -10,6 +10,7 @@ using TMPro;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] BaseItem dropItem = null;
+    
     [SerializeField] BaseItem dropRareItem = null;
     [SerializeField] int dropItemChance0 = 10; //chance to drop 0 times Item
     [SerializeField] int dropItemChance1 = 60; //chance to drop 1 times Item
@@ -24,7 +25,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRate = 1.5f;
     public static float nextAttackTime;
     float distToPlayer;
-    float distToPlayerY;
 
     [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.0f;
@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     bool facingRight = true;
     Animator animator;
+    
     [SerializeField] int maxHealth = 100;
     int currentHealth;
 
@@ -54,7 +55,6 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //damageText.transform.position = transform.up *10f;
     }
 
     private void Update()//-------------------------------------------------
@@ -62,6 +62,8 @@ public class Enemy : MonoBehaviour
         //Damage Text rising up
         damageText.transform.position += new Vector3(10f,10f,0f)* Time.deltaTime;
 
+
+        //Set is Attacking if attack animation plays
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") || animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
         {
             isAttacking = true;
@@ -71,31 +73,26 @@ public class Enemy : MonoBehaviour
         {
             isAttacking = false;
         }
-        if (distToPlayerY > 8)
-        {
-            distToPlayer = 0;
-        }
+
 
         //Recognize when Enemy has attacked, and set nextAttackTime
         if (animator.GetBool("Attack") == true)
         {
-
-
             nextAttackTime = Time.time + 1f / attackRate;
         }
 
         //Look at Player
         if (transform.position.x > player.position.x && facingRight && !isAttacking)
         {
-            enemyFlip();
+            EnemyFlip();
         }
         else if (transform.position.x < player.position.x && !facingRight && !isAttacking)
         {
-            enemyFlip();
+            EnemyFlip();
         }
 
         distToPlayer = Mathf.Abs(rb.position.x - player.position.x);
-        distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
+        //distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
         animator.SetFloat("distToPlayer", distToPlayer);
 
         if (distToPlayer <= Enemy_run.attackRange)
@@ -112,6 +109,14 @@ public class Enemy : MonoBehaviour
         damageText.SetText(damage.ToString());
         Instantiate(damageText,damageTextSpawn.position,Quaternion.identity);
     }
+    public void DealDamage(int damage)
+    {
+        Collider2D[] thatGotHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
+        if (thatGotHit.Length > 0)
+        {
+            player.GetComponent<IHealthController>().TakeDamage(damage);
+        }
+    }
     public void TakeDamage(int damage)
     {
         SpawnDamage(damage);
@@ -126,7 +131,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
-        else if (currentHealth < 0.4 * maxHealth)
+        else if (currentHealth < 0.4 * maxHealth) //bedingung hinzufügen: wenn isEnraged animation existiert ..
         {
             animator.SetBool("isEnraged", true);
         }
@@ -134,7 +139,7 @@ public class Enemy : MonoBehaviour
     }
 
     void Die()
-    {
+    {   
 
         isDead = true;
         animator.SetBool("isDead", isDead);
@@ -183,28 +188,19 @@ public class Enemy : MonoBehaviour
     }
 
 
-    void enemyFlip()
+    void EnemyFlip()
     {
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
+        
 
     }
 
     // used in animations
-    void Shake()
+    void Shake() //Not used yet?
     {
         CameraShake_Cinemachine.Shake(0.3f, 0.33f, 10f);
     }
-
-    public void DealDamage(int damage)
-    {
-        Collider2D[] thatGotHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
-        if (thatGotHit.Length > 0)
-        {
-            player.GetComponent<IHealthController>().TakeDamage(damage);
-        }
-    }
-
 
     //Draw enemy attack Circle
     private void OnDrawGizmosSelected()

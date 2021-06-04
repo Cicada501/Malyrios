@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] Rigidbody2D rb= null;
     float horizontal;
-    float vertical;
+    float verticalInput;
 
 
     [SerializeField] float horizontalSpeed = 1f;
@@ -66,79 +66,61 @@ public class Player : MonoBehaviour
     void Start()
     {
         LoadPlayer();
-        //InvokeRepeating("SavePlayer",1f,1f);
-        //neccecarry to use OnSceneLoaded (otherwise its not called)
-        //SceneManager.sceneLoaded += OnSceneLoaded;
-        //androidMode = setAndroidMode;
-
         playerAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-
     }
 
     private void Awake()
     {
-        StartCoroutine(loadPlayerDelayed());
-    }
- 
-    IEnumerator loadPlayerDelayed()
-    {
-        yield return new WaitForSeconds(0.01f);
         LoadPlayer();
-        Debug.Log("PlayerLoaded");
     }
 
     void FixedUpdate()
     {       
 
+        //Cant move while attacking
         if (PlayerAttack.isAttacking)
         {
             horizontal = 0;
         }
+        //Apply movement to player
         else
         {
-            /* if (androidMode)
-            { */
-                // Get input to variables
-                if (joystick.Horizontal < -0.2f)
-                {
-                    horizontal = -1f;
-                }
-                else if (joystick.Horizontal > 0.2f)
-                {
-                    horizontal = 1f;
-                }
-                else
-                {
-                    horizontal = 0f;
-                }
-                vertical = joystick.Vertical;
-                /* 
-
-            }
-            else if (!androidMode)
+            // Get input to variables
+            if (joystick.Horizontal < -0.4f)
             {
-                joystick.gameObject.SetActive(false);
-
-                horizontal = Input.GetAxis("Horizontal");
-                vertical = Input.GetAxis("Vertical");
-            } */
+                horizontal = -1f;
+            }
+            else if (joystick.Horizontal > 0.4f)
+            {
+                horizontal = 1f;
+            }
+            else if (joystick.Horizontal < -0.2f && joystick.Horizontal >= -0.4f)
+            {
+                horizontal = -0.5f;
+            }
+            else if (joystick.Horizontal > 0.2f && joystick.Horizontal <= 0.4f)
+            {
+                horizontal = 0.5f;
+            }
+            else{
+                horizontal = 0f;
+            }
+            verticalInput = joystick.Vertical;
+            
             speed = Mathf.Abs(horizontal);
-
-
         }
 
         //Climbing on Ladder
-        if (ladder.verticalMovementEnabled && vertical != 0)
+        if (ladder.verticalMovementEnabled && verticalInput != 0)
         {
             isClimbing = true;
-        }
-        else { isClimbing = false; }
+        }else  isClimbing = false; 
+        
         //apply input to player (moveing left, right, on ladder up and down)
         if (isClimbing)
         {
-            rb.velocity = new Vector2(horizontal * horizontalSpeed, vertical * verticalSpeed);
+            rb.velocity = new Vector2(horizontal * horizontalSpeed * 0.2f, verticalInput * verticalSpeed);
 
         }
         else
@@ -146,9 +128,6 @@ public class Player : MonoBehaviour
             if (horizontal != 0 && !usingPush)
             {
                 rb.velocity = new Vector2(horizontal * horizontalSpeed, rb.velocity.y);
-
-
-
             }
             else if (horizontal == 0 && !usingPush)
             {
@@ -156,8 +135,6 @@ public class Player : MonoBehaviour
             }
 
         }
-
-
 
         //face player in the right direction
         if (horizontal > 0 && !facingRight)
@@ -170,9 +147,6 @@ public class Player : MonoBehaviour
             flip();
         }
 
-
-
-
         //Animation
         playerAnimator.SetFloat("Speed", speed);
         playerAnimator.SetBool("isGrounded", (isGrunded));
@@ -184,25 +158,13 @@ public class Player : MonoBehaviour
     }
     void Update()//#######################################################################################
     {
-
-
-        /* if (androidMode)
-        { */
-            attackInput = ButtonScript.receivedAttackInput;
-            dodgeInput = ButtonScript.receivedDodgeInput;
-            jumpInput = ButtonScript.receivedJumpInput;
-            interactInput = ButtonScript.receivedInteractInput;
-            inventoryInput = ButtonScript.receivedOpenInventoryInput;
-            ability1_Input = ButtonScript.receivedAbility1_input;
-        /*}
-         else
-        {
-            inventoryInput = Input.GetKey(KeyCode.I);
-            attackInput = Input.GetMouseButtonDown(0);
-            dodgeInput = Input.GetKey(KeyCode.Q);
-            jumpInput = Input.GetKey(KeyCode.Space);
-            interactInput = Input.GetKey(KeyCode.E);
-        } */
+        //Get shorter input variable names
+        attackInput = ButtonScript.receivedAttackInput;
+        dodgeInput = ButtonScript.receivedDodgeInput;
+        jumpInput = ButtonScript.receivedJumpInput;
+        interactInput = ButtonScript.receivedInteractInput;
+        inventoryInput = ButtonScript.receivedOpenInventoryInput;
+        ability1_Input = ButtonScript.receivedAbility1_input;
 
         if (dodgeInput && Time.time - usedBackJumpAt > backJumpRate)
         {
@@ -210,10 +172,8 @@ public class Player : MonoBehaviour
             usedBackJumpAt = Time.time;
         }
 
-
         //check if player is on the Ground
         isGrunded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-
 
         //Jump
         if (isGrunded && jumpInput)
@@ -226,7 +186,6 @@ public class Player : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
         }
 
-
         //Check if player is falling for the animation
         if (rb.velocity.y < 0 && !(isGrunded) && !isClimbing)
         {
@@ -235,30 +194,27 @@ public class Player : MonoBehaviour
                 isFalling = true;
             }
 
-            //Catch the moment, when player is falling and grounded => landing
+        
         }
         else if (rb.velocity.y > -0.01)
         {
             isFalling = false;
         }
         cameraAnimator.ResetTrigger("Landing");
+
+        //Landing
         if (isFalling && isGrunded)
         {
             isFalling = false;
             cameraAnimator.SetTrigger("Landing");
             landing2.Play(); 
-
         }
-
-
 
         //Longer Jump on Space holding
         if (jumpInput && isJumping)
         {
-
             if (jumpTimeCounter > 0)
             {
-
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
             }
@@ -267,15 +223,8 @@ public class Player : MonoBehaviour
                 isJumping = false;
             }
         }
-
-
     }//########################################################################
      //#########################################################################
-
-
-
-
-
 
     void ResetVelocity()
     {

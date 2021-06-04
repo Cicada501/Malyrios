@@ -15,23 +15,14 @@ public class BackgroundLayereffect : MonoBehaviour {
 		camPosY = cam.transform.position.y;
 		startposX = transform.position.x;
 		startposY = transform.position.y;
-		//lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
-		//lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//float tempX = (cam.transform.position.x * (1 - parallaxEffectX));
-		//float tempY = (cam.transform.position.y * (1 - parallaxEffectY));
 		float distX = (cam.transform.position.x * parallaxEffectX);
 		float distY = ((cam.transform.position.y-camPosY) * parallaxEffectY);
 
 		transform.position = new Vector3(startposX + distX,startposY+ distY, transform.position.z);
-	
-		/* if(temp > startpos + length) startpos +=length;
-		else if(temp < startpos - length) startpos -=length; */
-		
-	
 	}
 }
 

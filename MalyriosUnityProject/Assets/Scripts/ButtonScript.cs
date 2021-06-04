@@ -11,37 +11,42 @@ public class ButtonScript : MonoBehaviour
     public static bool receivedJumpInput;
     public static bool receivedDodgeInput;
     public static bool receivedAbility1_input;
-    [SerializeField]  bool disableOnPC = false;
+    public static bool onInteractClick;
+
 
     Button buttons;
 
     void Start()
     {
-        buttons = GetComponent<Button>();
+    buttons = GetComponent<Button>();
     receivedAttackInput = false;
     receivedInteractInput = false;
     receivedJumpInput = false;
     receivedDodgeInput = false;
     receivedOpenInventoryInput = false;
     receivedAbility1_input = false;
+    onInteractClick = false;
     buttons.gameObject.SetActive(true);
        
     }
-    /* private void Update() {
-        if (!Player.androidMode && disableOnPC){  
-            buttons.gameObject.SetActive(false);
+
+    public void OnInteractClick(){
+
+        if(!onInteractClick){
+            onInteractClick = true;
         }else{
-            buttons.gameObject.SetActive(true);
+            onInteractClick = false;
         }
     }
- */
+
 
     //Open Inventory Button
-    public void OpenInventoryButton()
+/*     public void OpenInventoryButton()
     {
+        print("reciOpenInv:"+receivedOpenInventoryInput );
         receivedOpenInventoryInput = true;
        
-    }
+    } */
 
 
     //Attack Button

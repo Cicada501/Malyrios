@@ -5,21 +5,10 @@ using UnityEngine;
 public class ladder : MonoBehaviour
 {
     public static bool verticalMovementEnabled = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag =="Player"){
             verticalMovementEnabled = true;
+            //horizontalMovementEnabled = false; noch hinzufügen
         }
     }
     void OnTriggerExit2D(Collider2D other){

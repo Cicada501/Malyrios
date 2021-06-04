@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Add this script to an object that should make the Camera Shake on landing
 public class shakeOnLanding : MonoBehaviour
 {
 

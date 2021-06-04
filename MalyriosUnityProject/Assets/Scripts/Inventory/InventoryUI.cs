@@ -42,7 +42,6 @@ public class InventoryUI : MonoBehaviour
     {
         if (!itemsLoaded)
         {
-            // UpdateUI();
             itemsLoaded = true;
         }
 
@@ -86,59 +85,7 @@ public class InventoryUI : MonoBehaviour
         if (it != null) it.RemoveItem();
     }
 
-    private void UpdateUI()
-    {
-        // for (int i = 0; i < inventory.items.Count; i++)
-        // {
-        //     //gets position of items[i] in slots, if no slot has it yet, its -1
-        //     int pos = Array.IndexOf(slots.Select(x => x.item).ToArray(), inventory.items[i]);
-        //     int itemOccurrence = GetOccurrence(inventory.items[i], inventory.items);
-        //     int firstEmptySlot = Array.IndexOf(slots.Select(x => x.item).ToArray(), null);
-        //     print(firstEmptySlot);
-        //     //Collected new Items
-        //     if (pos == -1)
-        //     {
-        //         slots[firstEmptySlot].AddItem(inventory.items[i]);
-        //         if (itemOccurrence > 1)
-        //         {
-        //             slots[firstEmptySlot].amount = itemOccurrence - 1;
-        //             d += 1;
-        //         }
-        //         else
-        //         {
-        //             slots[firstEmptySlot].amount = 1;
-        //         }
-        //
-        //         print("first");
-        //     }
-        //     //Collected one Item to Stack
-        //     else if (itemOccurrence == slots[pos].amount + 1)
-        //     {
-        //         slots[pos].amount++;
-        //         d++; //speichere Anzahl an items, die keinen eigenen Slot benötigen
-        //         print("second");
-        //     }
-        //
-        //     print("D: " + d + " i:" + i + " slots[i].amount: " + slots[i].amount + " Occurrence: " + itemOccurrence);
-        // }
-        //
-        // //Clear empty slots
-        // foreach (InventorySlot slot in slots)
-        // {
-        //     if (slot.amount == 0)
-        //     {
-        //         slot.ClearSlot();
-        //     }
-        // }
-        //
-        // if (inventory.items.Count == 0)
-        // {
-        //     foreach (InventorySlot slot in slots)
-        //     {
-        //         slot.ClearSlot();
-        //     }
-        // }
-    }
+    
 
     private int GetOccurrence(Item item, List<Item> itemList)
     {

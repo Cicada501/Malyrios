@@ -17,11 +17,7 @@ public class Enemy_Idle : StateMachineBehaviour {
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		if (Vector2.Distance(rb.position, player.position) <= Enemy_run.attackRange &&!animator.GetBool("isDead"))
         {
-            //Debug.Log("Time: "+ Time.time + "  nextAttack: "+ Enemy.nextAttackTime);
             if(Time.time>=Enemy.nextAttackTime){
-
-				
-
                 animator.SetTrigger("Attack");
             }
         }
