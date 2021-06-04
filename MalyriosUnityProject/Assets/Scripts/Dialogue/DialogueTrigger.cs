@@ -3,7 +3,7 @@ using TMPro;
 
 namespace Malyrios.Dialogue
 {
-    public class DialogueTrigger : MonoBehaviour
+    public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         [SerializeField] private float talkRadius = 0.2f;
         [SerializeField] TextMeshProUGUI interactableText = null;
@@ -23,7 +23,9 @@ namespace Malyrios.Dialogue
         {
             this.whatCanTalkToMe = LayerMask.GetMask("Player");
         }
-
+        void IInteractable.Interact(){
+                this.manager.StartDialogue(this.dialogue);
+        }
         private void Update()
         {
             
@@ -41,14 +43,14 @@ namespace Malyrios.Dialogue
                 }
                
             }
-            if (this.triggered && Player.interactInput && inTalkRange)
+            /* if (this.triggered && Player.interactInput && inTalkRange)
             {
                 Player.interactInput = false;
                 this.manager.StartDialogue(this.dialogue);
                
-            }
+            } */
         }
-
+        
         private void OnTriggerStay2D(Collider2D other)
         {
             this.triggered = true;

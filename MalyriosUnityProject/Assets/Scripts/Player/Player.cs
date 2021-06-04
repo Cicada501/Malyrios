@@ -7,7 +7,7 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    
+    GameObject interactingWith;
     [SerializeField] TextMeshProUGUI positionText;
     //public Vector3 spawnPoint = new Vector3(0.0f,0.0f,0.0f);
     public Vector3 spawnPoint2 = new Vector3(0.0f,0.0f,0.0f);
@@ -223,8 +223,13 @@ public class Player : MonoBehaviour
                 isJumping = false;
             }
         }
+
+
     }//########################################################################
      //#########################################################################
+    
+
+    
 
     void ResetVelocity()
     {

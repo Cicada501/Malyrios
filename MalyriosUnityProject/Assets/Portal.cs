@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Portal : MonoBehaviour
+public class Portal : MonoBehaviour , IInteractable
 {
     [SerializeField] TextMeshProUGUI interactableText;
     [SerializeField] GameObject teleportPanel;
@@ -12,27 +12,10 @@ public class Portal : MonoBehaviour
 
     bool tpPanelOpen = false;
     bool buttonPressed = false;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-/*         print(buttonPressed);
-        buttonPressed = ButtonScript.onInteractClick;
-
-
-        if(playerInPortal){            
-            if(teleportPanel.activeSelf == false && buttonPressed){
-                teleportPanel.SetActive(true);
-            }
-            else if(buttonPressed && teleportPanel.activeSelf == true){
-                teleportPanel.SetActive(false);
-            }
-        } */
+    //Implement interact Method for interface
+    void IInteractable.Interact(){
+        OpenTeleportPanel();
     }
 
     public void OpenTeleportPanel(){
