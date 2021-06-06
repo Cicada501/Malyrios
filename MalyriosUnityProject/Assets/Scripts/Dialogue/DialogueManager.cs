@@ -17,6 +17,7 @@ namespace Malyrios.Dialogue
         [SerializeField] private Transform content = null;
         [SerializeField] private TextMeshProUGUI sentence = null;
 
+
         #endregion
 
         #region Private Variables
@@ -24,7 +25,6 @@ namespace Malyrios.Dialogue
         private Dialogue dialogueText;
         private Queue<string> sentenceQueue;
         private int linkedId;
-
         #endregion
 
         private void Start()
@@ -92,10 +92,13 @@ namespace Malyrios.Dialogue
         /// </summary>
         private void ShowAnswers()
         {
-            DialogueText dialogueText = this.dialogueText.DialogueText.SingleOrDefault(x => x.SentenceId == this.linkedId);
+            
+
+        DialogueText dialogueText = this.dialogueText.DialogueText.SingleOrDefault(x => x.SentenceId == this.linkedId);
             if (dialogueText.Answers.Count == 0) return;
             foreach (DialogueAnswers answer in dialogueText.Answers)
             {
+                
                 GameObject go = Instantiate(this.answerButton, this.content);
                 go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"> { answer.AnswerDescription }";
                 go.GetComponent<Button>().onClick.AddListener(() => GetNextSentences(answer.LinkedToSentenceId));
