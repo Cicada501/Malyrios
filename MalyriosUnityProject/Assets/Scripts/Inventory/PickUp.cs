@@ -2,7 +2,7 @@
 using UnityEngine;
 using TMPro;
 
-public class PickUp : MonoBehaviour
+public class PickUp : MonoBehaviour, IInteractable
 {
     [SerializeField] TextMeshProUGUI tmpText = null;
     [SerializeField] private float pickUpRadius = 0.2f;
@@ -38,12 +38,12 @@ public class PickUp : MonoBehaviour
             ShowPickUpDialog();
             this.showText = true;
             
-            if (Player.interactInput)
-            {
-                PickUpItem();
-                //Dont pick up multiple items at once
-                Player.interactInput = false;
-            }
+            //if (Player.interactInput)
+            //{
+            //    PickUpItem();
+            //    //Dont pick up multiple items at once
+            //    Player.interactInput = false;
+            //}
         }
         else
         {
@@ -73,5 +73,10 @@ public class PickUp : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, this.pickUpRadius);
+    }
+
+    public void Interact()
+    {
+        PickUpItem();
     }
 }

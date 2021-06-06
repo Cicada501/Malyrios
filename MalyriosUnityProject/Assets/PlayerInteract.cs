@@ -7,6 +7,7 @@ public class PlayerInteract : MonoBehaviour
     IInteractable interactable = null;
     void Update(){
         interactable = GetClosestInteractable().GetComponent<IInteractable>();
+        print(interactable);
     }
 
     public void Interact(){
