@@ -31,6 +31,7 @@ namespace Malyrios.Dialogue
         {
             this.sentenceQueue = new Queue<string>();
             this.gameObject.SetActive(false);
+
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace Malyrios.Dialogue
             if (linkedId == -1)
             {
                 this.gameObject.SetActive(false);
+                DeleteOldAnswers();
                 return;
             }
 
