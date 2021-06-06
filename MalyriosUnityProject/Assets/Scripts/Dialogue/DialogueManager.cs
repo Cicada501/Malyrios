@@ -81,6 +81,7 @@ namespace Malyrios.Dialogue
         /// </summary>
         public void NextSentence()
         {
+            //this.sentence.text = this.sentenceQueue.Peek();
             StartCoroutine(WriteSentence(this.sentenceQueue.Peek()));
             this.sentenceQueue.Dequeue();
         }
@@ -117,7 +118,7 @@ namespace Malyrios.Dialogue
                     this.sentence.text += letter;
                     if(letter == '.')
                     {
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(0.2f);
                     }
                     yield return new WaitForSeconds(1 / this.writingSpeed);
                 }
