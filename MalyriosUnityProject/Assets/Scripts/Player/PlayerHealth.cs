@@ -12,7 +12,7 @@ using System;
 public class PlayerHealth : MonoBehaviour, IHealthController
 {
     [SerializeField] GameObject[] spawnPoints = null;
-    [SerializeField] float healthRegen = 0.1f;
+    [SerializeField] float healthRegen = 0.0f;
     [SerializeField] float flashTime = 0.0f;
     [SerializeField] SpriteRenderer PlayerRenderer = null;
     [SerializeField] Image HealthFill = null;
@@ -92,8 +92,13 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         
     }
 
+    public void Heal(int heal)
+    {
+        baseAttributes.CurrentHealth += heal;
+    }
+
     Vector3 getLastSpawnPoint(GameObject[] SpawnPoints){
-        float mindist = 1000;
+        float mindist = 100000;
         GameObject nearestSpawnPoint = null;
         float[] distances = new float[SpawnPoints.Length];
         for(int i = 0; i < SpawnPoints.Length; i++)

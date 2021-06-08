@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     [SerializeField] float verticalSpeed = 1f;
     [SerializeField] float jumpTime = 0;
 
-
     public static bool isGrunded;
     public static bool isFalling = false;
     public static bool attackInput;

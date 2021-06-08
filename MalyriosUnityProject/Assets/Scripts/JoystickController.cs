@@ -8,6 +8,7 @@ public class JoystickController : MonoBehaviour
     [SerializeField] Joystick joystick;
     private float width;
     private float height;
+    bool joystickActive;
 
 
     void Awake()
@@ -16,12 +17,13 @@ public class JoystickController : MonoBehaviour
         height = (float)Screen.height / 3.0f;
 
         // Position used for the cube.
-        position = new Vector3(0.0f, 0.0f, 0.0f);
+        
     }
 
     void Start()
     {
-        joystick.gameObject.SetActive(false);
+        joystickActive = false;
+        //joystick.gameObject.SetActive(false);
     }
 
 
@@ -36,15 +38,17 @@ public class JoystickController : MonoBehaviour
 
             Vector2 pos = touch.position;
 
-            if(pos.x < width && pos.y < height && !joystick.gameObject.activeSelf)
+            if(pos.x < width && pos.y < height && !joystickActive)
             {
                 joystick.gameObject.transform.position = new Vector3(pos.x, pos.y, 0);
-                joystick.gameObject.SetActive(true);
+                //joystick.gameObject.SetActive(true);
+                joystickActive = true;
             }
         }
         else
         {
-            joystick.gameObject.SetActive(false);
+            //joystick.gameObject.SetActive(false);
+            joystickActive = false;
         }
 
     }

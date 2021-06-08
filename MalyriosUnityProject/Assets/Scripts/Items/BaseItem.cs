@@ -37,6 +37,9 @@ namespace Malyrios.Items
         [SerializeField] protected ItemTypes itemType = 0;
         [SerializeField] protected GameObject itemPrefab = null;
 
+        
+        
+
         public int ItemID => this.itemID;
         public string ItemName => this.itemName;
         public string Description => description;
@@ -50,6 +53,13 @@ namespace Malyrios.Items
         public ItemTypes ItemType => this.itemType;
         public GameObject ItemPrefab => this.itemPrefab;
 
+        private PlayerHealth playerHealth;
+
+        void Awake()
+        {
+            
+        }
+
         public BaseItem InitItem(int id,string name, string description, SpriteTypes spriteType, bool isStackable = false, int maxStackAmount = 0)
         {
             this.itemID = id;
@@ -61,6 +71,16 @@ namespace Malyrios.Items
             this.itemType = ItemTypes.Other;
 
             return this;
+        }
+
+        public void Use()
+        {
+            PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+            if (this.itemName == "Red Flower")
+            {
+                playerHealth.Heal(30);
+            }
+            //Inventory.Instance.Remove(this);
         }
 
         protected Sprite GetSprite(SpriteTypes spriteType)

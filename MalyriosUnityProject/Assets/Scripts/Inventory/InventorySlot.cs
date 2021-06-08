@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler, IOnSlotRightClick, ISlot
 {
+
     [SerializeField] Text amountText = null;
 
     private Stack<BaseItem> itemStack = new Stack<BaseItem>();
@@ -97,17 +98,34 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         this.amountText.gameObject.SetActive(false);
     }
 
+    public void UseItem()
+    {
+        item.Use();
+        this.itemStack.Pop();
+        this.amountText.text = itemStack.Count.ToString();
+        if (this.itemStack.Count <= 0)
+        {
+            this.transform.GetChild(3).GetComponent<Image>().enabled = false;
+            RemoveItem();
+        }
+        UIManager.Instance.HideTooltip();
+    }
+
     /// <summary>
     /// Show tooltip
     /// </summary>
     /// <param name="eventData"></param>
+
+    //On Hover Show item
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (this.item != null)
         {
+            //UseItem();
             UIManager.Instance.ShowTooltip(this.transform.position, this.item as IItemDescriber);
         }
     }
+
 
     /// <summary>
     /// Hide tooltip
