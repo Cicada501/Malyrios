@@ -39,16 +39,6 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-
-    //Open Inventory Button
-/*     public void OpenInventoryButton()
-    {
-        print("reciOpenInv:"+receivedOpenInventoryInput );
-        receivedOpenInventoryInput = true;
-       
-    } */
-
-
     //Attack Button
     public void ClickAttackButton()
     {

@@ -104,8 +104,6 @@ public class PlayerHealth : MonoBehaviour, IHealthController
                 nearestSpawnPoint = spawnPoints[i];
             }
         }
-        print(SpawnPoints.Length);
-        print(Array.IndexOf(distances, mindist));
         return nearestSpawnPoint.transform.position;
         //lastSpawnPoint = ()
         //spwanpoint = last Spawnpoint
