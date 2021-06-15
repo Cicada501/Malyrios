@@ -9,7 +9,7 @@ public class PlayerData
 
     public PlayerData(Player player){
         
-         position = new float[3];
+        position = new float[3];
         position[0] = player.spawnPoint2.x;
         position[1] = player.spawnPoint2.y;
         position[2] = player.spawnPoint2.z; 

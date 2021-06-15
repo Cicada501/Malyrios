@@ -88,6 +88,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         player.spawnPoint2 = getLastSpawnPoint(spawnPoints);
+        //SaveInventory();
         SavePlayer();
         
     }
@@ -110,16 +111,9 @@ public class PlayerHealth : MonoBehaviour, IHealthController
             }
         }
         return nearestSpawnPoint.transform.position;
-        //lastSpawnPoint = ()
-        //spwanpoint = last Spawnpoint
     }
 
-    IEnumerator savePlayerDelayed()
-    {
-        yield return new WaitForSeconds(0.1f);
-        SavePlayer();
-        Debug.Log("PlayerSaved");
-    }
+
 
     public void SavePlayer(){
         SaveSystem.savePlayer(player);

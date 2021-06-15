@@ -39,12 +39,21 @@ public class Inventory : MonoBehaviour
         LoadInventory();
         //Save Inventory state each second
         InvokeRepeating("SaveInventory", 2f, 2f);  //2s delay, repeat every 2s
+        InvokeRepeating("PrintInventory", 1f, 1f);
         // This is just for test purposes
         testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
         AddItem(testWeapon);
         
     }
- 
+    
+    void PrintInventory()
+    {
+        Debug.Log(ItemIDs);
+        foreach(var item in ItemIDs)
+        {
+            Debug.Log(item);
+        }
+    }
 
     public void AddItem(BaseItem item)
     {
@@ -68,10 +77,13 @@ public class Inventory : MonoBehaviour
     public void LoadInventory(){
         InventoryData data = SaveSystem.LoadInventory();
         //int[] testData = new int[] {2,3,4};
-        foreach (var item in data.itemIDs)
+
+        
+        foreach (var itemID in data.itemIDs)
         {
-            AddItem(database.GetItem(item));
+                AddItem(database.GetItem(itemID));           
         }
+        //get Stack size from amout of occurences in ItemIDs
     }
 
 }
