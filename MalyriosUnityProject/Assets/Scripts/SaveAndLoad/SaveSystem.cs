@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
     //Player
-    public static void savePlayer(Player player){
+    public static void SavePlayer(Player player){
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.mydata";
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -30,12 +30,14 @@ public static class SaveSystem
         }else
         {
             Debug.LogError("Save file not found in" + path);
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            SavePlayer(player);
             return null;
         }
     }
 
     //Inventory
-    public static void saveInventory(Inventory inventory){
+    public static void SaveInventory(Inventory inventory){
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/inventory.mydata";
         FileStream stream = new FileStream(path, FileMode.Create);

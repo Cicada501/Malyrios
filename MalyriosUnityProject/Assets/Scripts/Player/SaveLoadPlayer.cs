@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public class SaveLoadPlayer : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI positionText;
+    [SerializeField] private TextMeshProUGUI positionText;
 
-    Player player;
+    private Player player;
     private void Awake()
     {
         LoadPlayer();
@@ -17,9 +18,16 @@ public class SaveLoadPlayer : MonoBehaviour
         player = GetComponent<Player>();
     }
 
+    private void OnApplicationQuit()
+    {
+        SaveSystem.SavePlayer(player);
+        
+        Debug.Log("Saved"+player.gameObject.transform.position);
+    }
 
-    static public void SavePlayer(Player player){
-        SaveSystem.savePlayer(player);
+
+    public static void SavePlayer(Player player){
+        SaveSystem.SavePlayer(player);
     }
 
     //Called in Start() Should later only be called once at Application start

@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
     }
 
     public void SaveInventory(){
-        SaveSystem.saveInventory(this);
+        SaveSystem.SaveInventory(this);
     }
 
     public void LoadInventory(){

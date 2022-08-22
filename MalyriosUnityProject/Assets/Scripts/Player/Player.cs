@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Serialization;
 
 
 public class Player : MonoBehaviour
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
     public static bool inventoryInput;
     public static bool ability1_Input;
 
-    public Vector3 spawnPoint2 = new Vector3(0.0f,0.0f,0.0f);
+    /*[FormerlySerializedAs("spawnPoint2")]*/ public Vector3 closestSpawnPoint = new Vector3(0.0f,0.0f,0.0f);
     public float jumpForce;
     public float backJumpRate = 0.5f;
 

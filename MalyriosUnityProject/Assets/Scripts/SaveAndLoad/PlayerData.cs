@@ -10,8 +10,9 @@ public class PlayerData
     public PlayerData(Player player){
         
         position = new float[3];
-        position[0] = player.spawnPoint2.x;
-        position[1] = player.spawnPoint2.y;
-        position[2] = player.spawnPoint2.z; 
+        var savePosition = player.transform.position;
+        position[0] = savePosition.x;
+        position[1] = savePosition.y;
+        position[2] = savePosition.z; 
     }    
 }

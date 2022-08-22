@@ -87,7 +87,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        player.spawnPoint2 = getLastSpawnPoint(spawnPoints);
+        player.closestSpawnPoint = getClosestSpawnPoint(spawnPoints);
         //SaveInventory();
         SavePlayer();
         
@@ -98,7 +98,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         baseAttributes.CurrentHealth += heal;
     }
 
-    Vector3 getLastSpawnPoint(GameObject[] SpawnPoints){
+    Vector3 getClosestSpawnPoint(GameObject[] SpawnPoints){
         float mindist = 100000;
         GameObject nearestSpawnPoint = null;
         float[] distances = new float[SpawnPoints.Length];
@@ -116,6 +116,6 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
 
     public void SavePlayer(){
-        SaveSystem.savePlayer(player);
+        SaveSystem.SavePlayer(player);
     }
 }
