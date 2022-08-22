@@ -19,21 +19,24 @@ public static class SaveSystem
     }
     public static PlayerData LoadPlayer(){
         string path = Application.persistentDataPath + "/player.mydata";
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream;
         if(File.Exists(path)){
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+           
+             stream = new FileStream(path, FileMode.Open);
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-            stream.Close();
-
-            return data;
+            
         }else
         {
             Debug.LogError("Save file not found in" + path);
             Player player = GameObject.Find("Player").GetComponent<Player>();
             SavePlayer(player);
-            return null;
+            stream = new FileStream(path, FileMode.Open);
         }
+        PlayerData data = formatter.Deserialize(stream) as PlayerData;
+        stream.Close();
+
+        return data;
     }
 
     //Inventory
