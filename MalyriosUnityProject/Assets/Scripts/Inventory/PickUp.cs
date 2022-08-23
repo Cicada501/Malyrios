@@ -7,7 +7,7 @@ public class PickUp : MonoBehaviour, IInteractable
     [SerializeField] TextMeshProUGUI tmpText = null;
     [SerializeField] private float pickUpRadius = 0.2f;
     [SerializeField] private BaseItem baseItem = null;
-    public Item item;
+    
     private LayerMask whatCanPickMeUp;
     private SpriteRenderer spriteRenderer;
     private bool showText;
