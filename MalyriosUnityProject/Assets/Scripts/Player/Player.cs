@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Items;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
     {
         
         playerAnimator = GetComponent<Animator>();
-
+        
     }
 
     void FixedUpdate()

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,16 @@ public class InventoryData
     public int[] itemIDs;
     
     public InventoryData(Inventory inventory){
-        itemIDs = inventory.ItemIDs.ToArray();
+        if (!inventory.isEmpty)
+        {
+            itemIDs = inventory.ItemIDs.ToArray();
+        }
+        else
+        {
+            itemIDs = Array.Empty<int>();
+            Debug.LogError("Inventory is empty");
+        }
+        
     }
 
 }

@@ -8,6 +8,9 @@ public class SaveLoadPlayer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI positionText;
 
     private Player player;
+    private Inventory inventory;
+    
+
     private void Awake()
     {
         LoadPlayer();
@@ -15,13 +18,15 @@ public class SaveLoadPlayer : MonoBehaviour
     void Start()
     {
         LoadPlayer();
-        player = GetComponent<Player>();
+        player = GetComponent<Player>(); 
+        inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        
     }
 
     private void OnApplicationQuit()
     {
         SaveSystem.SavePlayer(player);
-        
+        SaveSystem.SaveInventory(inventory);
         Debug.Log("Saved"+player.gameObject.transform.position);
     }
 

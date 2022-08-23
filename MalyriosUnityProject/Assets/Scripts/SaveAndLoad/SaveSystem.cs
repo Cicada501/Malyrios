@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Malyrios.Items;
 
 //static -> can not be instantiated. Dont want multiple versions of it
 public static class SaveSystem
 {
     //Player
-    public static void SavePlayer(Player player){
+    public static void SavePlayer(Player player)
+    {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.mydata";
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -17,22 +19,19 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
-    public static PlayerData LoadPlayer(){
+
+    public static PlayerData LoadPlayer()
+    {
         string path = Application.persistentDataPath + "/player.mydata";
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream;
-        if(File.Exists(path)){
-           
-             stream = new FileStream(path, FileMode.Open);
-
-            
-        }else
+        if (!File.Exists(path))
         {
             Debug.LogError("Save file not found in" + path);
             Player player = GameObject.Find("Player").GetComponent<Player>();
             SavePlayer(player);
-            stream = new FileStream(path, FileMode.Open);
         }
+
+        var stream = new FileStream(path, FileMode.Open);
         PlayerData data = formatter.Deserialize(stream) as PlayerData;
         stream.Close();
 
@@ -40,7 +39,8 @@ public static class SaveSystem
     }
 
     //Inventory
-    public static void SaveInventory(Inventory inventory){
+    public static void SaveInventory(Inventory inventory)
+    {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/inventory.mydata";
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -51,22 +51,34 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
-    
-    public static InventoryData LoadInventory(){
+
+    public static InventoryData LoadInventory()
+    {
         string path = Application.persistentDataPath + "/inventory.mydata";
-        if(File.Exists(path)){
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            InventoryData data = formatter.Deserialize(stream) as InventoryData;
-            stream.Close();
-
-            return data;
-        }else
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream;
+        if (!File.Exists(path))
         {
             Debug.LogError("Save file not found in" + path);
-            return null;
+            Inventory inventory = GameObject.Find("Player").GetComponent<Inventory>();
+            
+            SaveInventory(inventory);
         }
-    }
 
+        stream = new FileStream(path, FileMode.Open);
+        InventoryData data;
+        if (stream.Length>0)
+        {
+          data = formatter.Deserialize(stream) as InventoryData;  
+        }
+        else
+        {
+            Inventory inventory = GameObject.Find("Player").GetComponent<Inventory>();
+            data = new InventoryData(inventory);
+        }
+        
+        stream.Close();
+
+        return data;
+    }
 }
