@@ -7,7 +7,7 @@ public class Portal : MonoBehaviour , IInteractable
 {
     [SerializeField] TextMeshProUGUI interactableText;
     [SerializeField] GameObject teleportPanel;
-    bool playerInPortal = false;
+    private bool playerInPortal = false;
     bool interacting = false;
 
     bool tpPanelOpen = false;
@@ -18,7 +18,7 @@ public class Portal : MonoBehaviour , IInteractable
         OpenTeleportPanel();
     }
 
-    public void OpenTeleportPanel(){
+    private void OpenTeleportPanel(){
         if(teleportPanel.activeSelf == false){
             teleportPanel.SetActive(true);
         }else{
@@ -38,7 +38,7 @@ public class Portal : MonoBehaviour , IInteractable
     void OnTriggerExit2D(Collider2D other){
         if(other.tag =="Player"){
                 interactableText.gameObject.SetActive(false);
-            if(teleportPanel.activeSelf == true){
+            if(teleportPanel.activeSelf){
                 teleportPanel.SetActive(false);
                 playerInPortal = false;
                 
