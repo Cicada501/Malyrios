@@ -59,7 +59,6 @@ public class Enemy : MonoBehaviour
         //Damage Text rising up
         damageText.transform.position += new Vector3(10f, 10f, 0f) * Time.deltaTime;
 
-
         //Set is Attacking if attack animation plays
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
@@ -87,10 +86,12 @@ public class Enemy : MonoBehaviour
         {
             EnemyFlip();
         }
-
+        
         distToPlayer = Mathf.Abs(rb.position.x - player.position.x);
+        print("Dist"+distToPlayer);
         //distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
         animator.SetFloat("distToPlayer", distToPlayer);
+        
 
         if (distToPlayer <= Enemy_run.attackRange)
         {
@@ -105,7 +106,7 @@ public class Enemy : MonoBehaviour
         Instantiate(damageText, damageTextSpawn.position, Quaternion.identity);
     }
 
-    public void DealDamage(int damage)
+    public void DealDamage(int damage) //where used?
     {
         Collider2D[] thatGotHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
         if (thatGotHit.Length > 0)

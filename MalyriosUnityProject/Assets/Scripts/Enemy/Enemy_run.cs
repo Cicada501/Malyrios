@@ -28,7 +28,7 @@ public class Enemy_run : StateMachineBehaviour
         Vector2 target = new Vector2(player.position.x, rb.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime); //last arg gives how much to move each update( how long the vector is)
         rb.MovePosition(newPos);
-
+        Debug.Log(newPos);
 		//if player is in range and enemy is alive, attack
         if (Vector2.Distance(rb.position, player.position) <= attackRange &&!animator.GetBool("isDead"))
         {            

@@ -170,8 +170,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
-  damageText: {fileID: 0}
-  damageTextSpawn: {fileID: 0}
+  damageText: {fileID: 5239635712386450820, guid: 84c4b11787473e748994a74c5f9927f0,
+    type: 3}
+  damageTextSpawn: {fileID: 200069132060498882}
   facingRight: 0
   maxHealth: 100
 --- !u!50 &200069132668381809
