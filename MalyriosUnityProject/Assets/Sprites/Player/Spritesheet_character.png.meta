@@ -212,6 +212,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -221,11 +223,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -243,9 +245,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1644,6 +1649,70 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Spritesheet_character_49: -1524395296991348216
+      Spritesheet_character_61: -1037959775674682722
+      Spritesheet_character_2: -9154955264422979582
+      Spritesheet_character_0: -1038747618769000986
+      Spritesheet_character_33: -8320932221817230325
+      Spritesheet_character_11: -293156651530752486
+      Spritesheet_character_28: 8393700023579851599
+      Spritesheet_character_37: 3781233728891499938
+      Spritesheet_character_46: 160675138962513762
+      Spritesheet_character_62: 4268859403810512654
+      Spritesheet_character_42: -6447901257666432607
+      Spritesheet_character_18: 972276116634784500
+      Spritesheet_character_17: -5534639267337491606
+      Spritesheet_character_35: 6797431150394644656
+      Spritesheet_character_53: -2030058371752191542
+      Spritesheet_character_41: 325013723397116578
+      Spritesheet_character_54: -6009982377208633924
+      Spritesheet_character_48: 384940394225011419
+      Spritesheet_character_16: -8509645675919642646
+      Spritesheet_character_24: 6834373348128613222
+      Spritesheet_character_8: 3980015585418261018
+      Spritesheet_character_45: 8006766622977411522
+      Spritesheet_character_22: 7957594488373676313
+      Spritesheet_character_44: 1759160269390455345
+      Spritesheet_character_34: 8963266240308352688
+      Spritesheet_character_32: 821203939519732845
+      Spritesheet_character_55: -3234652013171287982
+      Spritesheet_character_20: 8406837410851663036
+      Spritesheet_character_13: 2174422268028464293
+      Spritesheet_character_52: -3931474183333515001
+      Spritesheet_character_19: 6643381519487246122
+      Spritesheet_character_14: -6665263198229385158
+      Spritesheet_character_21: 4312230644746534527
+      Spritesheet_character_1: -1110901389215448120
+      Spritesheet_character_39: 4131962218463621930
+      Spritesheet_character_56: 2561144678839098184
+      Spritesheet_character_25: 8483097450518582278
+      Spritesheet_character_23: 6610478932447023364
+      Spritesheet_character_30: 2524368545337412059
+      Spritesheet_character_27: 7076872360762548052
+      Spritesheet_character_59: 719822612174272823
+      Spritesheet_character_10: 3062454798290085730
+      Spritesheet_character_36: 4674424041201990820
+      Spritesheet_character_7: 7926185190406168912
+      Spritesheet_character_43: 7464034831604752240
+      Spritesheet_character_29: 7990584868138373529
+      Spritesheet_character_6: -7994047012449817946
+      Spritesheet_character_12: -8542609480910008600
+      Spritesheet_character_38: 3838437791599939300
+      Spritesheet_character_51: -5837645872329393009
+      Spritesheet_character_3: 2762995103599267673
+      Spritesheet_character_5: -1439027915788562750
+      Spritesheet_character_9: -5260047324929799684
+      Spritesheet_character_58: 6889100408287489030
+      Spritesheet_character_50: 929168221492532451
+      Spritesheet_character_31: 7132722835625435542
+      Spritesheet_character_40: 3993107878950207098
+      Spritesheet_character_47: -1324811852161945149
+      Spritesheet_character_26: -2724935598752380691
+      Spritesheet_character_15: 7425212617677205544
+      Spritesheet_character_57: 7493424761092532290
+      Spritesheet_character_4: 9017036584802222810
+      Spritesheet_character_60: 1485750002479855680
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

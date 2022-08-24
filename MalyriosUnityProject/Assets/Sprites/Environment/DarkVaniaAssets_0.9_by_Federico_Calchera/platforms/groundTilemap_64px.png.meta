@@ -86,6 +86,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -95,11 +97,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -117,9 +119,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -703,6 +708,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      groundTilemap_64px_18: -5909478859676018716
+      groundTilemap_64px_10: -5528712981902420078
+      groundTilemap_64px_4: -5945921359570604418
+      groundTilemap_64px_17: -7399372189920632359
+      groundTilemap_64px_3: 1736758960671752099
+      groundTilemap_64px_6: 618936876913260078
+      groundTilemap_64px_11: -5479181219190971099
+      groundTilemap_64px_12: -1168694544169522658
+      groundTilemap_64px_0: 2321901849830009242
+      groundTilemap_64px_15: -4018641664475968420
+      groundTilemap_64px_9: 4169209009723823293
+      groundTilemap_64px_5: -1306682682455823155
+      groundTilemap_64px_7: -1223900065947674120
+      groundTilemap_64px_13: -1397902647928228114
+      groundTilemap_64px_19: -7266493222565886236
+      groundTilemap_64px_1: -2748939673938178091
+      groundTilemap_64px_8: 3469353054082503863
+      groundTilemap_64px_2: 2166948329183118575
+      groundTilemap_64px_14: 4240423871984769447
+      groundTilemap_64px_16: -2406633409166595263
+      groundTilemap_64px_20: -7252896238511988322
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

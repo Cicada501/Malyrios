@@ -2507,6 +2507,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -2516,11 +2518,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -2538,9 +2540,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -7992,6 +7997,263 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      itemCollection23_56: -966951077522152785
+      itemCollection23_135: -5380571414253256600
+      itemCollection23_147: 3444591387085849522
+      itemCollection23_109: 6362570288218210361
+      itemCollection23_179: -8974353684197665253
+      itemCollection23_115: 6759871321849743243
+      itemCollection23_203: 3351992426509723416
+      itemCollection23_162: 5643480913071743183
+      itemCollection23_57: -7122310566755884053
+      itemCollection23_62: -8505555187260458042
+      itemCollection23_238: -8254325593398637216
+      itemCollection23_24: 7959644649453518166
+      itemCollection23_190: -5235440863938556838
+      itemCollection23_78: -2327902086685562415
+      itemCollection23_237: -5903898209588289910
+      itemCollection23_221: 358219977080050507
+      itemCollection23_123: 6506528401976494503
+      itemCollection23_88: -8936286697304880163
+      itemCollection23_185: 6780924748142544544
+      itemCollection23_91: -8293884466105973819
+      itemCollection23_173: -8520585159755333835
+      itemCollection23_158: -1857450404245835611
+      itemCollection23_121: 2014069890494546455
+      itemCollection23_160: -2099835803295952814
+      itemCollection23_170: 6970459855017478139
+      itemCollection23_124: 3865938376959966440
+      itemCollection23_174: 3673050555560748896
+      itemCollection23_223: 1104457889083855275
+      itemCollection23_140: -2284383152220699965
+      itemCollection23_37: -1156011414173220433
+      itemCollection23_23: -6105189279476836251
+      itemCollection23_214: -4162576389840371840
+      itemCollection23_32: -7471022399204001937
+      itemCollection23_178: 6164874235366288116
+      itemCollection23_53: 4365176550591659117
+      itemCollection23_15: 4412477252669977400
+      itemCollection23_120: 2388053698955204869
+      itemCollection23_218: 8554290272887234942
+      itemCollection23_234: 7330890440280047376
+      itemCollection23_235: 4706669368862661863
+      itemCollection23_245: -2003347894297933543
+      itemCollection23_106: -8164405390275184230
+      itemCollection23_142: 7481766318068500050
+      itemCollection23_66: -3138382307786827391
+      itemCollection23_241: -2306881756538409832
+      itemCollection23_68: 7209924607869905290
+      itemCollection23_197: -3347588706744723677
+      itemCollection23_231: -7611049705582175768
+      itemCollection23_94: 1265382963291769937
+      itemCollection23_239: 68963742509263283
+      itemCollection23_168: 8402296870831527154
+      itemCollection23_38: 8726802227053708276
+      itemCollection23_156: -8522802906662516120
+      itemCollection23_69: -7708981308890908932
+      itemCollection23_86: 5587287431605878837
+      itemCollection23_180: 4597321157150498551
+      itemCollection23_100: -4361822278629863667
+      itemCollection23_143: -8067971934180286087
+      itemCollection23_126: -8989678662939447212
+      itemCollection23_13: 3035541546607181008
+      itemCollection23_27: 5149091822732903886
+      itemCollection23_108: -551887331888813962
+      itemCollection23_129: 7348566035101235011
+      itemCollection23_77: 4074366127642828443
+      itemCollection23_19: 4941414833665744624
+      itemCollection23_243: -4157414740990472439
+      itemCollection23_83: 7480375506651792382
+      itemCollection23_119: 4355214599437508039
+      itemCollection23_255: 462081401846650107
+      itemCollection23_96: -8376617208590208233
+      itemCollection23_118: -233034911566355360
+      itemCollection23_2: -6362427480431493766
+      itemCollection23_154: -3660404144228550613
+      itemCollection23_111: -2426834641851437520
+      itemCollection23_229: 5188875126259176357
+      itemCollection23_41: 9191441360730964745
+      itemCollection23_71: -8787576725095050864
+      itemCollection23_212: 8875779069911865788
+      itemCollection23_171: -232487624333648750
+      itemCollection23_102: 9012059066526396676
+      itemCollection23_87: 4769938350440022251
+      itemCollection23_14: 6536796264459484593
+      itemCollection23_134: -716146698641253805
+      itemCollection23_128: 8872528200040874817
+      itemCollection23_131: 1236589852035104701
+      itemCollection23_99: -6475373113241716914
+      itemCollection23_251: -58418706146357155
+      itemCollection23_252: -6866221452103750881
+      itemCollection23_122: -6986695531095981906
+      itemCollection23_36: 7840562323678974709
+      itemCollection23_202: -6232638825289264607
+      itemCollection23_20: 5082891790290709007
+      itemCollection23_70: 4138519596253473801
+      itemCollection23_90: 7881245576640689680
+      itemCollection23_82: 5827304620383521670
+      itemCollection23_93: 6563771255218550256
+      itemCollection23_133: -850657471081863778
+      itemCollection23_139: -9061295486988515552
+      itemCollection23_39: -586592630735603944
+      itemCollection23_67: -2817985706708520020
+      itemCollection23_176: 5416857614377542745
+      itemCollection23_187: -6551109366749767873
+      itemCollection23_195: -1783764510360401644
+      itemCollection23_169: 4163143232740299523
+      itemCollection23_92: -5513224072382120922
+      itemCollection23_249: -5114033280621241245
+      itemCollection23_141: 7507852943801724897
+      itemCollection23_207: 2972676978378892503
+      itemCollection23_184: 5446226589817036825
+      itemCollection23_98: -7638428317861281896
+      itemCollection23_248: -8299964469116964120
+      itemCollection23_47: -3479926648627449167
+      itemCollection23_9: 8251462251495757787
+      itemCollection23_34: -1949908457933068939
+      itemCollection23_232: 2611595586275367643
+      itemCollection23_201: -3880294904198058595
+      itemCollection23_22: -8910358773622441937
+      itemCollection23_6: 8109431254457059962
+      itemCollection23_21: -6033015953429608049
+      itemCollection23_46: 5403043181713895378
+      itemCollection23_60: 3057419757950306365
+      itemCollection23_159: -6400732394146291475
+      itemCollection23_166: 1876716014103361023
+      itemCollection23_193: 5376606789694755941
+      itemCollection23_3: -5989046598439632911
+      itemCollection23_217: -2070538409493619709
+      itemCollection23_31: 4660563260834002336
+      itemCollection23_40: 2245085476229635521
+      itemCollection23_198: -5929332183228177840
+      itemCollection23_253: 7192144452269496053
+      itemCollection23_112: -3256472152365175416
+      itemCollection23_182: -2346367678277740747
+      itemCollection23_224: -3100813666304564577
+      itemCollection23_72: -5316725425039740813
+      itemCollection23_127: 283858942684459425
+      itemCollection23_175: 5745001254713823149
+      itemCollection23_183: -6983788575510250948
+      itemCollection23_79: -7811499026364900980
+      itemCollection23_105: 7509133574716360637
+      itemCollection23_153: -9065135086851242948
+      itemCollection23_81: 8703605435279015949
+      itemCollection23_242: 5819250702312146574
+      itemCollection23_65: 808244400192920370
+      itemCollection23_163: -8623253676746192611
+      itemCollection23_208: 2910827073482648803
+      itemCollection23_61: -6445311284814483962
+      itemCollection23_28: -1754523984917661461
+      itemCollection23_254: -8922643834374904636
+      itemCollection23_209: -4916681133655799241
+      itemCollection23_215: -724355242138723005
+      itemCollection23_12: -4039804955163676885
+      itemCollection23_188: -4942424959445733113
+      itemCollection23_200: -3750238344727462953
+      itemCollection23_95: 1255602834171769957
+      itemCollection23_89: 2502424367398274296
+      itemCollection23_167: 7309464278328082421
+      itemCollection23_33: 8643257250217780144
+      itemCollection23_145: -5277073882387753872
+      itemCollection23_161: 9047948370942586193
+      itemCollection23_205: 1779485262003265905
+      itemCollection23_85: -8268625315611331435
+      itemCollection23_5: -4132897409959182927
+      itemCollection23_8: -5921996738334363994
+      itemCollection23_220: -6745392603170454057
+      itemCollection23_194: -8362781308816714042
+      itemCollection23_151: -822979575955194791
+      itemCollection23_10: 1491787546817921347
+      itemCollection23_222: 1778654504699646516
+      itemCollection23_64: 2631347017999845597
+      itemCollection23_216: -6188877551109903694
+      itemCollection23_191: 782265645303397578
+      itemCollection23_63: -7466664793296382621
+      itemCollection23_25: 8536751705665853663
+      itemCollection23_75: -7452936470806928588
+      itemCollection23_192: 5888887821889879755
+      itemCollection23_76: 5435909853985738392
+      itemCollection23_80: -1300850927814171035
+      itemCollection23_113: -1231502495585402020
+      itemCollection23_157: -830653781797798741
+      itemCollection23_50: 7071014072903992348
+      itemCollection23_137: 7881780000679986350
+      itemCollection23_148: -1791635992854290510
+      itemCollection23_48: -6259784150500196267
+      itemCollection23_228: -7719751020043190599
+      itemCollection23_172: 6040936577488819927
+      itemCollection23_219: 267452406328687767
+      itemCollection23_52: 1967590555324529882
+      itemCollection23_45: -5389905048428003917
+      itemCollection23_17: -3005694729249073409
+      itemCollection23_199: -3920226996363265769
+      itemCollection23_54: -8818195717439447392
+      itemCollection23_247: -7498006803226330747
+      itemCollection23_35: -7149085834355307162
+      itemCollection23_116: 7453697928594991588
+      itemCollection23_110: 4363852034639204056
+      itemCollection23_230: -7408773108039849623
+      itemCollection23_250: -3213109398505560232
+      itemCollection23_138: -6046948558016273860
+      itemCollection23_130: -7137982217975899962
+      itemCollection23_49: -3957612239066194302
+      itemCollection23_58: 3928722275340606351
+      itemCollection23_74: -2863659386053927019
+      itemCollection23_210: 3311442459792639546
+      itemCollection23_114: 5390272441061478202
+      itemCollection23_1: 8936005016721843619
+      itemCollection23_59: 6926083355274723674
+      itemCollection23_136: -5339349975934807922
+      itemCollection23_103: -7444122493072104374
+      itemCollection23_150: 5587980379878222243
+      itemCollection23_4: -2106049998153481022
+      itemCollection23_97: 2974599723059159677
+      itemCollection23_18: 4577997287386106957
+      itemCollection23_51: 8642242360570063693
+      itemCollection23_211: 715496612620400793
+      itemCollection23_125: 8869338743218414029
+      itemCollection23_152: -3114794837534588257
+      itemCollection23_206: -1341168162078049788
+      itemCollection23_213: 7255737922495841664
+      itemCollection23_226: -7063701933113352247
+      itemCollection23_233: -4927568958684208699
+      itemCollection23_30: 8359396372927453734
+      itemCollection23_165: 7848247943977669911
+      itemCollection23_177: -4866617371215234313
+      itemCollection23_73: -8608577061939495916
+      itemCollection23_204: -2784736503978875978
+      itemCollection23_236: 2211600096335494782
+      itemCollection23_132: 4572330117172138205
+      itemCollection23_181: -5315057367767396106
+      itemCollection23_84: -3264743960167708414
+      itemCollection23_16: 2649976497334804088
+      itemCollection23_26: -519458317419609520
+      itemCollection23_146: 434256907887284369
+      itemCollection23_244: -6526191244788035868
+      itemCollection23_227: -8998370286816685672
+      itemCollection23_164: 1286797832676431586
+      itemCollection23_155: -1544594946458949505
+      itemCollection23_55: 2634655835141373360
+      itemCollection23_104: 2719492275123948136
+      itemCollection23_44: 105539049365743500
+      itemCollection23_240: -8510131889738712906
+      itemCollection23_101: -1254548681225112650
+      itemCollection23_0: -6318862804120586534
+      itemCollection23_196: 8044889166158597230
+      itemCollection23_246: -7933024886643769915
+      itemCollection23_186: -5814750187183476721
+      itemCollection23_107: -3642487341276688953
+      itemCollection23_29: 3533392313555295969
+      itemCollection23_117: 1606593289248507934
+      itemCollection23_42: -3753711415128974042
+      itemCollection23_189: -4871882673548019695
+      itemCollection23_144: -7589226654862233144
+      itemCollection23_149: 7085321794185770798
+      itemCollection23_7: 8416515526854738029
+      itemCollection23_11: 1621777438976350492
+      itemCollection23_43: 6725874149641289453
+      itemCollection23_225: 3183048824689870673
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

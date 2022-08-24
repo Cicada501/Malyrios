@@ -153,7 +153,7 @@ TextureImporter:
       213: -1331909673219160171
     second: tree-1_49
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -173,6 +173,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -182,11 +184,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -204,9 +206,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1367,6 +1373,57 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      tree-1_37: -4444207455096846377
+      tree-1_18: 6434588430441687679
+      tree-1_1: 7997157019760468465
+      tree-1_45: 610853819802277064
+      tree-1_6: -3606922293166642728
+      tree-1_32: -7587754676202957185
+      tree-1_7: 3018882488919824934
+      tree-1_10: -5529022345006093491
+      tree-1_20: -2302153537517256081
+      tree-1_22: -3164976052154853895
+      tree-1_21: -819812687903422568
+      tree-1_30: -3447536509668807713
+      tree-1_29: -5456237611229286742
+      tree-1_25: 4148683757425401932
+      tree-1_34: -6290467380481614329
+      tree-1_40: -4731359704882229249
+      tree-1_24: -4447668368500277618
+      tree-1_5: -4312939544470384542
+      tree-1_35: -1339334710579584160
+      tree-1_41: -2020361833426427622
+      tree-1_48: -88726313245834126
+      tree-1_49: -1331909673219160171
+      tree-1_14: 7557466821008547130
+      tree-1_13: -342875876743467382
+      tree-1_9: -6060953264193620443
+      tree-1_23: -2551520251236337396
+      tree-1_33: -8692519317895401992
+      tree-1_3: -8117180188913805617
+      tree-1_17: -4920887501366639656
+      tree-1_0: 1809095955692292853
+      tree-1_4: -4622593030430704516
+      tree-1_31: -6208083324534188831
+      tree-1_36: 5244342995427616885
+      tree-1_38: 6468782784129625325
+      tree-1_43: 567935530979479395
+      tree-1_2: 8267436921767530376
+      tree-1_39: 1469313575195683455
+      tree-1_12: -7112099106748438388
+      tree-1_44: -2643502112817048205
+      tree-1_47: -6555216334207735005
+      tree-1_8: -7435955635800697950
+      tree-1_15: 8243852935478007271
+      tree-1_26: 8219432655797888242
+      tree-1_42: 4254116500168827935
+      tree-1_27: 7957075776382567758
+      tree-1_28: -9067438463969105388
+      tree-1_19: 5476710126236445603
+      tree-1_16: -3540531532255518997
+      tree-1_11: -4609067111758121061
+      tree-1_46: 7625837367029487061
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

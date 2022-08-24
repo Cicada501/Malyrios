@@ -219,7 +219,7 @@ TextureImporter:
       213: 21300142
     second: modified_adv_sheet 1_71
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -239,6 +239,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -248,11 +250,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -270,9 +272,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1835,6 +1841,79 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      modified_adv_sheet 1_48: 21300096
+      modified_adv_sheet 1_52: 21300104
+      modified_adv_sheet 1_42: 21300084
+      modified_adv_sheet 1_61: 21300122
+      modified_adv_sheet 1_68: 21300136
+      modified_adv_sheet 1_28: 21300056
+      modified_adv_sheet 1_3: 21300006
+      modified_adv_sheet 1_39: 21300078
+      modified_adv_sheet 1_41: 21300082
+      modified_adv_sheet 1_7: 21300014
+      modified_adv_sheet 1_24: 21300048
+      modified_adv_sheet 1_62: 21300124
+      modified_adv_sheet 1_35: 21300070
+      modified_adv_sheet 1_56: 21300112
+      modified_adv_sheet 1_49: 21300098
+      modified_adv_sheet 1_1: 21300002
+      modified_adv_sheet 1_57: 21300114
+      modified_adv_sheet 1_60: 21300120
+      modified_adv_sheet 1_58: 21300116
+      modified_adv_sheet 1_5: 21300010
+      modified_adv_sheet 1_10: 21300020
+      modified_adv_sheet 1_71: 21300142
+      modified_adv_sheet 1_30: 21300060
+      modified_adv_sheet 1_36: 21300072
+      modified_adv_sheet 1_47: 21300094
+      modified_adv_sheet 1_9: 21300018
+      modified_adv_sheet 1_21: 21300042
+      modified_adv_sheet 1_2: 21300004
+      modified_adv_sheet 1_40: 21300080
+      modified_adv_sheet 1_25: 21300050
+      modified_adv_sheet 1_59: 21300118
+      modified_adv_sheet 1_23: 21300046
+      modified_adv_sheet 1_67: 21300134
+      modified_adv_sheet 1_69: 21300138
+      modified_adv_sheet 1_16: 21300032
+      modified_adv_sheet 1_19: 21300038
+      modified_adv_sheet 1_38: 21300076
+      modified_adv_sheet 1_45: 21300090
+      modified_adv_sheet 1_6: 21300012
+      modified_adv_sheet 1_22: 21300044
+      modified_adv_sheet 1_0: 21300000
+      modified_adv_sheet 1_54: 21300108
+      modified_adv_sheet 1_12: 21300024
+      modified_adv_sheet 1_8: 21300016
+      modified_adv_sheet 1_43: 21300086
+      modified_adv_sheet 1_15: 21300030
+      modified_adv_sheet 1_14: 21300028
+      modified_adv_sheet 1_55: 21300110
+      modified_adv_sheet 1_44: 21300088
+      modified_adv_sheet 1_20: 21300040
+      modified_adv_sheet 1_4: 21300008
+      modified_adv_sheet 1_31: 21300062
+      modified_adv_sheet 1_27: 21300054
+      modified_adv_sheet 1_53: 21300106
+      modified_adv_sheet 1_37: 21300074
+      modified_adv_sheet 1_64: 21300128
+      modified_adv_sheet 1_51: 21300102
+      modified_adv_sheet 1_32: 21300064
+      modified_adv_sheet 1_11: 21300022
+      modified_adv_sheet 1_33: 21300066
+      modified_adv_sheet 1_70: 21300140
+      modified_adv_sheet 1_63: 21300126
+      modified_adv_sheet 1_26: 21300052
+      modified_adv_sheet 1_18: 21300036
+      modified_adv_sheet 1_66: 21300132
+      modified_adv_sheet 1_29: 21300058
+      modified_adv_sheet 1_46: 21300092
+      modified_adv_sheet 1_50: 21300100
+      modified_adv_sheet 1_17: 21300034
+      modified_adv_sheet 1_65: 21300130
+      modified_adv_sheet 1_13: 21300026
+      modified_adv_sheet 1_34: 21300068
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

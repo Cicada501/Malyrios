@@ -126,7 +126,7 @@ TextureImporter:
       213: 7026102079263425026
     second: Trees_40
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -146,6 +146,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -155,11 +157,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -177,9 +179,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1151,6 +1157,48 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Trees_12: 3674274018525464506
+      Trees_2: -8911251428918342384
+      Trees_21: -1887086089100379131
+      Trees_35: -859223311362534506
+      Trees_30: 4244579630657827205
+      Trees_39: -5280414911533610492
+      Trees_23: -5991173765527052622
+      Trees_1: 6224024930817484846
+      Trees_6: -4324799369507234631
+      Trees_4: -8876335399824902483
+      Trees_15: 2454918138326063247
+      Trees_33: 267706734715281785
+      Trees_25: 1768285449835345138
+      Trees_13: -8461400778624424836
+      Trees_8: 7748518322702929914
+      Trees_0: 2572236292851511218
+      Trees_3: 2656247834339299217
+      Trees_27: 6875032075022375199
+      Trees_28: -3194691082469799694
+      Trees_37: -6817120851860892327
+      Trees_16: 5154625535158036097
+      Trees_29: 3006031363956488798
+      Trees_40: 7026102079263425026
+      Trees_18: -1313724128672361882
+      Trees_17: 1265192627629875440
+      Trees_34: -6959759524393793201
+      Trees_5: 5891757792927052577
+      Trees_7: 759678483730449176
+      Trees_20: 8452937478378570233
+      Trees_31: 8740114262013317274
+      Trees_9: 4367108985391724810
+      Trees_32: 473190265976946517
+      Trees_11: 5056307353415951033
+      Trees_10: 785381055666214426
+      Trees_19: -1333340960814779736
+      Trees_22: 1192501906508161305
+      Trees_24: 5879920995979633029
+      Trees_26: -6481440424811171691
+      Trees_36: -8351287461019181472
+      Trees_14: -1962202154345704850
+      Trees_38: 7278282918855398828
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

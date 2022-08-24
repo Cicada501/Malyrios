@@ -90,7 +90,7 @@ TextureImporter:
       213: 21300056
     second: red-ogre-Sheet_28
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -110,6 +110,8 @@ TextureImporter:
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -120,10 +122,10 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: 1
-    mipBias: -100
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -141,9 +143,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -803,6 +809,36 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      red-ogre-Sheet_6: 21300012
+      red-ogre-Sheet_22: 21300044
+      red-ogre-Sheet_28: 21300056
+      red-ogre-Sheet_27: 21300054
+      red-ogre-Sheet_13: 21300026
+      red-ogre-Sheet_14: 21300028
+      red-ogre-Sheet_18: 21300036
+      red-ogre-Sheet_9: 21300018
+      red-ogre-Sheet_2: 21300004
+      red-ogre-Sheet_16: 21300032
+      red-ogre-Sheet_25: 21300050
+      red-ogre-Sheet_10: 21300020
+      red-ogre-Sheet_0: 21300000
+      red-ogre-Sheet_11: 21300022
+      red-ogre-Sheet_7: 21300014
+      red-ogre-Sheet_1: 21300002
+      red-ogre-Sheet_5: 21300010
+      red-ogre-Sheet_26: 21300052
+      red-ogre-Sheet_8: 21300016
+      red-ogre-Sheet_20: 21300040
+      red-ogre-Sheet_24: 21300048
+      red-ogre-Sheet_15: 21300030
+      red-ogre-Sheet_23: 21300046
+      red-ogre-Sheet_4: 21300008
+      red-ogre-Sheet_19: 21300038
+      red-ogre-Sheet_21: 21300042
+      red-ogre-Sheet_3: 21300006
+      red-ogre-Sheet_17: 21300034
+      red-ogre-Sheet_12: 21300024
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

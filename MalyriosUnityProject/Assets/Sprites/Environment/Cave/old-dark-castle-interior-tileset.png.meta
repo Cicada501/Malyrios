@@ -839,6 +839,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -848,11 +850,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -870,9 +872,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -6702,6 +6707,279 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      old-dark-castle-interior-tileset_105: 321835553626590160
+      old-dark-castle-interior-tileset_162: 9098315923010080015
+      old-dark-castle-interior-tileset_241: -1805090112377154519
+      old-dark-castle-interior-tileset_70: -744878532173007899
+      old-dark-castle-interior-tileset_152: 6915465577824985796
+      old-dark-castle-interior-tileset_171: -6504650020433566812
+      old-dark-castle-interior-tileset_240: -8993400009295636162
+      old-dark-castle-interior-tileset_46: 8292385894358559723
+      old-dark-castle-interior-tileset_114: 7526749376580794266
+      old-dark-castle-interior-tileset_95: 6931258617249384199
+      old-dark-castle-interior-tileset_257: -1375615354251414863
+      old-dark-castle-interior-tileset_179: 6555416034092789973
+      old-dark-castle-interior-tileset_137: -8050399607164042670
+      old-dark-castle-interior-tileset_47: -3029192883693750433
+      old-dark-castle-interior-tileset_26: 4447337425568247211
+      old-dark-castle-interior-tileset_30: -1425324197846045811
+      old-dark-castle-interior-tileset_156: -7072270639328879362
+      old-dark-castle-interior-tileset_39: 556637322501279180
+      old-dark-castle-interior-tileset_113: -2314093587238157356
+      old-dark-castle-interior-tileset_93: -5665441418481706512
+      old-dark-castle-interior-tileset_21: -4121564266596107471
+      old-dark-castle-interior-tileset_83: -8555699852499822055
+      old-dark-castle-interior-tileset_115: 5088323481776484211
+      old-dark-castle-interior-tileset_213: -4582921266868051174
+      old-dark-castle-interior-tileset_253: -1668578170489605678
+      old-dark-castle-interior-tileset_149: -4300351025371868829
+      old-dark-castle-interior-tileset_173: -2598570658697049407
+      old-dark-castle-interior-tileset_97: 8475826950304899764
+      old-dark-castle-interior-tileset_139: -3195839390780859277
+      old-dark-castle-interior-tileset_251: -6219649605006259324
+      old-dark-castle-interior-tileset_57: -7997711092913868867
+      old-dark-castle-interior-tileset_198: -7576851857299720230
+      old-dark-castle-interior-tileset_201: -2925038776384993918
+      old-dark-castle-interior-tileset_35: -8226600083645436268
+      old-dark-castle-interior-tileset_65: -1795049452211730449
+      old-dark-castle-interior-tileset_185: 3088584340179729276
+      old-dark-castle-interior-tileset_207: 3367995824070861922
+      old-dark-castle-interior-tileset_189: 2635375571690531214
+      old-dark-castle-interior-tileset_261: 8644604910793187182
+      old-dark-castle-interior-tileset_222: -7664992179328086688
+      old-dark-castle-interior-tileset_147: -8857483402440857057
+      old-dark-castle-interior-tileset_131: -1581116023588494318
+      old-dark-castle-interior-tileset_199: -1412042195149606140
+      old-dark-castle-interior-tileset_212: -3564976456803772888
+      old-dark-castle-interior-tileset_103: -2064411038916522144
+      old-dark-castle-interior-tileset_58: 5883949494171790058
+      old-dark-castle-interior-tileset_260: -4675580425048074359
+      old-dark-castle-interior-tileset_23: 5164569073570299991
+      old-dark-castle-interior-tileset_1: -5962666835496234540
+      old-dark-castle-interior-tileset_126: 1268772452704222551
+      old-dark-castle-interior-tileset_195: 2545184615644423285
+      old-dark-castle-interior-tileset_37: -8148900837879656104
+      old-dark-castle-interior-tileset_45: 8177448712360646729
+      old-dark-castle-interior-tileset_150: -6625711406347445217
+      old-dark-castle-interior-tileset_33: -7595527801817959341
+      old-dark-castle-interior-tileset_99: -8910162794333161751
+      old-dark-castle-interior-tileset_106: -440016856878676266
+      old-dark-castle-interior-tileset_78: 655678423231229097
+      old-dark-castle-interior-tileset_231: 6048640949442585727
+      old-dark-castle-interior-tileset_12: -4960141076622114700
+      old-dark-castle-interior-tileset_64: 5183955583887706049
+      old-dark-castle-interior-tileset_223: -1005423745212731289
+      old-dark-castle-interior-tileset_160: -1416837997688436887
+      old-dark-castle-interior-tileset_61: -2394610288757619317
+      old-dark-castle-interior-tileset_50: 2064927108521532093
+      old-dark-castle-interior-tileset_204: -2105911000756953703
+      old-dark-castle-interior-tileset_165: -79186804486110390
+      old-dark-castle-interior-tileset_268: -6268213246527355730
+      old-dark-castle-interior-tileset_181: -1827400718855480049
+      old-dark-castle-interior-tileset_237: 4229719993436809617
+      old-dark-castle-interior-tileset_254: -5559161527764037262
+      old-dark-castle-interior-tileset_269: -4356139942624935017
+      old-dark-castle-interior-tileset_194: 9063137817103819383
+      old-dark-castle-interior-tileset_153: 2076301111848649130
+      old-dark-castle-interior-tileset_155: 259583522049078506
+      old-dark-castle-interior-tileset_140: -4949171929021459977
+      old-dark-castle-interior-tileset_209: 2657582632047811802
+      old-dark-castle-interior-tileset_205: -6179500406369461047
+      old-dark-castle-interior-tileset_118: 7964591380865150839
+      old-dark-castle-interior-tileset_62: -2993399155951588686
+      old-dark-castle-interior-tileset_9: -1488056107068598730
+      old-dark-castle-interior-tileset_197: -7876384976996288111
+      old-dark-castle-interior-tileset_203: -4034173379555391613
+      old-dark-castle-interior-tileset_166: 857665905550717996
+      old-dark-castle-interior-tileset_75: 5174889067709864414
+      old-dark-castle-interior-tileset_73: 4550911646641492610
+      old-dark-castle-interior-tileset_200: 7012650976984391911
+      old-dark-castle-interior-tileset_40: 6650946203805507697
+      old-dark-castle-interior-tileset_192: -8357257962072133226
+      old-dark-castle-interior-tileset_221: -8923541623178924525
+      old-dark-castle-interior-tileset_10: -7210425880122862846
+      old-dark-castle-interior-tileset_234: -6018712793740699627
+      old-dark-castle-interior-tileset_90: -2369343947677135095
+      old-dark-castle-interior-tileset_52: 7368377082407158296
+      old-dark-castle-interior-tileset_169: -6726397763390073421
+      old-dark-castle-interior-tileset_187: -5273422707689043471
+      old-dark-castle-interior-tileset_263: -8001175645799141757
+      old-dark-castle-interior-tileset_242: 8611858584563913687
+      old-dark-castle-interior-tileset_38: -975281374859614607
+      old-dark-castle-interior-tileset_100: -8159403095613994482
+      old-dark-castle-interior-tileset_225: -2428154744883223697
+      old-dark-castle-interior-tileset_138: 9105980117338898422
+      old-dark-castle-interior-tileset_42: 386939953111101682
+      old-dark-castle-interior-tileset_124: -3740685969528053530
+      old-dark-castle-interior-tileset_80: -705557641149470689
+      old-dark-castle-interior-tileset_178: 1432053070458901054
+      old-dark-castle-interior-tileset_218: 1315965639014343488
+      old-dark-castle-interior-tileset_69: 2946106750656120445
+      old-dark-castle-interior-tileset_170: -6503147852738651347
+      old-dark-castle-interior-tileset_232: 5199741022836617289
+      old-dark-castle-interior-tileset_112: 4815032470213842176
+      old-dark-castle-interior-tileset_107: -7122714050304485940
+      old-dark-castle-interior-tileset_129: -145074333020795289
+      old-dark-castle-interior-tileset_196: -4275840050166207242
+      old-dark-castle-interior-tileset_27: 4292230008691564182
+      old-dark-castle-interior-tileset_32: -6130313162575021061
+      old-dark-castle-interior-tileset_208: 138201332522506820
+      old-dark-castle-interior-tileset_148: 2811707723322003988
+      old-dark-castle-interior-tileset_247: 1580970091516116030
+      old-dark-castle-interior-tileset_111: 7399342104667867431
+      old-dark-castle-interior-tileset_238: -7261480553630709792
+      old-dark-castle-interior-tileset_96: 4169727102178920867
+      old-dark-castle-interior-tileset_256: -8307729950725343519
+      old-dark-castle-interior-tileset_67: -56675474428570912
+      old-dark-castle-interior-tileset_24: -5858522888719292374
+      old-dark-castle-interior-tileset_146: 6885668853801996838
+      old-dark-castle-interior-tileset_219: 6352591600969284057
+      old-dark-castle-interior-tileset_16: 8399133417525634875
+      old-dark-castle-interior-tileset_259: 3228799678829346699
+      old-dark-castle-interior-tileset_230: 711829275545226169
+      old-dark-castle-interior-tileset_25: -171154881775762883
+      old-dark-castle-interior-tileset_248: 8407187751324508288
+      old-dark-castle-interior-tileset_271: -1141963059418324912
+      old-dark-castle-interior-tileset_7: 374200021256168466
+      old-dark-castle-interior-tileset_41: 94771588949197787
+      old-dark-castle-interior-tileset_265: 5258383273959731673
+      old-dark-castle-interior-tileset_151: -8483620641248841591
+      old-dark-castle-interior-tileset_168: -8039006308868486603
+      old-dark-castle-interior-tileset_8: 8697131738854286484
+      old-dark-castle-interior-tileset_53: 8961150682708224833
+      old-dark-castle-interior-tileset_228: -1512752418629521641
+      old-dark-castle-interior-tileset_2: -5193705663991820603
+      old-dark-castle-interior-tileset_116: -1465628681157410309
+      old-dark-castle-interior-tileset_159: -5548919778513209042
+      old-dark-castle-interior-tileset_49: -2737841056662874389
+      old-dark-castle-interior-tileset_191: 6238835728838715807
+      old-dark-castle-interior-tileset_63: 5402099463520423540
+      old-dark-castle-interior-tileset_87: -1540162821096260998
+      old-dark-castle-interior-tileset_17: 4866286866370534755
+      old-dark-castle-interior-tileset_132: 6966198639095605970
+      old-dark-castle-interior-tileset_233: -5709562226803512002
+      old-dark-castle-interior-tileset_226: -1855101530128541258
+      old-dark-castle-interior-tileset_94: 2559427316474044220
+      old-dark-castle-interior-tileset_182: 1695253269328432623
+      old-dark-castle-interior-tileset_86: -6868058419850853969
+      old-dark-castle-interior-tileset_19: 8957695946027325815
+      old-dark-castle-interior-tileset_252: -3366009054695197455
+      old-dark-castle-interior-tileset_229: -2088750585131244110
+      old-dark-castle-interior-tileset_127: 2618743539786084400
+      old-dark-castle-interior-tileset_264: 5699263948343743827
+      old-dark-castle-interior-tileset_128: -6246686030121160728
+      old-dark-castle-interior-tileset_154: 7950781174414344668
+      old-dark-castle-interior-tileset_193: -7738030779341039340
+      old-dark-castle-interior-tileset_188: 1400852876015838230
+      old-dark-castle-interior-tileset_55: 8899604977350095249
+      old-dark-castle-interior-tileset_206: 5377818643183241891
+      old-dark-castle-interior-tileset_0: 5061278708897475674
+      old-dark-castle-interior-tileset_6: -7611995454185021896
+      old-dark-castle-interior-tileset_72: 1462073026250382781
+      old-dark-castle-interior-tileset_120: 49124987191167990
+      old-dark-castle-interior-tileset_98: 8362857880657628780
+      old-dark-castle-interior-tileset_71: 4108502231977044850
+      old-dark-castle-interior-tileset_31: -200956518896210070
+      old-dark-castle-interior-tileset_175: -7567201699893899326
+      old-dark-castle-interior-tileset_18: -1361313588641811671
+      old-dark-castle-interior-tileset_54: -9161854854656320630
+      old-dark-castle-interior-tileset_255: 6155152204617939357
+      old-dark-castle-interior-tileset_161: -243899617373824227
+      old-dark-castle-interior-tileset_29: 8287240746369674737
+      old-dark-castle-interior-tileset_134: -5454645596810812860
+      old-dark-castle-interior-tileset_220: -4915633141592635199
+      old-dark-castle-interior-tileset_102: -2931500261663801158
+      old-dark-castle-interior-tileset_4: 4294103419179253103
+      old-dark-castle-interior-tileset_143: 1482294186455115366
+      old-dark-castle-interior-tileset_176: 2719360743984355684
+      old-dark-castle-interior-tileset_74: 5969823273817786478
+      old-dark-castle-interior-tileset_183: 2784785071036785033
+      old-dark-castle-interior-tileset_84: 4688043936959905351
+      old-dark-castle-interior-tileset_34: -5713729370616480222
+      old-dark-castle-interior-tileset_216: 175479301742282371
+      old-dark-castle-interior-tileset_239: -182464546198203416
+      old-dark-castle-interior-tileset_246: -3328539334911916269
+      old-dark-castle-interior-tileset_250: -1740961462698719262
+      old-dark-castle-interior-tileset_59: -3096347663587498118
+      old-dark-castle-interior-tileset_15: 7467593326233339810
+      old-dark-castle-interior-tileset_44: 9068449664411304634
+      old-dark-castle-interior-tileset_121: -7126943018937897569
+      old-dark-castle-interior-tileset_141: 5533422404243746200
+      old-dark-castle-interior-tileset_267: -3816083100855967315
+      old-dark-castle-interior-tileset_133: -6135186815070307037
+      old-dark-castle-interior-tileset_180: 3801563621114680197
+      old-dark-castle-interior-tileset_249: 3976155002097802190
+      old-dark-castle-interior-tileset_202: -1063505311749569087
+      old-dark-castle-interior-tileset_5: 8084005226302856387
+      old-dark-castle-interior-tileset_92: 4702608930228352391
+      old-dark-castle-interior-tileset_123: -7327249032554220855
+      old-dark-castle-interior-tileset_215: 3538634398909897966
+      old-dark-castle-interior-tileset_270: -5795097556343713371
+      old-dark-castle-interior-tileset_76: 1494895342699205175
+      old-dark-castle-interior-tileset_164: -8617467772675557503
+      old-dark-castle-interior-tileset_109: 2853567906670921857
+      old-dark-castle-interior-tileset_51: -8685135346961365994
+      old-dark-castle-interior-tileset_82: 813096185405281330
+      old-dark-castle-interior-tileset_22: -4567104278127001447
+      old-dark-castle-interior-tileset_245: -1892725025484956682
+      old-dark-castle-interior-tileset_28: -2080049433616451411
+      old-dark-castle-interior-tileset_157: 56723157134616716
+      old-dark-castle-interior-tileset_130: -8738793451189148424
+      old-dark-castle-interior-tileset_135: -3340671430153854718
+      old-dark-castle-interior-tileset_142: -1734737712662333877
+      old-dark-castle-interior-tileset_158: -733868926005166980
+      old-dark-castle-interior-tileset_244: 9087608174733771627
+      old-dark-castle-interior-tileset_145: -2966152814534454093
+      old-dark-castle-interior-tileset_227: -236556768064158511
+      old-dark-castle-interior-tileset_20: 9074766457617870150
+      old-dark-castle-interior-tileset_136: -6915045186793075630
+      old-dark-castle-interior-tileset_243: 5070189435146161244
+      old-dark-castle-interior-tileset_177: -3436519712450859705
+      old-dark-castle-interior-tileset_3: 1098025976157597971
+      old-dark-castle-interior-tileset_56: 8723991710836227692
+      old-dark-castle-interior-tileset_262: -3701092820198231990
+      old-dark-castle-interior-tileset_77: 6610463372928213661
+      old-dark-castle-interior-tileset_184: 2970134842436003
+      old-dark-castle-interior-tileset_81: -4137390396293983928
+      old-dark-castle-interior-tileset_144: 2308184786166570528
+      old-dark-castle-interior-tileset_258: 8868296156651987670
+      old-dark-castle-interior-tileset_167: 2088295010383074977
+      old-dark-castle-interior-tileset_85: -8925523413615131428
+      old-dark-castle-interior-tileset_108: -8569157075796032772
+      old-dark-castle-interior-tileset_163: -6292754341698438912
+      old-dark-castle-interior-tileset_13: 5136068255219916438
+      old-dark-castle-interior-tileset_174: 8269241530403235532
+      old-dark-castle-interior-tileset_190: -567212766153640234
+      old-dark-castle-interior-tileset_224: 13108152189707711
+      old-dark-castle-interior-tileset_210: -8348722347809276114
+      old-dark-castle-interior-tileset_266: -1447380626433701648
+      old-dark-castle-interior-tileset_214: 6972344616250682615
+      old-dark-castle-interior-tileset_101: -5480580798316237788
+      old-dark-castle-interior-tileset_122: -4502091476330630057
+      old-dark-castle-interior-tileset_125: -7860288104076239743
+      old-dark-castle-interior-tileset_79: -2856236129341483747
+      old-dark-castle-interior-tileset_48: -3992159409644273856
+      old-dark-castle-interior-tileset_119: 1210940955093099250
+      old-dark-castle-interior-tileset_11: -3320708475249029017
+      old-dark-castle-interior-tileset_66: 9056246531084182623
+      old-dark-castle-interior-tileset_186: 7074761729946688495
+      old-dark-castle-interior-tileset_172: -497699660976642093
+      old-dark-castle-interior-tileset_14: -7467896979262492787
+      old-dark-castle-interior-tileset_68: 6143256913825843448
+      old-dark-castle-interior-tileset_235: 644673728911211789
+      old-dark-castle-interior-tileset_89: -8145989917687731916
+      old-dark-castle-interior-tileset_211: -5192514293188051282
+      old-dark-castle-interior-tileset_236: 3734385118568530760
+      old-dark-castle-interior-tileset_217: 189460379904903161
+      old-dark-castle-interior-tileset_88: 6929098755155614589
+      old-dark-castle-interior-tileset_110: 1770996608983464104
+      old-dark-castle-interior-tileset_91: -1133408348173843850
+      old-dark-castle-interior-tileset_43: -6969512036460945207
+      old-dark-castle-interior-tileset_117: -4963651771099412150
+      old-dark-castle-interior-tileset_104: -5278396437819577186
+      old-dark-castle-interior-tileset_36: 2992194345537010996
+      old-dark-castle-interior-tileset_60: 2884164095103294807
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

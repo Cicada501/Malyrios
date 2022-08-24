@@ -69,7 +69,7 @@ TextureImporter:
       213: -5536835108708686330
     second: rat-Sheet_21
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -89,6 +89,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -98,11 +100,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -120,9 +122,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -635,6 +641,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      rat-Sheet_8: -4987102259304857934
+      rat-Sheet_0: 6185129878258804697
+      rat-Sheet_15: 8776497926654449101
+      rat-Sheet_16: 1466397597977550364
+      rat-Sheet_13: -4693384750733758151
+      rat-Sheet_5: 5305967958433842941
+      rat-Sheet_10: 2382789546460597964
+      rat-Sheet_4: -2325161320251010055
+      rat-Sheet_3: -4826788354047605460
+      rat-Sheet_17: 5756673022489546183
+      rat-Sheet_1: 7270730906862381651
+      rat-Sheet_6: 6362799370732333576
+      rat-Sheet_14: 5936618860542324317
+      rat-Sheet_20: 6718735904266971776
+      rat-Sheet_18: -1900616205825787270
+      rat-Sheet_2: -7426871858027631662
+      rat-Sheet_7: -3962937457825677417
+      rat-Sheet_19: 8704981035148648033
+      rat-Sheet_9: 438851894114750750
+      rat-Sheet_21: -5536835108708686330
+      rat-Sheet_11: -4776689580501571285
+      rat-Sheet_12: -2901126739239220170
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

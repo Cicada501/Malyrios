@@ -146,6 +146,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -155,11 +157,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -177,9 +179,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -1104,6 +1109,48 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      golem-Sheet_11: -6540322777056822427
+      golem-Sheet_26: -3584372246620283861
+      golem-Sheet_36: -5821487007282365979
+      golem-Sheet_39: 9180248744396807734
+      golem-Sheet_37: -6919157860467225028
+      golem-Sheet_40: 4315415077402840657
+      golem-Sheet_4: -5347748204396762309
+      golem-Sheet_9: -2956572011480678899
+      golem-Sheet_16: -3407049853182620081
+      golem-Sheet_30: 1333284984141216879
+      golem-Sheet_19: 2305775323621276577
+      golem-Sheet_23: -471924303208953411
+      golem-Sheet_8: 4394281280814749398
+      golem-Sheet_12: -1290872910189324201
+      golem-Sheet_20: 2298006664434798372
+      golem-Sheet_22: -6633168729653645617
+      golem-Sheet_29: -2433330122603014609
+      golem-Sheet_7: 7043104834473691308
+      golem-Sheet_38: 4115232234578125396
+      golem-Sheet_28: 2246480945235371108
+      golem-Sheet_15: -551325460540876199
+      golem-Sheet_2: 6866394184902198361
+      golem-Sheet_1: -3137154765776395585
+      golem-Sheet_35: -6690035626059399193
+      golem-Sheet_3: 2158176125020354680
+      golem-Sheet_10: -2846300688302522053
+      golem-Sheet_14: -1674709713697190937
+      golem-Sheet_27: 6450381260459576269
+      golem-Sheet_18: -8923831313369102590
+      golem-Sheet_5: 5095053433813549154
+      golem-Sheet_13: -4531076722732091079
+      golem-Sheet_32: -6076794082435594166
+      golem-Sheet_31: -3160225766268924798
+      golem-Sheet_25: -4632888728154906093
+      golem-Sheet_21: -1638646554834319016
+      golem-Sheet_24: 211254888919111624
+      golem-Sheet_0: -8493370585025556101
+      golem-Sheet_33: 8100740516607954854
+      golem-Sheet_34: -2068574748890624553
+      golem-Sheet_17: -3096117759807291253
+      golem-Sheet_6: 2042764309090735819
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

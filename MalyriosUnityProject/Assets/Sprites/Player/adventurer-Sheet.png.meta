@@ -219,7 +219,7 @@ TextureImporter:
       213: 21300142
     second: adventurer-Sheet_71
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -239,6 +239,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -248,11 +250,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -270,9 +272,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1835,6 +1841,79 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      adventurer-Sheet_27: 21300054
+      adventurer-Sheet_42: 21300084
+      adventurer-Sheet_40: 21300080
+      adventurer-Sheet_37: 21300074
+      adventurer-Sheet_31: 21300062
+      adventurer-Sheet_49: 21300098
+      adventurer-Sheet_7: 21300014
+      adventurer-Sheet_19: 21300038
+      adventurer-Sheet_68: 21300136
+      adventurer-Sheet_43: 21300086
+      adventurer-Sheet_26: 21300052
+      adventurer-Sheet_25: 21300050
+      adventurer-Sheet_28: 21300056
+      adventurer-Sheet_71: 21300142
+      adventurer-Sheet_14: 21300028
+      adventurer-Sheet_46: 21300092
+      adventurer-Sheet_48: 21300096
+      adventurer-Sheet_70: 21300140
+      adventurer-Sheet_69: 21300138
+      adventurer-Sheet_54: 21300108
+      adventurer-Sheet_35: 21300070
+      adventurer-Sheet_62: 21300124
+      adventurer-Sheet_20: 21300040
+      adventurer-Sheet_8: 21300016
+      adventurer-Sheet_12: 21300024
+      adventurer-Sheet_45: 21300090
+      adventurer-Sheet_56: 21300112
+      adventurer-Sheet_63: 21300126
+      adventurer-Sheet_47: 21300094
+      adventurer-Sheet_39: 21300078
+      adventurer-Sheet_29: 21300058
+      adventurer-Sheet_38: 21300076
+      adventurer-Sheet_60: 21300120
+      adventurer-Sheet_36: 21300072
+      adventurer-Sheet_52: 21300104
+      adventurer-Sheet_22: 21300044
+      adventurer-Sheet_23: 21300046
+      adventurer-Sheet_50: 21300100
+      adventurer-Sheet_53: 21300106
+      adventurer-Sheet_64: 21300128
+      adventurer-Sheet_1: 21300002
+      adventurer-Sheet_4: 21300008
+      adventurer-Sheet_51: 21300102
+      adventurer-Sheet_61: 21300122
+      adventurer-Sheet_16: 21300032
+      adventurer-Sheet_34: 21300068
+      adventurer-Sheet_59: 21300118
+      adventurer-Sheet_2: 21300004
+      adventurer-Sheet_15: 21300030
+      adventurer-Sheet_0: 21300000
+      adventurer-Sheet_32: 21300064
+      adventurer-Sheet_58: 21300116
+      adventurer-Sheet_6: 21300012
+      adventurer-Sheet_21: 21300042
+      adventurer-Sheet_13: 21300026
+      adventurer-Sheet_44: 21300088
+      adventurer-Sheet_67: 21300134
+      adventurer-Sheet_30: 21300060
+      adventurer-Sheet_5: 21300010
+      adventurer-Sheet_17: 21300034
+      adventurer-Sheet_18: 21300036
+      adventurer-Sheet_66: 21300132
+      adventurer-Sheet_10: 21300020
+      adventurer-Sheet_11: 21300022
+      adventurer-Sheet_55: 21300110
+      adventurer-Sheet_41: 21300082
+      adventurer-Sheet_24: 21300048
+      adventurer-Sheet_3: 21300006
+      adventurer-Sheet_33: 21300066
+      adventurer-Sheet_57: 21300114
+      adventurer-Sheet_9: 21300018
+      adventurer-Sheet_65: 21300130
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

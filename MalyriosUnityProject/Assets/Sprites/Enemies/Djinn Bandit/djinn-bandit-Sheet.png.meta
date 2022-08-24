@@ -84,7 +84,7 @@ TextureImporter:
       213: 21300052
     second: djinn-bandit-Sheet_26
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -104,6 +104,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -113,11 +115,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -135,9 +137,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -755,6 +761,34 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      djinn-bandit-Sheet_26: 21300052
+      djinn-bandit-Sheet_11: 21300022
+      djinn-bandit-Sheet_24: 21300048
+      djinn-bandit-Sheet_1: 21300002
+      djinn-bandit-Sheet_0: 21300000
+      djinn-bandit-Sheet_12: 21300024
+      djinn-bandit-Sheet_9: 21300018
+      djinn-bandit-Sheet_7: 21300014
+      djinn-bandit-Sheet_16: 21300032
+      djinn-bandit-Sheet_18: 21300036
+      djinn-bandit-Sheet_6: 21300012
+      djinn-bandit-Sheet_21: 21300042
+      djinn-bandit-Sheet_15: 21300030
+      djinn-bandit-Sheet_2: 21300004
+      djinn-bandit-Sheet_19: 21300038
+      djinn-bandit-Sheet_5: 21300010
+      djinn-bandit-Sheet_23: 21300046
+      djinn-bandit-Sheet_22: 21300044
+      djinn-bandit-Sheet_8: 21300016
+      djinn-bandit-Sheet_17: 21300034
+      djinn-bandit-Sheet_3: 21300006
+      djinn-bandit-Sheet_4: 21300008
+      djinn-bandit-Sheet_20: 21300040
+      djinn-bandit-Sheet_10: 21300020
+      djinn-bandit-Sheet_14: 21300028
+      djinn-bandit-Sheet_13: 21300026
+      djinn-bandit-Sheet_25: 21300050
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
