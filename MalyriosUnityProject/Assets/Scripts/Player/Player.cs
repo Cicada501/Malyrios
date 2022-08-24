@@ -9,16 +9,15 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-
     [SerializeField] TextMeshProUGUI positionText;
-    [SerializeField] AudioSource jumpStart= null;
-    [SerializeField] AudioSource landing2= null;
+    [SerializeField] AudioSource jumpStart = null;
+    [SerializeField] AudioSource landing2 = null;
     [SerializeField] LayerMask whatIsGround = 0;
-    [SerializeField] ParticleSystem dust= null;
-    [SerializeField] Rigidbody2D rb= null;
-    [SerializeField] Animator playerAnimator= null;
-    [SerializeField] Animator cameraAnimator= null;
-    [SerializeField] Transform feetPos= null;
+    [SerializeField] ParticleSystem dust = null;
+    [SerializeField] Rigidbody2D rb = null;
+    [SerializeField] Animator playerAnimator = null;
+    [SerializeField] Animator cameraAnimator = null;
+    [SerializeField] Transform feetPos = null;
     [SerializeField] Joystick joystick = null;
     [SerializeField] float checkRadius = 0;
     [SerializeField] float horizontalSpeed = 1f;
@@ -32,7 +31,8 @@ public class Player : MonoBehaviour
     public static bool inventoryInput;
     public static bool ability1_Input;
 
-    /*[FormerlySerializedAs("spawnPoint2")]*/ public Vector3 closestSpawnPoint = new Vector3(0.0f,0.0f,0.0f);
+    /*[FormerlySerializedAs("spawnPoint2")]*/
+    public Vector3 closestSpawnPoint = new Vector3(0.0f, 0.0f, 0.0f);
     public float jumpForce;
     public float backJumpRate = 0.5f;
 
@@ -53,14 +53,12 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
         playerAnimator = GetComponent<Animator>();
-        
     }
 
     void FixedUpdate()
-    {       
-
+    {
+        print("Speed: " + speed);
         //Cant move while attacking
         if (PlayerAttack.isAttacking)
         {
@@ -86,11 +84,13 @@ public class Player : MonoBehaviour
             {
                 horizontal = 0.5f;
             }
-            else{
+            else
+            {
                 horizontal = 0f;
             }
+
             verticalInput = joystick.Vertical;
-            
+
             speed = Mathf.Abs(horizontal);
         }
 
@@ -98,13 +98,13 @@ public class Player : MonoBehaviour
         if (ladder.verticalMovementEnabled && verticalInput != 0)
         {
             isClimbing = true;
-        }else  isClimbing = false; 
-        
+        }
+        else isClimbing = false;
+
         //apply input to player (moveing left, right, on ladder up and down)
         if (isClimbing)
         {
             rb.velocity = new Vector2(horizontal * horizontalSpeed * 0.2f, verticalInput * verticalSpeed);
-
         }
         else
         {
@@ -116,13 +116,11 @@ public class Player : MonoBehaviour
             {
                 ResetVelocity();
             }
-
         }
 
         //face player in the right direction
         if (horizontal > 0 && !facingRight)
         {
-
             flip();
         }
         else if (horizontal < 0 && facingRight)
@@ -135,11 +133,11 @@ public class Player : MonoBehaviour
         playerAnimator.SetBool("isGrounded", (isGrunded));
         playerAnimator.SetBool("isFalling", isFalling);
         playerAnimator.SetBool("isClimbing", isClimbing);
-
-
-
+        playerAnimator.SetBool("isJumping", isJumping);
+        playerAnimator.SetFloat("YVelocity", rb.velocity.y);
     }
-    void Update()//#######################################################################################
+
+    void Update() //#######################################################################################
     {
         //Get shorter input variable names
         attackInput = ButtonScript.receivedAttackInput;
@@ -172,17 +170,14 @@ public class Player : MonoBehaviour
         //Check if player is falling for the animation
         if (rb.velocity.y < 0 && !(isGrunded) && !isClimbing)
         {
-            if (!isFalling)
-            {
-                isFalling = true;
-            }
-
-        
+            isJumping = false;
+            isFalling = true;
         }
         else if (rb.velocity.y > -0.01)
         {
             isFalling = false;
         }
+
         cameraAnimator.ResetTrigger("Landing");
 
         //Landing
@@ -190,7 +185,7 @@ public class Player : MonoBehaviour
         {
             isFalling = false;
             cameraAnimator.SetTrigger("Landing");
-            landing2.Play(); 
+            landing2.Play();
         }
 
         //Longer Jump on Space holding
@@ -206,19 +201,16 @@ public class Player : MonoBehaviour
                 isJumping = false;
             }
         }
+    } //########################################################################
+    //#########################################################################
 
-
-    }//########################################################################
-     //#########################################################################
-    
-
-    
 
     void ResetVelocity()
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
         usingPush = false;
     }
+
     void BackJump(bool facingRight)
     {
         CreateDust();
@@ -231,6 +223,7 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(50f, 0f));
         }
+
         rb.AddForce(new Vector2(0f, 25f));
         Invoke("ResetVelocity", 0.25f);
     }
@@ -240,7 +233,6 @@ public class Player : MonoBehaviour
         CreateDust();
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
-
     }
 
     void CreateDust()
