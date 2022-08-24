@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
         LoadInventory();
         //Save Inventory state each second
         InvokeRepeating("SaveInventory", 2f, 2f); //2s delay, repeat every 2s
-        InvokeRepeating("PrintInventory", 1f, 1f);
+        //InvokeRepeating("PrintInventory", 1f, 1f);
         // This is just for test purposes
         testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
         AddItem(testWeapon);

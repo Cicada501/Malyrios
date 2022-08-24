@@ -6,18 +6,17 @@ using UnityEngine;
 using TMPro;
 
 
-
 public class Enemy : MonoBehaviour
 {
     [SerializeField] BaseItem dropItem = null;
-    
+
     [SerializeField] BaseItem dropRareItem = null;
     [SerializeField] int dropItemChance0 = 10; //chance to drop 0 times Item
     [SerializeField] int dropItemChance1 = 60; //chance to drop 1 times Item
     [SerializeField] int dropItemChance2 = 30;
     [SerializeField] int dropRareItemChance0 = 50;
     [SerializeField] int dropRareItemChance1 = 40; //chance to drop 1 times RareItem
-    [SerializeField] int dropRareItemChance2 = 10;  //chance to drop 2 times RareItem
+    [SerializeField] int dropRareItemChance2 = 10; //chance to drop 2 times RareItem
 
     [SerializeField] float gravityToFall = 8;
     [SerializeField] float gravityToClimb = 2;
@@ -35,16 +34,14 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     Transform player;
 
-    [SerializeField]
-    bool facingRight = true;
+    [SerializeField] bool facingRight = true;
     Animator animator;
-    
+
     [SerializeField] int maxHealth = 100;
     int currentHealth;
 
     bool isGrounded;
     bool isAttacking;
-
 
 
     bool isDead;
@@ -57,17 +54,17 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()//-------------------------------------------------
+    private void Update() //-------------------------------------------------
     {
         //Damage Text rising up
-        damageText.transform.position += new Vector3(10f,10f,0f)* Time.deltaTime;
+        damageText.transform.position += new Vector3(10f, 10f, 0f) * Time.deltaTime;
 
 
         //Set is Attacking if attack animation plays
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") || animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
         {
             isAttacking = true;
-
         }
         else
         {
@@ -100,15 +97,14 @@ public class Enemy : MonoBehaviour
             rb.velocity = new Vector2(0f, 0f);
             rb.angularVelocity = 0f;
         }
-        
-       
+    } //----------------------END: Update -----------------------------------
 
-    }//----------------------END: Update -----------------------------------
-
-    void SpawnDamage(int damage){
+    void SpawnDamage(int damage)
+    {
         damageText.SetText(damage.ToString());
-        Instantiate(damageText,damageTextSpawn.position,Quaternion.identity);
+        Instantiate(damageText, damageTextSpawn.position, Quaternion.identity);
     }
+
     public void DealDamage(int damage)
     {
         Collider2D[] thatGotHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
@@ -117,6 +113,7 @@ public class Enemy : MonoBehaviour
             player.GetComponent<IHealthController>().TakeDamage(damage);
         }
     }
+
     public void TakeDamage(int damage)
     {
         SpawnDamage(damage);
@@ -135,12 +132,10 @@ public class Enemy : MonoBehaviour
         {
             animator.SetBool("isEnraged", true);
         }
-
     }
 
     void Die()
-    {   
-
+    {
         isDead = true;
         animator.SetBool("isDead", isDead);
 
@@ -166,9 +161,9 @@ public class Enemy : MonoBehaviour
         if (dropchoice > dropItemChance0 && dropchoice <= dropItemChance1 + dropItemChance0)
         {
             SpawnItem.Spawn(dropItem, new Vector2(transform.position.x - 0.1f, transform.position.y));
-
         }
-        else if (dropchoice > dropItemChance1 + dropItemChance0 && dropchoice <= dropItemChance2 + dropItemChance1 + dropItemChance0)
+        else if (dropchoice > dropItemChance1 + dropItemChance0 &&
+                 dropchoice <= dropItemChance2 + dropItemChance1 + dropItemChance0)
         {
             SpawnItem.Spawn(dropItem, transform.position);
             SpawnItem.Spawn(dropItem, new Vector2(transform.position.x - 0.1f, transform.position.y));
@@ -180,7 +175,8 @@ public class Enemy : MonoBehaviour
         {
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
         }
-        else if (dropchoice > dropRareItemChance1 + dropRareItemChance0 && dropchoice <= dropRareItemChance2 + dropRareItemChance1 + dropRareItemChance0)
+        else if (dropchoice > dropRareItemChance1 + dropRareItemChance0 &&
+                 dropchoice <= dropRareItemChance2 + dropRareItemChance1 + dropRareItemChance0)
         {
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.2f, transform.position.y));
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
@@ -192,8 +188,6 @@ public class Enemy : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
-        
-
     }
 
     // used in animations
@@ -209,6 +203,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 
@@ -221,6 +216,7 @@ public class Enemy : MonoBehaviour
             rb.gravityScale = gravityToClimb;
         }
     }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ground" && !isDead)
@@ -228,8 +224,4 @@ public class Enemy : MonoBehaviour
             rb.gravityScale = gravityToFall;
         }
     }
-
-
-
-
 }

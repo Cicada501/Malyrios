@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        print("Speed: " + speed);
+
         //Cant move while attacking
         if (PlayerAttack.isAttacking)
         {
@@ -239,4 +239,7 @@ public class Player : MonoBehaviour
     {
         dust.Play();
     }
+
+
+   
 }
