@@ -7,16 +7,24 @@ using UnityEngine.SceneManagement;
 
 public class EnterLevelTrigger : MonoBehaviour, IInteractable
 {
+    Player player;
+    private Inventory inventory;
     [SerializeField] TextMeshProUGUI tmpText = null;
     [SerializeField] private int sceneIndex;
     [SerializeField] private string sceneName;
     public void Interact()
     {
+        SaveSystem.SavePlayer(player);
+        SaveSystem.SaveInventory(inventory);
         SceneManager.LoadScene(sceneIndex);
         print("Interacting with " + gameObject.name);
     }
 
-    
+    void Start()
+    {
+        player = FindObjectOfType<Player>();
+        inventory = FindObjectOfType<Inventory>();
+    }
 
 
     // Update is called once per frame

@@ -34,7 +34,7 @@ public class SaveLoadPlayer : MonoBehaviour
     {
         SaveSystem.SavePlayer(player);
         SaveSystem.SaveInventory(inventory);
-        Debug.Log("Saved" + player.gameObject.transform.position);
+        //Debug.Log("Saved" + player.gameObject.transform.position);
     }
 
 
