@@ -75,6 +75,7 @@ public class ButtonScript : MonoBehaviour
     public void ClickJumpButton()
     {
         receivedJumpInput = true;
+        print("jumping1");
     }
     public void ReleaseJumpButton()
     {

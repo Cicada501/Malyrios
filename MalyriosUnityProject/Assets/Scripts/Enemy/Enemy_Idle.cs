@@ -18,7 +18,7 @@ public class Enemy_Idle : StateMachineBehaviour {
 		if (Vector2.Distance(rb.position, player.position) <= Enemy_run.attackRange &&!animator.GetBool("isDead"))
         {
             if(Time.time>=Enemy.nextAttackTime){
-                animator.SetTrigger("Attack");
+                animator.SetTrigger("Attack"); 
             }
         }
 	}

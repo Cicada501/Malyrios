@@ -143,6 +143,7 @@ public class Player : MonoBehaviour
         attackInput = ButtonScript.receivedAttackInput;
         dodgeInput = ButtonScript.receivedDodgeInput;
         jumpInput = ButtonScript.receivedJumpInput;
+        print("jumping"+jumpInput);
         interactInput = ButtonScript.receivedInteractInput;
         inventoryInput = ButtonScript.receivedOpenInventoryInput;
         ability1_Input = ButtonScript.receivedAbility1_input;
@@ -159,6 +160,7 @@ public class Player : MonoBehaviour
         //Jump
         if (isGrunded && jumpInput)
         {
+            print("Jump");
             jumpStart.Play();
             CreateDust();
             isGrunded = false;
