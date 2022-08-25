@@ -31,7 +31,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
     public void RemoveItem()
     {
         child.GetComponent<Image>().enabled = false;
-        OnWeaponChanged?.Invoke(null);
+        OnWeaponChanged?.Invoke(null); //? checks if the event is null
     }
 
     private void Start()

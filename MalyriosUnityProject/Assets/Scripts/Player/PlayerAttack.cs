@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
-        EquipmentSlot.OnWeaponChanged += OnWeaponChanged;
+        EquipmentSlot.OnWeaponChanged += OnWeaponChanged; //subscribe method to event (both same name)
     }
 
     // Use this for initialization
@@ -59,10 +59,11 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("Attackinput: " + Player.attackInput+ " Weaponequipped: "+ equippedWeapon.ItemName);
         if (this.equippedWeapon == null) return;
 
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
-
+        
         //check if the attackrate allows the next attack
         if (Time.time >= nextAttackTime)
         {
@@ -101,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
     void Attack()
     {
         if (this.equippedWeapon == null) return;
-
+        print("Attack");
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
 

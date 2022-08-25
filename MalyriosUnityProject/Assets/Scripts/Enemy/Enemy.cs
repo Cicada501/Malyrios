@@ -88,7 +88,6 @@ public class Enemy : MonoBehaviour
         }
         
         distToPlayer = Mathf.Abs(rb.position.x - player.position.x);
-        print("Dist"+distToPlayer);
         //distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
         animator.SetFloat("distToPlayer", distToPlayer);
         
