@@ -57,6 +57,12 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // Update is called once per frame
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        //Gizmos.DrawSphere(attackPoint.position, attackRadius);
+    }
     void Update()
     {
         //print("Attackinput: " + Player.attackInput+ " Weaponequipped: "+ equippedWeapon.ItemName);
@@ -124,6 +130,7 @@ public class PlayerAttack : MonoBehaviour
         //get list of all colliders in hit range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
         //remember the gameobject of the collider, to only hit it once if it has multiple colliders
+        //print("HitEnemies: " + hitEnemies.Length);
         List<GameObject> enemiesGotHit = new List<GameObject>();
         if (hitEnemies.Length > 0)
         {
