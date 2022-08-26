@@ -12,11 +12,13 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     [SerializeField] TextMeshProUGUI tmpText = null;
     [SerializeField] private int sceneIndex;
     [SerializeField] private string sceneName;
+    [SerializeField] Transform spawnPoint;
     public void Interact()
     {
-        SaveSystem.SavePlayer(player);
+        /*SaveSystem.SavePlayer(player);
         SaveSystem.SaveInventory(inventory);
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(sceneIndex);*/
+        player.transform.position = spawnPoint.position;
         print("Interacting with " + gameObject.name);
     }
 
