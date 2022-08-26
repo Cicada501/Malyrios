@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0951208ce15da914fb1f480490559c35, type: 3}
+  m_Name: Rat Skull
+  m_EditorClassIdentifier: 
+  itemID: 11
+  itemName: Rat Skull
+  description: Its just a rat skull
+  icon: {fileID: 5376606789694755941, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
+  sellPrice: 20
+  purchasePrice: 430
+  dropChance: 1
+  isStackable: 1
+  maxStackAmount: 10
+  spriteType: 0
+  itemType: 5
+  itemPrefab: {fileID: 0}
