@@ -59,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Attackinput: " + Player.attackInput+ " Weaponequipped: "+ equippedWeapon.ItemName);
+        //print("Attackinput: " + Player.attackInput+ " Weaponequipped: "+ equippedWeapon.ItemName);
         if (this.equippedWeapon == null) return;
 
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
