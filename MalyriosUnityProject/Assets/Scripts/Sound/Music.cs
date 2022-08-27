@@ -9,6 +9,7 @@ public class Music : MonoBehaviour
     [SerializeField] AudioSource MusicNormal = null;
     [SerializeField] AudioSource MusicDark = null;
     [SerializeField] AudioSource MusicVillage = null;
+    [SerializeField] AudioSource MusicCave = null;
     string currentlyPlaying;
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,22 @@ public class Music : MonoBehaviour
             MusicVillage.Play();
             currentlyPlaying = "Village";
 
+        }
+        else if (changeMusic.playerInZone == "Cave" && currentlyPlaying != "Cave")
+        {
+            MusicDark.Stop();
+            MusicVillage.Stop();
+            MusicNormal.Stop();
+            MusicCave.Play();
+            currentlyPlaying = "Cave";
+        }
+        else if (changeMusic.playerInZone == "Normal" && currentlyPlaying != "Normal")
+        {
+            MusicDark.Stop();
+            MusicVillage.Stop();
+            MusicCave.Stop();
+            MusicNormal.Play();
+            currentlyPlaying = "Normal";
         }
     }
 }
