@@ -6,16 +6,18 @@ public class FireBall : MonoBehaviour
 {
     [SerializeField] Transform fireBallSpawn = null;
     [SerializeField] GameObject fireball = null;
-    [SerializeField] float fireballCooldownTime = 0f;
+    [SerializeField] float fireballCooldownTime;
     private float fireballCooldown = 0f;
     // Start is called before the first frame update
-    void Start(){}
+    void Start()
+    {
+    }
 
     // Update is called once per frasme
     void Update()
     {
         //Spawn Fireball
-        if(Player.ability1_Input&& fireballCooldown==0.0f){
+        if(ButtonScript.receivedAbility1_input&& fireballCooldown==0.0f){
             Instantiate(fireball,fireBallSpawn.transform.position,fireBallSpawn.rotation );
             fireballCooldown = fireballCooldownTime;
         }

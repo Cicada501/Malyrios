@@ -21,6 +21,7 @@ namespace Malyrios.Dialogue
         public int LinkedToSentenceId;
         [TextArea(3, 10)]
         public string AnswerDescription;
+        public string Decision;
     }
 
 }

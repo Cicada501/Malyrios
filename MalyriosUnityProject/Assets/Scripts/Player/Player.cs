@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     public static bool attackInput;
     public static bool interactInput;
     public static bool inventoryInput;
-    public static bool ability1_Input;
 
     /*[FormerlySerializedAs("spawnPoint2")]*/
     public Vector3 closestSpawnPoint = new Vector3(0.0f, 0.0f, 0.0f);
@@ -145,7 +144,7 @@ public class Player : MonoBehaviour
         jumpInput = ButtonScript.receivedJumpInput;
         interactInput = ButtonScript.receivedInteractInput;
         inventoryInput = ButtonScript.receivedOpenInventoryInput;
-        ability1_Input = ButtonScript.receivedAbility1_input;
+       
 
         if (dodgeInput && Time.time - usedBackJumpAt > backJumpRate)
         {
