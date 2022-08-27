@@ -20,7 +20,7 @@ public class Decisions : MonoBehaviour
         Debug.Log("learnedFireball: "+ learnedFireball);
         if (!learnedFireball)
         {
-            //fireballButton.SetActive(false);
+            fireballButton.SetActive(false);
         }
         else
         {
