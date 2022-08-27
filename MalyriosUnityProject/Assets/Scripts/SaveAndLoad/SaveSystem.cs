@@ -21,36 +21,7 @@ public static class SaveSystem
         stream.Close();
     }
     
-    public static void SaveDecisions(Decision decision)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/decision.mydata";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        DecisionData data = new DecisionData(); //directly takes the Global decision values from the Decision 
-        Debug.Log("learedfiireball in SaveDecisions: "+ data.learnedFireball);
-        //write Data to file
-        formatter.Serialize(stream, data);
-        stream.Close();
-    }
     
-    public static DecisionData LoadDecisions()
-    {
-        string path = Application.persistentDataPath + "/decision.mydata";
-        BinaryFormatter formatter = new BinaryFormatter();
-        if (!File.Exists(path))
-        {
-            Debug.LogError("Save file not found in" + path);
-            Decision decision = GameObject.Find("GameManager").GetComponent<Decision>();
-            SaveDecisions(decision);
-        }
-
-        var stream = new FileStream(path, FileMode.Open);
-        DecisionData data = formatter.Deserialize(stream) as DecisionData;
-        stream.Close();
-
-        return data;
-    }
 
     public static PlayerData LoadPlayer()
     {
@@ -78,7 +49,7 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         InventoryData data = new InventoryData(inventory);
-
+        Debug.Log("Saved Weapon ID: "+data.equippedWeaponID);
         //write Data to file
         formatter.Serialize(stream, data);
         stream.Close();
@@ -109,6 +80,37 @@ public static class SaveSystem
             data = new InventoryData(inventory);
         }
         
+        stream.Close();
+
+        return data;
+    }
+    
+    //Decisions
+    public static void SaveDecisions(Decision decision)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/decision.mydata";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DecisionData data = new DecisionData(); //directly takes the Global decision values from the Decision 
+        //write Data to file
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+    
+    public static DecisionData LoadDecisions()
+    {
+        string path = Application.persistentDataPath + "/decision.mydata";
+        BinaryFormatter formatter = new BinaryFormatter();
+        if (!File.Exists(path))
+        {
+            Debug.LogError("Save file not found in" + path);
+            Decision decision = GameObject.Find("GameManager").GetComponent<Decision>();
+            SaveDecisions(decision);
+        }
+
+        var stream = new FileStream(path, FileMode.Open);
+        DecisionData data = formatter.Deserialize(stream) as DecisionData;
         stream.Close();
 
         return data;

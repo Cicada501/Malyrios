@@ -60,11 +60,15 @@ public class PlayerAttack : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         //Gizmos.DrawSphere(attackPoint.position, attackRadius);
     }
     void Update()
     {
+        if (Input.GetKey((KeyCode.X)))
+        {
+            //OnWeaponChanged(ItemDatabase.GetWeapon(1));
+        }
         //print("Attackinput: " + Player.attackInput+ " Weaponequipped: "+ equippedWeapon.ItemName);
         if (this.equippedWeapon == null) return;
 

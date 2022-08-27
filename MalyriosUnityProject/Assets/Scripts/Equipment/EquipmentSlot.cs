@@ -28,6 +28,16 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
     {
     }
 
+    private void Update()
+    {
+        Debug.Log(Item);
+        if (Input.GetKey(KeyCode.X))
+        {
+            
+            Debug.Log("Item: "+Item);
+        }
+    }
+
     public void RemoveItem()
     {
         child.GetComponent<Image>().enabled = false;
@@ -39,6 +49,30 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
         child = transform.GetChild(0).gameObject;
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
+        LoadEquip();
+    }
+
+   
+
+    private void LoadEquip()
+    {
+        InventoryData data = SaveSystem.LoadInventory();
+        if(data.equippedWeaponID == 0) return;
+        print(data.equippedWeaponID);
+        var getItem = ItemDatabase.GetWeapon(1);
+        if (this.gameObject.name == "WeaponSlot")
+        {
+            
+            AddWeapon(ItemDatabase.GetWeapon(1));
+
+        }
+    }
+    public void AddWeapon(BaseWeapon weapon)
+    {
+        child.GetComponent<Image>().sprite = weapon.Icon;
+        Item = weapon;
+        transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+        TriggerSlotEvent();
     }
 
     private void TriggerSlotEvent()
@@ -70,17 +104,17 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
         if (eventData.pointerDrag == null) return;
 
         // Get the slot of the dragged item.
-        ISlot slot = eventData.pointerDrag.GetComponent<DragNDrop>().MySlot; 
+        ISlot slot = eventData.pointerDrag.GetComponent<DragNDrop>().MySlot;
 
         // If the dragged item is not the same item type, you can't drag it on this item slot, so do nothing.
-        if (slot.Item.ItemType != this.itemType) return; 
+        if (slot.Item.ItemType != this.itemType) return;
 
-        
+
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         // Set the slot sprite to the sprite of the item.
         this.child.GetComponent<Image>().sprite =
-            eventData.pointerDrag.GetComponent<Image>().sprite; 
+            eventData.pointerDrag.GetComponent<Image>().sprite;
 
         // Set the equip item to the item from the dragged item.
         Item = slot.Item;
@@ -92,13 +126,15 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
 
         // Disable the image from the dragged item.
-        eventData.pointerDrag.GetComponent<Image>().enabled = false; 
+        eventData.pointerDrag.GetComponent<Image>().enabled = false;
 
         eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
             this.gridLayoutGroup.GetComponent<RectTransform>().anchoredPosition;
 
         TriggerSlotEvent();
     }
+
+    
 
     public void OnRightMouseButtonClick()
     {

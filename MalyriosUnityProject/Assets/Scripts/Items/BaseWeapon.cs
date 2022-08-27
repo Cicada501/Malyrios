@@ -2,6 +2,7 @@
 
 namespace Malyrios.Items
 {
+    [CreateAssetMenu]
     public class BaseWeapon : BaseItem, IItemDescriber
     {
         [Header("Weapon Properties")] 

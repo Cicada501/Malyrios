@@ -21,7 +21,7 @@ namespace Malyrios.Dialogue
         public int LinkedToSentenceId;
         [TextArea(3, 10)]
         public string AnswerDescription;
-        public string Decision;
+        public string Decision; // in DialogManager this gets used if the decision is really taken (Button Pressed)
     }
 
 }
