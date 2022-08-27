@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Malyrios.Items;
+using SaveAndLoad;
 
 //static -> can not be instantiated. Dont want multiple versions of it
 public static class SaveSystem
@@ -18,6 +19,37 @@ public static class SaveSystem
         //write Data to file
         formatter.Serialize(stream, data);
         stream.Close();
+    }
+    
+    public static void SaveDecisions(Decision decision)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/decision.mydata";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DecisionData data = new DecisionData(); //directly takes the Global decision values from the Decision 
+        Debug.Log("learedfiireball in SaveDecisions: "+ data.learnedFireball);
+        //write Data to file
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+    
+    public static DecisionData LoadDecisions()
+    {
+        string path = Application.persistentDataPath + "/decision.mydata";
+        BinaryFormatter formatter = new BinaryFormatter();
+        if (!File.Exists(path))
+        {
+            Debug.LogError("Save file not found in" + path);
+            Decision decision = GameObject.Find("GameManager").GetComponent<Decision>();
+            SaveDecisions(decision);
+        }
+
+        var stream = new FileStream(path, FileMode.Open);
+        DecisionData data = formatter.Deserialize(stream) as DecisionData;
+        stream.Close();
+
+        return data;
     }
 
     public static PlayerData LoadPlayer()

@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Dialogue;
+using SaveAndLoad;
 using UnityEngine;
 
-public class Decisions : MonoBehaviour
+public class Decision : MonoBehaviour
 {
+    public static bool BigRatAttack;
+    public static bool LearnedFireball;
+    public static int WizardDialogueState = 1;
+    
     public GameObject fireballButton;
-    public static bool bigRatAttack;
-    public static bool learnedFireball;
-    public static int wizardDialogueState = 1;
     [SerializeField] private Dialogue wizzardDialog;
     [SerializeField] private List<DialogueText> wizzardDialogText2;
   
@@ -16,14 +19,17 @@ public class Decisions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DecisionData loadDecisions = SaveSystem.LoadDecisions();
+        BigRatAttack = loadDecisions.bigRatAttack;
+        LearnedFireball = loadDecisions.learnedFireball;
+        WizardDialogueState = loadDecisions.wizardDialogueState;
     }
 
     // Update is called once per frame
     void Update()
     {
-        fireballButton.SetActive(learnedFireball);
-        switch (wizardDialogueState)
+        fireballButton.SetActive(LearnedFireball);
+        switch (WizardDialogueState)
         {
             case 1:
                 
@@ -39,23 +45,28 @@ public class Decisions : MonoBehaviour
         }
     }
     
-    public static void SaveDecision(string answerDecision) //z.B. BigRatAttack
+    public static void GetDecision(string answerDecision) 
     {
         switch (answerDecision)
         {
             case "":
                 return;
             case "learn Fireball":
-                learnedFireball = true;
+                LearnedFireball = true;
                 break;
             case "bigRatAttack":
-                bigRatAttack = true;
+                BigRatAttack = true;
                 break;
             case "Wizzard2":
-                wizardDialogueState = 2;
+                WizardDialogueState = 2;
                 break;
         }
 
         Debug.Log($"Decision: {answerDecision}");
+    }
+
+    private void OnDestroy()
+    {
+        SaveSystem.SaveDecisions(this);
     }
 }
