@@ -104,26 +104,10 @@ namespace Malyrios.Dialogue
                 GameObject go = Instantiate(this.answerButton, this.content);
                 go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"> { answer.AnswerDescription }";
                 go.GetComponent<Button>().onClick.AddListener(() => GetNextSentences(answer.LinkedToSentenceId));
-                go.GetComponent<Button>().onClick.AddListener(() => SaveDecision(answer.Decision));
+                go.GetComponent<Button>().onClick.AddListener(() => Decisions.SaveDecision(answer.Decision));
             }
         }
-
-        private void SaveDecision(string answerDecision) //z.B. BigRatAttack
-        {
-            if(answerDecision == "")
-            {
-                return;
-            }
-            else if(answerDecision == "learn Fireball")
-            {
-                Decisions.learnedFireball = true;
-            }
-            else if(answerDecision == "bigRatAttack")
-            {
-                Decisions.bigRatAttack = true;
-            }
-            Debug.Log($"Decision: {answerDecision}");
-        }
+        
 
         bool isWriting = false;
         /// <summary>
