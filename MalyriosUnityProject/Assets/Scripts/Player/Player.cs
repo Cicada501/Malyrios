@@ -156,7 +156,7 @@ public class Player : MonoBehaviour
         isGrunded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         //Jump
-        if (/*isGrunded&&*/  jumpInput)
+        if (isGrunded&&  jumpInput)
         {
             print("Jump");
             jumpStart.Play();

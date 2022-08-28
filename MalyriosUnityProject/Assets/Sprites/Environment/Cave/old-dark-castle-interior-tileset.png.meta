@@ -3005,7 +3005,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: c6e8ca32fe6de0470800000000000000
@@ -3026,7 +3030,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: 9e6bed8852eb85480800000000000000
@@ -3047,7 +3055,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: -7}
       tessellationDetail: 0
       bones: []
       spriteID: e0a84ba6d1af3ce80800000000000000
@@ -3068,7 +3080,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -7}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: -7}
       tessellationDetail: 0
       bones: []
       spriteID: 42ca8812dc011f3b0800000000000000
@@ -6850,8 +6866,8 @@ TextureImporter:
       old-dark-castle-interior-tileset_53: 8961150682708224833
       old-dark-castle-interior-tileset_228: -1512752418629521641
       old-dark-castle-interior-tileset_2: -5193705663991820603
-      old-dark-castle-interior-tileset_116: -1465628681157410309
       old-dark-castle-interior-tileset_159: -5548919778513209042
+      old-dark-castle-interior-tileset_116: -1465628681157410309
       old-dark-castle-interior-tileset_49: -2737841056662874389
       old-dark-castle-interior-tileset_191: 6238835728838715807
       old-dark-castle-interior-tileset_63: 5402099463520423540

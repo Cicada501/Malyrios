@@ -19,7 +19,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         SaveSystem.SaveInventory(inventory);
         SceneManager.LoadScene(sceneIndex);*/
         player.transform.position = spawnPoint.position;
-        print("Interacting with " + gameObject.name);
+        //print("Interacting with " + gameObject.name);
     }
 
     void Start()
@@ -47,5 +47,10 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         {
             ShowPickUpDialog();
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        tmpText.gameObject.SetActive(false);
     }
 }
