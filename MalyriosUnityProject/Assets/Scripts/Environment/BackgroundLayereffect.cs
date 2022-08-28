@@ -7,12 +7,14 @@ public class BackgroundLayereffect : MonoBehaviour {
 	private float lengthX, startposX;
 	private float lengthY, startposY;
 	[SerializeField] GameObject cam = null;
-	float camPosY;
+	float camPosY = 19.5f; //base value, so that the backgrounds spawn in the right position wherever the player spawns
 	[SerializeField] float parallaxEffectX = 0.0f;
 	[SerializeField] float parallaxEffectY = 0.0f;
+
 	// Use this for initialization
-	void Start () {
-		camPosY = cam.transform.position.y;
+	void Start ()
+	{
+		camPosY = -19.5f;
 		startposX = transform.position.x;
 		startposY = transform.position.y;
 	}
