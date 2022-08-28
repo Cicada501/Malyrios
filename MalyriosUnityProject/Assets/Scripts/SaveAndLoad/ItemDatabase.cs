@@ -7,20 +7,22 @@ using Malyrios.Items;
 public class ItemDatabase : MonoBehaviour
 {
     [SerializeField] BaseItem[] Items = null;
+    static BaseItem[] ItemsStatic = null;
     [SerializeField] BaseWeapon[] Weapons = null;
     static BaseWeapon[] WeaponsStatic = null;
 
     private void Awake()
     {
         WeaponsStatic = Weapons;
+        ItemsStatic = Items;
     }
 
-    public BaseItem GetItem(int id)
+    public static BaseItem GetItem(int id)
     {
         //empty slots
         if (id == 0) return null;
 
-        foreach (var item in Items)
+        foreach (var item in ItemsStatic)
         {
             if (item.ItemID == id)
             {
@@ -28,7 +30,7 @@ public class ItemDatabase : MonoBehaviour
             }
         }
 
-        Debug.LogError("No item with iD " + id);
+        Debug.Log("No item with iD " + id+ " in the Database");
         return null;
     }
 
@@ -45,7 +47,7 @@ public class ItemDatabase : MonoBehaviour
             }
         }
 
-        Debug.LogError("No item with iD " + id);
+        Debug.Log("No item with iD " + id+ " in the Database");
         return null;
     }
 }

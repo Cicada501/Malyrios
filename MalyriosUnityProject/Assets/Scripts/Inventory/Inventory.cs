@@ -33,8 +33,6 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private ItemDatabase database = null;
-
     private void Start()
     {
         LoadInventory();
@@ -42,8 +40,8 @@ public class Inventory : MonoBehaviour
         InvokeRepeating("SaveInventory", 2f, 2f); //2s delay, repeat every 2s
         //InvokeRepeating("PrintInventory", 1f, 1f);
         // This is just for test purposes
-        testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
-        AddItem(testWeapon);
+        //testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
+        //AddItem(testWeapon);
     }
 
     void PrintInventory()
@@ -87,10 +85,14 @@ public class Inventory : MonoBehaviour
 
         foreach (var itemID in data.itemIDs)
         {
-            if(database.GetItem(itemID) != null)
+            if(ItemDatabase.GetItem(itemID) != null)
             {
-                AddItem(database.GetItem(itemID));
-            }else
+                AddItem(ItemDatabase.GetItem(itemID));
+            }else if (ItemDatabase.GetWeapon(itemID)!= null)
+            {
+                AddItem(ItemDatabase.GetWeapon(itemID));
+            }
+            else
             {
                 Debug.Log("Item not found");
             }

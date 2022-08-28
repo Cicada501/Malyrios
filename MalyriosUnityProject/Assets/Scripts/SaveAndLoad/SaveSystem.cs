@@ -47,7 +47,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/inventory.mydata";
         FileStream stream = new FileStream(path, FileMode.Create);
-        
+        Debug.Log(path);
         InventoryData data = new InventoryData(inventory);
         //write Data to file
         formatter.Serialize(stream, data);
