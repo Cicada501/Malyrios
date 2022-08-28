@@ -36,6 +36,7 @@ public class InventoryUI : MonoBehaviour
         // amount of items, that already existed in a Slot
         d = 0;
     }
+    
 
     // Update is called once per frame
     private void Update()

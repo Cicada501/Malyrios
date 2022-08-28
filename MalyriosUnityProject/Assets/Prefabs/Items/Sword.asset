@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   itemID: 1
-  itemName: IronSword
+  itemName: Iron Sword
   description: attack with it!
-  icon: {fileID: 21300100, guid: 58e16613d823ab740a8d7f9992267b54, type: 3}
+  icon: {fileID: -7466664793296382621, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   sellPrice: 0
   purchasePrice: 0
   dropChance: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
   itemType: 0
   itemPrefab: {fileID: 877694526288938081, guid: 9b1f58ae4023d514e992ca8d27765ea9,
     type: 3}
-  minDamage: 0
-  maxDamage: 0
-  attackSpeed: 0
-  strength: 0
-  critChance: 0
-  critDamage: 0
+  minDamage: 10
+  maxDamage: 20
+  attackSpeed: 1.5
+  strength: 3
+  critChance: 50
+  critDamage: 5

@@ -44,6 +44,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] Animator cameraAnimator = null;
 
+    public static int EquippedWeaponID;
+    
     private void Awake()
     {
         EquipmentSlot.OnWeaponChanged += OnWeaponChanged; //subscribe method to event (both same name)
@@ -54,6 +56,8 @@ public class PlayerAttack : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
+        EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
+        OnWeaponChanged(ItemDatabase.GetWeapon(EquippedWeaponID));
     }
 
     // Update is called once per frame
@@ -65,11 +69,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey((KeyCode.X)))
-        {
-            //OnWeaponChanged(ItemDatabase.GetWeapon(1));
-        }
-        //print("Attackinput: " + Player.attackInput+ " Weaponequipped: "+ equippedWeapon.ItemName);
+        
         if (this.equippedWeapon == null) return;
 
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
@@ -112,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
     void Attack()
     {
         if (this.equippedWeapon == null) return;
-        print("Attack");
+       
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
 
@@ -175,6 +175,7 @@ public class PlayerAttack : MonoBehaviour
         if (this.weaponHolder.transform.transform.childCount > 0)
         {
             Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
+            EquippedWeaponID = 0;
         }
 
         if (weapon == null)
@@ -186,6 +187,8 @@ public class PlayerAttack : MonoBehaviour
         GameObject go = Instantiate(weapon.ItemPrefab, weaponHolder.transform);
         this.swordAnimator = go.GetComponent<Animator>();
         this.equippedWeapon = weapon;
+        EquippedWeaponID = weapon.ItemID;
+        
     }
 
 

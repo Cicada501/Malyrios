@@ -47,9 +47,8 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/inventory.mydata";
         FileStream stream = new FileStream(path, FileMode.Create);
-
+        
         InventoryData data = new InventoryData(inventory);
-        Debug.Log("Saved Weapon ID: "+data.equippedWeaponID);
         //write Data to file
         formatter.Serialize(stream, data);
         stream.Close();

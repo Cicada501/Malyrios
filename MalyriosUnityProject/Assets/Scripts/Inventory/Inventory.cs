@@ -87,7 +87,14 @@ public class Inventory : MonoBehaviour
 
         foreach (var itemID in data.itemIDs)
         {
-            AddItem(database.GetItem(itemID));
+            if(database.GetItem(itemID) != null)
+            {
+                AddItem(database.GetItem(itemID));
+            }else
+            {
+                Debug.Log("Item not found");
+            }
+            
         }
         //get Stack size from amout of occurences in ItemIDs
     }

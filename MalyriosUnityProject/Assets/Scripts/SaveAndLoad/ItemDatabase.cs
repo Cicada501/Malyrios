@@ -10,7 +10,7 @@ public class ItemDatabase : MonoBehaviour
     [SerializeField] BaseWeapon[] Weapons = null;
     static BaseWeapon[] WeaponsStatic = null;
 
-    private void Start()
+    private void Awake()
     {
         WeaponsStatic = Weapons;
     }

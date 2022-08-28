@@ -23,19 +23,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
 
     public BaseItem Item { get; set; }
     public Stack<BaseItem> ItemStack { get; set; }
+    private InventoryUI inventoryUI;
+    
 
     public void SetItem(BaseItem item)
     {
-    }
-
-    private void Update()
-    {
-        Debug.Log(Item);
-        if (Input.GetKey(KeyCode.X))
-        {
-            
-            Debug.Log("Item: "+Item);
-        }
     }
 
     public void RemoveItem()
@@ -50,6 +42,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
         LoadEquip();
+        //inventoryUI = GameObject.Find("Canvas UI").GetComponent<InventoryUI>();
+        //inventoryUI.changeInventoryOpened();
     }
 
    
@@ -58,13 +52,9 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
     {
         InventoryData data = SaveSystem.LoadInventory();
         if(data.equippedWeaponID == 0) return;
-        print(data.equippedWeaponID);
-        var getItem = ItemDatabase.GetWeapon(1);
         if (this.gameObject.name == "WeaponSlot")
         {
-            
-            AddWeapon(ItemDatabase.GetWeapon(1));
-
+            AddWeapon(ItemDatabase.GetWeapon(data.equippedWeaponID));
         }
     }
     public void AddWeapon(BaseWeapon weapon)
@@ -130,7 +120,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
 
         eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
             this.gridLayoutGroup.GetComponent<RectTransform>().anchoredPosition;
-
+        
         TriggerSlotEvent();
     }
 
