@@ -11,10 +11,16 @@ public class Decision : MonoBehaviour
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
     
+    
+    //fireball + wizard
     public GameObject fireballButton;
     [SerializeField] private Dialogue wizzardDialog;
     [SerializeField] private List<DialogueText> wizzardDialogText2;
   
+    //big rat
+    [SerializeField] private GameObject bigRatNpc;
+    [SerializeField] private GameObject bigRatEnemy;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,17 +38,23 @@ public class Decision : MonoBehaviour
         switch (WizardDialogueState)
         {
             case 1:
-                
                 break;
             case 2:
                 wizzardDialog.DialogueText = wizzardDialogText2;
-                //instantiate list of type DialogueText with 4 elements in it
-                
                 break;
             case 3:
-               
                 break;
         }
+
+        if (BigRatAttack)
+        {
+            
+            bigRatNpc.SetActive(false);
+            bigRatEnemy.SetActive(true);
+        }
+        
+        
+        
     }
     
     public static void GetDecision(string answerDecision) 
@@ -54,7 +66,7 @@ public class Decision : MonoBehaviour
             case "learn Fireball":
                 LearnedFireball = true;
                 break;
-            case "bigRatAttack":
+            case "BigRatAttack":
                 BigRatAttack = true;
                 break;
             case "Wizzard2":
