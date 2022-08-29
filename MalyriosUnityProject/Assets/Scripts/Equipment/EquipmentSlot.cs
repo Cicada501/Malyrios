@@ -41,14 +41,14 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
         child = transform.GetChild(0).gameObject;
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
-        LoadEquip();
+        LoadWeapon();
         //inventoryUI = GameObject.Find("Canvas UI").GetComponent<InventoryUI>();
         //inventoryUI.changeInventoryOpened();
     }
 
    
 
-    private void LoadEquip()
+    private void LoadWeapon()
     {
         InventoryData data = SaveSystem.LoadInventory();
         if(data.equippedWeaponID == 0) return;

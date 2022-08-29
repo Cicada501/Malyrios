@@ -23,10 +23,11 @@ MonoBehaviour:
   maxStackAmount: 0
   spriteType: 1
   itemType: 0
-  itemPrefab: {fileID: 0}
-  minDamage: 0
-  maxDamage: 0
-  attackSpeed: 0
-  strength: 0
-  critChance: 0
-  critDamage: 0
+  itemPrefab: {fileID: 877694526288938081, guid: 3838221c1ee47df4a97dda6e58b2f259,
+    type: 3}
+  minDamage: 15
+  maxDamage: 40
+  attackSpeed: 1.5
+  strength: 3
+  critChance: 50
+  critDamage: 8

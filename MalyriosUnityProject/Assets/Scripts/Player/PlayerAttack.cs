@@ -45,7 +45,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Animator cameraAnimator = null;
 
     public static int EquippedWeaponID;
-    
+    private bool weaponLoaded = false;
+
     private void Awake()
     {
         EquipmentSlot.OnWeaponChanged += OnWeaponChanged; //subscribe method to event (both same name)
@@ -57,7 +58,9 @@ public class PlayerAttack : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
         EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
-        OnWeaponChanged(ItemDatabase.GetWeapon(EquippedWeaponID));
+        BaseWeapon loadedWeapon = ItemDatabase.GetWeapon((EquippedWeaponID));
+        equippedWeapon = loadedWeapon;
+        OnWeaponChanged(loadedWeapon);
     }
 
     // Update is called once per frame
@@ -175,11 +178,20 @@ public class PlayerAttack : MonoBehaviour
         if (this.weaponHolder.transform.transform.childCount > 0)
         {
             Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
+            if (!weaponLoaded)
+            {
+                weaponLoaded = true;
+            }else
+            {
+                StartCoroutine(SpawnUnequippedWeapon(equippedWeapon));
+            }
+            
             EquippedWeaponID = 0;
         }
 
         if (weapon == null)
         {
+            //Inventory.Instance.AddItem(equippedWeapon);
             this.equippedWeapon = null;
             return;
         }
@@ -189,6 +201,14 @@ public class PlayerAttack : MonoBehaviour
         this.equippedWeapon = weapon;
         EquippedWeaponID = weapon.ItemID;
         
+    }
+
+
+    //Quick and dirty fix for the problem that the unequipped weapon is not spawned corre
+    IEnumerator SpawnUnequippedWeapon(BaseWeapon weapon)
+    {
+        yield return new WaitForSeconds(0.1f);
+        Inventory.Instance.AddItem(weapon);
     }
 
 
