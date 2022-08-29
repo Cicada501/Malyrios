@@ -56,6 +56,9 @@ public class DragNDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             this.transform.parent.GetComponent<IOnSlotRightClick>().OnRightMouseButtonClick();
+        }else if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            this.transform.parent.GetComponent<IOnSlotRightClick>().OnLeftMouseButtonClick();
         }
     }
 }

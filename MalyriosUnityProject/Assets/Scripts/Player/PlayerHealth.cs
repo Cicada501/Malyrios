@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Character;
 using Malyrios.Core;
@@ -87,9 +87,10 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        player.closestSpawnPoint = getClosestSpawnPoint(spawnPoints);
+        var closestSpawnPoint = getClosestSpawnPoint(spawnPoints);
+        player.transform.position = closestSpawnPoint;
         //SaveInventory();
-        SavePlayer();
+        //SavePlayer();
         
     }
 

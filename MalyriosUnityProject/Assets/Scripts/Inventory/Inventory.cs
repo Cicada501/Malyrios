@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Malyrios.Items;
+using SaveAndLoad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -64,6 +65,7 @@ public class Inventory : MonoBehaviour
     public void Remove(BaseItem item)
     {
         ItemIDs.Remove(item.ItemID);
+        //Debug.Log("Item removed"+ItemIDs.Count);
         Items.Remove(item);
         OnItemRemoved?.Invoke(item);
         if (ItemIDs.Count == 0)

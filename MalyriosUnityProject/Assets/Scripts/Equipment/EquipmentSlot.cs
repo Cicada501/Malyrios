@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Core;
 using Malyrios.Items;
+using SaveAndLoad;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -128,5 +129,10 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
 
     public void OnRightMouseButtonClick()
     {
+    }
+
+    public void OnLeftMouseButtonClick()
+    {
+        throw new NotImplementedException();
     }
 }
