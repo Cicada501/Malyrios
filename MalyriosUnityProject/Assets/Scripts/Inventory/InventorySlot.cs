@@ -40,7 +40,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void SetItem(BaseItem baseItem)
     {
         this.item = baseItem;
-        Debug.Log("childcound:" +transform.childCount);
         Transform child = this.transform.GetChild(3);
 
         Image img = child.GetComponent<Image>();

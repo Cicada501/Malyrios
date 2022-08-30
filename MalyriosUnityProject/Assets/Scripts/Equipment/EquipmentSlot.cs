@@ -14,6 +14,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
 
     public static event Action<BaseItem> OnItemSlotChanged;
     public static event Action<BaseWeapon> OnWeaponChanged;
+    public static event Action<BaseArmor> OnArmorChanged;
 
     #endregion
 
@@ -74,6 +75,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
                 OnWeaponChanged?.Invoke(Item as BaseWeapon);
                 break;
             case BaseItem.ItemTypes.Head:
+                
                 break;
             case BaseItem.ItemTypes.Body:
                 break;
@@ -135,4 +137,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
     {
         throw new NotImplementedException();
     }
+}
+
+public class BaseArmor
+{
 }

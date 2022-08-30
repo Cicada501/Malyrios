@@ -6,6 +6,7 @@ public class FireBallProjectile : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed = 1f;
     [SerializeField] GameObject impactEffect = null;
+    [SerializeField] private int fireballDamage;
     private Rigidbody2D rigidBody;
     
     
@@ -23,7 +24,7 @@ public class FireBallProjectile : MonoBehaviour
             //Show impacteffect
             Instantiate(impactEffect,transform.position,Quaternion.identity);
             //Deal damage
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(50);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(fireballDamage);
             //Destroy fireball
             Destroy(gameObject);
         }

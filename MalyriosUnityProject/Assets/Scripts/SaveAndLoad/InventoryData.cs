@@ -14,12 +14,12 @@ namespace SaveAndLoad
             if (!inventory.isEmpty)
             {
                 itemIDs = inventory.ItemIDs.ToArray();
-                Debug.Log("itemIDs length: " + itemIDs.Length);
+
             }
             else
             {
                 itemIDs = Array.Empty<int>();
-                Debug.LogError("Inventory is empty");
+                Debug.Log("Inventory is empty");
             }
 
             equippedWeaponID = PlayerAttack.EquippedWeaponID;
