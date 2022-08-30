@@ -114,6 +114,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
+        print("Attack");
         if (this.equippedWeapon == null) return;
        
         playerAnimator.SetTrigger("Attack");

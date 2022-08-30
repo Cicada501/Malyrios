@@ -79,8 +79,9 @@ namespace Malyrios.Items
             if (this.itemName == "Red Flower")
             {
                 playerHealth.Heal(30);
-            }else if (this.itemName == "Shroom")
+            }else if (this.itemName == "Mushroom")
             {
+                Debug.Log("Hit me!");
                 playerHealth.TakeDamage(50);
             }
             {

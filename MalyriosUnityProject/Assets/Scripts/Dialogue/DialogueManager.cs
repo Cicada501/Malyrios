@@ -61,8 +61,7 @@ namespace Malyrios.Dialogue
             // And do nothing.
             if (linkedId == -1)
             {
-                this.gameObject.SetActive(false);
-                DeleteOldAnswers();
+                EndDialogue();
                 return;
             }
 
@@ -75,6 +74,12 @@ namespace Malyrios.Dialogue
             }
             DeleteOldAnswers();
             NextSentence();
+        }
+
+        public void EndDialogue()
+        {
+            this.gameObject.SetActive(false);
+            DeleteOldAnswers();
         }
 
         /// <summary>

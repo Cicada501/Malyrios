@@ -40,6 +40,7 @@ namespace Malyrios.Dialogue
                 {
                     interactableText.gameObject.SetActive(false);
                     turnedButtonOff=true;
+                    manager.EndDialogue();
                 }
                
             }
@@ -59,6 +60,7 @@ namespace Malyrios.Dialogue
         private void OnTriggerExit2D(Collider2D other)
         {
             this.triggered = false;
+            
         }
     }
 }

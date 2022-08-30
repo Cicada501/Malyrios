@@ -92,14 +92,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnLeftMouseButtonClick()
     {
-        if(item.name is "Red Flower" or "Shroom")
+        if(item.name is "Red Flower" or "Mushroom")
         {
             Debug.Log("Flower");
-        }
-        {
             UseItem();
         }
-        
+
     }
 
     /// <summary>

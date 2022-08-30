@@ -14,15 +14,9 @@ public class Menu : MonoBehaviour
     void Start(){
         MenuPanel.SetActive(false);
     }
-    public void changeMenuOpen(){
-        if(MenuPanel.activeSelf == false){
-
-            MenuPanel.SetActive(true);
-        }
-        else
-        {
-            MenuPanel.SetActive(false);
-        }
+    public void changeMenuOpen()
+    {
+        MenuPanel.SetActive(MenuPanel.activeSelf == false);
     }
     public void PauseGame(){
         if(!gamePaused){
@@ -37,5 +31,11 @@ public class Menu : MonoBehaviour
             PauseButtonText.text = "Pause";
         }
         
+    }
+    
+    public void QuitGame()
+    {   
+        Debug.Log("Quitting Game");
+        Application.Quit();
     }
 }

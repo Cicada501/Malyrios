@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 5
   itemName: Red Flower
-  description: I am very red
+  description: I wanna eat this flower!
   icon: {fileID: 21300000, guid: ce07823a45f1e144f989e6329e6898f6, type: 3}
   sellPrice: 10
   purchasePrice: 0
   dropChance: 0
   isStackable: 1
-  maxStackAmount: 100
+  maxStackAmount: 10
   spriteType: 0
   itemType: 5
   itemPrefab: {fileID: 0}
