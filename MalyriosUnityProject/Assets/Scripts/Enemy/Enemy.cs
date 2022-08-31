@@ -42,16 +42,26 @@ public class Enemy : MonoBehaviour
 
     bool isGrounded;
     bool isAttacking;
-
-
     bool isDead;
 
+    public Transform SpawnPoint;
+    private EnemySpawner enemySpawner;
+    [SerializeField] public EnemyTypes enemyType;
+    public enum EnemyTypes
+    {
+        Werewolf,
+        Rat,
+        Ogre,
+        Djinn,
+        Other
+    }
     void Start()
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
     private void Update() //-------------------------------------------------
@@ -154,9 +164,8 @@ public class Enemy : MonoBehaviour
         //Disable Script after colliders (otherwise coliders dont get disabled)
         this.enabled = false;
 
-        //DROP ITEMS
+        #region dropItems
         //Item Normal
-
         int dropchoice = Random.Range(0, 100);
         if (dropchoice > dropItemChance0 && dropchoice <= dropItemChance1 + dropItemChance0)
         {
@@ -181,6 +190,10 @@ public class Enemy : MonoBehaviour
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.2f, transform.position.y));
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
         }
+        #endregion
+
+        enemySpawner.Respawn(enemyType, SpawnPoint);
+        Debug.Log(enemyType+" died");
     }
 
 

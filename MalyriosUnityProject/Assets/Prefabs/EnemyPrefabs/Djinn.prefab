@@ -62,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5704038291467004016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.83, y: -25.98, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -196,6 +196,8 @@ MonoBehaviour:
   damageTextSpawn: {fileID: 5704038291144620575}
   facingRight: 0
   maxHealth: 200
+  SpawnPoint: {fileID: 0}
+  enemyType: 0
 --- !u!60 &5704038291467004029
 PolygonCollider2D:
   m_ObjectHideFlags: 0
