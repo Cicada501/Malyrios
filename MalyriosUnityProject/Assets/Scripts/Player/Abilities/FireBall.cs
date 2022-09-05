@@ -11,7 +11,7 @@ public class FireBall : MonoBehaviour
     [SerializeField] GameObject fireball;
     [SerializeField] float fireballCooldownTime;
     public DateTime startTime;
-    private System.TimeSpan ts;
+    private TimeSpan ts;
     private Image abilityButtonImage;
 
     private float cooldownPercent = 1;

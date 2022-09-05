@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-    
     //create a map with enemy and spawntimes for each enemy
-    
+
     [SerializeField] public List<EnemyToSpawn> enemiesToSpawn;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,17 +31,20 @@ public class EnemySpawner : MonoBehaviour
             {
                 var enemy = enemyToSpawn.enemy;
                 enemy.GetComponent<Enemy>().SpawnPoint = spawnPoint;
-                Instantiate(enemy,spawnPoint);
+                
+                //if (deathTime + TimeSpan.FromSeconds(enemyToSpawn.respawnCooldown)  > DateTime.Now)
+                
+                //Instantiate(enemy, spawnPoint);
+                StartCoroutine(Spawn(enemyToSpawn.respawnCooldown, enemy, spawnPoint));
+
             }
-            
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private static IEnumerator Spawn(float cooldown, GameObject enemy, Transform spawnPoint)
     {
+        yield return new WaitForSeconds(cooldown);
+        Instantiate(enemy, spawnPoint);
         
     }
 }
-
-

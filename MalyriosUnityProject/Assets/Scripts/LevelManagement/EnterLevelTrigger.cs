@@ -38,7 +38,6 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     {
         tmpText.text = $"Enter {sceneName}";
         tmpText.gameObject.SetActive(true);
-        print("Entering " + sceneName);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -176,7 +176,7 @@ MonoBehaviour:
   facingRight: 0
   maxHealth: 100
   SpawnPoint: {fileID: 0}
-  enemyType: 0
+  enemyType: 1
 --- !u!50 &200069132668381809
 Rigidbody2D:
   serializedVersion: 4

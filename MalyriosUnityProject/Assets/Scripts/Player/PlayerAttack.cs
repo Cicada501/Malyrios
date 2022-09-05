@@ -205,7 +205,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
-    //Quick and dirty fix for the problem that the unequipped weapon is not spawned corre
+    //Quick and dirty fix for the problem that the unequipped weapon is not spawned correctly in the inventory if the slot of the new weapon and slot where the unequipped weapon goes are the same
     IEnumerator SpawnUnequippedWeapon(BaseWeapon weapon)
     {
         yield return new WaitForSeconds(0.1f);

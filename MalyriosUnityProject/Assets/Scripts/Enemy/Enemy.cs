@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
 using TMPro;
+using Random = UnityEngine.Random;
 
 
 public class Enemy : MonoBehaviour
@@ -226,6 +228,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground" && !isDead)
         {
+            Debug.Log("Gravityscale: "+rb.gravityScale);
             rb.gravityScale = gravityToClimb;
         }
     }

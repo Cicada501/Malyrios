@@ -197,7 +197,7 @@ MonoBehaviour:
   facingRight: 0
   maxHealth: 200
   SpawnPoint: {fileID: 0}
-  enemyType: 0
+  enemyType: 3
 --- !u!60 &5704038291467004029
 PolygonCollider2D:
   m_ObjectHideFlags: 0
