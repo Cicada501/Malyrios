@@ -10,36 +10,37 @@ public class Decision : MonoBehaviour
     public static bool BigRatAttack;
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
-    
-    
+
+
     //fireball + wizard
     public GameObject fireballButton;
     [SerializeField] private Dialogue wizzardDialog;
     [SerializeField] private List<DialogueText> wizzardDialogText2;
-  
+    private List<DialogueText> wizardNormalDialogueText;
+
     //big rat
     [SerializeField] private GameObject bigRatNpc;
     [SerializeField] private GameObject bigRatEnemy;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         DecisionData loadDecisions = SaveSystem.LoadDecisions();
         BigRatAttack = loadDecisions.bigRatAttack;
         LearnedFireball = loadDecisions.learnedFireball;
         WizardDialogueState = loadDecisions.wizardDialogueState;
+        wizardNormalDialogueText = wizzardDialog.DialogueText;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         fireballButton.SetActive(LearnedFireball);
         switch (WizardDialogueState)
         {
             case 1:
+                wizzardDialog.DialogueText = wizardNormalDialogueText;
                 break;
             case 2:
+
                 wizzardDialog.DialogueText = wizzardDialogText2;
                 break;
             case 3:
@@ -48,16 +49,24 @@ public class Decision : MonoBehaviour
 
         if (BigRatAttack)
         {
-            
             bigRatNpc.SetActive(false);
             bigRatEnemy.SetActive(true);
         }
-        
-        
-        
+        else
+        {
+            bigRatNpc.SetActive(true);
+            bigRatEnemy.SetActive(false);
+        }
     }
-    
-    public static void GetDecision(string answerDecision) 
+
+    public void ResetAllDecisions()
+    {
+        BigRatAttack = false;
+        LearnedFireball = false;
+        WizardDialogueState = 1;
+    }
+
+    public static void GetDecision(string answerDecision)
     {
         switch (answerDecision)
         {
