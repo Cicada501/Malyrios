@@ -32,6 +32,8 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
     int regHealth;
 
+    public Transform currentSpawnPoint;
+
 
     // Use this for initialization
     private void Start()
@@ -55,6 +57,8 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         {
             this.baseAttributes.CurrentHealth += healthRegen;
         }
+
+        Debug.Log("CurrentSpawnPoint: " + currentSpawnPoint);
     }
 
     private void FlashOnDamage()
@@ -85,13 +89,11 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        var closestSpawnPoint = getClosestSpawnPoint(spawnPoints);
-        player.transform.position = closestSpawnPoint;
-        //SaveInventory();
-        //SavePlayer();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
+        //var closestSpawnPoint = GetClosestSpawnPoint(spawnPoints);
+        player.transform.position = currentSpawnPoint.position;
+
     }
 
     public void Heal(int heal)
@@ -99,20 +101,22 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         baseAttributes.CurrentHealth += heal;
     }
 
-    Vector3 getClosestSpawnPoint(GameObject[] SpawnPoints){
+    /*
+    Vector3 GetClosestSpawnPoint(GameObject[] spawnPoints){
         float mindist = 100000;
         GameObject nearestSpawnPoint = null;
-        float[] distances = new float[SpawnPoints.Length];
-        for(int i = 0; i < SpawnPoints.Length; i++)
+        float[] distances = new float[spawnPoints.Length];
+        for(int i = 0; i < spawnPoints.Length; i++)
         {
-            distances[i] = Vector3.Distance(player.transform.position,SpawnPoints[i].transform.position);
+            distances[i] = Vector3.Distance(player.transform.position,spawnPoints[i].transform.position);
             if(distances[i] < mindist){
                 mindist = distances[i];
-                nearestSpawnPoint = spawnPoints[i];
+                nearestSpawnPoint = this.spawnPoints[i];
             }
         }
         return nearestSpawnPoint.transform.position;
     }
+    */
 
 
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -16,8 +17,7 @@ namespace Malyrios.Dialogue
         [SerializeField] private GameObject answerButton = null;
         [SerializeField] private Transform content = null;
         [SerializeField] private TextMeshProUGUI sentence = null;
-
-
+        private bool isWriting = false;
         #endregion
 
         #region Private Variables
@@ -57,7 +57,7 @@ namespace Malyrios.Dialogue
         /// <param name="linkedId">The id of the sentence</param>
         private void GetNextSentences(int linkedId)
         {
-            // If the answer linked to a -1 close the dialogue window.
+            // If the answer is linked to a -1 close the dialogue window.
             // And do nothing.
             if (linkedId == -1)
             {
@@ -78,8 +78,10 @@ namespace Malyrios.Dialogue
 
         public void EndDialogue()
         {
+            isWriting = false;
             this.gameObject.SetActive(false);
             DeleteOldAnswers();
+            
         }
 
         /// <summary>
@@ -114,7 +116,7 @@ namespace Malyrios.Dialogue
         }
         
 
-        bool isWriting = false;
+        
         /// <summary>
         /// Show one letter every frame to get a animated text.
         /// </summary>

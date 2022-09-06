@@ -9,7 +9,7 @@ namespace Malyrios.Dialogue
         [SerializeField] TextMeshProUGUI interactableText = null;
         private DialogueManager manager;
         private Dialogue dialogue;
-        private bool triggered;
+        public static bool triggered;
         private LayerMask whatCanTalkToMe;
         bool turnedButtonOff = false;
 
@@ -54,12 +54,13 @@ namespace Malyrios.Dialogue
         
         private void OnTriggerStay2D(Collider2D other)
         {
-            this.triggered = true;
+            triggered = true;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            this.triggered = false;
+            triggered = false;
+            //manager.EndDialogue();
             
         }
     }

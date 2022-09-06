@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class changeMusic : MonoBehaviour
 {
-    [SerializeField] string changeMusicTo = null;
+    [SerializeField] private string changeMusicTo = null;
+
     // Start is called before the first frame update
-    public static string playerInZone;
-    void Start(){
-        playerInZone = "Normal";
-    }
-    void OnTriggerStay2D(Collider2D other){
-        if(other.gameObject.tag =="Player"){
-            
-            
-            if(playerInZone != changeMusicTo){
-                playerInZone = changeMusicTo;
-            }
-          
-        }
+    public static string CurrentlyPlaying;
+
+    void Start()
+    {
+        CurrentlyPlaying = "Normal";
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            CurrentlyPlaying = changeMusicTo;
+        }
+    }
 }

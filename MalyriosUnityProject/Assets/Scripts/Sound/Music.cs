@@ -22,7 +22,7 @@ public class Music : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (changeMusic.playerInZone == "Dark" && currentlyPlaying != "Dark")
+        if (changeMusic.CurrentlyPlaying == "Dark" && currentlyPlaying != "Dark")
         {
             MusicNormal.Stop();
             MusicVillage.Stop();
@@ -30,7 +30,7 @@ public class Music : MonoBehaviour
             currentlyPlaying = "Dark";
 
         }
-        else if (changeMusic.playerInZone == "Village" && currentlyPlaying != "Village")
+        else if (changeMusic.CurrentlyPlaying == "Village" && currentlyPlaying != "Village")
         {
             MusicDark.Stop();
             MusicNormal.Stop();
@@ -38,7 +38,7 @@ public class Music : MonoBehaviour
             currentlyPlaying = "Village";
 
         }
-        else if (changeMusic.playerInZone == "Cave" && currentlyPlaying != "Cave")
+        else if (changeMusic.CurrentlyPlaying == "Cave" && currentlyPlaying != "Cave")
         {
             MusicDark.Stop();
             MusicVillage.Stop();
@@ -46,7 +46,7 @@ public class Music : MonoBehaviour
             MusicCave.Play();
             currentlyPlaying = "Cave";
         }
-        else if (changeMusic.playerInZone == "Normal" && currentlyPlaying != "Normal")
+        else if (changeMusic.CurrentlyPlaying == "Normal" && currentlyPlaying != "Normal")
         {
             MusicDark.Stop();
             MusicVillage.Stop();

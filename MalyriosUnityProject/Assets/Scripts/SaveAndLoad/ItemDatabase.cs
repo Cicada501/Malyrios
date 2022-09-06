@@ -30,7 +30,7 @@ public class ItemDatabase : MonoBehaviour
             }
         }
 
-        Debug.Log("No item with iD " + id+ " in the Database");
+        Debug.Log("No item with iD " + id+ " in the ItemDatabase (normal for Weapons)");
         return null;
     }
 
