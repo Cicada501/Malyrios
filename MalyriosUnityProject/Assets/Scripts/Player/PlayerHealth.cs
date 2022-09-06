@@ -49,6 +49,8 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         UIManager.Instance.SetMaxHealth(this.baseAttributes.MaxHealth);
 
         regHealth = baseAttributes.MaxHealth;
+
+        currentSpawnPoint = player.transform;
     }
 
     private void FixedUpdate()
@@ -89,11 +91,15 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     
     public void Die()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
-        //var closestSpawnPoint = GetClosestSpawnPoint(spawnPoints);
         player.transform.position = currentSpawnPoint.position;
+        //Delete resources from inventory
+        //Respawn bosses
 
+    }
+
+    public void Respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Heal(int heal)

@@ -14,9 +14,14 @@ public class Menu : MonoBehaviour
     void Start(){
         MenuPanel.SetActive(false);
     }
-    public void changeMenuOpen()
+    public void ToggleMenuOpen()
     {
         MenuPanel.SetActive(MenuPanel.activeSelf == false);
+    }
+
+    public void CloseMenu()
+    {
+        MenuPanel.SetActive(false);
     }
     public void PauseGame(){
         if(!gamePaused){
