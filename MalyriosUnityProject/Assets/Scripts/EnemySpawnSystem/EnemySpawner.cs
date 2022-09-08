@@ -16,8 +16,6 @@ public class EnemySpawner : MonoBehaviour
             var enemy = enemyToSpawn.enemy;
             foreach (var spawnPoint in enemyToSpawn.spawnPoints)
             {
-                //Tell enemy at which spawnpoint he spawned
-                enemy.GetComponent<Enemy>().SpawnPoint = spawnPoint;
                 Instantiate(enemy, spawnPoint);
             }
         }
@@ -29,14 +27,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (enemyToSpawn.enemy.GetComponent<Enemy>().enemyType == type)
             {
-                var enemy = enemyToSpawn.enemy;
-                enemy.GetComponent<Enemy>().SpawnPoint = spawnPoint;
-                
-                //if (deathTime + TimeSpan.FromSeconds(enemyToSpawn.respawnCooldown)  > DateTime.Now)
-                
-                //Instantiate(enemy, spawnPoint);
-                StartCoroutine(Spawn(enemyToSpawn.respawnCooldown, enemy, spawnPoint));
-
+                StartCoroutine(Spawn(enemyToSpawn.respawnCooldown, enemyToSpawn.enemy, spawnPoint));
             }
         }
     }

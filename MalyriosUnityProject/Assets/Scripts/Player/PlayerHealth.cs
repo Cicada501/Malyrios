@@ -60,7 +60,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
             this.baseAttributes.CurrentHealth += healthRegen;
         }
 
-        Debug.Log("CurrentSpawnPoint: " + currentSpawnPoint);
+        //Debug.Log("CurrentSpawnPoint: " + currentSpawnPoint);
     }
 
     private void FlashOnDamage()

@@ -81,7 +81,7 @@ namespace Malyrios.Items
                 playerHealth.Heal(30);
             }else if (this.itemName == "Mushroom")
             {
-                Debug.Log("Hit me!");
+                //Debug.Log("Hit me!");
                 playerHealth.TakeDamage(50);
             }
             {

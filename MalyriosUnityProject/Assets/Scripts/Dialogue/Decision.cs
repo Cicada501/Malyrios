@@ -83,7 +83,7 @@ public class Decision : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"Decision: {answerDecision}");
+        //Debug.Log($"Decision: {answerDecision}");
     }
 
     private void OnDestroy()

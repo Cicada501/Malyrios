@@ -93,7 +93,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if(item.name is "Red Flower" or "Mushroom")
         {
-            Debug.Log("Flower");
+            
             UseItem();
         }
 

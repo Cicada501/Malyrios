@@ -45,8 +45,7 @@ public class Enemy : MonoBehaviour
     bool isGrounded;
     bool isAttacking;
     bool isDead;
-
-    public Transform SpawnPoint;
+    
     private EnemySpawner enemySpawner;
     [SerializeField] public EnemyTypes enemyType;
     public enum EnemyTypes
@@ -62,12 +61,14 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        Debug.Log("Found rigidbody"+rb+"for enemy of type "+enemyType);;
         animator = GetComponent<Animator>();
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
     private void Update() //-------------------------------------------------
     {
+        Debug.Log("Gravityscale for: "+enemyType+" is "+ rb.gravityScale);
         //Damage Text rising up
         damageText.transform.position += new Vector3(10f, 10f, 0f) * Time.deltaTime;
 
@@ -163,7 +164,7 @@ public class Enemy : MonoBehaviour
             c.enabled = false;
         }
 
-        //Disable Script after colliders (otherwise coliders dont get disabled)
+        //Disable Script after colliders (otherwise colliders dont get disabled)
         this.enabled = false;
 
         #region dropItems
@@ -193,9 +194,9 @@ public class Enemy : MonoBehaviour
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
         }
         #endregion
-
-        enemySpawner.Respawn(enemyType, SpawnPoint);
-        Debug.Log(enemyType+" died");
+        
+        //Because the enemy gets instantiated as child of the spawnpoint, transform.parent.transform can be used as spawnpoint
+        enemySpawner.Respawn(enemyType, transform.parent.transform);
     }
 
 
@@ -226,18 +227,25 @@ public class Enemy : MonoBehaviour
     //chage graviy if upwards ground before 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Ground" && !isDead)
+        if (other.gameObject.CompareTag("Ground") && !isDead)
         {
-            Debug.Log("Gravityscale: "+rb.gravityScale);
-            rb.gravityScale = gravityToClimb;
+            Debug.Log("Is there an RB here?(OnTriggerEnter): "+enemyType+" RB: "+ rb);
+            if (rb != null)
+            {
+                rb.gravityScale = gravityToClimb;
+            }
+            
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Ground" && !isDead)
+        if (other.gameObject.CompareTag("Ground") && !isDead)
         {
-            rb.gravityScale = gravityToFall;
+            if (rb != null)
+            {
+                rb.gravityScale = gravityToFall;
+            }
         }
     }
 }
