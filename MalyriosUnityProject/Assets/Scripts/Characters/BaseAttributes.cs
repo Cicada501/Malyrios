@@ -28,7 +28,7 @@ namespace Malyrios.Character
         [SerializeField] private float balance = 0;
 
 
-        private float currentHealth = 30;
+        private float currentHealth;
 
         /// <summary>
         /// Gets or sets the max health.

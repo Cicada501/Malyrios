@@ -36,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] AudioSource meeleeSound2 = null;
     [SerializeField] AudioSource meeleeSound3 = null;
     [SerializeField] AudioSource hitmarkerSound = null;
+    [SerializeField] AudioSource changeWeaponSound = null;
 
     [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.5f;
@@ -69,6 +70,11 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         //Gizmos.DrawSphere(attackPoint.position, attackRadius);
+    }
+
+    private void EquipWeapon(BaseWeapon weapon)
+    {
+        
     }
     void Update()
     {
@@ -178,14 +184,15 @@ public class PlayerAttack : MonoBehaviour
     {
         if (this.weaponHolder.transform.transform.childCount > 0)
         {
+            Inventory.Instance.AddItem(weapon);
             Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
-            if (!weaponLoaded)
-            {
-                weaponLoaded = true;
-            }else
-            {
-                StartCoroutine(SpawnUnequippedWeapon(equippedWeapon));
-            }
+            // if (!weaponLoaded)
+            // {
+            //     weaponLoaded = true;
+            // }else
+            // {
+            //     StartCoroutine(SpawnUnequippedWeapon(equippedWeapon));
+            // }
             
             EquippedWeaponID = 0;
         }
@@ -201,6 +208,8 @@ public class PlayerAttack : MonoBehaviour
         this.swordAnimator = go.GetComponent<Animator>();
         this.equippedWeapon = weapon;
         EquippedWeaponID = weapon.ItemID;
+        changeWeaponSound.Play();
+        
         
     }
 

@@ -7,30 +7,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+ using UnityEngine.Serialization;
 
-[RequireComponent(typeof(BaseAttributes))]
+ [RequireComponent(typeof(BaseAttributes))]
 public class PlayerHealth : MonoBehaviour, IHealthController
 {
-    [SerializeField] GameObject[] spawnPoints = null;
-    [SerializeField] float healthRegen = 0.0f;
-    [SerializeField] float flashTime = 0.0f;
-    [SerializeField] SpriteRenderer PlayerRenderer = null;
-    [SerializeField] Image HealthFill = null;
-    [SerializeField] Image RegHealthFill = null;
+    [SerializeField] private GameObject[] spawnPoints = null;
+    [SerializeField] private float healthRegen;
+    [SerializeField] private float flashTime;
+    [FormerlySerializedAs("PlayerRenderer")] [SerializeField]
+    private SpriteRenderer playerRenderer = null;
+    [FormerlySerializedAs("HealthFill")] [SerializeField]
+    private Image healthFill = null;
+    //[FormerlySerializedAs("RegHealthFill")] [SerializeField] Image regHealthFill = null;
     //[SerializeField] Animator CamAnimator = null;
 
     private Rigidbody2D rb;
     private BaseAttributes baseAttributes;
 
-    private float currentHealth;
-    private float tmpCurrentHealth;
+    //private float currentHealth;
+    //private float tmpCurrentHealth;
 
     private Color playerOrigionalColor;
     private Color barFillOrigionalColor;
 
     Player player;
 
-    int regHealth;
+    //int regHealth;
 
     public Transform currentSpawnPoint;
 
@@ -43,18 +46,20 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         this.baseAttributes = GetComponent<BaseAttributes>();
 
         //Remember original colors to reset after Flash
-        this.playerOrigionalColor = PlayerRenderer.color;
-        this.barFillOrigionalColor = HealthFill.color;
+        this.playerOrigionalColor = playerRenderer.color;
+        this.barFillOrigionalColor = healthFill.color;
 
         UIManager.Instance.SetMaxHealth(this.baseAttributes.MaxHealth);
 
-        regHealth = baseAttributes.MaxHealth;
+        //regHealth = baseAttributes.MaxHealth;
 
         currentSpawnPoint = player.transform;
     }
 
     private void FixedUpdate()
     {
+        Debug.Log("Current Health: " + baseAttributes.CurrentHealth);
+        
         if (this.baseAttributes.CurrentHealth < this.baseAttributes.MaxHealth)
         {
             this.baseAttributes.CurrentHealth += healthRegen;
@@ -65,21 +70,21 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
     private void FlashOnDamage()
     {
-        HealthFill.color = Color.white;
-        PlayerRenderer.color = Color.red;
+        healthFill.color = Color.white;
+        playerRenderer.color = Color.red;
         Invoke(nameof(ResetColor), flashTime);
     }
 
     private void ResetColor()
     {
-        HealthFill.color = barFillOrigionalColor; 
-        PlayerRenderer.color = playerOrigionalColor;
+        healthFill.color = barFillOrigionalColor; 
+        playerRenderer.color = playerOrigionalColor;
     }
 
     public void TakeDamage(int damage)
     {
         this.baseAttributes.CurrentHealth -= damage;
-        regHealth -= damage/2;
+        //regHealth -= damage/2;
 
         FlashOnDamage();
         
@@ -92,6 +97,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void Die()
     {
         player.transform.position = currentSpawnPoint.position;
+        baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
         //Delete resources from inventory
         //Respawn bosses
 

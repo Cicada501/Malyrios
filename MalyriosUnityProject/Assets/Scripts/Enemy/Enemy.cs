@@ -61,14 +61,13 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log("Found rigidbody"+rb+"for enemy of type "+enemyType);;
+        
         animator = GetComponent<Animator>();
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
     private void Update() //-------------------------------------------------
     {
-        Debug.Log("Gravityscale for: "+enemyType+" is "+ rb.gravityScale);
         //Damage Text rising up
         damageText.transform.position += new Vector3(10f, 10f, 0f) * Time.deltaTime;
 
@@ -229,7 +228,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground") && !isDead)
         {
-            Debug.Log("Is there an RB here?(OnTriggerEnter): "+enemyType+" RB: "+ rb);
             if (rb != null)
             {
                 rb.gravityScale = gravityToClimb;
