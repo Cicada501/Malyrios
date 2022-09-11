@@ -23,6 +23,7 @@ namespace SaveAndLoad
             }
 
             equippedWeaponID = PlayerAttack.EquippedWeaponID;
+            //Debug.Log("Saved Weapon with ID: "+equippedWeaponID);
         }
     }
 }

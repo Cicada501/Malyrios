@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
     private void FixedUpdate()
     {
-        Debug.Log("Current Health: " + baseAttributes.CurrentHealth);
+        //Debug.Log("Current Health: " + baseAttributes.CurrentHealth);
         
         if (this.baseAttributes.CurrentHealth < this.baseAttributes.MaxHealth)
         {

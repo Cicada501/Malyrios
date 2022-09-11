@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Malyrios.Character;
 using Malyrios.Items;
 using UnityEngine;
@@ -59,9 +60,6 @@ public class PlayerAttack : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
         EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
-        BaseWeapon loadedWeapon = ItemDatabase.GetWeapon((EquippedWeaponID));
-        equippedWeapon = loadedWeapon;
-        OnWeaponChanged(loadedWeapon);
     }
 
     // Update is called once per frame
@@ -71,14 +69,10 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         //Gizmos.DrawSphere(attackPoint.position, attackRadius);
     }
-
-    private void EquipWeapon(BaseWeapon weapon)
-    {
-        
-    }
+    
     void Update()
     {
-        
+        //avoid attacking when no weapon is equipped
         if (this.equippedWeapon == null) return;
 
         //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
@@ -177,50 +171,57 @@ public class PlayerAttack : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Checks if a weapon is equipped and if so, unequips it and equips the new one.
+    /// If called with null, unequips the current weapon.
     /// </summary>
-    /// <param name="weapon"></param>
-    private void OnWeaponChanged(BaseWeapon weapon)
+    /// <param name="weapon (can be null)"></param>
+    private void OnWeaponChanged([CanBeNull] BaseWeapon weapon)
     {
-        if (this.weaponHolder.transform.transform.childCount > 0)
+        //when equipping a weapon (and not unequippeng)
+        if (weapon != null)
         {
-            Inventory.Instance.AddItem(weapon);
-            Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
-            // if (!weaponLoaded)
-            // {
-            //     weaponLoaded = true;
-            // }else
-            // {
-            //     StartCoroutine(SpawnUnequippedWeapon(equippedWeapon));
-            // }
+            //if already a weapon equipped
+            if (this.equippedWeapon != null)
+            {
+                Debug.Log("Unequipping weapon: " + this.equippedWeapon.ItemName);
+                StartCoroutine(SpawnUnequippedWeaponDelayed(equippedWeapon));
+                UnequipWeapon();
+                
+            }
+            EquipWeapon(weapon);
+            changeWeaponSound.Play();
             
-            EquippedWeaponID = 0;
         }
-
-        if (weapon == null)
+        //when unequipping a weapon
+        else
         {
-            //Inventory.Instance.AddItem(equippedWeapon);
-            this.equippedWeapon = null;
-            return;
+            UnequipWeapon();
         }
+    }
 
+    private void EquipWeapon(BaseWeapon weapon)
+    {
         GameObject go = Instantiate(weapon.ItemPrefab, weaponHolder.transform);
         this.swordAnimator = go.GetComponent<Animator>();
         this.equippedWeapon = weapon;
         EquippedWeaponID = weapon.ItemID;
-        changeWeaponSound.Play();
-        
-        
+    }
+    
+    
+    private void UnequipWeapon()
+    {
+        equippedWeapon = null;
+        EquippedWeaponID = 0;
+        Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
+
     }
 
-
     //Quick and dirty fix for the problem that the unequipped weapon is not spawned correctly in the inventory if the slot of the new weapon and slot where the unequipped weapon goes are the same
-    IEnumerator SpawnUnequippedWeapon(BaseWeapon weapon)
+    IEnumerator SpawnUnequippedWeaponDelayed(BaseWeapon weapon)
     {
         yield return new WaitForSeconds(0.1f);
         Inventory.Instance.AddItem(weapon);
     }
-
 
     //Draw a sphere to see the attack Range
     private void OnDrawGizmosSelected()

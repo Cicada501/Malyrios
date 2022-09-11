@@ -35,7 +35,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
     public void RemoveItem()
     {
         child.GetComponent<Image>().enabled = false;
-        OnWeaponChanged?.Invoke(null); //? checks if the event is null
+        OnWeaponChanged?.Invoke(null);  //calls onWeaponChanged with null
     }
 
     private void Start()
@@ -69,6 +69,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
 
     private void TriggerSlotEvent()
     {
+        Debug.Log("Triggered Slot Event");
         switch (this.itemType)
         {
             case BaseItem.ItemTypes.Weapon:
