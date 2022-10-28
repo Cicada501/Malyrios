@@ -175,7 +175,6 @@ MonoBehaviour:
   damageTextSpawn: {fileID: 200069132060498882}
   facingRight: 0
   maxHealth: 100
-  SpawnPoint: {fileID: 0}
   enemyType: 1
 --- !u!50 &200069132668381809
 Rigidbody2D:
@@ -237,6 +236,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.033896685, y: -0.05270095}
+  m_Offset: {x: -0.033896685, y: -0.037941825}
   serializedVersion: 2
-  m_Radius: 0.03046754
+  m_Radius: 0.056082983

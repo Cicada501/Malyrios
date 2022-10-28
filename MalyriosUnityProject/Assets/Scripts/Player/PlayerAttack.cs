@@ -207,7 +207,6 @@ public class PlayerAttack : MonoBehaviour
         EquippedWeaponID = weapon.ItemID;
     }
     
-    
     private void UnequipWeapon()
     {
         equippedWeapon = null;
