@@ -852,7 +852,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -960,6 +960,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -6806,21 +6818,21 @@ TextureImporter:
       props_111: -8640121080514485793
       props_115: -3568746659844040048
       props_83: 4323011337126779124
+      props_211: -4232523107032742225
       props_40: -2380722728482668092
       props_15: 2119963344433259550
       props_150: -7586647579002582286
       props_27: -4708704120845580051
-      props_211: -4232523107032742225
       props_114: 738330872073448401
       props_108: 7627591291129779383
       props_10: 3786519898515604688
       props_196: 2658578846326445349
       props_103: 5699811810828423969
-      props_76: -6888938579677839803
+      props_263: 9064580530810961951
       props_168: 3147378768656859883
       props_223: 3062972998407720747
+      props_76: -6888938579677839803
       props_102: 3272058174683286373
-      props_263: 9064580530810961951
       props_6: 5618000101936168721
       props_219: 1744761548332469558
       props_207: 8439593230788962995

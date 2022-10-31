@@ -10,7 +10,6 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     Player player;
     private Inventory inventory;
     [SerializeField] TextMeshProUGUI tmpText = null;
-    [SerializeField] private int sceneIndex;
     [SerializeField] private string sceneName;
     [SerializeField] Transform spawnPoint;
     public void Interact()
@@ -34,7 +33,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     {
         
     }
-    private void ShowPickUpDialog()
+    private void ShowEnterDialog()
     {
         tmpText.text = $"Enter {sceneName}";
         tmpText.gameObject.SetActive(true);
@@ -42,9 +41,9 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            ShowPickUpDialog();
+            ShowEnterDialog();
         }
     }
 
