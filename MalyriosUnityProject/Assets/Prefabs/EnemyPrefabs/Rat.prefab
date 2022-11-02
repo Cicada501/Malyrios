@@ -164,7 +164,7 @@ MonoBehaviour:
   dropRareItemChance2: 10
   gravityToFall: 8
   gravityToClimb: 2
-  attackRate: 1
+  attackRate: 0.7
   attackPoint: {fileID: 200069132060498882}
   attackRadius: 0.1
   playerLayer:

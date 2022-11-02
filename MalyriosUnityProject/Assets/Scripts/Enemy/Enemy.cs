@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     float distToPlayer;
 
     [SerializeField] Transform attackPoint = null;
-    [SerializeField] float attackRadius = 0.0f;
+    [SerializeField] float attackRadius = 0.1f;
     [SerializeField] LayerMask playerLayer = 0;
     [SerializeField] TextMeshPro damageText = null;
     [SerializeField] Transform damageTextSpawn = null;
@@ -48,13 +48,14 @@ public class Enemy : MonoBehaviour
     
     private EnemySpawner enemySpawner;
     [SerializeField] public EnemyTypes enemyType;
-    public enum EnemyTypes
+    public enum EnemyTypes //Needed to respawn the enemy that died
     {
+        Other,
         Werewolf,
         Rat,
         Ogre,
         Djinn,
-        Other
+        Mandrake
     }
     void Start()
     {
