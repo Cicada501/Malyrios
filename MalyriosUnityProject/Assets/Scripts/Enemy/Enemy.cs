@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
             EnemyFlip();
         }
         
-        distToPlayer = Mathf.Abs(rb.position.x - player.position.x);
+        distToPlayer = Mathf.Abs(rb.position.x - player.position.x)+Mathf.Abs(rb.position.y - player.position.y);
         //distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
         animator.SetFloat("distToPlayer", distToPlayer);
         
