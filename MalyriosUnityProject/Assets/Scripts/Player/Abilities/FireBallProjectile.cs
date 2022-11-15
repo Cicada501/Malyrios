@@ -13,8 +13,8 @@ public class FireBallProjectile : MonoBehaviour
     void Start()
     {   //rigidBody has continoous velocity forward
         rigidBody = GetComponent<Rigidbody2D>();
-        rigidBody.velocity = transform.right * projectileSpeed;   
-        
+        rigidBody.velocity = new Vector2(projectileSpeed, -0.05f*projectileSpeed);
+
     }
        
     //On Collision of Fireball with enemy

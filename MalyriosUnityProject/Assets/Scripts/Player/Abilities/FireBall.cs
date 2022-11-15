@@ -10,6 +10,7 @@ public class FireBall : MonoBehaviour
     [SerializeField] Transform fireBallSpawn;
     [SerializeField] GameObject fireball;
     [SerializeField] float fireballCooldownTime;
+    [SerializeField] private Animator playerAnimator;
     public DateTime startTime;
     private TimeSpan ts;
     private Image abilityButtonImage;
@@ -22,17 +23,13 @@ public class FireBall : MonoBehaviour
     }
 
 
-    // Update is called once per frasme
+    // Important that its Fixedupdate, so cooldown is same on all devices
     void FixedUpdate()
     {
         //Spawn Fireball
         if (ButtonScript.receivedAbility1_input && ts.Seconds >=fireballCooldownTime)
         {
-            Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
-            startTime = Now;
-            ts = Now - startTime;
-            cooldownPercent = 0;
-
+            playerAnimator.SetTrigger("ThrowFireball");
         }
 
         if (ts.Seconds <= fireballCooldownTime)
@@ -47,5 +44,13 @@ public class FireBall : MonoBehaviour
 
 
 
+    }
+
+    public void SpawnFireball()
+    {
+        Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
+        startTime = Now;
+        ts = Now - startTime;
+        cooldownPercent = 0;
     }
 }
