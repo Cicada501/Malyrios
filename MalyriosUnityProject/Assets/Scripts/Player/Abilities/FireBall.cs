@@ -12,14 +12,13 @@ public class FireBall : MonoBehaviour
     [SerializeField] float fireballCooldownTime;
     [SerializeField] private Animator playerAnimator;
     public DateTime startTime;
-    private TimeSpan ts;
-    private Image abilityButtonImage;
+    private TimeSpan ts; private Image abilityButtonImage;
 
     private float cooldownPercent = 1;
 
     private void Start()
     {
-        abilityButtonImage = GetComponent<Image>();
+        abilityButtonImage = GameObject.Find("ButtonFireball").GetComponent<Image>();
     }
 
 
@@ -27,7 +26,7 @@ public class FireBall : MonoBehaviour
     void FixedUpdate()
     {
         //Spawn Fireball
-        if (ButtonScript.receivedAbility1_input && ts.Seconds >=fireballCooldownTime)
+        if (ButtonScript.receivedAbility1_input && ts.Seconds >= fireballCooldownTime)
         {
             playerAnimator.SetTrigger("ThrowFireball");
         }
@@ -38,12 +37,10 @@ public class FireBall : MonoBehaviour
             //cooldownPercent = ts.Seconds / fireballCooldownTime;
             abilityButtonImage.fillAmount = cooldownPercent;
         }
+
         //to let the fill grow smooth approximate time 
-        cooldownPercent += 0.02f/fireballCooldownTime;
+        cooldownPercent += 0.02f / fireballCooldownTime;
         abilityButtonImage.fillAmount = cooldownPercent;
-
-
-
     }
 
     public void SpawnFireball()
