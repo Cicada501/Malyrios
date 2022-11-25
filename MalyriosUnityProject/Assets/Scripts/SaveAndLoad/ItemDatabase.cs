@@ -30,7 +30,7 @@ public class ItemDatabase : MonoBehaviour
             }
         }
 
-        Debug.LogError("No item with iD " + id+ " in the ItemDatabase (normal for Weapons)");
+        Debug.Log("No item with iD " + id+ " in the ItemDatabase (normal for Weapons)");
         return null;
     }
 
@@ -47,7 +47,7 @@ public class ItemDatabase : MonoBehaviour
             }
         }
 
-        Debug.LogError("No Weapon with iD " + id+ " in the WeaponDatabase (now it gets critical)");
+        Debug.Log("No Weapon with iD " + id+ " in the WeaponDatabase (now it gets critical)");
         return null;
     }
 }
