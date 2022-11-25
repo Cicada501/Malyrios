@@ -158,7 +158,6 @@ public class Player : MonoBehaviour
         //Jump
         if (isGrunded&&  jumpInput)
         {
-            print("Jump");
             jumpStart.Play();
             CreateDust();
             isGrunded = false;

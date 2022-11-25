@@ -14,11 +14,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     [SerializeField] Transform spawnPoint;
     public void Interact()
     {
-        /*SaveSystem.SavePlayer(player);
-        SaveSystem.SaveInventory(inventory);
-        SceneManager.LoadScene(sceneIndex);*/
         player.transform.position = spawnPoint.position;
-        //print("Interacting with " + gameObject.name);
     }
 
     void Start()
@@ -27,12 +23,6 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         inventory = FindObjectOfType<Inventory>();
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void ShowEnterDialog()
     {
         tmpText.text = $"Enter {sceneName}";
