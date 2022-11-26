@@ -17,6 +17,7 @@ public class LocalBGLayerEffect : MonoBehaviour
         startposX = transform.position.x;
         startposY = transform.position.y;
         camStartPos = cam.transform.position;
+        
     }
 
     // Update is called once per frame
