@@ -64,7 +64,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
         child.GetComponent<Image>().sprite = weapon.Icon;
         Item = weapon;
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-        TriggerSlotEvent();
+        //TriggerSlotEvent();
     }
 
     private void TriggerSlotEvent()

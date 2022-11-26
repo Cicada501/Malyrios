@@ -49,7 +49,7 @@ public class InventoryUI : MonoBehaviour
         //Dont Open/Close inventory Very often on button hold
         if (Player.inventoryInput && !buttonPressed)
         {
-            changeInventoryOpened();
+            ChangeInventoryOpened();
             buttonPressed = true;
         }
         else if (!Player.inventoryInput)
@@ -103,7 +103,7 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-    public void changeInventoryOpened()
+    public void ChangeInventoryOpened()
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);

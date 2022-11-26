@@ -60,6 +60,10 @@ public class PlayerAttack : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
         EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
+        if (EquippedWeaponID!=0)
+        {
+            EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));
+        }
     }
 
     // Update is called once per frame
@@ -72,10 +76,9 @@ public class PlayerAttack : MonoBehaviour
     
     void Update()
     {
-        //avoid attacking when no weapon is equipped
+        //no attacking when no weapon is equipped
         if (this.equippedWeapon == null) return;
-
-        //Disable sword if animation has finished (enabled in Attack(), cause if its disabled swortAttack1Beaviour is disabled aswell)
+        print("i got a weapon!");
         
         //check if the attackrate allows the next attack
         if (Time.time >= nextAttackTime)
@@ -174,11 +177,12 @@ public class PlayerAttack : MonoBehaviour
     /// Checks if a weapon is equipped and if so, unequips it and equips the new one.
     /// If called with null, unequips the current weapon.
     /// </summary>
-    /// <param name="weapon (can be null)"></param>
-    private void OnWeaponChanged([CanBeNull] BaseWeapon weapon)
+    /// <param name="weaponToEquip (can be null)"></param>
+    /// <param name="weaponToEquip"></param>
+    private void OnWeaponChanged([CanBeNull] BaseWeapon weaponToEquip)
     {
-        //when equipping a weapon (and not unequippeng)
-        if (weapon != null)
+        //when equipping a weapon (and not unequipping)
+        if (weaponToEquip != null)
         {
             //if already a weapon equipped
             if (this.equippedWeapon != null)
@@ -188,7 +192,7 @@ public class PlayerAttack : MonoBehaviour
                 UnequipWeapon();
                 
             }
-            EquipWeapon(weapon);
+            EquipWeapon(weaponToEquip);
             changeWeaponSound.Play();
             
         }
@@ -199,7 +203,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void EquipWeapon(BaseWeapon weapon)
+    public void EquipWeapon(BaseWeapon weapon)
     {
         GameObject go = Instantiate(weapon.ItemPrefab, weaponHolder.transform);
         this.swordAnimator = go.GetComponent<Animator>();
@@ -218,7 +222,7 @@ public class PlayerAttack : MonoBehaviour
     //Quick and dirty fix for the problem that the unequipped weapon is not spawned correctly in the inventory if the slot of the new weapon and slot where the unequipped weapon goes are the same
     IEnumerator SpawnUnequippedWeaponDelayed(BaseWeapon weapon)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         Inventory.Instance.AddItem(weapon);
     }
 

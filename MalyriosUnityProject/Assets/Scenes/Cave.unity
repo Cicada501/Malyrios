@@ -16258,7 +16258,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 821967880}
         m_TargetAssemblyTypeName: 
-        m_MethodName: changeInventoryOpened
+        m_MethodName: ChangeInventoryOpened
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
