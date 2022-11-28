@@ -2,11 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Dialogue;
+using Malyrios.Items;
 using SaveAndLoad;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Decision : MonoBehaviour
 {
+    
+    //cant they be private?
     public static bool BigRatAttack;
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
@@ -17,6 +21,7 @@ public class Decision : MonoBehaviour
     [SerializeField] private Dialogue wizzardDialog;
     [SerializeField] private List<DialogueText> wizzardDialogText2;
     private List<DialogueText> wizardNormalDialogueText;
+    private static BaseItem apple;
 
     //big rat
     [SerializeField] private GameObject bigRatNpc;
@@ -29,6 +34,7 @@ public class Decision : MonoBehaviour
         LearnedFireball = loadDecisions.learnedFireball;
         WizardDialogueState = loadDecisions.wizardDialogueState;
         wizardNormalDialogueText = wizzardDialog.DialogueText;
+        apple = ItemDatabase.GetItem(10);
     }
 
     private void Update()
@@ -57,6 +63,7 @@ public class Decision : MonoBehaviour
             bigRatNpc.SetActive(true);
             bigRatEnemy.SetActive(false);
         }
+        
     }
 
     public void ResetAllDecisions()
@@ -81,10 +88,16 @@ public class Decision : MonoBehaviour
             case "Wizzard2":
                 WizardDialogueState = 2;
                 break;
+            case "get apples":
+                Inventory.Instance.AddItem(apple);
+                Inventory.Instance.AddItem(apple);
+                Inventory.Instance.AddItem(apple);
+                Inventory.Instance.AddItem(apple);
+                break;
         }
-
-        //Debug.Log($"Decision: {answerDecision}");
     }
+
+
 
     private void OnDestroy()
     {
