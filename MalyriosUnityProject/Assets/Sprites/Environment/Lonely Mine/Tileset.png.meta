@@ -2019,7 +2019,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: -5}
       tessellationDetail: 0
       bones: []
       spriteID: 8b9daba97b6b9254489c10ed6b61cd97
@@ -2563,14 +2567,14 @@ TextureImporter:
       Tileset_111: -2068303060
       Tileset_54: -366136043
       Tileset_22: 925665741
-      Tileset_0: 1790724360
-      Tileset_34: 1172972899
-      Tileset_88: 1705073220
       Tileset_101: 2093329126
+      Tileset_0: 1790724360
+      Tileset_41: -1471852434
+      Tileset_34: 1172972899
       Tileset_104: -1026741042
       Tileset_12: -1810281317
       Tileset_90: 16556273
-      Tileset_41: -1471852434
+      Tileset_88: 1705073220
       Tileset_61: -1408536754
       Tileset_71: 185507786
       Tileset_77: -1216406937
