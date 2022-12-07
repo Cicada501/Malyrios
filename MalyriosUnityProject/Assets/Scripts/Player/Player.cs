@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
         //apply input to player (moveing left, right, on ladder up and down)
         if (isClimbing)
         {
-            rb.velocity = new Vector2(horizontal * horizontalSpeed * 0.2f, verticalInput * verticalSpeed);
+            rb.velocity = new Vector2(horizontal * horizontalSpeed * 0.6f, verticalInput * verticalSpeed);
         }
         else
         {
