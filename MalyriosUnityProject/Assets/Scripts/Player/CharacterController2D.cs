@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,6 +31,8 @@ public class CharacterController2D : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	[SerializeField] private Animator playerAnimator;
+
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -39,6 +42,11 @@ public class CharacterController2D : MonoBehaviour
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
+	}
+
+	private void Start()
+	{
+		playerAnimator = GetComponent<Animator>();
 	}
 
 	private void FixedUpdate()
@@ -58,6 +66,8 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+		
+		playerAnimator.SetBool("Grounded", m_Grounded);
 	}
 
 
