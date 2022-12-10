@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] Joystick joystick = null;
     [SerializeField] float checkRadius = 0;
     [SerializeField] float horizontalSpeed = 1f;
-    [SerializeField] float verticalSpeed = 1f;
+    [SerializeField] float climbingSpeed = 1f;
     [SerializeField] float jumpTime = 0;
 
     public static bool isGrunded;
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
         //apply input to player (moveing left, right, on ladder up and down)
         if (isClimbing)
         {
-            rb.velocity = new Vector2(horizontal * horizontalSpeed * 0.6f, verticalInput * verticalSpeed);
+            rb.velocity = new Vector2(horizontal * horizontalSpeed * 0.6f, verticalInput * climbingSpeed);
         }
         else
         {
