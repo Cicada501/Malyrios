@@ -50,160 +50,16 @@ public class Player : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
-    {
-        playerAnimator = GetComponent<Animator>();
-    }
+
 
     void FixedUpdate()
     {
+        
 
-        //Cant move while attacking
-        if (PlayerAttack.isAttacking)
-        {
-            horizontal = 0;
-        }
-        //Apply movement to player
-        else
-        {
-            // Get input to variables
-            if (joystick.Horizontal < -0.4f)
-            {
-                horizontal = -1f;
-            }
-            else if (joystick.Horizontal > 0.4f)
-            {
-                horizontal = 1f;
-            }
-            else if (joystick.Horizontal < -0.2f && joystick.Horizontal >= -0.4f)
-            {
-                horizontal = -0.5f;
-            }
-            else if (joystick.Horizontal > 0.2f && joystick.Horizontal <= 0.4f)
-            {
-                horizontal = 0.5f;
-            }
-            else
-            {
-                horizontal = 0f;
-            }
-
-            verticalInput = joystick.Vertical;
-
-            speed = Mathf.Abs(horizontal);
-        }
-
-        //Climbing on Ladder
-        if (ladder.verticalMovementEnabled && verticalInput != 0)
-        {
-            isClimbing = true;
-        }
-        else isClimbing = false;
-
-        //apply input to player (moveing left, right, on ladder up and down)
-        if (isClimbing)
-        {
-            rb.velocity = new Vector2(horizontal * horizontalSpeed * 0.6f, verticalInput * climbingSpeed);
-        }
-        else
-        {
-            if (horizontal != 0 && !usingPush)
-            {
-                rb.velocity = new Vector2(horizontal * horizontalSpeed, rb.velocity.y);
-            }
-            else if (horizontal == 0 && !usingPush)
-            {
-                ResetVelocity();
-            }
-        }
-
-        //face player in the right direction
-        if (horizontal > 0 && !facingRight)
-        {
-            flip();
-        }
-        else if (horizontal < 0 && facingRight)
-        {
-            flip();
-        }
-
-        //Animation
-        playerAnimator.SetFloat("Speed", speed);
-        playerAnimator.SetBool("isGrounded", (isGrunded));
-        playerAnimator.SetBool("isFalling", isFalling);
-        playerAnimator.SetBool("isClimbing", isClimbing);
-        playerAnimator.SetBool("isJumping", isJumping);
-        playerAnimator.SetFloat("YVelocity", rb.velocity.y);
+        
     }
-
-    void Update() //#######################################################################################
-    {
-        //Get shorter input variable names
-        attackInput = ButtonScript.receivedAttackInput;
-        dodgeInput = ButtonScript.receivedDodgeInput;
-        jumpInput = ButtonScript.receivedJumpInput;
-        interactInput = ButtonScript.receivedInteractInput;
-        inventoryInput = ButtonScript.receivedOpenInventoryInput;
-       
-
-        if (dodgeInput && Time.time - usedBackJumpAt > backJumpRate)
-        {
-            BackJump(facingRight);
-            usedBackJumpAt = Time.time;
-        }
-
-        //check if player is on the Ground
-        isGrunded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-
-        //Jump
-        if (isGrunded&&  jumpInput)
-        {
-            jumpStart.Play();
-            CreateDust();
-            isGrunded = false;
-            isJumping = true;
-            jumpTimeCounter = jumpTime;
-            rb.velocity = Vector2.up * jumpForce;
-        }
-
-        //Check if player is falling for the animation
-        if (rb.velocity.y < 0 && !(isGrunded) && !isClimbing)
-        {
-            isJumping = false;
-            isFalling = true;
-        }
-        else if (rb.velocity.y > -0.01)
-        {
-            isFalling = false;
-        }
-
-        cameraAnimator.ResetTrigger("Landing");
-
-        //Landing
-        if (isFalling && isGrunded)
-        {
-            isFalling = false;
-            cameraAnimator.SetTrigger("Landing");
-            landing2.Play();
-        }
-
-        //Longer Jump on Space holding
-        if (jumpInput && isJumping)
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rb.velocity = Vector2.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
-    } //########################################################################
-    //#########################################################################
-
-
+    
+    
     void ResetVelocity()
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);

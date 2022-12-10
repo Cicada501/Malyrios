@@ -2694,9 +2694,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 238985887}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: ClickJumpButton
+        - m_Target: {fileID: 661103273}
+          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+          m_MethodName: JumpButtonPressed
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2710,9 +2710,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 238985887}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: ReleaseJumpButton
+        - m_Target: {fileID: 661103273}
+          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+          m_MethodName: JumpButtonReleased
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8350,6 +8350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661103260}
   - component: {fileID: 661103263}
+  - component: {fileID: 661103273}
   - component: {fileID: 661103271}
   - component: {fileID: 661103264}
   - component: {fileID: 661103265}
@@ -8357,6 +8358,7 @@ GameObject:
   - component: {fileID: 661103268}
   - component: {fileID: 661103270}
   - component: {fileID: 661103272}
+  - component: {fileID: 661103274}
   - component: {fileID: 661103259}
   - component: {fileID: 661103258}
   - component: {fileID: 661103261}
@@ -8458,6 +8460,7 @@ Transform:
   - {fileID: 2133340937}
   - {fileID: 513441307}
   - {fileID: 1160788926}
+  - {fileID: 927187158}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8473,11 +8476,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.3
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 202c4eecbe9c0b94bb9105eb05d82cd9, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -8686,6 +8689,50 @@ MonoBehaviour:
     type: 3}
   fireballCooldownTime: 5
   playerAnimator: {fileID: 661103258}
+--- !u!114 &661103273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661103257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a92912a6e7ae21c49aaa9ded71bf71c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 661103274}
+  joystick: {fileID: 1737049197}
+  runSpeed: 5
+  playerAnimator: {fileID: 0}
+--- !u!114 &661103274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661103257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b50855560cb96649ada9514ee5bacaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_JumpForce: 200
+  m_CrouchSpeed: 0.36
+  m_MovementSmoothing: 0.05
+  m_AirControl: 1
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 2560
+  m_GroundCheck: {fileID: 1292479026}
+  m_CeilingCheck: {fileID: 927187158}
+  m_CrouchDisableCollider: {fileID: 661103266}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCrouchEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &663029813
 GameObject:
   m_ObjectHideFlags: 0
@@ -11020,7 +11067,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 833911811}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 202c4eecbe9c0b94bb9105eb05d82cd9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -43304,6 +43351,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &927187157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927187158}
+  m_Layer: 0
+  m_Name: HeadPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &927187158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927187157}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.009, y: -0.005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 661103260}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936167857
 GameObject:
   m_ObjectHideFlags: 0
@@ -118493,7 +118571,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3090615, y: 1}
+    m_SensorSize: {x: 0.97488225, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -118862,7 +118940,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386037419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 409e4271ae25f6d4fbc99adca437d232, type: 3}
   m_Name: 
