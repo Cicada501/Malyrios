@@ -78,7 +78,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void TriggerAttack()
     {
-        print("Time:"+time+" NextAttack:"+nextAttackTime);
         //check if the attackrate allows the next attack
         if (time >= nextAttackTime)
         {
@@ -89,37 +88,17 @@ public class PlayerAttack : MonoBehaviour
                 Attack();
                 isAttacking = true;
                 nextAttackTime = time + 1f / equippedWeapon.AttackSpeed;
-                // timeForAnimPause = time + startFreezingTime; //when to start freeze 
-                // timeForAnimResume = time + endFreezingTime; //when to end freeze
             }
         }
     }
     void Update()
     {
         time = Time.time;
-        /*//if player hits an enemy, interrupt animation for a short time
-        if (enemyInDamagezone)
-        {
-            //happens first
-            if (Time.time >= timeForAnimPause && Time.time <= timeForAnimResume)
-            {
-                playerAnimator.enabled = false;
-            }
-            //happens afterwards
-            else if (Time.time >= timeForAnimResume)
-            {
-                playerAnimator.enabled = true;
-                enemyInDamagezone = false;
-            }
-        }*/
- 
     }
 
     public void Attack()
     {
-        print("Attack");
         if (this.equippedWeapon == null) return;
-        print("i got a weapon!");
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
 

@@ -25,25 +25,21 @@ public class FireBall : MonoBehaviour
     // Important that its Fixedupdate, so cooldown is same on all devices
     void FixedUpdate()
     {
-        print(ButtonScript.Ability1Input);
-        //Spawn Fireball
-        if (ButtonScript.Ability1Input && ts.Seconds >= fireballCooldownTime)
+        ts = Now - startTime;
+        abilityButtonImage.fillAmount = cooldownPercent;
+        cooldownPercent += 0.02f / fireballCooldownTime;
+    }
+
+    //called if the Fireballbutton is pressed
+    public void OnClickFireball()
+    {
+        if (ts.Seconds >= fireballCooldownTime)
         {
             playerAnimator.SetTrigger("ThrowFireball");
         }
-
-        if (ts.Seconds <= fireballCooldownTime)
-        {
-            ts = Now - startTime;
-            //cooldownPercent = ts.Seconds / fireballCooldownTime;
-            abilityButtonImage.fillAmount = cooldownPercent;
-        }
-
-        //to let the fill grow smooth approximate time 
-        cooldownPercent += 0.02f / fireballCooldownTime;
-        abilityButtonImage.fillAmount = cooldownPercent;
     }
 
+    //called in player animation as AnimationEvent
     public void SpawnFireball()
     {
         Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);

@@ -65,7 +65,7 @@ public class PickUp : MonoBehaviour, IInteractable
     {
         Inventory.Instance.AddItem(this.baseItem);
         Destroy(gameObject);
-        ButtonScript.InteractInput = false; //if Interactable text gets destroyed the RealeaseInteractButton() event is not triggerd anymore
+        //ButtonScript.InteractInput = false; //if Interactable text gets destroyed the RealeaseInteractButton() event is not triggerd anymore
         tmpText.gameObject.SetActive(false);
     }
 

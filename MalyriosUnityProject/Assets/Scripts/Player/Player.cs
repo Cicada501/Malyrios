@@ -36,16 +36,16 @@ public class Player : MonoBehaviour
     // Use this for initialization
 
 
-    void FixedUpdate()
-    {
-
-        if (ButtonScript.DodgeInput)
-        {
-            BackJump(facingRight);
-            ResetVelocity();
-        }
-        
-    }
+    // void FixedUpdate()
+    // {
+    //
+    //     if (ButtonScript.DodgeInput)
+    //     {
+    //         BackJump(facingRight);
+    //         ResetVelocity();
+    //     }
+    //     
+    // }
     
     
     void ResetVelocity()

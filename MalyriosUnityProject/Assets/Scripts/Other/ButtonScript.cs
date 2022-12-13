@@ -1,17 +1,14 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    public static bool AttackInput;
-    public static bool OpenInventoryInput;
-    public static bool InteractInput;
-    public static bool JumpInput;
+
     public static bool DodgeInput;
     public static bool Ability1Input;
-    public static bool onInteractClick;
 
 
     Button buttons;
@@ -19,7 +16,6 @@ public class ButtonScript : MonoBehaviour
     void Start()
     {
     buttons = GetComponent<Button>();
-    AttackInput = false;
     InteractInput = false;
     JumpInput = false;
     DodgeInput = false;
@@ -30,47 +26,6 @@ public class ButtonScript : MonoBehaviour
        
     }
     
-    // [SerializeField] private List<Button> buttons;
-    //
-    // void Start()
-    // {
-    //     foreach (var button in buttons)
-    //     {
-    //         button.gameObject.SetActive(true);
-    //     }
-    //     
-    // }
-
-    public void OnInteractClick(){
-
-        if(!onInteractClick){
-            onInteractClick = true;
-        }else{
-            onInteractClick = false;
-        }
-    }
-
-    //Attack Button
-    public void ClickAttackButton()
-    {
-        AttackInput = true;
-        
-    }
-    void StopAttackInput()
-    {
-        AttackInput = false;
-    }
-    
-    //Interact Button
-    public void ClickInteractButton()
-    {
-        InteractInput = true;
-    }
-    public void ReleaseInteractButton()
-    {
-        InteractInput = false;
-    }
-
     //Dodge Button
     public void ClickDodgeButton()
     {
@@ -93,3 +48,4 @@ public class ButtonScript : MonoBehaviour
 
 
 }
+*/
