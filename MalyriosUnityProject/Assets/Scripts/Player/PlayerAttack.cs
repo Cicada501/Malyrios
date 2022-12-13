@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
     private float timeForAnimPause = 0f;
     private float timeForAnimResume = 0f;
 
-    float nextAttackTime = 0f;
+    float nextAttackTime;
     public static bool isAttacking = false;
 
     private BaseWeapon equippedWeapon;
@@ -73,29 +73,31 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         //Gizmos.DrawSphere(attackPoint.position, attackRadius);
     }
-    
-    void Update()
+
+    private float time;
+
+    public void TriggerAttack()
     {
-        //no attacking when no weapon is equipped
-        if (this.equippedWeapon == null) return;
-        print("i got a weapon!");
-        
+        print("Time:"+time+" NextAttack:"+nextAttackTime);
         //check if the attackrate allows the next attack
-        if (Time.time >= nextAttackTime)
+        if (time >= nextAttackTime)
         {
             isAttacking = false;
-            if (Player.attackInput && !InventoryUI.inventoryOpen)
+
+            if (!InventoryUI.inventoryOpen)
             {
-                
                 Attack();
                 isAttacking = true;
-                nextAttackTime = Time.time + 1f / this.equippedWeapon.AttackSpeed;
-                timeForAnimPause = Time.time + startFreezingTime; //when to start freeze 
-                timeForAnimResume = Time.time + endFreezingTime; //when to end freeze
+                nextAttackTime = time + 1f / equippedWeapon.AttackSpeed;
+                // timeForAnimPause = time + startFreezingTime; //when to start freeze 
+                // timeForAnimResume = time + endFreezingTime; //when to end freeze
             }
         }
-
-        //if player hits an enemy, interrupt animation for a short time
+    }
+    void Update()
+    {
+        time = Time.time;
+        /*//if player hits an enemy, interrupt animation for a short time
         if (enemyInDamagezone)
         {
             //happens first
@@ -109,17 +111,15 @@ public class PlayerAttack : MonoBehaviour
                 playerAnimator.enabled = true;
                 enemyInDamagezone = false;
             }
-        }
-
-
-        
+        }*/
+ 
     }
 
-    void Attack()
+    public void Attack()
     {
         print("Attack");
         if (this.equippedWeapon == null) return;
-       
+        print("i got a weapon!");
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
 

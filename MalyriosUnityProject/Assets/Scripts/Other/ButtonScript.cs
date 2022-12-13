@@ -29,6 +29,17 @@ public class ButtonScript : MonoBehaviour
     buttons.gameObject.SetActive(true);
        
     }
+    
+    // [SerializeField] private List<Button> buttons;
+    //
+    // void Start()
+    // {
+    //     foreach (var button in buttons)
+    //     {
+    //         button.gameObject.SetActive(true);
+    //     }
+    //     
+    // }
 
     public void OnInteractClick(){
 
