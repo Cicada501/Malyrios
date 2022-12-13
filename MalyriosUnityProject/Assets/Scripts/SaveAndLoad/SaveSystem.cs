@@ -35,8 +35,20 @@ public static class SaveSystem
         }
 
         var stream = new FileStream(path, FileMode.Open);
-        PlayerData data = formatter.Deserialize(stream) as PlayerData;
+        PlayerData data;
+        if (stream.Length>0)
+        {
+            data = formatter.Deserialize(stream) as PlayerData;  
+        }
+        else
+        {
+            Player playerData = GameObject.Find("Player").GetComponent<Player>();
+            data = new PlayerData(playerData);
+        }
+        
         stream.Close();
+        
+        
 
         return data;
     }

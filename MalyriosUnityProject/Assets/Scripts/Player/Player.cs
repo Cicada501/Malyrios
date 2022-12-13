@@ -9,25 +9,9 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI positionText;
-    [SerializeField] AudioSource jumpStart = null;
-    [SerializeField] AudioSource landing2 = null;
-    [SerializeField] LayerMask whatIsGround = 0;
     [SerializeField] ParticleSystem dust = null;
     [SerializeField] Rigidbody2D rb = null;
-    [SerializeField] Animator playerAnimator = null;
-    [SerializeField] Animator cameraAnimator = null;
-    [SerializeField] Transform feetPos = null;
-    [SerializeField] Joystick joystick = null;
-    [SerializeField] float checkRadius = 0;
-    [SerializeField] float horizontalSpeed = 1f;
-    [SerializeField] float climbingSpeed = 1f;
-    [SerializeField] float jumpTime = 0;
-
-    public static bool isGrunded;
-    public static bool isFalling = false;
     public static bool attackInput;
-    public static bool interactInput;
     public static bool inventoryInput;
 
     /*[FormerlySerializedAs("spawnPoint2")]*/
@@ -54,8 +38,12 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        
 
+        if (ButtonScript.DodgeInput)
+        {
+            BackJump(facingRight);
+            ResetVelocity();
+        }
         
     }
     

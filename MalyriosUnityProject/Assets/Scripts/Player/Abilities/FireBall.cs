@@ -25,8 +25,9 @@ public class FireBall : MonoBehaviour
     // Important that its Fixedupdate, so cooldown is same on all devices
     void FixedUpdate()
     {
+        print(ButtonScript.Ability1Input);
         //Spawn Fireball
-        if (ButtonScript.receivedAbility1_input && ts.Seconds >= fireballCooldownTime)
+        if (ButtonScript.Ability1Input && ts.Seconds >= fireballCooldownTime)
         {
             playerAnimator.SetTrigger("ThrowFireball");
         }

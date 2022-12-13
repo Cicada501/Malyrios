@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    public static bool receivedAttackInput;
-    public static bool receivedOpenInventoryInput;
-    public static bool receivedInteractInput;
-    public static bool receivedJumpInput;
-    public static bool receivedDodgeInput;
-    public static bool receivedAbility1_input;
+    public static bool AttackInput;
+    public static bool OpenInventoryInput;
+    public static bool InteractInput;
+    public static bool JumpInput;
+    public static bool DodgeInput;
+    public static bool Ability1Input;
     public static bool onInteractClick;
 
 
@@ -19,12 +19,12 @@ public class ButtonScript : MonoBehaviour
     void Start()
     {
     buttons = GetComponent<Button>();
-    receivedAttackInput = false;
-    receivedInteractInput = false;
-    receivedJumpInput = false;
-    receivedDodgeInput = false;
-    receivedOpenInventoryInput = false;
-    receivedAbility1_input = false;
+    AttackInput = false;
+    InteractInput = false;
+    JumpInput = false;
+    DodgeInput = false;
+    OpenInventoryInput = false;
+    Ability1Input = false;
     onInteractClick = false;
     buttons.gameObject.SetActive(true);
        
@@ -42,54 +42,42 @@ public class ButtonScript : MonoBehaviour
     //Attack Button
     public void ClickAttackButton()
     {
-        receivedAttackInput = true;
-        Invoke("StopAttackInput", 0.1f);
+        AttackInput = true;
+        
     }
     void StopAttackInput()
     {
-        receivedAttackInput = false;
+        AttackInput = false;
     }
     
     //Interact Button
     public void ClickInteractButton()
     {
-        receivedInteractInput = true;
+        InteractInput = true;
     }
     public void ReleaseInteractButton()
     {
-        receivedInteractInput = false;
+        InteractInput = false;
     }
 
     //Dodge Button
     public void ClickDodgeButton()
     {
-        receivedDodgeInput = true;
-        Invoke("StopDodgeInput", 0.1f);
+        DodgeInput = true;
     }
     void StopDodgeInput()
     {
-        receivedDodgeInput = false;
+        DodgeInput = false;
     }
-
-    //Jump Button
-    public void ClickJumpButton()
-    {
-        receivedJumpInput = true;
-    }
-    public void ReleaseJumpButton()
-    {
-        receivedJumpInput = false;
-    }
-
 
     //Ability 1 Button
     public void ClickAbility1Button()
     {
-        receivedAbility1_input = true;
+        Ability1Input = true;
     }
     public void ReleaseAbility1Button()
     {
-        receivedAbility1_input = false;
+        Ability1Input = false;
     }
 
 

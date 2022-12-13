@@ -20,14 +20,36 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        horizontalMove = joystick.Horizontal * runSpeed;
+        if (IsBetween(joystick.Horizontal, -1f, -0.3f))
+        {
+            horizontalMove = -1f*runSpeed;
+        }else if (IsBetween(joystick.Horizontal,-0.3f,-0.1f))
+        {
+            horizontalMove = -0.3f*runSpeed;
+        }else if (IsBetween(joystick.Horizontal,-0.1f,0.1f))
+        {
+            horizontalMove = 0;
+        }else if (IsBetween(joystick.Horizontal,0.1f,0.3f))
+        {
+            horizontalMove = 0.3f*runSpeed;
+        }
+        else
+        {
+            horizontalMove = 1f*runSpeed;
+        }
+    }
+
+    bool IsBetween(float source, float min, float max)
+    {
+        if (source >= min && source < max) return true;
+        return false;
     }
 
     private void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
-        
+
 
         //Animation
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
