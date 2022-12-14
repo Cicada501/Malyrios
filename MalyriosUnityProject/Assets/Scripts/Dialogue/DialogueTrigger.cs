@@ -6,7 +6,7 @@ namespace Malyrios.Dialogue
     public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         [SerializeField] private float talkRadius = 0.2f;
-        TextMeshProUGUI interactableText = null;
+        TextMeshProUGUI interactableText;
         private DialogueManager manager;
         private Dialogue dialogue;
         public static bool triggered;
