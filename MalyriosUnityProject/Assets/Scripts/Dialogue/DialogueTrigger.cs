@@ -6,7 +6,7 @@ namespace Malyrios.Dialogue
     public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         [SerializeField] private float talkRadius = 0.2f;
-        [SerializeField] TextMeshProUGUI interactableText = null;
+        TextMeshProUGUI interactableText = null;
         private DialogueManager manager;
         private Dialogue dialogue;
         public static bool triggered;
@@ -15,34 +15,40 @@ namespace Malyrios.Dialogue
 
         private void Awake()
         {
-            
             this.manager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+            interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
             this.dialogue = GetComponent<Dialogue>();
         }
+
         void Start()
         {
+            
             this.whatCanTalkToMe = LayerMask.GetMask("Player");
         }
-        void IInteractable.Interact(){
-                this.manager.StartDialogue(this.dialogue);
+
+        void IInteractable.Interact()
+        {
+            this.manager.StartDialogue(this.dialogue);
         }
+
         private void Update()
         {
-            
             bool inTalkRange = Physics2D.OverlapCircle(transform.position, this.talkRadius, this.whatCanTalkToMe);
-            if(inTalkRange){
+            if (inTalkRange)
+            {
                 interactableText.text = $"Talk";
                 interactableText.gameObject.SetActive(true);
                 turnedButtonOff = false;
-            }else
-            {   //Turn interactable text off only once, not every update
+            }
+            else
+            {
+                //Turn interactable text off only once, not every update
                 if (!turnedButtonOff)
                 {
                     interactableText.gameObject.SetActive(false);
-                    turnedButtonOff=true;
+                    turnedButtonOff = true;
                     manager.EndDialogue();
                 }
-               
             }
             /* if (this.triggered && Player.interactInput && inTalkRange)
             {
@@ -51,7 +57,7 @@ namespace Malyrios.Dialogue
                
             } */
         }
-        
+
         private void OnTriggerStay2D(Collider2D other)
         {
             triggered = true;
@@ -61,8 +67,6 @@ namespace Malyrios.Dialogue
         {
             triggered = false;
             //manager.EndDialogue();
-            
         }
     }
 }
-
