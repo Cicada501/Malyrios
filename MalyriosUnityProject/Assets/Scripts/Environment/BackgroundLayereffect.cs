@@ -7,7 +7,7 @@ public class BackgroundLayereffect : MonoBehaviour {
 	private float lengthX, startposX;
 	private float lengthY, startposY;
 	GameObject cam = null;
-	float camPosY = 19.5f; //base value, so that the backgrounds spawn in the right position wherever the player spawns
+	//float camPosY = 19.5f; //base value, so that the backgrounds spawn in the right position wherever the player spawns
 	[SerializeField] float parallaxEffectX = 0.0f;
 	[SerializeField] float parallaxEffectY = 0.0f;
 
@@ -15,7 +15,6 @@ public class BackgroundLayereffect : MonoBehaviour {
 	void Start ()
 	{
 		cam = GameObject.Find("Camera");
-		camPosY = -19.5f;
 		startposX = transform.position.x;
 		startposY = transform.position.y;
 	}
@@ -23,7 +22,7 @@ public class BackgroundLayereffect : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float distX = (cam.transform.position.x * parallaxEffectX);
-		float distY = ((cam.transform.position.y-camPosY) * parallaxEffectY);
+		float distY = ((cam.transform.position.y) * parallaxEffectY);
 
 		transform.position = new Vector3(startposX + distX,startposY+ distY, transform.position.z);
 	}
