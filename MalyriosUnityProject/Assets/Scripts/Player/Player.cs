@@ -9,12 +9,12 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] ParticleSystem dust = null;
+    /*[SerializeField] ParticleSystem dust = null;
     [SerializeField] Rigidbody2D rb = null;
     public static bool attackInput;
     public static bool inventoryInput;
 
-    /*[FormerlySerializedAs("spawnPoint2")]*/
+    /*[FormerlySerializedAs("spawnPoint2")]#1#
     public Vector3 closestSpawnPoint = new Vector3(0.0f, 0.0f, 0.0f);
     public float jumpForce;
     public float backJumpRate = 0.5f;
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
-    }
+    }*/
 
 
    

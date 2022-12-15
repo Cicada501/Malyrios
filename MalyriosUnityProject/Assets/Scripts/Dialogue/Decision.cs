@@ -18,17 +18,18 @@ public class Decision : MonoBehaviour
 
     //fireball + wizard
     public GameObject fireballButton;
-    [SerializeField] private Dialogue wizzardDialog;
+    private Dialogue wizzardDialog;
     [SerializeField] private List<DialogueText> wizzardDialogText2;
     private List<DialogueText> wizardNormalDialogueText;
     private static BaseItem apple;
 
     //big rat
-    [SerializeField] private GameObject bigRatNpc;
-    [SerializeField] private GameObject bigRatEnemy;
+    //[SerializeField] private GameObject bigRatNpc;
+    //[SerializeField] private GameObject bigRatEnemy;
 
     private void Start()
     {
+        wizzardDialog = GameObject.Find("Wizzard").GetComponent<Dialogue>();
         DecisionData loadDecisions = SaveSystem.LoadDecisions();
         BigRatAttack = loadDecisions.bigRatAttack;
         LearnedFireball = loadDecisions.learnedFireball;
@@ -53,16 +54,16 @@ public class Decision : MonoBehaviour
                 break;
         }
 
-        if (BigRatAttack)
-        {
-            bigRatNpc.SetActive(false);
-            bigRatEnemy.SetActive(true);
-        }
-        else
-        {
-            bigRatNpc.SetActive(true);
-            bigRatEnemy.SetActive(false);
-        }
+        // if (BigRatAttack)
+        // {
+        //     bigRatNpc.SetActive(false);
+        //     bigRatEnemy.SetActive(true);
+        // }
+        // else
+        // {
+        //     bigRatNpc.SetActive(true);
+        //     bigRatEnemy.SetActive(false);
+        // }
         
     }
 

@@ -15,14 +15,15 @@ namespace Malyrios.Dialogue
 
         private void Awake()
         {
+
             this.manager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-            interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
             this.dialogue = GetComponent<Dialogue>();
+            interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
         }
 
         void Start()
         {
-            
+            print(interactableText);
             this.whatCanTalkToMe = LayerMask.GetMask("Player");
         }
 

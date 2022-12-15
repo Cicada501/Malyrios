@@ -4,7 +4,7 @@ using TMPro;
 
 public class PickUp : MonoBehaviour, IInteractable
 {
-    [SerializeField] TextMeshProUGUI tmpText = null;
+    TextMeshProUGUI interactableText = null;
     [SerializeField] private float pickUpRadius = 0.2f;
     [SerializeField] private BaseItem baseItem = null;
     
@@ -22,6 +22,7 @@ public class PickUp : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
         this.whatCanPickMeUp = LayerMask.GetMask("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (this.baseItem != null)
@@ -49,7 +50,7 @@ public class PickUp : MonoBehaviour, IInteractable
         {
             if (this.showText)
             {
-                this.tmpText.gameObject.SetActive(false);
+                this.interactableText.gameObject.SetActive(false);
                 this.showText = false;
             }
         }
@@ -57,8 +58,8 @@ public class PickUp : MonoBehaviour, IInteractable
 
     private void ShowPickUpDialog()
     {
-        tmpText.text = $"Pick Up {this.baseItem.ItemName}";
-        tmpText.gameObject.SetActive(true);
+        interactableText.text = $"Pick Up {this.baseItem.ItemName}";
+        interactableText.gameObject.SetActive(true);
     }
 
     private void PickUpItem()
@@ -66,7 +67,7 @@ public class PickUp : MonoBehaviour, IInteractable
         Inventory.Instance.AddItem(this.baseItem);
         Destroy(gameObject);
         //ButtonScript.InteractInput = false; //if Interactable text gets destroyed the RealeaseInteractButton() event is not triggerd anymore
-        tmpText.gameObject.SetActive(false);
+        interactableText.gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos()

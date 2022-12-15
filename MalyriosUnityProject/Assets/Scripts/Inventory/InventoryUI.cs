@@ -27,6 +27,7 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         inventory = Inventory.Instance;
+        print(inventory);
         inventory.OnItemAdded += UpdateUiNew;
         inventory.OnItemRemoved += OnItemRemoved;
 
@@ -47,15 +48,15 @@ public class InventoryUI : MonoBehaviour
         }
 
         //Dont Open/Close inventory Very often on button hold
-        if (Player.inventoryInput && !buttonPressed)
-        {
-            ChangeInventoryOpened();
-            buttonPressed = true;
-        }
-        else if (!Player.inventoryInput)
-        {
-            buttonPressed = false;
-        }
+        // if (Player.inventoryInput && !buttonPressed)
+        // {
+        //     ChangeInventoryOpened();
+        //     buttonPressed = true;
+        // }
+        // else if (!Player.inventoryInput)
+        // {
+        //     buttonPressed = false;
+        // }
     }
 
     private void UpdateUiNew(BaseItem item)
