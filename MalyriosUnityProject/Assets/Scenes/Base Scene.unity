@@ -18796,11 +18796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bde83d62f395b488d256e2941c0364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dust: {fileID: 529523755}
-  rb: {fileID: 1975534748}
-  closestSpawnPoint: {x: -5, y: -10, z: 0}
-  jumpForce: 1.7
-  backJumpRate: 0.5
 --- !u!4 &1975534759
 Transform:
   m_ObjectHideFlags: 0
