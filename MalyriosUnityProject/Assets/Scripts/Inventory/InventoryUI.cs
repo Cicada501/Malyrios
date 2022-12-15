@@ -27,7 +27,6 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         inventory = Inventory.Instance;
-        print(inventory);
         inventory.OnItemAdded += UpdateUiNew;
         inventory.OnItemRemoved += OnItemRemoved;
 
