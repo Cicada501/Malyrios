@@ -7,19 +7,19 @@ using UnityEngine.SceneManagement;
 
 public class EnterLevelTrigger : MonoBehaviour, IInteractable
 {
-    Player player;
+    Transform player;
     private Inventory inventory;
     [SerializeField] TextMeshProUGUI tmpText = null;
     [SerializeField] private string sceneName;
     [SerializeField] Transform spawnPoint;
     public void Interact()
     {
-        player.transform.position = spawnPoint.position;
+        player.position = spawnPoint.position;
     }
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         inventory = FindObjectOfType<Inventory>();
     }
 
