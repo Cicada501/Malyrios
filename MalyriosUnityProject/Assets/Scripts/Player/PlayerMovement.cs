@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Animation
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        playerAnimator.SetBool("isFalling", rb.velocity.y < -0.1);
         playerAnimator.SetFloat("YVelocity", rb.velocity.y);
     }
 

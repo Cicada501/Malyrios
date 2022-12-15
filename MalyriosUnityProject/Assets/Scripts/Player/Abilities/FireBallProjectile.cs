@@ -9,7 +9,7 @@ public class FireBallProjectile : MonoBehaviour
     [SerializeField] GameObject impactEffect = null;
     [SerializeField] private int fireballDamage;
     private Rigidbody2D rigidBody;
-    private Player player;
+    //private Player player;
     private bool playerFlipped;
 
 
@@ -17,9 +17,9 @@ public class FireBallProjectile : MonoBehaviour
     {   //rigidBody has continoous velocity forward
         rigidBody = GetComponent<Rigidbody2D>();
         
-        player = FindObjectOfType<Player>();
+
         // if player is looking to the left, throw ball to the left
-        if (player.gameObject.GetComponent<Transform>().rotation.y < 0)
+        if (this.gameObject.GetComponent<Transform>().rotation.y < 0)
         {
             rigidBody.velocity = new Vector2(-projectileSpeed, -0.05f*projectileSpeed);
         }
