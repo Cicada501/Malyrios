@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc76d0b3bd8484479bc1a45167fa2fb, type: 3}
+  m_Name: Stick
+  m_EditorClassIdentifier: 
+  itemID: 15
+  itemName: Wooden stick
+  description: Sieht aus wie ein ganz normaler stock. Er scheint noch nicht morsch
+    zu sein
+  icon: {fileID: -1300850927814171035, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
+  sellPrice: 0
+  purchasePrice: 0
+  dropChance: 0
+  isStackable: 0
+  maxStackAmount: 0
+  spriteType: 1
+  itemType: 0
+  itemPrefab: {fileID: 877694526288938081, guid: 2960e88552bd13e4a915115aea5cee9e,
+    type: 3}
+  minDamage: 3
+  maxDamage: 8
+  attackSpeed: 1.5
+  strength: 3
+  critChance: 0
+  critDamage: 5
