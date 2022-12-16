@@ -11,22 +11,29 @@ public class FireBallProjectile : MonoBehaviour
     private Rigidbody2D rigidBody;
     //private Player player;
     private bool playerFlipped;
+    private GameObject player;
 
 
     void Start()
     {   //rigidBody has continoous velocity forward
         rigidBody = GetComponent<Rigidbody2D>();
         
-
+        player = GameObject.Find("Player");
         // if player is looking to the left, throw ball to the left
-        if (this.gameObject.GetComponent<Transform>().rotation.y < 0)
+        if (player.transform.localScale.x < 0)
         {
             rigidBody.velocity = new Vector2(-projectileSpeed, -0.05f*projectileSpeed);
+            this.GetComponent<SpriteRenderer>().flipX = true;
         }
         else
         {
             rigidBody.velocity = new Vector2(projectileSpeed, -0.05f*projectileSpeed);
         }
+    }
+
+    private void Update()
+    {
+        print(player.transform.localScale.x);
     }
 
     //On Collision of Fireball with enemy
