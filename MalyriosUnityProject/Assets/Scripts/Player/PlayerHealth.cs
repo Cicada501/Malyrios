@@ -113,25 +113,6 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         baseAttributes.CurrentHealth += heal;
     }
 
-    /*
-    Vector3 GetClosestSpawnPoint(GameObject[] spawnPoints){
-        float mindist = 100000;
-        GameObject nearestSpawnPoint = null;
-        float[] distances = new float[spawnPoints.Length];
-        for(int i = 0; i < spawnPoints.Length; i++)
-        {
-            distances[i] = Vector3.Distance(player.transform.position,spawnPoints[i].transform.position);
-            if(distances[i] < mindist){
-                mindist = distances[i];
-                nearestSpawnPoint = this.spawnPoints[i];
-            }
-        }
-        return nearestSpawnPoint.transform.position;
-    }
-    */
-
-
-
     public void SavePlayer(){
         SaveSystem.SavePlayer(player);
     }

@@ -26,41 +26,36 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
-        inventory = Inventory.Instance;
-        inventory.OnItemAdded += UpdateUiNew;
-        inventory.OnItemRemoved += OnItemRemoved;
-
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         //itemCount = inventory.items.Count;
 
         // amount of items, that already existed in a Slot
         d = 0;
     }
-    
+
+    private void Start()
+    {
+        inventory = Inventory.Instance;
+        inventory.OnItemAdded += UpdateUiNew;
+        inventory.OnItemRemoved += OnItemRemoved;
+    }
+
 
     // Update is called once per frame
     private void Update()
     {
+        
         if (!itemsLoaded)
         {
             itemsLoaded = true;
         }
 
-        //Dont Open/Close inventory Very often on button hold
-        // if (Player.inventoryInput && !buttonPressed)
-        // {
-        //     ChangeInventoryOpened();
-        //     buttonPressed = true;
-        // }
-        // else if (!Player.inventoryInput)
-        // {
-        //     buttonPressed = false;
-        // }
     }
 
     private void UpdateUiNew(BaseItem item)
     {
-        InventorySlot tryToStack = slots.FirstOrDefault(x => x.Item != null && x.Item.ItemName == item.ItemName && x.Item.IsStackable);
+        InventorySlot tryToStack =
+            slots.FirstOrDefault(x => x.Item != null && x.Item.ItemName == item.ItemName && x.Item.IsStackable);
         if (tryToStack != null)
         {
             if (!tryToStack.AddItemToStack(item))
@@ -86,7 +81,6 @@ public class InventoryUI : MonoBehaviour
         if (it != null) it.RemoveItem();
     }
 
-    
 
     private int GetOccurrence(Item item, List<Item> itemList)
     {
@@ -107,7 +101,8 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
-        EquipmentUI.SetActive(!EquipmentUI.activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
+        EquipmentUI.SetActive(!EquipmentUI
+            .activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
 
         if (!this.inventoryUI.activeSelf)
         {

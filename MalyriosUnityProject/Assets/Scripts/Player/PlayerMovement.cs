@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalMove = 0f;
     [SerializeField] private float runSpeed;
     [SerializeField] Animator playerAnimator = null;
-    private bool jump = false;
-    private bool jumpInput;
+    private bool jump;
+    private bool isJumping;
     private Rigidbody2D rb;
 
     void Start()
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //if jump gets true call function once with jump=true
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
 
@@ -56,26 +57,28 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("YVelocity", rb.velocity.y);
     }
 
+    //Called in CharacterController Component of Player
     public void OnLanding()
     {
         if (rb.velocity.y < -0.1)
         {
-            playerAnimator.SetBool("isJumping", false);
+            isJumping = false;
+            playerAnimator.SetBool("isJumping", isJumping);
         }
     }
 
     //called when jump button pressed
     public void JumpButtonPressed()
     {
+        if(isJumping) return;
+        print("jump!");
         jump = true;
-        jumpInput = true;
+        isJumping = true;
         playerAnimator.SetTrigger("Jump");
-        playerAnimator.SetBool("isJumping", true);
-        print("JumpButtonPressed");
+        playerAnimator.SetBool("isJumping", isJumping);
     }
 
     public void JumpButtonReleased()
     {
-        jumpInput = false;
     }
 }
