@@ -55,7 +55,8 @@ public class Enemy : MonoBehaviour
         Rat,
         Ogre,
         Djinn,
-        Mandrake
+        Mandrake,
+        Boar
     }
     void Start()
     {
