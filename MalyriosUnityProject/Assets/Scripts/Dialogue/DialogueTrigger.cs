@@ -23,7 +23,6 @@ namespace Malyrios.Dialogue
 
         void Start()
         {
-            print(interactableText);
             this.whatCanTalkToMe = LayerMask.GetMask("Player");
         }
 
