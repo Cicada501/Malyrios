@@ -31,10 +31,6 @@ public class FireBallProjectile : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        print(player.transform.localScale.x);
-    }
 
     //On Collision of Fireball with enemy
     private void OnTriggerEnter2D(Collider2D collision){     
