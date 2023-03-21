@@ -124,7 +124,7 @@ TextureImporter:
         width: 107
         height: 368
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,7 +145,7 @@ TextureImporter:
         width: 107
         height: 368
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,7 +166,7 @@ TextureImporter:
         width: 69
         height: 367
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -174,27 +174,6 @@ TextureImporter:
       bones: []
       spriteID: 831278332ca626f40a13246fcaf8b445
       internalID: 2092555494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_4
-      rect:
-        serializedVersion: 2
-        x: 493
-        y: 832
-        width: 27
-        height: 367
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e80337461b84e3149aa9c532e734eb90
-      internalID: 988105012
       vertices: []
       indices: 
       edges: []
@@ -208,7 +187,7 @@ TextureImporter:
         width: 107
         height: 368
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,7 +208,7 @@ TextureImporter:
         width: 107
         height: 368
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,7 +229,7 @@ TextureImporter:
         width: 69
         height: 367
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -258,27 +237,6 @@ TextureImporter:
       bones: []
       spriteID: 618a0ed12087f3f4d8bd038cef135372
       internalID: -1385290989
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_10
-      rect:
-        serializedVersion: 2
-        x: 1165
-        y: 832
-        width: 27
-        height: 367
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db4e61528cd77c849a7e880c6403bfe2
-      internalID: 1857411682
       vertices: []
       indices: 
       edges: []
@@ -292,7 +250,7 @@ TextureImporter:
         width: 108
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -313,7 +271,7 @@ TextureImporter:
         width: 108
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -334,7 +292,7 @@ TextureImporter:
         width: 56
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -342,27 +300,6 @@ TextureImporter:
       bones: []
       spriteID: db172ab9e4dc9674c8126926698e8f75
       internalID: -1548865747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_52
-      rect:
-        serializedVersion: 2
-        x: 497
-        y: 496
-        width: 21
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5501178181dcc794490950ae5eed3a93
-      internalID: 1101439688
       vertices: []
       indices: 
       edges: []
@@ -376,7 +313,7 @@ TextureImporter:
         width: 108
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -397,7 +334,7 @@ TextureImporter:
         width: 108
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -418,7 +355,7 @@ TextureImporter:
         width: 56
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -426,27 +363,6 @@ TextureImporter:
       bones: []
       spriteID: 1a82fe73978b07f4ab36ac6649158405
       internalID: -487462670
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_59
-      rect:
-        serializedVersion: 2
-        x: 1169
-        y: 496
-        width: 21
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5fccc4c00ea778a4bbb850909946baaa
-      internalID: -977319881
       vertices: []
       indices: 
       edges: []
@@ -460,7 +376,7 @@ TextureImporter:
         width: 88
         height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -468,27 +384,6 @@ TextureImporter:
       bones: []
       spriteID: d81f8ac890b7b9f41867593744a618a8
       internalID: -2145519127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_93
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 303
-        width: 88
-        height: 177
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbfc901d46c69a24c993deb9326d76af
-      internalID: 1076069479
       vertices: []
       indices: 
       edges: []
@@ -502,7 +397,7 @@ TextureImporter:
         width: 88
         height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -523,7 +418,7 @@ TextureImporter:
         width: 55
         height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -531,27 +426,6 @@ TextureImporter:
       bones: []
       spriteID: 0d6c879e755eda74d9778e00a6144378
       internalID: 567030308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_96
-      rect:
-        serializedVersion: 2
-        x: 423
-        y: 272
-        width: 17
-        height: 208
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 036bcd05b3e367c4c9966d3ec5194fb0
-      internalID: -839616661
       vertices: []
       indices: 
       edges: []
@@ -565,7 +439,7 @@ TextureImporter:
         width: 88
         height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -586,7 +460,7 @@ TextureImporter:
         width: 88
         height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -607,7 +481,7 @@ TextureImporter:
         width: 55
         height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -615,48 +489,6 @@ TextureImporter:
       bones: []
       spriteID: 5e165589569559c4bb3b6279321108d0
       internalID: -365339872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_102
-      rect:
-        serializedVersion: 2
-        x: 1095
-        y: 272
-        width: 17
-        height: 208
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92874cc7c93fbc64c9e78d7fa1e513db
-      internalID: 997911503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_124
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 286
-        width: 36
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edaa7616355bd7749a14720a630d9947
-      internalID: 899678446
       vertices: []
       indices: 
       edges: []
@@ -670,7 +502,7 @@ TextureImporter:
         width: 88
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -678,27 +510,6 @@ TextureImporter:
       bones: []
       spriteID: 6e82eb57759d5184e8ce007b89c226dc
       internalID: 712962231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_129
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 121
-        width: 88
-        height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d61e840cc200a7048a1114b05c53fcdb
-      internalID: 1489596528
       vertices: []
       indices: 
       edges: []
@@ -712,7 +523,7 @@ TextureImporter:
         width: 88
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -733,7 +544,7 @@ TextureImporter:
         width: 54
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -741,27 +552,6 @@ TextureImporter:
       bones: []
       spriteID: 908d90f5b5cfe2444ace2ddeb46c9db6
       internalID: -679858047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_132
-      rect:
-        serializedVersion: 2
-        x: 425
-        y: 112
-        width: 22
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56e15bfb6f5570847ad0b275ba828e54
-      internalID: -1374238345
       vertices: []
       indices: 
       edges: []
@@ -775,7 +565,7 @@ TextureImporter:
         width: 88
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -783,27 +573,6 @@ TextureImporter:
       bones: []
       spriteID: a5d6520bf1889e943a29a42525a4a7dc
       internalID: -1600677424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_136
-      rect:
-        serializedVersion: 2
-        x: 774
-        y: 121
-        width: 88
-        height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e3826584530e4b04fb8f5b65726e0ad6
-      internalID: 1690265871
       vertices: []
       indices: 
       edges: []
@@ -817,7 +586,7 @@ TextureImporter:
         width: 88
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -838,7 +607,7 @@ TextureImporter:
         width: 54
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -846,27 +615,6 @@ TextureImporter:
       bones: []
       spriteID: d1a559392b0bbdb428f859b1dece3bd2
       internalID: 1055322628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_139
-      rect:
-        serializedVersion: 2
-        x: 1097
-        y: 112
-        width: 22
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca3e99746ac1d8a40b0b65dff2d5c363
-      internalID: -1705830827
       vertices: []
       indices: 
       edges: []
@@ -880,7 +628,7 @@ TextureImporter:
         width: 70
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -888,27 +636,6 @@ TextureImporter:
       bones: []
       spriteID: 059c0b0273ad5b440b0d5a9485bb63db
       internalID: 1607025303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_151
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 2
-        width: 70
-        height: 106
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5262840befdf7fb4e82941f3a8aef7a9
-      internalID: -576056205
       vertices: []
       indices: 
       edges: []
@@ -922,7 +649,7 @@ TextureImporter:
         width: 70
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -943,7 +670,7 @@ TextureImporter:
         width: 41
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -951,27 +678,6 @@ TextureImporter:
       bones: []
       spriteID: 7d753901b6e0e654f9b528fda42dc9d4
       internalID: -76364327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_154
-      rect:
-        serializedVersion: 2
-        x: 354
-        y: 0
-        width: 12
-        height: 108
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7d05721b15c0204a8514f333b9c4ff7
-      internalID: -972093533
       vertices: []
       indices: 
       edges: []
@@ -985,7 +691,7 @@ TextureImporter:
         width: 70
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -993,27 +699,6 @@ TextureImporter:
       bones: []
       spriteID: 0f4ff4c7db03bba4baefea745c985d1e
       internalID: -1090771233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_157
-      rect:
-        serializedVersion: 2
-        x: 757
-        y: 2
-        width: 70
-        height: 106
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59f03c374e57aa941be7452c51994639
-      internalID: -1259681195
       vertices: []
       indices: 
       edges: []
@@ -1027,7 +712,7 @@ TextureImporter:
         width: 70
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1048,7 +733,7 @@ TextureImporter:
         width: 41
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1056,27 +741,6 @@ TextureImporter:
       bones: []
       spriteID: aef13b3da905edc43a2f3af5de5022ab
       internalID: -1268163822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green-Tree_160
-      rect:
-        serializedVersion: 2
-        x: 1026
-        y: 0
-        width: 12
-        height: 108
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d286248e6e2dae4419729b2a7481db4e
-      internalID: 1558455437
       vertices: []
       indices: 
       edges: []
