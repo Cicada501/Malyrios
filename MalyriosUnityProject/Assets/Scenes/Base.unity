@@ -15336,7 +15336,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3506098, y: 1}
+    m_SensorSize: {x: 1.1235585, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -19080,6 +19080,11 @@ MonoBehaviour:
   joystick: {fileID: 1737049197}
   runSpeed: 5
   playerAnimator: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2560
+  groundCheckPoint: {fileID: 189518967}
+  groundCheckRadius: 0.03
 --- !u!114 &1975534761
 MonoBehaviour:
   m_ObjectHideFlags: 0

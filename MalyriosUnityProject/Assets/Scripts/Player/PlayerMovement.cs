@@ -11,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private bool jump;
     private bool isJumping;
     private Rigidbody2D rb;
-
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private float groundCheckRadius;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -47,7 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if jump gets true call function once with jump=true
+        // Ground check
+        isJumping = !Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+
+        //if jump gets true call function once with jump=true, with that AddForce() will get called 
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
 
@@ -62,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb.velocity.y < -0.1)
         {
-            isJumping = false;
+            //isJumping = false;
             playerAnimator.SetBool("isJumping", isJumping);
         }
     }
@@ -72,13 +77,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isJumping) return;
         print("jump!");
-        jump = true;
-        isJumping = true;
+        jump = true; //triggers the addforce next frame
+        //isJumping = true;
         playerAnimator.SetTrigger("Jump");
         playerAnimator.SetBool("isJumping", isJumping);
     }
 
     public void JumpButtonReleased()
     {
+    }
+    
+    private void OnDrawGizmos()
+    {
+        if (groundCheckPoint == null)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheckPoint.position, groundCheckRadius);
     }
 }
