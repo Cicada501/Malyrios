@@ -7,6 +7,7 @@ public class ForestGenerator : MonoBehaviour
     [SerializeField] private List<Sprite> treeSprites;
     [SerializeField] private int treeCount;
     [SerializeField] private float forestWidth;
+    [SerializeField] private float widthMultiplier;
     [SerializeField] private float minY;
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;
@@ -19,6 +20,7 @@ public class ForestGenerator : MonoBehaviour
 
     private void GenerateForest()
     {
+        forestWidth = forestWidth * widthMultiplier;
         Vector2 prevPosition = new Vector2( transform.position.x -forestWidth / 2, minY);
         print($"Position: {prevPosition}");
         
@@ -50,10 +52,10 @@ public class ForestGenerator : MonoBehaviour
         Gizmos.color = Color.yellow;
 
         var x = transform.position.x;
-        Vector3 topLeft = new Vector3(x - forestWidth / 2, 10, 0);
-        Vector3 topRight = new Vector3(x + forestWidth / 2, 10, 0);
-        Vector3 bottomLeft = new Vector3(x - forestWidth / 2, -10,0);
-        Vector3 bottomRight = new Vector3(x + forestWidth / 2, -10, 0);
+        Vector3 topLeft = new Vector3(x - forestWidth*widthMultiplier / 2, 10, 0);
+        Vector3 topRight = new Vector3(x + forestWidth*widthMultiplier / 2, 10, 0);
+        Vector3 bottomLeft = new Vector3(x - forestWidth*widthMultiplier / 2, -10,0);
+        Vector3 bottomRight = new Vector3(x + forestWidth*widthMultiplier / 2, -10, 0);
         Gizmos.DrawLine(topRight, bottomRight);
         Gizmos.DrawLine(bottomLeft, topLeft);
         

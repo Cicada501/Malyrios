@@ -12,15 +12,18 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     [SerializeField] TextMeshProUGUI tmpText = null;
     [SerializeField] private string sceneName;
     [SerializeField] Transform spawnPoint;
-    public void Interact()
-    {
-        player.position = spawnPoint.position;
-    }
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        inventory = FindObjectOfType<Inventory>();
+    }
+    public void Interact()
+    {
+        LevelManager.ChangeLevel(sceneName);
+
+        //player.position = enterLevelPosition.position;
+
     }
 
     private void ShowEnterDialog()
