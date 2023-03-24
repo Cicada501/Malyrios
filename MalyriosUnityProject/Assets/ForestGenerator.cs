@@ -19,17 +19,18 @@ public class ForestGenerator : MonoBehaviour
 
     private void GenerateForest()
     {
-        float treeSpacing = forestWidth / (treeCount - 1);
-        
-        Vector2 prevPosition = new Vector2(-forestWidth / 2, minY);
+        Vector2 prevPosition = new Vector2( transform.position.x -forestWidth / 2, minY);
+        print($"Position: {prevPosition}");
         
         for (int i = 0; i < treeCount; i++)
         {
             Sprite treeSprite = treeSprites[Random.Range(0, treeSprites.Count)];
 
             Vector2 position = new Vector2(prevPosition.x + Random.Range(minDistance, maxDistance), minY + treeSprite.bounds.size.y/2);
-            print($"Position: {position}");
-
+            
+            //Do not allow the forest to go above its defined width
+            if(position.x > transform.position.x + forestWidth/2) return;
+            
             GameObject treePrefab = new GameObject("TreePrefab");
             SpriteRenderer spriteRenderer = treePrefab.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = treeSprite;
@@ -42,5 +43,19 @@ public class ForestGenerator : MonoBehaviour
             prevPosition = position;
             Destroy(treePrefab);
         }
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        var x = transform.position.x;
+        Vector3 topLeft = new Vector3(x - forestWidth / 2, 10, 0);
+        Vector3 topRight = new Vector3(x + forestWidth / 2, 10, 0);
+        Vector3 bottomLeft = new Vector3(x - forestWidth / 2, -10,0);
+        Vector3 bottomRight = new Vector3(x + forestWidth / 2, -10, 0);
+        Gizmos.DrawLine(topRight, bottomRight);
+        Gizmos.DrawLine(bottomLeft, topLeft);
+        
     }
 }
