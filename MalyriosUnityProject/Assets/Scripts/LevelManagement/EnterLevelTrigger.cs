@@ -8,8 +8,7 @@ using UnityEngine.SceneManagement;
 public class EnterLevelTrigger : MonoBehaviour, IInteractable
 {
     Transform player;
-    private Inventory inventory;
-    [SerializeField] TextMeshProUGUI tmpText = null;
+    TextMeshProUGUI interactableText = null;
     [SerializeField] private string sceneName;
     [SerializeField] Transform spawnPoint;
 
@@ -20,6 +19,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
+        interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
     }
     public void Interact()
     {
@@ -28,8 +28,9 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
 
     private void ShowEnterDialog()
     {
-        tmpText.text = $"Enter {sceneName}";
-        tmpText.gameObject.SetActive(true);
+        
+        interactableText.text = $"Enter {sceneName}";
+        interactableText.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,11 +38,12 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         if (other.gameObject.CompareTag("Player"))
         {
             ShowEnterDialog();
+            print("HERE");
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        tmpText.gameObject.SetActive(false);
+        interactableText.gameObject.SetActive(false);
     }
 }
