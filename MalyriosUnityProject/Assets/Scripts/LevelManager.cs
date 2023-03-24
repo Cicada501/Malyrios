@@ -12,7 +12,8 @@ public struct Level
 }
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private static List<Level> level;
+    [SerializeField] private List<Level> level;
+    [SerializeField] private GameObject HighForestPrefab;
     private static GameObject currentLevel;
 
     [SerializeField] private GameObject player;
@@ -26,9 +27,10 @@ public class LevelManager : MonoBehaviour
     }
     
 
-    public static void ChangeLevel(string levelName)
+    public void ChangeLevel(string levelName)
     {
         Destroy(currentLevel);
-        Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
+        currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
+        //player.transform.position = level.Find(currentlevel.position);
     }
 }
