@@ -16,9 +16,9 @@ namespace Malyrios.Dialogue
         private void Awake()
         {
 
-            this.manager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+            this.manager = ReferencesManager.instance.dialogueManager;;
             this.dialogue = GetComponent<Dialogue>();
-            interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
+            interactableText = ReferencesManager.instance.interactableText;
         }
 
         void Start()

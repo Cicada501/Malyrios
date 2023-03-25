@@ -10,20 +10,26 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     Transform player;
     TextMeshProUGUI interactableText = null;
     [SerializeField] private string sceneName;
-    [SerializeField] Transform spawnPoint;
 
     private LevelManager levelManager;
 
 
     void Start()
     {
+        print($"{sceneName} entrance loaded(1)");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
-        interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
+        interactableText = ReferencesManager.instance.interactableText;//GameObject.FindWithTag("InteractableText").GetComponent<TextMeshProUGUI>();
+        print($"{sceneName} entrance loaded(2)");
     }
     public void Interact()
     {
         levelManager.ChangeLevel(sceneName);
+    }
+
+    private void Update()
+    {
+        print($"interactableText: {interactableText}");
     }
 
     private void ShowEnterDialog()
@@ -35,10 +41,10 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print("Collider Detected");
         if (other.gameObject.CompareTag("Player"))
         {
             ShowEnterDialog();
-            print("HERE");
         }
     }
 

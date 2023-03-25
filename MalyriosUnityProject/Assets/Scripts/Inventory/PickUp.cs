@@ -22,7 +22,7 @@ public class PickUp : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        interactableText = GameObject.Find("InteractableText").GetComponent<TextMeshProUGUI>();
+        interactableText = ReferencesManager.instance.interactableText;
         this.whatCanPickMeUp = LayerMask.GetMask("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (this.baseItem != null)
