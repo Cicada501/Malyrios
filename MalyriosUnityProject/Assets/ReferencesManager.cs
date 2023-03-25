@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class ReferencesManager : MonoBehaviour
 {
+    
+    /* Because it is not effective to use GameObject.Find() very often, this ReferencesManager should help
+     * by linking all important References here, so that i can get them with i.e. like this:
+     * ReferencesManager.instance.interactableText;
+     */
+    
     public static ReferencesManager instance;
 
     public TextMeshProUGUI interactableText;
