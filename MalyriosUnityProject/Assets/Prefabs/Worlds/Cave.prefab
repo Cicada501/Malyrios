@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5098131604970954763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3088880683124335510}
-  m_Layer: 0
-  m_Name: CaveStartpoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3088880683124335510
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5098131604970954763}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -0.065, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7104209319309316221}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7104209317336230582
 GameObject:
   m_ObjectHideFlags: 0
@@ -107747,78 +107716,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &7104209317464470286
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7104209317464470287}
-  - component: {fileID: 7104209317464470285}
-  - component: {fileID: 7104209317464470284}
-  m_Layer: 0
-  m_Name: LocalBGTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7104209317464470287
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7104209317464470286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.64, y: 0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7104209319309316221}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7104209317464470285
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7104209317464470286}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 12, y: -3}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 25, y: 10}
-  m_EdgeRadius: 0
---- !u!114 &7104209317464470284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7104209317464470286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3978acb7263d647bf9ed8f031923cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  background: {fileID: 7104209318426837917}
 --- !u!1 &7104209317477405568
 GameObject:
   m_ObjectHideFlags: 0
@@ -114304,7 +114201,7 @@ Transform:
   - {fileID: 7104209317362047096}
   - {fileID: 7104209318434234992}
   m_Father: {fileID: 7104209319309316221}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7104209318193879694
 GameObject:
@@ -115062,7 +114959,7 @@ Transform:
   - {fileID: 7104209318349161766}
   - {fileID: 7104209318211036831}
   m_Father: {fileID: 7104209319309316221}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7104209318427287530
 GameObject:
@@ -149097,10 +148994,8 @@ Transform:
   - {fileID: 7104209318107395813}
   - {fileID: 7104209318295734389}
   - {fileID: 7104209318194825287}
-  - {fileID: 7104209317464470287}
   - {fileID: 7104209318426837914}
   - {fileID: 7104209318157042598}
-  - {fileID: 3088880683124335510}
   - {fileID: 6420002480948576059}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -149561,7 +149456,7 @@ GameObject:
   - component: {fileID: 1546767925185219481}
   - component: {fileID: 59100360091445616}
   m_Layer: 0
-  m_Name: HighForestEntrance
+  m_Name: HighForestLandingPoint
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149580,7 +149475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7104209319309316221}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1546767925185219481
 MonoBehaviour:
@@ -149594,8 +149489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48064ec4c406d2c4882e73bcbb8010e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableText: {fileID: 0}
-  sceneName: HighForest
+  levelName: HighForest
 --- !u!61 &59100360091445616
 BoxCollider2D:
   m_ObjectHideFlags: 0

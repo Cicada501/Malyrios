@@ -12951,7 +12951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableText: {fileID: 457673046}
-  dialogueManager: {fileID: 1690701658}
+  dialogueManager: {fileID: 639142910}
 --- !u!1 &927187157
 GameObject:
   m_ObjectHideFlags: 0
@@ -15382,7 +15382,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7704082, y: 1}
+    m_SensorSize: {x: 1.4477848, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0

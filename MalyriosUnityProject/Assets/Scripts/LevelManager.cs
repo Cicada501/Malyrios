@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<Level> level;
     [SerializeField] private GameObject HighForestPrefab;
     private static GameObject currentLevel;
-
+    private string prevLevelName;
     [SerializeField] private GameObject player;
     
     private void Awake()
@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
         currentLevel= Instantiate(level.Find(level => level.Name == "HighForest").Prefab);
         var startpoint = GameObject.Find("HighForestStartpoint").GetComponent<Transform>();
         player.transform.position = startpoint.position;
+        prevLevelName = "HighForest";
     }
     
 
@@ -32,7 +33,9 @@ public class LevelManager : MonoBehaviour
     {
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
-        var startpoint = GameObject.Find($"{levelName}Startpoint").GetComponent<Transform>();
+        print(prevLevelName);
+        var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
         player.transform.position = startpoint.position;
+        prevLevelName = levelName;
     }
 }
