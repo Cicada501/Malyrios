@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Malyrios.Dialogue;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class ReferencesManager : MonoBehaviour
 
     public TextMeshProUGUI interactableText;
     public DialogueManager dialogueManager;
+    public CinemachineVirtualCamera camera;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script
