@@ -18,7 +18,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
-        interactableText = ReferencesManager.instance.interactableText;
+        interactableText = ReferencesManager.Instance.interactableText;
 
     }
     public void Interact()

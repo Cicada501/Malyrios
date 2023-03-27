@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         var startpoint = GameObject.Find("HighForestStartpoint").GetComponent<Transform>();
         player.transform.position = startpoint.position;
         prevLevelName = "HighForest";
-        cam = ReferencesManager.instance.camera;
+        cam = ReferencesManager.Instance.camera;
     }
     
 

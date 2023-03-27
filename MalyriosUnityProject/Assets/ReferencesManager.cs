@@ -13,14 +13,16 @@ public class ReferencesManager : MonoBehaviour
      * ReferencesManager.instance.interactableText;
      */
     
-    public static ReferencesManager instance;
+    public static ReferencesManager Instance;
 
+
+    public GameObject player;
     public TextMeshProUGUI interactableText;
     public DialogueManager dialogueManager;
-    public CinemachineVirtualCamera camera;
+    public new CinemachineVirtualCamera camera;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script
-        instance = this;
+        Instance = this;
     }
 }

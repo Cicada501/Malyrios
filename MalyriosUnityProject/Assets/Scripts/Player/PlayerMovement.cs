@@ -76,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
     public void JumpButtonPressed()
     {
         if(isJumping) return;
-        print("jump!");
         jump = true; //triggers the addforce next frame
         //isJumping = true;
         playerAnimator.SetTrigger("Jump");

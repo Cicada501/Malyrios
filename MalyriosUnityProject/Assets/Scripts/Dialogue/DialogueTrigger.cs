@@ -17,10 +17,10 @@ namespace Malyrios.Dialogue
         {
 
             //this.manager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-            manager = ReferencesManager.instance.dialogueManager;
+            manager = ReferencesManager.Instance.dialogueManager;
             //print(man2 +" "+ manager);
             this.dialogue = GetComponent<Dialogue>();
-            interactableText = ReferencesManager.instance.interactableText;
+            interactableText = ReferencesManager.Instance.interactableText;
         }
 
         void Start()
