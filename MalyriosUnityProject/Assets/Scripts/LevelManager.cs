@@ -27,8 +27,12 @@ public class LevelManager : MonoBehaviour
     {
         //Replace high forest here later by the last level the player was when the game was closed 
         currentLevel= Instantiate(level.Find(level => level.Name == "HighForest").Prefab);
-        var startpoint = GameObject.Find("HighForestStartpoint").GetComponent<Transform>();
-        player.transform.position = startpoint.position;
+        if (SaveLoadPlayer.SpawnAtPlayerDebugLocation)
+        {
+            var startpoint = GameObject.Find("HighForestStartpoint").GetComponent<Transform>();
+            player.transform.position = startpoint.position;
+        }
+        //this will be used to detect the correct spawn-point in the world, depending from where you come
         prevLevelName = "HighForest";
         cam = ReferencesManager.Instance.camera;
     }
@@ -41,7 +45,7 @@ public class LevelManager : MonoBehaviour
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         print(prevLevelName);
         var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
-        prevLevelName = levelName;
+        prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
         
         player.transform.position = startpoint.position;
         StartCoroutine(FocusPlayerCoroutine());
