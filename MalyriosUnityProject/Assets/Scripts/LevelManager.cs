@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     private static GameObject currentLevel;
     private string prevLevelName;
     [SerializeField] private GameObject player;
-    
+    [SerializeField] private SaveLoadPlayer saveLoadPlayer;
     private CinemachineVirtualCamera cam;
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
@@ -27,8 +27,10 @@ public class LevelManager : MonoBehaviour
     {
         //Replace high forest here later by the last level the player was when the game was closed 
         currentLevel= Instantiate(level.Find(level => level.Name == "HighForest").Prefab);
-        if (SaveLoadPlayer.SpawnAtPlayerDebugLocation)
+        
+        if (saveLoadPlayer.SpawnAtPlayerDebugLocation)
         {
+            print("Setting player location to HighForestStartpoint");
             var startpoint = GameObject.Find("HighForestStartpoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
         }

@@ -7,7 +7,7 @@ using TMPro;
 public class SaveLoadPlayer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI positionText;
-    [SerializeField] public static bool SpawnAtPlayerDebugLocation;
+    [SerializeField] public bool SpawnAtPlayerDebugLocation;
     Vector3 playerInspectorLocation;
     private Player player;
     private Inventory inventory;
