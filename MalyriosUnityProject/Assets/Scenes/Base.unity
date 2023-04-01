@@ -15185,7 +15185,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0796297, y: 1}
+    m_SensorSize: {x: 3.6470587, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -18671,7 +18671,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 202c4eecbe9c0b94bb9105eb05d82cd9, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -18834,7 +18834,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  healthRegen: 0
+  healthRegen: 100
   flashTime: 0.24
   playerRenderer: {fileID: 1975534750}
   healthFill: {fileID: 1984133796}
