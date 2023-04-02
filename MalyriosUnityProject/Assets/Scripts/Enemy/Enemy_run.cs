@@ -7,7 +7,6 @@ public class Enemy_run : StateMachineBehaviour
 
     public float basicSpeed = 1f;
     float speed;
-    [SerializeField] float initAttackRange = 0;
     private Enemy enemy;
     Rigidbody2D rb;
     Transform player;
@@ -15,7 +14,6 @@ public class Enemy_run : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Public static Var cant be set in Inspector, therefor do it here
         enemy = animator.GetComponent<Enemy>();
         rb = animator.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;

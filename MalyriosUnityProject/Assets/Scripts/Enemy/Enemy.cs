@@ -107,11 +107,7 @@ public class Enemy : MonoBehaviour
         animator.SetFloat("distToPlayer", distToPlayer);
         
 
-        if (distToPlayer <= attackRange)
-        {
-            rb.velocity = new Vector2(0f, 0f);
-            rb.angularVelocity = 0f;
-        }
+
     } //----------------------END: Update -----------------------------------
 
     void SpawnDamage(int damage)
