@@ -47,8 +47,15 @@ public class SaveLoadPlayer : MonoBehaviour
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
-
-        transform.position = position;
-        positionText.text = position.ToString();
+        if (!SpawnAtPlayerDebugLocation)
+        {
+            transform.position = position;
+            positionText.text = position.ToString();
+        }
+        else
+        {
+            positionText.text = "spawned at inspector startpoint";
+        }
+        
     }
 }

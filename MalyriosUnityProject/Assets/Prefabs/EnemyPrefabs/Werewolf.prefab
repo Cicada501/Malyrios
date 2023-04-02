@@ -166,7 +166,7 @@ MonoBehaviour:
   damageTextSpawn: {fileID: 8172665500183056685}
   facingRight: 0
   maxHealth: 400
-  enemyType: 0
+  enemyType: 1
 --- !u!58 &975214413128175228
 CircleCollider2D:
   m_ObjectHideFlags: 0

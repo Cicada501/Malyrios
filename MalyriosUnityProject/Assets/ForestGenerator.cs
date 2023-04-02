@@ -21,7 +21,6 @@ public class ForestGenerator : MonoBehaviour
     {
         forestWidth = forestWidth * widthMultiplier;
         Vector2 prevPosition = new Vector2( transform.position.x -forestWidth / 2, minY);
-        print("Starting to draw trees at:"+prevPosition.x);
         var lastTree = false;
         var i = 0;
         while(!lastTree)
