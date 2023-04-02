@@ -156,6 +156,8 @@ MonoBehaviour:
   gravityToFall: 8
   gravityToClimb: 2
   attackRate: 0.4
+  attackRange: 0.7
+  nextAttackTime: 0
   attackPoint: {fileID: 975214413877605646}
   attackRadius: 0.16
   playerLayer:

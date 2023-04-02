@@ -8,7 +8,7 @@ public class Enemy_run : StateMachineBehaviour
     public float basicSpeed = 1f;
     float speed;
     [SerializeField] float initAttackRange = 0;
-    public static float attackRange;
+    private Enemy enemy;
     Rigidbody2D rb;
     Transform player;
 
@@ -16,7 +16,7 @@ public class Enemy_run : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Public static Var cant be set in Inspector, therefor do it here
-        attackRange = initAttackRange;
+        enemy = animator.GetComponent<Enemy>();
         rb = animator.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         speed = basicSpeed;
@@ -29,9 +29,9 @@ public class Enemy_run : StateMachineBehaviour
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime); //last arg gives how much to move each update( how long the vector is)
         rb.MovePosition(newPos);
         //if player is in range and enemy is alive, attack
-        if (Vector2.Distance(rb.position, player.position) <= attackRange &&!animator.GetBool("isDead"))
+        if (Vector2.Distance(rb.position, player.position) <= enemy.attackRange &&!animator.GetBool("isDead"))
         {            
-            if(Time.time>=Enemy.nextAttackTime){
+            if(Time.time>=enemy.nextAttackTime){
                 animator.SetTrigger("Attack");
                 speed = 0f;
             }

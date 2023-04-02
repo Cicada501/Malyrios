@@ -24,7 +24,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float gravityToClimb = 2;
 
     [SerializeField] float attackRate = 1.5f;
-    public static float nextAttackTime;
+    [SerializeField] public float attackRange;
+    public float nextAttackTime;
     float distToPlayer;
 
     [SerializeField] Transform attackPoint = null;
@@ -106,7 +107,7 @@ public class Enemy : MonoBehaviour
         animator.SetFloat("distToPlayer", distToPlayer);
         
 
-        if (distToPlayer <= Enemy_run.attackRange)
+        if (distToPlayer <= attackRange)
         {
             rb.velocity = new Vector2(0f, 0f);
             rb.angularVelocity = 0f;
