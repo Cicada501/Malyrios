@@ -10249,7 +10249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &616114873
 Transform:
   m_ObjectHideFlags: 0
@@ -18834,7 +18834,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  healthRegen: 100
+  healthRegen: 0
   flashTime: 0.24
   playerRenderer: {fileID: 1975534750}
   healthFill: {fileID: 1984133796}
@@ -18878,7 +18878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionText: {fileID: 517383744}
-  SpawnAtPlayerDebugLocation: 1
+  SpawnAtPlayerDebugLocation: 0
 --- !u!114 &1975534758
 MonoBehaviour:
   m_ObjectHideFlags: 0
