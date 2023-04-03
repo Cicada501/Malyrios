@@ -41,7 +41,7 @@ public class OneWayPlatform : MonoBehaviour
         {
             collidedWithPlayer = false;
         }
-        print(collidedWithPlayer+" grounded:? "+grounded);
+        
     }
     
     private bool IsInTargetAnimationState()

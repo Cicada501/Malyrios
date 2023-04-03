@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float gravityToFall = 8;
     [SerializeField] float gravityToClimb = 2;
 
-    [SerializeField] float attackRate = 1.5f;
+    [SerializeField] float attacksPerSecond = 1.5f;
     [SerializeField] public float attackRange;
     public float nextAttackTime;
     float distToPlayer;
@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
         //Recognize when Enemy has attacked, and set nextAttackTime
         if (animator.GetBool("Attack") == true)
         {
-            nextAttackTime = Time.time + 1f / attackRate;
+            nextAttackTime = Time.time + 1f / attacksPerSecond;
         }
 
         //Look at Player

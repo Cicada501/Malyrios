@@ -12,7 +12,8 @@ public class FireBall : MonoBehaviour
     [SerializeField] float fireballCooldownTime;
     [SerializeField] private Animator playerAnimator;
     public DateTime startTime;
-    private TimeSpan ts; private Image abilityButtonImage;
+    private TimeSpan ts; 
+    private Image abilityButtonImage;
 
     private float cooldownPercent = 1;
 

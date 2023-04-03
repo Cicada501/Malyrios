@@ -22,6 +22,7 @@ public class FireBallProjectile : MonoBehaviour
         // if player is looking to the left, throw ball to the left
         if (player.transform.localScale.x < 0)
         {
+            //Set this vector to the vector from GUI
             rigidBody.velocity = new Vector2(-projectileSpeed, -0.05f*projectileSpeed);
             this.GetComponent<SpriteRenderer>().flipX = true;
         }

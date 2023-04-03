@@ -186,6 +186,8 @@ MonoBehaviour:
   gravityToFall: 8
   gravityToClimb: 2
   attackRate: 1
+  attackRange: 0.5
+  nextAttackTime: 0
   attackPoint: {fileID: 5704038291144620575}
   attackRadius: 0.1
   playerLayer:
@@ -196,7 +198,6 @@ MonoBehaviour:
   damageTextSpawn: {fileID: 5704038291144620575}
   facingRight: 0
   maxHealth: 200
-  SpawnPoint: {fileID: 0}
   enemyType: 3
 --- !u!60 &5704038291467004029
 PolygonCollider2D:

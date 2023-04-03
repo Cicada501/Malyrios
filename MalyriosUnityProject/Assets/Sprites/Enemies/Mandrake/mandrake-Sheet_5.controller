@@ -163,7 +163,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: distToPlayer
-    m_EventTreshold: 0.3
+    m_EventTreshold: 0.6
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8159375374674692482}
   m_Solo: 0
@@ -336,7 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicSpeed: 1.3
-  initAttackRange: 0.3
 --- !u!1102 &2442905060291176160
 AnimatorState:
   serializedVersion: 6

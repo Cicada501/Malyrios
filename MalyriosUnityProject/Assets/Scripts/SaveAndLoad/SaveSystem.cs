@@ -29,7 +29,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         if (!File.Exists(path))
         {
-            Debug.LogError("Playerdata Save file not found in" + path);
+            Debug.LogError("Playerdata Save file not found in (but created one now)" + path);
             Player player = GameObject.Find("Player").GetComponent<Player>();
             SavePlayer(player);
         }
@@ -114,7 +114,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         if (!File.Exists(path))
         {
-            Debug.LogError("Decision Save file not found in" + path+ "(but created one now)");
+            Debug.LogError("Decision Save file not found in (but created one now)" + path);
             Decision decision = GameObject.Find("GameManager").GetComponent<Decision>();
             SaveDecisions(decision);
         }
