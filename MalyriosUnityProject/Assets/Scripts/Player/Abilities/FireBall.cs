@@ -53,7 +53,9 @@ public class FireBall : MonoBehaviour
     //called in player animation as AnimationEvent
     public void SpawnFireball()
     {
-        
+        GameObject fireballInstance = Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
+        FireBallProjectile projectile = fireballInstance.GetComponent<FireBallProjectile>();
+        projectile.FireballDirection = direction;
         startTime = Now;
         ts = Now - startTime;
         cooldownPercent = 0;
@@ -65,7 +67,7 @@ public class FireBall : MonoBehaviour
         startPoint = eventData.position;
         arrowInstance = Instantiate(arrowPrefab, player.transform.position, Quaternion.identity);
         isDragging = true;
-        playerAnimator.SetTrigger("ThrowFireball");
+        playerAnimator.SetTrigger("CreateFireball");
     }
 
     public void OnPointerUp(BaseEventData data)
@@ -75,11 +77,13 @@ public class FireBall : MonoBehaviour
         endPoint = eventData.position;
         direction = (endPoint - startPoint).normalized;
 
-        GameObject fireballInstance = Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
-        fireballInstance.GetComponent<Rigidbody2D>().velocity = direction * fireballSpeed;
-
+        //GameObject fireballInstance = Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
+        //fireballInstance.GetComponent<Rigidbody2D>().velocity = direction * fireballSpeed;
+        playerAnimator.SetTrigger("ThrowFireball");
         Destroy(arrowInstance);
     }
+
+
 
     private void Update()
     {
