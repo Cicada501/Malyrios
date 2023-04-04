@@ -46,9 +46,10 @@ public class Enemy : MonoBehaviour
     bool isGrounded;
     bool isAttacking;
     bool isDead;
-    
+
     private EnemySpawner enemySpawner;
     [SerializeField] public EnemyTypes enemyType;
+
     public enum EnemyTypes //Needed to respawn the enemy that died
     {
         Other,
@@ -59,12 +60,13 @@ public class Enemy : MonoBehaviour
         Mandrake,
         Boar
     }
+
     void Start()
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        
+
         animator = GetComponent<Animator>();
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
@@ -93,21 +95,18 @@ public class Enemy : MonoBehaviour
         }
 
         //Look at Player
-        if (transform.position.x > player.position.x && facingRight && !isAttacking)
+        if (transform.position.x > player.position.x && facingRight && !isAttacking && !isDead)
         {
             EnemyFlip();
         }
-        else if (transform.position.x < player.position.x && !facingRight && !isAttacking)
+        else if (transform.position.x < player.position.x && !facingRight && !isAttacking && !isDead)
         {
             EnemyFlip();
         }
-        
-        distToPlayer = Mathf.Abs(rb.position.x - player.position.x)+Mathf.Abs(rb.position.y - player.position.y);
+
+        distToPlayer = Mathf.Abs(rb.position.x - player.position.x) + Mathf.Abs(rb.position.y - player.position.y);
         //distToPlayerY = Mathf.Abs(rb.position.y - player.position.y);
         animator.SetFloat("distToPlayer", distToPlayer);
-        
-
-
     } //----------------------END: Update -----------------------------------
 
     void SpawnDamage(int damage)
@@ -162,10 +161,8 @@ public class Enemy : MonoBehaviour
             c.enabled = false;
         }
 
-        //Disable Script after colliders (otherwise colliders dont get disabled)
-        this.enabled = false;
-
         #region dropItems
+
         //Item Normal
         int dropchoice = Random.Range(0, 100);
         if (dropchoice > dropItemChance0 && dropchoice <= dropItemChance1 + dropItemChance0)
@@ -191,10 +188,15 @@ public class Enemy : MonoBehaviour
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.2f, transform.position.y));
             SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
         }
+
         #endregion
-        
+
         //Because the enemy gets instantiated as child of the spawnpoint, transform.parent.transform can be used as spawnpoint
         enemySpawner.Respawn(enemyType, transform.parent.transform);
+        print($"{enemyType} respawn Cooldown started");
+
+        //Disable Script after colliders (otherwise colliders dont get disabled)
+        this.enabled = false;
     }
 
 
@@ -231,7 +233,6 @@ public class Enemy : MonoBehaviour
             {
                 rb.gravityScale = gravityToClimb;
             }
-            
         }
     }
 

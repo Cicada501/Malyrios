@@ -61,6 +61,7 @@ public class FireBall : MonoBehaviour
             startPoint = eventData.position;
             arrowInstance = Instantiate(arrowPrefab, player.transform.position, Quaternion.identity);
             isDragging = true;
+            GetComponent<PlayerMovement>().disableMovement = true;
             playerAnimator.SetTrigger("CreateFireball");
         }
     }
@@ -69,8 +70,8 @@ public class FireBall : MonoBehaviour
     {
         PointerEventData eventData = data as PointerEventData;
         isDragging = false;
+        GetComponent<PlayerMovement>().disableMovement = false;
         endPoint = eventData.position;
-        //direction = (endPoint - startPoint).normalized;
         playerAnimator.SetTrigger("ThrowFireball");
         Destroy(arrowInstance);
     }

@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius;
+    public bool disableMovement;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -51,11 +52,12 @@ public class PlayerMovement : MonoBehaviour
     {
         // Ground check
         isJumping = !Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
-
-        //if jump gets true call function once with jump=true, with that AddForce() will get called 
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-        jump = false;
-
+        if (!disableMovement)
+        {
+            //if jump gets true call function once with jump=true, with that AddForce() will get called 
+            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            jump = false;
+        }
 
         //Animation
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
