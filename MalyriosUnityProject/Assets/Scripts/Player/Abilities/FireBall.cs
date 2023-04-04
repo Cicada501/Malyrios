@@ -14,7 +14,7 @@ public class FireBall : MonoBehaviour
     [SerializeField] float fireballCooldownTime;
     [SerializeField] private Animator playerAnimator;
     public DateTime startTime;
-    private TimeSpan ts; 
+    private TimeSpan ts;
     private Image abilityButtonImage;
 
     private float cooldownPercent = 1;
@@ -50,6 +50,7 @@ public class FireBall : MonoBehaviour
             playerAnimator.SetTrigger("ThrowFireball");
         }
     }
+
     //called in player animation as AnimationEvent
     public void SpawnFireball()
     {
@@ -60,7 +61,7 @@ public class FireBall : MonoBehaviour
         ts = Now - startTime;
         cooldownPercent = 0;
     }
-    
+
     public void OnPointerDown(BaseEventData data)
     {
         PointerEventData eventData = data as PointerEventData;
@@ -75,14 +76,10 @@ public class FireBall : MonoBehaviour
         PointerEventData eventData = data as PointerEventData;
         isDragging = false;
         endPoint = eventData.position;
-        direction = (endPoint - startPoint).normalized;
-
-        //GameObject fireballInstance = Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
-        //fireballInstance.GetComponent<Rigidbody2D>().velocity = direction * fireballSpeed;
+        //direction = (endPoint - startPoint).normalized;
         playerAnimator.SetTrigger("ThrowFireball");
         Destroy(arrowInstance);
     }
-
 
 
     private void Update()
@@ -93,6 +90,21 @@ public class FireBall : MonoBehaviour
             direction = (currentPoint - startPoint).normalized;
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            print(angle);
+            if (transform.localScale.x > 0)
+            {
+                angle = Mathf.Clamp(angle, -45f, 45f);
+            }
+            else
+            {
+                if (Mathf.Abs(angle) < 135f)
+                {
+                    angle = Mathf.Sign(angle) * 135f;
+                }
+            }
+
+            // convert the angle to a Vector2 to ensure that it represents a valid direction for the fireball
+            direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
             arrowInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
