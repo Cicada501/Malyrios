@@ -23,7 +23,9 @@ public class FireBall : MonoBehaviour
     [SerializeField] private GameObject arrowPrefab;
     private GameObject player;
     private bool isDragging;
-    private Vector2 direction;
+    public Vector2 direction;
+    private Vector2 endPoint;
+    private Vector2 fireballSpeed;
 
     private void Start()
     {
@@ -51,7 +53,7 @@ public class FireBall : MonoBehaviour
     //called in player animation as AnimationEvent
     public void SpawnFireball()
     {
-        Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
+        
         startTime = Now;
         ts = Now - startTime;
         cooldownPercent = 0;
@@ -61,11 +63,24 @@ public class FireBall : MonoBehaviour
     {
         PointerEventData eventData = data as PointerEventData;
         startPoint = eventData.position;
-        print("ArrowPrefab:"+arrowPrefab);
         arrowInstance = Instantiate(arrowPrefab, player.transform.position, Quaternion.identity);
         isDragging = true;
+        playerAnimator.SetTrigger("ThrowFireball");
     }
-    
+
+    public void OnPointerUp(BaseEventData data)
+    {
+        PointerEventData eventData = data as PointerEventData;
+        isDragging = false;
+        endPoint = eventData.position;
+        direction = (endPoint - startPoint).normalized;
+
+        GameObject fireballInstance = Instantiate(fireball, fireBallSpawn.transform.position, fireBallSpawn.rotation);
+        fireballInstance.GetComponent<Rigidbody2D>().velocity = direction * fireballSpeed;
+
+        Destroy(arrowInstance);
+    }
+
     private void Update()
     {
         if (isDragging)
