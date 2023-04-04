@@ -15549,7 +15549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded0531daffe8d94083098d0994fa48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPhysicItem: {fileID: 0}
+  initPhysicItem: {fileID: 1152426544080121675, guid: ed36c44e734631440b9fdedba72fe46c,
+    type: 3}
 --- !u!4 &1386037421
 Transform:
   m_ObjectHideFlags: 0
@@ -18961,6 +18962,7 @@ MonoBehaviour:
     m_Bits: 2560
   groundCheckPoint: {fileID: 189518967}
   groundCheckRadius: 0.03
+  disableMovement: 0
 --- !u!114 &1975534761
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,11 +26,14 @@ public class FireBall : MonoBehaviour
     public Vector2 direction;
     private Vector2 endPoint;
     private Vector2 fireballSpeed;
+    private bool castingFireball = false;
+    private CharacterController2D controller;
 
     private void Start()
     {
         abilityButtonImage = GameObject.Find("ButtonFireball").GetComponent<Image>();
         player = ReferencesManager.Instance.player;
+        controller = GetComponent<CharacterController2D>();
     }
 
 
@@ -53,10 +56,12 @@ public class FireBall : MonoBehaviour
         cooldownPercent = 0;
     }
 
+
     public void OnPointerDown(BaseEventData data)
     {
         if (ts.Seconds >= fireballCooldownTime)
         {
+            castingFireball = true;
             PointerEventData eventData = data as PointerEventData;
             startPoint = eventData.position;
             arrowInstance = Instantiate(arrowPrefab, player.transform.position, Quaternion.identity);
@@ -68,12 +73,16 @@ public class FireBall : MonoBehaviour
 
     public void OnPointerUp(BaseEventData data)
     {
-        PointerEventData eventData = data as PointerEventData;
-        isDragging = false;
-        GetComponent<PlayerMovement>().disableMovement = false;
-        endPoint = eventData.position;
-        playerAnimator.SetTrigger("ThrowFireball");
-        Destroy(arrowInstance);
+        if (castingFireball)
+        {
+            PointerEventData eventData = data as PointerEventData;
+            isDragging = false;
+            GetComponent<PlayerMovement>().disableMovement = false;
+            endPoint = eventData.position;
+            playerAnimator.SetTrigger("ThrowFireball");
+            Destroy(arrowInstance);
+            castingFireball = false;
+        }
     }
 
 
@@ -85,7 +94,17 @@ public class FireBall : MonoBehaviour
             direction = (currentPoint - startPoint).normalized;
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            print(angle);
+            
+            //turn player in direction of arrow
+            if (Math.Abs(angle) < 45 && !controller.m_FacingRight)
+            {
+                controller.Flip();
+            }else if (Math.Abs(angle) > 135 && controller.m_FacingRight)
+            {
+                controller.Flip();
+            }
+            
+            //restrict window, the player is able to shoot in to 90deg in front of him
             if (transform.localScale.x > 0)
             {
                 angle = Mathf.Clamp(angle, -45f, 45f);
@@ -98,7 +117,7 @@ public class FireBall : MonoBehaviour
                 }
             }
 
-            // convert the angle to a Vector2 to ensure that it represents a valid direction for the fireball
+            // convert the angle to a Vector2 (to ensure that it represents a valid direction for the fireball)
             direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
             arrowInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
