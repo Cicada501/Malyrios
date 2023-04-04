@@ -152,9 +152,7 @@ public class Enemy : MonoBehaviour
         //dont move when dead
         rb.velocity = new Vector2(0f, 0f);
         rb.angularVelocity = 0f;
-
-        rb.gravityScale = 0;
-
+        rb.gravityScale = 0; //enemy should not fall trough ground
         //Disable all coliders when dead
         foreach (Collider2D c in GetComponents<Collider2D>())
         {
