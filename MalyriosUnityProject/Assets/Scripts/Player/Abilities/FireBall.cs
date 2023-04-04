@@ -42,15 +42,6 @@ public class FireBall : MonoBehaviour
         cooldownPercent += 0.02f / fireballCooldownTime;
     }
 
-    //called if the Fireballbutton is pressed
-    public void OnClickFireball()
-    {
-        if (ts.Seconds >= fireballCooldownTime)
-        {
-            playerAnimator.SetTrigger("ThrowFireball");
-        }
-    }
-
     //called in player animation as AnimationEvent
     public void SpawnFireball()
     {
@@ -64,11 +55,14 @@ public class FireBall : MonoBehaviour
 
     public void OnPointerDown(BaseEventData data)
     {
-        PointerEventData eventData = data as PointerEventData;
-        startPoint = eventData.position;
-        arrowInstance = Instantiate(arrowPrefab, player.transform.position, Quaternion.identity);
-        isDragging = true;
-        playerAnimator.SetTrigger("CreateFireball");
+        if (ts.Seconds >= fireballCooldownTime)
+        {
+            PointerEventData eventData = data as PointerEventData;
+            startPoint = eventData.position;
+            arrowInstance = Instantiate(arrowPrefab, player.transform.position, Quaternion.identity);
+            isDragging = true;
+            playerAnimator.SetTrigger("CreateFireball");
+        }
     }
 
     public void OnPointerUp(BaseEventData data)
