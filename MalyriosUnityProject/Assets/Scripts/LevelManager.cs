@@ -25,13 +25,12 @@ public class LevelManager : MonoBehaviour
     private float originalDeadZoneHeight;
     private void Awake()
     {
-        //Replace high forest here later by the last level the player was when the game was closed 
-        currentLevel= Instantiate(level.Find(level => level.Name == "HighForest").Prefab);
         
+        ChangeLevel("Cave");
+
         if (saveLoadPlayer.SpawnAtPlayerDebugLocation)
         {
-            print("Setting player location to HighForestStartpoint");
-            var startpoint = GameObject.Find("HighForestStartpoint").GetComponent<Transform>();
+            var startpoint = GameObject.Find("CaveStartpoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
         }
         //this will be used to detect the correct spawn-point in the world, depending from where you come
@@ -45,7 +44,16 @@ public class LevelManager : MonoBehaviour
         
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
-        print(prevLevelName);
+        
+        if (levelName == "Cave")
+        {
+            var decisionManager = GetComponent<Decision>();
+            decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
+            decisionManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
+        }
+        
+        
+        //print(prevLevelName);
         var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
         prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
         

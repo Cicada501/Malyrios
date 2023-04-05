@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 public class Decision : MonoBehaviour
 {
     
-    //cant they be private?
+    //public static to save them into the saveFile
     public static bool BigRatAttack;
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
@@ -24,8 +24,8 @@ public class Decision : MonoBehaviour
     private static BaseItem apple;
 
     //big rat
-    //[SerializeField] private GameObject bigRatNpc;
-    //[SerializeField] private GameObject bigRatEnemy;
+    public GameObject bigRatNpc;
+    public GameObject bigRatEnemy;
 
     private void Start()
     {
@@ -40,6 +40,19 @@ public class Decision : MonoBehaviour
 
     private void Update()
     {
+        print($"BigRatsEnemy: {bigRatEnemy}, BigRatNPC: {bigRatNpc}");
+        
+        if (BigRatAttack)
+        {
+            bigRatNpc.SetActive(false);
+            bigRatEnemy.SetActive(true);
+        }
+        else
+        {
+            bigRatNpc.SetActive(true);
+            bigRatEnemy.SetActive(false);
+        }
+        
         fireballButton.SetActive(LearnedFireball);
         switch (WizardDialogueState)
         {
@@ -54,17 +67,8 @@ public class Decision : MonoBehaviour
                 break;
         }
 
-        // if (BigRatAttack)
-        // {
-        //     bigRatNpc.SetActive(false);
-        //     bigRatEnemy.SetActive(true);
-        // }
-        // else
-        // {
-        //     bigRatNpc.SetActive(true);
-        //     bigRatEnemy.SetActive(false);
-        // }
-        
+
+
     }
 
     public void ResetAllDecisions()
@@ -74,7 +78,7 @@ public class Decision : MonoBehaviour
         WizardDialogueState = 1;
     }
 
-    public static void GetDecision(string answerDecision)
+    public static void SetDecision(string answerDecision)
     {
         switch (answerDecision)
         {

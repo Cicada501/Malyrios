@@ -111,7 +111,7 @@ namespace Malyrios.Dialogue
                 GameObject go = Instantiate(this.answerButton, this.content);
                 go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"> { answer.AnswerDescription }";
                 go.GetComponent<Button>().onClick.AddListener(() => GetNextSentences(answer.LinkedToSentenceId));
-                go.GetComponent<Button>().onClick.AddListener(() => Decision.GetDecision(answer.Decision));
+                go.GetComponent<Button>().onClick.AddListener(() => Decision.SetDecision(answer.Decision));
             }
         }
         

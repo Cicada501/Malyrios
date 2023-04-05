@@ -15642,6 +15642,8 @@ MonoBehaviour:
     - LinkedToSentenceId: -1
       AnswerDescription: No
       Decision: 
+  bigRatNpc: {fileID: 0}
+  bigRatEnemy: {fileID: 0}
 --- !u!114 &1386037426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18986,6 +18988,7 @@ MonoBehaviour:
   m_CeilingCheck: {fileID: 927187158}
   m_CrouchDisableCollider: {fileID: 0}
   m_Grounded: 0
+  m_FacingRight: 1
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
