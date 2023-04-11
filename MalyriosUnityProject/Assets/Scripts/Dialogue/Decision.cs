@@ -29,12 +29,6 @@ public class Decision : MonoBehaviour
 
     private void Start()
     {
-        wizzardDialog = GameObject.Find("Wizzard").GetComponent<Dialogue>();
-        DecisionData loadDecisions = SaveSystem.LoadDecisions();
-        BigRatAttack = loadDecisions.bigRatAttack;
-        LearnedFireball = loadDecisions.learnedFireball;
-        WizardDialogueState = loadDecisions.wizardDialogueState;
-        wizardNormalDialogueText = wizzardDialog.DialogueText;
         apple = ItemDatabase.GetItem(10);
     }
 
@@ -105,6 +99,6 @@ public class Decision : MonoBehaviour
 
     private void OnDestroy()
     {
-        SaveSystem.SaveDecisions(this);
+        //SaveSystem.SaveDecisions(this);
     }
 }

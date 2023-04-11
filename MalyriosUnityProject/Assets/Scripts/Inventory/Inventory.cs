@@ -36,7 +36,6 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        LoadInventory();
         //Save Inventory state each second
         InvokeRepeating("SaveInventory", 2f, 2f); //2s delay, repeat every 2s
         //InvokeRepeating("PrintInventory", 1f, 1f);
@@ -76,14 +75,13 @@ public class Inventory : MonoBehaviour
 
     public void SaveInventory()
     {
-        SaveSystem.SaveInventory(this);
+        //SaveSystem.SaveInventory(this);
     }
 
-    public void LoadInventory()
+    /*public void LoadInventory()
     {
         InventoryData data = SaveSystem.LoadInventory();
         //int[] testData = new int[] {2,3,4};
-
 
         foreach (var itemID in data.itemIDs)
         {
@@ -101,5 +99,5 @@ public class Inventory : MonoBehaviour
             
         }
         //get Stack size from amout of occurences in ItemIDs
-    }
+    }*/
 }

@@ -59,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
-        EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
+        //EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
         if (EquippedWeaponID!=0)
         {
             EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));

@@ -15631,6 +15631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballButton: {fileID: 320686717}
+  wizzardDialog: {fileID: 0}
   wizzardDialogText2:
   - SentenceId: 0
     Sentences:
@@ -15665,10 +15666,8 @@ MonoBehaviour:
     Prefab: {fileID: 7104209319309316220, guid: 1db2587fb634df047b199b291c6bec76,
       type: 3}
     EntrancePoint: {fileID: 0}
-  HighForestPrefab: {fileID: 3961218565264814783, guid: 1d586d233901b5e41968eed1236134f3,
-    type: 3}
   player: {fileID: 1975534745}
-  saveLoadPlayer: {fileID: 1975534757}
+  spawnAtPlayerDebugLocation: 0
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0
@@ -18662,8 +18661,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1975534759}
-  - component: {fileID: 1975534758}
-  - component: {fileID: 1975534757}
   - component: {fileID: 1975534756}
   - component: {fileID: 1975534755}
   - component: {fileID: 1975534754}
@@ -18896,32 +18893,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   cameraAnimator: {fileID: 1367976464}
---- !u!114 &1975534757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975534745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e68f9a1a9b3b0141b9bd2b8003b1ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionText: {fileID: 517383744}
-  SpawnAtPlayerDebugLocation: 0
---- !u!114 &1975534758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975534745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08bde83d62f395b488d256e2941c0364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1975534759
 Transform:
   m_ObjectHideFlags: 0

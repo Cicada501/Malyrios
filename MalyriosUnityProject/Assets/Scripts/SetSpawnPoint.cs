@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SetSpawnPoint : MonoBehaviour
 {
-    private Player player;
+    private Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = ReferencesManager.Instance.player.transform;
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player"))

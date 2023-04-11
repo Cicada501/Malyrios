@@ -31,18 +31,17 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     private Color playerOrigionalColor;
     private Color barFillOrigionalColor;
 
-    Player player;
-
     //int regHealth;
 
     public Transform currentSpawnPoint;
+    private Transform player;
 
 
     // Use this for initialization
     private void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
-        player = GetComponent<Player>();
+        player = GetComponent<Transform>();
         this.baseAttributes = GetComponent<BaseAttributes>();
 
         //Remember original colors to reset after Flash
@@ -111,9 +110,5 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void Heal(int heal)
     {
         baseAttributes.CurrentHealth += heal;
-    }
-
-    public void SavePlayer(){
-        SaveSystem.SavePlayer(player);
     }
 }

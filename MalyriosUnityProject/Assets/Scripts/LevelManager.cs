@@ -19,16 +19,17 @@ public class LevelManager : MonoBehaviour
     public static string CurrentLevelName;
     private string prevLevelName;
     [SerializeField] private GameObject player;
-    [SerializeField] private SaveLoadPlayer saveLoadPlayer;
     private CinemachineVirtualCamera cam;
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
+    [SerializeField] private bool spawnAtPlayerDebugLocation;
+
     private void Awake()
     {
-        ChangeLevel("Cave");
+        ChangeLevel("HighForest");
         
 
-        if (saveLoadPlayer.SpawnAtPlayerDebugLocation)
+        if (spawnAtPlayerDebugLocation)
         {
             var startpoint = GameObject.Find("CaveStartpoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
