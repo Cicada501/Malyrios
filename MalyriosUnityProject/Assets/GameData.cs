@@ -27,10 +27,10 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetFloat("currentHealth", baseAttributes.CurrentHealth);
         
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
+        print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         
         PlayerPrefs.Save();
-        print(("Saved the GameData"));
     }
 
     public void LoadData()
@@ -65,7 +65,10 @@ public class GameData : MonoBehaviour
         if (PlayerPrefs.HasKey("inventoryData"))
         {
             LoadedInventoryData = JsonUtility.FromJson<InventoryData>(PlayerPrefs.GetString("inventoryData"));
+            print("Loaded inventory data: "+ PlayerPrefs.GetString("inventoryData"));
         }
+        
+
         // else
         // {
         //     // Set up a default inventory data with an empty item list and default equipped weapon ID

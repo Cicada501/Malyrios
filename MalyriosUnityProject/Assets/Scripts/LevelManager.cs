@@ -50,7 +50,6 @@ public class LevelManager : MonoBehaviour
         
         //get the Decision script (is on the same GameObject)
         var decisionManager = GetComponent<Decision>();
-        print($"DecisionManager: {decisionManager}");
         if (levelName == "Cave")
         {
             //if Cave is loaded assign the bigRat GameObjects to the respective variables in the Decision script

@@ -54,6 +54,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(BaseItem item)
     {
+        print("invoked OnItemAdded");
         ItemIDs.Add(item.ItemID);
         Items.Add(item);
         OnItemAdded?.Invoke(item);

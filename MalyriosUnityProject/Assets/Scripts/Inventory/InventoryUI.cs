@@ -22,7 +22,7 @@ public class InventoryUI : MonoBehaviour
     int itemCount;
 
     public static bool inventoryOpen = false;
-    public static int d;
+
 
     private void Awake()
     {
@@ -30,7 +30,6 @@ public class InventoryUI : MonoBehaviour
         //itemCount = inventory.items.Count;
 
         // amount of items, that already existed in a Slot
-        d = 0;
     }
 
     private void Start()
@@ -54,6 +53,7 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateUiNew(BaseItem item)
     {
+        print("UI updating");
         InventorySlot tryToStack =
             slots.FirstOrDefault(x => x.Item != null && x.Item.ItemName == item.ItemName && x.Item.IsStackable);
         if (tryToStack != null)
@@ -67,6 +67,8 @@ public class InventoryUI : MonoBehaviour
         {
             AddNewItem(item);
         }
+        
+        
     }
 
     private void AddNewItem(BaseItem item)

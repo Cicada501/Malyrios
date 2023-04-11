@@ -18,19 +18,15 @@ public class GameInitializer : MonoBehaviour
 
     private void Start()
     {
-        print("GameInitializer starting...");
         LoadAndApplyData();
     }
 
     private void LoadAndApplyData()
     {
-        print("Loading data...");
         gameData.LoadData();
-
-        print("Applying loaded level...");
+        
         levelManager.ChangeLevel(gameData.LoadedLevelName);
-    
-        print("Applying loaded player position...");
+        print("setting player position");
         player.transform.position = gameData.LoadedPlayerPosition;
         baseAttributes.SetHealth(gameData.LoadedCurrentHealth);
 
