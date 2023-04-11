@@ -19,11 +19,9 @@ namespace SaveAndLoad
             else
             {
                 itemIDs = Array.Empty<int>();
-                //Debug.Log("Inventory is empty");
             }
 
             equippedWeaponID = PlayerAttack.EquippedWeaponID;
-            //Debug.Log("Saved Weapon with ID: "+equippedWeaponID);
         }
     }
 }

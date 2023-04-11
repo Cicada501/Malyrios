@@ -20,6 +20,7 @@ public class ReferencesManager : MonoBehaviour
     public TextMeshProUGUI interactableText;
     public DialogueManager dialogueManager;
     public new CinemachineVirtualCamera camera;
+    public GameData gameData;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script

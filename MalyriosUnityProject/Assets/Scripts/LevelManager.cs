@@ -16,13 +16,14 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private List<Level> level;
     private static GameObject currentLevel;
-    public static string CurrentLevelName;
+    private string CurrentLevelName;
     private string prevLevelName;
     [SerializeField] private GameObject player;
     private CinemachineVirtualCamera cam;
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
     [SerializeField] private bool spawnAtPlayerDebugLocation;
+    private bool commingFromAnotherLevel;
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class LevelManager : MonoBehaviour
         
         //get the Decision script (is on the same GameObject)
         var decisionManager = GetComponent<Decision>();
-        
+        print($"DecisionManager: {decisionManager}");
         if (levelName == "Cave")
         {
             //if Cave is loaded assign the bigRat GameObjects to the respective variables in the Decision script
@@ -58,16 +59,19 @@ public class LevelManager : MonoBehaviour
             
         }else if (levelName == "HighForest")
         {
-            decisionManager.wizzardDialog = currentLevel.transform.Find("Wizzard").GetComponent<Dialogue>();
+            //decisionManager.wizzardDialog = currentLevel.transform.Find("Wizzard").GetComponent<Dialogue>();
+        }
+        
+        if (commingFromAnotherLevel)
+        {
+            var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
+            prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
+            player.transform.position = startpoint.position;
+            StartCoroutine(FocusPlayerCoroutine());
         }
         
         
-        //print(prevLevelName);
-        var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
-        prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
         
-        player.transform.position = startpoint.position;
-        StartCoroutine(FocusPlayerCoroutine());
         
     }
 
@@ -90,5 +94,9 @@ public class LevelManager : MonoBehaviour
         transposer.m_DeadZoneWidth = originalDeadZoneWidth;
         transposer.m_DeadZoneHeight = originalDeadZoneHeight;
     }
-    
+
+    public string GetCurrentLevelName()
+    {
+        return CurrentLevelName;
+    }
 }
