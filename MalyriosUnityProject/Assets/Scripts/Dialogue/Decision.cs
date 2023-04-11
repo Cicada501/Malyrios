@@ -18,7 +18,7 @@ public class Decision : MonoBehaviour
 
     //fireball + wizard
     public GameObject fireballButton;
-    private Dialogue wizzardDialog;
+    public Dialogue wizzardDialog;
     [SerializeField] private List<DialogueText> wizzardDialogText2;
     private List<DialogueText> wizardNormalDialogueText;
     private static BaseItem apple;
@@ -40,8 +40,6 @@ public class Decision : MonoBehaviour
 
     private void Update()
     {
-        print($"BigRatsEnemy: {bigRatEnemy}, BigRatNPC: {bigRatNpc}");
-        
         if (BigRatAttack)
         {
             bigRatNpc.SetActive(false);
@@ -54,6 +52,7 @@ public class Decision : MonoBehaviour
         }
         
         fireballButton.SetActive(LearnedFireball);
+        
         switch (WizardDialogueState)
         {
             case 1:

@@ -47,7 +47,7 @@ public class ItemDatabase : MonoBehaviour
             }
         }
 
-        Debug.Log("No Weapon with iD " + id+ " in the WeaponDatabase (now it gets critical)");
+        Debug.LogError("No Weapon with iD " + id+ " in the WeaponDatabase (now it gets critical)");
         return null;
     }
 }

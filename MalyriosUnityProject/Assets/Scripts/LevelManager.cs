@@ -15,8 +15,8 @@ public struct Level
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private List<Level> level;
-    [SerializeField] private GameObject HighForestPrefab;
     private static GameObject currentLevel;
+    public static string CurrentLevelName;
     private string prevLevelName;
     [SerializeField] private GameObject player;
     [SerializeField] private SaveLoadPlayer saveLoadPlayer;
@@ -25,8 +25,8 @@ public class LevelManager : MonoBehaviour
     private float originalDeadZoneHeight;
     private void Awake()
     {
-        
         ChangeLevel("Cave");
+        
 
         if (saveLoadPlayer.SpawnAtPlayerDebugLocation)
         {
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
             player.transform.position = startpoint.position;
         }
         //this will be used to detect the correct spawn-point in the world, depending from where you come
-        prevLevelName = "HighForest";
+        //prevLevelName = "HighForest";
         cam = ReferencesManager.Instance.camera;
     }
     
@@ -44,12 +44,20 @@ public class LevelManager : MonoBehaviour
         
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
+        CurrentLevelName = levelName;
+        
+        //get the Decision script (is on the same GameObject)
+        var decisionManager = GetComponent<Decision>();
         
         if (levelName == "Cave")
         {
-            var decisionManager = GetComponent<Decision>();
+            //if Cave is loaded assign the bigRat GameObjects to the respective variables in the Decision script
             decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
             decisionManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
+            
+        }else if (levelName == "HighForest")
+        {
+            decisionManager.wizzardDialog = currentLevel.transform.Find("Wizzard").GetComponent<Dialogue>();
         }
         
         
