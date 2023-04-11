@@ -34,9 +34,11 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
+        //called in start, because in awake the inventory instance is null. But because subscription of events must happen before the events get triggered, the script execution order of this script is set to -1
         inventory = Inventory.Instance;
         inventory.OnItemAdded += UpdateUiNew;
         inventory.OnItemRemoved += OnItemRemoved;
+        print("Subscribed to events");
     }
 
 

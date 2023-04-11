@@ -23,13 +23,9 @@ public class LevelManager : MonoBehaviour
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
     [SerializeField] private bool spawnAtPlayerDebugLocation;
-    private bool commingFromAnotherLevel;
 
     private void Awake()
     {
-        ChangeLevel("HighForest");
-        
-
         if (spawnAtPlayerDebugLocation)
         {
             var startpoint = GameObject.Find("CaveStartpoint").GetComponent<Transform>();
@@ -61,17 +57,13 @@ public class LevelManager : MonoBehaviour
             //decisionManager.wizzardDialog = currentLevel.transform.Find("Wizzard").GetComponent<Dialogue>();
         }
         
-        if (commingFromAnotherLevel)
-        {
+        if (prevLevelName!=null) {
             var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
-            prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
             player.transform.position = startpoint.position;
-            StartCoroutine(FocusPlayerCoroutine());
         }
+        prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
         
-        
-        
-        
+        StartCoroutine(FocusPlayerCoroutine());
     }
 
     IEnumerator FocusPlayerCoroutine()

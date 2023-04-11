@@ -26,7 +26,6 @@ public class GameInitializer : MonoBehaviour
         gameData.LoadData();
         
         levelManager.ChangeLevel(gameData.LoadedLevelName);
-        print("setting player position");
         player.transform.position = gameData.LoadedPlayerPosition;
         baseAttributes.SetHealth(gameData.LoadedCurrentHealth);
 

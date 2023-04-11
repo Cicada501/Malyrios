@@ -32,17 +32,7 @@ public class Inventory : MonoBehaviour
     private BaseWeapon testWeapon;
 
     #endregion
-
-    private void Start()
-    {
-        //Save Inventory state each second
-        //InvokeRepeating("SaveInventory", 2f, 2f); //2s delay, repeat every 2s
-        //InvokeRepeating("PrintInventory", 1f, 1f);
-        // This is just for test purposes
-        //testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
-        //AddItem(testWeapon);
-    }
-
+    
     void PrintInventory()
     {
         Debug.Log(ItemIDs);
@@ -58,6 +48,7 @@ public class Inventory : MonoBehaviour
         ItemIDs.Add(item.ItemID);
         Items.Add(item);
         OnItemAdded?.Invoke(item);
+        print("added item");
         isEmpty = false;
     }
 
@@ -80,6 +71,7 @@ public class Inventory : MonoBehaviour
             if(ItemDatabase.GetItem(itemID) != null)
             {
                 AddItem(ItemDatabase.GetItem(itemID));
+                
             }else if (ItemDatabase.GetWeapon(itemID)!= null)
             {
                 AddItem(ItemDatabase.GetWeapon(itemID));
