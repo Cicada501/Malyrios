@@ -146,6 +146,9 @@ public class PlayerAttack : MonoBehaviour
                     //Debug.Log(damage);
                     
                     enemy.GetComponent<Enemy>().TakeDamage(damage);
+                    var rb = enemy.GetComponent<Rigidbody2D>();
+                    var playerTransform = GetComponent<Transform>();
+                    rb.AddForce(new Vector2(playerTransform.localScale.x*300,300), ForceMode2D.Impulse);
                     enemiesGotHit.Add(enemy.gameObject);
                 }
             }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ForestGenerator : MonoBehaviour
 {
     [SerializeField] private List<Sprite> treeSprites;
-    [SerializeField] private int treeCount;
     [SerializeField] private float forestWidth;
     [SerializeField] private float widthMultiplier;
     [SerializeField] private float minY;
@@ -22,16 +21,19 @@ public class ForestGenerator : MonoBehaviour
     {
         forestWidth = forestWidth * widthMultiplier;
         Vector2 prevPosition = new Vector2( transform.position.x -forestWidth / 2, minY);
-        
-        
-        for (int i = 0; i < treeCount; i++)
+        var lastTree = false;
+        var i = 0;
+        while(!lastTree)
         {
             Sprite treeSprite = treeSprites[Random.Range(0, treeSprites.Count)];
 
             Vector2 position = new Vector2(prevPosition.x + Random.Range(minDistance, maxDistance), minY + treeSprite.bounds.size.y/2);
             
             //Do not allow the forest to go above its defined width
-            if(position.x > transform.position.x + forestWidth/2) return;
+            if(position.x >= transform.position.x + forestWidth/2)
+            {
+                lastTree = true;
+            }
             
             GameObject treePrefab = new GameObject("TreePrefab");
             SpriteRenderer spriteRenderer = treePrefab.AddComponent<SpriteRenderer>();
@@ -44,6 +46,7 @@ public class ForestGenerator : MonoBehaviour
 
             prevPosition = position;
             Destroy(treePrefab);
+            i++;
         }
     }
     

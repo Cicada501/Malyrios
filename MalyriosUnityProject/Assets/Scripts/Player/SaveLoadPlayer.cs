@@ -7,7 +7,7 @@ using TMPro;
 public class SaveLoadPlayer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI positionText;
-    [SerializeField] private bool spawnAtInspectorLocation;
+    [SerializeField] public bool SpawnAtPlayerDebugLocation;
     Vector3 playerInspectorLocation;
     private Player player;
     private Inventory inventory;
@@ -15,11 +15,6 @@ public class SaveLoadPlayer : MonoBehaviour
 
     private void Awake()
     {
-        if (spawnAtInspectorLocation)
-        {
-            playerInspectorLocation = transform.position;
-        }
-
         LoadPlayer();
     }
 
@@ -49,19 +44,18 @@ public class SaveLoadPlayer : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
 
         Vector3 position;
-        if (spawnAtInspectorLocation)
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        if (!SpawnAtPlayerDebugLocation)
         {
-            position = playerInspectorLocation;
+            transform.position = position;
+            positionText.text = position.ToString();
         }
         else
         {
-            position.x = data.position[0];
-            position.y = data.position[1];
-            position.z = data.position[2];
+            positionText.text = "spawned at inspector startpoint";
         }
-
-
-        transform.position = position;
-        positionText.text = position.ToString();
+        
     }
 }

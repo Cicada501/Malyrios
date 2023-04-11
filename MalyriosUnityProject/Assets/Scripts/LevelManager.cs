@@ -19,16 +19,21 @@ public class LevelManager : MonoBehaviour
     private static GameObject currentLevel;
     private string prevLevelName;
     [SerializeField] private GameObject player;
-    
+    [SerializeField] private SaveLoadPlayer saveLoadPlayer;
     private CinemachineVirtualCamera cam;
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
     private void Awake()
     {
-        //Replace high forest here later by the last level the player was when the game was closed 
-        currentLevel= Instantiate(level.Find(level => level.Name == "HighForest").Prefab);
-        var startpoint = GameObject.Find("HighForestStartpoint").GetComponent<Transform>();
-        player.transform.position = startpoint.position;
+        
+        ChangeLevel("Cave");
+
+        if (saveLoadPlayer.SpawnAtPlayerDebugLocation)
+        {
+            var startpoint = GameObject.Find("CaveStartpoint").GetComponent<Transform>();
+            player.transform.position = startpoint.position;
+        }
+        //this will be used to detect the correct spawn-point in the world, depending from where you come
         prevLevelName = "HighForest";
         cam = ReferencesManager.Instance.camera;
     }
@@ -39,9 +44,18 @@ public class LevelManager : MonoBehaviour
         
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
-        print(prevLevelName);
+        
+        if (levelName == "Cave")
+        {
+            var decisionManager = GetComponent<Decision>();
+            decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
+            decisionManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
+        }
+        
+        
+        //print(prevLevelName);
         var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
-        prevLevelName = levelName;
+        prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
         
         player.transform.position = startpoint.position;
         StartCoroutine(FocusPlayerCoroutine());

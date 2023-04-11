@@ -17,7 +17,7 @@ namespace Malyrios.Dialogue
     [Serializable]
     public struct DialogueAnswers
     {
-        [Header("Which SentenceId should be jumped to")]
+        [Header("Which Sentence ID should be jumped to")]
         public int LinkedToSentenceId;
         [TextArea(3, 10)]
         public string AnswerDescription;
