@@ -38,7 +38,6 @@ public class InventoryUI : MonoBehaviour
         inventory = Inventory.Instance;
         inventory.OnItemAdded += UpdateUiNew;
         inventory.OnItemRemoved += OnItemRemoved;
-        print("Subscribed to events");
     }
 
 
@@ -55,7 +54,6 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateUiNew(BaseItem item)
     {
-        print("UI updating");
         InventorySlot tryToStack =
             slots.FirstOrDefault(x => x.Item != null && x.Item.ItemName == item.ItemName && x.Item.IsStackable);
         if (tryToStack != null)

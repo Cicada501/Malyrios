@@ -168,13 +168,13 @@ namespace Malyrios.Character
         
         private void Start()
         {
-            CurrentHealth = this.maxHealth;
+            //CurrentHealth = this.maxHealth;
             OnMaxHealthChanged?.Invoke(this.maxHealth);
         }
 
-        public void SetHealth(float gameDataLoadedCurrentHealth)
-        {
-            CurrentHealth = gameDataLoadedCurrentHealth;
-        }
+        // public void SetHealth(float gameDataLoadedCurrentHealth)
+        // {
+        //     CurrentHealth = gameDataLoadedCurrentHealth;
+        // }
     }
 }

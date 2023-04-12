@@ -22,20 +22,20 @@ public class LevelManager : MonoBehaviour
     private CinemachineVirtualCamera cam;
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
-    [SerializeField] private bool spawnAtPlayerDebugLocation;
-
-    private void Awake()
+    [SerializeField] public bool spawnAtPlayerDebugLocation;
+    
+    private void Start()
     {
-        if (spawnAtPlayerDebugLocation)
-        {
-            var startpoint = GameObject.Find("CaveStartpoint").GetComponent<Transform>();
-            player.transform.position = startpoint.position;
-        }
+        // if (spawnAtPlayerDebugLocation)
+        // {
+        //     var startpoint = GameObject.Find("Startpoint").GetComponent<Transform>();
+        //     player.transform.position = startpoint.position;
+        // }
         //this will be used to detect the correct spawn-point in the world, depending from where you come
         //prevLevelName = "HighForest";
         cam = ReferencesManager.Instance.camera;
     }
-    
+
 
     public void ChangeLevel(string levelName)
     {
@@ -59,6 +59,12 @@ public class LevelManager : MonoBehaviour
         
         if (prevLevelName!=null) {
             var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
+            player.transform.position = startpoint.position;
+        }
+        if (spawnAtPlayerDebugLocation)
+        {
+            print("GO");
+            var startpoint = GameObject.Find("Startpoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
         }
         prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.

@@ -26,10 +26,12 @@ public class GameInitializer : MonoBehaviour
         gameData.LoadData();
         
         levelManager.ChangeLevel(gameData.LoadedLevelName);
-        player.transform.position = gameData.LoadedPlayerPosition;
-        baseAttributes.SetHealth(gameData.LoadedCurrentHealth);
-
-        // Apply inventory data (assuming you have a method to update your inventory with loaded data)
+        if (!levelManager.spawnAtPlayerDebugLocation) {
+            player.transform.position = gameData.LoadedPlayerPosition;
+        }
+        //baseAttributes.SetHealth(gameData.LoadedCurrentHealth);
+        baseAttributes.CurrentHealth = gameData.LoadedCurrentHealth;
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
     }
+    
 }
