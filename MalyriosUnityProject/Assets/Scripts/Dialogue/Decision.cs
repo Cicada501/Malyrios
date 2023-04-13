@@ -19,8 +19,8 @@ public class Decision : MonoBehaviour
     //fireball + wizard
     public GameObject fireballButton;
     public Dialogue wizzardDialog;
-    [SerializeField] private List<DialogueText> wizzardDialogText2;
-    private List<DialogueText> wizardNormalDialogueText;
+    [SerializeField] public List<DialogueText> wizzardDialogText2;
+    public List<DialogueText> wizardNormalDialogueText;
     private static BaseItem apple;
 
     //big rat
@@ -30,38 +30,42 @@ public class Decision : MonoBehaviour
     private void Start()
     {
         apple = ItemDatabase.GetItem(10);
+        // if (LevelManager.CurrentLevelName == "HighForest")
+        // {
+        //     wizzardDialog = GameObject.Find("Wizzard").GetComponent<Dialogue>();
+        // }
     }
 
     private void Update()
     {
-        if (BigRatAttack)
+        if (LevelManager.CurrentLevelName == "Cave")
         {
-            bigRatNpc.SetActive(false);
-            bigRatEnemy.SetActive(true);
-        }
-        else
+            if (BigRatAttack)
+            {
+                bigRatNpc.SetActive(false);
+                bigRatEnemy.SetActive(true);
+            }
+            else
+            {
+                bigRatNpc.SetActive(true);
+                bigRatEnemy.SetActive(false);
+            }
+        }else if (LevelManager.CurrentLevelName == "HighForest")
         {
-            bigRatNpc.SetActive(true);
-            bigRatEnemy.SetActive(false);
+            switch (WizardDialogueState)
+            {
+                case 1:
+                    wizzardDialog.DialogueText = wizardNormalDialogueText;
+                    break;
+                case 2:
+
+                    wizzardDialog.DialogueText = wizzardDialogText2;
+                    break;
+                case 3:
+                    break;
+            }
         }
-        
         fireballButton.SetActive(LearnedFireball);
-        
-        switch (WizardDialogueState)
-        {
-            case 1:
-                wizzardDialog.DialogueText = wizardNormalDialogueText;
-                break;
-            case 2:
-
-                wizzardDialog.DialogueText = wizzardDialogText2;
-                break;
-            case 3:
-                break;
-        }
-
-
-
     }
 
     public void ResetAllDecisions()

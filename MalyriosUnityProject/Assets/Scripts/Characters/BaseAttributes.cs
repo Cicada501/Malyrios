@@ -47,7 +47,7 @@ namespace Malyrios.Character
 
         /// <summary>
         /// Gets or sets the current health.
-        /// Also fired an event OnCurrentHealthChanged.
+        /// Also fires an event OnCurrentHealthChanged.
         /// </summary>
         public float CurrentHealth
         {

@@ -10,7 +10,6 @@ namespace Malyrios.Dialogue
 {
     public class DialogueManager : MonoBehaviour
     {
-
         #region Serialize Fields
 
         [SerializeField] private float writingSpeed = 15f;
@@ -18,6 +17,7 @@ namespace Malyrios.Dialogue
         [SerializeField] private Transform content = null;
         [SerializeField] private TextMeshProUGUI sentence = null;
         private bool isWriting = false;
+
         #endregion
 
         #region Private Variables
@@ -25,13 +25,13 @@ namespace Malyrios.Dialogue
         private Dialogue dialogueText;
         private Queue<string> sentenceQueue;
         private int linkedId;
+
         #endregion
 
         private void Start()
         {
             this.sentenceQueue = new Queue<string>();
             this.gameObject.SetActive(false);
-
         }
 
         /// <summary>
@@ -72,6 +72,7 @@ namespace Malyrios.Dialogue
             {
                 this.sentenceQueue.Enqueue(sentence);
             }
+
             DeleteOldAnswers();
             NextSentence();
         }
@@ -81,7 +82,6 @@ namespace Malyrios.Dialogue
             isWriting = false;
             this.gameObject.SetActive(false);
             DeleteOldAnswers();
-            
         }
 
         /// <summary>
@@ -101,39 +101,38 @@ namespace Malyrios.Dialogue
         /// </summary>
         private void ShowAnswers()
         {
-            
-
-        DialogueText dialogueText = this.dialogueText.DialogueText.SingleOrDefault(x => x.SentenceId == this.linkedId);
+            DialogueText dialogueText =
+                this.dialogueText.DialogueText.SingleOrDefault(x => x.SentenceId == this.linkedId);
             if (dialogueText.Answers.Count == 0) return;
             foreach (DialogueAnswers answer in dialogueText.Answers)
             {
-                
                 GameObject go = Instantiate(this.answerButton, this.content);
-                go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"> { answer.AnswerDescription }";
+                go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"> {answer.AnswerDescription}";
                 go.GetComponent<Button>().onClick.AddListener(() => GetNextSentences(answer.LinkedToSentenceId));
                 go.GetComponent<Button>().onClick.AddListener(() => Decision.SetDecision(answer.Decision));
             }
         }
-        
 
-        
+
         /// <summary>
         /// Show one letter every frame to get a animated text.
         /// </summary>
         /// <param name="sentence">The Sentence to be written.</param>
         /// <returns></returns>
         private IEnumerator WriteSentence(string sentence)
-        {   
-            if(!isWriting){
+        {
+            if (!isWriting)
+            {
                 isWriting = true;
-                this.sentence.text = $"{ this.dialogueText.NameOfNpc }: ";
+                this.sentence.text = $"{this.dialogueText.NameOfNpc}: ";
                 foreach (char letter in sentence)
                 {
                     this.sentence.text += letter;
-                    if(letter == '.')
+                    if (letter == '.')
                     {
                         yield return new WaitForSeconds(0.2f);
                     }
+
                     yield return new WaitForSeconds(1 / this.writingSpeed);
                 }
 
@@ -157,4 +156,3 @@ namespace Malyrios.Dialogue
         }
     }
 }
-

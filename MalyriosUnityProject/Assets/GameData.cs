@@ -25,8 +25,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));
         PlayerPrefs.SetFloat("currentHealth", baseAttributes.CurrentHealth);
-        print($"Saved current health: {baseAttributes.CurrentHealth}");
-        
+
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
         //print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
@@ -60,14 +59,12 @@ public class GameData : MonoBehaviour
         if (PlayerPrefs.HasKey("currentHealth"))
         {
             LoadedCurrentHealth = PlayerPrefs.GetFloat("currentHealth");
-            print($"loaded current health: {LoadedCurrentHealth}");
         }
 
         // Load inventory data
         if (PlayerPrefs.HasKey("inventoryData"))
         {
             LoadedInventoryData = JsonUtility.FromJson<InventoryData>(PlayerPrefs.GetString("inventoryData"));
-            print("Loaded inventory data: "+ PlayerPrefs.GetString("inventoryData"));
         }
         
 
