@@ -9,6 +9,8 @@ public class GameData : MonoBehaviour
     public float LoadedCurrentHealth { get; private set; }
     public InventoryData LoadedInventoryData { get; private set; }
     public string LoadedLevelName { get; private set; }
+    
+    public DecisionData LoadedDecisionData { get; private set; }
 
     private LevelManager levelManager;
     private GameObject player;
@@ -29,6 +31,8 @@ public class GameData : MonoBehaviour
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
         //print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
+        DecisionData decisionData = new DecisionData();
+        PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
         
         PlayerPrefs.Save();
     }
@@ -42,8 +46,9 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "HighForest"; // Replace with your default level name
+            LoadedLevelName = "HighForest";
         }
+        
 
         // Load player position
         if (PlayerPrefs.HasKey("currentPlayerPosition"))
@@ -60,23 +65,30 @@ public class GameData : MonoBehaviour
         {
             LoadedCurrentHealth = PlayerPrefs.GetFloat("currentHealth");
         }
+        else
+        {
+            LoadedCurrentHealth = baseAttributes.MaxHealth;
+        }
 
         // Load inventory data
         if (PlayerPrefs.HasKey("inventoryData"))
         {
             LoadedInventoryData = JsonUtility.FromJson<InventoryData>(PlayerPrefs.GetString("inventoryData"));
         }
-        
+        else
+        {
+            LoadedInventoryData = new InventoryData(Inventory.Instance);
+        }
 
-        // else
-        // {
-        //     // Set up a default inventory data with an empty item list and default equipped weapon ID
-        //     LoadedInventoryData = new InventoryData
-        //     {
-        //         itemIDs = new int[0],
-        //         equippedWeaponID = 0 // Replace with your default equipped weapon ID
-        //     };
-        // }
+        if (PlayerPrefs.HasKey("decisionData"))
+        {
+            LoadedDecisionData = JsonUtility.FromJson<DecisionData>(PlayerPrefs.GetString("decisionData"));
+        }
+        else
+        {
+            LoadedDecisionData = new DecisionData();
+        }
+
     }
 
     private void OnApplicationQuit()

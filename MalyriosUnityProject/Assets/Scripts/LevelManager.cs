@@ -39,7 +39,8 @@ public class LevelManager : MonoBehaviour
         
         //get the Decision script (is on the same GameObject), to assign the 
         var decisionManager = GetComponent<Decision>();
-
+        
+        //Set the variables of Decision.cs depending on What level is loaded
         if (levelName == "HighForest")
         {
             GameObject wizzard = currentLevel.transform.Find("NPCs/Wizzard").gameObject;

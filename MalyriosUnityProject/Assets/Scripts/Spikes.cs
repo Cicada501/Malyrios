@@ -17,7 +17,6 @@ public class Spikes : MonoBehaviour
         if (collision.CompareTag("Player") && damageCoroutine == null)
         {
             damageCoroutine = StartCoroutine(DealDamageOverTime(collision.GetComponent<PlayerHealth>()));
-            print("routine started");
         }
     }
 
@@ -47,7 +46,6 @@ public class Spikes : MonoBehaviour
                 if (results[i].CompareTag("Player"))
                 {
                     playerFound = true;
-                    print("found Player");
                     break;
                 }
             }

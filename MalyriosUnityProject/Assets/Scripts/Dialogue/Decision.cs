@@ -98,11 +98,12 @@ public class Decision : MonoBehaviour
                 break;
         }
     }
+    
 
-
-
-    private void OnDestroy()
+    public  void UpdateDecisionData(DecisionData gameDataLoadedDecisionData)
     {
-        //SaveSystem.SaveDecisions(this);
+        BigRatAttack = gameDataLoadedDecisionData.bigRatAttack;
+        LearnedFireball = gameDataLoadedDecisionData.learnedFireball;
+        WizardDialogueState = gameDataLoadedDecisionData.wizardDialogueState;
     }
 }
