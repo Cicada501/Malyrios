@@ -19,25 +19,16 @@ public class LevelManager : MonoBehaviour
     public static string CurrentLevelName;
     private string prevLevelName;
     [SerializeField] private GameObject player;
-    [SerializeField] private SaveLoadPlayer saveLoadPlayer;
     private CinemachineVirtualCamera cam;
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
-    private void Awake()
+    [SerializeField] public bool spawnAtPlayerDebugLocation;
+    
+    private void Start()
     {
-        ChangeLevel("Cave");
-        
-
-        if (saveLoadPlayer.SpawnAtPlayerDebugLocation)
-        {
-            var startpoint = GameObject.Find("CaveStartpoint").GetComponent<Transform>();
-            player.transform.position = startpoint.position;
-        }
-        //this will be used to detect the correct spawn-point in the world, depending from where you come
-        //prevLevelName = "HighForest";
         cam = ReferencesManager.Instance.camera;
     }
-    
+
 
     public void ChangeLevel(string levelName)
     {
@@ -46,28 +37,33 @@ public class LevelManager : MonoBehaviour
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;
         
-        //get the Decision script (is on the same GameObject)
+        //get the Decision script (is on the same GameObject), to assign the 
         var decisionManager = GetComponent<Decision>();
         
-        if (levelName == "Cave")
+        //Set the variables of Decision.cs depending on What level is loaded
+        if (levelName == "HighForest")
         {
-            //if Cave is loaded assign the bigRat GameObjects to the respective variables in the Decision script
+            GameObject wizzard = currentLevel.transform.Find("NPCs/Wizzard").gameObject;
+            decisionManager.wizzardDialog = wizzard.GetComponent<Dialogue>();
+            decisionManager.wizardNormalDialogueText = decisionManager.wizzardDialog.DialogueText;
+        }else if (levelName == "Cave")
+        {
             decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
             decisionManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
-            
-        }else if (levelName == "HighForest")
-        {
-            decisionManager.wizzardDialog = currentLevel.transform.Find("Wizzard").GetComponent<Dialogue>();
         }
         
-        
-        //print(prevLevelName);
-        var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
+        if (prevLevelName!=null) {
+            var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
+            player.transform.position = startpoint.position;
+        }
+        if (spawnAtPlayerDebugLocation && prevLevelName==null)
+        {
+            var startpoint = GameObject.Find("Startpoint").GetComponent<Transform>();
+            player.transform.position = startpoint.position;
+        }
         prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
         
-        player.transform.position = startpoint.position;
         StartCoroutine(FocusPlayerCoroutine());
-        
     }
 
     IEnumerator FocusPlayerCoroutine()
@@ -89,5 +85,9 @@ public class LevelManager : MonoBehaviour
         transposer.m_DeadZoneWidth = originalDeadZoneWidth;
         transposer.m_DeadZoneHeight = originalDeadZoneHeight;
     }
-    
+
+    public string GetCurrentLevelName()
+    {
+        return CurrentLevelName;
+    }
 }

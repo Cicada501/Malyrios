@@ -47,7 +47,7 @@ namespace Malyrios.Character
 
         /// <summary>
         /// Gets or sets the current health.
-        /// Also fired an event OnCurrentHealthChanged.
+        /// Also fires an event OnCurrentHealthChanged.
         /// </summary>
         public float CurrentHealth
         {
@@ -168,8 +168,13 @@ namespace Malyrios.Character
         
         private void Start()
         {
-            CurrentHealth = this.maxHealth;
+            //CurrentHealth = this.maxHealth;
             OnMaxHealthChanged?.Invoke(this.maxHealth);
         }
+
+        // public void SetHealth(float gameDataLoadedCurrentHealth)
+        // {
+        //     CurrentHealth = gameDataLoadedCurrentHealth;
+        // }
     }
 }

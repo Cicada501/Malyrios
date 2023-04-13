@@ -19,8 +19,7 @@ public class Inventory : MonoBehaviour
     }
 
     #endregion
-
-    public static bool itemsLoaded = false;
+    
     public bool isEmpty = true;
 
     #region new inventory
@@ -33,18 +32,7 @@ public class Inventory : MonoBehaviour
     private BaseWeapon testWeapon;
 
     #endregion
-
-    private void Start()
-    {
-        LoadInventory();
-        //Save Inventory state each second
-        InvokeRepeating("SaveInventory", 2f, 2f); //2s delay, repeat every 2s
-        //InvokeRepeating("PrintInventory", 1f, 1f);
-        // This is just for test purposes
-        //testWeapon = ScriptableObject.CreateInstance<BaseWeapon>().InitItem();
-        //AddItem(testWeapon);
-    }
-
+    
     void PrintInventory()
     {
         Debug.Log(ItemIDs);
@@ -74,22 +62,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void SaveInventory()
+    public void UpdateInventory(InventoryData gameDataLoadedInventoryData)
     {
-        SaveSystem.SaveInventory(this);
-    }
-
-    public void LoadInventory()
-    {
-        InventoryData data = SaveSystem.LoadInventory();
-        //int[] testData = new int[] {2,3,4};
-
-
-        foreach (var itemID in data.itemIDs)
+        foreach (var itemID in gameDataLoadedInventoryData.itemIDs)
         {
             if(ItemDatabase.GetItem(itemID) != null)
             {
                 AddItem(ItemDatabase.GetItem(itemID));
+                
             }else if (ItemDatabase.GetWeapon(itemID)!= null)
             {
                 AddItem(ItemDatabase.GetWeapon(itemID));
@@ -100,6 +80,5 @@ public class Inventory : MonoBehaviour
             }
             
         }
-        //get Stack size from amout of occurences in ItemIDs
     }
 }

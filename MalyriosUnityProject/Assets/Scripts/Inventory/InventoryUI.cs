@@ -22,7 +22,7 @@ public class InventoryUI : MonoBehaviour
     int itemCount;
 
     public static bool inventoryOpen = false;
-    public static int d;
+
 
     private void Awake()
     {
@@ -30,11 +30,11 @@ public class InventoryUI : MonoBehaviour
         //itemCount = inventory.items.Count;
 
         // amount of items, that already existed in a Slot
-        d = 0;
     }
 
     private void Start()
     {
+        //called in start, because in awake the inventory instance is null. But because subscription of events must happen before the events get triggered, the script execution order of this script is set to -1
         inventory = Inventory.Instance;
         inventory.OnItemAdded += UpdateUiNew;
         inventory.OnItemRemoved += OnItemRemoved;
@@ -67,6 +67,8 @@ public class InventoryUI : MonoBehaviour
         {
             AddNewItem(item);
         }
+        
+        
     }
 
     private void AddNewItem(BaseItem item)

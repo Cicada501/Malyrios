@@ -43,22 +43,22 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
         child = transform.GetChild(0).gameObject;
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
-        LoadWeapon();
+        //LoadWeapon();
         //inventoryUI = GameObject.Find("Canvas UI").GetComponent<InventoryUI>();
         //inventoryUI.changeInventoryOpened();
     }
 
    
 
-    private void LoadWeapon()
-    {
-        InventoryData data = SaveSystem.LoadInventory();
-        if(data.equippedWeaponID == 0) return;
-        if (this.gameObject.name == "WeaponSlot")
-        {
-            AddWeapon(ItemDatabase.GetWeapon(data.equippedWeaponID));
-        }
-    }
+    // private void LoadWeapon()
+    // {
+    //     InventoryData data = SaveSystem.LoadInventory();
+    //     if(data.equippedWeaponID == 0) return;
+    //     if (this.gameObject.name == "WeaponSlot")
+    //     {
+    //         AddWeapon(ItemDatabase.GetWeapon(data.equippedWeaponID));
+    //     }
+    // }
     public void AddWeapon(BaseWeapon weapon)
     {
         child.GetComponent<Image>().sprite = weapon.Icon;
