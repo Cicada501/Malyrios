@@ -15646,9 +15646,298 @@ MonoBehaviour:
     - LinkedToSentenceId: -1
       AnswerDescription: No
       Decision: 
-  wizardNormalDialogueText: []
+  wizzardDialogText1:
+  - SentenceId: 0
+    Sentences:
+    - 'Hey, im just an old Wizzard standing arround here, u can just ignore me '
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Okay, bye!
+      Decision: 
+    - LinkedToSentenceId: 1
+      AnswerDescription: Dont u have something better to do ?
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - U know, im about 2000 years old ... i have done most i ever wanted to do. And
+      currently i just like being here
+    Answers:
+    - LinkedToSentenceId: 2
+      AnswerDescription: Ah okay, but if u know lots about magic and stuff like this,
+        could you teach me some of it?
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: Okay, i like beeing here too!
+      Decision: 
+  - SentenceId: 2
+    Sentences:
+    - Well yea, what would you like to learn?
+    Answers:
+    - LinkedToSentenceId: 3
+      AnswerDescription: Dont know.. throwing fireballs or something like this
+      Decision: learn Fireball
+  - SentenceId: 3
+    Sentences:
+    - Oh well thats not too hard,Imagine a fire burning in your hand. so that you
+      can feel the heat burning your hand. At that exact moment, make this hand movement
+      and the fireball will appear.
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Thanks!
+      Decision: Wizzard2
+  hunterDialog: {fileID: 0}
+  hunterDialogText2:
+  - SentenceId: 0
+    Sentences:
+    - '"Hurra du versuchst meinen sohn zu retten!!"'
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: jepp
+      Decision: 
+  hunterDialogText1:
+  - SentenceId: 0
+    Sentences:
+    - Oh hey, was macht denn ein unbewaffneter so tief im Schlummerwald ?
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: Hee, ich bin gar nicht unbewaffnet, ich habe ein Schwert!
+      Decision: 
+    - LinkedToSentenceId: 2
+      AnswerDescription: "Was ist das f\xFCr ein Wald, ist er gef\xE4hrlich?"
+      Decision: 
+    - LinkedToSentenceId: 3
+      AnswerDescription: Mach dir keine Sorgen um mich, ich gehe nur ein bisschen
+        spazieren.
+      Decision: 
+    - LinkedToSentenceId: 4
+      AnswerDescription: "Ich bin auf der Suche nach den Malyrios, wei\xDFt du etwas
+        dar\xFCber?"
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - "Ach so okay, bist du auch auf der Jagd? Ich war gerade mit meinem Sohn Jagen.
+      Wir waren an einer jungen Hirschkuh dran, da kamen auf einmal  die W\xF6lfe
+      und haben uns angegriffen!"
+    Answers:
+    - LinkedToSentenceId: 12
+      AnswerDescription: "Oh nein! Geht es dir gut? Und wo ist dein Sohn jetzt?\r"
+      Decision: JackToldPlayerAboutTommy
+    - LinkedToSentenceId: -1
+      AnswerDescription: Was interessieren mich deine Probleme, ich muss weiter
+      Decision: 
+  - SentenceId: 12
+    Sentences:
+    - "Sie haben ihn gebissen und da hat sich in einen von Ihnen verwandelt! Ich
+      wei\xDF nicht was ich machen soll! *kuckt verzweifelt*"
+    Answers:
+    - LinkedToSentenceId: 121
+      AnswerDescription: "Das ist ja schrecklich! Ich werde nach einem Heilmittel
+        f\xFCr deinen Sohn suchen!"
+      Decision: 
+    - LinkedToSentenceId: 121
+      AnswerDescription: Oh nein, ich hoffe du findest ihn wieder!
+      Decision: 
+  - SentenceId: 121
+    Sentences:
+    - "Das w\xFCrdest du f\xFCr mich tun?! Wenn du mir hilfst ihn zu retten bin ich
+      dir zu ewigem Dank verpflichtet!\r\n"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ich werde tun was ich kann!
+      Decision: 
+  - SentenceId: 122
+    Sentences:
+    - Danke! Nehme dich vor diesen biestern in Acht!
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Das werde ich!
+      Decision: 
+  - SentenceId: 2
+    Sentences:
+    - "Dies ist der Schlummerwald, er existiert schon l\xE4nger als es Aufzeichnungen
+      \xFCber unsere Vergangenheit gibt. Hier gibt es viele Gef\xE4hrliche Tiere.
+      Aber besonders in acht nehmen musst du dich vor den W\xF6lfen! Diese heimt\xFCckischen
+      Biester haben meinen Sohn angegriffen "
+    Answers:
+    - LinkedToSentenceId: 12
+      AnswerDescription: Oh nein, was ist passiert?
+      Decision: JackToldPlayerAboutTommy
+  - SentenceId: 3
+    Sentences:
+    - "An einem gef\xE4hrlichen Ort wie diesem sollte man nicht einfach Spazieren
+      Gehen! Hier gibt es W\xF6lfe und andere Kreaturen"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: "Ich danke dir f\xFCr die Warnung, ich werde mich in Acht
+        nehmen!"
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: Lass mich doch Spazieren wo ich will!
+      Decision: 
+  - SentenceId: 4
+    Sentences:
+    - "Hahahha, hahahaha na da w\xFCnsche ich dir viel Gl\xFCck!"
+    Answers:
+    - LinkedToSentenceId: 41
+      AnswerDescription: Warum lachst du mich denn aus?!
+      Decision: 
+  - SentenceId: 41
+    Sentences:
+    - "Du wei\xDFt aber schon was die Malyrios sind oder?"
+    Answers:
+    - LinkedToSentenceId: 411
+      AnswerDescription: Naja, eigentlich nicht
+      Decision: 
+  - SentenceId: 411
+    Sentences:
+    - "Die Malyrios sind magische steine \xFCber die es viele M\xE4rchen gibt. Sie
+      sollen so m\xE4chtig sein, dass man damit ganze Berge versetzen kann. Oder
+      aber auch eine gesamte Zivilisation  damit in den Abgrund st\xFCrzen kann."
+    Answers:
+    - LinkedToSentenceId: 4111
+      AnswerDescription: "Das klingt sehr spannend! Aber auch irgendwie be\xE4ngstigend.
+        Kannst du mir mehr dar\xFCber erz\xE4hlen?"
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: "f\xFCr M\xE4rchen habe ich keine Zeit"
+      Decision: 
+  - SentenceId: 4111
+    Sentences:
+    - "Ich kenne die Geschichten \xFCber die Malyrios nur im Groben und bin auch
+      kein guter Erz\xE4hler. Aber wenn du dich f\xFCr die Malyrios interessierst,
+      kannst du Bron fragen ob er dir etwas erz\xE4hlt, er ist ein wahrhafter meister
+      im Geschichten erz\xE4hlen."
+    Answers:
+    - LinkedToSentenceId: 41111
+      AnswerDescription: Au ja das klingt gut, wo finde ich Ihn?
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: vielleicht irgendwann mal
+      Decision: 
+  - SentenceId: 41111
+    Sentences:
+    - Er wohnt ein Dorf weiter im Ostern. Meist sitzt er auf seiner Terrasse oder
+      am Lagerfeuer im Dorfzentrum
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: "Vielen Dank f\xFCr deine Hilfe!"
+      Decision: 
+  sonDialog: {fileID: 0}
+  sonDialogText2:
+  - SentenceId: 0
+    Sentences:
+    - 'Grr grr ich bin ein Werwolf grr
+
+'
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: 'Hee, nein du bist gar kein Werwolf!
+
+        Dein Vater
+        sucht dich, du hast dich nur in ein Werwolf verwandelt!
+
+'
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: "Oh, na wenn das so ist, muss ich dich leider t\xF6ten\r"
+      Decision: smallWerewolfAttack
+  - SentenceId: 1
+    Sentences:
+    - 'Eben, deshalb bin ich ja ein Werwolf! Grr grr
+
+      Also wenn du hier nicht
+      verschwindest muss ich dich leider fressen.
+
+'
+    Answers:
+    - LinkedToSentenceId: 11
+      AnswerDescription: 'Nein, bitte ess mich nicht, ich schmecke auch gar nicht
+        lecker, und habe ganz viele Krankheiten
+
+'
+      Decision: 
+    - LinkedToSentenceId: 12
+      AnswerDescription: "Nein, lass mich dir helfen, es gibt ein Medikament mit
+        dem du dich zur\xFCckverwandeln kannst!\n"
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: 'Dir ist wohl nichtmehr zu helfen, stirb!
+
+'
+      Decision: smallWerewolfAttack
+  - SentenceId: 11
+    Sentences:
+    - Ihh okay nagut, kranke sachen esse ich nicht
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: '>'
+      Decision: 
+  - SentenceId: 12
+    Sentences:
+    - "Hmmm, warum sollte ich mich denn\r zur\xFCck verwandeln wollen? Als Werwolf\r
+      bin ich viel st\xE4rker! Grr"
+    Answers:
+    - LinkedToSentenceId: 121
+      AnswerDescription: Achso, na wenn du das nicht willst, dann bleibe eben ein
+        Werwolf, aber dein Vater ist ganz verzweifelt, willst du nicht zu ihm und
+        ihm sagen was los ist?
+      Decision: 
+    - LinkedToSentenceId: 122
+      AnswerDescription: "*l\xFCgen* Du wirst in ein paar Tagen sterben, wenn du
+        dich nicht zur\xFCck verwandelst!"
+      Decision: 
+  - SentenceId: 121
+    Sentences:
+    - Nee, der interessiert mich nicht mehr, ich habe doch jetzt hier eine Famillie.
+      Grr
+    Answers:
+    - LinkedToSentenceId: 1211
+      AnswerDescription: "Meinst du die Werw\xF6lfe, die ich gerade get\xF6tet habe?"
+      Decision: 
+    - LinkedToSentenceId: 1212
+      AnswerDescription: "Das sind doch wilde Tiere, die k\xF6nnen ja nichtmal sprechen!\r\nAu\xDFerdem
+        wird dich bestimmt bald jemand t\xF6ten, weil er dich f\xFCr einen Normalen
+        Werwolf h\xE4lt!\r\n"
+      Decision: 
+  - SentenceId: 1211
+    Sentences:
+    - "Waaaaas du hast sie get\xF6tet??! Meine Famillie!! Daf\xFCr musst du sterben!!"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: '>'
+      Decision: smallWerewolfAttack
+  - SentenceId: 122
+    Sentences:
+    - "Okee nagut, dann bring mir halt das Heilmittel\u2026\r\n"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Super, du wirst es nicht bereuen!
+      Decision: BringAntiWerewolfPotion
+  - SentenceId: 1212
+    Sentences:
+    - "Hmm, du hast schon recht irgendwie\u2026 naja dann mal her mit diesem Medikament!\n"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: 'Ich muss das Medikament erst beschaffen, bleibe hier und
+        warte auf mich!
+
+'
+      Decision: BringAntiWerewolfPotion
+  sonDialogText1:
+  - SentenceId: 0
+    Sentences:
+    - "Grr grr ich bin ein Werwolf grr\r"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: "Oh, na wenn das so ist, muss ich dich leider t\xF6ten\r\n"
+      Decision: smallWerewolfAttack
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ahhhh *wegrennen*
+      Decision: 
   bigRatNpc: {fileID: 0}
   bigRatEnemy: {fileID: 0}
+  smallWerewolfNpc: {fileID: 0}
+  smallWerewolfEnemy: {fileID: 0}
 --- !u!114 &1386037426
 MonoBehaviour:
   m_ObjectHideFlags: 0

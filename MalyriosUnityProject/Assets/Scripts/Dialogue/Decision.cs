@@ -14,33 +14,39 @@ public class Decision : MonoBehaviour
     public static bool BigRatAttack;
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
-    public static bool JackToldPlayerAboutTommy;
-    public static bool TommyWerewolfAttack;
+    public static int SonDialogueState = 1;
+    public static int HunterDialogState = 1;
+    //public static bool JackToldPlayerAboutTommy;
+    public static bool smallWerewolfAttack;
     public static bool BringAntiWerewolfPotion;
+    
     
     
 
 
     //fireball + wizard
     public GameObject fireballButton;
+    [Header("Gets set during runtime (in LevelManager), when HighForest gets loaded")]
     public Dialogue wizzardDialog;
-    [SerializeField] public List<DialogueText> wizzardDialogText2;
-    public List<DialogueText> wizardNormalDialogueText;
-    private static BaseItem apple;
-
+    public List<DialogueText> wizzardDialogText2;
+    public List<DialogueText> wizzardDialogText1;
+    
+    //Hunter (Jack)
+    public Dialogue hunterDialog;
+    public List<DialogueText> hunterDialogText2;
+    public List<DialogueText> hunterDialogText1;
+    
+    //Son (Tommy)
+    public Dialogue sonDialog;
+    public List<DialogueText> sonDialogText2;
+    public List<DialogueText> sonDialogText1;
     //big rat
+    [Header("Gets set during runtime (in LevelManager), when Cave gets loaded")]
     public GameObject bigRatNpc;
     public GameObject bigRatEnemy;
-
-    private void Start()
-    {
-        apple = ItemDatabase.GetItem(10);
-        // if (LevelManager.CurrentLevelName == "HighForest")
-        // {
-        //     wizzardDialog = GameObject.Find("Wizzard").GetComponent<Dialogue>();
-        // }
-    }
-
+    public GameObject smallWerewolfNpc;
+    public GameObject smallWerewolfEnemy;
+    private static BaseItem apple;
     private void Update()
     {
         fireballButton.SetActive(LearnedFireball);
@@ -61,13 +67,48 @@ public class Decision : MonoBehaviour
             switch (WizardDialogueState)
             {
                 case 1:
-                    wizzardDialog.DialogueText = wizardNormalDialogueText;
+                    wizzardDialog.DialogueText = wizzardDialogText1;
                     break;
                 case 2:
                     wizzardDialog.DialogueText = wizzardDialogText2;
                     break;
                 case 3:
                     break;
+            }
+            
+            switch (HunterDialogState)
+            {
+                case 1:
+                    hunterDialog.DialogueText = hunterDialogText1;
+                    break;
+                case 2:
+                    hunterDialog.DialogueText = hunterDialogText2;
+                    break;
+                case 3:
+                    break;
+            }
+            
+            switch (SonDialogueState)
+            {
+                case 1:
+                    sonDialog.DialogueText = sonDialogText1;
+                    break;
+                case 2:
+                    sonDialog.DialogueText = sonDialogText2;
+                    break;
+                case 3:
+                    break;
+            }
+
+            if (smallWerewolfAttack)
+            {
+                smallWerewolfNpc.SetActive(false);
+                smallWerewolfEnemy.SetActive(true);
+            }
+            else
+            {
+                smallWerewolfNpc.SetActive(true);
+                smallWerewolfEnemy.SetActive(false);
             }
         }
     }
@@ -95,19 +136,21 @@ public class Decision : MonoBehaviour
                 WizardDialogueState = 2;
                 break;
             case "get apples":
+                apple = ItemDatabase.GetItem(10);
                 Inventory.Instance.AddItem(apple);
                 Inventory.Instance.AddItem(apple);
                 Inventory.Instance.AddItem(apple);
                 Inventory.Instance.AddItem(apple);
                 break;
             case "JackToldPlayerAboutTommy":
-                JackToldPlayerAboutTommy = true;
+                SonDialogueState = 2; 
                 break;
-            case "TommyWerewolfAttack":
-                TommyWerewolfAttack = true;
+            case "smallWerewolfAttack":
+                smallWerewolfAttack = true;
                 break;
             case "BringAntiWerewolfPotion":
                 BringAntiWerewolfPotion = true;
+                HunterDialogState = 2;
                 break;
         }
     }

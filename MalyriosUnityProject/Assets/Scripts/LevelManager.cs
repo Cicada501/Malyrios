@@ -43,9 +43,14 @@ public class LevelManager : MonoBehaviour
         //Set the variables of Decision.cs depending on What level is loaded
         if (levelName == "HighForest")
         {
-            GameObject wizzard = currentLevel.transform.Find("NPCs/Wizzard").gameObject;
-            decisionManager.wizzardDialog = wizzard.GetComponent<Dialogue>();
-            decisionManager.wizardNormalDialogueText = decisionManager.wizzardDialog.DialogueText;
+            //GameObject wizzard = currentLevel.transform.Find("NPCs/Wizzard").gameObject;
+            decisionManager.wizzardDialog = currentLevel.transform.Find("NPCs/Wizzard").GetComponent<Dialogue>();
+            decisionManager.hunterDialog = currentLevel.transform.Find("NPCs/Jack").GetComponent<Dialogue>();
+            decisionManager.sonDialog = currentLevel.transform.Find("NPCs/Tommy").GetComponent<Dialogue>();
+            decisionManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject;
+            decisionManager.smallWerewolfEnemy = currentLevel.transform.Find("smallWerewolfEnemy").gameObject;
+            
+            
         }else if (levelName == "Cave")
         {
             decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
