@@ -10,10 +10,15 @@ using UnityEngine.Serialization;
 public class Decision : MonoBehaviour
 {
     
-    //public static to save them into the saveFile
+    //public static to use them in the SetDecision() Function
     public static bool BigRatAttack;
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
+    public static bool JackToldPlayerAboutTommy;
+    public static bool TommyWerewolfAttack;
+    public static bool BringAntiWerewolfPotion;
+    
+    
 
 
     //fireball + wizard
@@ -38,6 +43,7 @@ public class Decision : MonoBehaviour
 
     private void Update()
     {
+        fireballButton.SetActive(LearnedFireball);
         if (LevelManager.CurrentLevelName == "Cave")
         {
             if (BigRatAttack)
@@ -58,14 +64,12 @@ public class Decision : MonoBehaviour
                     wizzardDialog.DialogueText = wizardNormalDialogueText;
                     break;
                 case 2:
-
                     wizzardDialog.DialogueText = wizzardDialogText2;
                     break;
                 case 3:
                     break;
             }
         }
-        fireballButton.SetActive(LearnedFireball);
     }
 
     public void ResetAllDecisions()
@@ -95,6 +99,15 @@ public class Decision : MonoBehaviour
                 Inventory.Instance.AddItem(apple);
                 Inventory.Instance.AddItem(apple);
                 Inventory.Instance.AddItem(apple);
+                break;
+            case "JackToldPlayerAboutTommy":
+                JackToldPlayerAboutTommy = true;
+                break;
+            case "TommyWerewolfAttack":
+                TommyWerewolfAttack = true;
+                break;
+            case "BringAntiWerewolfPotion":
+                BringAntiWerewolfPotion = true;
                 break;
         }
     }
