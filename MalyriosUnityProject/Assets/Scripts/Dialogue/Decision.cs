@@ -9,44 +9,48 @@ using UnityEngine.Serialization;
 
 public class Decision : MonoBehaviour
 {
-    
     //public static to use them in the SetDecision() Function
     public static bool BigRatAttack;
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
     public static int SonDialogueState = 1;
+
     public static int HunterDialogState = 1;
+
     //public static bool JackToldPlayerAboutTommy;
-    public static bool smallWerewolfAttack;
+    public static bool SmallWerewolfAttack;
     public static bool BringAntiWerewolfPotion;
-    
-    
-    
 
 
     //fireball + wizard
     public GameObject fireballButton;
+
     [Header("Gets set during runtime (in LevelManager), when HighForest gets loaded")]
     public Dialogue wizzardDialog;
+
     public List<DialogueText> wizzardDialogText2;
     public List<DialogueText> wizzardDialogText1;
-    
+
     //Hunter (Jack)
     public Dialogue hunterDialog;
     public List<DialogueText> hunterDialogText2;
     public List<DialogueText> hunterDialogText1;
-    
+
     //Son (Tommy)
     public Dialogue sonDialog;
     public List<DialogueText> sonDialogText2;
+
     public List<DialogueText> sonDialogText1;
+
     //big rat
     [Header("Gets set during runtime (in LevelManager), when Cave gets loaded")]
     public GameObject bigRatNpc;
+
     public GameObject bigRatEnemy;
     public GameObject smallWerewolfNpc;
     public GameObject smallWerewolfEnemy;
     private static BaseItem apple;
+
     private void Update()
     {
         fireballButton.SetActive(LearnedFireball);
@@ -62,7 +66,8 @@ public class Decision : MonoBehaviour
                 bigRatNpc.SetActive(true);
                 bigRatEnemy.SetActive(false);
             }
-        }else if (LevelManager.CurrentLevelName == "HighForest")
+        }
+        else if (LevelManager.CurrentLevelName == "HighForest")
         {
             switch (WizardDialogueState)
             {
@@ -75,7 +80,7 @@ public class Decision : MonoBehaviour
                 case 3:
                     break;
             }
-            
+
             switch (HunterDialogState)
             {
                 case 1:
@@ -87,7 +92,7 @@ public class Decision : MonoBehaviour
                 case 3:
                     break;
             }
-            
+
             switch (SonDialogueState)
             {
                 case 1:
@@ -100,7 +105,7 @@ public class Decision : MonoBehaviour
                     break;
             }
 
-            if (smallWerewolfAttack)
+            if (SmallWerewolfAttack)
             {
                 smallWerewolfNpc.SetActive(false);
                 smallWerewolfEnemy.SetActive(true);
@@ -143,10 +148,10 @@ public class Decision : MonoBehaviour
                 Inventory.Instance.AddItem(apple);
                 break;
             case "JackToldPlayerAboutTommy":
-                SonDialogueState = 2; 
+                SonDialogueState = 2;
                 break;
             case "smallWerewolfAttack":
-                smallWerewolfAttack = true;
+                SmallWerewolfAttack = true;
                 break;
             case "BringAntiWerewolfPotion":
                 BringAntiWerewolfPotion = true;
@@ -154,12 +159,15 @@ public class Decision : MonoBehaviour
                 break;
         }
     }
-    
 
-    public  void UpdateDecisionData(DecisionData gameDataLoadedDecisionData)
+
+    public void UpdateDecisionData(DecisionData gameDataLoadedDecisionData)
     {
         BigRatAttack = gameDataLoadedDecisionData.bigRatAttack;
         LearnedFireball = gameDataLoadedDecisionData.learnedFireball;
         WizardDialogueState = gameDataLoadedDecisionData.wizardDialogueState;
+        SonDialogueState = gameDataLoadedDecisionData.sonDialogueState;
+        HunterDialogState = gameDataLoadedDecisionData.hunterDialogState;
+        SmallWerewolfAttack = gameDataLoadedDecisionData.smallWerewolfAttack;
     }
 }
