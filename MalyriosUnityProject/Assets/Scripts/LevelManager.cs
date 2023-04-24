@@ -47,6 +47,7 @@ public class LevelManager : MonoBehaviour
             decisionManager.wizzardDialog = currentLevel.transform.Find("NPCs/Wizzard").GetComponent<Dialogue>();
             decisionManager.hunterDialog = currentLevel.transform.Find("NPCs/Jack").GetComponent<Dialogue>();
             decisionManager.sonDialog = currentLevel.transform.Find("NPCs/Tommy").GetComponent<Dialogue>();
+            decisionManager.healerDialog = currentLevel.transform.Find("NPCs/Asmilda").GetComponent<Dialogue>();
             decisionManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject;
             decisionManager.smallWerewolfEnemy = currentLevel.transform.Find("smallWerewolfEnemy").gameObject;
             

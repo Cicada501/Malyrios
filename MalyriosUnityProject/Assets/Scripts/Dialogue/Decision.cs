@@ -41,6 +41,10 @@ public class Decision : MonoBehaviour
     public List<DialogueText> sonDialogText2;
 
     public List<DialogueText> sonDialogText1;
+    
+    public Dialogue healerDialog;
+    public List<DialogueText> healerDialogText2;
+    public List<DialogueText> healerDialogText1;
 
     //big rat
     [Header("Gets set during runtime (in LevelManager), when Cave gets loaded")]
