@@ -50,8 +50,8 @@ public class LevelManager : MonoBehaviour
             decisionManager.healerDialog = currentLevel.transform.Find("NPCs/Asmilda").GetComponent<Dialogue>();
             decisionManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject;
             decisionManager.smallWerewolfEnemy = currentLevel.transform.Find("smallWerewolfEnemy").gameObject;
-            
-            
+
+
         }else if (levelName == "Cave")
         {
             decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;

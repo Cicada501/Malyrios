@@ -15254,7 +15254,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5319662, y: 1}
+    m_SensorSize: {x: 2.0801232, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -15995,8 +15995,8 @@ MonoBehaviour:
       bl\xFChen, wenn sie in den Dunklen Kronen der gro\xDFen B\xE4ume h\xE4ngen
       bleiben, vielleicht kannst du dort suchen. "
     Answers:
-    - LinkedToSentenceId: 113
-      AnswerDescription: -1
+    - LinkedToSentenceId: -1
+      AnswerDescription: Okay, vielen Dank!
       Decision: 
   - SentenceId: 113
     Sentences:

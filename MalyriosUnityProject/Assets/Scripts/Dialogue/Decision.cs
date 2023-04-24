@@ -14,8 +14,8 @@ public class Decision : MonoBehaviour
     public static bool LearnedFireball;
     public static int WizardDialogueState = 1;
     public static int SonDialogueState = 1;
-
     public static int HunterDialogState = 1;
+    public static int HealerDialogState = 1;
 
     //public static bool JackToldPlayerAboutTommy;
     public static bool SmallWerewolfAttack;
@@ -108,6 +108,16 @@ public class Decision : MonoBehaviour
                 case 3:
                     break;
             }
+            
+            switch (HealerDialogState)
+            {
+                case 1:
+                    healerDialog.DialogueText = healerDialogText1;
+                    break;
+                case 2:
+                    healerDialog.DialogueText = healerDialogText2;
+                    break;
+            }
 
             if (SmallWerewolfAttack)
             {
@@ -160,6 +170,13 @@ public class Decision : MonoBehaviour
             case "BringAntiWerewolfPotion":
                 BringAntiWerewolfPotion = true;
                 HunterDialogState = 2;
+                HealerDialogState = 2;
+                break;
+            case "craftAntiWerewolfPotion":
+                if (Inventory.Instance.Items.Contains(ItemDatabase.GetItem(30)))
+                {
+                    print("i got a Schattenrose!!");
+                }
                 break;
         }
     }
@@ -173,5 +190,7 @@ public class Decision : MonoBehaviour
         SonDialogueState = gameDataLoadedDecisionData.sonDialogueState;
         HunterDialogState = gameDataLoadedDecisionData.hunterDialogState;
         SmallWerewolfAttack = gameDataLoadedDecisionData.smallWerewolfAttack;
+        HealerDialogState = gameDataLoadedDecisionData.healerDialogState;
+
     }
 }
