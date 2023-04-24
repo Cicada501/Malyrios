@@ -15254,7 +15254,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2133105, y: 1}
+    m_SensorSize: {x: 1.5319662, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -15935,8 +15935,87 @@ MonoBehaviour:
       AnswerDescription: Ahhhh *wegrennen*
       Decision: 
   healerDialog: {fileID: 0}
-  healerDialogText2: []
-  healerDialogText1: []
+  healerDialogText2:
+  - SentenceId: 0
+    Sentences:
+    - "Hallo Fremder, mein name ist Asmilda, was machst du denn hier oben auf den
+      B\xE4umen, du gehst wohl gerne klettern?"
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: "Hallo Asmilda, ich bin auf der Suche nach einem Heiltrank,
+        der einen \r\nWerwolf wieder in einen Menschen verwandelt, kennst du dich
+        mit so etwas aus?"
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ich wollte mich nur mal umschauen
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - "Nun ja, ich kenne mich schon mit der Alchemie aus, jedoch ist der Trank den
+      du brauchst nicht einfach herzustellen. Es ist n\xF6tig eine Schattenrose eine
+      Nacht lang im Blut eines Werwolfs zu kochen. Au\xDFerdem m\xFCssen noch 2 Dunkelstaub
+      Schirmlinge dazu gegeben werden. Wenn du mir all das bringen kannst, dann kann
+      ich dir helfen"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ja das schaffe ich! Wir sehen uns bald!
+      Decision: 
+    - LinkedToSentenceId: 11
+      AnswerDescription: Kannst du mir sagen wo ich diese dinge finde?
+      Decision: 
+  - SentenceId: 11
+    Sentences:
+    - "Na klar! Welche Zutat m\xF6chtest du Suchen?"
+    Answers:
+    - LinkedToSentenceId: 111
+      AnswerDescription: Wolfsblut
+      Decision: 
+    - LinkedToSentenceId: 112
+      AnswerDescription: Schattenrose
+      Decision: 
+    - LinkedToSentenceId: 11
+      AnswerDescription: Kannst du mir sagen wo ich diese dinge finde?
+      Decision: 
+    - LinkedToSentenceId: 113
+      AnswerDescription: Dunkelstaub Schirmlinge
+      Decision: 
+  - SentenceId: 111
+    Sentences:
+    - "Nun ja um an Wolfsblut zu kommen f\xFChrt kein Weg daran vorbei gegen die
+      W\xF6lfe unten im Wald zu k\xE4mpfen. "
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Okay, vielen Dank!
+      Decision: 
+  - SentenceId: 112
+    Sentences:
+    - "Die Schattenrosen wachsen urspr\xFCnglich nur in Asmagan, einer Dunklen Aschew\xFCste
+      weit oben auf einer der letzten Ebenen. Manchmal werden aber einzelne Samen
+      vom bis hier unten getragen. Ich habe geh\xF6rt, dass sie hier manchmal sogar
+      bl\xFChen, wenn sie in den Dunklen Kronen der gro\xDFen B\xE4ume h\xE4ngen
+      bleiben, vielleicht kannst du dort suchen. "
+    Answers:
+    - LinkedToSentenceId: 113
+      AnswerDescription: -1
+      Decision: 
+  - SentenceId: 113
+    Sentences:
+    - "Es gibt eine H\xF6hle im Osten von Taburin, dort kannst du Dunkelstaub Schirmlinge
+      finden. Aber nehme dich in Acht, ich habe geh\xF6rt, dort unten lebt eine riesige
+      Ratte, die schon so manchen Menschen bei lebendigem Leibe verspeist hat!"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Okay, vielen Dank!
+      Decision: 
+  healerDialogText1:
+  - SentenceId: 0
+    Sentences:
+    - "Hallo Fremder, mein name ist Asmilda, was machst du denn hier oben auf den
+      B\xE4umen, du gehst wohl gerne klettern?"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ich wollte mich hier oben nur mal umschauen
+      Decision: 
   bigRatNpc: {fileID: 0}
   bigRatEnemy: {fileID: 0}
   smallWerewolfNpc: {fileID: 0}
