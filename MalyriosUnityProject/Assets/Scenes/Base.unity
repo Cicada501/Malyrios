@@ -11287,6 +11287,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ba9fb4edd540ac4d88047acb7a5a968, type: 2}
   - {fileID: 11400000, guid: e7d7d5bf574bbbd41b7aa5556d7dd916, type: 2}
   - {fileID: 11400000, guid: 028b4ebea1518d34e8ea4ce125dbd2ac, type: 2}
+  - {fileID: 11400000, guid: cc6d12a3e342ed7489271df5eeba5b74, type: 2}
+  - {fileID: 11400000, guid: 7fc8bf596b4f3ac44a74110e03eda795, type: 2}
+  - {fileID: 11400000, guid: 39182ca46138bc1499e79b63d51e0524, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -15259,7 +15262,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2767677, y: 1}
+    m_SensorSize: {x: 2.0796297, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0

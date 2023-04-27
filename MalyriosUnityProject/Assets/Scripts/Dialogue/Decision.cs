@@ -173,15 +173,19 @@ public class Decision : MonoBehaviour
                 HealerDialogState = 2;
                 break;
             case "craftAntiWerewolfPotion":
-                
-                if (Inventory.CountOccurrences(ItemDatabase.GetItem(30))>2)
+
+                var schattenRose = ItemDatabase.GetItem(30);
+                var werwolfBlut = ItemDatabase.GetItem(31);
+                var schirmlinge = ItemDatabase.GetItem(32);
+                if (Inventory.CountOccurrences(schattenRose)>0 && Inventory.CountOccurrences(werwolfBlut)>0 &&Inventory.CountOccurrences(schirmlinge)>1)
                 {
-                    print("i got 3 Schattenrosen!!");
+                    Inventory.Instance.Remove(schattenRose);
+                    Inventory.Instance.Remove(werwolfBlut);
+                    Inventory.Instance.Remove(schirmlinge);
+                    Inventory.Instance.Remove(schirmlinge);
+                    Inventory.Instance.AddItem(ItemDatabase.GetItem(30));
                 }
-                else
-                {
-                    print("i only got less then 3 Schattenrosen");
-                }
+
                 break;
         }
     }

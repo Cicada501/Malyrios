@@ -20,8 +20,8 @@ MonoBehaviour:
   sellPrice: 0
   purchasePrice: 0
   dropChance: 0
-  isStackable: 0
-  maxStackAmount: 0
+  isStackable: 1
+  maxStackAmount: 100
   spriteType: 0
   itemType: 6
   itemPrefab: {fileID: 0}
