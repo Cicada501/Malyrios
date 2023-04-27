@@ -173,9 +173,14 @@ public class Decision : MonoBehaviour
                 HealerDialogState = 2;
                 break;
             case "craftAntiWerewolfPotion":
-                if (Inventory.Instance.Items.Contains(ItemDatabase.GetItem(30)))
+                
+                if (Inventory.CountOccurrences(ItemDatabase.GetItem(30))>2)
                 {
-                    print("i got a Schattenrose!!");
+                    print("i got 3 Schattenrosen!!");
+                }
+                else
+                {
+                    print("i only got less then 3 Schattenrosen");
                 }
                 break;
         }

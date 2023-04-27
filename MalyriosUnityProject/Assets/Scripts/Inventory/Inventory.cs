@@ -81,4 +81,13 @@ public class Inventory : MonoBehaviour
             
         }
     }
+
+    public static int CountOccurrences(BaseItem item)
+    {
+        
+        var occ = Instance.Items.Count(n => n == item);
+        print($"I found {occ} {item.ItemName}s ");
+        return occ;
+    }
+    
 }

@@ -11271,17 +11271,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
+  - {fileID: 11400000, guid: f03d4d3e1e4b400479d924b0db31db2d, type: 2}
   - {fileID: 11400000, guid: e4d5972f489970b42bc29c6c643ae94f, type: 2}
+  - {fileID: 11400000, guid: f629d782817c7df4da082a87f46849a2, type: 2}
+  - {fileID: 11400000, guid: 04e0debce7f40ca4dab3658536f53877, type: 2}
+  - {fileID: 11400000, guid: 0315f60a5d17cc94c8a82f2e3bc7773d, type: 2}
   - {fileID: 11400000, guid: a2bee8cf10fde2245bde53aa68a06808, type: 2}
   - {fileID: 11400000, guid: e8997ff57022c7f45b64739dbe82af09, type: 2}
-  - {fileID: 11400000, guid: 900eca254d60b524aba5b7b980211d4d, type: 2}
-  - {fileID: 11400000, guid: a16f69a463260fb4ea5b990874e0f928, type: 2}
-  - {fileID: 11400000, guid: e7d7d5bf574bbbd41b7aa5556d7dd916, type: 2}
   - {fileID: 11400000, guid: 46277335d48eb284bb8afdfbd4fc5a57, type: 2}
-  - {fileID: 11400000, guid: 9c6c1fedee6f01248adf8b820b729b21, type: 2}
+  - {fileID: 11400000, guid: a16f69a463260fb4ea5b990874e0f928, type: 2}
   - {fileID: 11400000, guid: 4687ee8afb49e6143a6766d55f0becef, type: 2}
+  - {fileID: 11400000, guid: 9c6c1fedee6f01248adf8b820b729b21, type: 2}
+  - {fileID: 11400000, guid: 900eca254d60b524aba5b7b980211d4d, type: 2}
+  - {fileID: 11400000, guid: acb1b7a2e8961d046b8ca011b3668d13, type: 2}
   - {fileID: 11400000, guid: 6ba9fb4edd540ac4d88047acb7a5a968, type: 2}
-  - {fileID: 11400000, guid: f03d4d3e1e4b400479d924b0db31db2d, type: 2}
+  - {fileID: 11400000, guid: e7d7d5bf574bbbd41b7aa5556d7dd916, type: 2}
+  - {fileID: 11400000, guid: 028b4ebea1518d34e8ea4ce125dbd2ac, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -15254,7 +15259,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0801232, y: 1}
+    m_SensorSize: {x: 2.2767677, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -16015,7 +16020,7 @@ MonoBehaviour:
     Answers:
     - LinkedToSentenceId: -1
       AnswerDescription: Ich wollte mich hier oben nur mal umschauen
-      Decision: 
+      Decision: craftAntiWerewolfPotion
   bigRatNpc: {fileID: 0}
   bigRatEnemy: {fileID: 0}
   smallWerewolfNpc: {fileID: 0}
