@@ -183,7 +183,7 @@ public class Decision : MonoBehaviour
                     Inventory.Instance.Remove(werwolfBlut);
                     Inventory.Instance.Remove(schirmlinge);
                     Inventory.Instance.Remove(schirmlinge);
-                    Inventory.Instance.AddItem(ItemDatabase.GetItem(30));
+                    Inventory.Instance.AddItem(ItemDatabase.GetItem(33));
                 }
 
                 break;

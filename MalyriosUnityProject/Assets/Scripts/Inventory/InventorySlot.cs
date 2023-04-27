@@ -108,6 +108,19 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         this.amountText.gameObject.SetActive(false);
     }
 
+    public void RemoveSingleItem()
+    {
+        Inventory.Instance.Items.Remove(this.itemStack.Peek());
+        this.itemStack.Pop();
+        this.amountText.text = itemStack.Count.ToString();
+        Inventory.Instance.ItemIDs.Remove(item.ItemID);
+        if (this.itemStack.Count <= 0)
+        {
+            this.transform.GetChild(3).GetComponent<Image>().enabled = false;
+            RemoveItem();
+        }
+    }
+
     public void UseItem()
     {
         item.Use();

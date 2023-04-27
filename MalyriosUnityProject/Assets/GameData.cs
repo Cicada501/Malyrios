@@ -9,12 +9,13 @@ public class GameData : MonoBehaviour
     public float LoadedCurrentHealth { get; private set; }
     public InventoryData LoadedInventoryData { get; private set; }
     public string LoadedLevelName { get; private set; }
-    
+
     public DecisionData LoadedDecisionData { get; private set; }
 
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
+
     private void Awake()
     {
         levelManager = GetComponent<LevelManager>();
@@ -33,14 +34,14 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
-        
+
         PlayerPrefs.Save();
     }
 
     public void LoadData()
     {
         // Load level name
-        if (PlayerPrefs.HasKey("currentLevelName"))
+        if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
         {
             LoadedLevelName = PlayerPrefs.GetString("currentLevelName");
         }
@@ -48,10 +49,10 @@ public class GameData : MonoBehaviour
         {
             LoadedLevelName = "HighForest";
         }
-        
+
 
         // Load player position
-        if (PlayerPrefs.HasKey("currentPlayerPosition"))
+        if (PlayerPrefs.HasKey("currentPlayerPosition") && PlayerPrefs.GetString("currentLevelName") != "")
         {
             LoadedPlayerPosition = JsonUtility.FromJson<Vector3>(PlayerPrefs.GetString("currentPlayerPosition"));
         }
@@ -61,7 +62,7 @@ public class GameData : MonoBehaviour
         }
 
         // Load current health
-        if (PlayerPrefs.HasKey("currentHealth"))
+        if (PlayerPrefs.HasKey("currentHealth") && PlayerPrefs.GetFloat("currentHealth") != 0f)
         {
             LoadedCurrentHealth = PlayerPrefs.GetFloat("currentHealth");
         }
@@ -71,7 +72,7 @@ public class GameData : MonoBehaviour
         }
 
         // Load inventory data
-        if (PlayerPrefs.HasKey("inventoryData"))
+        if (PlayerPrefs.HasKey("inventoryData")&&PlayerPrefs.GetString("inventoryData")!="")
         {
             LoadedInventoryData = JsonUtility.FromJson<InventoryData>(PlayerPrefs.GetString("inventoryData"));
         }
@@ -80,7 +81,7 @@ public class GameData : MonoBehaviour
             LoadedInventoryData = new InventoryData(Inventory.Instance);
         }
 
-        if (PlayerPrefs.HasKey("decisionData"))
+        if (PlayerPrefs.HasKey("decisionData")&&PlayerPrefs.GetString("decisionData")!="")
         {
             LoadedDecisionData = JsonUtility.FromJson<DecisionData>(PlayerPrefs.GetString("decisionData"));
         }
@@ -88,7 +89,6 @@ public class GameData : MonoBehaviour
         {
             LoadedDecisionData = new DecisionData();
         }
-
     }
 
     private void OnApplicationQuit()
