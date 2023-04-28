@@ -1,11 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Malyrios.Dialogue;
 using Malyrios.Items;
 using SaveAndLoad;
 using UnityEngine;
 using UnityEngine.Serialization;
+
+[System.Serializable]
+public class DialogueTextListWrapper
+{
+    public List<DialogueText> dialogueTexts;
+}
 
 public class Decision : MonoBehaviour
 {
@@ -26,6 +33,7 @@ public class Decision : MonoBehaviour
     public GameObject fireballButton;
 
     [Header("Gets set during runtime (in LevelManager), when HighForest gets loaded")]
+    //Wizard (Thrimbald)
     public Dialogue wizzardDialog;
 
     public List<DialogueText> wizzardDialogText2;
@@ -39,9 +47,9 @@ public class Decision : MonoBehaviour
     //Son (Tommy)
     public Dialogue sonDialog;
     public List<DialogueText> sonDialogText2;
-
     public List<DialogueText> sonDialogText1;
-    
+
+    //Healer (Asmilda)
     public Dialogue healerDialog;
     public List<DialogueText> healerDialogText2;
     public List<DialogueText> healerDialogText1;
@@ -54,6 +62,30 @@ public class Decision : MonoBehaviour
     public GameObject smallWerewolfNpc;
     public GameObject smallWerewolfEnemy;
     private static BaseItem apple;
+    private static BaseItem schattenRose;
+    private static BaseItem werwolfBlut;
+    private static BaseItem schirmlinge;
+    
+    private void SaveToJsonFile()
+    {
+        // Wrap the list in a serializable object
+        DialogueTextListWrapper wrapper = new DialogueTextListWrapper { dialogueTexts = healerDialogText1 };
+
+        // Convert the object to a JSON string
+        string json = JsonUtility.ToJson(wrapper, prettyPrint: true);
+
+        // Save the JSON string to a file on your desktop
+        string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        string filePath = Path.Combine(desktopPath, "hunterDialogText1.json");
+        File.WriteAllText(filePath, json);
+    }
+
+    private void Start()
+    {
+        schattenRose = ItemDatabase.GetItem(30);
+        werwolfBlut = ItemDatabase.GetItem(31);
+        schirmlinge = ItemDatabase.GetItem(32);
+    }
 
     private void Update()
     {
@@ -108,7 +140,7 @@ public class Decision : MonoBehaviour
                 case 3:
                     break;
             }
-            
+
             switch (HealerDialogState)
             {
                 case 1:
@@ -117,6 +149,13 @@ public class Decision : MonoBehaviour
                 case 2:
                     healerDialog.DialogueText = healerDialogText2;
                     break;
+            }
+
+            if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
+                Inventory.CountOccurrences(schirmlinge) > 1)
+            {
+                ReplaceDialogueTextSubstring(healerDialogText1, ", du gehst wohl gerne klettern?", " und was hast du denn da für schöne sachen dabei?");
+                print(("Replaced Dialog text"));
             }
 
             if (SmallWerewolfAttack)
@@ -131,6 +170,26 @@ public class Decision : MonoBehaviour
             }
         }
     }
+
+    public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString, string replacementString)
+    {
+        // Iterate through the dialogue list
+        for (int i = 0; i < dialogueList.Count; i++)
+        {
+            // Iterate through the sentences in the current DialogueText
+            for (int j = 0; j < dialogueList[i].Sentences.Count; j++)
+            {
+                // If the current sentence contains the search string, replace the substring with the replacement string
+                if (dialogueList[i].Sentences[j].Contains(searchString))
+                {
+                    dialogueList[i].Sentences[j] = dialogueList[i].Sentences[j].Replace(searchString, replacementString);
+                    return; 
+                }
+            }
+        }
+    }
+
+
 
     public void ResetAllDecisions()
     {
@@ -173,11 +232,8 @@ public class Decision : MonoBehaviour
                 HealerDialogState = 2;
                 break;
             case "craftAntiWerewolfPotion":
-
-                var schattenRose = ItemDatabase.GetItem(30);
-                var werwolfBlut = ItemDatabase.GetItem(31);
-                var schirmlinge = ItemDatabase.GetItem(32);
-                if (Inventory.CountOccurrences(schattenRose)>0 && Inventory.CountOccurrences(werwolfBlut)>0 &&Inventory.CountOccurrences(schirmlinge)>1)
+                if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
+                    Inventory.CountOccurrences(schirmlinge) > 1)
                 {
                     Inventory.Instance.Remove(schattenRose);
                     Inventory.Instance.Remove(werwolfBlut);
@@ -200,6 +256,5 @@ public class Decision : MonoBehaviour
         HunterDialogState = gameDataLoadedDecisionData.hunterDialogState;
         SmallWerewolfAttack = gameDataLoadedDecisionData.smallWerewolfAttack;
         HealerDialogState = gameDataLoadedDecisionData.healerDialogState;
-
     }
 }

@@ -86,7 +86,7 @@ public class Inventory : MonoBehaviour
     {
         
         var occ = Instance.Items.Count(n => n == item);
-        print($"I found {occ} {item.ItemName}s ");
+        //print($"I found {occ} {item.ItemName}s ");
         return occ;
     }
     
