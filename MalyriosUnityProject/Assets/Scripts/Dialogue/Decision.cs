@@ -23,10 +23,7 @@ public class Decision : MonoBehaviour
     public static int SonDialogueState = 1;
     public static int HunterDialogState = 1;
     public static int HealerDialogState = 1;
-
-    //public static bool JackToldPlayerAboutTommy;
     public static bool SmallWerewolfAttack;
-    public static bool BringAntiWerewolfPotion;
 
 
     //fireball + wizard
@@ -51,6 +48,7 @@ public class Decision : MonoBehaviour
 
     //Healer (Asmilda)
     public Dialogue healerDialog;
+    public List<DialogueText> healerDialogText3;
     public List<DialogueText> healerDialogText2;
     public List<DialogueText> healerDialogText1;
 
@@ -65,11 +63,11 @@ public class Decision : MonoBehaviour
     private static BaseItem schattenRose;
     private static BaseItem werwolfBlut;
     private static BaseItem schirmlinge;
-    
+
     private void SaveToJsonFile()
     {
         // Wrap the list in a serializable object
-        DialogueTextListWrapper wrapper = new DialogueTextListWrapper { dialogueTexts = healerDialogText1 };
+        DialogueTextListWrapper wrapper = new DialogueTextListWrapper {dialogueTexts = healerDialogText1};
 
         // Convert the object to a JSON string
         string json = JsonUtility.ToJson(wrapper, prettyPrint: true);
@@ -149,14 +147,11 @@ public class Decision : MonoBehaviour
                 case 2:
                     healerDialog.DialogueText = healerDialogText2;
                     break;
+                case 3:
+                    healerDialog.DialogueText = healerDialogText3;
+                    break;
             }
 
-            if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
-                Inventory.CountOccurrences(schirmlinge) > 1)
-            {
-                ReplaceDialogueTextSubstring(healerDialogText1, ", du gehst wohl gerne klettern?", " und was hast du denn da für schöne sachen dabei?");
-                print(("Replaced Dialog text"));
-            }
 
             if (SmallWerewolfAttack)
             {
@@ -171,7 +166,8 @@ public class Decision : MonoBehaviour
         }
     }
 
-    public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString, string replacementString)
+    public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
+        string replacementString)
     {
         // Iterate through the dialogue list
         for (int i = 0; i < dialogueList.Count; i++)
@@ -182,20 +178,24 @@ public class Decision : MonoBehaviour
                 // If the current sentence contains the search string, replace the substring with the replacement string
                 if (dialogueList[i].Sentences[j].Contains(searchString))
                 {
-                    dialogueList[i].Sentences[j] = dialogueList[i].Sentences[j].Replace(searchString, replacementString);
-                    return; 
+                    dialogueList[i].Sentences[j] =
+                        dialogueList[i].Sentences[j].Replace(searchString, replacementString);
+                    return;
                 }
             }
         }
     }
 
 
-
     public void ResetAllDecisions()
     {
         BigRatAttack = false;
         LearnedFireball = false;
+        SmallWerewolfAttack = false;
         WizardDialogueState = 1;
+        SonDialogueState = 1;
+        HunterDialogState = 1;
+        HealerDialogState = 1;
     }
 
     public static void SetDecision(string answerDecision)
@@ -227,9 +227,11 @@ public class Decision : MonoBehaviour
                 SmallWerewolfAttack = true;
                 break;
             case "BringAntiWerewolfPotion":
-                BringAntiWerewolfPotion = true;
                 HunterDialogState = 2;
                 HealerDialogState = 2;
+                break;
+            case "gettingIngredients":
+                HealerDialogState = 3;
                 break;
             case "craftAntiWerewolfPotion":
                 if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
@@ -245,7 +247,6 @@ public class Decision : MonoBehaviour
                 break;
         }
     }
-
 
     public void UpdateDecisionData(DecisionData gameDataLoadedDecisionData)
     {
