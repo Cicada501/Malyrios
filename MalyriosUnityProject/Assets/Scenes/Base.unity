@@ -15262,7 +15262,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7601476, y: 1}
+    m_SensorSize: {x: 2.0796297, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -15831,6 +15831,27 @@ MonoBehaviour:
       AnswerDescription: "Vielen Dank f\xFCr deine Hilfe!"
       Decision: 
   sonDialog: {fileID: 0}
+  sonDialogText3:
+  - SentenceId: 0
+    Sentences:
+    - Oh hallo mein Retter! Konntest du das Gegenmittel schon finden?
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: 'Nein, leider konnte ich es bis jetzt noch nicht beschaffen.
+        Gib mir noch etwas Zeit, bald werde ich es haben. '
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - "schluck, schluck, \u2026 Ihhh das schmeckt ja widerlich, was ist da denn alles
+      drin??! Huch, aber ich bin ja wieder ein Mensch!! Juhuuu, danke f\xFCr deine
+      Hilfe, du hast was gut bei mir!"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: 'Keine Ursache! '
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: "Ich komme drauf zur\xFCck!"
+      Decision: 
   sonDialogText2:
   - SentenceId: 0
     Sentences:
@@ -15882,7 +15903,7 @@ MonoBehaviour:
       Decision: 
   - SentenceId: 12
     Sentences:
-    - "Hmmm, warum sollte ich mich denn\r zur\xFCck verwandeln wollen? Als Werwolf\r
+    - "Hmmm, warum sollte ich mich denn zur\xFCck verwandeln wollen? Als Werwolf
       bin ich viel st\xE4rker! Grr"
     Answers:
     - LinkedToSentenceId: 121
@@ -15971,9 +15992,9 @@ MonoBehaviour:
       Decision: 
   - SentenceId: 11
     Sentences:
-    - "*mix mix, brau brau*\r Es hat geklappt, der Trank ist fertig!\r"
+    - '*mix mix, brau brau* Es hat geklappt, der Trank ist fertig!'
     Answers:
-    - LinkedToSentenceId: 11
+    - LinkedToSentenceId: -1
       AnswerDescription: Super, vielen Dank!
       Decision: 
   - SentenceId: 2
@@ -16099,6 +16120,8 @@ MonoBehaviour:
   bigRatEnemy: {fileID: 0}
   smallWerewolfNpc: {fileID: 0}
   smallWerewolfEnemy: {fileID: 0}
+  sonAnimatorControllerController: {fileID: 9100000, guid: b4838b5b86342d94a86e3bea93c91d7e,
+    type: 2}
 --- !u!114 &1386037426
 MonoBehaviour:
   m_ObjectHideFlags: 0

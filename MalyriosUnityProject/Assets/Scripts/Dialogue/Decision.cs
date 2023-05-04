@@ -5,6 +5,7 @@ using System.IO;
 using Malyrios.Dialogue;
 using Malyrios.Items;
 using SaveAndLoad;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -16,6 +17,41 @@ public class DialogueTextListWrapper
 
 public class Decision : MonoBehaviour
 {
+    #region Singleton
+
+    private static Decision _instance;
+
+    public static Decision Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<Decision>();
+                if (_instance == null)
+                {
+                    Debug.LogError("Decision component not found in the scene.");
+                }
+            }
+
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Debug.LogError("Another instance of Decision already exists.");
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+    }
+
+    #endregion
+
     //public static to use them in the SetDecision() Function
     public static bool BigRatAttack;
     public static bool LearnedFireball;
@@ -43,6 +79,7 @@ public class Decision : MonoBehaviour
 
     //Son (Tommy)
     public Dialogue sonDialog;
+    public List<DialogueText> sonDialogText3;
     public List<DialogueText> sonDialogText2;
     public List<DialogueText> sonDialogText1;
 
@@ -63,6 +100,10 @@ public class Decision : MonoBehaviour
     private static BaseItem schattenRose;
     private static BaseItem werwolfBlut;
     private static BaseItem schirmlinge;
+
+    public AnimatorController sonAnimatorControllerController;
+    
+    bool addedDialogAnswer = false;
 
     private void SaveToJsonFile()
     {
@@ -136,6 +177,7 @@ public class Decision : MonoBehaviour
                     sonDialog.DialogueText = sonDialogText2;
                     break;
                 case 3:
+                    sonDialog.DialogueText = sonDialogText3;
                     break;
             }
 
@@ -163,6 +205,18 @@ public class Decision : MonoBehaviour
                 smallWerewolfNpc.SetActive(true);
                 smallWerewolfEnemy.SetActive(false);
             }
+        }
+
+
+        if (Inventory.CountOccurrences(ItemDatabase.GetItem(33)) > 0 && !addedDialogAnswer)
+        {
+            var ans = new DialogueAnswers();
+            ans.LinkedToSentenceId = 1;
+            ans.AnswerDescription =
+                "Ja, ich habe einen Weg gefunden es herzustellen. Hier ist es *übergebe Heilmittel*";
+            ans.Decision = "changeSonSprite";
+            sonDialogText3[0].Answers.Add(ans);
+            addedDialogAnswer = true;
         }
     }
 
@@ -229,6 +283,7 @@ public class Decision : MonoBehaviour
             case "BringAntiWerewolfPotion":
                 HunterDialogState = 2;
                 HealerDialogState = 2;
+                SonDialogueState = 3;
                 break;
             case "gettingIngredients":
                 HealerDialogState = 3;
@@ -243,7 +298,10 @@ public class Decision : MonoBehaviour
                     Inventory.Instance.Remove(schirmlinge);
                     Inventory.Instance.AddItem(ItemDatabase.GetItem(33));
                 }
-
+                break;
+            case "changeSonSprite":
+                Animator sonAnimator = Instance.sonDialog.GetComponent<Animator>();
+                sonAnimator.runtimeAnimatorController = Instance.sonAnimatorControllerController;
                 break;
         }
     }
