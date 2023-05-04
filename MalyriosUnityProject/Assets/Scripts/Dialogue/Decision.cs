@@ -300,8 +300,12 @@ public class Decision : MonoBehaviour
                 }
                 break;
             case "changeSonSprite":
-                Animator sonAnimator = Instance.sonDialog.GetComponent<Animator>();
-                sonAnimator.runtimeAnimatorController = Instance.sonAnimatorControllerController;
+                Instance.sonDialog.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
+                var son = Instance.sonDialog.transform;
+                son.localScale = new Vector3(1f, 1f, 1f);
+                var position = son.position;
+                position = new Vector3(position.x-0.05f, position.y + 0.07f, 0f); //reposition after resize
+                son.position = position;
                 break;
         }
     }
