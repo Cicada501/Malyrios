@@ -53,13 +53,13 @@ public class Decision : MonoBehaviour
     #endregion
 
     //public static to use them in the SetDecision() Function
-    public bool BigRatAttack;
-    public bool LearnedFireball;
-    public int WizardDialogueState = 1;
-    public int SonDialogueState = 1;
-    public int HunterDialogState = 1;
-    public int HealerDialogState = 1;
-    public bool SmallWerewolfAttack;
+    public static bool BigRatAttack;
+    public static bool LearnedFireball;
+    public static int WizardDialogueState = 1;
+    public static int SonDialogueState = 1;
+    public static int HunterDialogState = 1;
+    public static int HealerDialogState = 1;
+    public static bool SmallWerewolfAttack;
 
 
     //fireball + wizard
@@ -259,13 +259,13 @@ public class Decision : MonoBehaviour
             case "":
                 return;
             case "learn Fireball":
-                Instance.LearnedFireball = true;
+                LearnedFireball = true;
                 break;
             case "BigRatAttack":
-                Instance.BigRatAttack = true;
+                BigRatAttack = true;
                 break;
             case "Wizzard2":
-                Instance.WizardDialogueState = 2;
+                WizardDialogueState = 2;
                 break;
             case "get apples":
                 apple = ItemDatabase.GetItem(10);
@@ -275,18 +275,18 @@ public class Decision : MonoBehaviour
                 Inventory.Instance.AddItem(apple);
                 break;
             case "JackToldPlayerAboutTommy":
-                Instance.SonDialogueState = 2;
+                SonDialogueState = 2;
                 break;
             case "smallWerewolfAttack":
-                Instance.SmallWerewolfAttack = true;
+                SmallWerewolfAttack = true;
                 break;
             case "BringAntiWerewolfPotion":
-                Instance.HunterDialogState = 2;
-                Instance.HealerDialogState = 2;
-                Instance.SonDialogueState = 3;
+                HunterDialogState = 2;
+                HealerDialogState = 2;
+                SonDialogueState = 3;
                 break;
             case "gettingIngredients":
-                Instance.HealerDialogState = 3;
+                HealerDialogState = 3;
                 break;
             case "craftAntiWerewolfPotion":
                 if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
