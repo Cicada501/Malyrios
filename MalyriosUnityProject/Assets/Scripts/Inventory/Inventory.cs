@@ -76,7 +76,7 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                Debug.Log("Item not found");
+                Debug.Log($"Item with ID {itemID} not found");
             }
             
         }

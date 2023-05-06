@@ -110,15 +110,23 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void RemoveSingleItem()
     {
-        Inventory.Instance.Items.Remove(this.itemStack.Peek());
-        this.itemStack.Pop();
-        this.amountText.text = itemStack.Count.ToString();
-        Inventory.Instance.ItemIDs.Remove(item.ItemID);
-        if (this.itemStack.Count <= 0)
+        if (this.item is BaseWeapon)
         {
-            this.transform.GetChild(3).GetComponent<Image>().enabled = false;
-            RemoveItem();
+            RemoveItem(); //if i try to remove a weapon (by equipping it) in the same way as the items, it throws an error saying the stack is empty
         }
+        else
+        {
+            Inventory.Instance.Items.Remove(this.itemStack.Peek());
+            this.itemStack.Pop();
+            this.amountText.text = itemStack.Count.ToString();
+            Inventory.Instance.ItemIDs.Remove(item.ItemID);
+            if (this.itemStack.Count <= 0)
+            {
+                this.transform.GetChild(3).GetComponent<Image>().enabled = false;
+                RemoveItem();
+            }
+        }
+        
     }
 
     public void UseItem()
