@@ -73,6 +73,7 @@ public class Decision : MonoBehaviour
 
     //Hunter (Jack)
     public Dialogue hunterDialog;
+    public List<DialogueText> hunterDialogText4;
     public List<DialogueText> hunterDialogText3;
     public List<DialogueText> hunterDialogText2;
     public List<DialogueText> hunterDialogText1;
@@ -101,8 +102,8 @@ public class Decision : MonoBehaviour
     private static BaseItem schattenRose;
     private static BaseItem werwolfBlut;
     private static BaseItem schirmlinge;
-    
-    
+
+
     bool addedDialogAnswer = false;
 
     private void SaveToJsonFile()
@@ -165,6 +166,10 @@ public class Decision : MonoBehaviour
                     hunterDialog.DialogueText = hunterDialogText2;
                     break;
                 case 3:
+                    hunterDialog.DialogueText = hunterDialogText3;
+                    break;
+                case 4:
+                    hunterDialog.DialogueText = hunterDialogText4;
                     break;
             }
 
@@ -178,6 +183,9 @@ public class Decision : MonoBehaviour
                     break;
                 case 3:
                     sonDialog.DialogueText = sonDialogText3;
+                    break;
+                case 4:
+                    sonDialog.DialogueText = sonDialogText4;
                     break;
             }
 
@@ -283,7 +291,7 @@ public class Decision : MonoBehaviour
             case "BringAntiWerewolfPotion":
                 HunterDialogState = 2;
                 HealerDialogState = 2;
-                SonDialogueState = 3;
+                SonDialogueState = 3;  //answer to give potin gets added, if inventory contains potion
                 break;
             case "gettingIngredients":
                 HealerDialogState = 3;
@@ -298,14 +306,26 @@ public class Decision : MonoBehaviour
                     Inventory.Instance.Remove(schirmlinge);
                     Inventory.Instance.AddItem(ItemDatabase.GetItem(33));
                 }
+
                 break;
             case "changeSonSprite":
+                HunterDialogState = 3;
                 Instance.sonDialog.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
                 var son = Instance.sonDialog.transform;
                 son.localScale = new Vector3(1f, 1f, 1f);
                 var position = son.position;
-                position = new Vector3(position.x-0.05f, position.y + 0.07f, 0f); //reposition after resize
+                position = new Vector3(position.x - 0.05f, position.y + 0.07f, 0f); //reposition after resize
                 son.position = position;
+                break;
+            case "getSpell":
+                HunterDialogState = 4;
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(34));
+                Instance.sonDialog.gameObject.SetActive(false);
+                break;
+            case "getSword":
+                HunterDialogState = 4;
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(1));
+                Instance.sonDialog.gameObject.SetActive(false);
                 break;
         }
     }

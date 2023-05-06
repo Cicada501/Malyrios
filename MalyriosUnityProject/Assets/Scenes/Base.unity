@@ -11290,6 +11290,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc6d12a3e342ed7489271df5eeba5b74, type: 2}
   - {fileID: 11400000, guid: 7fc8bf596b4f3ac44a74110e03eda795, type: 2}
   - {fileID: 11400000, guid: 39182ca46138bc1499e79b63d51e0524, type: 2}
+  - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -15262,7 +15263,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.561139, y: 1}
+    m_SensorSize: {x: 2.678788, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -15694,13 +15695,85 @@ MonoBehaviour:
       AnswerDescription: Thanks!
       Decision: Wizzard2
   hunterDialog: {fileID: 0}
+  hunterDialogText4:
+  - SentenceId: 0
+    Sentences:
+    - Hallo!
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: hey
+      Decision: 
   hunterDialogText3:
   - SentenceId: 0
     Sentences:
     - "Hallo mein Freund! Mein Sohn war eben hier und mir erzh\xE4lt wie du ihm geholfen
       hast sich zur\xFCck zu verwandeln. Ich bin dir so dankbar! Wie kann ich dir
       daf\xFCr nur danken? Gibt es irgend etwas das du brauchst?"
-    Answers: []
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: "Nun ja mich interessiert die Magie in dieser Welt sehr.
+        Ich w\xFCrde gerne meine Magischen F\xE4higkeiten erweitern. Kannst du mir
+        dabei irgendwie helfen?\r"
+      Decision: 
+    - LinkedToSentenceId: 2
+      AnswerDescription: " Ich habe bis jetzt noch keine sonderlich guten Waffen.
+        \xDCber ein gutes Schwert oder einen Bogen w\xFCrde ich mich freuen. "
+      Decision: 
+    - LinkedToSentenceId: -1
+      AnswerDescription: "Ich brauche erstmal nichts, aber vielen dank f\xFCr das
+        nette Angebot."
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - "Ohh da habe ich vielleicht etwas spannendes f\xFCr dich. Auf einer langen
+      und abenteuerlichen Reise auf die dritten Ebene habe ich damals ein Schriftst\xFCck
+      gefunden. Es handelt davon wie es manchen Magiern gelingt ihren physischen
+      K\xF6rper in der Raumzeit zu versetzen. Es ist eine komplizierte Lekt\xFCre,
+      aber ich bin mir sicher, wenn du sie verstehst wird sie dir helfen zu gro\xDFen
+      Kr\xE4ften zu gelangen. "
+    Answers:
+    - LinkedToSentenceId: 11
+      AnswerDescription: " Das Klingt sehr spannend, \xFCber die Schriftrolle w\xFCrde
+        ich mich sehr freuen!"
+      Decision: 
+    - LinkedToSentenceId: 2
+      AnswerDescription: " Hmm, es klingt interessant aber ich wei\xDF nicht ob ich
+        damit wirklich etwas anfangen kann. Viellecht w\xE4re eine Waffe doch eher
+        das wonach ich suche"
+      Decision: 
+  - SentenceId: 2
+    Sentences:
+    - "Nun, ich habe mir mal ein Schwert vom Waffenmeister des K\xF6nigs h\xF6chstpers\xF6nlich
+      machen lassen. Da ich nicht der beste Schwert K\xE4mpfer bin h\xE4ngt allerdings
+      schon seit vielen Jahren ungenutzt bei uns an der Wand. Ich bin nicht sicher
+      wie gut es wirklich noch ist. "
+    Answers:
+    - LinkedToSentenceId: 21
+      AnswerDescription: "Oh ja ich brauche dringend ein besseres Schwert! Das Schwert
+        w\xFCrde ich dankend annehmen!"
+      Decision: 
+    - LinkedToSentenceId: 1
+      AnswerDescription: "Hmm also ich habe ja schon ein Schwert. Hast du vielleicht
+        doch eher etwas, das mir hilft meine Magischen F\xE4higkeiten zu erweitern?"
+      Decision: 
+  - SentenceId: 11
+    Sentences:
+    - "Na wenn das so ist lass mich eben mal danach Suchen, ich m\xFCsste sie irgendwo
+      in meiner Tasche haben *such, such, kram, kram* Ahh, da ist sie ja! \r"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: "*schriftrolle entgegennehmen* Vielen Dank daf\xFCr, ich
+        bin schon ganz gespannt darauf sie zu lesen!"
+      Decision: getSpell
+  - SentenceId: 21
+    Sentences:
+    - "Okay, na wenn das so ist, dann \xFCberlasse ich dir das Schwert gerne. Wie
+      es der Zufall will habe ich es heute sogar mit dabei. "
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: '*Schwert entgegennehmen* Vielen Dank! Ich freue mich schon
+        darauf es an meinen Gegnern auszuprobieren!'
+      Decision: getSword
   hunterDialogText2:
   - SentenceId: 0
     Sentences:
