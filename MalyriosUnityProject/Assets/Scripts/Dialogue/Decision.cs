@@ -5,7 +5,6 @@ using System.IO;
 using Malyrios.Dialogue;
 using Malyrios.Items;
 using SaveAndLoad;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -74,11 +73,13 @@ public class Decision : MonoBehaviour
 
     //Hunter (Jack)
     public Dialogue hunterDialog;
+    public List<DialogueText> hunterDialogText3;
     public List<DialogueText> hunterDialogText2;
     public List<DialogueText> hunterDialogText1;
 
     //Son (Tommy)
     public Dialogue sonDialog;
+    public List<DialogueText> sonDialogText4;
     public List<DialogueText> sonDialogText3;
     public List<DialogueText> sonDialogText2;
     public List<DialogueText> sonDialogText1;
@@ -100,8 +101,7 @@ public class Decision : MonoBehaviour
     private static BaseItem schattenRose;
     private static BaseItem werwolfBlut;
     private static BaseItem schirmlinge;
-
-    public AnimatorController sonAnimatorControllerController;
+    
     
     bool addedDialogAnswer = false;
 

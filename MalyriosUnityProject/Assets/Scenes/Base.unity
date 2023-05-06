@@ -15262,7 +15262,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0796297, y: 1}
+    m_SensorSize: {x: 1.561139, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -15694,13 +15694,63 @@ MonoBehaviour:
       AnswerDescription: Thanks!
       Decision: Wizzard2
   hunterDialog: {fileID: 0}
+  hunterDialogText3:
+  - SentenceId: 0
+    Sentences:
+    - "Hallo mein Freund! Mein Sohn war eben hier und mir erzh\xE4lt wie du ihm geholfen
+      hast sich zur\xFCck zu verwandeln. Ich bin dir so dankbar! Wie kann ich dir
+      daf\xFCr nur danken? Gibt es irgend etwas das du brauchst?"
+    Answers: []
   hunterDialogText2:
   - SentenceId: 0
     Sentences:
-    - '"Hurra du versuchst meinen sohn zu retten!!"'
+    - Oh hallo! Hast du schon eine Spur von meinem Sohn gefunden? Lebt er noch?
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: Ja ich habe ihn gefunden. Er scheint allerdings etwas verwirrt
+        zu sein
+      Decision: 
+    - LinkedToSentenceId: 2
+      AnswerDescription: "Ich habe ihn gefunden und er h\xE4lt sich tats\xE4chlich
+        f\xFCr einen Werwolf. Ich konnte ihn aber \xFCberzeugen sich helfen zu lassen"
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - Ohje ohje ohje, aber wird er wieder gesund? Konntest du schon ein Heilmittel
+      finden?
+    Answers:
+    - LinkedToSentenceId: 11
+      AnswerDescription: ' Ich denke er wird wieder, mach dir nicht zu viele sorgen'
+      Decision: 
+    - LinkedToSentenceId: 12
+      AnswerDescription: "Ich m\xF6chte ehrlich sein, ich habe keine Ahnung wie ich
+        ihn zur\xFCck verwandeln kann."
+      Decision: 
+  - SentenceId: 11
+    Sentences:
+    - "Okay, das ist gut zu h\xF6ren! Ich hoffe du beh\xE4ltst recht, du kannst dir
+      nicht vorstellen wie viel mir das bedeutet!\r\n"
     Answers:
     - LinkedToSentenceId: -1
-      AnswerDescription: jepp
+      AnswerDescription: ' Da hast du vermutlich recht. Ich komme bald wieder'
+      Decision: 
+  - SentenceId: 12
+    Sentences:
+    - "Ohje Ohje ohje, aber es muss doch einen Weg geben?! Hast du schonmal mit Asmilda
+      gesprochen? Sie wohnt weit oben in den B\xE4umen. Ihre F\xE4higkeiten als Alchemistin
+      sind wirklich hervorragend\r"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ich werde mal mit ihr reden
+      Decision: 
+  - SentenceId: 2
+    Sentences:
+    - "Oh, das sind gute Neuigkeiten! Ich bin so froh, dass mein Sohn noch lebt.
+      Du hast keine Ahnung, wie viel mir das bedeutet!\r"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ich tue was ich kann. Wenn es was neues gibt, melde ich
+        mich bei dir!
       Decision: 
   hunterDialogText1:
   - SentenceId: 0
@@ -15831,6 +15881,35 @@ MonoBehaviour:
       AnswerDescription: "Vielen Dank f\xFCr deine Hilfe!"
       Decision: 
   sonDialog: {fileID: 0}
+  sonDialogText4:
+  - SentenceId: 0
+    Sentences:
+    - "Vielen Dank nochmal f\xFCr deine Hilfe! Ich konnte nicht mehr klar denken,
+      nachdem mich der Wolf gebissen hat, doch jetzt f\xFChle ich mich wieder einigerma\xDFen
+      normal. "
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: Keine Ursache! Findest du von hier alleine nach hause?
+      Decision: 
+    - LinkedToSentenceId: 2
+      AnswerDescription: "Das freut mich zu h\xF6ren! Was hast du nun vor?"
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - "Ja Nach hause finde ich von hier alleine!\r"
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: ' Okay, bis dann!'
+      Decision: 
+  - SentenceId: 2
+    Sentences:
+    - 'Ich werde jetzt erstmal nach Hause zu Papa gehen und mich ausruhen
+
+'
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: ' Ja das klingt sinnvoll, erhole dich gut!'
+      Decision: 
   sonDialogText3:
   - SentenceId: 0
     Sentences:
@@ -16120,8 +16199,6 @@ MonoBehaviour:
   bigRatEnemy: {fileID: 0}
   smallWerewolfNpc: {fileID: 0}
   smallWerewolfEnemy: {fileID: 0}
-  sonAnimatorControllerController: {fileID: 9100000, guid: b4838b5b86342d94a86e3bea93c91d7e,
-    type: 2}
 --- !u!114 &1386037426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16144,7 +16221,7 @@ MonoBehaviour:
       type: 3}
     EntrancePoint: {fileID: 0}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 1
+  spawnAtPlayerDebugLocation: 0
 --- !u!114 &1386037427
 MonoBehaviour:
   m_ObjectHideFlags: 0
