@@ -33,6 +33,7 @@ public class GameInitializer : MonoBehaviour
         baseAttributes.CurrentHealth = gameData.LoadedCurrentHealth;
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
         GetComponent<Decision>().UpdateDecisionData(gameData.LoadedDecisionData);
+        PlayerAttack.EquippedWeaponID = gameData.LoadedEquippedWeaponID;
     }
     
 }

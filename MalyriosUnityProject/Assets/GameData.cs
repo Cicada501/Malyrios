@@ -9,9 +9,9 @@ public class GameData : MonoBehaviour
     public float LoadedCurrentHealth { get; private set; }
     public InventoryData LoadedInventoryData { get; private set; }
     public string LoadedLevelName { get; private set; }
-
     public DecisionData LoadedDecisionData { get; private set; }
 
+    public int LoadedEquippedWeaponID { get; private set; }
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
@@ -34,6 +34,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
+        PlayerPrefs.SetInt("EquippedWeaponID", PlayerAttack.EquippedWeaponID);
 
         PlayerPrefs.Save();
     }
@@ -88,6 +89,15 @@ public class GameData : MonoBehaviour
         else
         {
             LoadedDecisionData = new DecisionData();
+        }
+        
+        if (PlayerPrefs.HasKey("EquippedWeaponID")&&PlayerPrefs.GetString("EquippedWeaponID")!="")
+        {
+            LoadedEquippedWeaponID = PlayerPrefs.GetInt("EquippedWeaponID");
+        }
+        else
+        {
+            LoadedEquippedWeaponID = 1;
         }
     }
 

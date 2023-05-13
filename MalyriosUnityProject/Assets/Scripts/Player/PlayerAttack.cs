@@ -60,6 +60,7 @@ public class PlayerAttack : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
         //EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
+        print($"LoadedWeapon:{EquippedWeaponID}");
         if (EquippedWeaponID!=0)
         {
             EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));
@@ -120,7 +121,6 @@ public class PlayerAttack : MonoBehaviour
         //get list of all colliders in hit range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
         //remember the gameobject of the collider, to only hit it once if it has multiple colliders
-        //print("HitEnemies: " + hitEnemies.Length);
         List<GameObject> enemiesGotHit = new List<GameObject>();
         if (hitEnemies.Length > 0)
         {
@@ -191,6 +191,7 @@ public class PlayerAttack : MonoBehaviour
         this.swordAnimator = go.GetComponent<Animator>();
         this.equippedWeapon = weapon;
         EquippedWeaponID = weapon.ItemID;
+        print("equipping weapon");
     }
     
     private void UnequipWeapon()
