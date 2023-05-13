@@ -1,14 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Malyrios.Dialogue;
 using Malyrios.Items;
 using SaveAndLoad;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[System.Serializable]
+[Serializable]
 public class DialogueTextListWrapper
 {
     public List<DialogueText> dialogueTexts;
@@ -105,6 +103,7 @@ public class Decision : MonoBehaviour
 
 
     bool addedDialogAnswer = false;
+    private bool addedDialogAnswer2;
 
     private void SaveToJsonFile()
     {
@@ -226,6 +225,18 @@ public class Decision : MonoBehaviour
             sonDialogText3[0].Answers.Add(ans);
             addedDialogAnswer = true;
         }
+
+        if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
+            Inventory.CountOccurrences(schirmlinge) > 1 && !addedDialogAnswer2)
+        {
+            var ans = new DialogueAnswers();
+            ans.LinkedToSentenceId = 1;
+            ans.AnswerDescription =
+                "Ja, hier sind die Sachen";
+            healerDialogText3[0].Answers.Add(ans);
+            addedDialogAnswer2 = true;
+        }
+        
     }
 
     public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
