@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 8836675097896943279}
   - component: {fileID: 3882669429745213923}
   - component: {fileID: 1308724533672677474}
+  - component: {fileID: -6905400014619739453}
   m_Layer: 11
   m_Name: Boar
   m_TagString: Enemy
@@ -192,9 +193,7 @@ MonoBehaviour:
   dropRareItemChance0: 50
   dropRareItemChance1: 40
   dropRareItemChance2: 10
-  gravityToFall: 8
-  gravityToClimb: 2
-  attackRate: 0.7
+  attacksPerSecond: 1.5
   attackRange: 0.5
   nextAttackTime: 0
   attackPoint: {fileID: 5108618909233067101}
@@ -245,3 +244,19 @@ CircleCollider2D:
   m_Offset: {x: 0.12833098, y: -0.5158176}
   serializedVersion: 2
   m_Radius: 1.0838822
+--- !u!114 &-6905400014619739453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492206326589379496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e2763d48a851b4fbd491d5c74e51ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlopeAngle: 45
+  climbingGravityScale: 1
+  fallingGravityScale: 8
+  defaultGravityScale: 1

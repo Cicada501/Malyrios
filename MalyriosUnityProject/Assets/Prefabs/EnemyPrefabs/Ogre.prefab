@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3603018704755478910}
   - component: {fileID: 3605295752485811208}
   - component: {fileID: 1765734313}
+  - component: {fileID: -4446088123748916496}
   m_Layer: 11
   m_Name: Ogre
   m_TagString: Enemy
@@ -59,9 +60,7 @@ MonoBehaviour:
   dropRareItemChance0: 40
   dropRareItemChance1: 40
   dropRareItemChance2: 20
-  gravityToFall: 8
-  gravityToClimb: 0.5
-  attackRate: 1
+  attacksPerSecond: 1.5
   attackRange: 0.6
   nextAttackTime: 0
   attackPoint: {fileID: 3665614874453975450}
@@ -238,6 +237,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.032262802, y: 0.034355164}
   m_EdgeRadius: 0
+--- !u!114 &-4446088123748916496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662507157778096234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e2763d48a851b4fbd491d5c74e51ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlopeAngle: 45
+  climbingGravityScale: 1
+  fallingGravityScale: 8
+  defaultGravityScale: 1
 --- !u!1 &3662732446927054958
 GameObject:
   m_ObjectHideFlags: 0

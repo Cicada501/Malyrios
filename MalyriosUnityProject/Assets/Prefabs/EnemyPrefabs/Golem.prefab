@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3465327599388064189}
   - component: {fileID: 3465327599388064186}
   - component: {fileID: 3465327599388064188}
+  - component: {fileID: -2189210647256600725}
   m_Layer: 11
   m_Name: Golem
   m_TagString: Enemy
@@ -131,9 +132,7 @@ MonoBehaviour:
   dropRareItemChance0: 50
   dropRareItemChance1: 40
   dropRareItemChance2: 10
-  gravityToFall: 8
-  gravityToClimb: 0.2
-  attackRate: 0.5
+  attacksPerSecond: 1.5
   attackRange: 0.7
   nextAttackTime: 0
   attackPoint: {fileID: 3465327599419503149}
@@ -229,6 +228,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.028438568, y: 0.020473957}
   m_EdgeRadius: 0
+--- !u!114 &-2189210647256600725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465327599388064183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e2763d48a851b4fbd491d5c74e51ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlopeAngle: 45
+  climbingGravityScale: 1
+  fallingGravityScale: 8
+  defaultGravityScale: 1
 --- !u!1 &3465327599419503146
 GameObject:
   m_ObjectHideFlags: 0

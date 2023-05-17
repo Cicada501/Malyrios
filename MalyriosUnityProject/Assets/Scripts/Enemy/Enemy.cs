@@ -147,9 +147,10 @@ public class Enemy : MonoBehaviour
         animator.SetBool("isDead", isDead);
 
         //dont move when dead
-        rb.velocity = new Vector2(0f, 0f);
+        /*rb.velocity = new Vector2(0f, 0f);
         rb.angularVelocity = 0f;
-        rb.gravityScale = 0; //enemy should not fall trough ground when collides get disabled
+        rb.gravityScale = 0;*/ //enemy should not fall trough ground when collides get disabled
+        Destroy(rb);
         //Disable all coliders when dead
         foreach (Collider2D c in GetComponents<Collider2D>())
         {

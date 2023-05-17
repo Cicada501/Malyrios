@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dynamicGravityScale : MonoBehaviour
+public class DynamicGravityScale : MonoBehaviour
 {
     private Vector3 lastPosition;
     [SerializeField] private float maxSlopeAngle;
@@ -21,7 +21,7 @@ public class dynamicGravityScale : MonoBehaviour
     {
         hit = Physics2D.Raycast(transform.position, -Vector2.up);
 
-        if (hit.collider != null) {
+        if (hit.collider != null && rb2d != null) {
             float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
             
             var position = transform.position;

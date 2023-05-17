@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 5704038291467004029}
   - component: {fileID: 5704038291467004025}
   - component: {fileID: 1517591308}
+  - component: {fileID: 8240120002909530769}
   m_Layer: 11
   m_Name: Djinn
   m_TagString: Enemy
@@ -183,9 +184,7 @@ MonoBehaviour:
   dropRareItemChance0: 40
   dropRareItemChance1: 60
   dropRareItemChance2: 0
-  gravityToFall: 8
-  gravityToClimb: 2
-  attackRate: 1
+  attacksPerSecond: 1.5
   attackRange: 0.5
   nextAttackTime: 0
   attackPoint: {fileID: 5704038291144620575}
@@ -269,3 +268,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.02532959, y: 0.019054413}
   m_EdgeRadius: 0
+--- !u!114 &8240120002909530769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704038291467004016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e2763d48a851b4fbd491d5c74e51ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlopeAngle: 45
+  climbingGravityScale: 1
+  fallingGravityScale: 8
+  defaultGravityScale: 1
