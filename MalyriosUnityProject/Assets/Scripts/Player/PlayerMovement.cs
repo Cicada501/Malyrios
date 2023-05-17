@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,10 +16,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius;
     public bool disableMovement;
+
+    [SerializeField] private float dashingVelocity = 3f;
+    [SerializeField] private float dashingTime = 0.5f;
+    [SerializeField] private float maxDashUpAngle = 20f;
+    private Vector2 dashingDir;
+    private bool isDashing;
+    private bool canDash = true;
+    private TrailRenderer trailRenderer;
+    private bool dashInput;
+    float initGravityScale;
+    
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
     void Update()
@@ -40,7 +53,52 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalMove = 1f*runSpeed;
         }
+
+        
+        if (dashInput && canDash)
+        {
+            isDashing = true;
+            canDash = false;
+            trailRenderer.emitting = true;
+            dashingDir = joystick.Direction;
+            initGravityScale = rb.gravityScale;
+            if (dashingDir == Vector2.zero)
+            {
+                dashingDir = new Vector2(transform.localScale.x, 0f);
+            }else
+            {
+                //limit dash angle, if it goes upwards to much
+                float angle = Vector2.Angle(Vector2.right, dashingDir);
+                if (dashingDir.y > 0 && angle > maxDashUpAngle)
+                {
+                    float rad = Mathf.Deg2Rad * maxDashUpAngle;
+                    dashingDir = new Vector2(Mathf.Cos(rad)*transform.localScale.x, Mathf.Sin(rad)) * dashingDir.magnitude;
+                }
+            }
+            StartCoroutine(StopDashing());
+        }
+
+        if (isDashing)
+        {
+            rb.velocity = dashingDir.normalized * dashingVelocity;
+            return;
+        }
+        
+        if(controller.m_Grounded)
+        {
+            canDash = true;
+        }
+
     }
+
+    private IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(dashingTime);
+        trailRenderer.emitting = false;
+        isDashing = false;
+    }
+
+
 
     bool IsBetween(float source, float min, float max)
     {
@@ -86,6 +144,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void JumpButtonReleased()
     {
+    }
+
+    public void DashButtonPressed()
+    {
+        dashInput = true;
+    }
+    public void DashButtonReleased()
+    {
+        dashInput = false;
     }
     
     private void OnDrawGizmos()

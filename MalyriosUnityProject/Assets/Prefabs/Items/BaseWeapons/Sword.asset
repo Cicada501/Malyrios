@@ -26,7 +26,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 877694526288938081, guid: 9b1f58ae4023d514e992ca8d27765ea9,
     type: 3}
   minDamage: 10
-  maxDamage: 20
+  maxDamage: 100
   attackSpeed: 1.5
   strength: 3
   critChance: 50
