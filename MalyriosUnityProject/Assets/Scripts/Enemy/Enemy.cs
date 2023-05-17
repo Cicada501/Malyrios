@@ -20,9 +20,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] int dropRareItemChance1 = 40; //chance to drop 1 times RareItem
     [SerializeField] int dropRareItemChance2 = 10; //chance to drop 2 times RareItem
 
-    [SerializeField] float gravityToFall = 8;
-    [SerializeField] float gravityToClimb = 2;
-
     [SerializeField] float attacksPerSecond = 1.5f;
     [SerializeField] public float attackRange;
     public float nextAttackTime;
@@ -115,7 +112,7 @@ public class Enemy : MonoBehaviour
         Instantiate(damageText, damageTextSpawn.position, Quaternion.identity);
     }
 
-    public void DealDamage(int damage) //where used?
+    public void DealDamage(int damage) //used at animation event of enemy
     {
         Collider2D[] thatGotHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
         if (thatGotHit.Length > 0)
@@ -152,7 +149,7 @@ public class Enemy : MonoBehaviour
         //dont move when dead
         rb.velocity = new Vector2(0f, 0f);
         rb.angularVelocity = 0f;
-        rb.gravityScale = 0; //enemy should not fall trough ground
+        rb.gravityScale = 0; //enemy should not fall trough ground when collides get disabled
         //Disable all coliders when dead
         foreach (Collider2D c in GetComponents<Collider2D>())
         {
@@ -219,29 +216,5 @@ public class Enemy : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
-    }
-
-
-    //chage graviy if upwards ground before 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Ground") && !isDead)
-        {
-            if (rb != null)
-            {
-                rb.gravityScale = gravityToClimb;
-            }
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Ground") && !isDead)
-        {
-            if (rb != null)
-            {
-                rb.gravityScale = gravityToFall;
-            }
-        }
     }
 }

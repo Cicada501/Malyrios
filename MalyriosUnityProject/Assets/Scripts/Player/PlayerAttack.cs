@@ -142,13 +142,15 @@ public class PlayerAttack : MonoBehaviour
                     }
                     
                     damage += this.baseAttributes.Strength;
-
-                    //Debug.Log(damage);
                     
+                    //apply damage to enemy
                     enemy.GetComponent<Enemy>().TakeDamage(damage);
+                    
+                    //apply pushback to enemy
                     var rb = enemy.GetComponent<Rigidbody2D>();
                     var playerTransform = GetComponent<Transform>();
-                    rb.AddForce(new Vector2(playerTransform.localScale.x*300,300), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(playerTransform.localScale.x*3,3), ForceMode2D.Impulse); //multiply with localscale.x to always push away from player
+                    
                     enemiesGotHit.Add(enemy.gameObject);
                 }
             }
