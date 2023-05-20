@@ -21,9 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private Queue<bool> wasGrounded = new Queue<bool>(5); // Queue to store last 5 grounded states
 
     //Dashing
-    [SerializeField] private float dashingVelocity = 3f;
-    [SerializeField] private float dashingTime = 0.5f;
-    [SerializeField] private float maxDashUpAngle = 20f;
+    [SerializeField] private float dashingVelocity = 2f;
+    [SerializeField] private float dashingTime = 0.8f;
     private Vector2 dashingDir;
     private bool isDashing;
     private bool canDash = true;
@@ -49,64 +48,72 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (IsBetween(joystick.Horizontal, -1f, -0.3f))
+        if (!disableMovement)
         {
-            horizontalMove = -1f * runSpeed;
-        }
-        else if (IsBetween(joystick.Horizontal, -0.3f, -0.1f))
-        {
-            horizontalMove = -0.3f * runSpeed;
-        }
-        else if (IsBetween(joystick.Horizontal, -0.1f, 0.1f))
-        {
-            horizontalMove = 0;
-        }
-        else if (IsBetween(joystick.Horizontal, 0.1f, 0.3f))
-        {
-            horizontalMove = 0.3f * runSpeed;
-        }
-        else
-        {
-            horizontalMove = 1f * runSpeed;
-        }
-
-
-        if (dashInput && canDash)
-        {
-            isDashing = true;
-            canDash = false;
-            trailRenderer.emitting = true;
-            dashingDir = joystick.Direction;
-            camAnimator.SetTrigger("Dash");
-            if (dashingDir == Vector2.zero)
+            if (IsBetween(joystick.Horizontal, -1f, -0.3f))
             {
-                dashingDir = new Vector2(transform.localScale.x, 0f);
+                horizontalMove = -1f * runSpeed;
+            }
+            else if (IsBetween(joystick.Horizontal, -0.3f, -0.1f))
+            {
+                horizontalMove = -0.3f * runSpeed;
+            }
+            else if (IsBetween(joystick.Horizontal, -0.1f, 0.1f))
+            {
+                horizontalMove = 0;
+            }
+            else if (IsBetween(joystick.Horizontal, 0.1f, 0.3f))
+            {
+                horizontalMove = 0.3f * runSpeed;
             }
             else
             {
-                //limit dash angle, if it goes upwards to much
-                float angle = Vector2.Angle(Vector2.right, dashingDir);
-                if (dashingDir.y > 0 && angle > maxDashUpAngle)
-                {
-                    float rad = Mathf.Deg2Rad * maxDashUpAngle;
-                    dashingDir = new Vector2(Mathf.Cos(rad) * transform.localScale.x, Mathf.Sin(rad)) *
-                                 dashingDir.magnitude;
-                }
+                horizontalMove = 1f * runSpeed;
             }
+        }
 
+        IEnumerator FreezeAndDash()
+        {
+            // Freeze player's position
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0f;
+            disableMovement = true;
+            
+            yield return new WaitForSeconds(0.15f);
+            
+            //remove freeze again
+            disableMovement = false;
+            rb.gravityScale = 1;
+
+            // Begin dashing
+            isDashing = true;
+            trailRenderer.emitting = true;
+            dashingDir = joystick.Direction;
+            camAnimator.SetTrigger("Dash");
+            dashingDir = new Vector2(transform.localScale.x, 0f); //only allow horizontal dashing
+            //CameraShake_Cinemachine.Shake(0.5f,0.6f,10f);
             StartCoroutine(StopDashing());
+        }
+        
+        
+        if (dashInput && canDash)
+        {
+            canDash = false;
+            StartCoroutine(FreezeAndDash());
         }
 
         if (isDashing)
         {
             rb.velocity = dashingDir.normalized * dashingVelocity;
-
+    
+            //Spawn after images
             if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
             {
                 PlayerAfterImagePool.Instance.GetFromPool();
                 lastImageXpos = transform.position.x;
             }
         }
+
 
         if (controller.m_Grounded && !isDashing)
         {
@@ -167,12 +174,12 @@ public class PlayerMovement : MonoBehaviour
     //called when jump button pressed
     public void JumpButtonPressed()
     {
-        if (isJumping) return;
+        if (isJumping || disableMovement) return;
         jump = true; //triggers the addforce next frame
         //isJumping = true;
         playerAnimator.SetTrigger("Jump");
         playerAnimator.SetBool("isJumping", isJumping);
-        camAnimator.SetTrigger("Jump");
+        //camAnimator.SetTrigger("Jump");
     }
 
     public void JumpButtonReleased()
