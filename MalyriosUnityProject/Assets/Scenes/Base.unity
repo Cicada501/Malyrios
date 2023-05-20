@@ -3296,6 +3296,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &367091816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 367091817}
+  - component: {fileID: 367091818}
+  m_Layer: 0
+  m_Name: PlayerAfterImagePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &367091817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367091816}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1386037421}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &367091818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367091816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32cd26b816174f44acae3cd1604f253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterImagePrefab: {fileID: 7415469776505719253, guid: 3e67151ca6355c74d96da6ac2f2e9530,
+    type: 3}
 --- !u!1 &368167927
 GameObject:
   m_ObjectHideFlags: 0
@@ -15264,7 +15310,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0796297, y: 1}
+    m_SensorSize: {x: 2.518868, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -15720,6 +15766,7 @@ Transform:
   - {fileID: 1504726106}
   - {fileID: 669727122}
   - {fileID: 914773979}
+  - {fileID: 367091817}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19724,11 +19771,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2560
   groundCheckPoint: {fileID: 189518967}
-  groundCheckRadius: 0.005
   disableMovement: 0
   dashingVelocity: 8
   dashingTime: 0.1
-  maxDashUpAngle: 20
 --- !u!114 &1975534761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19751,6 +19796,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 189518967}
   m_CeilingCheck: {fileID: 927187158}
   m_CrouchDisableCollider: {fileID: 0}
+  k_GroundedRadius: 0.03
   m_Grounded: 0
   m_FacingRight: 1
   OnLandEvent:
