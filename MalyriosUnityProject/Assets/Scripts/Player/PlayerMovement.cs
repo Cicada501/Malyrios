@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
-
+//https://www.youtube.com/watch?v=dwcT-Dch0bA
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController2D controller;
@@ -16,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius;
     public bool disableMovement;
+    private Queue<bool> wasGrounded = new Queue<bool>(5);  // Queue to store last 5 grounded states
 
+    //Dashing
     [SerializeField] private float dashingVelocity = 3f;
     [SerializeField] private float dashingTime = 0.5f;
     [SerializeField] private float maxDashUpAngle = 20f;
@@ -25,17 +29,25 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private TrailRenderer trailRenderer;
     private bool dashInput;
-    float initGravityScale;
+
+    private Animator camAnimator;
     
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
+        camAnimator = ReferencesManager.Instance.camera.GetComponent<Animator>();
+        for (int i = 0; i < 5; i++)  // Initialize the Queue with 5 entries of "false"
+        {
+            wasGrounded.Enqueue(false);
+        }
+
     }
 
     void Update()
     {
+        
         if (IsBetween(joystick.Horizontal, -1f, -0.3f))
         {
             horizontalMove = -1f*runSpeed;
@@ -61,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
             canDash = false;
             trailRenderer.emitting = true;
             dashingDir = joystick.Direction;
-            initGravityScale = rb.gravityScale;
+            camAnimator.SetTrigger("Landing");
             if (dashingDir == Vector2.zero)
             {
                 dashingDir = new Vector2(transform.localScale.x, 0f);
@@ -105,11 +117,11 @@ public class PlayerMovement : MonoBehaviour
         if (source >= min && source < max) return true;
         return false;
     }
-
+    
     private void FixedUpdate()
     {
         // Ground check
-        isJumping = !Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+        isJumping = !Physics2D.OverlapCircle(groundCheckPoint.position, controller.k_GroundedRadius, groundLayer);
         if (!disableMovement)
         {
             //if jump gets true call function once with jump=true, with that AddForce() will get called 
@@ -120,16 +132,25 @@ public class PlayerMovement : MonoBehaviour
         //Animation
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         playerAnimator.SetFloat("YVelocity", rb.velocity.y);
+
+        //Landing Moment
+        var groundedStatesArray = wasGrounded.ToArray();
+        if (groundedStatesArray[0] == false && groundedStatesArray[1] == false && groundedStatesArray[2] == false 
+            && groundedStatesArray[3] == true && groundedStatesArray[4] == true)
+        {
+            Landing();
+        }
+        
+        if (wasGrounded.Count >= 5)
+        {
+            wasGrounded.Dequeue();
+        }
+        wasGrounded.Enqueue(controller.m_Grounded);
     }
 
-    //Called in CharacterController Component of Player
-    public void OnLanding()
+    void Landing()
     {
-        if (rb.velocity.y < -0.1)
-        {
-            //isJumping = false;
-            playerAnimator.SetBool("isJumping", isJumping);
-        }
+        camAnimator.SetTrigger("Landing");
     }
 
     //called when jump button pressed

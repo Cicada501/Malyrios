@@ -1859,7 +1859,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189518966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003, y: -0.385, z: 0}
+  m_LocalPosition: {x: -0.003, y: -0.331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15264,7 +15264,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0637255, y: 1}
+    m_SensorSize: {x: 2.0796297, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -15573,7 +15573,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -3950155756251978992, guid: 9d4095236083cb9499a574bd3e208546, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19724,7 +19724,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2560
   groundCheckPoint: {fileID: 189518967}
-  groundCheckRadius: 0.03
+  groundCheckRadius: 0.005
   disableMovement: 0
   dashingVelocity: 8
   dashingTime: 0.1
