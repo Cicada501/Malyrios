@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             //camAnimator.SetTrigger("Dash");
             playerAnimator.SetTrigger("Dash");
             dashingDir = new Vector2(transform.localScale.x, 0f); //only allow horizontal dashing
-            //CameraShake_Cinemachine.Shake(0.5f,0.6f,10f);
+            CameraShake.Instance.ShakeCamera();
             StartCoroutine(StopDashing());
         }
         

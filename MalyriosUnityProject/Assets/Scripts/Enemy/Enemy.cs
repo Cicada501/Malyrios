@@ -201,13 +201,7 @@ public class Enemy : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
-
-    // used in animations
-    void Shake() //Not used yet?
-    {
-        CameraShake_Cinemachine.Shake(0.3f, 0.33f, 10f);
-    }
-
+    
     //Draw enemy attack Circle
     private void OnDrawGizmosSelected()
     {
