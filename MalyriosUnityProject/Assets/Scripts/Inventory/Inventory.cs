@@ -6,6 +6,7 @@ using Malyrios.Items;
 using SaveAndLoad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -21,7 +22,9 @@ public class Inventory : MonoBehaviour
     #endregion
     
     public bool isEmpty = true;
-
+    [SerializeField] private Button useButton;
+    public BaseItem activeItem = null;
+    public InventorySlot activeSlot = null;
     #region new inventory
 
     public List<BaseItem> Items = new List<BaseItem>();
@@ -32,9 +35,6 @@ public class Inventory : MonoBehaviour
     public event Action<BaseItem> OnActiveItemSet;
 
     private BaseWeapon testWeapon;
-
-    public BaseItem activeItem = null;
-    public InventorySlot activeSlot = null;
 
     #endregion
     
@@ -102,16 +102,19 @@ public class Inventory : MonoBehaviour
         if (activeItem == null || activeItem != item)
         {
             activeItem = item;
+            if (item.IsUsable)
+            {
+                useButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                useButton.gameObject.SetActive(false);
+            }
         }
         else
         {
             activeItem = null;
         }
-        
-    }
-
-    public void GetActiveItemSlot()
-    {
         
     }
 }

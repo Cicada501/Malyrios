@@ -15878,7 +15878,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1405976, y: 1}
+    m_SensorSize: {x: 2.0796297, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -20531,13 +20531,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  useButton: {fileID: 1077365594}
+  activeItem: {fileID: 0}
+  activeSlot: {fileID: 0}
   Items:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   ItemIDs: 
-  activeItem: {fileID: 0}
-  activeSlot: {fileID: 0}
 --- !u!114 &1975534755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20574,8 +20575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb42329319d759b4d8eec6c239902582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startFreezingTime: 0.1
-  endFreezingTime: 0.25
   weaponHolder: {fileID: 2094572536}
   meeleeSound1: {fileID: 343812575}
   meeleeSound2: {fileID: 1831517303}

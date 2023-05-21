@@ -17,11 +17,9 @@ MonoBehaviour:
   description: "Diese Rose strahlt eine dunkle energie aus. Ich wei\xDF nicht, ob
     es gut ist, wenn ich sie bei mir habe"
   icon: {fileID: 21300000, guid: 589ec3340373b054b99393711a2d98ae, type: 3}
-  sellPrice: 0
-  purchasePrice: 0
   dropChance: 0
   isStackable: 1
+  isUsable: 1
   maxStackAmount: 100
-  spriteType: 0
   itemType: 6
   itemPrefab: {fileID: 0}
