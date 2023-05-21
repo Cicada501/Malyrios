@@ -28,8 +28,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.1f;
     [SerializeField] LayerMask playerLayer = 0;
-    [SerializeField] TextMeshPro damageText = null;
-    [SerializeField] Transform damageTextSpawn = null;
+    [SerializeField] Transform damageTextSpawn;
+    [SerializeField] private GameObject damagePopupText;
 
     Rigidbody2D rb;
     Transform player;
@@ -70,9 +70,6 @@ public class Enemy : MonoBehaviour
 
     private void Update() //-------------------------------------------------
     {
-        //Damage Text rising up
-        damageText.transform.position += new Vector3(10f, 10f, 0f) * Time.deltaTime;
-
         //Set is Attacking if attack animation plays
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
@@ -106,10 +103,12 @@ public class Enemy : MonoBehaviour
         animator.SetFloat("distToPlayer", distToPlayer);
     } //----------------------END: Update -----------------------------------
 
-    void SpawnDamage(int damage)
+    IEnumerator ShowDamagePopup(int damage)
     {
-        damageText.SetText(damage.ToString());
-        Instantiate(damageText, damageTextSpawn.position, Quaternion.identity);
+        damagePopupText.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage;
+        var popupText = Instantiate(damagePopupText, damageTextSpawn.position, Quaternion.identity);
+        yield return new WaitForSeconds(1);
+        Destroy(popupText);
     }
 
     public void DealDamage(int damage) //used at animation event of enemy
@@ -123,7 +122,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        SpawnDamage(damage);
+        StartCoroutine(ShowDamagePopup(damage));
+        CameraShake.Instance.ShakeCamera(0.1f,0.05f);
 
         currentHealth -= damage;
         if (!isDead)
@@ -201,7 +201,7 @@ public class Enemy : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
-    
+
     //Draw enemy attack Circle
     private void OnDrawGizmosSelected()
     {

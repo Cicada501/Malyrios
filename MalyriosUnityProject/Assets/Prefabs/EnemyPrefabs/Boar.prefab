@@ -140,7 +140,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2005670121
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 14
   m_Sprite: {fileID: 388174682, guid: 84dd71cb0a89352429e342c6ee1d2071, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -201,9 +201,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
-  damageText: {fileID: 5239635712386450820, guid: 84c4b11787473e748994a74c5f9927f0,
-    type: 3}
   damageTextSpawn: {fileID: 3731416554277307805}
+  damagePopupText: {fileID: 7377629519318415158, guid: 955ee09356aac2e45b696dfe9154f5f9,
+    type: 3}
   facingRight: 0
   maxHealth: 150
   enemyType: 6
