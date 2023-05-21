@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         this.playerOrigionalColor = playerRenderer.color;
         this.barFillOrigionalColor = healthFill.color;
 
-        UIManager.Instance.SetMaxHealth(this.baseAttributes.MaxHealth);
+        //UIManager.Instance.SetMaxHealth(this.baseAttributes.MaxHealth);
 
         //regHealth = baseAttributes.MaxHealth;
 

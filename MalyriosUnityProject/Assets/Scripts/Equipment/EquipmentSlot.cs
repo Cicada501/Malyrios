@@ -132,6 +132,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnTap()
     {
+        Inventory.Instance.SetActiveItem(Item);
     }
 }
 

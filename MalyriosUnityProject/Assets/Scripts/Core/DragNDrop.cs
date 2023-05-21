@@ -56,7 +56,7 @@ public class DragNDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
         //Debug.Log("Pointer clicked with ID: " + eventData.pointerId);
         if (eventData.pointerId == 0) // id 0 is touch input
         {
-            //The IOnSlotTap is Eiter the EquipmentSlot or the InventorySlot
+            //The IOnSlotTap is eiter the EquipmentSlot or the InventorySlot
             this.transform.parent.GetComponent<IOnSlotTap>().OnTap();
         }
     }
