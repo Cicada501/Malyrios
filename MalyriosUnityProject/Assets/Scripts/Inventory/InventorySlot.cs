@@ -73,6 +73,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void OnTap()
     {
         Inventory.Instance.SetActiveItem(this.item);
+        Inventory.Instance.activeSlot = this;
     }
 
     /// <summary>
@@ -117,11 +118,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             RemoveItem();
         }
     }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="eventData"></param>
+    
     public void OnDrop(PointerEventData eventData)
     {
         if (this.item != null) return;

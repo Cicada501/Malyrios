@@ -59,5 +59,10 @@ public class ActiveItemWindow : MonoBehaviour
     {
         window.SetActive(false);
     }
+    
+    public void UseButtonPressed()
+    {
+        Inventory.Instance.activeSlot.UseItem();
+    }
 }
 

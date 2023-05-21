@@ -34,6 +34,7 @@ public class Inventory : MonoBehaviour
     private BaseWeapon testWeapon;
 
     public BaseItem activeItem = null;
+    public InventorySlot activeSlot = null;
 
     #endregion
     
@@ -106,6 +107,11 @@ public class Inventory : MonoBehaviour
         {
             activeItem = null;
         }
+        
+    }
+
+    public void GetActiveItemSlot()
+    {
         
     }
 }

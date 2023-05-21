@@ -54,11 +54,7 @@ namespace Malyrios.Items
         public GameObject ItemPrefab => this.itemPrefab;
 
         private PlayerHealth playerHealth;
-
-        void Awake()
-        {
-            
-        }
+        
 
         public BaseItem InitItem(int id,string name, string description, SpriteTypes spriteType, bool isStackable = false, int maxStackAmount = 0)
         {
@@ -75,14 +71,14 @@ namespace Malyrios.Items
 
         public void Use()
         {
-            PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+            PlayerHealth health = ReferencesManager.Instance.player.GetComponent<PlayerHealth>();
             if (this.itemName == "Red Flower")
             {
-                playerHealth.Heal(30);
+                health.Heal(30);
             }else if (this.itemName == "Schattenrose")
             {
                 //Debug.Log("Hit me!");
-                playerHealth.TakeDamage(50);
+                health.TakeDamage(50);
             }
         }
 
