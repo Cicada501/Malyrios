@@ -116,6 +116,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         {
             this.transform.GetChild(3).GetComponent<Image>().enabled = false;
             RemoveItem();
+            ActiveItemWindow.Instance.HideActiveItemInfo();
         }
     }
     

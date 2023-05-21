@@ -50,12 +50,22 @@ public class ActiveItemWindow : MonoBehaviour
     {
         window.SetActive(true);
 
-        nameText.text = item.ItemName;
-        descriptionText.text = item.Description;
-        itemImage.sprite = item.Icon;
+        if (item is BaseWeapon weapon)
+        {
+            nameText.text = weapon.ItemName;
+            descriptionText.text = weapon.GetDescription();
+            itemImage.sprite = weapon.Icon;
+        }
+        else
+        {
+            nameText.text = item.ItemName;
+            descriptionText.text = item.Description;
+            itemImage.sprite = item.Icon;
+        }
+        
     }
 
-    private void HideActiveItemInfo()
+    public void HideActiveItemInfo()
     {
         window.SetActive(false);
     }
