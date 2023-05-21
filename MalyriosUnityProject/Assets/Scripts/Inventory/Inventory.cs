@@ -33,6 +33,8 @@ public class Inventory : MonoBehaviour
 
     private BaseWeapon testWeapon;
 
+    public BaseItem activeItem = null;
+
     #endregion
     
     void PrintInventory()
@@ -95,5 +97,15 @@ public class Inventory : MonoBehaviour
     public void SetActiveItem(BaseItem item)
     {
         OnActiveItemSet?.Invoke(item);
+        
+        if (activeItem == null || activeItem != item)
+        {
+            activeItem = item;
+        }
+        else
+        {
+            activeItem = null;
+        }
+        
     }
 }

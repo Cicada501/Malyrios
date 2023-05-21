@@ -5,6 +5,7 @@ using UnityEngine;
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActiveItemWindow : MonoBehaviour
 {
@@ -21,26 +22,42 @@ public class ActiveItemWindow : MonoBehaviour
         Instance = this;
     }
 
-
+    [SerializeField] private GameObject window;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private Image itemImage;
 
     private void Start()
     {
-        Inventory.Instance.OnActiveItemSet += ShowActiveItemInfo;
+        Inventory.Instance.OnActiveItemSet += ChangeActiveItem;
+    }
+
+    void ChangeActiveItem(BaseItem item)
+    {
+        if (Inventory.Instance.activeItem == null)
+        {
+            ShowActiveItemInfo(item);
+        }else if (item.name == Inventory.Instance.activeItem.name)
+        {
+            HideActiveItemInfo();
+        }
+        else
+        {
+            ShowActiveItemInfo(item);
+        }
     }
     private void ShowActiveItemInfo(BaseItem item)
     {
-        this.gameObject.SetActive(true);
+        window.SetActive(true);
 
         nameText.text = item.ItemName;
         descriptionText.text = item.Description;
-        print("SHOWING ACTIVE ITEM INFO");
+        itemImage.sprite = item.Icon;
     }
 
-    public void HideActiveItemInfo()
+    private void HideActiveItemInfo()
     {
-        this.gameObject.SetActive(false);
+        window.SetActive(false);
     }
 }
 

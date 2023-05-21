@@ -74,7 +74,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void OnTap()
     {
         Inventory.Instance.SetActiveItem(this.item);
-        print("item tapped");
     }
 
     /// <summary>
@@ -119,29 +118,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             RemoveItem();
         }
         UIManager.Instance.HideTooltip();
-    }
-    
-    //On Hover Show item
-    // public void OnPointerEnter(PointerEventData eventData)
-    // {
-    //     if (this.item != null)
-    //     {
-    //         //UseItem();
-    //         UIManager.Instance.ShowTooltip(this.transform.position, this.item as IItemDescriber);
-    //     }
-    // }
-
-
-    /// <summary>
-    /// Hide tooltip
-    /// </summary>
-    /// <param name="eventData"></param>
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (this.item != null)
-        {
-            UIManager.Instance.HideTooltip();
-        }
     }
 
     /// <summary>
