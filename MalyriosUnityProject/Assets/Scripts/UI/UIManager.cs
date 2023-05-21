@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using Malyrios.Character;
-using TMPro;
 using UnityEngine;
-using Malyrios.Items;
 using UnityEngine.UI;
 
-namespace Malyrios.UI
+namespace UI
 {
     public class UIManager : MonoBehaviour
     {
@@ -16,13 +13,7 @@ namespace Malyrios.UI
         [SerializeField] private Slider healthBarSlider = null;
 
         #endregion
-
-        #region Serialize Fields Inventory UI
-
-        [Header("Inventory UI")]
-        [SerializeField] private GameObject tooltip = null;
-
-        #endregion
+        
 
         #region Singleton
 
@@ -60,28 +51,7 @@ namespace Malyrios.UI
 
         public void SetMaxHealth(float maxHealth)
         {
-            //this.healthBarSlider.maxValue = maxHealth;
-            //this.healthBarSlider.value = maxHealth;
-        }
-
-        public void ShowTooltip(Vector3 position, BaseItem item)
-        {
-            this.tooltip.SetActive(true);
-            this.tooltip.transform.position = position;
-            this.tooltip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{ item.ItemName }\n{ item.Description }";
-        }
-
-        public void ShowTooltip(Vector3 position, IItemDescriber description)
-        {
-            this.tooltip.SetActive(true);
-            this.tooltip.transform.position = position;
-            this.tooltip.GetComponentInChildren<Text>().supportRichText = true;
-            this.tooltip.GetComponentInChildren<Text>().text = description.GetDescription();
-        }
-
-        public void HideTooltip()
-        {
-            this.tooltip.SetActive(false);
+            throw new NotImplementedException();
         }
     }
 }

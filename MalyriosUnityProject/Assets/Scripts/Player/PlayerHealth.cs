@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Malyrios.Character;
 using Malyrios.Core;
-using Malyrios.UI;
-using UnityEngine;
+ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+ using UI;
  using UnityEngine.Serialization;
 
  [RequireComponent(typeof(BaseAttributes))]

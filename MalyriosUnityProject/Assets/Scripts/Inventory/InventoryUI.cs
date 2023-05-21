@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
 using Malyrios.Items;
-using Malyrios.UI;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
@@ -106,10 +105,5 @@ public class InventoryUI : MonoBehaviour
         inventoryUI.SetActive(!inventoryUI.activeSelf);
         equipmentUI.SetActive(!equipmentUI.activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
         activeItemInfo.SetActive(false);
-
-        if (!this.inventoryUI.activeSelf)
-        {
-            UIManager.Instance.HideTooltip();
-        }
     }
 }

@@ -12446,7 +12446,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 2041096302}
   inventoryUI: {fileID: 1931971255}
-  EquipmentUI: {fileID: 1851447006}
+  equipmentUI: {fileID: 1851447006}
+  activeItemInfo: {fileID: 116338914}
 --- !u!114 &821967881
 MonoBehaviour:
   m_ObjectHideFlags: 0

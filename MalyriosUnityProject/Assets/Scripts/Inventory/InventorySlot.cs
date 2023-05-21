@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Malyrios.Core;
 using Malyrios.Items;
-using Malyrios.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -117,7 +116,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             this.transform.GetChild(3).GetComponent<Image>().enabled = false;
             RemoveItem();
         }
-        UIManager.Instance.HideTooltip();
     }
 
     /// <summary>
