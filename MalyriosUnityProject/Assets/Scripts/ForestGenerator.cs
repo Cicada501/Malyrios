@@ -10,7 +10,7 @@ public class ForestGenerator : MonoBehaviour
     [SerializeField] private float minY;
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;
-    [SerializeField] private int orderInLayer;
+    [SerializeField] private int seed;
 
     private void Start()
     {
@@ -19,6 +19,7 @@ public class ForestGenerator : MonoBehaviour
 
     private void GenerateForest()
     {
+        Random.InitState(seed);
         forestWidth = forestWidth * widthMultiplier;
         Vector2 prevPosition = new Vector2( transform.position.x -forestWidth / 2, minY);
         var lastTree = false;
@@ -38,7 +39,9 @@ public class ForestGenerator : MonoBehaviour
             GameObject treePrefab = new GameObject("TreePrefab");
             SpriteRenderer spriteRenderer = treePrefab.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = treeSprite;
-            spriteRenderer.sortingOrder = orderInLayer;
+            spriteRenderer.sortingOrder = i;
+            spriteRenderer.sortingLayerName = "Background";
+
 
             GameObject tree = Instantiate(treePrefab, position, Quaternion.identity);
             tree.transform.SetParent(transform);
