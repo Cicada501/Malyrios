@@ -29,6 +29,8 @@ public class Inventory : MonoBehaviour
 
     public event Action<BaseItem> OnItemAdded;
     public event Action<BaseItem> OnItemRemoved;
+    public event Action<BaseItem> OnActiveItemSet;
+
     private BaseWeapon testWeapon;
 
     #endregion
@@ -90,4 +92,8 @@ public class Inventory : MonoBehaviour
         return occ;
     }
     
+    public void SetActiveItem(BaseItem item)
+    {
+        OnActiveItemSet?.Invoke(item);
+    }
 }

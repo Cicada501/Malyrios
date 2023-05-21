@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler, IOnSlotRightClick, ISlot
+public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 {
 
     [SerializeField] Text amountText = null;
@@ -69,34 +69,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         return false;
     }
 
-    /// <summary>
-    /// Remove item from inventory.
-    /// </summary>
-    public void OnRightMouseButtonClick()
+
+
+    public void OnTap()
     {
-        if (this.item == null) return;
-
-        SpawnItem.Spawn(item, this.playerTransform.position, 0.3f, -1.2f, 1.5f);
-        Inventory.Instance.Items.Remove(this.itemStack.Peek());
-        this.itemStack.Pop();
-        this.amountText.text = itemStack.Count.ToString();
-        Inventory.Instance.ItemIDs.Remove(item.ItemID);
-        if (this.itemStack.Count <= 0)
-        {
-            this.transform.GetChild(3).GetComponent<Image>().enabled = false;
-            RemoveItem();
-        }
-        UIManager.Instance.HideTooltip();
-    }
-
-    public void OnLeftMouseButtonClick()
-    {
-        if(item.name is "Red Flower" or "Mushroom")
-        {
-            
-            UseItem();
-        }
-
+        Inventory.Instance.SetActiveItem(this.item);
+        print("item tapped");
     }
 
     /// <summary>
@@ -142,21 +120,16 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
         UIManager.Instance.HideTooltip();
     }
-
-    /// <summary>
-    /// Show tooltip
-    /// </summary>
-    /// <param name="eventData"></param>
-
+    
     //On Hover Show item
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (this.item != null)
-        {
-            //UseItem();
-            UIManager.Instance.ShowTooltip(this.transform.position, this.item as IItemDescriber);
-        }
-    }
+    // public void OnPointerEnter(PointerEventData eventData)
+    // {
+    //     if (this.item != null)
+    //     {
+    //         //UseItem();
+    //         UIManager.Instance.ShowTooltip(this.transform.position, this.item as IItemDescriber);
+    //     }
+    // }
 
 
     /// <summary>
@@ -199,4 +172,5 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         eventData.pointerDrag.GetComponent<Image>().enabled = false;
         dragNDrop.MySlot.Item = null;
     }
+
 }

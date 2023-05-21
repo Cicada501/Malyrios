@@ -53,12 +53,11 @@ public class DragNDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        //Debug.Log("Pointer clicked with ID: " + eventData.pointerId);
+        if (eventData.pointerId == 0) // id 0 is touch input
         {
-            this.transform.parent.GetComponent<IOnSlotRightClick>().OnRightMouseButtonClick();
-        }else if(eventData.button == PointerEventData.InputButton.Left)
-        {
-            this.transform.parent.GetComponent<IOnSlotRightClick>().OnLeftMouseButtonClick();
+            //The IOnSlotTap is Eiter the EquipmentSlot or the InventorySlot
+            this.transform.parent.GetComponent<IOnSlotTap>().OnTap();
         }
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISlot
+public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 {
     #region Events
 
@@ -130,13 +130,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotRightClick, ISl
 
     
 
-    public void OnRightMouseButtonClick()
+    public void OnTap()
     {
-    }
-
-    public void OnLeftMouseButtonClick()
-    {
-        throw new NotImplementedException();
     }
 }
 
