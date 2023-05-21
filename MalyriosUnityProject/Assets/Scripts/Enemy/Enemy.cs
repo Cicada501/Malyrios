@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         StartCoroutine(ShowDamagePopup(damage));
-        CameraShake.Instance.ShakeCamera(0.1f,0.05f);
+        CameraShake.Instance.ShakeCamera(0.1f,0.02f);
 
         currentHealth -= damage;
         if (!isDead)

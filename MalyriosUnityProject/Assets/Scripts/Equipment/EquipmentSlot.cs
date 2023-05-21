@@ -93,6 +93,12 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         }
     }
 
+    public void InvokeChangeWeapon(BaseWeapon weapon)
+    {
+        AddWeapon(weapon);
+        OnWeaponChanged?.Invoke(weapon);
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;

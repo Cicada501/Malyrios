@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Malyrios.Items
 {
     [CreateAssetMenu]
-    public class BaseWeapon : BaseItem, IItemDescriber
+    public class BaseWeapon : BaseItem, IItemDescriber, IUsable
     {
         [Header("Weapon Properties")] 
         [SerializeField] private int minDamage;
@@ -29,6 +30,18 @@ namespace Malyrios.Items
                    $"Strength: {this.strength}\n" +
                    $"Crit chance: {this.critChance}%\n" +
                    $"Crit damage: {this.critDamage}%";
+        }
+
+        public override void Use()
+        {
+            var slots = GameObject.FindObjectsOfType<EquipmentSlot>();
+            foreach (var slot in slots)
+            {
+                if (slot.Item is BaseWeapon)
+                {
+                    slot.InvokeChangeWeapon(this);
+                }
+            }
         }
     }
 }

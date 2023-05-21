@@ -9,13 +9,10 @@ using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float startFreezingTime = 0.1f;
-    [SerializeField] float endFreezingTime = 0.2f;
+
 
     [SerializeField] private GameObject weaponHolder = null;
-
-
-
+    
     private bool enemyInDamagezone = false;
     private float timeForAnimPause = 0f;
     private float timeForAnimResume = 0f;

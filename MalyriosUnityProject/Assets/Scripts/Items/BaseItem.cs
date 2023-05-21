@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Malyrios.Items
 {
-    public class BaseItem : ScriptableObject
+    public class BaseItem : ScriptableObject, IUsable
     {
 
         public enum ItemTypes
@@ -25,6 +25,7 @@ namespace Malyrios.Items
         [SerializeField] protected Sprite icon = null;
         [SerializeField] protected float dropChance = 0;
         [SerializeField] protected bool isStackable = false;
+        [SerializeField] protected bool isUsable = false;
         [SerializeField] protected int maxStackAmount = 0;
         [SerializeField] protected ItemTypes itemType = 0;
         [SerializeField] protected GameObject itemPrefab = null;
@@ -38,13 +39,16 @@ namespace Malyrios.Items
         public Sprite Icon => this.icon;
         public float DropChance => this.dropChance;
         public bool IsStackable => this.isStackable;
+        public bool IsUsable => this.isUsable;
         public int MaxStackAmount => this.maxStackAmount;
         public ItemTypes ItemType => this.itemType;
         public GameObject ItemPrefab => this.itemPrefab;
         
 
-        public void Use()
+        public virtual void Use()
         {
+            
+            Debug.Log("wrong Use used");
             PlayerHealth health = ReferencesManager.Instance.player.GetComponent<PlayerHealth>();
             if (this.itemName == "Red Flower")
             {
@@ -57,4 +61,5 @@ namespace Malyrios.Items
         }
         
     }
+    
 }

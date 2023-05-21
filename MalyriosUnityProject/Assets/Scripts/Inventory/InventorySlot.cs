@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 {
-
     [SerializeField] Text amountText = null;
 
     private Stack<BaseItem> itemStack = new Stack<BaseItem>();
@@ -31,7 +30,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         this.playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         this.transform.GetChild(3).GetComponent<DragNDrop>().MySlot = this;
     }
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -46,10 +45,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         img.sprite = baseItem.Icon;
 
         child.GetComponent<DragNDrop>().MySlot = this;
-        
+
         this.itemStack.Push(baseItem);
     }
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -67,7 +66,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
         return false;
     }
-
 
 
     public void OnTap()
@@ -103,34 +101,36 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 RemoveItem();
             }
         }
-        
     }
 
     public void UseItem()
     {
-        item.Use();
-        this.itemStack.Pop();
-        this.amountText.text = itemStack.Count.ToString();
-        Inventory.Instance.ItemIDs.Remove(item.ItemID);
-        if (this.itemStack.Count <= 0)
+        if (item.IsUsable)
         {
-            this.transform.GetChild(3).GetComponent<Image>().enabled = false;
-            RemoveItem();
-            ActiveItemWindow.Instance.HideActiveItemInfo();
+            item.Use();
+            this.itemStack.Pop();
+            this.amountText.text = itemStack.Count.ToString();
+            Inventory.Instance.ItemIDs.Remove(item.ItemID);
+            if (this.itemStack.Count <= 0)
+            {
+                this.transform.GetChild(3).GetComponent<Image>().enabled = false;
+                RemoveItem();
+                ActiveItemWindow.Instance.HideActiveItemInfo();
+            }
         }
     }
-    
+
     public void OnDrop(PointerEventData eventData)
     {
         if (this.item != null) return;
 
         DragNDrop dragNDrop = eventData.pointerDrag.GetComponent<DragNDrop>();
-        
+
         SetItem(dragNDrop.MySlot.Item);
 
         if (dragNDrop.MySlot.ItemStack != null && dragNDrop.MySlot.ItemStack.Count > 0)
         {
-            for (int i = 0; i < dragNDrop.MySlot.ItemStack.Count - 1; i++) 
+            for (int i = 0; i < dragNDrop.MySlot.ItemStack.Count - 1; i++)
             {
                 AddItemToStack(dragNDrop.MySlot.ItemStack.Peek());
             }
@@ -144,5 +144,4 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         eventData.pointerDrag.GetComponent<Image>().enabled = false;
         dragNDrop.MySlot.Item = null;
     }
-
 }
