@@ -19,23 +19,6 @@ namespace Malyrios.Items
         public int Strength => this.strength;
         public float CritChance => this.critChance;
         public float CritDamage => this.critDamage;
-        
-        public BaseWeapon InitItem()
-        {
-            base.itemID = 1;
-            base.itemName = "Iron Sword";
-            base.icon = GetSprite(SpriteTypes.IronSword);
-            base.itemPrefab = GetItemPrefab(SpriteTypes.IronSword);
-            base.itemType = ItemTypes.Weapon;
-            this.minDamage = 10;
-            this.maxDamage = 20;
-            this.attackSpeed = 1.5f;
-            this.strength = 2;
-            this.critChance = 50f;
-            this.critDamage = 5.0f;
-
-            return this;
-        }
 
         public string GetDescription()
         {
