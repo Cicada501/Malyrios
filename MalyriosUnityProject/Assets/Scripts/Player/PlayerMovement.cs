@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 
 //https://www.youtube.com/watch?v=dwcT-Dch0bA
@@ -18,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheckPoint;
     public bool disableMovement;
-    private Queue<bool> wasGrounded = new Queue<bool>(5); // Queue to store last 5 grounded states
 
     //Dashing
     [SerializeField] private float dashingVelocity = 2f;
@@ -30,8 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool dashInput;
     private float lastImageXpos;
     private float distanceBetweenImages = 0.1f;
-
-    private Animator camAnimator;
+    
 
 
     void Start()
@@ -39,11 +34,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
-        camAnimator = ReferencesManager.Instance.camera.GetComponent<Animator>();
-        for (int i = 0; i < 5; i++) // Initialize the Queue with 5 entries of "false"
-        {
-            wasGrounded.Enqueue(false);
-        }
+
     }
 
     void Update()
@@ -150,26 +141,6 @@ public class PlayerMovement : MonoBehaviour
         //Animation
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         playerAnimator.SetFloat("YVelocity", rb.velocity.y);
-
-        //Landing Moment
-        var groundedStatesArray = wasGrounded.ToArray();
-        if (groundedStatesArray[0] == false && groundedStatesArray[1] == false && groundedStatesArray[2] == false
-            && groundedStatesArray[3] == true && groundedStatesArray[4] == true)
-        {
-            Landing();
-        }
-
-        if (wasGrounded.Count >= 5)
-        {
-            wasGrounded.Dequeue();
-        }
-
-        wasGrounded.Enqueue(controller.m_Grounded);
-    }
-
-    void Landing()
-    {
-        camAnimator.SetTrigger("Landing");
     }
 
     //called when jump button pressed
