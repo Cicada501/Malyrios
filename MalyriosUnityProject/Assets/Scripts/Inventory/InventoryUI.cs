@@ -12,7 +12,8 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] Transform itemsParent = null;
     [SerializeField] GameObject inventoryUI = null;
-    [SerializeField] GameObject EquipmentUI = null;
+    [SerializeField] GameObject equipmentUI = null;
+    [SerializeField] GameObject activeItemInfo = null;
     Inventory inventory;
 
     bool buttonPressed;
@@ -103,8 +104,8 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
-        EquipmentUI.SetActive(!EquipmentUI
-            .activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
+        equipmentUI.SetActive(!equipmentUI.activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
+        activeItemInfo.SetActive(false);
 
         if (!this.inventoryUI.activeSelf)
         {
