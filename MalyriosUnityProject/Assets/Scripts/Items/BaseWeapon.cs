@@ -32,7 +32,7 @@ namespace Malyrios.Items
                    $"Crit damage: {this.critDamage}%";
         }
 
-        public override void Use()
+        public override void ExecuteUsageEffect()
         {
             var slots = GameObject.FindObjectsOfType<EquipmentSlot>();
             foreach (var slot in slots)

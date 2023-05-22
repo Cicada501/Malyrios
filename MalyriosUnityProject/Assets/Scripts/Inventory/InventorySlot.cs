@@ -75,7 +75,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     }
 
     /// <summary>
-    /// 
+    /// This method removes the Item in the slot completely
     /// </summary>
     public void RemoveItem()
     {
@@ -102,12 +102,21 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             }
         }
     }
+    
+    public void DropItem()
+    {
+        if (this.item == null) return;
+
+        SpawnItem.Spawn(item, this.playerTransform.position, 0.3f, -1.2f, 1.5f);
+        RemoveSingleItem();
+        
+    }
 
     public void UseItem()
     {
         if (item.IsUsable)
         {
-            item.Use();
+            item.ExecuteUsageEffect();
             this.itemStack.Pop();
             this.amountText.text = itemStack.Count.ToString();
             Inventory.Instance.ItemIDs.Remove(item.ItemID);

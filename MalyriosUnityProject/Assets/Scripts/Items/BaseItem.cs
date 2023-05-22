@@ -45,7 +45,7 @@ namespace Malyrios.Items
         public GameObject ItemPrefab => this.itemPrefab;
         
 
-        public virtual void Use()
+        public virtual void ExecuteUsageEffect()
         {
             
             Debug.Log("wrong Use used");

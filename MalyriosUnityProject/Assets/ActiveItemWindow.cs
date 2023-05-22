@@ -74,5 +74,10 @@ public class ActiveItemWindow : MonoBehaviour
     {
         Inventory.Instance.activeSlot.UseItem();
     }
+
+    public void RemoveButtonPressed()
+    {
+        Inventory.Instance.activeSlot.DropItem();
+    }
 }
 

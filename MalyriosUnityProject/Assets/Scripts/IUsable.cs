@@ -1,5 +1,5 @@
 
 public interface IUsable
 {
-    void Use();
+    void ExecuteUsageEffect();
 }
