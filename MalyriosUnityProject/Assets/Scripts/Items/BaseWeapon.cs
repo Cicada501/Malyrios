@@ -37,7 +37,7 @@ namespace Malyrios.Items
             var slots = GameObject.FindObjectsOfType<EquipmentSlot>();
             foreach (var slot in slots)
             {
-                if (slot.Item is BaseWeapon)
+                if (slot.itemType == ItemTypes.Weapon)
                 {
                     slot.InvokeChangeWeapon(this);
                 }

@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0951208ce15da914fb1f480490559c35, type: 3}
-  m_Name: Zauberschriftrolle Schattensprung
+  m_Name: Schriftrolle des Lebens
   m_EditorClassIdentifier: 
   itemID: 34
-  itemName: Zauberschriftrolle Schattensprung
+  itemName: Schriftrolle des Lebens
   description: "Diese schriftrolle hat mir der J\xE4ger zum Dank daf\xFCr gegeben,
-    dass ich seinen Sohn gerettet habe"
+    dass ich seinen Sohn gerettet habe \\n Effekt Leben + 100"
   icon: {fileID: 21300000, guid: a4f8dbce8e69fb44cae1802909dc8388, type: 3}
-  sellPrice: 0
-  purchasePrice: 0
   dropChance: 0
   isStackable: 0
+  isUsable: 0
   maxStackAmount: 0
-  spriteType: 0
   itemType: 6
   itemPrefab: {fileID: 0}

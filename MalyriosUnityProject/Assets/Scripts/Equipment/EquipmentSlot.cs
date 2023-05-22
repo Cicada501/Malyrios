@@ -18,7 +18,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     #endregion
 
-    [SerializeField] private BaseItem.ItemTypes itemType = 0;
+    [SerializeField] public BaseItem.ItemTypes itemType = 0;
 
     private GameObject child;
     private GridLayoutGroup gridLayoutGroup;
