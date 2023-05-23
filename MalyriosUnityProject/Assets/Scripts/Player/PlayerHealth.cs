@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
         if (this.baseAttributes.CurrentHealth < this.baseAttributes.MaxHealth)
         {
-            this.baseAttributes.CurrentHealth += healthRegen;
+            this.baseAttributes.CurrentHealth += (int)healthRegen;
         }
 
         //Debug.Log("CurrentSpawnPoint: " + currentSpawnPoint);

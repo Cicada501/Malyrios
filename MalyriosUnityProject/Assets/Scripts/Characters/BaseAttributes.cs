@@ -29,7 +29,7 @@ namespace Malyrios.Character
         [SerializeField] private float balance = 0;
 
 
-        private float currentHealth;
+        private int currentHealth;
 
         /// <summary>
         /// Gets or sets the max health.
@@ -51,12 +51,11 @@ namespace Malyrios.Character
         /// Gets or sets the current health.
         /// Also fires an event OnCurrentHealthChanged.
         /// </summary>
-        public float CurrentHealth
+        public int CurrentHealth
         {
             get => this.currentHealth;
             set
             {
-
                 this.currentHealth = value;
                 OnCurrentHealthChanged?.Invoke(this.currentHealth, this.maxHealth);
                 OnBaseAttributeChanged?.Invoke(this);
@@ -161,7 +160,7 @@ namespace Malyrios.Character
                 this.balance = value;
                 OnBalanceChaned?.Invoke(this.balance);
                 OnBaseAttributeChanged?.Invoke(this);
-            } 
+            }
         }
 
         private void Awake()
@@ -186,6 +185,18 @@ namespace Malyrios.Character
             {
                 CurrentHealth = MaxHealth;
             }
+        }
+
+        public void LoadAttributes(BaseAttributes gameDataLoadedAttributes)
+        {
+            MaxHealth = gameDataLoadedAttributes.MaxHealth;
+            Mana = gameDataLoadedAttributes.Mana;
+            Strength = gameDataLoadedAttributes.Strength;
+            CritChance = gameDataLoadedAttributes.CritChance;
+            CritDamage = gameDataLoadedAttributes.CritDamage;
+            Haste = gameDataLoadedAttributes.Haste;
+            Energy = gameDataLoadedAttributes.Energy;
+            Balance = gameDataLoadedAttributes.Balance;
         }
     }
 }

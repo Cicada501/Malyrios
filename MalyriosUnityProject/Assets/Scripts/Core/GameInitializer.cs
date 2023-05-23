@@ -29,8 +29,6 @@ public class GameInitializer : MonoBehaviour
         if (!levelManager.spawnAtPlayerDebugLocation) {
             player.transform.position = gameData.LoadedPlayerPosition;
         }
-        //baseAttributes.SetHealth(gameData.LoadedCurrentHealth);
-        baseAttributes.CurrentHealth = gameData.LoadedCurrentHealth;
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
         GetComponent<Decision>().UpdateDecisionData(gameData.LoadedDecisionData);
         PlayerAttack.EquippedWeaponID = gameData.LoadedEquippedWeaponID;
