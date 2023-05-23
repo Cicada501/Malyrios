@@ -99,6 +99,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             {
                 this.transform.GetChild(3).GetComponent<Image>().enabled = false;
                 RemoveItem();
+                ActiveItemWindow.Instance.HideActiveItemInfo();
             }
         }
     }
@@ -114,18 +115,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void UseItem()
     {
+        if (this.item == null) return;
         if (item.IsUsable)
         {
             item.ExecuteUsageEffect();
-            this.itemStack.Pop();
-            this.amountText.text = itemStack.Count.ToString();
-            Inventory.Instance.ItemIDs.Remove(item.ItemID);
-            if (this.itemStack.Count <= 0)
-            {
-                this.transform.GetChild(3).GetComponent<Image>().enabled = false;
-                RemoveItem();
-                ActiveItemWindow.Instance.HideActiveItemInfo();
-            }
+            RemoveSingleItem();
         }
     }
 

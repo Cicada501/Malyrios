@@ -56,6 +56,7 @@ namespace Malyrios.Character
             get => this.currentHealth;
             set
             {
+
                 this.currentHealth = value;
                 OnCurrentHealthChanged?.Invoke(this.currentHealth, this.maxHealth);
                 OnBaseAttributeChanged?.Invoke(this);
@@ -179,9 +180,12 @@ namespace Malyrios.Character
             OnMaxHealthChanged?.Invoke(this.maxHealth);
         }
 
-        // public void SetHealth(float gameDataLoadedCurrentHealth)
-        // {
-        //     CurrentHealth = gameDataLoadedCurrentHealth;
-        // }
+        private void Update()
+        {
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
+        }
     }
 }

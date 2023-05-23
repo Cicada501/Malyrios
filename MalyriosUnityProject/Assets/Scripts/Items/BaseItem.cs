@@ -60,7 +60,6 @@ namespace Malyrios.Items
                 health.TakeDamage(50);
             }else if (this.itemName == "Schriftrolle des Lebens")
             {
-                Debug.Log("verwende Schriftrolle");
                 baseAttributes.MaxHealth += 100;
                 baseAttributes.CurrentHealth += 100;
             }

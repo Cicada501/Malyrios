@@ -50,6 +50,7 @@ namespace UI
 
         public void OnCurrentHealthChanged(float health, int maxHealth)
         {
+            print($"current health: {health}, max health: {maxHealth}");
             this.healthBarSlider.value = health / maxHealth;
         }
 
@@ -57,9 +58,7 @@ namespace UI
 
         public void OnMaxHealthChanged(int newMaxHealth)
         {
-            print($"chaniging Max Health to {ReferencesManager.Instance.player.GetComponent<BaseAttributes>().MaxHealth}");
-            //healthBarSlider.maxValue = newMaxHealth;
-            //healthBarSlider.value = newMaxHealth;
+            //Resize the current health rect (so that slider max value is the same size as the background)
             healthBarRect.sizeDelta = new Vector2(baseWidth * (newMaxHealth / 1000f), healthBarRect.sizeDelta.y);
             healthBarBackgroundRect.sizeDelta = new Vector2(baseWidth * (newMaxHealth / 1000f)+5, healthBarBackgroundRect.sizeDelta.y);
         }
