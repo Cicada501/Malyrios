@@ -11,8 +11,12 @@ namespace UI
 
         [Header("Health UI")]
         [SerializeField] private Slider healthBarSlider = null;
-
+        [SerializeField] private RectTransform healthBarRect;
+        [SerializeField] private RectTransform healthBarBackgroundRect;
+        private float baseWidth = 300;  
         #endregion
+        
+        
         
 
         #region Singleton
@@ -27,6 +31,7 @@ namespace UI
             }
 
             BaseAttributes.OnCurrentHealthChanged += OnCurrentHealthChanged;
+            BaseAttributes.OnMaxHealthChanged += OnMaxHealthChanged;
         }
 
         #endregion
@@ -36,6 +41,7 @@ namespace UI
         private void OnDestroy()
         {
             BaseAttributes.OnCurrentHealthChanged -= OnCurrentHealthChanged;
+            BaseAttributes.OnMaxHealthChanged -= OnMaxHealthChanged;
         }
 
         #endregion
@@ -49,9 +55,13 @@ namespace UI
 
         #endregion
 
-        public void SetMaxHealth(float maxHealth)
+        public void OnMaxHealthChanged(int newMaxHealth)
         {
-            throw new NotImplementedException();
+            print($"chaniging Max Health to {ReferencesManager.Instance.player.GetComponent<BaseAttributes>().MaxHealth}");
+            //healthBarSlider.maxValue = newMaxHealth;
+            //healthBarSlider.value = newMaxHealth;
+            healthBarRect.sizeDelta = new Vector2(baseWidth * (newMaxHealth / 1000f), healthBarRect.sizeDelta.y);
+            healthBarBackgroundRect.sizeDelta = new Vector2(baseWidth * (newMaxHealth / 1000f)+5, healthBarBackgroundRect.sizeDelta.y);
         }
     }
 }

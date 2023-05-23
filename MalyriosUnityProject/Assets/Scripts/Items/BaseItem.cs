@@ -1,4 +1,5 @@
 ﻿using System;
+using Malyrios.Character;
 using UnityEngine;
 
 namespace Malyrios.Items
@@ -48,8 +49,8 @@ namespace Malyrios.Items
         public virtual void ExecuteUsageEffect()
         {
             
-            Debug.Log("wrong Use used");
             PlayerHealth health = ReferencesManager.Instance.player.GetComponent<PlayerHealth>();
+            BaseAttributes baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
             if (this.itemName == "Red Flower")
             {
                 health.Heal(30);
@@ -57,6 +58,11 @@ namespace Malyrios.Items
             {
                 //Debug.Log("Hit me!");
                 health.TakeDamage(50);
+            }else if (this.itemName == "Schriftrolle des Lebens")
+            {
+                Debug.Log("verwende Schriftrolle");
+                baseAttributes.MaxHealth += 100;
+                baseAttributes.CurrentHealth += 100;
             }
         }
         

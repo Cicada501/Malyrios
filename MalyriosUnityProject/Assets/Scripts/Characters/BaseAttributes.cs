@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Items;
 using UnityEngine;
 
 namespace Malyrios.Character
@@ -18,7 +19,7 @@ namespace Malyrios.Character
         public static event Action<float> OnBalanceChaned;
         public static event Action<BaseAttributes> OnBaseAttributeChanged;
 
-        [SerializeField] private int maxHealth = 0;
+        [SerializeField] private int maxHealth = 1000;
         [SerializeField] private int mana = 0;
         [SerializeField] private int strength = 0;
         [SerializeField] private float critChance = 0;
@@ -39,6 +40,7 @@ namespace Malyrios.Character
             get => this.maxHealth;
             set
             {
+                print($"set of MaxHealth is used, value is: {value}");
                 this.maxHealth = value;
                 OnMaxHealthChanged?.Invoke(this.maxHealth);
                 OnBaseAttributeChanged?.Invoke(this);
@@ -163,9 +165,14 @@ namespace Malyrios.Character
 
         private void Awake()
         {
-            EquipmentSlot.OnItemSlotChanged += (item) => { Debug.Log("W: "); };
+            EquipmentSlot.OnItemSlotChanged += OnEquipmentSlotOnOnItemSlotChanged;
         }
-        
+
+        private void OnEquipmentSlotOnOnItemSlotChanged(BaseItem item)
+        {
+            Debug.Log("W: ");
+        }
+
         private void Start()
         {
             //CurrentHealth = this.maxHealth;

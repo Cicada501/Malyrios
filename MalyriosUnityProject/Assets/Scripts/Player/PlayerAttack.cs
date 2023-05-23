@@ -56,8 +56,7 @@ public class PlayerAttack : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
-        //EquippedWeaponID = SaveSystem.LoadInventory().equippedWeaponID;
-        print($"LoadedWeapon:{EquippedWeaponID}");
+        
         if (EquippedWeaponID!=0)
         {
             EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));
@@ -190,7 +189,6 @@ public class PlayerAttack : MonoBehaviour
         this.swordAnimator = go.GetComponent<Animator>();
         this.equippedWeapon = weapon;
         EquippedWeaponID = weapon.ItemID;
-        print("equipping weapon");
     }
     
     private void UnequipWeapon()
