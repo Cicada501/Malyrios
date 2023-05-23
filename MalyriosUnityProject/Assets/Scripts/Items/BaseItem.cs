@@ -62,6 +62,7 @@ namespace Malyrios.Items
             {
                 baseAttributes.MaxHealth += 100;
                 baseAttributes.CurrentHealth += 100;
+                StatsWindow.Instance.UpdateStatTexts();
             }
         }
         

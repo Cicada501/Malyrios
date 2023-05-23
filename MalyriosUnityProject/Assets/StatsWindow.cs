@@ -1,39 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using Malyrios.Character;
 using TMPro;
 using UnityEngine;
 
 public class StatsWindow : MonoBehaviour
 {
-        private BaseAttributes baseAttributes;
+    private BaseAttributes baseAttributes;
 
-        [SerializeField] private GameObject statsWindow;
+    [SerializeField] private GameObject statsWindow;
 
-        [SerializeField] private TextMeshProUGUI healthText;
-        [SerializeField] private TextMeshProUGUI energyText;
-        [SerializeField] private TextMeshProUGUI balanceText;
-        [SerializeField] private TextMeshProUGUI strengthText;
-        [SerializeField] private TextMeshProUGUI hasteText;
-        // Start is called before the first frame update
-        void Start()
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI energyText;
+    [SerializeField] private TextMeshProUGUI balanceText;
+    [SerializeField] private TextMeshProUGUI strengthText;
+
+    [SerializeField] private TextMeshProUGUI hasteText;
+
+    #region Singleton
+
+    public static StatsWindow Instance;
+
+    private void Awake()
+    {
+        if(Instance != null)
         {
-            baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
+            Debug.LogWarning("More than one instance of ActiveItemWindow found!");
+            return;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
+        Instance = this;
+    }
 
-        public void OnStatsButtonPressed()
+    #endregion
+    // Start is called before the first frame update
+    void Start()
+    {
+        baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
+    }
+
+
+    public void OnStatsButtonPressed()
+    {
+        statsWindow.SetActive(!statsWindow.activeSelf);
+        if (statsWindow.activeSelf)
         {
-            statsWindow.SetActive(!statsWindow.activeSelf);
-            if (statsWindow.activeSelf)
-            {
-                //GetCurrentStats();
-                //UpdateStats();
-            }
+            UpdateStatTexts();
         }
+    }
+
+    public void UpdateStatTexts()
+    {
+        healthText.text = baseAttributes.MaxHealth.ToString(CultureInfo.InvariantCulture);
+        energyText.text = baseAttributes.Energy.ToString(CultureInfo.InvariantCulture);
+        balanceText.text = baseAttributes.Balance.ToString(CultureInfo.InvariantCulture);
+        strengthText.text = baseAttributes.Strength.ToString(CultureInfo.InvariantCulture);
+        hasteText.text = baseAttributes.Haste.ToString(CultureInfo.InvariantCulture);
+    }
 }
