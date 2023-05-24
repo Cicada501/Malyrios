@@ -17568,43 +17568,112 @@ MonoBehaviour:
   wizzardDialogText1:
   - SentenceId: 0
     Sentences:
-    - 'Hey, im just an old Wizzard standing arround here, u can just ignore me '
+    - "Ah, endlich wach, junger Reisender. Du hast einen ziemlichen Sturz gehabt.
+      Wie f\xFChlst du dich?"
     Answers:
-    - LinkedToSentenceId: -1
-      AnswerDescription: Okay, bye!
-      Decision: 
     - LinkedToSentenceId: 1
-      AnswerDescription: Dont u have something better to do ?
+      AnswerDescription: Ein bisschen wackelig, aber sonst gut.
       Decision: 
   - SentenceId: 1
     Sentences:
-    - U know, im about 2000 years old ... i have done most i ever wanted to do. And
-      currently i just like being here
+    - Gut, gut. Ich bin Thrimbald, der Zauberer dieses Dorfes. Und du bist...?
     Answers:
     - LinkedToSentenceId: 2
-      AnswerDescription: Ah okay, but if u know lots about magic and stuff like this,
-        could you teach me some of it?
-      Decision: 
-    - LinkedToSentenceId: -1
-      AnswerDescription: Okay, i like beeing here too!
+      AnswerDescription: Baldor.
       Decision: 
   - SentenceId: 2
     Sentences:
-    - Well yea, what would you like to learn?
+    - "Ah, Baldor. Ein starkes Name. Nun, ich habe eine sehr wichtige Aufgabe f\xFCr
+      dich, wenn du dich dazu in der Lage f\xFChlst."
     Answers:
     - LinkedToSentenceId: 3
-      AnswerDescription: Dont know.. throwing fireballs or something like this
-      Decision: learn Fireball
+      AnswerDescription: "Ich h\xF6re zu."
+      Decision: 
   - SentenceId: 3
     Sentences:
-    - Oh well thats not too hard,Imagine a fire burning in your hand. so that you
-      can feel the heat burning your hand. At that exact moment, make this hand movement
-      and the fireball will appear.
+    - "Unsere Welt leidet unter der freigesetzten Magie der Steine der Macht. Nur
+      der Stein der Weisheit kann das Gleichgewicht wiederherstellen. Aber er wurde
+      in Splitter zerbrochen und \xFCber die Welt verteilt."
+    Answers:
+    - LinkedToSentenceId: 4
+      AnswerDescription: Und ich soll diese Splitter finden?
+      Decision: Option1
+    - LinkedToSentenceId: 10
+      AnswerDescription: "Warum wurde der Stein der Weisheit zerst\xF6rt?"
+      Decision: Option2
+  - SentenceId: 4
+    Sentences:
+    - "Genau, Baldor. Der erste Splitter liegt in einer H\xF6hle in der N\xE4he des
+      Dorfes. Es ist gef\xE4hrlich, aber ich glaube, du bist dazu in der Lage."
+    Answers:
+    - LinkedToSentenceId: 5
+      AnswerDescription: Ich werde mein Bestes tun.
+      Decision: 
+  - SentenceId: 5
+    Sentences:
+    - "Das ist alles, was ich verlange. M\xF6ge die Weisheit immer mit dir sein,
+      Baldor."
     Answers:
     - LinkedToSentenceId: -1
-      AnswerDescription: Thanks!
-      Decision: Wizzard2
+      AnswerDescription: "Ich werde dich nicht entt\xE4uschen, Thrimbald."
+      Decision: 
+  - SentenceId: 10
+    Sentences:
+    - "Es war der machthungrige Berater des K\xF6nigs, Jaraxes. Er begehrte die Macht
+      der Steine f\xFCr sich selbst, aber er konnte die Weisheit des letzten Steins
+      nicht ertragen. So zerst\xF6rte er ihn und st\xFCrzte unser Land ins Chaos."
+    Answers:
+    - LinkedToSentenceId: 11
+      AnswerDescription: "Und was ist mit K\xF6nig Balthasar passiert?"
+      Decision: 
+  - SentenceId: 11
+    Sentences:
+    - "K\xF6nig Balthasar lebt noch, aber er ist in der Minderheit. Jaraxes hat die
+      Macht der Steine genutzt, um den Thron zu stehlen und die Kontrolle \xFCber
+      unser Land zu \xFCbernehmen."
+    Answers:
+    - LinkedToSentenceId: 12
+      AnswerDescription: Warum hat niemand versucht, die Splitter des Steins der
+        Weisheit zu sammeln und das Gleichgewicht wiederherzustellen?
+      Decision: 
+  - SentenceId: 12
+    Sentences:
+    - "Viele haben es versucht, aber die Magie der Steine ist m\xE4chtig und ohne
+      den Stein der Weisheit ist sie kaum zu kontrollieren. Die meisten, die es versuchten,
+      wurden von der Magie \xFCberw\xE4ltigt, oder verloren ihren Verstand."
+    Answers:
+    - LinkedToSentenceId: 13
+      AnswerDescription: Und warum glaubst du, dass ich das schaffen kann?
+      Decision: 
+  - SentenceId: 13
+    Sentences:
+    - "Weil du anders bist, Baldor. In all den Jahren, in denen ich die Auswirkungen
+      der Steine studiert habe, habe ich etwas bemerkt. Jedes Lebewesen, wird von
+      ihrer Magie beeinflusst. Aber bei dir ... ich sehe nichts. Keinen Einfluss,
+      keine Ver\xE4nderung. Du scheinst immun gegen ihre Wirkung zu sein."
+    Answers:
+    - LinkedToSentenceId: 14
+      AnswerDescription: "Immun? Wie ist das m\xF6glich?"
+      Decision: 
+  - SentenceId: 14
+    Sentences:
+    - "Das wei\xDF ich nicht genau, aber ich vermute, dass es etwas mit deiner Herkunft
+      oder deiner Natur zu tun haben k\xF6nnte. Oder vielleicht ist es einfach Schicksal.
+      Aber eines ist sicher: Du bist unsere beste Hoffnung, das Gleichgewicht wiederherzustellen."
+    Answers:
+    - LinkedToSentenceId: 15
+      AnswerDescription: "Das ist eine gro\xDFe Verantwortung."
+      Decision: 
+  - SentenceId: 15
+    Sentences:
+    - "Das ist es, Baldor. Aber ich glaube, du bist dieser Aufgabe gewachsen. Geh
+      jetzt, und m\xF6ge die Weisheit immer mit dir sein."
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ich werde mein Bestes geben, Thrimbald.
+      Decision: 
   hunterDialog: {fileID: 0}
+  hunterDialogTextTest: []
   hunterDialogText4:
   - SentenceId: 0
     Sentences:
@@ -18201,7 +18270,7 @@ MonoBehaviour:
       type: 3}
     EntrancePoint: {fileID: 0}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 0
+  spawnAtPlayerDebugLocation: 1
 --- !u!114 &1386037427
 MonoBehaviour:
   m_ObjectHideFlags: 0
