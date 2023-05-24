@@ -71,6 +71,7 @@ public class Decision : MonoBehaviour
 
     //Hunter (Jack)
     public Dialogue hunterDialog;
+    public List<DialogueText> hunterDialogTextTest;
     public List<DialogueText> hunterDialogText4;
     public List<DialogueText> hunterDialogText3;
     public List<DialogueText> hunterDialogText2;
@@ -118,9 +119,36 @@ public class Decision : MonoBehaviour
         string filePath = Path.Combine(desktopPath, "hunterDialogText1.json");
         File.WriteAllText(filePath, json);
     }
+    
+    private void LoadFromJsonFile()
+    {
+        print("Loading dialog file");
+        // Pfad zur JSON-Datei
+        string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        string filePath = Path.Combine(desktopPath, "hunterDialogText1.json");
+
+        // Stellt sicher, dass die Datei existiert
+        if (!File.Exists(filePath))
+        {
+            Debug.LogError($"File does not exist: {filePath}");
+            return;
+        }
+
+        // Liest den Inhalt der Datei
+        string json = File.ReadAllText(filePath);
+
+        // Deserialisiert den JSON-Inhalt in ein DialogueTextListWrapper-Objekt
+        DialogueTextListWrapper wrapper = JsonUtility.FromJson<DialogueTextListWrapper>(json);
+
+        // Weist die geladenen Dialogtexte den Dialog-Komponenten zu
+        hunterDialogTextTest = wrapper.dialogueTexts;
+    }
+    
+    
 
     private void Start()
     {
+        LoadFromJsonFile();
         schattenRose = ItemDatabase.GetItem(30);
         werwolfBlut = ItemDatabase.GetItem(31);
         schirmlinge = ItemDatabase.GetItem(32);
