@@ -62,10 +62,12 @@ public class Decision : MonoBehaviour
     //fireball + wizard
     public GameObject fireballButton;
 
-    [Header("Gets set during runtime (in LevelManager), when HighForest gets loaded")]
+    #region DialogTexts
+
     //Wizard (Thrimbald)
     public Dialogue wizzardDialog;
-
+    public List<DialogueText> wizzardDialogText4;
+    public List<DialogueText> wizzardDialogText3;
     public List<DialogueText> wizzardDialogText2;
     public List<DialogueText> wizzardDialogText1;
 
@@ -89,6 +91,8 @@ public class Decision : MonoBehaviour
     public List<DialogueText> healerDialogText3;
     public List<DialogueText> healerDialogText2;
     public List<DialogueText> healerDialogText1;
+
+    #endregion
 
     //big rat
     [Header("Gets set during runtime (in LevelManager), when Cave gets loaded")]
@@ -155,6 +159,10 @@ public class Decision : MonoBehaviour
                     wizzardDialog.DialogueText = wizzardDialogText2;
                     break;
                 case 3:
+                    wizzardDialog.DialogueText = wizzardDialogText3;
+                    break;
+                case 4:
+                    wizzardDialog.DialogueText = wizzardDialogText4;
                     break;
             }
 
@@ -238,7 +246,6 @@ public class Decision : MonoBehaviour
             healerDialogText3[0].Answers.Add(ans);
             addedDialogAnswer2 = true;
         }
-        
     }
 
     public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
@@ -304,7 +311,7 @@ public class Decision : MonoBehaviour
             case "BringAntiWerewolfPotion":
                 HunterDialogState = 2;
                 HealerDialogState = 2;
-                SonDialogueState = 3;  //answer to give potin gets added, if inventory contains potion
+                SonDialogueState = 3; //answer to give potin gets added, if inventory contains potion
                 break;
             case "gettingIngredients":
                 HealerDialogState = 3;

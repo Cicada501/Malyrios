@@ -17554,16 +17554,128 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballButton: {fileID: 320686717}
   wizzardDialog: {fileID: 0}
+  wizzardDialogText4: []
+  wizzardDialogText3:
+  - SentenceId: 0
+    Sentences:
+    - "Ah, Baldor. Du bist zur\xFCckgekehrt. Und ich sp\xFCre etwas. Tr\xE4gst du
+      eine besondere Last bei dir?"
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: Ja, ich habe den Splitter gefunden! *zeig Splitter*
+      Decision: Option 1
+    - LinkedToSentenceId: 8
+      AnswerDescription: "Meinst du die ganzen Knochen der Ratten aus der H\xF6hle?"
+      Decision: Option 2
+  - SentenceId: 1
+    Sentences:
+    - Das ist er... Der Splitter des Steins der Weisheit. Du hast dich gut geschlagen!
+    Answers:
+    - LinkedToSentenceId: 2
+      AnswerDescription: Danke. Es war nicht einfach.
+      Decision: 
+    - LinkedToSentenceId: 10
+      AnswerDescription: "Die Ratten waren ziemlich st\xF6rrisch, aber letztendlich
+        habe ich ihn bekommen."
+      Decision: 
+  - SentenceId: 2
+    Sentences:
+    - Die wichtigen Dinge im Leben sind selten einfach. Doch du hast gezeigt, dass
+      du stark und mutig bist. Dies ist der erste Schritt zur Wiederherstellung des
+      Gleichgewichts in Aresios.
+    Answers:
+    - LinkedToSentenceId: 3
+      AnswerDescription: "Was ist der n\xE4chste Schritt?"
+      Decision: 
+  - SentenceId: 3
+    Sentences:
+    - "Die anderen Splitter sind \xFCber die Welt verstreut. Du musst sie alle finden.
+      Doch ich f\xFCrchte, die Aufgaben werden nur schwieriger."
+    Answers:
+    - LinkedToSentenceId: 4
+      AnswerDescription: Okay, ich bin bereit.
+      Decision: 
+  - SentenceId: 4
+    Sentences:
+    - "Das ist die Einstellung, die wir brauchen. Du gibst uns Hoffnung, Baldor.
+      Aber sei gewarnt, es gibt Kr\xE4fte, die dich aufhalten wollen."
+    Answers:
+    - LinkedToSentenceId: 5
+      AnswerDescription: Okay, dann werde ich mich ihnen stellen.
+      Decision: 
+  - SentenceId: 5
+    Sentences:
+    - "Das ist der Geist! M\xF6ge die Weisheit immer an deiner Seite sein, Baldor."
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: 
+      Decision: 
+  - SentenceId: 8
+    Sentences:
+    - Nun, die werden sicherlich einen guten Eintopf abgeben. Aber ich spreche von
+      dem, was du in deiner Tasche hast.
+    Answers:
+    - LinkedToSentenceId: 9
+      AnswerDescription: Ach das... ist das der Splitter, den du suchst?
+      Decision: 
+  - SentenceId: 9
+    Sentences:
+    - Ja, das ist er... ein Splitter des Steins der Weisheit. Du hast dich gut geschlagen!
+    Answers:
+    - LinkedToSentenceId: 10
+      AnswerDescription: "Die Ratten waren ziemlich st\xF6rrisch, aber letztendlich
+        habe ich ihn bekommen."
+      Decision: 
+    - LinkedToSentenceId: 2
+      AnswerDescription: Danke. Es war nicht einfach.
+      Decision: 
+  - SentenceId: 10
+    Sentences:
+    - Ich bin sicher, sie waren nicht die letzten Herausforderungen auf deinem Weg.
+      Die Reise zur Wiederherstellung von Aresios hat gerade erst begonnen.
+    Answers:
+    - LinkedToSentenceId: 11
+      AnswerDescription: Also gibt es noch mehr dieser Splitter?
+      Decision: 
+  - SentenceId: 11
+    Sentences:
+    - "Ja, und sie werden sicher nicht nur von Ratten bewacht. Aber ich habe Vertrauen
+      in deine F\xE4higkeiten."
+    Answers:
+    - LinkedToSentenceId: 12
+      AnswerDescription: Ich werde mein Bestes geben.
+      Decision: 
+  - SentenceId: 12
+    Sentences:
+    - "Das ist alles, was wir verlangen k\xF6nnen. Bleib wachsam, Baldor."
+    Answers:
+    - LinkedToSentenceId: -1
+      AnswerDescription: Ich bin immer bereit, Thrimbald.
+      Decision: 
   wizzardDialogText2:
   - SentenceId: 0
     Sentences:
-    - Oh hello! Have you tried out the Fireball?
+    - "Ah, Baldor. Zur\xFCck so schnell? Hast du den Splitter gefunden? "
+    Answers:
+    - LinkedToSentenceId: 1
+      AnswerDescription: Bis jetzt noch nicht.
+      Decision: 
+  - SentenceId: 1
+    Sentences:
+    - "Erinnere dich an deine Aufgabe, junger Reisender. Der Splitter des Steins
+      der Weisheit liegt in einer H\xF6hle nahe des Dorfes. Aber sei vorsichtig.
+      Es ist ein gef\xE4hrlicher Ort."
+    Answers:
+    - LinkedToSentenceId: 2
+      AnswerDescription: Ich werde weiter suchen.
+      Decision: 
+  - SentenceId: 2
+    Sentences:
+    - "Gut, gut. Die Welt von Aresios ist auf dich angewiesen, Baldor. Komm zur\xFCck,
+      wenn du den Splitter gefunden hast."
     Answers:
     - LinkedToSentenceId: -1
-      AnswerDescription: Yes!
-      Decision: 
-    - LinkedToSentenceId: -1
-      AnswerDescription: No
+      AnswerDescription: Okay, ich werde nicht aufgeben!
       Decision: 
   wizzardDialogText1:
   - SentenceId: 0
