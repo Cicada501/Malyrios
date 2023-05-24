@@ -105,6 +105,7 @@ public class Decision : MonoBehaviour
     private static BaseItem schattenRose;
     private static BaseItem werwolfBlut;
     private static BaseItem schirmlinge;
+    private static BaseItem splitterDerWeisheit;
 
 
     bool addedDialogAnswer = false;
@@ -130,6 +131,7 @@ public class Decision : MonoBehaviour
         schattenRose = ItemDatabase.GetItem(30);
         werwolfBlut = ItemDatabase.GetItem(31);
         schirmlinge = ItemDatabase.GetItem(32);
+        splitterDerWeisheit = ItemDatabase.GetItem(50);
     }
 
     private void Update()
@@ -246,6 +248,14 @@ public class Decision : MonoBehaviour
             healerDialogText3[0].Answers.Add(ans);
             addedDialogAnswer2 = true;
         }
+
+        if (Inventory.CountOccurrences(splitterDerWeisheit) > 0)
+        {
+            print("i got a splitter");
+            WizardDialogueState = 3;
+        }
+        
+        print($"WizardDialogState:{WizardDialogueState}");
     }
 
     public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,

@@ -12102,6 +12102,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fc8bf596b4f3ac44a74110e03eda795, type: 2}
   - {fileID: 11400000, guid: 39182ca46138bc1499e79b63d51e0524, type: 2}
   - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
+  - {fileID: 11400000, guid: 5ecd9ccc0da7e4949bfb1c9cf3a53e42, type: 2}
+  - {fileID: 11400000, guid: cd50e8d7deaf65d4e8fedd6b03d63779, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -17691,48 +17693,49 @@ MonoBehaviour:
     - Gut, gut. Ich bin Thrimbald, der Zauberer dieses Dorfes. Und du bist...?
     Answers:
     - LinkedToSentenceId: 2
-      AnswerDescription: Baldor.
+      AnswerDescription: Mein Name ist Baldor.
       Decision: 
   - SentenceId: 2
     Sentences:
-    - "Ah, Baldor. Ein starkes Name. Nun, ich habe eine sehr wichtige Aufgabe f\xFCr
+    - "Ah, Baldor. Ein starker Name. Nun, ich habe eine sehr wichtige Aufgabe f\xFCr
       dich, wenn du dich dazu in der Lage f\xFChlst."
     Answers:
     - LinkedToSentenceId: 3
-      AnswerDescription: "Ich h\xF6re zu."
+      AnswerDescription: Um was geht es?
       Decision: 
   - SentenceId: 3
     Sentences:
     - "Unsere Welt leidet unter der freigesetzten Magie der Steine der Macht. Nur
-      der Stein der Weisheit kann das Gleichgewicht wiederherstellen. Aber er wurde
-      in Splitter zerbrochen und \xFCber die Welt verteilt."
+      der Stein der Weisheit kann das Gleichgewicht wiederherstellen. Aber dieser
+      wurde in Splitter zerbrochen und \xFCber ganz Aresios verteilt."
     Answers:
     - LinkedToSentenceId: 4
       AnswerDescription: Und ich soll diese Splitter finden?
-      Decision: Option1
+      Decision: 
     - LinkedToSentenceId: 10
       AnswerDescription: "Warum wurde der Stein der Weisheit zerst\xF6rt?"
-      Decision: Option2
+      Decision: 
   - SentenceId: 4
     Sentences:
-    - "Genau, Baldor. Der erste Splitter liegt in einer H\xF6hle in der N\xE4he des
-      Dorfes. Es ist gef\xE4hrlich, aber ich glaube, du bist dazu in der Lage."
+    - "Ganz genau. Ich habe geh\xF6rt erste Splitter liegt in einer H\xF6hle in der
+      N\xE4he des Dorfes. Es soll dort riesige Ratten geben, aber ich glaube, du
+      bist dazu in der Lage."
     Answers:
     - LinkedToSentenceId: 5
-      AnswerDescription: Ich werde mein Bestes tun.
+      AnswerDescription: "Okay, denn werde ich mich mal in dieser H\xF6hle umschauen"
       Decision: 
   - SentenceId: 5
     Sentences:
-    - "Das ist alles, was ich verlange. M\xF6ge die Weisheit immer mit dir sein,
-      Baldor."
+    - "Super! Das ist alles, was ich verlange. M\xF6ge die Weisheit immer mit dir
+      sein, Baldor."
     Answers:
     - LinkedToSentenceId: -1
-      AnswerDescription: "Ich werde dich nicht entt\xE4uschen, Thrimbald."
-      Decision: 
+      AnswerDescription: "Ich werde dich nicht entt\xE4uschen, Thrimbald!"
+      Decision: Wizzard2
   - SentenceId: 10
     Sentences:
     - "Es war der machthungrige Berater des K\xF6nigs, Jaraxes. Er begehrte die Macht
-      der Steine f\xFCr sich selbst, aber er konnte die Weisheit des letzten Steins
+      der Malyrios f\xFCr sich selbst, aber er konnte die Weisheit des letzten Steins
       nicht ertragen. So zerst\xF6rte er ihn und st\xFCrzte unser Land ins Chaos."
     Answers:
     - LinkedToSentenceId: 11
@@ -17740,9 +17743,9 @@ MonoBehaviour:
       Decision: 
   - SentenceId: 11
     Sentences:
-    - "K\xF6nig Balthasar lebt noch, aber er ist in der Minderheit. Jaraxes hat die
-      Macht der Steine genutzt, um den Thron zu stehlen und die Kontrolle \xFCber
-      unser Land zu \xFCbernehmen."
+    - "K\xF6nig Balthasar versucht gegen Jaraxes vorzugehen, aber er ist in der Minderheit.
+      Jaraxes hat die Macht der Steine genutzt, um den Thron zu stehlen und die Kontrolle
+      \xFCber unser Land zu \xFCbernehmen."
     Answers:
     - LinkedToSentenceId: 12
       AnswerDescription: Warum hat niemand versucht, die Splitter des Steins der
@@ -17774,15 +17777,14 @@ MonoBehaviour:
       Aber eines ist sicher: Du bist unsere beste Hoffnung, das Gleichgewicht wiederherzustellen."
     Answers:
     - LinkedToSentenceId: 15
-      AnswerDescription: "Das ist eine gro\xDFe Verantwortung."
+      AnswerDescription: "Wow, das ist eine gro\xDFe Verantwortung."
       Decision: 
   - SentenceId: 15
     Sentences:
-    - "Das ist es, Baldor. Aber ich glaube, du bist dieser Aufgabe gewachsen. Geh
-      jetzt, und m\xF6ge die Weisheit immer mit dir sein."
+    - Das ist es, Baldor. Aber ich glaube, du bist dieser Aufgabe gewachsen.
     Answers:
-    - LinkedToSentenceId: -1
-      AnswerDescription: Ich werde mein Bestes geben, Thrimbald.
+    - LinkedToSentenceId: 4
+      AnswerDescription: "Okay! Das hei\xDFt ich muss diese Splitter Finden?"
       Decision: 
   hunterDialog: {fileID: 0}
   hunterDialogTextTest: []
