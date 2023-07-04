@@ -27,13 +27,19 @@ public class PlayerMovement : MonoBehaviour
     private float lastImageXpos;
     private float distanceBetweenImages = 0.1f;
     
-
+    //Sound
+    [SerializeField] private AudioSource[] landingSounds;
+    [SerializeField] private AudioSource jumpingSound;
+    [SerializeField] private AudioSource dashingSound;
+    [SerializeField] private AudioSource walkingSound;
+    
 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
+        controller.OnLandEvent.AddListener(PlayLandingSound);
 
     }
 
@@ -63,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        #region dash
         IEnumerator FreezeAndDash()
         {
             // Freeze player's position
@@ -92,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         {
             canDash = false;
             StartCoroutine(FreezeAndDash());
+            dashingSound.Play();
         }
 
         if (isDashing)
@@ -111,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
         {
             canDash = true;
         }
+        #endregion
     }
 
     private IEnumerator StopDashing()
@@ -119,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
         trailRenderer.emitting = false;
         isDashing = false;
     }
+    
 
 
     bool IsBetween(float source, float min, float max)
@@ -148,10 +158,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isJumping || disableMovement) return;
         jump = true; //triggers the addforce next frame
-        //isJumping = true;
+        jumpingSound.Play();
         playerAnimator.SetTrigger("Jump");
         playerAnimator.SetBool("isJumping", isJumping);
-        //camAnimator.SetTrigger("Jump");
     }
 
     public void JumpButtonReleased()
@@ -166,5 +175,17 @@ public class PlayerMovement : MonoBehaviour
     public void DashButtonReleased()
     {
         dashInput = false;
+    }
+
+    void PlayLandingSound()
+    {
+        print("LandingSound");
+        int randomIndex = Random.Range(0, landingSounds.Length);
+        landingSounds[randomIndex].Play();
+    }
+    
+    private void OnDestroy()
+    {
+        controller.OnLandEvent.RemoveListener(PlayLandingSound);
     }
 }

@@ -50,7 +50,7 @@ namespace UI
 
         public void OnCurrentHealthChanged(float health, int maxHealth)
         {
-            print($"current health: {health}, max health: {maxHealth}");
+            //print($"current health: {health}, max health: {maxHealth}");
             this.healthBarSlider.value = health / maxHealth;
         }
 

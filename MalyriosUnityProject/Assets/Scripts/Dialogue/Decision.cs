@@ -251,11 +251,11 @@ public class Decision : MonoBehaviour
 
         if (Inventory.CountOccurrences(splitterDerWeisheit) > 0)
         {
-            print("i got a splitter");
+            //print("i got a splitter");
             WizardDialogueState = 3;
         }
         
-        print($"WizardDialogState:{WizardDialogueState}");
+        //print($"WizardDialogState:{WizardDialogueState}");
     }
 
     public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
