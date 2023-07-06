@@ -136,6 +136,7 @@ public class Decision : MonoBehaviour
 
     private void Update()
     {
+        LearnedFireball = true;
         fireballButton.SetActive(LearnedFireball);
         if (LevelManager.CurrentLevelName == "Cave")
         {
