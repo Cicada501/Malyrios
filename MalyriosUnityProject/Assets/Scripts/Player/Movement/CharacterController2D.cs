@@ -33,6 +33,11 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Color groundCheckColor;
 	private Animator playerAnimator;
 
+	
+	private const int GroundedHistorySize = 10;  // The number of frames to keep track of
+	private bool[] groundedHistory;
+	
+	
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -42,6 +47,8 @@ public class CharacterController2D : MonoBehaviour
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
+		
+		groundedHistory = new bool[GroundedHistorySize];
 	}
 
 	private void Start()
@@ -51,11 +58,8 @@ public class CharacterController2D : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		bool wasGrounded = m_Grounded;
-		m_Grounded = false;
-		
-		print($"wasGrounded: {wasGrounded}");
 
+		m_Grounded = false;
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
@@ -64,10 +68,22 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject) //can be ignored, checks if player is ground
 			{
 				m_Grounded = true;
-				if (!wasGrounded && m_Rigidbody2D.velocity.y <= 0)
-					OnLandEvent.Invoke();
 			}
 		}
+		
+		// Shift the history array and add the new m_Grounded value
+		for (int i = GroundedHistorySize - 1; i > 0; i--)
+		{
+			groundedHistory[i] = groundedHistory[i - 1];
+		}
+		groundedHistory[0] = m_Grounded;
+		
+		//if player was in air for the last 3 frames but is on ground at the current frame => landing
+		if (!groundedHistory[1] && !groundedHistory[2] && !groundedHistory[3] && groundedHistory[0])
+		{
+			OnLandEvent.Invoke();
+		}
+		
 		
 		playerAnimator.SetBool("Grounded", m_Grounded);
 	}
