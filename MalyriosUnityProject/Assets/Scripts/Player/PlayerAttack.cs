@@ -122,7 +122,7 @@ public class PlayerAttack : MonoBehaviour
         {
             enemyInDamagezone = true;
             hitmarkerSound.Play();
-            cameraAnimator.SetTrigger("EnemyHit");
+            //cameraAnimator.SetTrigger("EnemyHit");
 
             foreach (Collider2D enemy in hitEnemies)
             {
@@ -141,11 +141,8 @@ public class PlayerAttack : MonoBehaviour
                     
                     //apply damage to enemy
                     enemy.GetComponent<Enemy>().TakeDamage(damage);
+                    enemy.GetComponent<Enemy>().PushBack();
                     
-                    //apply pushback to enemy
-                    var rb = enemy.GetComponent<Rigidbody2D>();
-                    var playerTransform = GetComponent<Transform>();
-                    rb.AddForce(new Vector2(playerTransform.localScale.x*3,3), ForceMode2D.Impulse); //multiply with localscale.x to always push away from player
                     
                     enemiesGotHit.Add(enemy.gameObject);
                 }

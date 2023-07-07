@@ -141,6 +141,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void PushBack()
+    {
+        //apply pushback to enemy
+        var rb = GetComponent<Rigidbody2D>();
+        var playerTransform = ReferencesManager.Instance.player.GetComponent<Transform>();
+        rb.AddForce(new Vector2(playerTransform.localScale.x*3,3), ForceMode2D.Impulse); //multiply with localscale.x to always push away from player
+
+    }
+
     void Die()
     {
         isDead = true;
