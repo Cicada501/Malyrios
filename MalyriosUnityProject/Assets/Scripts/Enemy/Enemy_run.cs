@@ -23,9 +23,29 @@ public class Enemy_run : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         if (enemy.canMove && rb != null)
         {
             Vector2 target = new Vector2(player.position.x, rb.position.y);
+            Vector2 direction = (target - rb.position).normalized;  // Get direction towards the player
+
+            float raycastLength = .4f;
+            Vector2 raycastStartPoint = rb.position + new Vector2(0f, 0.2f); // adjust this offset as needed
+            RaycastHit2D[] hits = Physics2D.RaycastAll(raycastStartPoint, direction, raycastLength);  // Perform the raycast
+
+            // Draw the ray for debugging purposes
+            Debug.DrawRay(raycastStartPoint, direction * raycastLength, Color.red);
+
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider.gameObject.CompareTag("Ground"))
+                {
+                    // If there is a wall in front of the enemy, stop movement
+                    animator.SetBool("inFrontOfWall",true);
+                    return;
+                }
+            }
+
             Vector2 newPos =
                 Vector2.MoveTowards(rb.position, target,
                     speed * Time.fixedDeltaTime); //last arg gives how much to move each update( how long the vector is)

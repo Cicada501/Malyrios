@@ -221,6 +221,7 @@ public class Enemy : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
+        animator.SetBool("inFrontOfWall",false); //if enemy was in front of wall and turns arround, he is not in front of a wall anymore
     }
 
     //Draw enemy attack Circle
