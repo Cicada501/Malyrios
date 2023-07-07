@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
 
     private EnemySpawner enemySpawner;
     [SerializeField] public EnemyTypes enemyType;
+    public bool canMove;
 
     public enum EnemyTypes //Needed to respawn the enemy that died
     {
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        canMove = true;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
 
@@ -147,7 +149,17 @@ public class Enemy : MonoBehaviour
         var rb = GetComponent<Rigidbody2D>();
         var playerTransform = ReferencesManager.Instance.player.GetComponent<Transform>();
         rb.AddForce(new Vector2(playerTransform.localScale.x*3,3), ForceMode2D.Impulse); //multiply with localscale.x to always push away from player
-
+        canMove = false;
+        StartCoroutine(EnableMovementWhenVelocityLow(0.1f)); // enable movement when velocity is low enough
+    }
+    
+    IEnumerator EnableMovementWhenVelocityLow(float threshold)
+    {
+        while (rb.velocity.magnitude > threshold)
+        {
+            yield return null;
+        }
+        canMove = true;
     }
 
     void Die()
