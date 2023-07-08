@@ -30,11 +30,10 @@ public class Enemy_run : StateMachineBehaviour
             Vector2 direction = (target - rb.position).normalized;  // Get direction towards the player
 
             float raycastLength = .4f;
-            Vector2 raycastStartPoint = rb.position + new Vector2(0f, 0.2f); // adjust this offset as needed
-            RaycastHit2D[] hits = Physics2D.RaycastAll(raycastStartPoint, direction, raycastLength);  // Perform the raycast
+            RaycastHit2D[] hits = Physics2D.RaycastAll(rb.position, direction, raycastLength);  // Perform the raycast
 
             // Draw the ray for debugging purposes
-            Debug.DrawRay(raycastStartPoint, direction * raycastLength, Color.red);
+            Debug.DrawRay(rb.position, direction * raycastLength, Color.red);
 
             foreach (RaycastHit2D hit in hits)
             {

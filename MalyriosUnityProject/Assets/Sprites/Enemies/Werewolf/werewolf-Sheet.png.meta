@@ -198,8 +198,8 @@ TextureImporter:
         y: 215
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,15 +212,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_1
+      name: werewolf-Sheet_11
       rect:
         serializedVersion: 2
         x: 73
-        y: 215
+        y: 129
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,15 +233,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_2
+      name: werewolf-Sheet_14
       rect:
         serializedVersion: 2
-        x: 146
-        y: 215
+        x: 292
+        y: 129
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,15 +254,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_3
+      name: werewolf-Sheet_26
       rect:
         serializedVersion: 2
-        x: 219
-        y: 215
+        x: 73
+        y: 0
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,15 +275,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_4
+      name: werewolf-Sheet_10
       rect:
         serializedVersion: 2
-        x: 292
-        y: 215
+        x: 0
+        y: 129
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,15 +296,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_5
+      name: werewolf-Sheet_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 172
+        x: 219
+        y: 215
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,15 +317,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_6
+      name: werewolf-Sheet_28
       rect:
         serializedVersion: 2
-        x: 73
-        y: 172
+        x: 219
+        y: 0
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,15 +338,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_7
+      name: werewolf-Sheet_2
       rect:
         serializedVersion: 2
         x: 146
-        y: 172
+        y: 215
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,15 +359,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_8
+      name: werewolf-Sheet_17
       rect:
         serializedVersion: 2
-        x: 219
-        y: 172
+        x: 146
+        y: 86
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -380,15 +380,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_9
+      name: werewolf-Sheet_18
       rect:
         serializedVersion: 2
-        x: 292
-        y: 172
+        x: 219
+        y: 86
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -401,15 +401,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_10
+      name: werewolf-Sheet_23
       rect:
         serializedVersion: 2
-        x: 0
-        y: 129
+        x: 219
+        y: 43
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -422,15 +422,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_11
+      name: werewolf-Sheet_24
       rect:
         serializedVersion: 2
-        x: 73
-        y: 129
+        x: 292
+        y: 43
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -450,8 +450,8 @@ TextureImporter:
         y: 129
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -471,8 +471,8 @@ TextureImporter:
         y: 129
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -485,15 +485,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_14
+      name: werewolf-Sheet_15
       rect:
         serializedVersion: 2
-        x: 292
-        y: 129
+        x: 0
+        y: 86
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -506,15 +506,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_15
+      name: werewolf-Sheet_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 86
+        x: 292
+        y: 172
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -534,8 +534,8 @@ TextureImporter:
         y: 86
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -548,15 +548,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_17
+      name: werewolf-Sheet_19
       rect:
         serializedVersion: 2
-        x: 146
+        x: 292
         y: 86
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -569,15 +569,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_18
+      name: werewolf-Sheet_4
       rect:
         serializedVersion: 2
-        x: 219
-        y: 86
+        x: 292
+        y: 215
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -590,15 +590,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_19
+      name: werewolf-Sheet_6
       rect:
         serializedVersion: 2
-        x: 292
-        y: 86
+        x: 73
+        y: 172
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -611,15 +611,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_20
+      name: werewolf-Sheet_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 43
+        x: 73
+        y: 215
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -632,15 +632,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_21
+      name: werewolf-Sheet_7
       rect:
         serializedVersion: 2
-        x: 73
-        y: 43
+        x: 146
+        y: 172
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -653,15 +653,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_22
+      name: werewolf-Sheet_21
       rect:
         serializedVersion: 2
-        x: 146
+        x: 73
         y: 43
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -674,15 +674,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_23
+      name: werewolf-Sheet_5
       rect:
         serializedVersion: 2
-        x: 219
-        y: 43
+        x: 0
+        y: 172
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -695,15 +695,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_24
+      name: werewolf-Sheet_22
       rect:
         serializedVersion: 2
-        x: 292
+        x: 146
         y: 43
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -723,8 +723,8 @@ TextureImporter:
         y: 0
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -737,15 +737,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_26
+      name: werewolf-Sheet_20
       rect:
         serializedVersion: 2
-        x: 73
-        y: 0
+        x: 0
+        y: 43
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -765,8 +765,8 @@ TextureImporter:
         y: 0
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -779,15 +779,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: werewolf-Sheet_28
+      name: werewolf-Sheet_8
       rect:
         serializedVersion: 2
         x: 219
-        y: 0
+        y: 172
         width: 73
         height: 43
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -811,34 +811,34 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       werewolf-Sheet_0: 21300000
-      werewolf-Sheet_11: 21300022
-      werewolf-Sheet_14: 21300028
-      werewolf-Sheet_26: 21300052
-      werewolf-Sheet_10: 21300020
-      werewolf-Sheet_3: 21300006
-      werewolf-Sheet_28: 21300056
-      werewolf-Sheet_2: 21300004
-      werewolf-Sheet_17: 21300034
-      werewolf-Sheet_18: 21300036
-      werewolf-Sheet_23: 21300046
-      werewolf-Sheet_24: 21300048
+      werewolf-Sheet_11: 21300002
+      werewolf-Sheet_14: 21300004
+      werewolf-Sheet_26: 21300006
+      werewolf-Sheet_10: 21300008
+      werewolf-Sheet_3: 21300010
+      werewolf-Sheet_28: 21300012
+      werewolf-Sheet_2: 21300014
+      werewolf-Sheet_17: 21300016
+      werewolf-Sheet_18: 21300018
+      werewolf-Sheet_23: 21300020
+      werewolf-Sheet_24: 21300022
       werewolf-Sheet_12: 21300024
       werewolf-Sheet_13: 21300026
-      werewolf-Sheet_15: 21300030
-      werewolf-Sheet_9: 21300018
+      werewolf-Sheet_15: 21300028
+      werewolf-Sheet_9: 21300030
       werewolf-Sheet_16: 21300032
-      werewolf-Sheet_19: 21300038
-      werewolf-Sheet_4: 21300008
-      werewolf-Sheet_6: 21300012
-      werewolf-Sheet_1: 21300002
-      werewolf-Sheet_7: 21300014
-      werewolf-Sheet_21: 21300042
-      werewolf-Sheet_5: 21300010
-      werewolf-Sheet_22: 21300044
+      werewolf-Sheet_19: 21300034
+      werewolf-Sheet_4: 21300036
+      werewolf-Sheet_6: 21300038
+      werewolf-Sheet_1: 21300040
+      werewolf-Sheet_7: 21300042
+      werewolf-Sheet_21: 21300044
+      werewolf-Sheet_5: 21300046
+      werewolf-Sheet_22: 21300048
       werewolf-Sheet_25: 21300050
-      werewolf-Sheet_20: 21300040
+      werewolf-Sheet_20: 21300052
       werewolf-Sheet_27: 21300054
-      werewolf-Sheet_8: 21300016
+      werewolf-Sheet_8: 21300056
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -92,7 +92,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5492206326589379496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.394, y: -0.507, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -193,7 +193,7 @@ MonoBehaviour:
   dropRareItemChance0: 50
   dropRareItemChance1: 40
   dropRareItemChance2: 10
-  attacksPerSecond: 1.5
+  attacksPerSecond: 1
   attackRange: 0.5
   nextAttackTime: 0
   attackPoint: {fileID: 5108618909233067101}
@@ -207,6 +207,7 @@ MonoBehaviour:
   facingRight: 0
   maxHealth: 150
   enemyType: 6
+  canMove: 0
 --- !u!50 &3882669429745213923
 Rigidbody2D:
   serializedVersion: 4
@@ -241,7 +242,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12833098, y: -0.5158176}
+  m_Offset: {x: 0.25, y: -0.89}
   serializedVersion: 2
   m_Radius: 1.0838822
 --- !u!114 &-6905400014619739453

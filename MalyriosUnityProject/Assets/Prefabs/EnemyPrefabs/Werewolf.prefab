@@ -167,6 +167,7 @@ MonoBehaviour:
   facingRight: 0
   maxHealth: 400
   enemyType: 1
+  canMove: 0
 --- !u!58 &975214413128175228
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -180,9 +181,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.115203634, y: 0.13267647}
+  m_Offset: {x: 0.1, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.11086784
+  m_Radius: 0.099028185
 --- !u!60 &975214413128175226
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -196,10 +197,10 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.21}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.73, y: 0.43}
     newSize: {x: 0.37, y: 0.34}
     adaptiveTilingThreshold: 0.5
@@ -208,8 +209,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.21598661, y: 0.17966843}
-      - {x: 0.113376476, y: 0.36033738}
+    - - {x: 0.1853048, y: 0.17989017}
+      - {x: 0.089911185, y: 0.3296501}
       - {x: 0.012067467, y: 0.17614365}
 --- !u!114 &7327470142007528879
 MonoBehaviour:
@@ -251,7 +252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975214413877605647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.156, y: 0.14, z: 0}
+  m_LocalPosition: {x: -0.256, y: -0.026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
