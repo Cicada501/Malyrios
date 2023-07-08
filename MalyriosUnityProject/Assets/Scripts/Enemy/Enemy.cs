@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         StartCoroutine(ShowDamagePopup(damage));
-        CameraShake.Instance.ShakeCamera(0.1f,0.02f);
+        CameraShake.Instance.ShakeCamera(0.1f, 0.02f);
 
         currentHealth -= damage;
         if (!isDead)
@@ -148,17 +148,22 @@ public class Enemy : MonoBehaviour
         //apply pushback to enemy
         var rb = GetComponent<Rigidbody2D>();
         var playerTransform = ReferencesManager.Instance.player.GetComponent<Transform>();
-        rb.AddForce(new Vector2(playerTransform.localScale.x*3,3), ForceMode2D.Impulse); //multiply with localscale.x to always push away from player
+        rb.AddForce(new Vector2(playerTransform.localScale.x * 3, 3),
+            ForceMode2D.Impulse); //multiply with localscale.x to always push away from player
         canMove = false;
-        StartCoroutine(EnableMovementWhenVelocityLow(0.1f)); // enable movement when velocity is low enough
+        if (!isDead)
+        {
+            StartCoroutine(EnableMovementWhenVelocityLow(0.1f)); // enable movement when velocity is low enough. 
+        }
     }
-    
+
     IEnumerator EnableMovementWhenVelocityLow(float threshold)
     {
         while (rb.velocity.magnitude > threshold)
         {
             yield return null;
         }
+
         canMove = true;
     }
 
@@ -221,7 +226,8 @@ public class Enemy : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
-        animator.SetBool("inFrontOfWall",false); //if enemy was in front of wall and turns arround, he is not in front of a wall anymore
+        animator.SetBool("inFrontOfWall",
+            false); //if enemy was in front of wall and turns arround, he is not in front of a wall anymore
     }
 
     //Draw enemy attack Circle
