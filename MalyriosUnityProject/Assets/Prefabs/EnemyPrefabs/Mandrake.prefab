@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlopeAngle: 45
-  climbingGravityScale: 0.4
+  climbingGravityScale: 4
   fallingGravityScale: 4
-  defaultGravityScale: 1
+  defaultGravityScale: 4
 --- !u!61 &2784073068375728789
 BoxCollider2D:
   m_ObjectHideFlags: 0
