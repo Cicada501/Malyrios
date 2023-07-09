@@ -2424,7 +2424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189518966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003, y: -0.331, z: 0}
+  m_LocalPosition: {x: 0, y: -0.331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22735,7 +22735,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 189518967}
   disableMovement: 0
   dashingVelocity: 8
-  dashingTime: 0.1
+  dashingTime: 0.2
   landingSounds:
   - {fileID: 1238383922}
   - {fileID: 932881074}
@@ -22767,7 +22767,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 189518967}
   m_CeilingCheck: {fileID: 927187158}
   m_CrouchDisableCollider: {fileID: 0}
-  k_GroundedRadius: 0.03
+  k_GroundedRadius: 0.1
   m_Grounded: 0
   m_FacingRight: 1
   OnLandEvent:
