@@ -35,6 +35,8 @@ public class Decision : MonoBehaviour
         }
     }
 
+
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -56,6 +58,7 @@ public class Decision : MonoBehaviour
     public static int HunterDialogState = 1;
     public static int HealerDialogState = 1;
     public static bool SmallWerewolfAttack;
+    public static int WizardDialogueState = 1;
 
     //Add Initialize() Method, that updates all Game States to the loaded values(e.g. Enable/Disable Gameobject, Show UI Button,...)
 

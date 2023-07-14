@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using NPCs;
 using UnityEngine.UI;
 
 namespace Malyrios.Dialogue
@@ -16,6 +17,7 @@ namespace Malyrios.Dialogue
         [SerializeField] private GameObject answerButton = null;
         [SerializeField] private Transform content = null;
         [SerializeField] private TextMeshProUGUI sentence = null;
+        [SerializeField] private DialogEvents dialogEvents;
         private bool isWriting = false;
 
         #endregion
@@ -109,7 +111,11 @@ namespace Malyrios.Dialogue
                 GameObject go = Instantiate(this.answerButton, this.content);
                 go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"> {answer.AnswerDescription}";
                 go.GetComponent<Button>().onClick.AddListener(() => GetNextSentences(answer.LinkedToSentenceId));
-                go.GetComponent<Button>().onClick.AddListener(() => Decision.SetDecision(answer.Decision));
+                // Anstatt direkt die Entscheidung zu setzen, rufe den Event Trigger auf dem NPCManager auf
+                go.GetComponent<Button>().onClick.AddListener(() => dialogEvents.FireEvent(answer.Decision));
+                // Hier könntest du auch den NPC-Zustand basierend auf der Entscheidung aktualisieren
+                // Zum Beispiel:
+                // if (answer.Decision == "Wizzard2") npcManager.UpdateNPCState(currentNPC, 2);
             }
         }
 

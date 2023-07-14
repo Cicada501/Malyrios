@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogEvents : MonoBehaviour
+public class DialogEvents
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private static GameObject fireballButton;
 
-    // Update is called once per frame
-    void Update()
+    public void FireEvent(string eventName)
     {
-        
+        switch (eventName)
+        {
+            case "learn Fireball":
+                PlayerData.LearnedFireball = true;
+                fireballButton.SetActive(true); //still needs to be set again, after loading, where to do this?
+                break;
+            case "BigRatAttack":
+                // Code, um das "BigRatAttack" Event auszulösen
+                break;
+            // Weitere Fälle...
+        }
     }
 }

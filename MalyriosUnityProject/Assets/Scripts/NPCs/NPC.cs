@@ -1,21 +1,17 @@
+using System.Collections.Generic;
 using Malyrios.Dialogue;
 using UnityEngine;
 
 namespace NPCs
 {
-    public class NPC : MonoBehaviour
+    [CreateAssetMenu(fileName = "New NPC", menuName = "RPG/NPC")]
+    public class NPC : ScriptableObject
     {
         public string NpcName { get; set; }
-        public int CurrentNpcState { get; set; }
-        public Dialogue CurrentNpcDialog { get; set; }
+        public int currentDialogueState;
+        //public Dialogue CurrentNpcDialog { get; set; }
+        public Dictionary<int, Dialogue> DialogueByState { get; set; }
         
-        private Dialogue[] dialogues;
-    
-        public void UpdateDialogAndState(int State, int DialogID)
-        {
-            //Set CurrentNpcDialog so that it fits to CurrentNpcState
-    
-        }
     }
 }
 

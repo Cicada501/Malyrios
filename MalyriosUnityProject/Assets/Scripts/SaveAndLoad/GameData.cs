@@ -139,6 +139,8 @@ public class GameData : MonoBehaviour
             baseAttributes.Energy = 0;
             baseAttributes.Balance = 0;
         }
+        
+        //Load PlayerData, set fireballButton.Active to loaded value
     }
 
     private void OnApplicationQuit()

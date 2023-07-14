@@ -39,10 +39,23 @@ class PlayerData {
     +...
 }
 
+class DialogueManager{
+    +Dialogue dialogueText
+}
+
+class DialogueTrigger{
+
+}
+
+class IInteractable{
+}
+
 NPC "1" *-- "1" NPCData : Contains
+IInteractable "1" --> "1" DialogueTrigger : Triggers
+DialogueTrigger "1" *-- "1" DialogueManager : Uses
 NPCManager "1" *-- "1..4" NPC : Manages
-NPCManager "1" *-- "1..4" NPCData : Saves
-NPCManager ..> DialogEvents : Triggers events
+NPCManager "1" *-- "1..4" NPCData : Saves all NPCs
+DialogueManager ..> DialogEvents : Triggers events
 DialogEvents --> PlayerData : Modifies
 
 @enduml
