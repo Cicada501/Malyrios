@@ -52,7 +52,7 @@ public class NPCManager : MonoBehaviour
     private void Start()
     {
         print("NPC Manager start called");
-        //wizard.CurrentDialogState = 1;
+        wizard.CurrentDialogState = 1;
     }
 
     public List<NPCData> SaveNPCs()

@@ -12016,6 +12016,7 @@ MonoBehaviour:
     type: 3}
   content: {fileID: 328885544}
   sentence: {fileID: 833461115}
+  dialogEvents: {fileID: 0}
 --- !u!114 &639142911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14868,6 +14869,52 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 741711031}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1049189815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049189816}
+  - component: {fileID: 1049189817}
+  m_Layer: 13
+  m_Name: DialogEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049189816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049189815}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1386037421}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049189817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049189815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9234e385e7a415c478e67ca7a227c627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballButton: {fileID: 320686717}
+  npcManager: {fileID: 1386037429}
 --- !u!1 &1050823600
 GameObject:
   m_ObjectHideFlags: 0
@@ -18147,6 +18194,7 @@ Transform:
   - {fileID: 669727122}
   - {fileID: 914773979}
   - {fileID: 367091817}
+  - {fileID: 1049189816}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21218,6 +21266,7 @@ MonoBehaviour:
   answerButton: {fileID: 0}
   content: {fileID: 0}
   sentence: {fileID: 0}
+  dialogEvents: {fileID: 1049189817}
 --- !u!4 &1690701659
 Transform:
   m_ObjectHideFlags: 0

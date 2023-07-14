@@ -29,15 +29,14 @@ namespace NPCs
             }
             set
             {
-                print("wizard dialog was set(1)");
+               
                 currentDialogState = value;
                 // Sicherstellen, dass der Index innerhalb der gültigen Bereichsgrenzen liegt
                 if (currentDialogState >= 0 && currentDialogState <= allDialogs.Count)
                 {
                     // Setzen Sie currentDialogText auf den DialogText am Index currentDialogueState.
-                    currentDialog = allDialogs[currentDialogState].dialogTexts; // hier nehmen wir an, dass jeder Dialog mindestens einen DialogueText hat.
+                    currentDialog = allDialogs[currentDialogState-1].dialogTexts; // hier nehmen wir an, dass jeder Dialog mindestens einen DialogueText hat.
                     gameObject.GetComponent<Dialogue>().DialogueText = currentDialog;
-                    print("wizard dialog was set(2)");
                 }
             }
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Malyrios.Items;
 using UnityEngine;
 
-public class DialogEvents
+public class DialogEvents : MonoBehaviour
 {
     
     
@@ -88,6 +88,8 @@ public class DialogEvents
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(1));
                 npcManager.son.gameObject.SetActive(false);
                 break;
+            default:
+                return;
         }
         }
     }
