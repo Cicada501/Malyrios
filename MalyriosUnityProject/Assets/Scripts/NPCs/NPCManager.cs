@@ -49,17 +49,14 @@ public class NPCManager : MonoBehaviour
     public NPC caveRat;
 
 
-    private void Start()
-    {
-        print("NPC Manager start called");
-        //wizard.CurrentDialogState = 1;
-    }
-
     public NPCDataList SaveNPCs()
     {
         var npcDataList = new List<NPCData>();
-
+       
         npcDataList.Add(new NPCData(wizard));
+        npcDataList.Add(new NPCData(healer));
+        npcDataList.Add(new NPCData(hunter));
+        npcDataList.Add(new NPCData(son));
         return new NPCDataList(npcDataList);
     }
 
@@ -71,7 +68,10 @@ public class NPCManager : MonoBehaviour
         if (npcDataList.Count == 0)
         {
             wizard.CurrentDialogState = 1;
-            print("wizard dialog state set");
+            healer.CurrentDialogState = 1;
+            hunter.CurrentDialogState = 1;
+            son.CurrentDialogState = 1;
+            print(" dialog states set");
         }
         // Lade die Daten jedes NPCs
         foreach (var npcData in npcDataList)
