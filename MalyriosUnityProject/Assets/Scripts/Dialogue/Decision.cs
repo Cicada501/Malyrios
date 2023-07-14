@@ -170,7 +170,7 @@ public class Decision : MonoBehaviour
                 case 4:
                     wizzardDialog.DialogueText = wizzardDialogText4;
                     break;
-            }*/
+            }
 
             switch (HunterDialogState)
             {
@@ -227,7 +227,7 @@ public class Decision : MonoBehaviour
             {
                 smallWerewolfNpc.SetActive(true);
                 smallWerewolfEnemy.SetActive(false);
-            }
+            }*/
         }
 
 

@@ -17749,7 +17749,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.146245, y: 1}
+    m_SensorSize: {x: 2.0796297, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -19078,10 +19078,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360f8e6e2d742cc46a9b3989e40339e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Healer: {fileID: 0}
-  Hunter: {fileID: 0}
-  Son: {fileID: 0}
-  Wizard: {fileID: 11400000, guid: c36d9432e5207d84f9395609b13cddae, type: 2}
+  healer: {fileID: 0}
+  hunter: {fileID: 0}
+  son: {fileID: 0}
+  wizard: {fileID: 0}
+  caveRat: {fileID: 0}
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0

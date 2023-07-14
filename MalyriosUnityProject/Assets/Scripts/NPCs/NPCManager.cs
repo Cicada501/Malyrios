@@ -51,19 +51,8 @@ public class NPCManager : MonoBehaviour
 
     private void Start()
     {
-        wizard.CurrentDialogState = 1;
-    }
-
-    private void Update()
-    {
-        if (LevelManager.CurrentLevelName == "Cave")
-        {
-
-        }
-        else if (LevelManager.CurrentLevelName == "HighForest")
-        {
-            wizard = 
-        }
+        print("NPC Manager start called");
+        //wizard.CurrentDialogState = 1;
     }
 
     public List<NPCData> SaveNPCs()

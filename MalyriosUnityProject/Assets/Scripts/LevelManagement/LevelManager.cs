@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Malyrios.Dialogue;
+using NPCs;
 using UnityEngine;
 
 [Serializable]
@@ -38,24 +39,25 @@ public class LevelManager : MonoBehaviour
         CurrentLevelName = levelName;
         
         //get the Decision script (is on the same GameObject), to assign the 
-        var decisionManager = GetComponent<Decision>();
+        var npcManager = GetComponent<NPCManager>();
         
         //Set the variables of Decision.cs depending on What level is loaded
         if (levelName == "HighForest")
         {
             //GameObject wizzard = currentLevel.transform.Find("NPCs/Wizzard").gameObject;
-            decisionManager.wizzardDialog = currentLevel.transform.Find("NPCs/Wizzard").GetComponent<Dialogue>();
-            decisionManager.hunterDialog = currentLevel.transform.Find("NPCs/Jack").GetComponent<Dialogue>();
-            decisionManager.sonDialog = currentLevel.transform.Find("NPCs/Tommy").GetComponent<Dialogue>();
-            decisionManager.healerDialog = currentLevel.transform.Find("NPCs/Asmilda").GetComponent<Dialogue>();
-            decisionManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject;
-            decisionManager.smallWerewolfEnemy = currentLevel.transform.Find("Enemies/smallWerewolfEnemy").gameObject;
+            npcManager.wizard = currentLevel.transform.Find("NPCs/Wizzard").GetComponent<NPC>();
+            npcManager.hunter = currentLevel.transform.Find("NPCs/Jack").GetComponent<NPC>();
+            npcManager.son = currentLevel.transform.Find("NPCs/Tommy").GetComponent<NPC>();
+            npcManager.healer = currentLevel.transform.Find("NPCs/Asmilda").GetComponent<NPC>();
+            //npcManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject; //instead of managing it like this, now add logic in NPC script to say, if isAggressive, then enemy object gets activated and NPC object disabled
+            //npcManager.smallWerewolfEnemy = currentLevel.transform.Find("Enemies/smallWerewolfEnemy").gameObject;
+            print($"Set npcs up, wizzard: {npcManager.wizard}");
 
 
         }else if (levelName == "Cave")
         {
-            decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
-            decisionManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
+            //npcManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
+            //npcManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
         }
         
         if (prevLevelName!=null) {
