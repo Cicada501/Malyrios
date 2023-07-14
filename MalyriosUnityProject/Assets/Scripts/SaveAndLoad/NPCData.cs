@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NPCs;
 using UnityEngine;
-
+[System.Serializable]
 public class NPCData
 {
     public string NPCName;

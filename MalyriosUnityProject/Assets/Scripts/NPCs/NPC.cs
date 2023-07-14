@@ -29,7 +29,6 @@ namespace NPCs
             }
             set
             {
-               
                 currentDialogState = value;
                 // Sicherstellen, dass der Index innerhalb der gültigen Bereichsgrenzen liegt
                 if (currentDialogState >= 0 && currentDialogState <= allDialogs.Count)

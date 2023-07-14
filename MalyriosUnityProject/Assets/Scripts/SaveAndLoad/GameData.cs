@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Malyrios.Character;
+using NPCs;
 using SaveAndLoad;
 using UnityEngine;
 
@@ -13,19 +15,25 @@ public class GameData : MonoBehaviour
 
     public int LoadedEquippedWeaponID { get; private set; }
     
+    public List<NPCData> LoadedNpcData { get; private set; }
+
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
+    private NPCManager npcManager;
 
     private void Awake()
     {
         levelManager = GetComponent<LevelManager>();
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
+        npcManager = FindObjectOfType<NPCManager>();
     }
 
     public void SaveData()
     {
+        print($"Saving: {JsonUtility.ToJson(npcManager.SaveNPCs())}");
+        PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNPCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));
         //PlayerPrefs.SetFloat("currentHealth", baseAttributes.CurrentHealth);
@@ -56,6 +64,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
+        //PlayerPrefs.DeleteAll();
         // Load level name
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
         {
@@ -138,6 +147,16 @@ public class GameData : MonoBehaviour
             baseAttributes.Haste = 0;
             baseAttributes.Energy = 0;
             baseAttributes.Balance = 0;
+        }
+
+        if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")
+        {
+            var loadedNpcData = JsonUtility.FromJson<NPCManager.NPCDataList>(PlayerPrefs.GetString("currentNpcStates"));
+            LoadedNpcData = loadedNpcData.npcData; //unwrap
+        }
+        else
+        {
+            LoadedNpcData = new List<NPCData>();
         }
         
         //Load PlayerData, set fireballButton.Active to loaded value

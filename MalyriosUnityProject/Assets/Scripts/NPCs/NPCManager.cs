@@ -52,26 +52,27 @@ public class NPCManager : MonoBehaviour
     private void Start()
     {
         print("NPC Manager start called");
-        wizard.CurrentDialogState = 1;
+        //wizard.CurrentDialogState = 1;
     }
 
-    public List<NPCData> SaveNPCs()
+    public NPCDataList SaveNPCs()
     {
         var npcDataList = new List<NPCData>();
 
-        // Speichere die Daten jedes NPCs
         npcDataList.Add(new NPCData(wizard));
-        npcDataList.Add(new NPCData(son));
-        npcDataList.Add(new NPCData(hunter));
-        npcDataList.Add(new NPCData(healer));
-
-        return npcDataList;
+        return new NPCDataList(npcDataList);
     }
+
 
 
 
     public void LoadNPCs(List<NPCData> npcDataList)
     {
+        if (npcDataList.Count == 0)
+        {
+            wizard.CurrentDialogState = 1;
+            print("wizard dialog state set");
+        }
         // Lade die Daten jedes NPCs
         foreach (var npcData in npcDataList)
         {
@@ -79,9 +80,14 @@ public class NPCManager : MonoBehaviour
             var npc = FindNPCByName(npcData.NPCName);
             if (npc != null)
             {
-                // Aktualisiere das NPC-Objekt mit den geladenen Daten
-                npc.CurrentDialogState = npcData.CurrentDialogueState;
-                // Weitere Eigenschaften...
+                if (npcData.CurrentDialogueState > 1)
+                {
+                    npc.CurrentDialogState = npcData.CurrentDialogueState;
+                }
+                else
+                {
+                    npc.CurrentDialogState = 1;
+                }
             }
         }
     }
@@ -101,6 +107,17 @@ public class NPCManager : MonoBehaviour
                 return healer;
             default:
                 return null;
+        }
+    }
+    
+    [System.Serializable]
+    public class NPCDataList //wrapper klasse, da JsonUtlility keine Listen direkt speichern kann
+    {
+        public List<NPCData> npcData;
+
+        public NPCDataList(List<NPCData> data)
+        {
+            npcData = data;
         }
     }
     

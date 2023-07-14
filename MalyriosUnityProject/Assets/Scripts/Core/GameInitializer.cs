@@ -7,6 +7,7 @@ public class GameInitializer : MonoBehaviour
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
+    private NPCManager npcManager;
 
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class GameInitializer : MonoBehaviour
         levelManager = GetComponent<LevelManager>();
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
+        npcManager = GetComponent<NPCManager>();
     }
 
     private void Start()
@@ -25,7 +27,7 @@ public class GameInitializer : MonoBehaviour
     {
         gameData.LoadData();
         levelManager.ChangeLevel(gameData.LoadedLevelName);
-        
+        npcManager.LoadNPCs(gameData.LoadedNpcData);
         if (!levelManager.spawnAtPlayerDebugLocation) {
             player.transform.position = gameData.LoadedPlayerPosition;
         }
