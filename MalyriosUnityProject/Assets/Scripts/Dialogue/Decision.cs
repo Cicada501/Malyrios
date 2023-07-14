@@ -52,12 +52,12 @@ public class Decision : MonoBehaviour
     //public static to use them in the SetDecision() Function
     public static bool BigRatAttack;
     public static bool LearnedFireball;
-    public static int WizardDialogueState = 1;
     public static int SonDialogueState = 1;
     public static int HunterDialogState = 1;
     public static int HealerDialogState = 1;
     public static bool SmallWerewolfAttack;
 
+    //Add Initialize() Method, that updates all Game States to the loaded values(e.g. Enable/Disable Gameobject, Show UI Button,...)
 
     //fireball + wizard
     public GameObject fireballButton;
@@ -97,8 +97,8 @@ public class Decision : MonoBehaviour
     //big rat
     [Header("Gets set during runtime (in LevelManager), when Cave gets loaded")]
     public GameObject bigRatNpc;
-
     public GameObject bigRatEnemy;
+    
     public GameObject smallWerewolfNpc;
     public GameObject smallWerewolfEnemy;
     private static BaseItem apple;
@@ -153,7 +153,7 @@ public class Decision : MonoBehaviour
         }
         else if (LevelManager.CurrentLevelName == "HighForest")
         {
-            switch (WizardDialogueState)
+            /*switch (WizardDialogueState)
             {
                 case 1:
                     wizzardDialog.DialogueText = wizzardDialogText1;
@@ -167,7 +167,7 @@ public class Decision : MonoBehaviour
                 case 4:
                     wizzardDialog.DialogueText = wizzardDialogText4;
                     break;
-            }
+            }*/
 
             switch (HunterDialogState)
             {
