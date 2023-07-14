@@ -139,8 +139,8 @@ public class Decision : MonoBehaviour
 
     private void Update()
     {
-        LearnedFireball = true;
-        fireballButton.SetActive(LearnedFireball);
+        
+        //fireballButton.SetActive(LearnedFireball);
         if (LevelManager.CurrentLevelName == "Cave")
         {
             if (BigRatAttack)
@@ -262,7 +262,7 @@ public class Decision : MonoBehaviour
         //print($"WizardDialogState:{WizardDialogueState}");
     }
 
-    public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
+    /*public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
         string replacementString)
     {
         // Iterate through the dialogue list
@@ -280,21 +280,21 @@ public class Decision : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
 
-    public void ResetAllDecisions()
-    {
-        BigRatAttack = false;
-        LearnedFireball = false;
-        SmallWerewolfAttack = false;
-        WizardDialogueState = 1;
-        SonDialogueState = 1;
-        HunterDialogState = 1;
-        HealerDialogState = 1;
-    }
+    // public void ResetAllDecisions()
+    // {
+    //     BigRatAttack = false;
+    //     LearnedFireball = false;
+    //     SmallWerewolfAttack = false;
+    //     WizardDialogueState = 1;
+    //     SonDialogueState = 1;
+    //     HunterDialogState = 1;
+    //     HealerDialogState = 1;
+    // }
 
-    public static void SetDecision(string answerDecision)
+    /*public static void SetDecision(string answerDecision)
     {
         switch (answerDecision)
         {
@@ -362,7 +362,7 @@ public class Decision : MonoBehaviour
                 Instance.sonDialog.gameObject.SetActive(false);
                 break;
         }
-    }
+    }*/
 
     public void UpdateDecisionData(DecisionData gameDataLoadedDecisionData)
     {

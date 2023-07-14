@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NPCs;
@@ -5,20 +6,75 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    public NPC Healer { get; set; }
-    public NPC Hunter { get; set; }
-    public NPC Son { get; set; }
-    public NPC Wizard { get; set; }
-    
+    /*#region Singleton
+
+    private static NPCManager _instance;
+
+    public static NPCManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<NPCManager>();
+                if (_instance == null)
+                {
+                    Debug.LogError("NPCManager component not found in the scene.");
+                }
+            }
+
+            return _instance;
+        }
+    }
+
+
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Debug.LogError("Another instance of NPCManager already exists.");
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+    }
+
+    #endregion*/
+    public NPC healer;
+    public NPC hunter;
+    public NPC son;
+    public NPC wizard;
+    public NPC caveRat;
+
+
+    private void Start()
+    {
+        wizard.CurrentDialogState = 1;
+    }
+
+    private void Update()
+    {
+        if (LevelManager.CurrentLevelName == "Cave")
+        {
+
+        }
+        else if (LevelManager.CurrentLevelName == "HighForest")
+        {
+            wizard = 
+        }
+    }
+
     public List<NPCData> SaveNPCs()
     {
         var npcDataList = new List<NPCData>();
 
         // Speichere die Daten jedes NPCs
-        npcDataList.Add(new NPCData(Wizard));
-        npcDataList.Add(new NPCData(Son));
-        npcDataList.Add(new NPCData(Hunter));
-        npcDataList.Add(new NPCData(Healer));
+        npcDataList.Add(new NPCData(wizard));
+        npcDataList.Add(new NPCData(son));
+        npcDataList.Add(new NPCData(hunter));
+        npcDataList.Add(new NPCData(healer));
 
         return npcDataList;
     }
@@ -35,7 +91,7 @@ public class NPCManager : MonoBehaviour
             if (npc != null)
             {
                 // Aktualisiere das NPC-Objekt mit den geladenen Daten
-                npc.currentDialogueState = npcData.CurrentDialogueState;
+                npc.CurrentDialogState = npcData.CurrentDialogueState;
                 // Weitere Eigenschaften...
             }
         }
@@ -47,13 +103,13 @@ public class NPCManager : MonoBehaviour
         switch (name)
         {
             case "Thrimbald":
-                return Wizard;
+                return wizard;
             case "Tommy":
-                return Son;
+                return son;
             case "Jack":
-                return Hunter;
+                return hunter;
             case "Asmilda":
-                return Healer;
+                return healer;
             default:
                 return null;
         }

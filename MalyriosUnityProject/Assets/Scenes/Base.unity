@@ -17749,7 +17749,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0796297, y: 1}
+    m_SensorSize: {x: 1.146245, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -18108,6 +18108,7 @@ GameObject:
   - component: {fileID: 1386037426}
   - component: {fileID: 1386037427}
   - component: {fileID: 1386037428}
+  - component: {fileID: 1386037429}
   m_Layer: 13
   m_Name: GameManager
   m_TagString: Untagged
@@ -19065,6 +19066,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a7afc627653b4ca8adf6d4c029147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1386037429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386037419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360f8e6e2d742cc46a9b3989e40339e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Healer: {fileID: 0}
+  Hunter: {fileID: 0}
+  Son: {fileID: 0}
+  Wizard: {fileID: 11400000, guid: c36d9432e5207d84f9395609b13cddae, type: 2}
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0

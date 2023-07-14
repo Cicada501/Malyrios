@@ -9,8 +9,8 @@ public class NPCData
     public int CurrentDialogueState;
     public NPCData(NPC npc)
     {
-        NPCName = npc.NpcName;
-        CurrentDialogueState = npc.currentDialogueState;
+        NPCName = npc.npcName;
+        CurrentDialogueState = npc.CurrentDialogState;
     }
 
 }
