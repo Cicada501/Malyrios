@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.IO;
 using Malyrios.Dialogue;
@@ -95,7 +95,7 @@ public class Decision : MonoBehaviour
     public List<DialogueText> healerDialogText2;
     public List<DialogueText> healerDialogText1;
 
-    #endregion
+    #endregion#1#
 
     //big rat
     [Header("Gets set during runtime (in LevelManager), when Cave gets loaded")]
@@ -156,7 +156,7 @@ public class Decision : MonoBehaviour
         }
         else if (LevelManager.CurrentLevelName == "HighForest")
         {
-            /*switch (WizardDialogueState)
+            switch (WizardDialogueState)
             {
                 case 1:
                     wizzardDialog.DialogueText = wizzardDialogText1;
@@ -227,7 +227,7 @@ public class Decision : MonoBehaviour
             {
                 smallWerewolfNpc.SetActive(true);
                 smallWerewolfEnemy.SetActive(false);
-            }*/
+            }
         }
 
 
@@ -262,7 +262,7 @@ public class Decision : MonoBehaviour
         //print($"WizardDialogState:{WizardDialogueState}");
     }
 
-    /*public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
+    public void ReplaceDialogueTextSubstring(List<DialogueText> dialogueList, string searchString,
         string replacementString)
     {
         // Iterate through the dialogue list
@@ -280,21 +280,21 @@ public class Decision : MonoBehaviour
                 }
             }
         }
-    }*/
+    }
 
 
-    // public void ResetAllDecisions()
-    // {
-    //     BigRatAttack = false;
-    //     LearnedFireball = false;
-    //     SmallWerewolfAttack = false;
-    //     WizardDialogueState = 1;
-    //     SonDialogueState = 1;
-    //     HunterDialogState = 1;
-    //     HealerDialogState = 1;
-    // }
+    public void ResetAllDecisions()
+    {
+        BigRatAttack = false;
+        LearnedFireball = false;
+        SmallWerewolfAttack = false;
+        WizardDialogueState = 1;
+        SonDialogueState = 1;
+        HunterDialogState = 1;
+        HealerDialogState = 1;
+    }
 
-    /*public static void SetDecision(string answerDecision)
+    public static void SetDecision(string answerDecision)
     {
         switch (answerDecision)
         {
@@ -362,7 +362,7 @@ public class Decision : MonoBehaviour
                 Instance.sonDialog.gameObject.SetActive(false);
                 break;
         }
-    }*/
+    }
 
     public void UpdateDecisionData(DecisionData gameDataLoadedDecisionData)
     {
@@ -374,4 +374,4 @@ public class Decision : MonoBehaviour
         SmallWerewolfAttack = gameDataLoadedDecisionData.smallWerewolfAttack;
         HealerDialogState = gameDataLoadedDecisionData.healerDialogState;
     }
-}
+}*/

@@ -13,15 +13,15 @@ namespace SaveAndLoad
         
     
         //create constructor
-        public DecisionData()
-        {
-            this.bigRatAttack = Decision.BigRatAttack;
-            this.learnedFireball = Decision.LearnedFireball;
-            this.wizardDialogueState = Decision.WizardDialogueState;
-            sonDialogueState = Decision.SonDialogueState;
-            hunterDialogState = Decision.HunterDialogState;
-            smallWerewolfAttack = Decision.SmallWerewolfAttack;
-            healerDialogState = Decision.HealerDialogState;
-        }
+        // public DecisionData()
+        // {
+        //     this.bigRatAttack = Decision.BigRatAttack;
+        //     this.learnedFireball = Decision.LearnedFireball;
+        //     this.wizardDialogueState = Decision.WizardDialogueState;
+        //     sonDialogueState = Decision.SonDialogueState;
+        //     hunterDialogState = Decision.HunterDialogState;
+        //     smallWerewolfAttack = Decision.SmallWerewolfAttack;
+        //     healerDialogState = Decision.HealerDialogState;
+        // }
     }
 }

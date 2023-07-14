@@ -76,6 +76,7 @@ public class NPCManager : MonoBehaviour
         // Lade die Daten jedes NPCs
         foreach (var npcData in npcDataList)
         {
+            print(npcData.NPCName + npcData.CurrentDialogueState);
             // Finde das entsprechende NPC-Objekt
             var npc = FindNPCByName(npcData.NPCName);
             if (npc != null)
@@ -83,6 +84,7 @@ public class NPCManager : MonoBehaviour
                 if (npcData.CurrentDialogueState > 1)
                 {
                     npc.CurrentDialogState = npcData.CurrentDialogueState;
+                    print($"{npc.npcName} dialog state set to {npcData.CurrentDialogueState}");
                 }
                 else
                 {

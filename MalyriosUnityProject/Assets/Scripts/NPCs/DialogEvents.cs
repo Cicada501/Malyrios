@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Dialogue;
 using Malyrios.Items;
 using UnityEngine;
 
@@ -18,6 +20,48 @@ public class DialogEvents : MonoBehaviour
     private static BaseItem werwolfBlut;
     private static BaseItem schirmlinge;
     private static BaseItem splitterDerWeisheit;
+    private bool addedDialogAnswer = false;
+    private bool addedDialogAnswer2 = false;
+
+    private void Start()
+    {
+        schattenRose = ItemDatabase.GetItem(30);
+        werwolfBlut = ItemDatabase.GetItem(31);
+        schirmlinge = ItemDatabase.GetItem(32);
+        splitterDerWeisheit = ItemDatabase.GetItem(50);
+        addedDialogAnswer = false;
+        addedDialogAnswer2 = false;
+    }
+
+    private void Update()
+    {
+        if (Inventory.CountOccurrences(ItemDatabase.GetItem(33)) > 0 && !addedDialogAnswer)
+        {
+            var ans = new DialogueAnswers();
+            ans.LinkedToSentenceId = 1;
+            ans.AnswerDescription =
+                "Ja, ich habe einen Weg gefunden es herzustellen. Hier ist es *übergebe Heilmittel*";
+            ans.Decision = "changeSonSprite";
+            npcManager.son.allDialogs[2].dialogTexts[0].Answers.Add(ans);
+            addedDialogAnswer = true;
+        }
+
+        if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
+            Inventory.CountOccurrences(schirmlinge) > 1 && !addedDialogAnswer2)
+        {
+            var ans = new DialogueAnswers();
+            ans.LinkedToSentenceId = 1;
+            ans.AnswerDescription =
+                "Ja, hier sind die Sachen";
+            npcManager.healer.allDialogs[2].dialogTexts[0].Answers.Add(ans);
+            addedDialogAnswer2 = true;
+        }
+
+        if (Inventory.CountOccurrences(splitterDerWeisheit) > 0)
+        {
+            npcManager.wizard.CurrentDialogState = 3;
+        }
+    }
 
 
     public void FireEvent(string eventName)

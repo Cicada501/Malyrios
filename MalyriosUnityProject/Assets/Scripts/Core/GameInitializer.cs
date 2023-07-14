@@ -32,7 +32,7 @@ public class GameInitializer : MonoBehaviour
             player.transform.position = gameData.LoadedPlayerPosition;
         }
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
-        GetComponent<Decision>().UpdateDecisionData(gameData.LoadedDecisionData);
+        //GetComponent<Decision>().UpdateDecisionData(gameData.LoadedDecisionData);
         PlayerAttack.EquippedWeaponID = gameData.LoadedEquippedWeaponID;
     }
     
