@@ -45,15 +45,17 @@ public class DialogEvents : MonoBehaviour
             npcManager.son.allDialogs[2].dialogTexts[0].Answers.Add(ans);
             addedDialogAnswer = true;
         }
-
+        print($"Schattenrose: {Inventory.CountOccurrences(schattenRose) > 0}, Blut: {Inventory.CountOccurrences(werwolfBlut)> 0}, schirmlinge: {Inventory.CountOccurrences(schirmlinge)> 2}");
         if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
             Inventory.CountOccurrences(schirmlinge) > 1 && !addedDialogAnswer2)
         {
+            print("Adding asmilda Dialog Option");
             var ans = new DialogueAnswers();
             ans.LinkedToSentenceId = 1;
             ans.AnswerDescription =
                 "Ja, hier sind die Sachen";
             npcManager.healer.allDialogs[2].dialogTexts[0].Answers.Add(ans);
+            npcManager.healer.CurrentDialogState = npcManager.healer.CurrentDialogState; //Update state after anser is added
             addedDialogAnswer2 = true;
         }
 
@@ -75,7 +77,7 @@ public class DialogEvents : MonoBehaviour
                 PlayerData.LearnedFireball = true;
                 break;
             case "BigRatAttack":
-                npcManager.caveRat.isAggressive = true;
+                npcManager.caveRat.IsAggressive = true;
                 break;
             case "Wizzard2":
                 npcManager.wizard.CurrentDialogState = 2;
@@ -91,7 +93,7 @@ public class DialogEvents : MonoBehaviour
                 npcManager.son.CurrentDialogState = 2;
                 break;
             case "smallWerewolfAttack":
-                npcManager.son.isAggressive = true;
+                npcManager.son.IsAggressive = true;
                 break;
             case "BringAntiWerewolfPotion":
                 npcManager.hunter.CurrentDialogState = 2;

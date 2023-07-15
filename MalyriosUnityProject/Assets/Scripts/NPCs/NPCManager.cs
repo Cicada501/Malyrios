@@ -80,11 +80,14 @@ public class NPCManager : MonoBehaviour
             // Finde das entsprechende NPC-Objekt
             var npc = FindNPCByName(npcData.NPCName);
             if (npc != null)
-            {
-                if (npcData.CurrentDialogueState > 1)
+            { 
+                npc.IsActive = npcData.isActive;
+                npc.IsAggressive = npcData.isAggressive;
+                if (npcData.CurrentDialogueState > 0)
                 {
                     npc.CurrentDialogState = npcData.CurrentDialogueState;
-                    print($"{npc.npcName} dialog state set to {npcData.CurrentDialogueState}");
+                    
+                    //print($"{npc.npcName} dialog state set to {npcData.CurrentDialogueState}");
                 }
                 else
                 {

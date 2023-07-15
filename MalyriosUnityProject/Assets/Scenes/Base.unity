@@ -10626,6 +10626,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7345f645f44e74fbda848d2776c15d, type: 3}
+--- !u!1 &548192585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548192586}
+  - component: {fileID: 548192587}
+  m_Layer: 13
+  m_Name: DialogEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &548192586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548192585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1386037421}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &548192587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548192585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9234e385e7a415c478e67ca7a227c627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballButton: {fileID: 320686717}
+  npcManager: {fileID: 1386037429}
 --- !u!1 &559164488
 GameObject:
   m_ObjectHideFlags: 0
@@ -18147,6 +18193,7 @@ Transform:
   - {fileID: 669727122}
   - {fileID: 914773979}
   - {fileID: 367091817}
+  - {fileID: 548192586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21197,7 +21244,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1690701659}
   - component: {fileID: 1690701658}
-  - component: {fileID: 1690701660}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -21236,20 +21282,6 @@ Transform:
   m_Father: {fileID: 1386037421}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1690701660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690701657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234e385e7a415c478e67ca7a227c627, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireballButton: {fileID: 320686717}
-  npcManager: {fileID: 1386037429}
 --- !u!224 &1719785447 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1504023197042219191, guid: 8b7345f645f44e74fbda848d2776c15d,

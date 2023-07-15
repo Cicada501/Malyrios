@@ -16,8 +16,11 @@ namespace NPCs
         //public GameObject npcGameObject;
         public string npcName;
         public List<DialogueList> allDialogs; // Liste von Dialogen
-        public bool isAggressive;
+        private bool isAggressive;
+        private bool isActive;
         
+        [SerializeField]
+        private GameObject enemy;
         private int currentDialogState;
         private List<DialogueText> currentDialog;
         
@@ -36,6 +39,39 @@ namespace NPCs
                     // Setzen Sie currentDialogText auf den DialogText am Index currentDialogueState.
                     currentDialog = allDialogs[currentDialogState-1].dialogTexts; // hier nehmen wir an, dass jeder Dialog mindestens einen DialogueText hat.
                     gameObject.GetComponent<Dialogue>().DialogueText = currentDialog;
+                }
+            }
+        }
+
+        public bool IsActive
+        {
+            get
+            {
+                return isActive;
+            }
+            set
+            {
+                isActive = value;
+                gameObject.SetActive(value);
+            }
+        }
+        public bool IsAggressive
+        {
+            get
+            {
+                return isAggressive;
+            }
+            set
+            {
+                isAggressive = value;
+                gameObject.SetActive(!value);
+                if (enemy != null)
+                {
+                    enemy.SetActive(value);
+                }
+                else
+                {
+                    Debug.LogError("Enemy Object is Missing");
                 }
             }
         }
