@@ -40,8 +40,10 @@ public class LevelManager : MonoBehaviour
 
         //get the Decision script (is on the same GameObject), to assign the 
         var npcManager = GetComponent<NPCManager>();
-        foreach (var npc in FindObjectsOfType<NPC>())
+        npcManager.npcs.Clear();
+        foreach (var npc in currentLevel.GetComponentsInChildren<NPC>())
         {
+            print($"found {npc.npcName} while changing level to {levelName}");
             npcManager.npcs[npc.npcName] = npc;
         }
 

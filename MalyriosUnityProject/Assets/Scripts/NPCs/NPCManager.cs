@@ -19,11 +19,11 @@ public class NPCManager : MonoBehaviour
 
     private void Update()
     {
-        print(JsonUtility.ToJson(new NPCDataList(allNPCData)));
-        // foreach (string key in npcs.Keys)
-        // {
-        //     Debug.Log(key);
-        // }
+        //print(JsonUtility.ToJson(new NPCDataList(allNPCData)));
+        foreach (string key in npcs.Keys)
+        {
+            Debug.Log(key);
+        }
     }
 
     public void UpdateNPCData(NPC npc)
@@ -46,14 +46,15 @@ public class NPCManager : MonoBehaviour
     
     public void AddNpc(NPC npc)
     {
-        print($"Hey, {npc.npcName} here");
         var existingNpc = allNPCData.FirstOrDefault(n => n.NPCName == npc.npcName);
         print(existingNpc);
         if (existingNpc == null)
         {
-            print($"added: {npc.npcName}");
+            print($"added: {npc.npcName} to allNPCData");
             allNPCData.Add(new NPCData(npc));
+            return;
         }
+        print($"{npc.npcName} was loaded into the list");
     }
 
 
