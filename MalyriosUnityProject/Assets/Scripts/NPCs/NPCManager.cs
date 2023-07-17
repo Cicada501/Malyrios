@@ -10,7 +10,8 @@ namespace NPCs
     {
         public Dictionary<string, NPC> npcs = new(); // all NPCs in the current level (with GameObjects)
 
-        public List<NpcData> allNpcData; //Data off all NPCs that the player has seen so far (seen = was in the level, that contains them)
+        public List<NpcData>
+            allNpcData; //Data off all NPCs that the player has seen so far (seen = was in the level, that contains them)
 
 
         public NpcDataList SaveNpCs()
@@ -23,16 +24,27 @@ namespace NPCs
             Debug.Log(JsonUtility.ToJson(new NpcDataList(allNpcData)));
         }
 
-        public void UpdateNpcData(NPC npc) //when a npc changes, this method is used to make sure the npcData list is updated respectively
+        public void UpdateNpcData(NPC npc, string propertyToUpdate) //when a npc changes, this method is used to make sure the npcData list is updated respectively
         {
             // find npcData that represents this npc (this variable npcData is a link to the object in the list. Therefore changing it also changes the list allNpcData automatically)
             var npcData = allNpcData.FirstOrDefault(n => n.npcName == npc.npcName);
             if (npcData != null)
             {
-                //if available, update the npcs properties
-                npcData.isActive = npc.IsActive;
-                npcData.isAggressive = npc.IsAggressive;
-                npcData.currentDialogueState = npc.CurrentDialogState;
+                switch(propertyToUpdate)
+                {
+                    case "isActive":
+                        npcData.isActive = npc.IsActive;
+                        break;
+                    case "isAggressive":
+                        npcData.isAggressive = npc.IsAggressive;
+                        break;
+                    case "currentDialogueState":
+                        npcData.currentDialogueState = npc.CurrentDialogState;
+                        break;
+                    default:
+                        Debug.LogError("Invalid property name");
+                        break;
+                }
             }
             else
             {
@@ -40,6 +52,7 @@ namespace NPCs
                 allNpcData.Add(new NpcData(npc));
             }
         }
+
         /// <summary>
         /// Adds the NPC to the allNpcData list, to make sure it gets saved correctly
         /// </summary>
@@ -54,14 +67,12 @@ namespace NPCs
         }
 
 
-
-
         public void LoadNpCs(List<NpcData> npcDataList)
         {
             allNpcData = npcDataList;
             print("Loaded allNPCData");
         }
-    
+
         [System.Serializable]
         public class NpcDataList //wrapper klasse, da JsonUtlility keine Listen direkt speichern kann
         {
@@ -75,11 +86,22 @@ namespace NPCs
 
         public void ApplyLoadedData()
         {
+            //make sure all npcs are in the NPCsData list before using the Data (it can happen, that AddNpc() in Start() of NPC is not fast enough)
+            foreach (var npc in npcs)
+            {
+                AddNpc(npc.Value);
+            }
+
             foreach (var npcData in allNpcData)
             {
-                npcs[npcData.npcName].CurrentDialogState = npcData.currentDialogueState;
-                npcs[npcData.npcName].IsAggressive = npcData.isAggressive;
-                npcs[npcData.npcName].IsActive = npcData.isActive;
+                if (npcs.ContainsKey(npcData.npcName)) //make sure only the NPCs that are in the current Level get set
+                {
+                    Debug.Log(JsonUtility.ToJson(npcData)+ npcData.isAggressive + npcData.npcName);
+                    
+                    npcs[npcData.npcName].CurrentDialogState = npcData.currentDialogueState;
+                    npcs[npcData.npcName].IsAggressive = npcData.isAggressive;
+                    npcs[npcData.npcName].IsActive = npcData.isActive;
+                }
             }
 
             //initialize new NPCs dialog state with 1
@@ -91,7 +113,7 @@ namespace NPCs
                     npc.Value.CurrentDialogState = 1;
                 }
             }
-            
+
             print("Applied allNPCdata Data to NPCs");
         }
     }

@@ -20,7 +20,7 @@ namespace NPCs
 
         [SerializeField]
         private GameObject enemy;
-        private int currentDialogState;
+        private int currentDialogState = 1;
         private List<DialogueText> currentDialog;
         private NPCManager npcManager;
 
@@ -49,7 +49,7 @@ namespace NPCs
                     currentDialog = allDialogs[currentDialogState-1].dialogTexts;
                     gameObject.GetComponent<Dialogue>().DialogueText = currentDialog;
                 }
-                npcManager.UpdateNpcData(this);
+                npcManager.UpdateNpcData(this, "currentDialogueState");
             }
         }
 
@@ -62,7 +62,7 @@ namespace NPCs
             set
             {
                 gameObject.SetActive(value);
-                npcManager.UpdateNpcData(this);
+                npcManager.UpdateNpcData(this,"isActive");
                 
             }
         }
@@ -74,6 +74,7 @@ namespace NPCs
             }
             set
             {
+                print($"Set {npcName} to aggressive state {value}");
                 isAggressive = value;
                 gameObject.SetActive(!value);
                 if (enemy != null)
@@ -84,7 +85,7 @@ namespace NPCs
                 {
                     Debug.LogError("Enemy Object is Missing");
                 }
-                npcManager.UpdateNpcData(this);
+                npcManager.UpdateNpcData(this, "isAggressive");
                 
             }
         }

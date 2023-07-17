@@ -6,7 +6,7 @@ namespace SaveAndLoad
     public class NpcData
     {
         public string npcName;
-        public int currentDialogueState;
+        public int currentDialogueState = 1;
         public bool isAggressive;
         public bool isActive;
         public NpcData(NPC npc)

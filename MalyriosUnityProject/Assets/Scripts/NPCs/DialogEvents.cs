@@ -73,7 +73,7 @@ public class DialogEvents : MonoBehaviour
                 PlayerData.LearnedFireball = true;
                 break;
             case "BigRatAttack":
-                npcManager.npcs["BigRatNPC"].IsAggressive = true;
+                npcManager.npcs["Debby"].IsAggressive = true;
                 break;
             case "Wizzard2":
                 npcManager.npcs["Thrimbald"].CurrentDialogState = 2;

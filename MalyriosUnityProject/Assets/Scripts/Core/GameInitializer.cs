@@ -27,8 +27,8 @@ public class GameInitializer : MonoBehaviour
     private void LoadAndApplyData()
     {
         gameData.LoadData();
-        levelManager.ChangeLevel(gameData.LoadedLevelName);
         npcManager.LoadNpCs(gameData.LoadedNpcData);
+        levelManager.ChangeLevel(gameData.LoadedLevelName);
         if (!levelManager.spawnAtPlayerDebugLocation) {
             player.transform.position = gameData.LoadedPlayerPosition;
         }
