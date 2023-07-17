@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using NPCs;
-using UnityEngine;
-[System.Serializable]
-public class NPCData
-{
-    public string NPCName;
-    public int CurrentDialogueState;
-    public bool isAggressive;
-    public bool isActive;
-    public NPCData(NPC npc)
-    {
-        NPCName = npc.npcName;
-        CurrentDialogueState = npc.CurrentDialogState;
-        isActive = npc.IsActive;
-        isAggressive = npc.IsAggressive;
-    }
 
+namespace SaveAndLoad
+{
+    [System.Serializable]
+    public class NpcData
+    {
+        public string npcName;
+        public int currentDialogueState;
+        public bool isAggressive;
+        public bool isActive;
+        public NpcData(NPC npc)
+        {
+            npcName = npc.npcName;
+            currentDialogueState = npc.CurrentDialogState;
+            isActive = npc.IsActive;
+            isAggressive = npc.IsAggressive;
+        }
+
+    }
 }

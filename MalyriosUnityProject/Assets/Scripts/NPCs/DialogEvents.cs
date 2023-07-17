@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Dialogue;
 using Malyrios.Items;
+using NPCs;
 using UnityEngine;
 
 public class DialogEvents : MonoBehaviour
 {
     [SerializeField] private GameObject fireballButton;
 
-    [SerializeField] private NPCManager npcManager;
+    [SerializeField] private NpcManager npcManager;
 
 
     private static BaseItem apple;

@@ -22,11 +22,11 @@ namespace NPCs
         private GameObject enemy;
         private int currentDialogState;
         private List<DialogueText> currentDialog;
-        private NPCManager npcManager;
+        private NpcManager npcManager;
 
         private void Awake()
         {
-            npcManager = FindObjectOfType<NPCManager>();
+            npcManager = FindObjectOfType<NpcManager>();
         }
 
         private void Start()
@@ -49,7 +49,7 @@ namespace NPCs
                     currentDialog = allDialogs[currentDialogState-1].dialogTexts;
                     gameObject.GetComponent<Dialogue>().DialogueText = currentDialog;
                 }
-                npcManager.UpdateNPCData(this);
+                npcManager.UpdateNpcData(this);
             }
         }
 
@@ -62,7 +62,7 @@ namespace NPCs
             set
             {
                 gameObject.SetActive(value);
-                npcManager.UpdateNPCData(this);
+                npcManager.UpdateNpcData(this);
                 
             }
         }
@@ -84,7 +84,7 @@ namespace NPCs
                 {
                     Debug.LogError("Enemy Object is Missing");
                 }
-                npcManager.UpdateNPCData(this);
+                npcManager.UpdateNpcData(this);
                 
             }
         }

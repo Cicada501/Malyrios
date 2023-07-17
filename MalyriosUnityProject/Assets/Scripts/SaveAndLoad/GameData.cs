@@ -15,25 +15,25 @@ public class GameData : MonoBehaviour
 
     public int LoadedEquippedWeaponID { get; private set; }
     
-    public List<NPCData> LoadedNpcData { get; private set; }
+    public List<NpcData> LoadedNpcData { get; private set; }
 
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
-    private NPCManager npcManager;
+    private NpcManager npcManager;
 
     private void Awake()
     {
         levelManager = GetComponent<LevelManager>();
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
-        npcManager = FindObjectOfType<NPCManager>();
+        npcManager = FindObjectOfType<NpcManager>();
     }
 
     public void SaveData()
     {
-        print($"Saving: {JsonUtility.ToJson(npcManager.SaveNPCs())}");
-        PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNPCs()));
+        print($"Saving: {JsonUtility.ToJson(npcManager.SaveNpCs())}");
+        PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));
         //PlayerPrefs.SetFloat("currentHealth", baseAttributes.CurrentHealth);
@@ -151,12 +151,12 @@ public class GameData : MonoBehaviour
 
         if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")
         {
-            var loadedNpcData = JsonUtility.FromJson<NPCManager.NPCDataList>(PlayerPrefs.GetString("currentNpcStates"));
+            var loadedNpcData = JsonUtility.FromJson<NpcManager.NpcDataList>(PlayerPrefs.GetString("currentNpcStates"));
             LoadedNpcData = loadedNpcData.npcData; //unwrap
         }
         else
         {
-            LoadedNpcData = new List<NPCData>();
+            LoadedNpcData = new List<NpcData>();
         }
         
         //Load PlayerData, set fireballButton.Active to loaded value

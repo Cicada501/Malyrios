@@ -1,96 +1,97 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using NPCs;
+using SaveAndLoad;
 using UnityEngine;
 
-public class NPCManager : MonoBehaviour
+namespace NPCs
 {
-    public Dictionary<string, NPC> npcs = new(); // Dictionary für die aktiven NPCs
-
-    public List<NPCData> allNPCData;
-
-
-    public NPCDataList SaveNPCs()
+    public class NpcManager : MonoBehaviour
     {
-        return new NPCDataList(allNPCData);
-    }
+        public Dictionary<string, NPC> npcs = new(); // Dictionary für die aktiven NPCs
 
-    private void Update()
-    {
-        //print(JsonUtility.ToJson(new NPCDataList(allNPCData)));
-        foreach (string key in npcs.Keys)
+        public List<NpcData> allNpcData;
+
+
+        public NpcDataList SaveNpCs()
         {
-            Debug.Log(key);
+            return new NpcDataList(allNpcData);
         }
-    }
 
-    public void UpdateNPCData(NPC npc)
-    {
-        // Suche nach dem NPC in der Liste
-        var npcData = allNPCData.FirstOrDefault(n => n.NPCName == npc.npcName);
-        if (npcData != null)
+        private void Update()
         {
-            // Wenn der NPC in der Liste gefunden wurde, aktualisiere seine Daten
-            npcData.isActive = npc.IsActive;
-            npcData.isAggressive = npc.IsAggressive;
-            npcData.CurrentDialogueState = npc.CurrentDialogState;
-        }
-        else
-        {
-            // Wenn der NPC nicht in der Liste gefunden wurde, füge ihn hinzu
-            allNPCData.Add(new NPCData(npc));
-        }
-    }
-    
-    public void AddNpc(NPC npc)
-    {
-        var existingNpc = allNPCData.FirstOrDefault(n => n.NPCName == npc.npcName);
-        print(existingNpc);
-        if (existingNpc == null)
-        {
-            print($"added: {npc.npcName} to allNPCData");
-            allNPCData.Add(new NPCData(npc));
-            return;
-        }
-        print($"{npc.npcName} was loaded into the list");
-    }
-
-
-
-
-    public void LoadNPCs(List<NPCData> npcDataList)
-    {
-        
-        allNPCData = npcDataList;
-        
-        print("Loaded NPCs");
-        if (npcDataList.Count == 0)
-        {
-            if (LevelManager.CurrentLevelName == "HighForest")
+            //print(JsonUtility.ToJson(new NPCDataList(allNPCData)));
+            foreach (string key in npcs.Keys)
             {
-                npcs["Thrimbald"].CurrentDialogState = 1;
-                npcs["Asmilda"].CurrentDialogState = 1;
-                npcs["Jack"].CurrentDialogState = 1;
-                npcs["Tommy"].CurrentDialogState = 1;
-                npcs["Admurin"].CurrentDialogState = 1;
+                Debug.Log(key);
             }
-            
         }
-    }
 
-
-    
-    [System.Serializable]
-    public class NPCDataList //wrapper klasse, da JsonUtlility keine Listen direkt speichern kann
-    {
-        public List<NPCData> npcData;
-
-        public NPCDataList(List<NPCData> data)
+        public void UpdateNpcData(NPC npc)
         {
-            npcData = data;
+            // Suche nach dem NPC in der Liste
+            var npcData = allNpcData.FirstOrDefault(n => n.npcName == npc.npcName);
+            if (npcData != null)
+            {
+                // Wenn der NPC in der Liste gefunden wurde, aktualisiere seine Daten
+                npcData.isActive = npc.IsActive;
+                npcData.isAggressive = npc.IsAggressive;
+                npcData.currentDialogueState = npc.CurrentDialogState;
+            }
+            else
+            {
+                // Wenn der NPC nicht in der Liste gefunden wurde, füge ihn hinzu
+                allNpcData.Add(new NpcData(npc));
+            }
         }
-    }
     
+        public void AddNpc(NPC npc)
+        {
+            var existingNpc = allNpcData.FirstOrDefault(n => n.npcName == npc.npcName);
+            print(existingNpc);
+            if (existingNpc == null)
+            {
+                print($"added: {npc.npcName} to allNPCData");
+                allNpcData.Add(new NpcData(npc));
+                return;
+            }
+            print($"{npc.npcName} was loaded into the list");
+        }
+
+
+
+
+        public void LoadNpCs(List<NpcData> npcDataList)
+        {
+        
+            allNpcData = npcDataList;
+        
+            print("Loaded NPCs");
+            if (npcDataList.Count == 0)
+            {
+                if (LevelManager.CurrentLevelName == "HighForest")
+                {
+                    npcs["Thrimbald"].CurrentDialogState = 1;
+                    npcs["Asmilda"].CurrentDialogState = 1;
+                    npcs["Jack"].CurrentDialogState = 1;
+                    npcs["Tommy"].CurrentDialogState = 1;
+                    npcs["Admurin"].CurrentDialogState = 1;
+                }
+            
+            }
+        }
+
+
+    
+        [System.Serializable]
+        public class NpcDataList //wrapper klasse, da JsonUtlility keine Listen direkt speichern kann
+        {
+            public List<NpcData> npcData;
+
+            public NpcDataList(List<NpcData> data)
+            {
+                npcData = data;
+            }
+        }
+    
+    }
 }
