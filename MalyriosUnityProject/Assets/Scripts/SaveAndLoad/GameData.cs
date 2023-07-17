@@ -20,14 +20,14 @@ public class GameData : MonoBehaviour
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
-    private NpcManager npcManager;
+    private NPCManager npcManager;
 
     private void Awake()
     {
         levelManager = GetComponent<LevelManager>();
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
-        npcManager = FindObjectOfType<NpcManager>();
+        npcManager = FindObjectOfType<NPCManager>();
     }
 
     public void SaveData()
@@ -151,7 +151,7 @@ public class GameData : MonoBehaviour
 
         if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")
         {
-            var loadedNpcData = JsonUtility.FromJson<NpcManager.NpcDataList>(PlayerPrefs.GetString("currentNpcStates"));
+            var loadedNpcData = JsonUtility.FromJson<NPCManager.NpcDataList>(PlayerPrefs.GetString("currentNpcStates"));
             LoadedNpcData = loadedNpcData.npcData; //unwrap
         }
         else

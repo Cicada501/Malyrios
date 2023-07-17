@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace NPCs
 {
-    public class NpcManager : MonoBehaviour
+    public class NPCManager : MonoBehaviour
     {
-        public Dictionary<string, NPC> npcs = new(); // Dictionary für die aktiven NPCs
+        public Dictionary<string, NPC> npcs = new(); // all NPCs in the current level (with GameObjects)
 
-        public List<NpcData> allNpcData;
+        public List<NpcData> allNpcData; //Data off all NPCs that the player has seen so far (seen = was in the level, that contains them)
 
 
         public NpcDataList SaveNpCs()
@@ -17,44 +17,34 @@ namespace NPCs
             return new NpcDataList(allNpcData);
         }
 
-        private void Update()
+        public void UpdateNpcData(NPC npc) //when a npc changes, this method is used to make sure the npcData list is updated respectively
         {
-            //print(JsonUtility.ToJson(new NPCDataList(allNPCData)));
-            foreach (string key in npcs.Keys)
-            {
-                Debug.Log(key);
-            }
-        }
-
-        public void UpdateNpcData(NPC npc)
-        {
-            // Suche nach dem NPC in der Liste
+            // find npcData that represents this npc (this variable npcData is a link to the object in the list. Therefore changing it also changes the list allNpcData automatically)
             var npcData = allNpcData.FirstOrDefault(n => n.npcName == npc.npcName);
             if (npcData != null)
             {
-                // Wenn der NPC in der Liste gefunden wurde, aktualisiere seine Daten
+                //if available, update the npcs properties
                 npcData.isActive = npc.IsActive;
                 npcData.isAggressive = npc.IsAggressive;
                 npcData.currentDialogueState = npc.CurrentDialogState;
             }
             else
             {
-                // Wenn der NPC nicht in der Liste gefunden wurde, füge ihn hinzu
+                Debug.LogError("NPC not found"); //this case should never happen, because the npcs get add to the allNpcData list in the LoadNpCs method or the AddNpc method (if never saved before)
                 allNpcData.Add(new NpcData(npc));
             }
         }
-    
+        /// <summary>
+        /// Adds the NPC to the allNpcData list, to make sure it gets saved correctly
+        /// </summary>
+        /// <param name="npc"></param>
         public void AddNpc(NPC npc)
         {
             var existingNpc = allNpcData.FirstOrDefault(n => n.npcName == npc.npcName);
-            print(existingNpc);
             if (existingNpc == null)
             {
-                print($"added: {npc.npcName} to allNPCData");
                 allNpcData.Add(new NpcData(npc));
-                return;
             }
-            print($"{npc.npcName} was loaded into the list");
         }
 
 
@@ -62,7 +52,6 @@ namespace NPCs
 
         public void LoadNpCs(List<NpcData> npcDataList)
         {
-        
             allNpcData = npcDataList;
         
             print("Loaded NPCs");
@@ -79,8 +68,6 @@ namespace NPCs
             
             }
         }
-
-
     
         [System.Serializable]
         public class NpcDataList //wrapper klasse, da JsonUtlility keine Listen direkt speichern kann

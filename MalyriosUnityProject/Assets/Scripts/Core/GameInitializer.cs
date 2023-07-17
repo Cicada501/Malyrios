@@ -8,7 +8,7 @@ public class GameInitializer : MonoBehaviour
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
-    private NpcManager npcManager;
+    private NPCManager npcManager;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class GameInitializer : MonoBehaviour
         levelManager = GetComponent<LevelManager>();
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
-        npcManager = GetComponent<NpcManager>();
+        npcManager = GetComponent<NPCManager>();
     }
 
     private void Start()

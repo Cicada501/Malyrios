@@ -10,7 +10,7 @@ public class DialogEvents : MonoBehaviour
 {
     [SerializeField] private GameObject fireballButton;
 
-    [SerializeField] private NpcManager npcManager;
+    [SerializeField] private NPCManager npcManager;
 
 
     private static BaseItem apple;

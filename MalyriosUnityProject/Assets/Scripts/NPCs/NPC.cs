@@ -22,11 +22,11 @@ namespace NPCs
         private GameObject enemy;
         private int currentDialogState;
         private List<DialogueText> currentDialog;
-        private NpcManager npcManager;
+        private NPCManager npcManager;
 
         private void Awake()
         {
-            npcManager = FindObjectOfType<NpcManager>();
+            npcManager = FindObjectOfType<NPCManager>();
         }
 
         private void Start()
