@@ -51,13 +51,11 @@ public class LevelManager : MonoBehaviour
             npcManager.healer = currentLevel.transform.Find("NPCs/Asmilda").GetComponent<NPC>();
             //npcManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject; //instead of managing it like this, now add logic in NPC script to say, if isAggressive, then enemy object gets activated and NPC object disabled
             //npcManager.smallWerewolfEnemy = currentLevel.transform.Find("Enemies/smallWerewolfEnemy").gameObject;
-            print($"Set npcs up, wizzard: {npcManager.wizard}");
 
 
         }else if (levelName == "Cave")
         {
-            //npcManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
-            //npcManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
+            npcManager.caveRat = currentLevel.transform.Find("BigRatNPC").GetComponent<NPC>();
         }
         
         if (prevLevelName!=null) {

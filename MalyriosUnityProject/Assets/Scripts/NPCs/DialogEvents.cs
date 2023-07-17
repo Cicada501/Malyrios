@@ -7,19 +7,15 @@ using UnityEngine;
 
 public class DialogEvents : MonoBehaviour
 {
-    
-    
-    [SerializeField]
-    private GameObject fireballButton;
+    [SerializeField] private GameObject fireballButton;
 
     [SerializeField] private NPCManager npcManager;
-    
-    
+
+
     private static BaseItem apple;
     private static BaseItem schattenRose;
     private static BaseItem werwolfBlut;
     private static BaseItem schirmlinge;
-    private static BaseItem splitterDerWeisheit;
     private bool addedDialogAnswer = false;
     private bool addedDialogAnswer2 = false;
 
@@ -28,40 +24,39 @@ public class DialogEvents : MonoBehaviour
         schattenRose = ItemDatabase.GetItem(30);
         werwolfBlut = ItemDatabase.GetItem(31);
         schirmlinge = ItemDatabase.GetItem(32);
-        splitterDerWeisheit = ItemDatabase.GetItem(50);
         addedDialogAnswer = false;
         addedDialogAnswer2 = false;
     }
 
     private void Update()
     {
-        if (Inventory.CountOccurrences(ItemDatabase.GetItem(33)) > 0 && !addedDialogAnswer)
+        if (LevelManager.CurrentLevelName == "HighForest")
         {
-            var ans = new DialogueAnswers();
-            ans.LinkedToSentenceId = 1;
-            ans.AnswerDescription =
-                "Ja, ich habe einen Weg gefunden es herzustellen. Hier ist es *übergebe Heilmittel*";
-            ans.Decision = "changeSonSprite";
-            npcManager.son.allDialogs[2].dialogTexts[0].Answers.Add(ans);
-            addedDialogAnswer = true;
-        }
-        print($"Schattenrose: {Inventory.CountOccurrences(schattenRose) > 0}, Blut: {Inventory.CountOccurrences(werwolfBlut)> 0}, schirmlinge: {Inventory.CountOccurrences(schirmlinge)> 2}");
-        if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
-            Inventory.CountOccurrences(schirmlinge) > 1 && !addedDialogAnswer2)
-        {
-            print("Adding asmilda Dialog Option");
-            var ans = new DialogueAnswers();
-            ans.LinkedToSentenceId = 1;
-            ans.AnswerDescription =
-                "Ja, hier sind die Sachen";
-            npcManager.healer.allDialogs[2].dialogTexts[0].Answers.Add(ans);
-            npcManager.healer.CurrentDialogState = npcManager.healer.CurrentDialogState; //Update state after anser is added
-            addedDialogAnswer2 = true;
-        }
+            if (Inventory.CountOccurrences(ItemDatabase.GetItem(33)) > 0 && !addedDialogAnswer)
+            {
+                var ans = new DialogueAnswers();
+                ans.LinkedToSentenceId = 1;
+                ans.AnswerDescription =
+                    "Ja, ich habe einen Weg gefunden es herzustellen. Hier ist es *übergebe Heilmittel*";
+                ans.Decision = "changeSonSprite";
+                npcManager.son.allDialogs[2].dialogTexts[0].Answers.Add(ans);
+                addedDialogAnswer = true;
+            }
 
-        if (Inventory.CountOccurrences(splitterDerWeisheit) > 0)
-        {
-            npcManager.wizard.CurrentDialogState = 3;
+            //print($"Schattenrose: {Inventory.CountOccurrences(schattenRose) > 0}, Blut: {Inventory.CountOccurrences(werwolfBlut) > 0}, schirmlinge: {Inventory.CountOccurrences(schirmlinge) > 2}");
+            if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
+                Inventory.CountOccurrences(schirmlinge) > 1 && !addedDialogAnswer2)
+            {
+                print("Adding asmilda Dialog Option");
+                var ans = new DialogueAnswers();
+                ans.LinkedToSentenceId = 1;
+                ans.AnswerDescription =
+                    "Ja, hier sind die Sachen";
+                npcManager.healer.allDialogs[2].dialogTexts[0].Answers.Add(ans);
+                npcManager.healer.CurrentDialogState =
+                    npcManager.healer.CurrentDialogState; //Update state after anser is added
+                addedDialogAnswer2 = true;
+            }
         }
     }
 
@@ -137,5 +132,5 @@ public class DialogEvents : MonoBehaviour
             default:
                 return;
         }
-        }
     }
+}

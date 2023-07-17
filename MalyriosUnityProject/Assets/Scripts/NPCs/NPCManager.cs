@@ -1,63 +1,60 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NPCs;
 using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    /*#region Singleton
-
-    private static NPCManager _instance;
-
-    public static NPCManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<NPCManager>();
-                if (_instance == null)
-                {
-                    Debug.LogError("NPCManager component not found in the scene.");
-                }
-            }
-
-            return _instance;
-        }
-    }
-
-
-
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Debug.LogError("Another instance of NPCManager already exists.");
-            Destroy(this.gameObject);
-            return;
-        }
-
-        _instance = this;
-    }
-
-    #endregion*/
+    //Loaded in High Forest
     public NPC healer;
     public NPC hunter;
     public NPC son;
     public NPC wizard;
+    //Loaded in Cave
     public NPC caveRat;
+
+    public List<NPCData> allNPCData;
 
 
     public NPCDataList SaveNPCs()
     {
-        var npcDataList = new List<NPCData>();
-       
-        npcDataList.Add(new NPCData(wizard));
-        npcDataList.Add(new NPCData(healer));
-        npcDataList.Add(new NPCData(hunter));
-        npcDataList.Add(new NPCData(son));
-        return new NPCDataList(npcDataList);
+
+        return new NPCDataList(allNPCData);
+    }
+
+    private void Update()
+    {
+        print(JsonUtility.ToJson(new NPCDataList(allNPCData)));
+    }
+
+    public void UpdateNPCData(NPC npc)
+    {
+        // Suche nach dem NPC in der Liste
+        var npcData = allNPCData.FirstOrDefault(n => n.NPCName == npc.npcName);
+        if (npcData != null)
+        {
+            // Wenn der NPC in der Liste gefunden wurde, aktualisiere seine Daten
+            npcData.isActive = npc.IsActive;
+            npcData.isAggressive = npc.IsAggressive;
+            npcData.CurrentDialogueState = npc.CurrentDialogState;
+        }
+        else
+        {
+            // Wenn der NPC nicht in der Liste gefunden wurde, füge ihn hinzu
+            allNPCData.Add(new NPCData(npc));
+        }
+    }
+    
+    public void AddNpc(NPC npc)
+    {
+        var existingNpc = allNPCData.FirstOrDefault(n => n.NPCName == npc.npcName);
+        if (existingNpc == null)
+        {
+            // Füge den NPC zur Liste hinzu, wenn er noch nicht existiert
+            allNPCData.Add(new NPCData(npc));
+        }
     }
 
 

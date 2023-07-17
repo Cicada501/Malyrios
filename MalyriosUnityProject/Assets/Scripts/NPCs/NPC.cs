@@ -9,8 +9,7 @@ namespace NPCs
     {
         public List<DialogueText> dialogTexts;
     }
-
-    //[CreateAssetMenu(fileName = "New NPC", menuName = "RPG/NPC")]
+    
     public class NPC : MonoBehaviour
     {
         //public GameObject npcGameObject;
@@ -23,8 +22,17 @@ namespace NPCs
         private GameObject enemy;
         private int currentDialogState;
         private List<DialogueText> currentDialog;
+        private NPCManager npcManager;
         
-        public int CurrentDialogState // Wir definieren eine Eigenschaft, um den aktuellen Dialogstatus zu steuern.
+        
+        private void Awake()
+        {
+            npcManager = FindObjectOfType<NPCManager>();
+            npcManager.AddNpc(this);
+        }
+        
+        
+        public int CurrentDialogState 
         {
             get 
             {
@@ -33,13 +41,12 @@ namespace NPCs
             set
             {
                 currentDialogState = value;
-                // Sicherstellen, dass der Index innerhalb der gültigen Bereichsgrenzen liegt
-                if (currentDialogState >= 0 && currentDialogState <= allDialogs.Count)
+                if (currentDialogState >= 0 && currentDialogState <= allDialogs.Count) //Check if valid
                 {
-                    // Setzen Sie currentDialogText auf den DialogText am Index currentDialogueState.
-                    currentDialog = allDialogs[currentDialogState-1].dialogTexts; // hier nehmen wir an, dass jeder Dialog mindestens einen DialogueText hat.
+                    currentDialog = allDialogs[currentDialogState-1].dialogTexts;
                     gameObject.GetComponent<Dialogue>().DialogueText = currentDialog;
                 }
+                npcManager.UpdateNPCData(this);
             }
         }
 
@@ -53,6 +60,8 @@ namespace NPCs
             {
                 isActive = value;
                 gameObject.SetActive(value);
+                npcManager.UpdateNPCData(this);
+                
             }
         }
         public bool IsAggressive
@@ -73,6 +82,8 @@ namespace NPCs
                 {
                     Debug.LogError("Enemy Object is Missing");
                 }
+                npcManager.UpdateNPCData(this);
+                
             }
         }
     }
