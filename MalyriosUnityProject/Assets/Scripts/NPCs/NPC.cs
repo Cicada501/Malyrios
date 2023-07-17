@@ -61,9 +61,9 @@ namespace NPCs
             }
             set
             {
+                if (isAggressive) return;
                 gameObject.SetActive(value);
                 npcManager.UpdateNpcData(this,"isActive");
-                
             }
         }
         public bool IsAggressive
@@ -77,14 +77,18 @@ namespace NPCs
                 print($"Set {npcName} to aggressive state {value}");
                 isAggressive = value;
                 gameObject.SetActive(!value);
-                if (enemy != null)
+                if (value)
                 {
-                    enemy.SetActive(value);
+                    if (enemy != null)
+                    {
+                        enemy.SetActive(true);
+                    }
+                    else
+                    {
+                        Debug.LogError("Enemy Object is Missing");
+                    }
                 }
-                else
-                {
-                    Debug.LogError("Enemy Object is Missing");
-                }
+                
                 npcManager.UpdateNpcData(this, "isAggressive");
                 
             }

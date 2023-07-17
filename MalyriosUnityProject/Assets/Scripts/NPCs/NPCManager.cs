@@ -96,7 +96,7 @@ namespace NPCs
             {
                 if (npcs.ContainsKey(npcData.npcName)) //make sure only the NPCs that are in the current Level get set
                 {
-                    Debug.Log(JsonUtility.ToJson(npcData)+ npcData.isAggressive + npcData.npcName);
+                    //Debug.Log(JsonUtility.ToJson(npcData)+ npcData.isAggressive + npcData.npcName);
                     
                     npcs[npcData.npcName].CurrentDialogState = npcData.currentDialogueState;
                     npcs[npcData.npcName].IsAggressive = npcData.isAggressive;
@@ -107,14 +107,14 @@ namespace NPCs
             //initialize new NPCs dialog state with 1
             foreach (var npc in npcs)
             {
-                print($"found {npc.Value.npcName} with dialog state: {npc.Value.CurrentDialogState}");
+                //print($"found {npc.Value.npcName} with dialog state: {npc.Value.CurrentDialogState}");
                 if (npc.Value.CurrentDialogState < 1)
                 {
                     npc.Value.CurrentDialogState = 1;
                 }
             }
 
-            print("Applied allNPCdata Data to NPCs");
+            print("Applied allNPCdata to NPCs");
         }
     }
 }
