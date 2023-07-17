@@ -13,6 +13,7 @@ public struct Level
     public GameObject Prefab;
     public Transform EntrancePoint;
 }
+
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private List<Level> level;
@@ -24,7 +25,7 @@ public class LevelManager : MonoBehaviour
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
     [SerializeField] public bool spawnAtPlayerDebugLocation;
-    
+
     private void Start()
     {
         cam = ReferencesManager.Instance.camera;
@@ -33,42 +34,31 @@ public class LevelManager : MonoBehaviour
 
     public void ChangeLevel(string levelName)
     {
-        
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;
-        
+
         //get the Decision script (is on the same GameObject), to assign the 
         var npcManager = GetComponent<NPCManager>();
-        
-        //Set the variables of Decision.cs depending on What level is loaded
-        if (levelName == "HighForest")
+        foreach (var npc in FindObjectsOfType<NPC>())
         {
-            //GameObject wizzard = currentLevel.transform.Find("NPCs/Wizzard").gameObject;
-            npcManager.wizard = currentLevel.transform.Find("NPCs/Wizzard").GetComponent<NPC>();
-            npcManager.hunter = currentLevel.transform.Find("NPCs/Jack").GetComponent<NPC>();
-            npcManager.son = currentLevel.transform.Find("NPCs/Tommy").GetComponent<NPC>();
-            npcManager.healer = currentLevel.transform.Find("NPCs/Asmilda").GetComponent<NPC>();
-            //npcManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject; //instead of managing it like this, now add logic in NPC script to say, if isAggressive, then enemy object gets activated and NPC object disabled
-            //npcManager.smallWerewolfEnemy = currentLevel.transform.Find("Enemies/smallWerewolfEnemy").gameObject;
-
-
-        }else if (levelName == "Cave")
-        {
-            npcManager.caveRat = currentLevel.transform.Find("BigRatNPC").GetComponent<NPC>();
+            npcManager.npcs[npc.npcName] = npc;
         }
-        
-        if (prevLevelName!=null) {
+
+        if (prevLevelName != null)
+        {
             var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
         }
-        if (spawnAtPlayerDebugLocation && prevLevelName==null)
+
+        if (spawnAtPlayerDebugLocation && prevLevelName == null)
         {
             var startpoint = GameObject.Find("Startpoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
         }
+
         prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
-        
+
         StartCoroutine(FocusPlayerCoroutine());
     }
 
@@ -79,7 +69,7 @@ public class LevelManager : MonoBehaviour
         //keep original values
         originalDeadZoneHeight = transposer.m_DeadZoneHeight;
         originalDeadZoneWidth = transposer.m_DeadZoneWidth;
-        
+
         // Set dead zone values to 0
         transposer.m_DeadZoneWidth = 0;
         transposer.m_DeadZoneHeight = 0;

@@ -7,26 +7,23 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    //Loaded in High Forest
-    public NPC healer;
-    public NPC hunter;
-    public NPC son;
-    public NPC wizard;
-    //Loaded in Cave
-    public NPC caveRat;
+    public Dictionary<string, NPC> npcs = new(); // Dictionary für die aktiven NPCs
 
     public List<NPCData> allNPCData;
 
 
     public NPCDataList SaveNPCs()
     {
-
         return new NPCDataList(allNPCData);
     }
 
     private void Update()
     {
         print(JsonUtility.ToJson(new NPCDataList(allNPCData)));
+        // foreach (string key in npcs.Keys)
+        // {
+        //     Debug.Log(key);
+        // }
     }
 
     public void UpdateNPCData(NPC npc)
@@ -49,10 +46,12 @@ public class NPCManager : MonoBehaviour
     
     public void AddNpc(NPC npc)
     {
+        print($"Hey, {npc.npcName} here");
         var existingNpc = allNPCData.FirstOrDefault(n => n.NPCName == npc.npcName);
+        print(existingNpc);
         if (existingNpc == null)
         {
-            // Füge den NPC zur Liste hinzu, wenn er noch nicht existiert
+            print($"added: {npc.npcName}");
             allNPCData.Add(new NPCData(npc));
         }
     }
@@ -62,55 +61,25 @@ public class NPCManager : MonoBehaviour
 
     public void LoadNPCs(List<NPCData> npcDataList)
     {
+        
+        allNPCData = npcDataList;
+        
+        print("Loaded NPCs");
         if (npcDataList.Count == 0)
         {
-            wizard.CurrentDialogState = 1;
-            healer.CurrentDialogState = 1;
-            hunter.CurrentDialogState = 1;
-            son.CurrentDialogState = 1;
-            print(" dialog states set");
-        }
-        // Lade die Daten jedes NPCs
-        foreach (var npcData in npcDataList)
-        {
-            print(npcData.NPCName + npcData.CurrentDialogueState);
-            // Finde das entsprechende NPC-Objekt
-            var npc = FindNPCByName(npcData.NPCName);
-            if (npc != null)
-            { 
-                npc.IsActive = npcData.isActive;
-                npc.IsAggressive = npcData.isAggressive;
-                if (npcData.CurrentDialogueState > 0)
-                {
-                    npc.CurrentDialogState = npcData.CurrentDialogueState;
-                    
-                    //print($"{npc.npcName} dialog state set to {npcData.CurrentDialogueState}");
-                }
-                else
-                {
-                    npc.CurrentDialogState = 1;
-                }
+            if (LevelManager.CurrentLevelName == "HighForest")
+            {
+                npcs["Thrimbald"].CurrentDialogState = 1;
+                npcs["Asmilda"].CurrentDialogState = 1;
+                npcs["Jack"].CurrentDialogState = 1;
+                npcs["Tommy"].CurrentDialogState = 1;
+                npcs["Admurin"].CurrentDialogState = 1;
             }
+            
         }
     }
 
-    private NPC FindNPCByName(string name)
-    {
-        // Gebe das entsprechende NPC-Objekt zurück, basierend auf dem Namen
-        switch (name)
-        {
-            case "Thrimbald":
-                return wizard;
-            case "Tommy":
-                return son;
-            case "Jack":
-                return hunter;
-            case "Asmilda":
-                return healer;
-            default:
-                return null;
-        }
-    }
+
     
     [System.Serializable]
     public class NPCDataList //wrapper klasse, da JsonUtlility keine Listen direkt speichern kann

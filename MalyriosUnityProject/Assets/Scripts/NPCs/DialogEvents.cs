@@ -39,7 +39,7 @@ public class DialogEvents : MonoBehaviour
                 ans.AnswerDescription =
                     "Ja, ich habe einen Weg gefunden es herzustellen. Hier ist es *übergebe Heilmittel*";
                 ans.Decision = "changeSonSprite";
-                npcManager.son.allDialogs[2].dialogTexts[0].Answers.Add(ans);
+                npcManager.npcs["Tommy"].allDialogs[2].dialogTexts[0].Answers.Add(ans);
                 addedDialogAnswer = true;
             }
 
@@ -52,9 +52,9 @@ public class DialogEvents : MonoBehaviour
                 ans.LinkedToSentenceId = 1;
                 ans.AnswerDescription =
                     "Ja, hier sind die Sachen";
-                npcManager.healer.allDialogs[2].dialogTexts[0].Answers.Add(ans);
-                npcManager.healer.CurrentDialogState =
-                    npcManager.healer.CurrentDialogState; //Update state after anser is added
+                npcManager.npcs["Asmilda"].allDialogs[2].dialogTexts[0].Answers.Add(ans);
+                npcManager.npcs["Asmilda"].CurrentDialogState =
+                    npcManager.npcs["Asmilda"].CurrentDialogState; //Update state after anser is added
                 addedDialogAnswer2 = true;
             }
         }
@@ -72,10 +72,10 @@ public class DialogEvents : MonoBehaviour
                 PlayerData.LearnedFireball = true;
                 break;
             case "BigRatAttack":
-                npcManager.caveRat.IsAggressive = true;
+                npcManager.npcs["BigRatNPC"].IsAggressive = true;
                 break;
             case "Wizzard2":
-                npcManager.wizard.CurrentDialogState = 2;
+                npcManager.npcs["Thrimbald"].CurrentDialogState = 2;
                 break;
             case "get apples":
                 apple = ItemDatabase.GetItem(10);
@@ -85,18 +85,18 @@ public class DialogEvents : MonoBehaviour
                 Inventory.Instance.AddItem(apple);
                 break;
             case "JackToldPlayerAboutTommy":
-                npcManager.son.CurrentDialogState = 2;
+                npcManager.npcs["Tommy"].CurrentDialogState = 2;
                 break;
             case "smallWerewolfAttack":
-                npcManager.son.IsAggressive = true;
+                npcManager.npcs["Tommy"].IsAggressive = true;
                 break;
             case "BringAntiWerewolfPotion":
-                npcManager.hunter.CurrentDialogState = 2;
-                npcManager.healer.CurrentDialogState = 2;
-                npcManager.son.CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
+                npcManager.npcs["Jack"].CurrentDialogState = 2;
+                npcManager.npcs["Jack"].CurrentDialogState = 2;
+                npcManager.npcs["Tommy"].CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
                 break;
             case "gettingIngredients":
-                npcManager.healer.CurrentDialogState = 3;
+                npcManager.npcs["Jack"].CurrentDialogState = 3;
                 break;
             case "craftAntiWerewolfPotion":
                 if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
@@ -111,23 +111,23 @@ public class DialogEvents : MonoBehaviour
 
                 break;
             case "changeSonSprite":
-                npcManager.hunter.CurrentDialogState = 3;
-                npcManager.son.gameObject.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
-                var son = npcManager.son.gameObject.transform;
+                npcManager.npcs["Jack"].CurrentDialogState = 3;
+                npcManager.npcs["Tommy"].gameObject.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
+                var son = npcManager.npcs["Tommy"].gameObject.transform;
                 son.localScale = new Vector3(1f, 1f, 1f);
                 var position = son.position;
                 position = new Vector3(position.x - 0.05f, position.y + 0.07f, 0f); //reposition after resize
                 son.position = position;
                 break;
             case "getSpell":
-                npcManager.hunter.CurrentDialogState = 4;
+                npcManager.npcs["Jack"].CurrentDialogState = 4;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(34));
-                npcManager.son.gameObject.SetActive(false);
+                npcManager.npcs["Tommy"].gameObject.SetActive(false);
                 break;
             case "getSword":
-                npcManager.hunter.CurrentDialogState = 4;
+                npcManager.npcs["Jack"].CurrentDialogState = 4;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(1));
-                npcManager.son.gameObject.SetActive(false);
+                npcManager.npcs["Tommy"].gameObject.SetActive(false);
                 break;
             default:
                 return;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Malyrios.Dialogue;
 using UnityEngine;
@@ -16,18 +17,20 @@ namespace NPCs
         public string npcName;
         public List<DialogueList> allDialogs; // Liste von Dialogen
         private bool isAggressive;
-        private bool isActive;
-        
+
         [SerializeField]
         private GameObject enemy;
         private int currentDialogState;
         private List<DialogueText> currentDialog;
         private NPCManager npcManager;
-        
-        
+
         private void Awake()
         {
             npcManager = FindObjectOfType<NPCManager>();
+        }
+
+        private void Start()
+        {
             npcManager.AddNpc(this);
         }
         
@@ -54,11 +57,10 @@ namespace NPCs
         {
             get
             {
-                return isActive;
+                return gameObject.activeSelf;
             }
             set
             {
-                isActive = value;
                 gameObject.SetActive(value);
                 npcManager.UpdateNPCData(this);
                 
