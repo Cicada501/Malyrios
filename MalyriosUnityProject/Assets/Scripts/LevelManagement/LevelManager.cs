@@ -43,9 +43,11 @@ public class LevelManager : MonoBehaviour
         npcManager.npcs.Clear();
         foreach (var npc in currentLevel.GetComponentsInChildren<NPC>())
         {
-            print($"found {npc.npcName} while changing level to {levelName}");
+            //print($"found {npc.npcName} while changing level to {levelName}");
             npcManager.npcs[npc.npcName] = npc;
         }
+
+        npcManager.ApplyLoadedData();
 
         if (prevLevelName != null)
         {

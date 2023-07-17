@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SaveAndLoad;
@@ -15,6 +16,11 @@ namespace NPCs
         public NpcDataList SaveNpCs()
         {
             return new NpcDataList(allNpcData);
+        }
+
+        private void Update()
+        {
+            Debug.Log(JsonUtility.ToJson(new NpcDataList(allNpcData)));
         }
 
         public void UpdateNpcData(NPC npc) //when a npc changes, this method is used to make sure the npcData list is updated respectively
@@ -53,20 +59,7 @@ namespace NPCs
         public void LoadNpCs(List<NpcData> npcDataList)
         {
             allNpcData = npcDataList;
-        
-            print("Loaded NPCs");
-            if (npcDataList.Count == 0)
-            {
-                if (LevelManager.CurrentLevelName == "HighForest")
-                {
-                    npcs["Thrimbald"].CurrentDialogState = 1;
-                    npcs["Asmilda"].CurrentDialogState = 1;
-                    npcs["Jack"].CurrentDialogState = 1;
-                    npcs["Tommy"].CurrentDialogState = 1;
-                    npcs["Admurin"].CurrentDialogState = 1;
-                }
-            
-            }
+            print("Loaded allNPCData");
         }
     
         [System.Serializable]
@@ -79,6 +72,27 @@ namespace NPCs
                 npcData = data;
             }
         }
-    
+
+        public void ApplyLoadedData()
+        {
+            foreach (var npcData in allNpcData)
+            {
+                npcs[npcData.npcName].CurrentDialogState = npcData.currentDialogueState;
+                npcs[npcData.npcName].IsAggressive = npcData.isAggressive;
+                npcs[npcData.npcName].IsActive = npcData.isActive;
+            }
+
+            //initialize new NPCs dialog state with 1
+            foreach (var npc in npcs)
+            {
+                print($"found {npc.Value.npcName} with dialog state: {npc.Value.CurrentDialogState}");
+                if (npc.Value.CurrentDialogState < 1)
+                {
+                    npc.Value.CurrentDialogState = 1;
+                }
+            }
+            
+            print("Applied allNPCdata Data to NPCs");
+        }
     }
 }
