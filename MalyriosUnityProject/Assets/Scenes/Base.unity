@@ -18150,7 +18150,6 @@ GameObject:
   - component: {fileID: 1386037422}
   - component: {fileID: 1386037423}
   - component: {fileID: 1386037424}
-  - component: {fileID: 1386037425}
   - component: {fileID: 1386037426}
   - component: {fileID: 1386037427}
   - component: {fileID: 1386037428}
@@ -18246,18 +18245,6 @@ MonoBehaviour:
   handArmorSlot: {fileID: 1042168769}
   feetArmorSlot: {fileID: 998785840}
   weaponSlot: {fileID: 1125508830}
---- !u!114 &1386037425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386037419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409e4271ae25f6d4fbc99adca437d232, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1386037426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18280,7 +18267,7 @@ MonoBehaviour:
       type: 3}
     EntrancePoint: {fileID: 0}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 0
+  spawnAtPlayerDebugLocation: 1
 --- !u!114 &1386037427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23370,7 +23357,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1386037425}
+      objectReference: {fileID: 0}
     - target: {fileID: 7586840571356539940, guid: b7c05cfc32757a0478be42b383a08de1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState

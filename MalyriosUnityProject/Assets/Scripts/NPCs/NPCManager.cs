@@ -19,10 +19,10 @@ namespace NPCs
             return new NpcDataList(allNpcData);
         }
 
-        private void Update()
-        {
-            Debug.Log(JsonUtility.ToJson(new NpcDataList(allNpcData)));
-        }
+        // private void Update()
+        // {
+        //     Debug.Log(JsonUtility.ToJson(new NpcDataList(allNpcData)));
+        // }
 
         public void UpdateNpcData(NPC npc, string propertyToUpdate) //when a npc changes, this method is used to make sure the npcData list is updated respectively
         {

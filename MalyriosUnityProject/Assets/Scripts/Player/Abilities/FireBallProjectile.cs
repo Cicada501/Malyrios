@@ -28,12 +28,12 @@ public class FireBallProjectile : MonoBehaviour
         if (player.transform.localScale.x < 0)
         {
             //Set this vector to the vector from GUI
-            rigidBody.velocity = FireballDirection; //new Vector2(-projectileSpeed, -0.05f*projectileSpeed);
+            rigidBody.velocity = FireballDirection*projectileSpeed; //new Vector2(-projectileSpeed, -0.05f*projectileSpeed);
             this.GetComponent<SpriteRenderer>().flipX = true;
         }
         else
         {
-            rigidBody.velocity = FireballDirection;
+            rigidBody.velocity = FireballDirection*projectileSpeed;
         }
     }
 

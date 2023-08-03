@@ -153,7 +153,7 @@ public class Enemy : MonoBehaviour
         canMove = false;
         if (!isDead)
         {
-            StartCoroutine(EnableMovementWhenVelocityLow(0.1f)); // enable movement when velocity is low enough. 
+            StartCoroutine(EnableMovementWhenVelocityLow(0.1f)); // enable movement when velocity is low enough. prevents interference between pushback and movement of enemy
         }
     }
 

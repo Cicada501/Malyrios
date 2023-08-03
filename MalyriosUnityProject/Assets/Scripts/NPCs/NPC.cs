@@ -74,7 +74,7 @@ namespace NPCs
             }
             set
             {
-                print($"Set {npcName} to aggressive state {value}");
+                //print($"Set {npcName} to aggressive state {value}");
                 isAggressive = value;
                 gameObject.SetActive(!value);
                 if (value)
@@ -85,7 +85,7 @@ namespace NPCs
                     }
                     else
                     {
-                        Debug.LogError("Enemy Object is Missing");
+                        Debug.LogWarning("Enemy Object is Missing");
                     }
                 }
                 

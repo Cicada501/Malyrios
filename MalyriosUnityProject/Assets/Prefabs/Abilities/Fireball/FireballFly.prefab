@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3543e35a315a042b2387bc4b3ed88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 1.5
+  projectileSpeed: 2
   impactEffect: {fileID: 7923343753624210597, guid: 5a29cd63ef6022f4ab75ff2cf0d84684,
     type: 3}
   fireballDamage: 120

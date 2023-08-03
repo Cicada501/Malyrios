@@ -11,32 +11,36 @@ public class DynamicGravityScale : MonoBehaviour
     [SerializeField]private float fallingGravityScale;
     [SerializeField]private float defaultGravityScale;
     private RaycastHit2D hit;
-    
-    
+    [SerializeField] private float distanceThreshold; // Die Entfernung, ab der die Gravitation angepasst wird
+    [SerializeField] private bool printDist;
+    private int groundLayer;
+
+
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         lastPosition = transform.position;
+        groundLayer = LayerMask.GetMask("Ground");
     }
     void Update()
     {
-        hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        hit = Physics2D.Raycast(transform.position, -Vector2.up, 10f, groundLayer);
+        Debug.DrawRay(transform.position, -Vector2.up, Color.red);
+        if (printDist)
+        {
+            if (hit.collider != null)
+            {
+                print("hit detected ");
+            }
+            print($"Der Boden ist {hit.distance} Einheiten entfernt");
+        }
 
         if (hit.collider != null && rb2d != null) {
-            float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-            
-            var position = transform.position;
-            bool movingUpSlope = position.y > lastPosition.y;
-            
-            lastPosition = position;
-            
-            if (slopeAngle > 0 && slopeAngle < maxSlopeAngle) {
-                if (movingUpSlope) {
-                    rb2d.gravityScale = climbingGravityScale;
-                } else {
-                    rb2d.gravityScale = fallingGravityScale;
-                }
+            if (hit.distance > distanceThreshold)
+            {
+                rb2d.gravityScale = fallingGravityScale;
             } else {
-                rb2d.gravityScale = defaultGravityScale;
+               
+                rb2d.gravityScale = climbingGravityScale;
             }
         }
 
