@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Malyrios.Dialogue;
+using NPCs;
 
-/*public class DialogueImporterWindow : EditorWindow
+public class DialogueImporterWindow : EditorWindow
 {
     private string path = "";
-    private int selectedDialogueIndex;
-    private string[] dialogueNames;
+    private NPC selectedNPC = null;
 
     [MenuItem("Custom/Load Dialogue Text")]
     static void Init()
@@ -24,6 +24,11 @@ using Malyrios.Dialogue;
     {
         GUILayout.Label("Load Dialogue Text", EditorStyles.boldLabel);
 
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Drag and drop NPC: ");
+        selectedNPC = (NPC)EditorGUILayout.ObjectField(selectedNPC, typeof(NPC), true);
+        EditorGUILayout.EndHorizontal();
+
         if (GUILayout.Button("Select JSON File"))
         {
             path = EditorUtility.OpenFilePanel("Load Dialogue Text", "", "json");
@@ -33,24 +38,25 @@ using Malyrios.Dialogue;
         {
             GUILayout.Label("Selected File: " + path);
 
-            // Get all List<DialogueText> fields in the Decision instance
-            var fields = Decision.Instance.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            dialogueNames = Array.FindAll(fields, field => field.FieldType == typeof(List<DialogueText>)).Select(field => field.Name).ToArray();
-
-            // Show a dropdown menu to select a dialogue
-            selectedDialogueIndex = EditorGUILayout.Popup("Select Dialogue", selectedDialogueIndex, dialogueNames);
-
-            // Button to load the JSON content to the selected dialogue
             if (GUILayout.Button("Load Dialogue Text"))
             {
                 if (File.Exists(path))
                 {
                     string json = File.ReadAllText(path);
-                    DialogueTextListWrapper wrapper = JsonUtility.FromJson<DialogueTextListWrapper>(json);
+                    DialogueList importedDialogue = new DialogueList();
+                    var wrapper = JsonUtility.FromJson<DialogueTextListWrapper>(json);
+                    Debug.Log($" first Dialog text: {wrapper.dialogueTexts[0]}");
+                    importedDialogue.dialogTexts = wrapper.dialogueTexts;
 
-                    // Set the selected dialogue
-                    var selectedDialogue = fields.First(field => field.Name == dialogueNames[selectedDialogueIndex]);
-                    selectedDialogue.SetValue(Decision.Instance, wrapper.dialogueTexts);
+                    // Make sure an NPC is selected
+                    if (selectedNPC != null)
+                    {
+                        selectedNPC.allDialogs.Add(importedDialogue);
+                    }
+                    else
+                    {
+                        Debug.LogError("No NPC selected");
+                    }
                 }
                 else
                 {
@@ -59,4 +65,10 @@ using Malyrios.Dialogue;
             }
         }
     }
-}*/
+}
+
+[Serializable]
+public class DialogueTextListWrapper
+{
+    public List<DialogueText> dialogueTexts;
+}
