@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using Malyrios.Dialogue;
 
-public class DialogueImporterWindow : EditorWindow
+/*public class DialogueImporterWindow : EditorWindow
 {
     private string path = "";
     private int selectedDialogueIndex;
@@ -59,4 +59,4 @@ public class DialogueImporterWindow : EditorWindow
             }
         }
     }
-}
+}*/

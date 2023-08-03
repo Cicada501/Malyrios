@@ -1,0 +1,61 @@
+@startuml
+
+class NPC {
+    +string NPCName
+    +int CurrentDialogueState
+    +Dialogue CurrentDialogue
+    +bool HasLearnedFireball
+    +...
+}
+
+class DialogEvents {
+    +static void FireEvent(string eventName)
+    +...
+}
+
+class NPCData {
+    +string NPCName
+    +int CurrentDialogueState
+    +bool HasLearnedFireball
+    +...
+    +NPCData(NPC npc)
+}
+
+class NPCManager {
+    +NPC Wizard
+    +NPC Son
+    +NPC Hunter
+    +NPC Healer
+    +void UpdateNPCState(NPC npc, int newState)
+    +void TriggerEvent(string eventName)
+    +List<NPCData> SaveNPCs()
+    +void LoadNPCs(List<NPCData> npcDataList)
+    +NPC FindNPCByName(string name)
+}
+
+
+class PlayerData {
+    +bool HasLearnedFireball
+    +...
+}
+
+class DialogueManager{
+    +Dialogue dialogueText
+}
+
+class DialogueTrigger{
+
+}
+
+class IInteractable{
+}
+
+NPC "1" *-- "1" NPCData : Contains
+IInteractable "1" --> "1" DialogueTrigger : Triggers
+DialogueTrigger "1" *-- "1" DialogueManager : Uses
+NPCManager "1" *-- "1..4" NPC : Manages
+NPCManager "1" *-- "1..4" NPCData : Saves all NPCs
+DialogueManager ..> DialogEvents : Triggers events
+DialogEvents --> PlayerData : Modifies
+
+@enduml

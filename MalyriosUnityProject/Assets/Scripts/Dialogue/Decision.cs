@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.IO;
 using Malyrios.Dialogue;
@@ -35,6 +35,8 @@ public class Decision : MonoBehaviour
         }
     }
 
+
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -52,12 +54,13 @@ public class Decision : MonoBehaviour
     //public static to use them in the SetDecision() Function
     public static bool BigRatAttack;
     public static bool LearnedFireball;
-    public static int WizardDialogueState = 1;
     public static int SonDialogueState = 1;
     public static int HunterDialogState = 1;
     public static int HealerDialogState = 1;
     public static bool SmallWerewolfAttack;
+    public static int WizardDialogueState = 1;
 
+    //Add Initialize() Method, that updates all Game States to the loaded values(e.g. Enable/Disable Gameobject, Show UI Button,...)
 
     //fireball + wizard
     public GameObject fireballButton;
@@ -92,13 +95,13 @@ public class Decision : MonoBehaviour
     public List<DialogueText> healerDialogText2;
     public List<DialogueText> healerDialogText1;
 
-    #endregion
+    #endregion#1#
 
     //big rat
     [Header("Gets set during runtime (in LevelManager), when Cave gets loaded")]
     public GameObject bigRatNpc;
-
     public GameObject bigRatEnemy;
+    
     public GameObject smallWerewolfNpc;
     public GameObject smallWerewolfEnemy;
     private static BaseItem apple;
@@ -136,8 +139,8 @@ public class Decision : MonoBehaviour
 
     private void Update()
     {
-        LearnedFireball = true;
-        fireballButton.SetActive(LearnedFireball);
+        
+        //fireballButton.SetActive(LearnedFireball);
         if (LevelManager.CurrentLevelName == "Cave")
         {
             if (BigRatAttack)
@@ -371,4 +374,4 @@ public class Decision : MonoBehaviour
         SmallWerewolfAttack = gameDataLoadedDecisionData.smallWerewolfAttack;
         HealerDialogState = gameDataLoadedDecisionData.healerDialogState;
     }
-}
+}*/

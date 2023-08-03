@@ -258,6 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlopeAngle: 45
-  climbingGravityScale: 1
-  fallingGravityScale: 8
-  defaultGravityScale: 1
+  climbingGravityScale: 4
+  fallingGravityScale: 4
+  defaultGravityScale: 4

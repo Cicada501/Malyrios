@@ -40,7 +40,7 @@ namespace Malyrios.Character
             get => this.maxHealth;
             set
             {
-                print($"set of MaxHealth is used, value is: {value}");
+                //print($"set of MaxHealth is used, value is: {value}");
                 this.maxHealth = value;
                 OnMaxHealthChanged?.Invoke(this.maxHealth);
                 OnBaseAttributeChanged?.Invoke(this);

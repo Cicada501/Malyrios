@@ -11,6 +11,7 @@ public class ForestGenerator : MonoBehaviour
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;
     [SerializeField] private int seed;
+    [SerializeField] private int initSortingLayer;
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class ForestGenerator : MonoBehaviour
             GameObject treePrefab = new GameObject("TreePrefab");
             SpriteRenderer spriteRenderer = treePrefab.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = treeSprite;
-            spriteRenderer.sortingOrder = i;
+            spriteRenderer.sortingOrder = i+ initSortingLayer;
             spriteRenderer.sortingLayerName = "Background";
 
 

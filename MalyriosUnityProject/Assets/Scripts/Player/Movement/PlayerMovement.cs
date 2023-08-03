@@ -179,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayLandingSound()
     {
-        print("LandingSound");
+        //print("LandingSound");
         int randomIndex = Random.Range(0, landingSounds.Length);
         landingSounds[randomIndex].Play();
     }

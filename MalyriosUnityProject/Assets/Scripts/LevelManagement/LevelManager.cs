@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Malyrios.Dialogue;
+using NPCs;
 using UnityEngine;
 
 [Serializable]
@@ -12,6 +13,7 @@ public struct Level
     public GameObject Prefab;
     public Transform EntrancePoint;
 }
+
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private List<Level> level;
@@ -23,7 +25,7 @@ public class LevelManager : MonoBehaviour
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
     [SerializeField] public bool spawnAtPlayerDebugLocation;
-    
+
     private void Start()
     {
         cam = ReferencesManager.Instance.camera;
@@ -32,43 +34,35 @@ public class LevelManager : MonoBehaviour
 
     public void ChangeLevel(string levelName)
     {
-        
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;
-        
+
         //get the Decision script (is on the same GameObject), to assign the 
-        var decisionManager = GetComponent<Decision>();
-        
-        //Set the variables of Decision.cs depending on What level is loaded
-        if (levelName == "HighForest")
+        var npcManager = GetComponent<NPCManager>();
+        npcManager.npcs.Clear();
+        foreach (var npc in currentLevel.GetComponentsInChildren<NPC>())
         {
-            //GameObject wizzard = currentLevel.transform.Find("NPCs/Wizzard").gameObject;
-            decisionManager.wizzardDialog = currentLevel.transform.Find("NPCs/Wizzard").GetComponent<Dialogue>();
-            decisionManager.hunterDialog = currentLevel.transform.Find("NPCs/Jack").GetComponent<Dialogue>();
-            decisionManager.sonDialog = currentLevel.transform.Find("NPCs/Tommy").GetComponent<Dialogue>();
-            decisionManager.healerDialog = currentLevel.transform.Find("NPCs/Asmilda").GetComponent<Dialogue>();
-            decisionManager.smallWerewolfNpc = currentLevel.transform.Find("NPCs/Tommy").gameObject;
-            decisionManager.smallWerewolfEnemy = currentLevel.transform.Find("Enemies/smallWerewolfEnemy").gameObject;
-
-
-        }else if (levelName == "Cave")
-        {
-            decisionManager.bigRatNpc = currentLevel.transform.Find("BigRatNPC").gameObject;
-            decisionManager.bigRatEnemy = currentLevel.transform.Find("BigRatEnemy").gameObject;
+            //print($"found {npc.npcName} while changing level to {levelName}");
+            npcManager.npcs[npc.npcName] = npc;
         }
-        
-        if (prevLevelName!=null) {
+
+        npcManager.ApplyLoadedData();
+
+        if (prevLevelName != null)
+        {
             var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
         }
-        if (spawnAtPlayerDebugLocation && prevLevelName==null)
+
+        if (spawnAtPlayerDebugLocation && prevLevelName == null)
         {
             var startpoint = GameObject.Find("Startpoint").GetComponent<Transform>();
             player.transform.position = startpoint.position;
         }
+
         prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
-        
+
         StartCoroutine(FocusPlayerCoroutine());
     }
 
@@ -79,7 +73,7 @@ public class LevelManager : MonoBehaviour
         //keep original values
         originalDeadZoneHeight = transposer.m_DeadZoneHeight;
         originalDeadZoneWidth = transposer.m_DeadZoneWidth;
-        
+
         // Set dead zone values to 0
         transposer.m_DeadZoneWidth = 0;
         transposer.m_DeadZoneHeight = 0;
