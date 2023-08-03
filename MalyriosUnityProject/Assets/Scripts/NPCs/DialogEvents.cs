@@ -93,11 +93,11 @@ public class DialogEvents : MonoBehaviour
                 break;
             case "BringAntiWerewolfPotion":
                 npcManager.npcs["Jack"].CurrentDialogState = 2;
-                npcManager.npcs["Jack"].CurrentDialogState = 2;
+                npcManager.npcs["Asmilda"].CurrentDialogState = 2;
                 npcManager.npcs["Tommy"].CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
                 break;
             case "gettingIngredients":
-                npcManager.npcs["Jack"].CurrentDialogState = 3;
+                npcManager.npcs["Asmilda"].CurrentDialogState = 3;
                 break;
             case "craftAntiWerewolfPotion":
                 if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
