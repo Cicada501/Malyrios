@@ -228,6 +228,8 @@ MonoBehaviour:
   climbingGravityScale: 1
   fallingGravityScale: 8
   defaultGravityScale: 1
+  distanceThreshold: 0.5
+  printDist: 0
 --- !u!1 &975214413877605647
 GameObject:
   m_ObjectHideFlags: 0

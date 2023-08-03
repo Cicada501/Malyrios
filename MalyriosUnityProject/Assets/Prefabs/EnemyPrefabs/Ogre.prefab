@@ -74,6 +74,7 @@ MonoBehaviour:
   facingRight: 0
   maxHealth: 150
   enemyType: 2
+  canMove: 0
 --- !u!212 &3469067647835135942
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -253,6 +254,8 @@ MonoBehaviour:
   climbingGravityScale: 1
   fallingGravityScale: 8
   defaultGravityScale: 1
+  distanceThreshold: 0.5
+  printDist: 0
 --- !u!1 &3662732446927054958
 GameObject:
   m_ObjectHideFlags: 0

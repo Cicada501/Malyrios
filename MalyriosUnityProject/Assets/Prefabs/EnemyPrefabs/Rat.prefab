@@ -177,6 +177,7 @@ MonoBehaviour:
   facingRight: 0
   maxHealth: 100
   enemyType: 1
+  canMove: 0
 --- !u!50 &200069132668381809
 Rigidbody2D:
   serializedVersion: 4
@@ -256,3 +257,5 @@ MonoBehaviour:
   climbingGravityScale: 1
   fallingGravityScale: 8
   defaultGravityScale: 1
+  distanceThreshold: 0.5
+  printDist: 0

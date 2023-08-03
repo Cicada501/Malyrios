@@ -261,3 +261,5 @@ MonoBehaviour:
   climbingGravityScale: 1
   fallingGravityScale: 8
   defaultGravityScale: 1
+  distanceThreshold: 0.5
+  printDist: 0

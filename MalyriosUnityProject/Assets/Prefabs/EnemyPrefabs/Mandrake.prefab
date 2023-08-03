@@ -231,6 +231,8 @@ MonoBehaviour:
   climbingGravityScale: 4
   fallingGravityScale: 4
   defaultGravityScale: 4
+  distanceThreshold: 0.5
+  printDist: 0
 --- !u!61 &2784073068375728789
 BoxCollider2D:
   m_ObjectHideFlags: 0

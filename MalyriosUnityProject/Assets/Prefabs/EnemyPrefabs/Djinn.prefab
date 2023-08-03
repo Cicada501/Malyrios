@@ -198,6 +198,7 @@ MonoBehaviour:
   facingRight: 0
   maxHealth: 200
   enemyType: 3
+  canMove: 0
 --- !u!60 &5704038291467004029
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -284,3 +285,5 @@ MonoBehaviour:
   climbingGravityScale: 1
   fallingGravityScale: 8
   defaultGravityScale: 1
+  distanceThreshold: 0.5
+  printDist: 0

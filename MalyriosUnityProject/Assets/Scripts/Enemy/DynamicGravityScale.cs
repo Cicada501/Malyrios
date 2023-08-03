@@ -11,7 +11,7 @@ public class DynamicGravityScale : MonoBehaviour
     [SerializeField]private float fallingGravityScale;
     [SerializeField]private float defaultGravityScale;
     private RaycastHit2D hit;
-    [SerializeField] private float distanceThreshold; // Die Entfernung, ab der die Gravitation angepasst wird
+    [SerializeField] private float distanceThreshold = 0.5f; // Die Entfernung, ab der die Gravitation angepasst wird
     [SerializeField] private bool printDist;
     private int groundLayer;
 
