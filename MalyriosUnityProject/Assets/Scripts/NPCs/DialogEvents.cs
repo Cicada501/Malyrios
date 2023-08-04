@@ -19,6 +19,11 @@ public class DialogEvents : MonoBehaviour
     private static BaseItem schirmlinge;
     private bool addedDialogAnswer = false;
     private bool addedDialogAnswer2 = false;
+    private NPC tommy;
+    private NPC thrimbald;
+    private NPC asmilda;
+    private NPC jack;
+    
 
     private void Start()
     {
@@ -27,6 +32,7 @@ public class DialogEvents : MonoBehaviour
         schirmlinge = ItemDatabase.GetItem(32);
         addedDialogAnswer = false;
         addedDialogAnswer2 = false;
+
     }
 
     private void Update()
@@ -42,6 +48,7 @@ public class DialogEvents : MonoBehaviour
                 ans.Decision = "changeSonSprite";
                 npcManager.npcs["Tommy"].allDialogs[2].dialogTexts[0].Answers.Add(ans);
                 addedDialogAnswer = true;
+                tommy.QuestStatus = 3;
             }
 
             //print($"Schattenrose: {Inventory.CountOccurrences(schattenRose) > 0}, Blut: {Inventory.CountOccurrences(werwolfBlut) > 0}, schirmlinge: {Inventory.CountOccurrences(schirmlinge) > 2}");
@@ -57,6 +64,7 @@ public class DialogEvents : MonoBehaviour
                 npcManager.npcs["Asmilda"].CurrentDialogState =
                     npcManager.npcs["Asmilda"].CurrentDialogState; //Update state after anser is added
                 addedDialogAnswer2 = true;
+                asmilda.QuestStatus = 3;
             }
         }
     }
@@ -64,6 +72,11 @@ public class DialogEvents : MonoBehaviour
 
     public void FireEvent(string eventName)
     {
+        tommy = npcManager.npcs["Tommy"];
+        thrimbald = npcManager.npcs["Thrimbald"];
+        asmilda = npcManager.npcs["Asmilda"];
+        jack = npcManager.npcs["Jack"];
+        
         switch (eventName)
         {
             case "":
@@ -76,8 +89,8 @@ public class DialogEvents : MonoBehaviour
                 npcManager.npcs["Debby"].IsAggressive = true;
                 break;
             case "Wizzard2":
-                npcManager.npcs["Thrimbald"].CurrentDialogState = 2;
-                npcManager.npcs["Thrimbald"].QuestStatus = 2;
+                thrimbald.CurrentDialogState = 2;
+                thrimbald.QuestStatus = 2;
                 break;
             case "get apples":
                 apple = ItemDatabase.GetItem(10);
@@ -87,18 +100,23 @@ public class DialogEvents : MonoBehaviour
                 Inventory.Instance.AddItem(apple);
                 break;
             case "JackToldPlayerAboutTommy":
-                npcManager.npcs["Tommy"].CurrentDialogState = 2;
+                tommy.CurrentDialogState = 2;
+                tommy.QuestStatus = 3;
+                jack.QuestStatus = 2;
                 break;
             case "smallWerewolfAttack":
-                npcManager.npcs["Tommy"].IsAggressive = true;
+                tommy.IsAggressive = true;
                 break;
             case "BringAntiWerewolfPotion":
-                npcManager.npcs["Jack"].CurrentDialogState = 2;
-                npcManager.npcs["Asmilda"].CurrentDialogState = 2;
-                npcManager.npcs["Tommy"].CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
+                jack.CurrentDialogState = 2;
+                asmilda.CurrentDialogState = 2;
+                asmilda.QuestStatus = 3;
+                tommy.CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
+                tommy.QuestStatus = 2;
                 break;
             case "gettingIngredients":
-                npcManager.npcs["Asmilda"].CurrentDialogState = 3;
+                asmilda.CurrentDialogState = 3;
+                asmilda.QuestStatus = 2;
                 break;
             case "craftAntiWerewolfPotion":
                 if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
@@ -111,23 +129,29 @@ public class DialogEvents : MonoBehaviour
                     Inventory.Instance.AddItem(ItemDatabase.GetItem(33));
                 }
 
+                asmilda.QuestStatus = 0;
+
                 break;
             case "changeSonSprite":
-                npcManager.npcs["Jack"].CurrentDialogState = 3;
-                npcManager.npcs["Tommy"].gameObject.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
-                var son = npcManager.npcs["Tommy"].gameObject.transform;
+                jack.CurrentDialogState = 3;
+                tommy.gameObject.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
+                var son = tommy.gameObject.transform;
                 son.localScale = new Vector3(1f, 1f, 1f);
                 var position = son.position;
                 position = new Vector3(position.x - 0.05f, position.y + 0.07f, 0f); //reposition after resize
                 son.position = position;
+                tommy.QuestStatus = 0;
+                jack.QuestStatus = 3;
                 break;
             case "getSpell":
-                npcManager.npcs["Jack"].CurrentDialogState = 4;
+                jack.CurrentDialogState = 4;
+                jack.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(34));
                 npcManager.npcs["Tommy"].gameObject.SetActive(false);
                 break;
             case "getSword":
-                npcManager.npcs["Jack"].CurrentDialogState = 4;
+                jack.CurrentDialogState = 4;
+                jack.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(1));
                 npcManager.npcs["Tommy"].gameObject.SetActive(false);
                 break;
