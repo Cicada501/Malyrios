@@ -5,8 +5,7 @@ using UnityEngine;
 public class SpriteManager : MonoBehaviour
 {
     public static SpriteManager Instance; // Singleton instance
-
-    public Sprite noQuestSprite;
+    
     public Sprite newQuestSprite;
     public Sprite ongoingQuestSprite;
     public Sprite completedQuestSprite;
@@ -29,7 +28,7 @@ public class SpriteManager : MonoBehaviour
         switch (status)
         {
             case 0: // NO_QUEST
-                return noQuestSprite;
+                return null;
             case 1: // NEW_QUEST
                 return newQuestSprite;
             case 2: // ONGOING_QUEST

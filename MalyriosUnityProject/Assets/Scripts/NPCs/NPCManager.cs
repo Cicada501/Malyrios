@@ -42,7 +42,7 @@ namespace NPCs
                         npcData.currentDialogueState = npc.CurrentDialogState;
                         break;
                     case "questStatus":
-                        npcData.questStatus = npc.CurrentQuestStatus;
+                        npcData.questStatus = npc.QuestStatus;
                         break;
                     default:
                         Debug.LogError("Invalid property name");
@@ -104,6 +104,7 @@ namespace NPCs
                     npcs[npcData.npcName].CurrentDialogState = npcData.currentDialogueState;
                     npcs[npcData.npcName].IsAggressive = npcData.isAggressive;
                     npcs[npcData.npcName].IsActive = npcData.isActive;
+                    npcs[npcData.npcName].QuestStatus = npcData.questStatus;
                 }
             }
 

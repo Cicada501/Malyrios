@@ -77,6 +77,7 @@ public class DialogEvents : MonoBehaviour
                 break;
             case "Wizzard2":
                 npcManager.npcs["Thrimbald"].CurrentDialogState = 2;
+                npcManager.npcs["Thrimbald"].QuestStatus = 2;
                 break;
             case "get apples":
                 apple = ItemDatabase.GetItem(10);

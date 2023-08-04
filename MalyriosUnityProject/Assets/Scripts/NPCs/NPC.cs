@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Malyrios.Dialogue;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NPCs
 {
@@ -16,34 +17,48 @@ namespace NPCs
         //public GameObject npcGameObject;
         public string npcName;
         public List<DialogueList> allDialogs; // Liste von Dialogen
+        private int currentDialogState = 1;
         private bool isAggressive;
         private int questStatus;
 
         [SerializeField]
         private GameObject enemy;
-        private int currentDialogState = 1;
         private List<DialogueText> currentDialog;
         private NPCManager npcManager;
-        
-        public UnityEngine.UI.Image questStatusImage;
+
+        [SerializeField] private SpriteRenderer questStatusImage;
 
 
         public void UpdateQuestStatusImage()
         {
-            questStatusImage.sprite = SpriteManager.Instance.GetSpriteForQuestStatus(questStatus);
+            if (questStatus > 0 & questStatusImage!= null)
+            {
+                print($"Updating quest image of {npcName} to {questStatus}");
+                questStatusImage.sprite = SpriteManager.Instance.GetSpriteForQuestStatus(questStatus);
+            }
         }
 
         private void Awake()
         {
             npcManager = FindObjectOfType<NPCManager>();
+            //questStatusImage = gameObject.GetComponentInChildren<SpriteRenderer>();
         }
 
         private void Start()
         {
             npcManager.AddNpc(this);
+
+
+            if (npcName == "Thrimbald" && CurrentDialogState==1)
+            {
+                QuestStatus = 1;
+            }else if (npcName == "Jack" && CurrentDialogState == 1)
+            {
+                QuestStatus = 1;
+            }
         }
         
-        public int CurrentQuestStatus // Getter and Setter for QuestStatus
+        public int QuestStatus // Getter and Setter for QuestStatus
         {
             get
             {
