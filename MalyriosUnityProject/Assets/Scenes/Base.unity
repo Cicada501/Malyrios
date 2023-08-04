@@ -18154,6 +18154,7 @@ GameObject:
   - component: {fileID: 1386037427}
   - component: {fileID: 1386037428}
   - component: {fileID: 1386037429}
+  - component: {fileID: 1386037430}
   m_Layer: 13
   m_Name: GameManager
   m_TagString: Untagged
@@ -18305,6 +18306,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allNpcData: []
+--- !u!114 &1386037430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386037419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0023d91806966c546899693a9f590ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noQuestSprite: {fileID: 0}
+  newQuestSprite: {fileID: 21300000, guid: d973e31c32bd9ac4c8e9f22611bee848, type: 3}
+  ongoingQuestSprite: {fileID: 21300000, guid: 3d7c74b83396f6d439c5d474e428021c, type: 3}
+  completedQuestSprite: {fileID: 21300000, guid: ef52e67c8c35fad49a7801d427034f70,
+    type: 3}
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0

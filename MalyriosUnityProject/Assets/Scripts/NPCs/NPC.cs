@@ -17,12 +17,21 @@ namespace NPCs
         public string npcName;
         public List<DialogueList> allDialogs; // Liste von Dialogen
         private bool isAggressive;
+        private int questStatus;
 
         [SerializeField]
         private GameObject enemy;
         private int currentDialogState = 1;
         private List<DialogueText> currentDialog;
         private NPCManager npcManager;
+        
+        public UnityEngine.UI.Image questStatusImage;
+
+
+        public void UpdateQuestStatusImage()
+        {
+            questStatusImage.sprite = SpriteManager.Instance.GetSpriteForQuestStatus(questStatus);
+        }
 
         private void Awake()
         {
@@ -34,7 +43,19 @@ namespace NPCs
             npcManager.AddNpc(this);
         }
         
-        
+        public int CurrentQuestStatus // Getter and Setter for QuestStatus
+        {
+            get
+            {
+                return questStatus;
+            }
+            set
+            {
+                questStatus = value;
+                npcManager.UpdateNpcData(this, "questStatus");
+                UpdateQuestStatusImage();
+            }
+        }
         public int CurrentDialogState 
         {
             get 

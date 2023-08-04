@@ -41,6 +41,9 @@ namespace NPCs
                     case "currentDialogueState":
                         npcData.currentDialogueState = npc.CurrentDialogState;
                         break;
+                    case "questStatus":
+                        npcData.questStatus = npc.CurrentQuestStatus;
+                        break;
                     default:
                         Debug.LogError("Invalid property name");
                         break;
