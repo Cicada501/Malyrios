@@ -13,7 +13,7 @@ namespace Malyrios.Dialogue
     {
         #region Serialize Fields
 
-        [SerializeField] private float writingSpeed = 15f;
+        [SerializeField] private float writingSpeed = 150f;
         [SerializeField] private GameObject answerButton = null;
         [SerializeField] private Transform content = null;
         [SerializeField] private TextMeshProUGUI sentence = null;
@@ -140,7 +140,7 @@ namespace Malyrios.Dialogue
                         yield return new WaitForSeconds(0.2f);
                     }
 
-                    yield return new WaitForSeconds(1 / this.writingSpeed);
+                    yield return new WaitForSeconds(1 / writingSpeed);
                 }
 
                 ShowAnswers();

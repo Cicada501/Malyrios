@@ -147,13 +147,13 @@ public class DialogEvents : MonoBehaviour
                 jack.CurrentDialogState = 4;
                 jack.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(34));
-                npcManager.npcs["Tommy"].gameObject.SetActive(false);
+                tommy.gameObject.SetActive(false);
                 break;
             case "getSword":
                 jack.CurrentDialogState = 4;
                 jack.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(1));
-                npcManager.npcs["Tommy"].gameObject.SetActive(false);
+                tommy.gameObject.SetActive(false);
                 break;
             default:
                 return;

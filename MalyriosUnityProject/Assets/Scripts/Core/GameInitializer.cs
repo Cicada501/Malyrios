@@ -36,5 +36,11 @@ public class GameInitializer : MonoBehaviour
         //GetComponent<Decision>().UpdateDecisionData(gameData.LoadedDecisionData);
         PlayerAttack.EquippedWeaponID = gameData.LoadedEquippedWeaponID;
     }
+
+    public void ResetAll()
+    {
+        PlayerPrefs.DeleteAll();
+        LoadAndApplyData();
+    }
     
 }
