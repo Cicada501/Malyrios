@@ -105,9 +105,11 @@ public class DialogEvents : MonoBehaviour
                 tommy.CurrentDialogState = 2;
                 tommy.QuestStatus = 3;
                 jack.QuestStatus = 2;
+                questLogWindow.AddQuest("Ein Heilmittel für Tommy", "Suche den Sohn des Jägers, um ihn davon zu überzeugen, dess er ein sich in einen Menschen zurück verwandeln muss (Achtung: Er könnte gefährlich sein)");
                 break;
             case "smallWerewolfAttack":
                 tommy.IsAggressive = true;
+                
                 break;
             case "BringAntiWerewolfPotion":
                 jack.CurrentDialogState = 2;
@@ -115,10 +117,14 @@ public class DialogEvents : MonoBehaviour
                 asmilda.QuestStatus = 3;
                 tommy.CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
                 tommy.QuestStatus = 2;
+                
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy", "Finde jemanden, der ein Heilmittel für Tommy (den Sohn des Jägers) herstellen kann");
                 break;
             case "gettingIngredients":
                 asmilda.CurrentDialogState = 3;
                 asmilda.QuestStatus = 2;
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy",
+                    "Finde folgende Zutaten: 1x Schattenrose, 1x Werwolfblut, 2x Dunkelstaubschirmling und bringe sie zu Asmilda");
                 break;
             case "craftAntiWerewolfPotion":
                 if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
@@ -132,6 +138,7 @@ public class DialogEvents : MonoBehaviour
                 }
 
                 asmilda.QuestStatus = 0;
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy", "Bring das Heilmittel zu Tommy");
 
                 break;
             case "changeSonSprite":
@@ -144,6 +151,9 @@ public class DialogEvents : MonoBehaviour
                 son.position = position;
                 tommy.QuestStatus = 0;
                 jack.QuestStatus = 3;
+
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy",
+                    "berichte jack, dass du seinen Sohn gerettet hast");
                 break;
             case "getSpell":
                 jack.CurrentDialogState = 4;
