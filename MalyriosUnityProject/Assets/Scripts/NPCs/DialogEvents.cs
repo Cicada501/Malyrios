@@ -11,6 +11,7 @@ public class DialogEvents : MonoBehaviour
     [SerializeField] private GameObject fireballButton;
 
     [SerializeField] private NPCManager npcManager;
+    [SerializeField] private QuestLogWindow questLogWindow;
 
 
     private static BaseItem apple;
@@ -91,6 +92,7 @@ public class DialogEvents : MonoBehaviour
             case "Wizzard2":
                 thrimbald.CurrentDialogState = 2;
                 thrimbald.QuestStatus = 2;
+                questLogWindow.UpdateQuestDescription("Test Title", "Hier könnte ihre werbung stehen");
                 break;
             case "get apples":
                 apple = ItemDatabase.GetItem(10);

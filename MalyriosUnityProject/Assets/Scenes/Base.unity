@@ -10810,6 +10810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballButton: {fileID: 320686717}
   npcManager: {fileID: 1386037429}
+  questLogWindow: {fileID: 0}
 --- !u!1 &559164488
 GameObject:
   m_ObjectHideFlags: 0
@@ -18702,7 +18703,7 @@ MonoBehaviour:
       type: 3}
     EntrancePoint: {fileID: 0}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 0
+  spawnAtPlayerDebugLocation: 1
 --- !u!114 &1386037427
 MonoBehaviour:
   m_ObjectHideFlags: 0

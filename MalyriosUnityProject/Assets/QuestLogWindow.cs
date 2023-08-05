@@ -63,10 +63,36 @@ public class QuestLogWindow : MonoBehaviour
 
 
 
-    public void UpdateQuest(string title, string description)
-    {
+        public void UpdateQuestDescription(string title, string newDescription)
+        {
+            // Durchlaufen Sie alle Kinder von "listOfQuests"
+            for (int i = 0; i < listOfQuests.transform.childCount; i++)
+            {
+                GameObject child = listOfQuests.transform.GetChild(i).gameObject;
+
+                // Finden Sie das "title+marker/title"-GameObject und lesen Sie seinen Text aus
+                TextMeshProUGUI titleText = child.transform.Find("title+marker/title").GetComponent<TextMeshProUGUI>();
         
-    }
+                // Überprüfen Sie, ob der Text mit dem übergebenen Titel übereinstimmt
+                if (titleText.text == title)
+                {
+                    // Finden Sie das "desc+offsetimg/description"-GameObject und aktualisieren Sie seinen Text
+                    TextMeshProUGUI descriptionText = child.transform.Find("desc+offsetimg/description").GetComponent<TextMeshProUGUI>();
+                    descriptionText.text = newDescription;
+
+                    // Aktualisieren Sie auch die Beschreibung in der Quest-Liste
+                    var quest = quests.Find(q => q.questName == title);
+                    if (quest != null)
+                    {
+                        quest.questDescription = newDescription;
+                    }
+
+                    // Verlassen Sie die Schleife, da Sie die gesuchte Quest bereits gefunden haben
+                    break;
+                }
+            }
+        }
+
 
     public void RemoveQuest(string title, string description)
     {
