@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Items;
 using UnityEngine;
-
 using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class ActiveItemWindow : MonoBehaviour

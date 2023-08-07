@@ -95,7 +95,7 @@ public class QuestLogWindow : MonoBehaviour
                     {
                         quest.questDescription = newDescription;
                     }
-                    break; //break loop, because correct quest was found already
+                    return; //return, because correct quest was found already
                 }
             }
             Debug.LogWarning($"No quest with the title: {title}");

@@ -105,6 +105,7 @@ public class DialogEvents : MonoBehaviour
                 tommy.CurrentDialogState = 2;
                 tommy.QuestStatus = 3;
                 jack.QuestStatus = 2;
+                jack.CurrentDialogState = 2;
                 questLogWindow.AddQuest("Ein Heilmittel für Tommy", "Suche den Sohn des Jägers, um ihn davon zu überzeugen, dess er ein sich in einen Menschen zurück verwandeln muss (Achtung: Er könnte gefährlich sein)");
                 break;
             case "smallWerewolfAttack":
@@ -112,12 +113,12 @@ public class DialogEvents : MonoBehaviour
                 
                 break;
             case "BringAntiWerewolfPotion":
-                jack.CurrentDialogState = 2;
+                jack.CurrentDialogState = 3;
                 asmilda.CurrentDialogState = 2;
                 asmilda.QuestStatus = 3;
                 tommy.CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
                 tommy.QuestStatus = 2;
-                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
+                
                 
                 questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy", "Finde jemanden, der ein Heilmittel für Tommy (den Sohn des Jägers) herstellen kann");
                 break;
@@ -143,7 +144,7 @@ public class DialogEvents : MonoBehaviour
 
                 break;
             case "changeSonSprite":
-                jack.CurrentDialogState = 3;
+                jack.CurrentDialogState = 4;
                 tommy.gameObject.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
                 var son = tommy.gameObject.transform;
                 son.localScale = new Vector3(1f, 1f, 1f);
@@ -157,16 +158,18 @@ public class DialogEvents : MonoBehaviour
                     "berichte jack, dass du seinen Sohn gerettet hast");
                 break;
             case "getSpell":
-                jack.CurrentDialogState = 4;
+                jack.CurrentDialogState = 5;
                 jack.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(34));
                 tommy.gameObject.SetActive(false);
+                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
                 break;
             case "getSword":
-                jack.CurrentDialogState = 4;
+                jack.CurrentDialogState = 5;
                 jack.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(1));
                 tommy.gameObject.SetActive(false);
+                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
                 break;
             default:
                 return;
