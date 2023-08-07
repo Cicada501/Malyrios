@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Malyrios.Character;
 using NPCs;
 using UnityEngine;
@@ -35,15 +36,24 @@ public class GameInitializer : MonoBehaviour
             player.transform.position = gameData.LoadedPlayerPosition;
         }
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
-        //GetComponent<Decision>().UpdateDecisionData(gameData.LoadedDecisionData);
         PlayerAttack.EquippedWeaponID = gameData.LoadedEquippedWeaponID;
-        questLogWindow.quests = gameData.LoadedQuestLog;
+        foreach (var quest in gameData.LoadedQuestLog)
+        {
+            questLogWindow.AddQuest(quest.questName, quest.questDescription);
+        }
     }
 
     public void ResetAll()
     {
         PlayerPrefs.DeleteAll();
+        foreach (var quest in questLogWindow.quests)
+        {
+            questLogWindow.RemoveQuest(quest.questName);
+            print($"removed:{quest.questName} ");
+        }
         LoadAndApplyData();
+
+        
     }
     
 }
