@@ -117,6 +117,7 @@ public class DialogEvents : MonoBehaviour
                 asmilda.QuestStatus = 3;
                 tommy.CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
                 tommy.QuestStatus = 2;
+                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
                 
                 questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy", "Finde jemanden, der ein Heilmittel für Tommy (den Sohn des Jägers) herstellen kann");
                 break;

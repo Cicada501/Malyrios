@@ -36,6 +36,10 @@ namespace NPCs
                 print($"Updating quest image of {npcName} to {questStatus}");
                 questStatusImage.sprite = SpriteManager.Instance.GetSpriteForQuestStatus(questStatus);
             }
+            else
+            {
+                questStatusImage.sprite = null;
+            }
         }
 
         private void Awake()

@@ -19,7 +19,7 @@ public class QuestLogWindow : MonoBehaviour
     private void Start()
     {
         questWindow.SetActive(false);
-        AddQuest("Test Title", "Testing the test description, Testing the test description, Testing the test description");
+        //AddQuest("Test Title", "Testing the test description, Testing the test description, Testing the test description");
         //AddQuest("Test Title", "Testing the test description");
         
     }
@@ -34,6 +34,12 @@ public class QuestLogWindow : MonoBehaviour
 
     public void AddQuest(string title, string description)
     {
+        var quest = quests.Find(q => q.questName == title);
+        if (quest != null)
+        {
+            Debug.LogWarning("quest already added to list");
+            return;
+        }
         GameObject newQuest = Instantiate(questLogEntryPrefab, listOfQuests.transform);
         
         TextMeshProUGUI titleText = newQuest.transform.Find("title+marker/title").GetComponent<TextMeshProUGUI>();
@@ -62,43 +68,64 @@ public class QuestLogWindow : MonoBehaviour
         }
 
 
-
+        /// <summary>
+        /// This Method searches for a quest with the given title "title" and replaces the description by "newDescription"
+        /// </summary>
+        /// <param name="title"> the title that is searched for</param>
+        /// <param name="newDescription">the new description for the quest</param>
         public void UpdateQuestDescription(string title, string newDescription)
         {
-            // Durchlaufen Sie alle Kinder von "listOfQuests"
+            //Iterate over all child gameObjects of "listOfQuests"
             for (int i = 0; i < listOfQuests.transform.childCount; i++)
             {
                 GameObject child = listOfQuests.transform.GetChild(i).gameObject;
 
-                // Finden Sie das "title+marker/title"-GameObject und lesen Sie seinen Text aus
+                //find title text component
                 TextMeshProUGUI titleText = child.transform.Find("title+marker/title").GetComponent<TextMeshProUGUI>();
-        
-                // Überprüfen Sie, ob der Text mit dem übergebenen Titel übereinstimmt
+                
                 if (titleText.text == title)
                 {
-                    // Finden Sie das "desc+offsetimg/description"-GameObject und aktualisieren Sie seinen Text
+                    //find description component
                     TextMeshProUGUI descriptionText = child.transform.Find("desc+offsetimg/description").GetComponent<TextMeshProUGUI>();
                     descriptionText.text = newDescription;
 
-                    // Aktualisieren Sie auch die Beschreibung in der Quest-Liste
+                    //Update description also in the quests list
                     var quest = quests.Find(q => q.questName == title);
                     if (quest != null)
                     {
                         quest.questDescription = newDescription;
                     }
+                    break; //break loop, because correct quest was found already
+                }
+            }
+            Debug.LogWarning($"No quest with the title: {title}");
+        }
 
-                    // Verlassen Sie die Schleife, da Sie die gesuchte Quest bereits gefunden haben
+
+        public void RemoveQuest(string title)
+        {
+            // Iterate over all child gameObjects of "listOfQuests"
+            for (int i = 0; i < listOfQuests.transform.childCount; i++)
+            {
+                GameObject child = listOfQuests.transform.GetChild(i).gameObject;
+
+                // Find title text component
+                TextMeshProUGUI titleText = child.transform.Find("title+marker/title").GetComponent<TextMeshProUGUI>();
+
+                if (titleText.text == title)
+                {
+                    // Remove the quest from the quests list
+                    quests.RemoveAll(q => q.questName == title);
+
+                    // Destroy the GameObject representing the quest in the scene
+                    Destroy(child);
+
+                    // Break loop, because correct quest was found already
                     break;
                 }
             }
         }
 
-
-    public void RemoveQuest(string title, string description)
-    {
-        
-    }
-    
     private void SetTransparency(Transform parent, float transparency)
     {
         var graphic = parent.GetComponent<Graphic>();
