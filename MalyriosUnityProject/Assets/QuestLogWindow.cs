@@ -15,15 +15,7 @@ public class QuestLogWindow : MonoBehaviour
     public List<Quest> quests = new List<Quest>();
     
     private int toggleCount = 0;
-
-    private void Start()
-    {
-        questWindow.SetActive(false);
-        //AddQuest("Test Title", "Testing the test description, Testing the test description, Testing the test description");
-        //AddQuest("Test Title", "Testing the test description");
-        
-    }
-
+    
     public void ToggleQuestWindow()
     {
         questWindow.SetActive(!questWindow.activeSelf);
@@ -143,6 +135,11 @@ public class QuestLogWindow : MonoBehaviour
             }
         }
     }
+
+    public QuestList SaveQuestLog()
+    {
+        return new QuestList(quests);
+    }
 }
 
 [Serializable]
@@ -151,4 +148,15 @@ public class Quest
     public string questName;
     public string questDescription;
     
+}
+
+[Serializable]
+public class QuestList
+{
+    public List<Quest> questList;
+    
+    public QuestList(List<Quest> data)
+    {
+        questList = data;
+    }
 }

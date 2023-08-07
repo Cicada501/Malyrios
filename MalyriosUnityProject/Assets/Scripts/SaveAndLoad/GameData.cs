@@ -16,11 +16,14 @@ public class GameData : MonoBehaviour
     public int LoadedEquippedWeaponID { get; private set; }
     
     public List<NpcData> LoadedNpcData { get; private set; }
+    
+    public List<Quest> LoadedQuestLog { get; private set; }
 
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
     private NPCManager npcManager;
+    private QuestLogWindow questLogWindow;
 
     private void Awake()
     {
@@ -28,6 +31,7 @@ public class GameData : MonoBehaviour
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = FindObjectOfType<NPCManager>();
+        questLogWindow = FindObjectOfType<QuestLogWindow>();
     }
 
     public void SaveData()
@@ -57,6 +61,8 @@ public class GameData : MonoBehaviour
             balance = baseAttributes.Balance
         };
         PlayerPrefs.SetString("AttributesData", JsonUtility.ToJson(attrData));
+        PlayerPrefs.SetString("QuestLog", JsonUtility.ToJson(questLogWindow.SaveQuestLog()));
+        
 
 
         PlayerPrefs.Save();
@@ -157,6 +163,16 @@ public class GameData : MonoBehaviour
         else
         {
             LoadedNpcData = new List<NpcData>();
+        }
+        
+        if (PlayerPrefs.HasKey("QuestLog") && PlayerPrefs.GetString("QuestLog") != "")
+        {
+            var loadedQuestLog = JsonUtility.FromJson<QuestList>(PlayerPrefs.GetString("QuestLog"));
+            LoadedQuestLog = loadedQuestLog.questList;
+        }
+        else
+        {
+            LoadedQuestLog = new List<Quest>();
         }
         
         //Load PlayerData, set fireballButton.Active to loaded value

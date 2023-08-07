@@ -49,7 +49,7 @@ public class DialogEvents : MonoBehaviour
                 ans.Decision = "changeSonSprite";
                 npcManager.npcs["Tommy"].allDialogs[2].dialogTexts[0].Answers.Add(ans);
                 addedDialogAnswer = true;
-                tommy.QuestStatus = 3;
+                npcManager.npcs["Tommy"].QuestStatus = 3;
             }
 
             //print($"Schattenrose: {Inventory.CountOccurrences(schattenRose) > 0}, Blut: {Inventory.CountOccurrences(werwolfBlut) > 0}, schirmlinge: {Inventory.CountOccurrences(schirmlinge) > 2}");
@@ -65,7 +65,7 @@ public class DialogEvents : MonoBehaviour
                 npcManager.npcs["Asmilda"].CurrentDialogState =
                     npcManager.npcs["Asmilda"].CurrentDialogState; //Update state after anser is added
                 addedDialogAnswer2 = true;
-                asmilda.QuestStatus = 3;
+                npcManager.npcs["Asmilda"].QuestStatus = 3;
             }
         }
     }

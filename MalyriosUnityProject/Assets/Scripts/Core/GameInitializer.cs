@@ -9,6 +9,7 @@ public class GameInitializer : MonoBehaviour
     private GameObject player;
     private BaseAttributes baseAttributes;
     private NPCManager npcManager;
+    private QuestLogWindow questLogWindow;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class GameInitializer : MonoBehaviour
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = GetComponent<NPCManager>();
+        questLogWindow = FindObjectOfType<QuestLogWindow>();
     }
 
     private void Start()
@@ -35,6 +37,7 @@ public class GameInitializer : MonoBehaviour
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
         //GetComponent<Decision>().UpdateDecisionData(gameData.LoadedDecisionData);
         PlayerAttack.EquippedWeaponID = gameData.LoadedEquippedWeaponID;
+        questLogWindow.quests = gameData.LoadedQuestLog;
     }
 
     public void ResetAll()
