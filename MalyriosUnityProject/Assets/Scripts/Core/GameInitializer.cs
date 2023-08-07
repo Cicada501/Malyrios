@@ -41,6 +41,7 @@ public class GameInitializer : MonoBehaviour
         {
             questLogWindow.AddQuest(quest.questName, quest.questDescription);
         }
+        questLogWindow.FixUI(10);
     }
 
     public void ResetAll()

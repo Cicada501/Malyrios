@@ -41,13 +41,19 @@ public class QuestLogWindow : MonoBehaviour
 
         Quest newQuestObj = new Quest {questName = title, questDescription = description};
         quests.Add(newQuestObj);
-        SetTransparency(questWindow.transform, 0);
-        StartCoroutine(ActivateChildren());
+
+        FixUI(4);
     }
 
-    private IEnumerator ActivateChildren()
+    public void FixUI(int k)
     {
-        for (int i = 0; i < 4; i++)
+        SetTransparency(questWindow.transform, 0);
+        StartCoroutine(OpenCloseWindowHidden(k));
+    }
+
+    private IEnumerator OpenCloseWindowHidden(int k)
+    {
+        for (int i = 0; i < 6; i++)
         {
             questWindow.SetActive(!questWindow.activeSelf);
             yield return new WaitForSeconds(.1f);
@@ -118,22 +124,6 @@ public class QuestLogWindow : MonoBehaviour
             }
         }
     }
-    
-    private void UpdateQuestLogUI()
-    {
-        // Remove all existing quest entries in the UI
-        foreach (Transform child in listOfQuests.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        // Add new quest entries based on the quests list
-        foreach (Quest quest in quests)
-        {
-            AddQuest(quest.questName, quest.questDescription);
-        }
-    }
-
 
 
     private void SetTransparency(Transform parent, float transparency)
