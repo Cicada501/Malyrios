@@ -18985,13 +18985,14 @@ MonoBehaviour:
   - Name: HighForest
     Prefab: {fileID: 3961218565264814783, guid: 1d586d233901b5e41968eed1236134f3,
       type: 3}
-    loadingScreen: {fileID: 0}
+    loadingScreen: {fileID: 21300000, guid: e3a1df45294a3544db294cf129e6f6e1, type: 3}
   - Name: Cave
     Prefab: {fileID: 7104209319309316220, guid: 1db2587fb634df047b199b291c6bec76,
       type: 3}
-    loadingScreen: {fileID: 0}
+    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 0
+  spawnAtPlayerDebugLocation: 1
+  loadingScreenBase: {fileID: 1459939526}
 --- !u!114 &1386037427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19281,7 +19282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1459939526
 RectTransform:
   m_ObjectHideFlags: 0

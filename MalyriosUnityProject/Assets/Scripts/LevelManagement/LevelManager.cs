@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Cinemachine;
 using Malyrios.Dialogue;
 using NPCs;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public struct Level
@@ -12,7 +14,7 @@ public struct Level
     public string Name;
     public GameObject Prefab;
     //public Transform EntrancePoint;
-    public Canvas loadingScreen;
+    public Sprite loadingScreen;
 }
 
 public class LevelManager : MonoBehaviour
@@ -26,15 +28,38 @@ public class LevelManager : MonoBehaviour
     private float originalDeadZoneWidth;
     private float originalDeadZoneHeight;
     [SerializeField] public bool spawnAtPlayerDebugLocation;
+    [SerializeField] private Transform loadingScreenBase;
+    Stopwatch stopwatch = new Stopwatch();
 
     private void Start()
     {
         cam = ReferencesManager.Instance.camera;
     }
 
+    public void ShowLoadingScreen(string levelName)
+    {
+        
+        // Starte die Zeitmessung
+        stopwatch.Start();
+        print("showingLS");
+        loadingScreenBase.Find("Image").GetComponent<Image>().sprite =
+            level.Find(level1 => level1.Name == levelName).loadingScreen;
+        loadingScreenBase.gameObject.SetActive(true);
+    }
+
+    public void HideLoadingScreen()
+    {
+        // Stoppe die Zeitmessung
+        stopwatch.Stop();
+        print($"hidingLS, loading took {stopwatch.ElapsedMilliseconds}ms");
+        loadingScreenBase.Find("Image").GetComponent<Image>().sprite = null;
+        loadingScreenBase.gameObject.SetActive(false);
+    }
 
     public void ChangeLevel(string levelName)
     {
+        ShowLoadingScreen(levelName);
+
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;
@@ -65,6 +90,8 @@ public class LevelManager : MonoBehaviour
         prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
 
         StartCoroutine(FocusPlayerCoroutine());
+        
+        HideLoadingScreen();
     }
 
     IEnumerator FocusPlayerCoroutine()
