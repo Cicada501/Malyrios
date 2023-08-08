@@ -11,7 +11,8 @@ public struct Level
 {
     public string Name;
     public GameObject Prefab;
-    public Transform EntrancePoint;
+    //public Transform EntrancePoint;
+    public Canvas loadingScreen;
 }
 
 public class LevelManager : MonoBehaviour

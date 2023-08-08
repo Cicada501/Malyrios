@@ -119,7 +119,6 @@ public class DialogEvents : MonoBehaviour
                 tommy.CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
                 tommy.QuestStatus = 2;
                 
-                
                 questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy", "Finde jemanden, der ein Heilmittel für Tommy (den Sohn des Jägers) herstellen kann");
                 break;
             case "gettingIngredients":
@@ -158,18 +157,20 @@ public class DialogEvents : MonoBehaviour
                     "berichte jack, dass du seinen Sohn gerettet hast");
                 break;
             case "getSpell":
+                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
                 jack.CurrentDialogState = 5;
                 jack.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(34));
                 tommy.gameObject.SetActive(false);
-                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
+                
                 break;
             case "getSword":
+                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
                 jack.CurrentDialogState = 5;
                 jack.QuestStatus = 0;
-                Inventory.Instance.AddItem(ItemDatabase.GetItem(1));
+                Inventory.Instance.AddItem(ItemDatabase.GetWeapon(1));
                 tommy.gameObject.SetActive(false);
-                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
+               
                 break;
             default:
                 return;
