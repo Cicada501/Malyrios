@@ -48,15 +48,27 @@ public class SaveActiveItems : MonoBehaviour
             foreach (Transform item in itemsParent.transform)
             {
                 string itemName = item.name;
+                string currentLevelName = levelManager.GetCurrentLevelName();
 
-                if (!itemsData.items.Exists(i => //check if there is already a item with the same name in the list for this level
-                        i.itemName == itemName && i.levelName == levelManager.GetCurrentLevelName()))
+                if (itemsData.items.Exists(i => i.itemName == itemName && i.levelName == currentLevelName))
+                {
+                    itemsData.items.RemoveAll(i => i.itemName == itemName && i.levelName == currentLevelName);
+
+                    ItemData data = new ItemData
+                    {
+                        itemName = itemName,
+                        isActive = item.gameObject.activeSelf,
+                        levelName = currentLevelName
+                    };
+                    itemsData.items.Add(data);
+                }
+                else
                 {
                     ItemData data = new ItemData
                     {
-                        itemName = item.name,
+                        itemName = itemName,
                         isActive = item.gameObject.activeSelf,
-                        levelName = levelManager.GetCurrentLevelName()
+                        levelName = currentLevelName
                     };
                     itemsData.items.Add(data);
                 }
