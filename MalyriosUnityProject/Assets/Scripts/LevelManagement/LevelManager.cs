@@ -30,36 +30,21 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public bool spawnAtPlayerDebugLocation;
     [SerializeField] private Transform loadingScreenBase;
     Stopwatch stopwatch = new Stopwatch();
+    private SaveActiveItems activeItemsData;
 
     private void Start()
     {
         cam = ReferencesManager.Instance.camera;
-    }
-
-    public void ShowLoadingScreen(string levelName)
-    {
-        
-        // Starte die Zeitmessung
-        stopwatch.Start();
-        print("showingLS");
-        loadingScreenBase.Find("Image").GetComponent<Image>().sprite =
-            level.Find(level1 => level1.Name == levelName).loadingScreen;
-        loadingScreenBase.gameObject.SetActive(true);
-    }
-
-    public void HideLoadingScreen()
-    {
-        // Stoppe die Zeitmessung
-        stopwatch.Stop();
-        print($"hidingLS, loading took {stopwatch.ElapsedMilliseconds}ms");
-        loadingScreenBase.Find("Image").GetComponent<Image>().sprite = null;
-        loadingScreenBase.gameObject.SetActive(false);
+        activeItemsData = FindObjectOfType<SaveActiveItems>();
     }
 
     public void ChangeLevel(string levelName)
     {
         ShowLoadingScreen(levelName);
-
+        if (currentLevel)
+        {
+            activeItemsData.SaveItems();
+        }
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;
@@ -88,13 +73,33 @@ public class LevelManager : MonoBehaviour
         }
 
         prevLevelName = levelName; //after we used it to detect the right LandingPoint, we can update the value.
-
-        StartCoroutine(FocusPlayerCoroutine());
         
-        HideLoadingScreen();
+
+
+        StartCoroutine(FocusPlayerCoroutine(levelName));
+    }
+    
+    public void ShowLoadingScreen(string levelName)
+    {
+        
+        // Starte die Zeitmessung
+        stopwatch.Start();
+        //print("showingLS");
+        loadingScreenBase.Find("Image").GetComponent<Image>().sprite =
+            level.Find(level1 => level1.Name == levelName).loadingScreen;
+        loadingScreenBase.gameObject.SetActive(true);
     }
 
-    IEnumerator FocusPlayerCoroutine()
+    public void HideLoadingScreen()
+    {
+        // Stoppe die Zeitmessung
+        stopwatch.Stop();
+        //print($"hidingLS, loading took {stopwatch.ElapsedMilliseconds}ms");
+        loadingScreenBase.Find("Image").GetComponent<Image>().sprite = null;
+        loadingScreenBase.gameObject.SetActive(false);
+    }
+
+    IEnumerator FocusPlayerCoroutine(string lvl)
     {
         var transposer = cam.GetCinemachineComponent<CinemachineFramingTransposer>();
 
@@ -108,10 +113,12 @@ public class LevelManager : MonoBehaviour
 
         // Wait for 1 second
         yield return new WaitForSeconds(1f);
+        activeItemsData.LoadItems(lvl);
 
         // Reset dead zone values to original values
         transposer.m_DeadZoneWidth = originalDeadZoneWidth;
         transposer.m_DeadZoneHeight = originalDeadZoneHeight;
+        HideLoadingScreen();
     }
 
     public string GetCurrentLevelName()

@@ -12,6 +12,7 @@ public class GameInitializer : MonoBehaviour
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
 
+
     private void Awake()
     {
         gameData = GetComponent<GameData>();
@@ -20,6 +21,7 @@ public class GameInitializer : MonoBehaviour
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = GetComponent<NPCManager>();
         questLogWindow = FindObjectOfType<QuestLogWindow>();
+
     }
 
     private void Start()

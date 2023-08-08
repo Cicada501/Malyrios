@@ -12770,6 +12770,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
   - {fileID: 11400000, guid: 5ecd9ccc0da7e4949bfb1c9cf3a53e42, type: 2}
   - {fileID: 11400000, guid: cd50e8d7deaf65d4e8fedd6b03d63779, type: 2}
+  - {fileID: 11400000, guid: 5741609d394e86e4187215fa42bef696, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -18878,6 +18879,7 @@ GameObject:
   - component: {fileID: 1386037428}
   - component: {fileID: 1386037429}
   - component: {fileID: 1386037430}
+  - component: {fileID: 1386037431}
   m_Layer: 13
   m_Name: GameManager
   m_TagString: Untagged
@@ -18991,7 +18993,7 @@ MonoBehaviour:
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 1
+  spawnAtPlayerDebugLocation: 0
   loadingScreenBase: {fileID: 1459939526}
 --- !u!114 &1386037427
 MonoBehaviour:
@@ -19046,6 +19048,18 @@ MonoBehaviour:
   ongoingQuestSprite: {fileID: 21300000, guid: 3d7c74b83396f6d439c5d474e428021c, type: 3}
   completedQuestSprite: {fileID: 21300000, guid: ef52e67c8c35fad49a7801d427034f70,
     type: 3}
+--- !u!114 &1386037431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386037419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75bdb80ca903c645b9cc7073c3aba79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0
