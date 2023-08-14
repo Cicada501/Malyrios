@@ -15,17 +15,25 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public BaseItem Item { get; set; }
     public Stack<BaseItem> ItemStack { get; set; } //not used here, but Interface needs it
     private PuzzleStation puzzleStation;
+    [SerializeField] private Image slotImage;
     
 
     public void SetItem(BaseItem item)
     {
-        print("SetItem of PuzzleSlot is called");
+        print($"SetItem of PuzzleSlot is called, what is null? item? {item.ItemName},");
+        print($"item.Icon? {item.Icon!=null}");
+        
+        slotImage.sprite = item.Icon;
+        slotImage.enabled = true;
+        Item = item;
+        
     }
+
 
     public void RemoveItem()
     {
         print("removing puzzleSlot item");
-        child.GetComponent<Image>().enabled = false;
+        slotImage.enabled = false;
         Item = null;
         int slotIndex = transform.GetSiblingIndex();
         puzzleStation.UpdateItemID(slotIndex, 0);

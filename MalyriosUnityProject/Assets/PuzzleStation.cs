@@ -49,10 +49,19 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                 slots.Add(puzzleSlot);
             }
         }
+        
         //check if station contains items already
         if (Array.Exists(itemIDsArray, slot => slot != 0))
         {
-            //add items to slots
+            for (int i = 0; i<slotCount; i++)
+            {
+                //add items to slots
+                print($"Slot: {slots[i]}");
+                if (itemIDsArray[i] > 1)
+                {
+                    slots[i].SetItem(ItemDatabase.GetItem(itemIDsArray[i]));
+                }
+            }
         }
     }
     
@@ -100,7 +109,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         puzzleWindow.SetActive(false);
         foreach (Transform child in itemSlotsParent)
         {
-            //child.gameObject.SetActive(false);
+            slots.Remove(child.GetComponent<PuzzleSlot>());
+            Destroy(child.gameObject);
         }
     }
 }
