@@ -28,7 +28,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private void Start()
     {
         this.playerTransform = ReferencesManager.Instance.player.transform;
-        this.transform.GetChild(3).GetComponent<DragNDrop>().MySlot = this;
+        this.transform.GetChild(2).GetComponent<DragNDrop>().MySlot = this;
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void SetItem(BaseItem baseItem)
     {
         this.item = baseItem;
-        Transform child = this.transform.GetChild(3);
+        Transform child = this.transform.GetChild(2);
 
         Image img = child.GetComponent<Image>();
         img.enabled = true;
@@ -97,7 +97,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             Inventory.Instance.ItemIDs.Remove(item.ItemID);
             if (this.itemStack.Count <= 0)
             {
-                this.transform.GetChild(3).GetComponent<Image>().enabled = false;
+                this.transform.GetChild(2).GetComponent<Image>().enabled = false;
                 RemoveItem();
                 ActiveItemWindow.Instance.HideActiveItemInfo();
             }

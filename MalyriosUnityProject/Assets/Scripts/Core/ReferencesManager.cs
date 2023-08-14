@@ -12,6 +12,7 @@ public class ReferencesManager : MonoBehaviour
     /* Because it is not effective to use GameObject.Find() or FindGameObjectWithTag/FindObjectOfType very often, this ReferencesManager should help
      * by linking all important References here, so that i can get them with i.e. like this:
      * ReferencesManager.instance.interactableText;
+     * Also useful to link References in Prefabs like in PuzzleStation. Here the puzzleWindow, itemSlotsParent are referenced from the base scene, and can be reached in a clean way with the ReferencesManager
      */
     
     public static ReferencesManager Instance;
@@ -25,6 +26,8 @@ public class ReferencesManager : MonoBehaviour
     public LevelManager levelManager;
     public NPCManager npcManager;
     public QuestLogWindow questLogWindow;
+    public GameObject puzzleWindow;
+    public Transform itemSlotsParent;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script
