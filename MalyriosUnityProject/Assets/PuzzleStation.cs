@@ -13,6 +13,14 @@ public class PuzzleStationData
     
 }
 
+//[System.Serializable]
+// public class PuzzleElement
+// {
+//     public enum ElementType { TRUE, FALSE , AND, OR, XOR, IMP, Empty }
+//
+//     public ElementType elementType;
+// }
+
 public class PuzzleStation : MonoBehaviour, IInteractable
 {
     [SerializeField] private int slotCount; //muss ungerade sein, da immer 1 True/False slot, dann 1 Operator slot, usw. Darf nicht mit Operator slot aufhören
