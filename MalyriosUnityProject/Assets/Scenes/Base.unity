@@ -14895,6 +14895,13 @@ MonoBehaviour:
   puzzleWindow: {fileID: 1053787232}
   itemSlotsParent: {fileID: 1206023823}
   dynamicPuzzleWindowWidth: {fileID: 1053787236}
+  logicSymbols:
+  - {fileID: 6098212377636700761, guid: 13fc46874cb7879469ad2f91428574e1, type: 3}
+  - {fileID: 6098212377636700761, guid: 3e582764f7441974fb32fd8f7be93148, type: 3}
+  - {fileID: 6098212377636700761, guid: ddf46ae8f51e4574e956148b5ce32312, type: 3}
+  - {fileID: 6098212377636700761, guid: f4206ba3028e0fe4d93266420aa1f63a, type: 3}
+  - {fileID: 6098212377636700761, guid: 0a498056347fdf84db82928fb60dc013, type: 3}
+  - {fileID: 6098212377636700761, guid: bfff3d434439c4347a474e5ac1c19688, type: 3}
 --- !u!1 &919321781
 GameObject:
   m_ObjectHideFlags: 0

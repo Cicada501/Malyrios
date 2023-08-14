@@ -25,7 +25,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     [SerializeField] private GameObject itemSlotPrefab;
     private List<PuzzleSlot> slots = new();
     private List<PuzzleElement> puzzleElements;
-    [SerializeField] private List<GameObject> symbolPrefabs;
+    private List<GameObject> symbolPrefabs;
 
     void Awake()
     {
@@ -34,6 +34,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         interactableText = ReferencesManager.Instance.interactableText;
         puzzleWindow = ReferencesManager.Instance.puzzleWindow;
         itemSlotsParent = ReferencesManager.Instance.itemSlotsParent;
+        symbolPrefabs = ReferencesManager.Instance.logicSymbols;
         itemIDsArray = new int[slotCount];
     }
 
