@@ -91,8 +91,10 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                         puzzleSlot.SetPuzzleStation(this);
                         slots.Add(puzzleSlot);
                         break;
+                    
                 }
             }
+            ReferencesManager.Instance.dynamicPuzzleWindowWidth.UpdateContainerWidth();
         }
 
         //check if station contains items already

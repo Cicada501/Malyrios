@@ -28,6 +28,7 @@ public class ReferencesManager : MonoBehaviour
     public QuestLogWindow questLogWindow;
     public GameObject puzzleWindow;
     public Transform itemSlotsParent;
+    public DynamicWidth dynamicPuzzleWindowWidth;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script
