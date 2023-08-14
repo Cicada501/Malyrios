@@ -44,7 +44,7 @@ namespace NPCs
 
         private void Awake()
         {
-            npcManager = FindObjectOfType<NPCManager>();
+            npcManager = ReferencesManager.Instance.npcManager;
             //questStatusImage = gameObject.GetComponentInChildren<SpriteRenderer>();
         }
 

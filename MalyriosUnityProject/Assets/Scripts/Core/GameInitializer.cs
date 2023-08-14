@@ -20,7 +20,7 @@ public class GameInitializer : MonoBehaviour
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = GetComponent<NPCManager>();
-        questLogWindow = FindObjectOfType<QuestLogWindow>();
+        questLogWindow = questLogWindow = ReferencesManager.Instance.questLogWindow;
 
     }
 

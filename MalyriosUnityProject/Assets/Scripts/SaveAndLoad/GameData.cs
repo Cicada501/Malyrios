@@ -30,8 +30,8 @@ public class GameData : MonoBehaviour
         levelManager = GetComponent<LevelManager>();
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
-        npcManager = FindObjectOfType<NPCManager>();
-        questLogWindow = FindObjectOfType<QuestLogWindow>();
+        npcManager = ReferencesManager.Instance.npcManager;
+        questLogWindow = ReferencesManager.Instance.questLogWindow;
     }
 
     public void SaveData()

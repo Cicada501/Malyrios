@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         cam = ReferencesManager.Instance.camera;
-        activeItemsData = FindObjectOfType<SaveActiveItems>();
+        activeItemsData = GetComponent<SaveActiveItems>();
     }
 
     public void ChangeLevel(string levelName)

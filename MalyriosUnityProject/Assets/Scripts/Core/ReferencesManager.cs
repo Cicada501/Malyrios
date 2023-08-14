@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Malyrios.Dialogue;
+using NPCs;
 using TMPro;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ public class ReferencesManager : MonoBehaviour
     public new CinemachineVirtualCamera camera;
     public GameData gameData;
     public LevelManager levelManager;
+    public NPCManager npcManager;
+    public QuestLogWindow questLogWindow;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script

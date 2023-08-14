@@ -14887,7 +14887,10 @@ MonoBehaviour:
   interactableText: {fileID: 457673046}
   dialogueManager: {fileID: 639142910}
   camera: {fileID: 1367976462}
-  gameData: {fileID: 0}
+  gameData: {fileID: 1386037427}
+  levelManager: {fileID: 1386037426}
+  npcManager: {fileID: 1386037429}
+  questLogWindow: {fileID: 821967883}
 --- !u!1 &919321781
 GameObject:
   m_ObjectHideFlags: 0
@@ -18993,7 +18996,7 @@ MonoBehaviour:
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 0
+  spawnAtPlayerDebugLocation: 1
   loadingScreenBase: {fileID: 1459939526}
 --- !u!114 &1386037427
 MonoBehaviour:

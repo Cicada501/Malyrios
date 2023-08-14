@@ -25,7 +25,7 @@ public class SaveActiveItems : MonoBehaviour
 
     private void Start()
     {
-        levelManager = FindObjectOfType<LevelManager>();
+        levelManager = ReferencesManager.Instance.levelManager;
     }
 
 
