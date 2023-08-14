@@ -36,7 +36,7 @@ public class GameData : MonoBehaviour
 
     public void SaveData()
     {
-        print($"Saving: {JsonUtility.ToJson(questLogWindow.SaveQuestLog())}");
+        //print($"Saving: {JsonUtility.ToJson(questLogWindow.SaveQuestLog())}");
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
@@ -103,7 +104,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             }
         }
     }
-    
+
     public void DropItem()
     {
         if (this.item == null) return;

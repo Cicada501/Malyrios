@@ -85,7 +85,7 @@ public class SaveActiveItems : MonoBehaviour
         if (PlayerPrefs.HasKey("levelItemsData") && PlayerPrefs.GetString("levelItemsData") != "")
         {
             string json = PlayerPrefs.GetString("levelItemsData");
-            print($"loading items: {json}");
+            //print($"loading items: {json}");
             LevelItemsData itemsData = JsonUtility.FromJson<LevelItemsData>(json);
 
             // Gehe durch die Items und setze ihren Zustand
@@ -97,7 +97,7 @@ public class SaveActiveItems : MonoBehaviour
                     Transform item = itemsParent.transform.Find(data.itemName);
                     if (item != null)
                     {
-                        print($"{item.name} set to {data.isActive}");
+                        //print($"{item.name} set to {data.isActive}");
                         item.gameObject.SetActive(data.isActive);
                     }
                 }

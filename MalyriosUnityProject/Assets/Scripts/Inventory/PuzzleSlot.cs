@@ -14,6 +14,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public BaseItem Item { get; set; }
     public Stack<BaseItem> ItemStack { get; set; }
     private InventoryUI inventoryUI;
+    private PuzzleStation puzzleStation;
     
 
     public void SetItem(BaseItem item)
@@ -28,8 +29,8 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private void Start()
     {
         child = transform.GetChild(0).gameObject;
-        gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
+        //puzzleStation = 
     }
 
    
@@ -60,19 +61,16 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
         // Set the equip item to the item from the dragged item.
         Item = slot.Item;
-        slot.ItemStack?.Clear();
-
-        Inventory.Instance.Remove(slot.Item);
 
         // enable the image.
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
 
         // Disable the image from the dragged item.
         eventData.pointerDrag.GetComponent<Image>().enabled = false;
-
-        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
-            this.gridLayoutGroup.GetComponent<RectTransform>().anchoredPosition;
         
+        // Update the itemIDsArray in the PuzzleStation
+        int slotIndex = transform.GetSiblingIndex();
+        puzzleStation.UpdateItemID(slotIndex, Item.ItemID);
         TriggerSlotEvent();
     }
 
@@ -81,5 +79,10 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void OnTap()
     {
         Inventory.Instance.SetActiveItem(Item);
+    }
+    
+    public void SetPuzzleStation(PuzzleStation station)
+    {
+        puzzleStation = station;
     }
 }

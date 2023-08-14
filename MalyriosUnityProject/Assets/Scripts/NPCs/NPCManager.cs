@@ -68,7 +68,7 @@ namespace NPCs
         public void LoadNpCs(List<NpcData> npcDataList)
         {
             allNpcData = npcDataList;
-            print("Loaded allNPCData");
+            //print("Loaded allNPCData");
         }
 
         [System.Serializable]
@@ -113,7 +113,7 @@ namespace NPCs
                 }
             }
 
-            print("Applied allNPCdata to NPCs");
+            //print("Applied allNPCdata to NPCs");
         }
     }
 }
