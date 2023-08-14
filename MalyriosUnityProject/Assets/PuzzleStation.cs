@@ -26,6 +26,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private List<PuzzleSlot> slots = new();
     private List<PuzzleElement> puzzleElements;
     private List<GameObject> symbolPrefabs;
+    private GameObject inventoryUI;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         puzzleWindow = ReferencesManager.Instance.puzzleWindow;
         itemSlotsParent = ReferencesManager.Instance.itemSlotsParent;
         symbolPrefabs = ReferencesManager.Instance.logicSymbols;
+        inventoryUI = ReferencesManager.Instance.inventoryUI;
         itemIDsArray = new int[slotCount];
     }
 
@@ -61,6 +63,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private void ShowPuzzleDialog()
     {
         puzzleWindow.SetActive(true);
+        inventoryUI.SetActive(true);
         interactableText.gameObject.SetActive(false);
         if (itemSlotsParent.childCount == 0)
         {
@@ -141,6 +144,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private void ClosePuzzleWindow()
     {
         puzzleWindow.SetActive(false);
+        inventoryUI.SetActive(false);
         foreach (Transform child in itemSlotsParent)
         {
             slots.Remove(child.GetComponent<PuzzleSlot>());
