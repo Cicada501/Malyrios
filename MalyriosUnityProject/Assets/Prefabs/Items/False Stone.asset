@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: False Stone
   m_EditorClassIdentifier: 
   itemID: 20
-  itemName: 
-  description: 
-  icon: {fileID: 0}
+  itemName: FalseStone
+  description: FALSCH
+  icon: {fileID: 1590227179, guid: bffb9a4fd8dc8bb4482be782b13e9ef9, type: 3}
   dropChance: 0
-  isStackable: 0
+  isStackable: 1
   isUsable: 0
-  maxStackAmount: 0
+  maxStackAmount: 100
   itemType: 7
   itemPrefab: {fileID: 0}
