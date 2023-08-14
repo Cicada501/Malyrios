@@ -12,6 +12,7 @@ public class PuzzleStationData
     private int id;
     private string level;
 }
+
 public class PuzzleStation : MonoBehaviour, IInteractable
 {
     private int
@@ -64,16 +65,32 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {
             foreach (var elem in puzzleElements)
             {
-                if (elem.elementType == PuzzleElement.ElementType.Empty)
+                switch (elem.elementType)
                 {
-                    var slot = Instantiate(itemSlotPrefab, itemSlotsParent);
-                    var puzzleSlot = slot.GetComponent<PuzzleSlot>();
-                    puzzleSlot.SetPuzzleStation(this);
-                    slots.Add(puzzleSlot);
-                }
-                else
-                {
-                    
+                    case PuzzleElement.ElementType.TRUE:
+                        Instantiate(symbolPrefabs[0], itemSlotsParent);
+                        break;
+                    case PuzzleElement.ElementType.FALSE:
+                        Instantiate(symbolPrefabs[1], itemSlotsParent);
+                        break;
+                    case PuzzleElement.ElementType.AND:
+                        Instantiate(symbolPrefabs[2], itemSlotsParent);
+                        break;
+                    case PuzzleElement.ElementType.OR:
+                        Instantiate(symbolPrefabs[3], itemSlotsParent);
+                        break;
+                    case PuzzleElement.ElementType.XOR:
+                        Instantiate(symbolPrefabs[4], itemSlotsParent);
+                        break;
+                    case PuzzleElement.ElementType.IMP:
+                        Instantiate(symbolPrefabs[5], itemSlotsParent);
+                        break;
+                    case PuzzleElement.ElementType.Empty:
+                        var slot = Instantiate(itemSlotPrefab, itemSlotsParent);
+                        var puzzleSlot = slot.GetComponent<PuzzleSlot>();
+                        puzzleSlot.SetPuzzleStation(this);
+                        slots.Add(puzzleSlot);
+                        break;
                 }
             }
         }
