@@ -63,6 +63,17 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {
             itemIDsArray[index] = itemID;
         }
+        // for (int i = 0; i < slotCount; i++)
+        // {
+        //     if (slots[i].Item != null)
+        //     {
+        //         itemIDsArray[i] = slots[i].Item.ItemID;
+        //     }
+        //     else
+        //     {
+        //         itemIDsArray[i] = 0;
+        //     }
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

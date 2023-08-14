@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
@@ -12,25 +13,28 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private GameObject child;
     private GridLayoutGroup gridLayoutGroup;
     public BaseItem Item { get; set; }
-    public Stack<BaseItem> ItemStack { get; set; }
-    private InventoryUI inventoryUI;
+    public Stack<BaseItem> ItemStack { get; set; } //not used here, but Interface needs it
     private PuzzleStation puzzleStation;
     
 
     public void SetItem(BaseItem item)
     {
+        print("SetItem of PuzzleSlot is called");
     }
 
     public void RemoveItem()
     {
+        print("removing puzzleSlot item");
         child.GetComponent<Image>().enabled = false;
+        Item = null;
+        int slotIndex = transform.GetSiblingIndex();
+        puzzleStation.UpdateItemID(slotIndex, 0);
     }
 
     private void Start()
     {
         child = transform.GetChild(0).gameObject;
         child.GetComponent<DragNDrop>().MySlot = this;
-        //puzzleStation = 
     }
 
    
@@ -59,8 +63,10 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         this.child.GetComponent<Image>().sprite =
             eventData.pointerDrag.GetComponent<Image>().sprite;
 
-        // Set the equip item to the item from the dragged item.
+        // Set the puzzleSlot item to the item from the dragged item.
         Item = slot.Item;
+        
+        slot.RemoveItem();
 
         // enable the image.
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
@@ -74,7 +80,11 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         TriggerSlotEvent();
     }
 
-    
+    private void Update()
+    {
+        print($"Slot{transform.GetSiblingIndex()} contains a item? : {Item!=null}");
+    }
+
 
     public void OnTap()
     {
