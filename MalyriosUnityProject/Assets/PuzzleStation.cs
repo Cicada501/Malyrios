@@ -5,6 +5,14 @@ using Malyrios.Items;
 using TMPro;
 using UnityEngine;
 
+[Serializable]
+public class PuzzleStationData
+{
+    private int id;
+    private string level;
+    
+}
+
 public class PuzzleStation : MonoBehaviour, IInteractable
 {
     [SerializeField] private int slotCount; //muss ungerade sein, da immer 1 True/False slot, dann 1 Operator slot, usw. Darf nicht mit Operator slot aufhören
@@ -56,7 +64,6 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             for (int i = 0; i<slotCount; i++)
             {
                 //add items to slots
-                print($"Slot: {slots[i]}");
                 if (itemIDsArray[i] > 1)
                 {
                     slots[i].SetItem(ItemDatabase.GetItem(itemIDsArray[i]));
@@ -67,22 +74,10 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     
     public void UpdateItemID(int index, int itemID)
     {
-        print($"Try update item id, index is: {index}, itemID is: {itemID}");
         if (index >= 0 && index < itemIDsArray.Length)
         {
             itemIDsArray[index] = itemID;
         }
-        // for (int i = 0; i < slotCount; i++)
-        // {
-        //     if (slots[i].Item != null)
-        //     {
-        //         itemIDsArray[i] = slots[i].Item.ItemID;
-        //     }
-        //     else
-        //     {
-        //         itemIDsArray[i] = 0;
-        //     }
-        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

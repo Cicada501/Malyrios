@@ -20,9 +20,6 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void SetItem(BaseItem item)
     {
-        print($"SetItem of PuzzleSlot is called, what is null? item? {item.ItemName},");
-        print($"item.Icon? {item.Icon!=null}");
-        
         slotImage.sprite = item.Icon;
         slotImage.enabled = true;
         Item = item;
@@ -32,7 +29,6 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void RemoveItem()
     {
-        print("removing puzzleSlot item");
         slotImage.enabled = false;
         Item = null;
         int slotIndex = transform.GetSiblingIndex();
@@ -45,12 +41,9 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child.GetComponent<DragNDrop>().MySlot = this;
     }
 
-   
-    
-
     private void TriggerSlotEvent()
     {
-        Debug.Log("Triggered Puzzle Slot Event");
+        //Debug.Log("Triggered Puzzle Slot Event");
     }
     
 
@@ -87,12 +80,6 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         puzzleStation.UpdateItemID(slotIndex, Item.ItemID);
         TriggerSlotEvent();
     }
-
-    private void Update()
-    {
-        print($"Slot{transform.GetSiblingIndex()} contains a item? : {Item!=null}");
-    }
-
 
     public void OnTap()
     {
