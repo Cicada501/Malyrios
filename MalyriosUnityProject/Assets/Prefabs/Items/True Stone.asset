@@ -16,11 +16,9 @@ MonoBehaviour:
   itemName: True Stone
   description: "Dieser Stein R\xE4presentiert den wahrheitswehrt WAHR"
   icon: {fileID: -167172311, guid: bffb9a4fd8dc8bb4482be782b13e9ef9, type: 3}
-  sellPrice: 0
-  purchasePrice: 0
   dropChance: 0
   isStackable: 0
+  isUsable: 0
   maxStackAmount: 0
-  spriteType: 0
-  itemType: 6
+  itemType: 7
   itemPrefab: {fileID: 0}

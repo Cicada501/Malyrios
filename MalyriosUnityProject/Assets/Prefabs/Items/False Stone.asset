@@ -16,11 +16,9 @@ MonoBehaviour:
   itemName: 
   description: 
   icon: {fileID: 0}
-  sellPrice: 0
-  purchasePrice: 0
   dropChance: 0
   isStackable: 0
+  isUsable: 0
   maxStackAmount: 0
-  spriteType: 0
-  itemType: 0
+  itemType: 7
   itemPrefab: {fileID: 0}
