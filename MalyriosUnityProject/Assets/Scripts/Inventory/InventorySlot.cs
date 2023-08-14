@@ -27,7 +27,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     private void Start()
     {
-        this.playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        this.playerTransform = ReferencesManager.Instance.player.transform;
         this.transform.GetChild(3).GetComponent<DragNDrop>().MySlot = this;
     }
 

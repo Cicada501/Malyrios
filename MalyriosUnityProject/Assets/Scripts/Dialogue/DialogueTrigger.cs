@@ -9,16 +9,13 @@ namespace Malyrios.Dialogue
         TextMeshProUGUI interactableText;
         private DialogueManager manager;
         private Dialogue dialogue;
-        public static bool triggered;
         private LayerMask whatCanTalkToMe;
         bool turnedButtonOff = false;
 
         private void Awake()
         {
-
-            //this.manager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+            
             manager = ReferencesManager.Instance.dialogueManager;
-            //print(man2 +" "+ manager);
             this.dialogue = GetComponent<Dialogue>();
             interactableText = ReferencesManager.Instance.interactableText;
         }
@@ -52,23 +49,7 @@ namespace Malyrios.Dialogue
                     manager.EndDialogue();
                 }
             }
-            /* if (this.triggered && Player.interactInput && inTalkRange)
-            {
-                Player.interactInput = false;
-                this.manager.StartDialogue(this.dialogue);
-               
-            } */
         }
 
-        private void OnTriggerStay2D(Collider2D other)
-        {
-            triggered = true;
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            triggered = false;
-            //manager.EndDialogue();
-        }
     }
 }

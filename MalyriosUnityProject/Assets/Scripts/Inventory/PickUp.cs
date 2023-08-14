@@ -38,13 +38,7 @@ public class PickUp : MonoBehaviour, IInteractable
         {
             ShowPickUpDialog();
             this.showText = true;
-            
-            //if (Player.interactInput)
-            //{
-            //    PickUpItem();
-            //    //Dont pick up multiple items at once
-            //    Player.interactInput = false;
-            //}
+
         }
         else
         {
@@ -65,9 +59,7 @@ public class PickUp : MonoBehaviour, IInteractable
     private void PickUpItem()
     {
         Inventory.Instance.AddItem(this.baseItem);
-        //Destroy(gameObject);
-        gameObject.SetActive(false);
-        //ButtonScript.InteractInput = false; //if Interactable text gets destroyed the RealeaseInteractButton() event is not triggerd anymore
+        gameObject.SetActive(false); //only set false instead of destroying to save and load what items where picked up
         interactableText.gameObject.SetActive(false);
     }
 

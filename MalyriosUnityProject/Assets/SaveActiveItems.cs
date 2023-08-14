@@ -75,7 +75,7 @@ public class SaveActiveItems : MonoBehaviour
             }
 
             string json = JsonUtility.ToJson(itemsData);
-            print($"Saving Items: {json}");
+            //print($"Saving Items: {json}");
             PlayerPrefs.SetString("levelItemsData", json);
         }
     }

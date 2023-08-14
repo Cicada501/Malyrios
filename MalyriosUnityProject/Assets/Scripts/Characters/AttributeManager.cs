@@ -27,7 +27,7 @@ public class AttributeManager : MonoBehaviour
     
     private void Awake()
     {
-        this.baseAttributes = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseAttributes>();
+        this.baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
         
         this.weaponItem = weaponSlot.GetComponent<ISlot>();
         

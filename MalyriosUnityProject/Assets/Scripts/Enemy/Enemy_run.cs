@@ -16,7 +16,7 @@ public class Enemy_run : StateMachineBehaviour
     {
         enemy = animator.GetComponent<Enemy>();
         rb = animator.GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = ReferencesManager.Instance.player.transform;
         speed = basicSpeed;
     }
 

@@ -8,7 +8,7 @@ using UnityEngine;
 public class ReferencesManager : MonoBehaviour
 {
     
-    /* Because it is not effective to use GameObject.Find() very often, this ReferencesManager should help
+    /* Because it is not effective to use GameObject.Find() or FindGameObjectWithTag/FindObjectOfType very often, this ReferencesManager should help
      * by linking all important References here, so that i can get them with i.e. like this:
      * ReferencesManager.instance.interactableText;
      */
@@ -21,6 +21,7 @@ public class ReferencesManager : MonoBehaviour
     public DialogueManager dialogueManager;
     public new CinemachineVirtualCamera camera;
     public GameData gameData;
+    public LevelManager levelManager;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script
