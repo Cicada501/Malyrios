@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
 public class PuzzleElement
 {
@@ -11,8 +10,7 @@ public class PuzzleElement
     public ElementType elementType;
 }
 
-
 public class Puzzle : MonoBehaviour
 {
-    public List<PuzzleElement> puzzleElements = new();
+    public List<PuzzleElement> puzzleElements = new List<PuzzleElement>();
 }

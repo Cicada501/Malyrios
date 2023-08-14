@@ -4,35 +4,32 @@ using System.Collections.Generic;
 using Malyrios.Items;
 using TMPro;
 using UnityEngine;
+using System.Linq;
 
 [Serializable]
 public class PuzzleStationData
 {
     private int id;
     private string level;
-    
 }
-
-//[System.Serializable]
-// public class PuzzleElement
-// {
-//     public enum ElementType { TRUE, FALSE , AND, OR, XOR, IMP, Empty }
-//
-//     public ElementType elementType;
-// }
-
 public class PuzzleStation : MonoBehaviour, IInteractable
 {
-    [SerializeField] private int slotCount; //muss ungerade sein, da immer 1 True/False slot, dann 1 Operator slot, usw. Darf nicht mit Operator slot aufhören
+    private int
+        slotCount; //muss ungerade sein, da immer 1 True/False slot, dann 1 Operator slot, usw. Darf nicht mit Operator slot aufhören
+
     private int[] itemIDsArray;
     private GameObject puzzleWindow;
     private TextMeshProUGUI interactableText;
     private Transform itemSlotsParent;
     [SerializeField] private GameObject itemSlotPrefab;
     private List<PuzzleSlot> slots = new();
-    
+    private List<PuzzleElement> puzzleElements;
+    [SerializeField] private List<GameObject> symbolPrefabs;
+
     void Awake()
     {
+        puzzleElements = GetComponent<Puzzle>().puzzleElements;
+        slotCount = puzzleElements.Count(element => element.elementType == PuzzleElement.ElementType.Empty);
         interactableText = ReferencesManager.Instance.interactableText;
         puzzleWindow = ReferencesManager.Instance.puzzleWindow;
         itemSlotsParent = ReferencesManager.Instance.itemSlotsParent;
@@ -43,6 +40,14 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     {
         string arrayAsString = string.Join(", ", itemIDsArray);
         Debug.Log(arrayAsString);
+    }
+
+    private void Start()
+    {
+        foreach (var elem in puzzleElements)
+        {
+            print(elem.elementType);
+        }
     }
 
 
@@ -57,19 +62,26 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         interactableText.gameObject.SetActive(false);
         if (itemSlotsParent.childCount == 0)
         {
-            for (int i = 0; i < slotCount; i++)
+            foreach (var elem in puzzleElements)
             {
-                var slot= Instantiate(itemSlotPrefab, itemSlotsParent);
-                var puzzleSlot = slot.GetComponent<PuzzleSlot>();
-                puzzleSlot.SetPuzzleStation(this);
-                slots.Add(puzzleSlot);
+                if (elem.elementType == PuzzleElement.ElementType.Empty)
+                {
+                    var slot = Instantiate(itemSlotPrefab, itemSlotsParent);
+                    var puzzleSlot = slot.GetComponent<PuzzleSlot>();
+                    puzzleSlot.SetPuzzleStation(this);
+                    slots.Add(puzzleSlot);
+                }
+                else
+                {
+                    
+                }
             }
         }
-        
+
         //check if station contains items already
         if (Array.Exists(itemIDsArray, slot => slot != 0))
         {
-            for (int i = 0; i<slotCount; i++)
+            for (int i = 0; i < slotCount; i++)
             {
                 //add items to slots
                 if (itemIDsArray[i] > 1)
@@ -79,7 +91,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             }
         }
     }
-    
+
     public void UpdateItemID(int index, int itemID)
     {
         if (index >= 0 && index < itemIDsArray.Length)
@@ -103,7 +115,6 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {
             interactableText.gameObject.SetActive(false);
             ClosePuzzleWindow();
-
         }
     }
 
