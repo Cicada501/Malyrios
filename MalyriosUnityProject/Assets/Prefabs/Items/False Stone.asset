@@ -17,8 +17,8 @@ MonoBehaviour:
   description: FALSCH
   icon: {fileID: 1590227179, guid: bffb9a4fd8dc8bb4482be782b13e9ef9, type: 3}
   dropChance: 0
-  isStackable: 1
+  isStackable: 0
   isUsable: 0
-  maxStackAmount: 100
+  maxStackAmount: 0
   itemType: 7
   itemPrefab: {fileID: 0}
