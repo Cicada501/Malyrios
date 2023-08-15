@@ -13,7 +13,12 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private GameObject child;
     private GridLayoutGroup gridLayoutGroup;
     public BaseItem Item { get; set; }
-    public Stack<BaseItem> ItemStack { get; set; } //not used here, but Interface needs it
+    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
+    public Stack<BaseItem> ItemStack
+    {
+        get => this.itemStack;
+        set => this.itemStack = value;
+    }
     private PuzzleStation puzzleStation;
     [SerializeField] private Image slotImage;
     
