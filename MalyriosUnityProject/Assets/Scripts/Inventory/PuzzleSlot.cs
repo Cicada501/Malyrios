@@ -31,7 +31,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         slotImage.enabled = false;
         Item = null;
-        int slotIndex = transform.GetSiblingIndex();
+        int slotIndex = transform.GetPuzzleSlotIndex();
         puzzleStation.UpdateItemID(slotIndex, 0);
     }
 
@@ -41,17 +41,11 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child.GetComponent<DragNDrop>().MySlot = this;
     }
 
-    private void TriggerSlotEvent()
-    {
-        //Debug.Log("Triggered Puzzle Slot Event");
-    }
-    
-
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
 
-        // Get the slot of the dragged item.
+        // Get the slot of the dragged item. //is this the slot, the drag starts from?
         ISlot slot = eventData.pointerDrag.GetComponent<DragNDrop>().MySlot;
 
         // If the dragged item is not the same item type, you can't drag it on this item slot, so do nothing.
@@ -76,9 +70,8 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         eventData.pointerDrag.GetComponent<Image>().enabled = false;
         
         // Update the itemIDsArray in the PuzzleStation
-        int slotIndex = transform.GetSiblingIndex();
+        int slotIndex = transform.GetPuzzleSlotIndex();
         puzzleStation.UpdateItemID(slotIndex, Item.ItemID);
-        TriggerSlotEvent();
     }
 
     public void OnTap()
@@ -89,5 +82,35 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void SetPuzzleStation(PuzzleStation station)
     {
         puzzleStation = station;
+    }
+}
+
+//Class for extension method to add new method to the transform class
+public static class TransformExtensions
+{
+    /// <summary>
+    /// Gets the index of a child object that has the component PuzzleSlot, ignoring other siblings.
+    /// </summary>
+    /// <param name="transform">The transform of the child object for which the custom sibling index is needed.</param>
+    /// <returns>The custom sibling index of the object, or -1 if the PuzzleSlot component is not found.</returns>
+
+    public static int GetPuzzleSlotIndex(this Transform transform)
+    {
+        int index = -1;
+        
+        for (int i = 0; i < transform.parent.childCount; i++)
+        {
+            Transform sibling = transform.parent.GetChild(i);
+            if (sibling.GetComponent<PuzzleSlot>() != null)
+            {
+                index++;
+                if (sibling == transform)
+                {
+                    return index;
+                }
+            }
+        }
+        
+        return -1;
     }
 }

@@ -27,6 +27,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private List<PuzzleElement> puzzleElements;
     private List<GameObject> symbolPrefabs;
     private GameObject inventoryUI;
+    private bool windowOpen;
 
     void Awake()
     {
@@ -64,6 +65,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     {
         puzzleWindow.SetActive(true);
         inventoryUI.SetActive(true);
+        windowOpen = true;
         interactableText.gameObject.SetActive(false);
         if (itemSlotsParent.childCount == 0)
         {
@@ -123,9 +125,9 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")&&!windowOpen)
         {
             interactableText.text = "Open";
             interactableText.gameObject.SetActive(true);
@@ -145,6 +147,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     {
         puzzleWindow.SetActive(false);
         inventoryUI.SetActive(false);
+        windowOpen = false;
         foreach (Transform child in itemSlotsParent)
         {
             slots.Remove(child.GetComponent<PuzzleSlot>());
