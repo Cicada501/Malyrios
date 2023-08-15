@@ -47,12 +47,16 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         puzzleStation.UpdateItemID(slotIndex, 0);
     }
 
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
 
 
     public void OnDrop(PointerEventData eventData)
     {
         //if this slot has a item already, do nothing
-        if (eventData.pointerDrag == null || Item!=null) return;
+        if (eventData.pointerDrag == null) return;
 
         // Get the slot of the dragged item. //is this the slot, the drag starts from?
         ISlot slot = eventData.pointerDrag.GetComponent<DragNDrop>().MySlot;
@@ -63,24 +67,37 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        // Set the slot sprite to the sprite of the item.
-        this.child.GetComponent<Image>().sprite =
-            eventData.pointerDrag.GetComponent<Image>().sprite;
+        // Wenn das Slot-Item nicht null ist (es gibt bereits ein Item im Slot)
+        if (Item != null)
+        {
+            // Tausche die Items
+            BaseItem tempItem = Item;
+            int tempItemID = Item.ItemID;
 
-        // Set the puzzleSlot item to the item from the dragged item.
-        Item = slot.Item;
-        
-        slot.RemoveItem();
+            // Setze das Slot-Item
+            SetItem(slot.Item);
 
-        // enable the image.
-        transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+            // Setze das Item in der Ursprungsslot
+            slot.SetItem(tempItem);
 
-        // Disable the image from the dragged item.
-        eventData.pointerDrag.GetComponent<Image>().enabled = false;
-        
-        // Update the itemIDsArray in the PuzzleStation
-        int slotIndex = transform.GetPuzzleSlotIndex();
-        puzzleStation.UpdateItemID(slotIndex, Item.ItemID);
+            // Aktualisiere die itemIDsArray in der PuzzleStation
+            int slotIndex = transform.GetPuzzleSlotIndex();
+            puzzleStation.UpdateItemID(slotIndex, Item.ItemID);
+            int originalSlotIndex = slot.GetTransform().GetPuzzleSlotIndex();
+            puzzleStation.UpdateItemID(originalSlotIndex, tempItemID);
+        }
+        else
+        {
+            // Verarbeite den Fall, wenn kein Item im Slot ist (dein aktueller Code)
+            this.child.GetComponent<Image>().sprite =
+                eventData.pointerDrag.GetComponent<Image>().sprite;
+            Item = slot.Item;
+            slot.RemoveItem();
+            transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+            eventData.pointerDrag.GetComponent<Image>().enabled = false;
+            int slotIndex = transform.GetPuzzleSlotIndex();
+            puzzleStation.UpdateItemID(slotIndex, Item.ItemID);
+        }
     }
 
     public void OnTap()

@@ -84,6 +84,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         this.amountText.gameObject.SetActive(false);
     }
 
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
+
     public void RemoveSingleItem()
     {
         if (this.item is BaseWeapon)

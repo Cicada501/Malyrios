@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Malyrios.Items;
+using UnityEngine;
 
 namespace Malyrios.Core
 {
@@ -10,5 +11,6 @@ namespace Malyrios.Core
 
         void SetItem(BaseItem item);
         void RemoveItem();
+        Transform GetTransform();
     }
 }
