@@ -24,7 +24,13 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private GridLayoutGroup gridLayoutGroup;
 
     public BaseItem Item { get; set; }
-    public Stack<BaseItem> ItemStack { get; set; }
+    
+    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
+    public Stack<BaseItem> ItemStack
+    {
+        get => this.itemStack;
+        set => this.itemStack = value;
+    }
     private InventoryUI inventoryUI;
     
 

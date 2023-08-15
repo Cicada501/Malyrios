@@ -34,6 +34,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
         this.dragNDrop.MySlot = this;
     }
+
     public void Initialize()
     {
         this.playerTransform = ReferencesManager.Instance.player.transform;
@@ -45,19 +46,19 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     /// 
     /// </summary>
     /// <param name="baseItem"></param>
-  
     public void SetItem(BaseItem baseItem)
-{
-    this.item = baseItem;
+    {
+        this.item = baseItem;
 
-    Image img = dragNDrop.GetComponent<Image>();
-    img.enabled = true;
-    img.sprite = baseItem.Icon;
+        Image img = dragNDrop.GetComponent<Image>();
+        img.enabled = true;
+        img.sprite = baseItem.Icon;
 
-    dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
+        dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
 
-    this.itemStack.Push(baseItem);
-}
+        print($"itemstack: {itemStack}");
+        this.itemStack.Push(baseItem);
+    }
 
 
     /// <summary>
@@ -101,23 +102,17 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void RemoveSingleItem()
     {
-        if (this.item is BaseWeapon)
+        Inventory.Instance.Items.Remove(this.itemStack.Peek());
+        this.itemStack.Pop();
+        this.amountText.text = itemStack.Count.ToString();
+        Inventory.Instance.ItemIDs.Remove(item.ItemID);
+        if (this.itemStack.Count <= 0)
         {
-            RemoveItem(); //if i try to remove a weapon (by equipping it) in the same way as the items, it throws an error saying the stack is empty
+            this.transform.GetChild(2).GetComponent<Image>().enabled = false;
+            RemoveItem();
+            ActiveItemWindow.Instance.HideActiveItemInfo();
         }
-        else
-        {
-            Inventory.Instance.Items.Remove(this.itemStack.Peek());
-            this.itemStack.Pop();
-            this.amountText.text = itemStack.Count.ToString();
-            Inventory.Instance.ItemIDs.Remove(item.ItemID);
-            if (this.itemStack.Count <= 0)
-            {
-                this.transform.GetChild(2).GetComponent<Image>().enabled = false;
-                RemoveItem();
-                ActiveItemWindow.Instance.HideActiveItemInfo();
-            }
-        }
+
     }
 
     public void DropItem()
@@ -126,7 +121,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
         SpawnItem.Spawn(item, this.playerTransform.position, 0.3f, -1.2f, 1.5f);
         RemoveSingleItem();
-        
     }
 
     public void UseItem()
@@ -147,7 +141,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (originSlot.Item == null) return; // If the origin slot has no item, do nothing
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        
+
         if (this.item != null)
         {
             SwapItems(originSlot);
@@ -174,7 +168,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         }
     }
 
-    
+
     public void SwapItems(ISlot otherSlot)
     {
         SlotHelper.SwapItems(this, otherSlot);
