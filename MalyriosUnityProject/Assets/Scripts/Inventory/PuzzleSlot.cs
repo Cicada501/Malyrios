@@ -17,6 +17,18 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private PuzzleStation puzzleStation;
     [SerializeField] private Image slotImage;
     
+    private void Start()
+    {
+        child = transform.GetChild(0).gameObject;
+        child.GetComponent<DragNDrop>().MySlot = this;
+    }
+
+    private void Update()
+    {
+        print(Item != null
+            ? $"Slot{transform.GetPuzzleSlotIndex()} has item: {Item.ItemName}"
+            : $"Slot{transform.GetPuzzleSlotIndex()} has no item");
+    }
 
     public void SetItem(BaseItem item)
     {
@@ -35,15 +47,12 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         puzzleStation.UpdateItemID(slotIndex, 0);
     }
 
-    private void Start()
-    {
-        child = transform.GetChild(0).gameObject;
-        child.GetComponent<DragNDrop>().MySlot = this;
-    }
+
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag == null) return;
+        //if this slot has a item already, do nothing
+        if (eventData.pointerDrag == null || Item!=null) return;
 
         // Get the slot of the dragged item. //is this the slot, the drag starts from?
         ISlot slot = eventData.pointerDrag.GetComponent<DragNDrop>().MySlot;
@@ -84,6 +93,10 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         puzzleStation = station;
     }
 }
+
+
+
+
 
 //Class for extension method to add new method to the transform class
 public static class TransformExtensions
