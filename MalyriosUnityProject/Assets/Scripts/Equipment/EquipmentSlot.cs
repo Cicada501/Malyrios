@@ -145,6 +145,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         Inventory.Instance.SetActiveItem(Item);
     }
+    
+    public void SwapItems(ISlot otherSlot)
+    {
+        SlotHelper.SwapItems(this, otherSlot);
+    }
 }
 
 public class BaseArmor

@@ -66,29 +66,21 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-        // Wenn das Slot-Item nicht null ist (es gibt bereits ein Item im Slot)
+        
         if (Item != null)
         {
-            // Tausche die Items
-            BaseItem tempItem = Item;
-            int tempItemID = Item.ItemID;
-
-            // Setze das Slot-Item
-            SetItem(slot.Item);
-
-            // Setze das Item in der Ursprungsslot
-            slot.SetItem(tempItem);
-
-            // Aktualisiere die itemIDsArray in der PuzzleStation
+            //slot is not empty, swap items
+            SwapItems(slot);
+          
+            // Update the PuzzleStation accordingly
             int slotIndex = transform.GetPuzzleSlotIndex();
             puzzleStation.UpdateItemID(slotIndex, Item.ItemID);
             int originalSlotIndex = slot.GetTransform().GetPuzzleSlotIndex();
-            puzzleStation.UpdateItemID(originalSlotIndex, tempItemID);
+            puzzleStation.UpdateItemID(originalSlotIndex, slot.Item.ItemID);
         }
         else
         {
-            // Verarbeite den Fall, wenn kein Item im Slot ist (dein aktueller Code)
+            // place item (slot is empty)
             this.child.GetComponent<Image>().sprite =
                 eventData.pointerDrag.GetComponent<Image>().sprite;
             Item = slot.Item;
@@ -108,6 +100,11 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void SetPuzzleStation(PuzzleStation station)
     {
         puzzleStation = station;
+    }
+    
+    public void SwapItems(ISlot otherSlot)
+    {
+        SlotHelper.SwapItems(this, otherSlot);
     }
 }
 

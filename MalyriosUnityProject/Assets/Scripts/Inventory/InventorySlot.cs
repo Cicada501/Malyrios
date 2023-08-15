@@ -13,6 +13,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private Stack<BaseItem> itemStack = new Stack<BaseItem>();
     private BaseItem item;
     private Transform playerTransform;
+    private DragNDrop dragNDrop;
+
 
     public BaseItem Item
     {
@@ -26,29 +28,37 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         set => this.itemStack = value;
     }
 
-    private void Start()
+    public void Start()
     {
         this.playerTransform = ReferencesManager.Instance.player.transform;
-        this.transform.GetChild(2).GetComponent<DragNDrop>().MySlot = this;
+        this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
+        this.dragNDrop.MySlot = this;
+    }
+    public void Initialize()
+    {
+        this.playerTransform = ReferencesManager.Instance.player.transform;
+        this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
+        this.dragNDrop.MySlot = this;
     }
 
     /// <summary>
     /// 
     /// </summary>
     /// <param name="baseItem"></param>
+  
     public void SetItem(BaseItem baseItem)
-    {
-        this.item = baseItem;
-        Transform child = this.transform.GetChild(2);
+{
+    this.item = baseItem;
 
-        Image img = child.GetComponent<Image>();
-        img.enabled = true;
-        img.sprite = baseItem.Icon;
+    Image img = dragNDrop.GetComponent<Image>();
+    img.enabled = true;
+    img.sprite = baseItem.Icon;
 
-        child.GetComponent<DragNDrop>().MySlot = this;
+    dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
 
-        this.itemStack.Push(baseItem);
-    }
+    this.itemStack.Push(baseItem);
+}
+
 
     /// <summary>
     /// 
@@ -131,26 +141,42 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (this.item != null) return;
-
         DragNDrop dragNDrop = eventData.pointerDrag.GetComponent<DragNDrop>();
+        ISlot originSlot = dragNDrop.MySlot;
 
-        SetItem(dragNDrop.MySlot.Item);
-
-        if (dragNDrop.MySlot.ItemStack != null && dragNDrop.MySlot.ItemStack.Count > 0)
-        {
-            for (int i = 0; i < dragNDrop.MySlot.ItemStack.Count - 1; i++)
-            {
-                AddItemToStack(dragNDrop.MySlot.ItemStack.Peek());
-            }
-        }
-
-        dragNDrop.MySlot.RemoveItem();
-        dragNDrop.MySlot.Item = null;
-        dragNDrop.MySlot.ItemStack?.Clear();
+        if (originSlot.Item == null) return; // If the origin slot has no item, do nothing
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        eventData.pointerDrag.GetComponent<Image>().enabled = false;
-        dragNDrop.MySlot.Item = null;
+        
+        if (this.item != null)
+        {
+            SwapItems(originSlot);
+        }
+        else
+        {
+            // If this inventory slot has no item, use your existing logic
+            SetItem(originSlot.Item);
+
+            if (originSlot.ItemStack != null && originSlot.ItemStack.Count > 0)
+            {
+                for (int i = 0; i < originSlot.ItemStack.Count - 1; i++)
+                {
+                    AddItemToStack(originSlot.ItemStack.Peek());
+                }
+            }
+
+            originSlot.RemoveItem();
+            originSlot.Item = null;
+            originSlot.ItemStack?.Clear();
+
+            eventData.pointerDrag.GetComponent<Image>().enabled = false;
+            originSlot.Item = null;
+        }
+    }
+
+    
+    public void SwapItems(ISlot otherSlot)
+    {
+        SlotHelper.SwapItems(this, otherSlot);
     }
 }

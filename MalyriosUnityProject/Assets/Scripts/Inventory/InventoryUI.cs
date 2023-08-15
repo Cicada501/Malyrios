@@ -28,9 +28,10 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        //itemCount = inventory.items.Count;
-
-        // amount of items, that already existed in a Slot
+        foreach (var slot in slots)
+        {
+            slot.Initialize();
+        }
     }
 
     private void Start()
@@ -75,7 +76,12 @@ public class InventoryUI : MonoBehaviour
     private void AddNewItem(BaseItem item)
     {
         InventorySlot freeSlot = slots.FirstOrDefault(x => x.Item == null);
-        if (freeSlot != null) freeSlot.SetItem(item);
+        if (freeSlot != null)
+        {
+            freeSlot.Initialize();
+            print("freeslot init");
+            freeSlot.SetItem(item);
+        }
     }
 
     private void OnItemRemoved(BaseItem item)
