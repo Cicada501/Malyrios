@@ -38,6 +38,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         OnWeaponChanged?.Invoke(null);  //calls onWeaponChanged with null
     }
 
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
+
     private void Start()
     {
         child = transform.GetChild(0).gameObject;
