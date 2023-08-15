@@ -5,6 +5,7 @@ using Malyrios.Items;
 using TMPro;
 using UnityEngine;
 using System.Linq;
+using System.Text;
 
 [Serializable]
 public class PuzzleStationData
@@ -43,18 +44,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        string arrayAsString = string.Join(", ", itemIDsArray);
-        Debug.Log(arrayAsString);
+        print($"Station {name} has Formula: {GetCurrentFormula()} and truth value: {EvaluateFormula(GetCurrentFormula())}");
     }
-
-    private void Start()
-    {
-        foreach (var elem in puzzleElements)
-        {
-            print(elem.elementType);
-        }
-    }
-
 
     public void Interact()
     {
@@ -154,4 +145,149 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             Destroy(child.gameObject);
         }
     }
+    
+    public string GetCurrentFormula()
+    {
+        StringBuilder formula = new StringBuilder();
+        int emptySlotIndex = 0;
+
+        foreach (var elem in puzzleElements)
+        {
+            switch (elem.elementType)
+            {
+                case PuzzleElement.ElementType.TRUE:
+                    formula.Append("TRUE ");
+                    break;
+                case PuzzleElement.ElementType.FALSE:
+                    formula.Append("FALSE ");
+                    break;
+                case PuzzleElement.ElementType.AND:
+                    formula.Append("AND ");
+                    break;
+                case PuzzleElement.ElementType.OR:
+                    formula.Append("OR ");
+                    break;
+                case PuzzleElement.ElementType.XOR:
+                    formula.Append("XOR ");
+                    break;
+                case PuzzleElement.ElementType.IMP:
+                    formula.Append("IMP ");
+                    break;
+                case PuzzleElement.ElementType.Empty:
+                    string value = "";
+                    switch (itemIDsArray[emptySlotIndex])
+                    {
+                        case 20:
+                            value = "TRUE";
+                            break;
+                        case 21:
+                            value = "FALSE";
+                            break;
+                        case 22:
+                            value = "AND";
+                            break;
+                        case 23:
+                            value = "OR";
+                            break;
+                        case 24:
+                            value = "XOR";
+                            break;
+                        case 25:
+                            value = "IMP";
+                            break;
+                        default:
+                            value = "Empty";
+                            break;
+                    }
+                    formula.Append(value + " ");
+                    emptySlotIndex++;
+                    break;
+            }
+        }
+
+        return formula.ToString().Trim();
+    }
+    
+    public bool? EvaluateFormula(string formula)
+    {
+        string[] tokens = formula.Split(' ');
+
+        Stack<bool> values = new Stack<bool>();
+        Stack<string> ops = new Stack<string>();
+
+        for (int i = 0; i < tokens.Length; i++)
+        {
+            if (tokens[i] == "Empty")
+                return null; // Kann nicht bewertet werden, wenn die Formel nicht vollständig ist.
+
+            if (tokens[i] == "TRUE" || tokens[i] == "FALSE")
+            {
+                values.Push(tokens[i] == "TRUE");
+            }
+            else if (tokens[i] == "AND" || tokens[i] == "OR" || tokens[i] == "XOR" || tokens[i] == "IMP")
+            {
+                while (ops.Count > 0 && GetPrecedence(tokens[i]) <= GetPrecedence(ops.Peek()))
+                {
+                    ApplyOperator(values, ops);
+                }
+
+                ops.Push(tokens[i]);
+            }
+        }
+
+        while (ops.Count > 0)
+        {
+            ApplyOperator(values, ops);
+        }
+
+        return values.Pop();
+    }
+
+    private int GetPrecedence(string op)
+    {
+        switch (op)
+        {
+            case "AND": 
+                return 3;
+            case "OR":  
+            case "XOR": 
+                return 2;
+            case "IMP": 
+                return 1;
+            default:
+                throw new Exception("Ungültiger Operator");
+        }
+    }
+
+
+    private void ApplyOperator(Stack<bool> values, Stack<string> ops)
+    {
+        bool rightValue = values.Pop();
+        bool leftValue = values.Pop();
+        string op = ops.Pop();
+
+        bool result;
+
+        switch (op)
+        {
+            case "AND":
+                result = leftValue && rightValue;
+                break;
+            case "OR":
+                result = leftValue || rightValue;
+                break;
+            case "XOR":
+                result = leftValue ^ rightValue;
+                break;
+            case "IMP":
+                result = !leftValue || rightValue;
+                break;
+            default:
+                throw new Exception("Ungültiger Operator");
+        }
+
+        values.Push(result);
+    }
+
+
 }

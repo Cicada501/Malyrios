@@ -55,8 +55,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         img.sprite = baseItem.Icon;
 
         dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
-
-        print($"itemstack: {itemStack}");
+        
         this.itemStack.Push(baseItem);
     }
 

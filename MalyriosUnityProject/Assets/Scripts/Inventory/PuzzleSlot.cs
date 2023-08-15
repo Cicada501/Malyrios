@@ -28,13 +28,6 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child.GetComponent<DragNDrop>().MySlot = this;
     }
 
-    private void Update()
-    {
-        print(Item != null
-            ? $"Slot{transform.GetPuzzleSlotIndex()} has item: {Item.ItemName}"
-            : $"Slot{transform.GetPuzzleSlotIndex()} has no item");
-    }
-
     public void SetItem(BaseItem item)
     {
         slotImage.sprite = item.Icon;
