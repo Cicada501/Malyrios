@@ -110,7 +110,10 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
-        equipmentUI.SetActive(!equipmentUI.activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
+        equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
+        
+        //stats- and activeItemWindow are always closed, when inventory gets opened or closed
+        ReferencesManager.Instance.puzzleWindow.SetActive(false);
         activeItemInfoWindow.SetActive(false);
         statsWindow.SetActive(false);
     }
