@@ -29,6 +29,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private List<GameObject> symbolPrefabs;
     private GameObject inventoryUI;
     private bool windowOpen;
+    private SpriteRenderer valueDisplay;
 
     void Awake()
     {
@@ -40,11 +41,26 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         symbolPrefabs = ReferencesManager.Instance.logicSymbols;
         inventoryUI = ReferencesManager.Instance.inventoryUI;
         itemIDsArray = new int[slotCount];
+        valueDisplay = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        print($"Station {name} has Formula: {GetCurrentFormula()} and truth value: {EvaluateFormula(GetCurrentFormula())}");
+        bool? value = EvaluateFormula(GetCurrentFormula());
+
+        if (value == true)
+        {
+            valueDisplay.color = Color.green;
+        }
+        else if (value == false)
+        {
+            valueDisplay.color = Color.red;
+        }
+        else // value == null
+        {
+            valueDisplay.color = Color.gray;
+        }
+
     }
 
     public void Interact()
