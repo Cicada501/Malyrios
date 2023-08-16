@@ -85,7 +85,6 @@ public class InventoryUI : MonoBehaviour
         if (freeSlot != null)
         {
             freeSlot.Initialize();
-            print("freeslot init");
             freeSlot.SetItem(item);
         }
     }

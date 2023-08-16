@@ -44,6 +44,7 @@ public class GameInitializer : MonoBehaviour
             questLogWindow.AddQuest(quest.questName, quest.questDescription);
         }
         questLogWindow.FixUI(10);
+        PuzzleStationManager.Instance.LoadStations();
     }
 
     public void ResetAll()

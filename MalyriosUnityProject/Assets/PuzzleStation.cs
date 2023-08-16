@@ -11,16 +11,32 @@ using UnityEngine.UI;
 [Serializable]
 public class PuzzleStationData
 {
-    private int id;
-    private string level;
+    public string id;
+    public int[] itemIDsArray;
+
+    public PuzzleStationData(PuzzleStation station)
+    {
+        id = station.id;
+        itemIDsArray = station.itemIDsArray;
+    }
+}
+
+[Serializable]
+public class PuzzleStationDataList
+{
+    public List<PuzzleStationData> puzzleStationDataList;
+
+    public PuzzleStationDataList(List<PuzzleStationData> data)
+    {
+        puzzleStationDataList = data;
+    }
 }
 
 public class PuzzleStation : MonoBehaviour, IInteractable
 {
-    private int
-        slotCount; //muss ungerade sein, da immer 1 True/False slot, dann 1 Operator slot, usw. Darf nicht mit Operator slot aufhören
-
-    private int[] itemIDsArray;
+    public string id;
+    private int slotCount;
+    public int[] itemIDsArray;
     private GameObject puzzleWindow;
     private Image puzzleWindowImage;
     private TextMeshProUGUI interactableText;
@@ -34,8 +50,9 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private SpriteRenderer valueDisplay;
     private bool inUse;
 
-    void Awake()
+    private void Awake()
     {
+        id = id = gameObject.name + transform.position;
         puzzleElements = GetComponent<Puzzle>().puzzleElements;
         slotCount = puzzleElements.Count(element => element.elementType == PuzzleElement.ElementType.Empty);
         interactableText = ReferencesManager.Instance.interactableText;
@@ -46,10 +63,13 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         itemIDsArray = new int[slotCount];
         valueDisplay = transform.GetChild(0).GetComponent<SpriteRenderer>();
         puzzleWindowImage = puzzleWindow.GetComponent<Image>();
+        PuzzleStationManager.Instance.AddStation(this);
+        
     }
 
     private void Start()
     {
+        PuzzleStationManager.Instance.LoadStation(this);
         UpdateDisplayedValue();
     }
 
@@ -61,7 +81,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {
             valueDisplay.color = Color.green;
             if (!inUse) return;
-            puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);;
+            puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);
+            ;
         }
         else if (value == false)
         {
@@ -75,7 +96,6 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 1f);
         }
-
     }
 
     public void Interact()
@@ -84,7 +104,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         ShowPuzzleDialog();
         FindObjectOfType<InventoryUI>().SetActivePuzzleStation(this);
     }
-    
+
 
     private void ShowPuzzleDialog()
     {
@@ -123,9 +143,9 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                         puzzleSlot.SetPuzzleStation(this);
                         slots.Add(puzzleSlot);
                         break;
-                    
                 }
             }
+
             ReferencesManager.Instance.dynamicPuzzleWindowWidth.UpdateContainerWidth();
         }
 
@@ -149,13 +169,13 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {
             itemIDsArray[index] = itemID;
         }
-        
+
         UpdateDisplayedValue();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player")&&!windowOpen)
+        if (other.gameObject.CompareTag("Player") && !windowOpen)
         {
             interactableText.text = "Open";
             interactableText.gameObject.SetActive(true);
@@ -184,7 +204,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             Destroy(child.gameObject);
         }
     }
-    
+
     public string GetCurrentFormula()
     {
         StringBuilder formula = new StringBuilder();
@@ -238,6 +258,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                             value = "Empty";
                             break;
                     }
+
                     formula.Append(value + " ");
                     emptySlotIndex++;
                     break;
@@ -246,7 +267,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
         return formula.ToString().Trim();
     }
-    
+
     public bool? GetTruthValue()
     {
         string formula = GetCurrentFormula();
@@ -301,12 +322,12 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     {
         switch (op)
         {
-            case "AND": 
+            case "AND":
                 return 3;
-            case "OR":  
-            case "XOR": 
+            case "OR":
+            case "XOR":
                 return 2;
-            case "IMP": 
+            case "IMP":
                 return 1;
             default:
                 throw new Exception("Ungültiger Operator");
@@ -342,6 +363,4 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
         values.Push(result);
     }
-
-
 }

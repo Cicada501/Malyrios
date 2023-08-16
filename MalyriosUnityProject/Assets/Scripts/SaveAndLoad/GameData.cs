@@ -18,12 +18,15 @@ public class GameData : MonoBehaviour
     public List<NpcData> LoadedNpcData { get; private set; }
     
     public List<Quest> LoadedQuestLog { get; private set; }
+    
+    public List<PuzzleStationData> LoadedPuzzleStations { get; private set; }
 
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
+    
 
     private void Awake()
     {
@@ -36,11 +39,11 @@ public class GameData : MonoBehaviour
 
     public void SaveData()
     {
-        //print($"Saving: {JsonUtility.ToJson(questLogWindow.SaveQuestLog())}");
+        print($"Saving: {JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
+        PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));
-        //PlayerPrefs.SetFloat("currentHealth", baseAttributes.CurrentHealth);
 
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
         //print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
@@ -175,7 +178,16 @@ public class GameData : MonoBehaviour
             LoadedQuestLog = new List<Quest>();
         }
         
-        //Load PlayerData, set fireballButton.Active to loaded value
+        if (PlayerPrefs.HasKey("puzzleStations") && PlayerPrefs.GetString("puzzleStations") != "")
+        {
+            var loadedPuzzleStations = JsonUtility.FromJson<PuzzleStationDataList>(PlayerPrefs.GetString("puzzleStations"));
+            print("Loaded: "+JsonUtility.ToJson(loadedPuzzleStations));
+            LoadedPuzzleStations = loadedPuzzleStations.puzzleStationDataList;
+        }
+        else
+        {
+            LoadedPuzzleStations = new List<PuzzleStationData>();
+        }
     }
 
     private void OnApplicationQuit()
