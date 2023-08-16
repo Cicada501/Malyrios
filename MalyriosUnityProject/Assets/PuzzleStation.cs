@@ -48,9 +48,14 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         puzzleWindowImage = puzzleWindow.GetComponent<Image>();
     }
 
-    private void Update()
+    private void Start()
     {
-        bool? value = EvaluateFormula(GetCurrentFormula());
+        UpdateDisplayedValue();
+    }
+
+    private void UpdateDisplayedValue()
+    {
+        bool? value = GetTruthValue();
 
         if (value == true)
         {
@@ -75,8 +80,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        ShowPuzzleDialog();
         inUse = true;
+        ShowPuzzleDialog();
         FindObjectOfType<InventoryUI>().SetActivePuzzleStation(this);
     }
     
@@ -87,6 +92,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         inventoryUI.SetActive(true);
         windowOpen = true;
         interactableText.gameObject.SetActive(false);
+        UpdateDisplayedValue();
         if (itemSlotsParent.childCount == 0)
         {
             foreach (var elem in puzzleElements)
@@ -143,6 +149,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {
             itemIDsArray[index] = itemID;
         }
+        
+        UpdateDisplayedValue();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -239,8 +247,9 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         return formula.ToString().Trim();
     }
     
-    public bool? EvaluateFormula(string formula)
+    public bool? GetTruthValue()
     {
+        string formula = GetCurrentFormula();
         string[] tokens = formula.Split(' ');
 
         Stack<bool> values = new Stack<bool>();
