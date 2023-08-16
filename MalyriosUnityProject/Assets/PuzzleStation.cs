@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using System.Linq;
 using System.Text;
+using UnityEngine.UI;
 
 [Serializable]
 public class PuzzleStationData
@@ -21,6 +22,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
     private int[] itemIDsArray;
     private GameObject puzzleWindow;
+    private Image puzzleWindowImage;
     private TextMeshProUGUI interactableText;
     private Transform itemSlotsParent;
     [SerializeField] private GameObject itemSlotPrefab;
@@ -30,6 +32,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private GameObject inventoryUI;
     private bool windowOpen;
     private SpriteRenderer valueDisplay;
+    private bool inUse;
 
     void Awake()
     {
@@ -42,6 +45,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         inventoryUI = ReferencesManager.Instance.inventoryUI;
         itemIDsArray = new int[slotCount];
         valueDisplay = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        puzzleWindowImage = puzzleWindow.GetComponent<Image>();
     }
 
     private void Update()
@@ -51,14 +55,20 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         if (value == true)
         {
             valueDisplay.color = Color.green;
+            if (!inUse) return;
+            puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);;
         }
         else if (value == false)
         {
             valueDisplay.color = Color.red;
+            if (!inUse) return;
+            puzzleWindowImage.color = Color.HSVToRGB(0f, 0.2f, 1f);
         }
         else // value == null
         {
             valueDisplay.color = Color.gray;
+            if (!inUse) return;
+            puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 1f);
         }
 
     }
@@ -66,7 +76,10 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     public void Interact()
     {
         ShowPuzzleDialog();
+        inUse = true;
+        FindObjectOfType<InventoryUI>().SetActivePuzzleStation(this);
     }
+    
 
     private void ShowPuzzleDialog()
     {
@@ -150,11 +163,13 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         }
     }
 
-    private void ClosePuzzleWindow()
+    public void ClosePuzzleWindow()
     {
         puzzleWindow.SetActive(false);
         inventoryUI.SetActive(false);
         windowOpen = false;
+        inUse = false;
+        FindObjectOfType<InventoryUI>().SetActivePuzzleStation(null);
         foreach (Transform child in itemSlotsParent)
         {
             slots.Remove(child.GetComponent<PuzzleSlot>());

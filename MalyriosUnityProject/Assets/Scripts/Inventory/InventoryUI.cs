@@ -15,6 +15,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject activeItemInfoWindow = null;
     [SerializeField] GameObject statsWindow;
     Inventory inventory;
+    private PuzzleStation activePuzzleStation;
 
     bool buttonPressed;
 
@@ -23,6 +24,11 @@ public class InventoryUI : MonoBehaviour
     int itemCount;
 
     public static bool inventoryOpen = false;
+
+    public void SetActivePuzzleStation(PuzzleStation station)
+    {
+        activePuzzleStation = station;
+    }
 
 
     private void Awake()
@@ -112,8 +118,12 @@ public class InventoryUI : MonoBehaviour
         inventoryUI.SetActive(!inventoryUI.activeSelf);
         equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
         
+        //if puzzleStation is active, close it with inventory
+        if (activePuzzleStation)
+        {
+            activePuzzleStation.ClosePuzzleWindow();
+        }
         //stats- and activeItemWindow are always closed, when inventory gets opened or closed
-        ReferencesManager.Instance.puzzleWindow.SetActive(false);
         activeItemInfoWindow.SetActive(false);
         statsWindow.SetActive(false);
     }
