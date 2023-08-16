@@ -215,6 +215,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         Stack<bool> values = new Stack<bool>();
         Stack<string> ops = new Stack<string>();
 
+        bool expectingValue = true; // Wir erwarten zuerst einen Wert
+
         for (int i = 0; i < tokens.Length; i++)
         {
             if (tokens[i] == "Empty")
@@ -222,18 +224,29 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
             if (tokens[i] == "TRUE" || tokens[i] == "FALSE")
             {
+                if (!expectingValue)
+                    return null; // Ungültige Anordnung von Werten
+
                 values.Push(tokens[i] == "TRUE");
+                expectingValue = false; // Nächstes Token sollte ein Operator sein
             }
             else if (tokens[i] == "AND" || tokens[i] == "OR" || tokens[i] == "XOR" || tokens[i] == "IMP")
             {
+                if (expectingValue)
+                    return null; // Ungültige Anordnung von Operatoren
+
                 while (ops.Count > 0 && GetPrecedence(tokens[i]) <= GetPrecedence(ops.Peek()))
                 {
                     ApplyOperator(values, ops);
                 }
 
                 ops.Push(tokens[i]);
+                expectingValue = true; // Nächstes Token sollte ein Wert sein
             }
         }
+
+        if (expectingValue)
+            return null; // Ungültige Anordnung am Ende
 
         while (ops.Count > 0)
         {
@@ -242,6 +255,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
         return values.Pop();
     }
+
 
     private int GetPrecedence(string op)
     {
