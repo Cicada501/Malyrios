@@ -24,18 +24,33 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private GridLayoutGroup gridLayoutGroup;
 
     public BaseItem Item { get; set; }
-    public Stack<BaseItem> ItemStack { get; set; }
+    
+    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
+    public Stack<BaseItem> ItemStack
+    {
+        get => this.itemStack;
+        set => this.itemStack = value;
+    }
     private InventoryUI inventoryUI;
     
 
     public void SetItem(BaseItem item)
     {
+        if (item.ItemType == BaseItem.ItemTypes.Weapon)
+        {
+            AddWeapon(item as BaseWeapon);
+        }
     }
 
     public void RemoveItem()
     {
         child.GetComponent<Image>().enabled = false;
         OnWeaponChanged?.Invoke(null);  //calls onWeaponChanged with null
+    }
+
+    public Transform GetTransform()
+    {
+        return this.transform;
     }
 
     private void Start()
@@ -104,41 +119,53 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (eventData.pointerDrag == null) return;
 
         // Get the slot of the dragged item.
-        ISlot slot = eventData.pointerDrag.GetComponent<DragNDrop>().MySlot;
+        ISlot originSlot = eventData.pointerDrag.GetComponent<DragNDrop>().MySlot;
 
         // If the dragged item is not the same item type, you can't drag it on this item slot, so do nothing.
-        if (slot.Item.ItemType != this.itemType) return;
-
+        if (originSlot.Item.ItemType != this.itemType) return;
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        // Set the slot sprite to the sprite of the item.
-        this.child.GetComponent<Image>().sprite =
-            eventData.pointerDrag.GetComponent<Image>().sprite;
-
-        // Set the equip item to the item from the dragged item.
-        Item = slot.Item;
-        slot.ItemStack?.Clear();
-
-        Inventory.Instance.Remove(slot.Item);
-
-        // enable the image.
-        transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-
-        // Disable the image from the dragged item.
-        eventData.pointerDrag.GetComponent<Image>().enabled = false;
-
-        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
-            this.gridLayoutGroup.GetComponent<RectTransform>().anchoredPosition;
+        // If the current equipment slot has an item
+        if (Item != null)
+        {
+            // Swap the items
+            SwapItems(originSlot);
+            TriggerSlotEvent();
+        }
+        else
+        {
+            // If this equipment slot has no item, use your existing logic
+            this.child.GetComponent<Image>().sprite =
+                eventData.pointerDrag.GetComponent<Image>().sprite;
         
-        TriggerSlotEvent();
+            Item = originSlot.Item;
+            originSlot.RemoveItem();
+        
+            // enable the image.
+            transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+
+            // Disable the image from the dragged item.
+            eventData.pointerDrag.GetComponent<Image>().enabled = false;
+
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
+                this.gridLayoutGroup.GetComponent<RectTransform>().anchoredPosition;
+        
+            TriggerSlotEvent();
+        }
     }
+
 
     
 
     public void OnTap()
     {
         Inventory.Instance.SetActiveItem(Item);
+    }
+    
+    public void SwapItems(ISlot otherSlot)
+    {
+        SlotHelper.SwapItems(this, otherSlot);
     }
 }
 

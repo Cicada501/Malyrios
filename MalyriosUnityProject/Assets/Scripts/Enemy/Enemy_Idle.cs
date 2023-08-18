@@ -13,7 +13,7 @@ public class Enemy_Idle : StateMachineBehaviour
     {
         rb = animator.GetComponent<Rigidbody2D>();
         enemy = animator.GetComponent<Enemy>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = ReferencesManager.Instance.player.transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
         canMove = true;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = ReferencesManager.Instance.player.transform;
         rb = GetComponent<Rigidbody2D>();
 
         animator = GetComponent<Animator>();

@@ -15,6 +15,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject activeItemInfoWindow = null;
     [SerializeField] GameObject statsWindow;
     Inventory inventory;
+    private PuzzleStation activePuzzleStation;
 
     bool buttonPressed;
 
@@ -24,13 +25,19 @@ public class InventoryUI : MonoBehaviour
 
     public static bool inventoryOpen = false;
 
+    public void SetActivePuzzleStation(PuzzleStation station)
+    {
+        activePuzzleStation = station;
+    }
+
 
     private void Awake()
     {
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        //itemCount = inventory.items.Count;
-
-        // amount of items, that already existed in a Slot
+        foreach (var slot in slots)
+        {
+            slot.Initialize();
+        }
     }
 
     private void Start()
@@ -75,7 +82,11 @@ public class InventoryUI : MonoBehaviour
     private void AddNewItem(BaseItem item)
     {
         InventorySlot freeSlot = slots.FirstOrDefault(x => x.Item == null);
-        if (freeSlot != null) freeSlot.SetItem(item);
+        if (freeSlot != null)
+        {
+            freeSlot.Initialize();
+            freeSlot.SetItem(item);
+        }
     }
 
     private void OnItemRemoved(BaseItem item)
@@ -104,7 +115,14 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
-        equipmentUI.SetActive(!equipmentUI.activeSelf); // if invontory open, then also open equipment, and on close, close equipment window
+        equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
+        
+        //if puzzleStation is active, close it with inventory
+        if (activePuzzleStation)
+        {
+            activePuzzleStation.ClosePuzzleWindow();
+        }
+        //stats- and activeItemWindow are always closed, when inventory gets opened or closed
         activeItemInfoWindow.SetActive(false);
         statsWindow.SetActive(false);
     }

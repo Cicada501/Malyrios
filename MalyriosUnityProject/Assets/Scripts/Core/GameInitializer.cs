@@ -12,6 +12,7 @@ public class GameInitializer : MonoBehaviour
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
 
+
     private void Awake()
     {
         gameData = GetComponent<GameData>();
@@ -19,7 +20,8 @@ public class GameInitializer : MonoBehaviour
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = GetComponent<NPCManager>();
-        questLogWindow = FindObjectOfType<QuestLogWindow>();
+        questLogWindow = questLogWindow = ReferencesManager.Instance.questLogWindow;
+
     }
 
     private void Start()
@@ -42,6 +44,7 @@ public class GameInitializer : MonoBehaviour
             questLogWindow.AddQuest(quest.questName, quest.questDescription);
         }
         questLogWindow.FixUI(10);
+        PuzzleStationManager.Instance.LoadStations();
     }
 
     public void ResetAll()

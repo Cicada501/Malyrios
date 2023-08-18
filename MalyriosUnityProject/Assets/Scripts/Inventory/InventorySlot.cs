@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private Stack<BaseItem> itemStack = new Stack<BaseItem>();
     private BaseItem item;
     private Transform playerTransform;
+    private DragNDrop dragNDrop;
+
 
     public BaseItem Item
     {
@@ -25,10 +28,18 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         set => this.itemStack = value;
     }
 
-    private void Start()
+    public void Start()
     {
-        this.playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        this.transform.GetChild(3).GetComponent<DragNDrop>().MySlot = this;
+        this.playerTransform = ReferencesManager.Instance.player.transform;
+        this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
+        this.dragNDrop.MySlot = this;
+    }
+
+    public void Initialize()
+    {
+        this.playerTransform = ReferencesManager.Instance.player.transform;
+        this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
+        this.dragNDrop.MySlot = this;
     }
 
     /// <summary>
@@ -38,16 +49,16 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void SetItem(BaseItem baseItem)
     {
         this.item = baseItem;
-        Transform child = this.transform.GetChild(3);
 
-        Image img = child.GetComponent<Image>();
+        Image img = dragNDrop.GetComponent<Image>();
         img.enabled = true;
         img.sprite = baseItem.Icon;
 
-        child.GetComponent<DragNDrop>().MySlot = this;
-
+        dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
+        
         this.itemStack.Push(baseItem);
     }
+
 
     /// <summary>
     /// 
@@ -83,34 +94,32 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         this.amountText.gameObject.SetActive(false);
     }
 
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
+
     public void RemoveSingleItem()
     {
-        if (this.item is BaseWeapon)
+        Inventory.Instance.Items.Remove(this.itemStack.Peek());
+        this.itemStack.Pop();
+        this.amountText.text = itemStack.Count.ToString();
+        Inventory.Instance.ItemIDs.Remove(item.ItemID);
+        if (this.itemStack.Count <= 0)
         {
-            RemoveItem(); //if i try to remove a weapon (by equipping it) in the same way as the items, it throws an error saying the stack is empty
+            this.transform.GetChild(2).GetComponent<Image>().enabled = false;
+            RemoveItem();
+            ActiveItemWindow.Instance.HideActiveItemInfo();
         }
-        else
-        {
-            Inventory.Instance.Items.Remove(this.itemStack.Peek());
-            this.itemStack.Pop();
-            this.amountText.text = itemStack.Count.ToString();
-            Inventory.Instance.ItemIDs.Remove(item.ItemID);
-            if (this.itemStack.Count <= 0)
-            {
-                this.transform.GetChild(3).GetComponent<Image>().enabled = false;
-                RemoveItem();
-                ActiveItemWindow.Instance.HideActiveItemInfo();
-            }
-        }
+
     }
-    
+
     public void DropItem()
     {
         if (this.item == null) return;
 
         SpawnItem.Spawn(item, this.playerTransform.position, 0.3f, -1.2f, 1.5f);
         RemoveSingleItem();
-        
     }
 
     public void UseItem()
@@ -125,26 +134,42 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (this.item != null) return;
-
         DragNDrop dragNDrop = eventData.pointerDrag.GetComponent<DragNDrop>();
+        ISlot originSlot = dragNDrop.MySlot;
 
-        SetItem(dragNDrop.MySlot.Item);
-
-        if (dragNDrop.MySlot.ItemStack != null && dragNDrop.MySlot.ItemStack.Count > 0)
-        {
-            for (int i = 0; i < dragNDrop.MySlot.ItemStack.Count - 1; i++)
-            {
-                AddItemToStack(dragNDrop.MySlot.ItemStack.Peek());
-            }
-        }
-
-        dragNDrop.MySlot.RemoveItem();
-        dragNDrop.MySlot.Item = null;
-        dragNDrop.MySlot.ItemStack?.Clear();
+        if (originSlot.Item == null) return; // If the origin slot has no item, do nothing
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        eventData.pointerDrag.GetComponent<Image>().enabled = false;
-        dragNDrop.MySlot.Item = null;
+
+        if (this.item != null)
+        {
+            SwapItems(originSlot);
+        }
+        else
+        {
+            // If this inventory slot has no item, use your existing logic
+            SetItem(originSlot.Item);
+
+            if (originSlot.ItemStack != null && originSlot.ItemStack.Count > 0)
+            {
+                for (int i = 0; i < originSlot.ItemStack.Count - 1; i++)
+                {
+                    AddItemToStack(originSlot.ItemStack.Peek());
+                }
+            }
+
+            originSlot.RemoveItem();
+            originSlot.Item = null;
+            originSlot.ItemStack?.Clear();
+
+            eventData.pointerDrag.GetComponent<Image>().enabled = false;
+            originSlot.Item = null;
+        }
+    }
+
+
+    public void SwapItems(ISlot otherSlot)
+    {
+        SlotHelper.SwapItems(this, otherSlot);
     }
 }

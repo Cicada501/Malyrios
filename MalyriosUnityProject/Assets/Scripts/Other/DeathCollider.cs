@@ -8,7 +8,7 @@ public class DeathCollider : MonoBehaviour
 {
     Transform player;
     private void Start() {
-    player = GameObject.FindGameObjectWithTag("Player").transform;
+    player = ReferencesManager.Instance.player.transform;
         
     }
     private void OnTriggerEnter2D(Collider2D other) {

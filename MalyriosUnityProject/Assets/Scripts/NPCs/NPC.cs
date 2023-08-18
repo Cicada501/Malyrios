@@ -33,7 +33,7 @@ namespace NPCs
         {
             if (questStatus > 0 & questStatusImage!= null)
             {
-                print($"Updating quest image of {npcName} to {questStatus}");
+                //print($"Updating quest image of {npcName} to {questStatus}");
                 questStatusImage.sprite = SpriteManager.Instance.GetSpriteForQuestStatus(questStatus);
             }
             else
@@ -44,7 +44,7 @@ namespace NPCs
 
         private void Awake()
         {
-            npcManager = FindObjectOfType<NPCManager>();
+            npcManager = ReferencesManager.Instance.npcManager;
             //questStatusImage = gameObject.GetComponentInChildren<SpriteRenderer>();
         }
 

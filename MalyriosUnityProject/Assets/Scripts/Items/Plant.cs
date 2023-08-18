@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Malyrios.Items
 {
-    [CreateAssetMenu(fileName = "New Plant", menuName = "Items/Plant/NewPlant")]
+    [CreateAssetMenu(fileName = "New Plant", menuName = "Items/NewPlant")]
     public class Plant : BaseItem, IItemDescriber
     {
         public string GetDescription()

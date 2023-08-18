@@ -14,7 +14,8 @@ namespace Malyrios.Items
             Feet,
             Hand,
             Plant,
-            Other
+            Other,  
+            Rune
         }
 
         [Header("Base Item Properties")] [SerializeField]

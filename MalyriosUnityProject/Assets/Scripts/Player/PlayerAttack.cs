@@ -164,8 +164,8 @@ public class PlayerAttack : MonoBehaviour
             //if already a weapon equipped
             if (this.equippedWeapon != null)
             {
-                Debug.Log("Unequipping weapon: " + this.equippedWeapon.ItemName);
-                StartCoroutine(SpawnUnequippedWeaponDelayed(equippedWeapon));
+                //Debug.Log("Unequipping weapon: " + this.equippedWeapon.ItemName);
+                //StartCoroutine(SpawnUnequippedWeaponDelayed(equippedWeapon));
                 UnequipWeapon();
                 
             }
