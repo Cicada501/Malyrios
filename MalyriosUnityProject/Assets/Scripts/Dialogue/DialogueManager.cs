@@ -140,7 +140,7 @@ namespace Malyrios.Dialogue
                         yield return new WaitForSeconds(0.2f);
                     }
 
-                    yield return new WaitForSeconds(0.01f);
+                    //yield return new WaitForSeconds(0.001f);
                 }
 
                 ShowAnswers();
