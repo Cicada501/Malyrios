@@ -15876,7 +15876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1053787233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15912,7 +15912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.36734605, g: 0.41888237, b: 0.6132076, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19206,6 +19206,7 @@ GameObject:
   - component: {fileID: 1386037429}
   - component: {fileID: 1386037430}
   - component: {fileID: 1386037431}
+  - component: {fileID: 1386037432}
   m_Layer: 13
   m_Name: GameManager
   m_TagString: Untagged
@@ -19384,6 +19385,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e75bdb80ca903c645b9cc7073c3aba79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1386037432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386037419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8100c55eece49b041962b0e386d5022c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1425818667
