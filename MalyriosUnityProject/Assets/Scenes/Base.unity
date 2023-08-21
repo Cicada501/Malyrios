@@ -15046,6 +15046,7 @@ MonoBehaviour:
   - {fileID: 6098212377636700761, guid: 0a498056347fdf84db82928fb60dc013, type: 3}
   - {fileID: 6098212377636700761, guid: bfff3d434439c4347a474e5ac1c19688, type: 3}
   inventoryUI: {fileID: 1931971255}
+  playerAttack: {fileID: 1975534756}
 --- !u!1 &919321781
 GameObject:
   m_ObjectHideFlags: 0
@@ -23075,6 +23076,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   cameraAnimator: {fileID: 1367976464}
+  weaponSlot: {fileID: 1125508832}
 --- !u!4 &1975534759
 Transform:
   m_ObjectHideFlags: 0

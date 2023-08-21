@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Malyrios.Character;
+using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -43,8 +44,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] Animator cameraAnimator = null;
 
-    public static int EquippedWeaponID;
-    private bool weaponLoaded = false;
+    public int EquippedWeaponID;
+    [SerializeField] private EquipmentSlot weaponSlot;
 
     private void Awake()
     {
@@ -56,11 +57,13 @@ public class PlayerAttack : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         this.baseAttributes = GetComponent<BaseAttributes>();
-        
-        if (EquippedWeaponID!=0)
-        {
-            EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));
-        }
+    }
+
+    public void LoadWeapon(int id)
+    {
+        EquippedWeaponID = id;
+        EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));
+        weaponSlot.LoadWeapon(id);
     }
 
     // Update is called once per frame
@@ -182,6 +185,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void EquipWeapon(BaseWeapon weapon)
     {
+        print($"weapon: {weapon}");
         GameObject go = Instantiate(weapon.ItemPrefab, weaponHolder.transform);
         this.swordAnimator = go.GetComponent<Animator>();
         this.equippedWeapon = weapon;

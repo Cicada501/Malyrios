@@ -32,6 +32,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         set => this.itemStack = value;
     }
     private InventoryUI inventoryUI;
+    private PlayerAttack playerAttack;
     
 
     public void SetItem(BaseItem item)
@@ -58,25 +59,24 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child = transform.GetChild(0).gameObject;
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
-        LoadWeapon();
+        playerAttack = ReferencesManager.Instance.playerAttack;
+        //LoadWeapon();
         //inventoryUI = GameObject.Find("Canvas UI").GetComponent<InventoryUI>();
         //inventoryUI.changeInventoryOpened();
     }
 
    
 
-    private void LoadWeapon()
+    public void LoadWeapon(int id)
     {
-        
-        if(PlayerAttack.EquippedWeaponID == 0) return;
         if (this.gameObject.name == "WeaponSlot")
         {
-            AddWeapon(ItemDatabase.GetWeapon(PlayerAttack.EquippedWeaponID));
+            AddWeapon(ItemDatabase.GetWeapon(id));
         }
     }
     public void AddWeapon(BaseWeapon weapon)
     {
-        child.GetComponent<Image>().sprite = weapon.Icon;
+        transform.GetChild(0).gameObject.GetComponent<Image>().sprite = weapon.Icon;
         Item = weapon;
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
         //TriggerSlotEvent();
@@ -84,7 +84,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     private void TriggerSlotEvent()
     {
-        Debug.Log("Triggered Slot Event");
         switch (this.itemType)
         {
             case BaseItem.ItemTypes.Weapon:

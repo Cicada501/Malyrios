@@ -26,6 +26,7 @@ public class GameData : MonoBehaviour
     private BaseAttributes baseAttributes;
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
+    private PlayerAttack playerAttack;
     
 
     private void Awake()
@@ -35,6 +36,7 @@ public class GameData : MonoBehaviour
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = ReferencesManager.Instance.npcManager;
         questLogWindow = ReferencesManager.Instance.questLogWindow;
+        playerAttack = ReferencesManager.Instance.playerAttack;
     }
 
     public void SaveData()
@@ -50,7 +52,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
-        PlayerPrefs.SetInt("EquippedWeaponID", PlayerAttack.EquippedWeaponID);
+        PlayerPrefs.SetInt("EquippedWeaponID", playerAttack.EquippedWeaponID);
         var attrData = new BaseAttributesData
         {
             maxHealth = baseAttributes.MaxHealth,
@@ -124,13 +126,14 @@ public class GameData : MonoBehaviour
             LoadedDecisionData = new DecisionData();
         }
         
-        if (PlayerPrefs.HasKey("EquippedWeaponID")&&PlayerPrefs.GetString("EquippedWeaponID")!="")
+        if (PlayerPrefs.HasKey("EquippedWeaponID"))
         {
             LoadedEquippedWeaponID = PlayerPrefs.GetInt("EquippedWeaponID");
         }
         else
         {
-            LoadedEquippedWeaponID = 1;
+            LoadedEquippedWeaponID = 0;
+
         }if (PlayerPrefs.HasKey("AttributesData") && PlayerPrefs.GetString("AttributesData") != "")
         {
             var attrData = JsonUtility.FromJson<BaseAttributesData>(PlayerPrefs.GetString("AttributesData"));
