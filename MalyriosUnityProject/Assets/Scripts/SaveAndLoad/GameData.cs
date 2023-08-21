@@ -81,7 +81,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "HighForest";
+            LoadedLevelName = "Level1";
         }
 
 
@@ -92,7 +92,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedPlayerPosition = Vector3.zero;
+            LoadedPlayerPosition = new Vector3(0f, 0.5f,0f);
         }
 
         // // Load current health
