@@ -81,7 +81,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "Level1";
+            LoadedLevelName = "Level2";
         }
 
 

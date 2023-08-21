@@ -37,6 +37,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     [HideInInspector]
     public string id;
     private int slotCount;
+    [HideInInspector]
     public int[] itemIDsArray;
     private GameObject puzzleWindow;
     private Image puzzleWindowImage;
