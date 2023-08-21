@@ -50,6 +50,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private bool windowOpen;
     private SpriteRenderer valueDisplay;
     private bool inUse;
+    [SerializeField]
+    private PuzzleGate gate;
 
     private void Awake()
     {
@@ -79,7 +81,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         bool? value = GetTruthValue();
 
         if (value == true)
-        {
+        {   if(gate!=null) gate.OpenGate();
             valueDisplay.color = Color.green;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);
@@ -87,12 +89,14 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         }
         else if (value == false)
         {
+            if(gate!=null) gate.CloseGate();
             valueDisplay.color = Color.red;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.2f, 1f);
         }
         else // value == null
         {
+            if(gate!=null) gate.CloseGate();
             valueDisplay.color = Color.gray;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 1f);
