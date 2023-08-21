@@ -62,9 +62,18 @@ public class LevelManager : MonoBehaviour
 
         if (prevLevelName != null)
         {
-            var startpoint = GameObject.Find($"{prevLevelName}LandingPoint").GetComponent<Transform>();
-            player.transform.position = startpoint.position;
+            GameObject landingPointObject = GameObject.Find($"{prevLevelName}LandingPoint");
+            if (landingPointObject != null)
+            {
+                var startpoint = landingPointObject.transform;
+                player.transform.position = startpoint.position;
+            }
+            else
+            {
+                player.transform.position = Vector3.zero;
+            }
         }
+
 
         if (spawnAtPlayerDebugLocation && prevLevelName == null)
         {

@@ -5,7 +5,7 @@ public class PuzzleGate : MonoBehaviour
     private Animator animator;
     private BoxCollider2D gateCollider;
     
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         gateCollider = GetComponent<BoxCollider2D>();
