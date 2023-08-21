@@ -133,10 +133,22 @@ public class DialogEvents : MonoBehaviour
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                questLogWindow.RemoveQuest("Die verlorenen Seiten");
                 thrimbald.CurrentDialogState = 4;
                 break;
             case "sucheSchattenkristall":
-                
+                questLogWindow.AddQuest("Der magische Splitter","Finde Oris den Schmied und frage ihn nach etwas Staub eines Schattenkristalls, damit Thrimbald die echtheit des Malyrios Splitters überprüfen kann");
+                thrimbald.CurrentDialogState = 6;
+                npcManager.npcs["Oris"].CurrentDialogState = 2;
+                break;
+            case "BuyDust":
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(42));
+                thrimbald.CurrentDialogState = 7;
+                thrimbald.QuestStatus = 3;
+                npcManager.npcs["Oris"].CurrentDialogState = 3;
+                questLogWindow.UpdateQuestDescription("Der magische Splitter", "Bringe den Staub des Schattenkristalls zu Thrimbald, damit dieser die Echtheit des Malyrios Splitters überprüfen kann");
+                break;
+            case "Oris3":
                 break;
             
             //Hunter Quest
