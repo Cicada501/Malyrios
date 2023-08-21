@@ -39,7 +39,7 @@ public class GameData : MonoBehaviour
 
     public void SaveData()
     {
-        print($"Saving: {JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
+        //print($"Saving: {JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
         PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
