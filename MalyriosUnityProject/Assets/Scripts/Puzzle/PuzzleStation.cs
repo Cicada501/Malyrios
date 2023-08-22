@@ -157,11 +157,11 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                         //if lever state true, show true symbol, else false symbol
                         if (lever.state)
                         {
-                            Instantiate(symbolPrefabs[0], itemSlotsParent);
+                            Instantiate(symbolPrefabs[6], itemSlotsParent);
                         }
                         else
                         {
-                            Instantiate(symbolPrefabs[1], itemSlotsParent);
+                            Instantiate(symbolPrefabs[7], itemSlotsParent);
                         }
                         break;
                 }

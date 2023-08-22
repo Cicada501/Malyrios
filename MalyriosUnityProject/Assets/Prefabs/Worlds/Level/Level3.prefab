@@ -655,7 +655,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -808,16 +808,16 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -1995371039, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -634725739, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: -538111226, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -1354460714, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -1961934106, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -634725739, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 298538520, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
   m_TileMatrixArray:
@@ -2384,6 +2384,7 @@ Transform:
   - {fileID: 3509848356254261833}
   - {fileID: 7203187541409929402}
   - {fileID: 8763783437821546286}
+  - {fileID: 5323753879770668036}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9163,6 +9164,81 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1001 &5109254740193330132
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6635262500317654717}
+    m_Modifications:
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21823487
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715607835229629057, guid: ebfb1759202c1db418ed5d99c67e2350,
+        type: 3}
+      propertyPath: m_Name
+      value: True Stone
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ebfb1759202c1db418ed5d99c67e2350, type: 3}
+--- !u!4 &5323753879770668036 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
+    type: 3}
+  m_PrefabInstance: {fileID: 5109254740193330132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5752329403791694173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9172,13 +9248,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
+      propertyPath: puzzleElements.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
       propertyPath: puzzleElements.Array.data[0].lever
       value: 
       objectReference: {fileID: 5176339522772465545}
     - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
+      propertyPath: puzzleElements.Array.data[2].lever
+      value: 
+      objectReference: {fileID: 5176339522772465545}
+    - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
       propertyPath: puzzleElements.Array.data[0].elementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
+      propertyPath: puzzleElements.Array.data[1].elementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
+      propertyPath: puzzleElements.Array.data[2].elementType
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
+      propertyPath: puzzleElements.Array.data[3].elementType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
+      propertyPath: puzzleElements.Array.data[4].elementType
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1601496149409453539, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
