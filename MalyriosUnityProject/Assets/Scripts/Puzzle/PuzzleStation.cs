@@ -54,8 +54,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     [SerializeField] private Sprite stationTrue;
     [SerializeField] private Sprite stationFalse;
     [SerializeField] private Sprite stationNull;
-    [SerializeField]
-    private PuzzleGate gate;
+    [SerializeField] private PuzzleGate gate;
 
     private void Awake()
     {
@@ -152,6 +151,18 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                         var puzzleSlot = slot.GetComponent<PuzzleSlot>();
                         puzzleSlot.SetPuzzleStation(this);
                         slots.Add(puzzleSlot);
+                        break;
+                    case PuzzleElement.ElementType.Lever:
+                        PuzzleLever lever = elem.lever;
+                        //if lever state true, show true symbol, else false symbol
+                        if (lever.state)
+                        {
+                            Instantiate(symbolPrefabs[0], itemSlotsParent);
+                        }
+                        else
+                        {
+                            Instantiate(symbolPrefabs[1], itemSlotsParent);
+                        }
                         break;
                 }
             }

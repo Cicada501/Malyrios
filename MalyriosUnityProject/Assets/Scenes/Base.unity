@@ -19331,6 +19331,10 @@ MonoBehaviour:
     Prefab: {fileID: 3961218565264814783, guid: 971d3f73f92ca764fbc0df8e6f9dee0a,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
+  - Name: Level3
+    Prefab: {fileID: 3961218565264814783, guid: 6f71e56cdda6a5f49ab9a27c9d5cc740,
+      type: 3}
+    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
   player: {fileID: 1975534745}
   spawnAtPlayerDebugLocation: 0
   loadingScreenBase: {fileID: 1459939526}

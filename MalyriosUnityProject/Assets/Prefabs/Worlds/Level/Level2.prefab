@@ -56608,7 +56608,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 18
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -57545,12 +57545,12 @@ Tilemap:
     m_Data: {fileID: 119026597, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -2053423360, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -396916728, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 88
-    m_Data: {fileID: 1094625688, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 88
+    m_Data: {fileID: 1094625688, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -396916728, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 33
     m_Data: {fileID: 1259820196, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 21
@@ -58035,6 +58035,11 @@ PrefabInstance:
         type: 3}
       propertyPath: puzzleElements.Array.data[2].elementType
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 19616008046286114, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
+      propertyPath: puzzleElements.Array.data[3].elementType
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1601496149409453539, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
