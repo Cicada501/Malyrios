@@ -40,23 +40,38 @@ public class Inventory : MonoBehaviour
     
     void PrintInventory()
     {
-        Debug.Log(ItemIDs);
-        foreach (var item in ItemIDs)
+        List<string> itemNames = new List<string>();
+        print($"items length: {Items.Count}");
+        foreach (var item in Items)
         {
-            Debug.Log(item);
+            itemNames.Add(item != null ? item.ItemName : "Null");
+        }
+        Debug.Log("IDs: [" + string.Join(",", ItemIDs) + "]");
+        Debug.Log("Item Names: [" + string.Join(", ", itemNames) + "]");
+    }
+
+    public void RemoveAllItems()
+    {
+        List<BaseItem> itemsToRemove = new List<BaseItem>(Items);
+        foreach (var item in itemsToRemove)
+        {
+            Remove(item);
         }
     }
 
+
     public void AddItem(BaseItem item)
     {
+        print("Adding an item");
         ItemIDs.Add(item.ItemID);
         Items.Add(item);
         OnItemAdded?.Invoke(item);
         isEmpty = false;
     }
-
+    
     public void Remove(BaseItem item)
     {
+        print($"try to remove: {item.ItemName}");
         ItemIDs.Remove(item.ItemID);
         //Debug.Log("Item removed"+ItemIDs.Count);
         Items.Remove(item);

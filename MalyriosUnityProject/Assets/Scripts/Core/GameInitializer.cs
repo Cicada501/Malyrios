@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Malyrios.Character;
 using NPCs;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameInitializer : MonoBehaviour
 {
@@ -52,14 +53,17 @@ public class GameInitializer : MonoBehaviour
     public void ResetAll()
     {
         PlayerPrefs.DeleteAll();
-        foreach (var quest in questLogWindow.quests)
-        {
-            questLogWindow.RemoveQuest(quest.questName);
-            print($"removed:{quest.questName} ");
-        }
+        // foreach (var quest in questLogWindow.quests)
+        // {
+        //     questLogWindow.RemoveQuest(quest.questName);
+        //     print($"removed:{quest.questName} ");
+        // }
+        //SceneManager.LoadScene(0);
         LoadAndApplyData();
-
+        Inventory.Instance.RemoveAllItems();
         
+
+
     }
     
 }

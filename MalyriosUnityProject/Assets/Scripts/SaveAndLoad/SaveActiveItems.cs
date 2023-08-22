@@ -92,7 +92,7 @@ public class SaveActiveItems : MonoBehaviour
             GameObject itemsParent = GameObject.Find("Items");
             foreach (ItemData data in itemsData.items)
             {
-                if (data.levelName == currentLevelName)
+                if (data.levelName == currentLevelName && itemsParent)
                 {
                     Transform item = itemsParent.transform.Find(data.itemName);
                     if (item != null)
