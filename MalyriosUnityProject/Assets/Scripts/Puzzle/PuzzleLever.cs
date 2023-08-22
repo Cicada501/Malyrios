@@ -9,6 +9,7 @@ public class PuzzleLever : MonoBehaviour, IInteractable
     public bool state;
     private Animator animator;
     private TextMeshProUGUI interactableText;
+    [SerializeField] private PuzzleStation station;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class PuzzleLever : MonoBehaviour, IInteractable
         {
             animator.Play("Disable");
         }
+        station.UpdateDisplayedValue();
 
     }
 

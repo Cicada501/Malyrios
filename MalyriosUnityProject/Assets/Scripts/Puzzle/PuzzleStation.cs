@@ -79,7 +79,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         UpdateDisplayedValue();
     }
 
-    private void UpdateDisplayedValue()
+    public void UpdateDisplayedValue()
     {
         bool? value = GetTruthValue();
 
@@ -153,7 +153,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                         slots.Add(puzzleSlot);
                         break;
                     case PuzzleElement.ElementType.Lever:
-                        PuzzleLever lever = elem.lever;
+                        var lever = elem.lever;
                         //if lever state true, show true symbol, else false symbol
                         if (lever.state)
                         {
@@ -283,6 +283,17 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                     formula.Append(value + " ");
                     emptySlotIndex++;
                     break;
+                case PuzzleElement.ElementType.Lever:
+                    if (elem.lever != null) 
+                    {
+                        formula.Append(elem.lever.state ? "TRUE " : "FALSE ");
+                    }
+                    else
+                    {
+                        formula.Append("LEVER_NOT_SET ");
+                    }
+                    break;
+
             }
         }
 
