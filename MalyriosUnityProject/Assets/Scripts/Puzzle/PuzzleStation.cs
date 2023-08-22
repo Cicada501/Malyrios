@@ -49,7 +49,6 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private List<GameObject> symbolPrefabs;
     private GameObject inventoryUI;
     private bool windowOpen;
-    private SpriteRenderer valueDisplay;
     private bool inUse;
     [SerializeField] private Sprite stationTrue;
     [SerializeField] private Sprite stationFalse;
@@ -67,7 +66,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         symbolPrefabs = ReferencesManager.Instance.logicSymbols;
         inventoryUI = ReferencesManager.Instance.inventoryUI;
         itemIDsArray = new int[slotCount];
-        valueDisplay = transform.GetChild(0).GetComponent<SpriteRenderer>();
+       
         puzzleWindowImage = puzzleWindow.GetComponent<Image>();
         PuzzleStationManager.Instance.AddStation(this);
         
@@ -85,7 +84,6 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
         if (value == true)
         {   if(gate!=null) gate.OpenGate();
-            //valueDisplay.color = Color.green;
             this.GetComponent<SpriteRenderer>().sprite = stationTrue;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);
