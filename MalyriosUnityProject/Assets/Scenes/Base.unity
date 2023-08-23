@@ -2684,6 +2684,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton
       objectReference: {fileID: 0}
+    - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 902946254}
+    - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64db7679da5cdd54ba87e2280a41fb87, type: 3}
 --- !u!1 &208236400
@@ -25256,7 +25266,12 @@ PrefabInstance:
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
@@ -25277,17 +25292,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1931971255}
+      objectReference: {fileID: 821967880}
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1851447006}
+      objectReference: {fileID: 116338914}
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 116338914}
+      objectReference: {fileID: 1053787232}
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -25311,7 +25326,7 @@ PrefabInstance:
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: ChangeInventoryOpened
       objectReference: {fileID: 0}
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
@@ -25327,6 +25342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 494772429214764157, guid: 64db7679da5cdd54ba87e2280a41fb87,
         type: 3}
