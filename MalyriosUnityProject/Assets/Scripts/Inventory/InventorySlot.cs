@@ -14,6 +14,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private BaseItem item;
     private Transform playerTransform;
     private DragNDrop dragNDrop;
+    private EquipmentSlot weaponSlot;
 
 
     public BaseItem Item
@@ -33,6 +34,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         this.playerTransform = ReferencesManager.Instance.player.transform;
         this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
         this.dragNDrop.MySlot = this;
+        weaponSlot = ReferencesManager.Instance.weaponSlot;
     }
 
     public void Initialize()
@@ -127,6 +129,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (this.item == null) return;
         if (item.IsUsable)
         {
+            //check if item is weapon, if so only execute usage effect, if no weapon is equipped yet
+            if (item is BaseWeapon && weaponSlot.Item) return; //add debug later to tell player, that he has already a weapon equipped
             item.ExecuteUsageEffect();
             RemoveSingleItem();
         }

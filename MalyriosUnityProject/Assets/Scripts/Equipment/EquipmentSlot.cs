@@ -40,6 +40,14 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child.GetComponent<DragNDrop>().MySlot = this;
     }
 
+    private void Update()
+    {
+        if (this.gameObject.name == "WeaponSlot")
+        {
+            print($"Equipped weapon: {Item.ItemName}");
+        }
+    }
+
     public void SetItem(BaseItem item)
     {
         if (item.ItemType == BaseItem.ItemTypes.Weapon)
@@ -64,7 +72,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void LoadWeapon(int id)
     {
-        if (this.gameObject.name == "WeaponSlot")
+        //if (this.gameObject.name == "WeaponSlot")
         {
             AddWeapon(ItemDatabase.GetWeapon(id));
         }
@@ -117,7 +125,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void InvokeChangeWeapon(BaseWeapon weapon)
     {
-        AddWeapon(weapon);
+        if (this.gameObject.name == "WeaponSlot" && !Item )
+        {
+            AddWeapon(weapon);
+        }
+
         OnWeaponChanged?.Invoke(weapon);
     }
 

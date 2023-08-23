@@ -15049,6 +15049,11 @@ MonoBehaviour:
   - {fileID: 6098212377636700761, guid: ae11ec74eba086649876bec32f351845, type: 3}
   inventoryUI: {fileID: 1931971255}
   playerAttack: {fileID: 1975534756}
+  weaponSlot: {fileID: 1125508832}
+  headArmorSlot: {fileID: 594212636}
+  bodyArmorSlot: {fileID: 559164491}
+  handArmorSlot: {fileID: 1042168772}
+  feetArmorSlot: {fileID: 998785843}
 --- !u!1 &919321781
 GameObject:
   m_ObjectHideFlags: 0
