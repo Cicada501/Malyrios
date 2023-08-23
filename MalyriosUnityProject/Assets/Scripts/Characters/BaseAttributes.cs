@@ -30,7 +30,48 @@ namespace Malyrios.Character
 
 
         private int currentHealth;
+        private void Awake()
+        {
+            EquipmentSlot.OnItemSlotChanged += OnEquipmentSlotOnOnItemSlotChanged;
+            EquipmentSlot.OnArmorChanged += OnArmorChanged;
+            
+        }
 
+        private void OnEquipmentSlotOnOnItemSlotChanged(BaseItem item)
+        {
+            Debug.Log("W: ");
+        }
+
+        private void Start()
+        {
+            
+            OnMaxHealthChanged?.Invoke(this.maxHealth);
+        }
+
+        private void Update()
+        {
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
+        }
+        
+        private void OnArmorChanged(BaseArmor armor)
+        {
+            if (armor != null)
+            {
+                MaxHealth += armor.HealthBonus;
+                Mana += armor.ManaBonus;
+                Strength += armor.StrengthBonus;
+                CritChance += armor.CritChanceBonus;
+                CritDamage += armor.CritDamageBonus;
+                Haste += armor.HasteBonus;
+                Energy += armor.EnergyBonus;
+                Balance += armor.BalanceBonus;
+            }
+        }
+        
+        
         /// <summary>
         /// Gets or sets the max health.
         /// Also fired an event OnMaxHealthChanged.
@@ -163,29 +204,7 @@ namespace Malyrios.Character
             }
         }
 
-        private void Awake()
-        {
-            EquipmentSlot.OnItemSlotChanged += OnEquipmentSlotOnOnItemSlotChanged;
-        }
 
-        private void OnEquipmentSlotOnOnItemSlotChanged(BaseItem item)
-        {
-            Debug.Log("W: ");
-        }
-
-        private void Start()
-        {
-            //CurrentHealth = this.maxHealth;
-            OnMaxHealthChanged?.Invoke(this.maxHealth);
-        }
-
-        private void Update()
-        {
-            if (CurrentHealth > MaxHealth)
-            {
-                CurrentHealth = MaxHealth;
-            }
-        }
 
         public void LoadAttributes(BaseAttributes gameDataLoadedAttributes)
         {

@@ -32,7 +32,13 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         set => this.itemStack = value;
     }
     private InventoryUI inventoryUI;
-
+    
+    private void Start()
+    {
+        child = transform.GetChild(0).gameObject;
+        gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
+        child.GetComponent<DragNDrop>().MySlot = this;
+    }
 
     public void SetItem(BaseItem item)
     {
@@ -56,15 +62,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         return this.transform;
     }
 
-    private void Start()
-    {
-        child = transform.GetChild(0).gameObject;
-        gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
-        child.GetComponent<DragNDrop>().MySlot = this;
-    }
-
-   
-
     public void LoadWeapon(int id)
     {
         if (this.gameObject.name == "WeaponSlot")
@@ -78,6 +75,20 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         Item = weapon;
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
     }
+    
+    public void InvokeChangeArmor(BaseArmor armor)
+    {
+        AddArmor(armor);
+        OnArmorChanged?.Invoke(armor);
+    }
+
+    public void AddArmor(BaseArmor armor)
+    {
+        transform.GetChild(0).gameObject.GetComponent<Image>().sprite = armor.Icon;
+        Item = armor;
+        transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+    }
+
 
     private void TriggerSlotEvent()
     {
@@ -163,8 +174,4 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         SlotHelper.SwapItems(this, otherSlot);
     }
-}
-
-public class BaseArmor
-{
 }
