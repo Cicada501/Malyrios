@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Malyrios.Items
 {
+    [CreateAssetMenu(fileName = "New Item", menuName = "Items/NewItem")]
     public class BaseItem : ScriptableObject, IUsable
     {
         public enum ItemTypes

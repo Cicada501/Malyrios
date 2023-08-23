@@ -96,21 +96,6 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-    private int GetOccurrence(Item item, List<Item> itemList)
-    {
-        int occurrences = 0;
-        foreach (Item _item in itemList)
-        {
-            if (_item == item)
-            {
-                occurrences++;
-            }
-        }
-
-        return occurrences;
-    }
-
-
     public void ChangeInventoryOpened()
     {
         inventoryOpen = !inventoryOpen;
