@@ -17,37 +17,58 @@ public class AttributeManager : MonoBehaviour
     private ISlot bodyArmorItem;
     private ISlot handArmorItem;
     private ISlot feetArmorItem;
-    private ISlot weaponItem;
-
-    //
-    //
-    //
-    //
+   
     private BaseWeapon weapon;
     
     private void Awake()
     {
         this.baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
-        
-        this.weaponItem = weaponSlot.GetComponent<ISlot>();
-        
         EquipmentSlot.OnWeaponChanged += OnWeaponChanged;
     }
 
-    private void OnWeaponChanged(BaseWeapon weapon)
+    private void OnWeaponChanged(BaseWeapon wpn)
     {
-        this.weapon = weaponItem.Item as BaseWeapon;
-        
-        CalculateAttributes();
+        if (weapon)
+        {
+            if (wpn)
+            {
+                //swapping weapons
+                OnWeaponRemove(weapon);
+                OnWeaponAdd(wpn);
+            }
+            else
+            {
+                //un equip current weapon
+                OnWeaponRemove(weapon);
+            }
+        }
+        else
+        {
+            //equip new weapon (no unequipping)
+            OnWeaponAdd(wpn);
+        }
+
     }
 
-    private void CalculateAttributes()
+    private void OnWeaponAdd(BaseWeapon wpn)
     {
-        ResetAttributes();
-        
-        this.baseAttributes.Strength += weapon.Strength;
-        this.baseAttributes.CritChance += weapon.CritChance;
-        this.baseAttributes.CritDamage += weapon.CritDamage;
+        if (!wpn) return;
+        this.baseAttributes.Strength += wpn.Strength;
+        this.baseAttributes.CritChance += wpn.CritChance;
+        this.baseAttributes.CritDamage += wpn.CritDamage;
+
+        weapon = wpn;
+
+    }
+    private void OnWeaponRemove(BaseWeapon wpn)
+    {
+        if (!wpn) return;
+        this.baseAttributes.Strength -= wpn.Strength;
+        this.baseAttributes.CritChance -= wpn.CritChance;
+        this.baseAttributes.CritDamage -= wpn.CritDamage;
+
+        weapon = null;
+
     }
 
     private void ResetAttributes()
