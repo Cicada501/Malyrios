@@ -77,5 +77,6 @@ public class ActiveItemWindow : MonoBehaviour
     {
         Inventory.Instance.activeSlot.DropItem();
     }
+    
 }
 

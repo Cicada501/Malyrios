@@ -44,7 +44,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         if (this.gameObject.name == "WeaponSlot")
         {
-            print($"Equipped weapon: {Item.ItemName}");
+            //print($"Equipped weapon: {Item.ItemName}");
         }
     }
 
