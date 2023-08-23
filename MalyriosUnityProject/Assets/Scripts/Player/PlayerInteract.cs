@@ -6,10 +6,11 @@ public class PlayerInteract : MonoBehaviour
 {
     IInteractable interactable = null;
     void Update(){
-        interactable = GetClosestInteractable().GetComponent<IInteractable>();
+        
     }
 
     public void Interact(){
+        interactable = GetClosestInteractable().GetComponent<IInteractable>();
         interactable.Interact();
     }
 

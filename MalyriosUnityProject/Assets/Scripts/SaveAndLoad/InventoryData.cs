@@ -7,8 +7,6 @@ namespace SaveAndLoad
     public class InventoryData
     {
         public int[] itemIDs;
-        public int equippedWeaponID;
-
         public InventoryData(Inventory inventory)
         {
             if (!inventory.isEmpty)
@@ -20,8 +18,6 @@ namespace SaveAndLoad
             {
                 itemIDs = Array.Empty<int>();
             }
-
-            equippedWeaponID = PlayerAttack.EquippedWeaponID;
         }
     }
 }

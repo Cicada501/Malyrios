@@ -5,9 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class PuzzleElement
 {
-    public enum ElementType { TRUE, FALSE, AND, OR, XOR, IMP, Empty }
+    public enum ElementType { TRUE, FALSE, AND, OR, XOR, IMP, Empty, Lever }
 
     public ElementType elementType;
+    
+    public PuzzleLever lever;
 }
 
 public class Puzzle : MonoBehaviour

@@ -55,7 +55,7 @@ namespace NPCs
 
             if (npcName == "Thrimbald" && CurrentDialogState==1)
             {
-                QuestStatus = 1;
+                //QuestStatus = 1;
             }else if (npcName == "Jack" && CurrentDialogState == 1)
             {
                 QuestStatus = 1;

@@ -37,6 +37,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     [HideInInspector]
     public string id;
     private int slotCount;
+    [HideInInspector]
     public int[] itemIDsArray;
     private GameObject puzzleWindow;
     private Image puzzleWindowImage;
@@ -48,8 +49,11 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private List<GameObject> symbolPrefabs;
     private GameObject inventoryUI;
     private bool windowOpen;
-    private SpriteRenderer valueDisplay;
     private bool inUse;
+    [SerializeField] private Sprite stationTrue;
+    [SerializeField] private Sprite stationFalse;
+    [SerializeField] private Sprite stationNull;
+    [SerializeField] private PuzzleGate gate;
 
     private void Awake()
     {
@@ -62,7 +66,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         symbolPrefabs = ReferencesManager.Instance.logicSymbols;
         inventoryUI = ReferencesManager.Instance.inventoryUI;
         itemIDsArray = new int[slotCount];
-        valueDisplay = transform.GetChild(0).GetComponent<SpriteRenderer>();
+       
         puzzleWindowImage = puzzleWindow.GetComponent<Image>();
         PuzzleStationManager.Instance.AddStation(this);
         
@@ -74,26 +78,28 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         UpdateDisplayedValue();
     }
 
-    private void UpdateDisplayedValue()
+    public void UpdateDisplayedValue()
     {
         bool? value = GetTruthValue();
 
         if (value == true)
-        {
-            valueDisplay.color = Color.green;
+        {   if(gate!=null) gate.OpenGate();
+            this.GetComponent<SpriteRenderer>().sprite = stationTrue;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);
             ;
         }
         else if (value == false)
         {
-            valueDisplay.color = Color.red;
+            if(gate!=null) gate.CloseGate();
+            this.GetComponent<SpriteRenderer>().sprite = stationFalse;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.2f, 1f);
         }
         else // value == null
         {
-            valueDisplay.color = Color.gray;
+            if(gate!=null) gate.CloseGate();
+            this.GetComponent<SpriteRenderer>().sprite = stationNull;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 1f);
         }
@@ -143,6 +149,18 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                         var puzzleSlot = slot.GetComponent<PuzzleSlot>();
                         puzzleSlot.SetPuzzleStation(this);
                         slots.Add(puzzleSlot);
+                        break;
+                    case PuzzleElement.ElementType.Lever:
+                        var lever = elem.lever;
+                        //if lever state true, show true symbol, else false symbol
+                        if (lever.state)
+                        {
+                            Instantiate(symbolPrefabs[6], itemSlotsParent);
+                        }
+                        else
+                        {
+                            Instantiate(symbolPrefabs[7], itemSlotsParent);
+                        }
                         break;
                 }
             }
@@ -263,6 +281,17 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                     formula.Append(value + " ");
                     emptySlotIndex++;
                     break;
+                case PuzzleElement.ElementType.Lever:
+                    if (elem.lever != null) 
+                    {
+                        formula.Append(elem.lever.state ? "TRUE " : "FALSE ");
+                    }
+                    else
+                    {
+                        formula.Append("LEVER_NOT_SET ");
+                    }
+                    break;
+
             }
         }
 

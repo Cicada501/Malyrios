@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0951208ce15da914fb1f480490559c35, type: 3}
-  m_Name: Schriftrolle des Lebens
+  m_Name: SchattenKristallStaub
   m_EditorClassIdentifier: 
-  itemID: 34
-  itemName: Schriftrolle des Lebens
-  description: "Diese schriftrolle hat mir der J\xE4ger zum Dank daf\xFCr gegeben,
-    dass ich seinen Sohn gerettet habe \\n Effekt Leben + 100"
-  icon: {fileID: 21300000, guid: a4f8dbce8e69fb44cae1802909dc8388, type: 3}
+  itemID: 42
+  itemName: Schatten Kristall Staub
+  description: Der Staub eines Schattenkristalls
+  icon: {fileID: 9191441360730964745, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   dropChance: 0
-  isStackable: 0
-  isUsable: 1
-  maxStackAmount: 0
+  isStackable: 1
+  isUsable: 0
+  maxStackAmount: 100
   itemType: 6
   itemPrefab: {fileID: 0}

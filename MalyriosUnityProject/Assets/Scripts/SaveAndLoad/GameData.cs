@@ -8,17 +8,12 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     public Vector3 LoadedPlayerPosition { get; private set; }
-    //public float LoadedCurrentHealth { get; private set; }
     public InventoryData LoadedInventoryData { get; private set; }
     public string LoadedLevelName { get; private set; }
     public DecisionData LoadedDecisionData { get; private set; }
-
     public int LoadedEquippedWeaponID { get; private set; }
-    
     public List<NpcData> LoadedNpcData { get; private set; }
-    
     public List<Quest> LoadedQuestLog { get; private set; }
-    
     public List<PuzzleStationData> LoadedPuzzleStations { get; private set; }
 
     private LevelManager levelManager;
@@ -26,6 +21,7 @@ public class GameData : MonoBehaviour
     private BaseAttributes baseAttributes;
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
+    private PlayerAttack playerAttack;
     
 
     private void Awake()
@@ -35,11 +31,12 @@ public class GameData : MonoBehaviour
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = ReferencesManager.Instance.npcManager;
         questLogWindow = ReferencesManager.Instance.questLogWindow;
+        playerAttack = ReferencesManager.Instance.playerAttack;
     }
 
     public void SaveData()
     {
-        print($"Saving: {JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
+        //print($"Saving: {JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
         PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
@@ -50,7 +47,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
-        PlayerPrefs.SetInt("EquippedWeaponID", PlayerAttack.EquippedWeaponID);
+        PlayerPrefs.SetInt("EquippedWeaponID", playerAttack.EquippedWeaponID);
         var attrData = new BaseAttributesData
         {
             maxHealth = baseAttributes.MaxHealth,
@@ -66,14 +63,12 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("AttributesData", JsonUtility.ToJson(attrData));
         PlayerPrefs.SetString("QuestLog", JsonUtility.ToJson(questLogWindow.SaveQuestLog()));
         
-
-
         PlayerPrefs.Save();
     }
 
     public void LoadData()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         // Load level name
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
         {
@@ -81,7 +76,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "HighForest";
+            LoadedLevelName = "Level1";
         }
 
 
@@ -92,18 +87,8 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedPlayerPosition = Vector3.zero;
+            LoadedPlayerPosition = new Vector3(0f, 0.5f,0f);
         }
-
-        // // Load current health
-        // if (PlayerPrefs.HasKey("currentHealth") && PlayerPrefs.GetFloat("currentHealth") != 0f)
-        // {
-        //     LoadedCurrentHealth = PlayerPrefs.GetFloat("currentHealth");
-        // }
-        // else
-        // {
-        //     LoadedCurrentHealth = baseAttributes.MaxHealth;
-        // }
 
         // Load inventory data
         if (PlayerPrefs.HasKey("inventoryData")&&PlayerPrefs.GetString("inventoryData")!="")
@@ -124,14 +109,17 @@ public class GameData : MonoBehaviour
             LoadedDecisionData = new DecisionData();
         }
         
-        if (PlayerPrefs.HasKey("EquippedWeaponID")&&PlayerPrefs.GetString("EquippedWeaponID")!="")
+        if (PlayerPrefs.HasKey("EquippedWeaponID"))
         {
             LoadedEquippedWeaponID = PlayerPrefs.GetInt("EquippedWeaponID");
         }
         else
         {
-            LoadedEquippedWeaponID = 1;
-        }if (PlayerPrefs.HasKey("AttributesData") && PlayerPrefs.GetString("AttributesData") != "")
+            LoadedEquippedWeaponID = 0;
+
+        }
+        
+        if (PlayerPrefs.HasKey("AttributesData") && PlayerPrefs.GetString("AttributesData") != "")
         {
             var attrData = JsonUtility.FromJson<BaseAttributesData>(PlayerPrefs.GetString("AttributesData"));
             baseAttributes.MaxHealth = attrData.maxHealth;
@@ -181,7 +169,6 @@ public class GameData : MonoBehaviour
         if (PlayerPrefs.HasKey("puzzleStations") && PlayerPrefs.GetString("puzzleStations") != "")
         {
             var loadedPuzzleStations = JsonUtility.FromJson<PuzzleStationDataList>(PlayerPrefs.GetString("puzzleStations"));
-            print("Loaded: "+JsonUtility.ToJson(loadedPuzzleStations));
             LoadedPuzzleStations = loadedPuzzleStations.puzzleStationDataList;
         }
         else

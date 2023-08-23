@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Malyrios.Character;
 using NPCs;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameInitializer : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameInitializer : MonoBehaviour
     private BaseAttributes baseAttributes;
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
+    private PlayerAttack playerAttack;
 
 
     private void Awake()
@@ -20,7 +22,8 @@ public class GameInitializer : MonoBehaviour
         player = ReferencesManager.Instance.player;
         baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = GetComponent<NPCManager>();
-        questLogWindow = questLogWindow = ReferencesManager.Instance.questLogWindow;
+        questLogWindow = ReferencesManager.Instance.questLogWindow;
+        playerAttack = ReferencesManager.Instance.playerAttack;
 
     }
 
@@ -38,7 +41,7 @@ public class GameInitializer : MonoBehaviour
             player.transform.position = gameData.LoadedPlayerPosition;
         }
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
-        PlayerAttack.EquippedWeaponID = gameData.LoadedEquippedWeaponID;
+        if(gameData.LoadedEquippedWeaponID!=0) playerAttack.LoadWeapon(gameData.LoadedEquippedWeaponID);
         foreach (var quest in gameData.LoadedQuestLog)
         {
             questLogWindow.AddQuest(quest.questName, quest.questDescription);
@@ -50,14 +53,17 @@ public class GameInitializer : MonoBehaviour
     public void ResetAll()
     {
         PlayerPrefs.DeleteAll();
-        foreach (var quest in questLogWindow.quests)
-        {
-            questLogWindow.RemoveQuest(quest.questName);
-            print($"removed:{quest.questName} ");
-        }
+        // foreach (var quest in questLogWindow.quests)
+        // {
+        //     questLogWindow.RemoveQuest(quest.questName);
+        //     print($"removed:{quest.questName} ");
+        // }
+        //SceneManager.LoadScene(0);
         LoadAndApplyData();
-
+        Inventory.Instance.RemoveAllItems();
         
+
+
     }
     
 }

@@ -24,7 +24,10 @@ public class DialogEvents : MonoBehaviour
     private NPC thrimbald;
     private NPC asmilda;
     private NPC jack;
-    
+    private NPC oris;
+    private bool addedDialogAnswer3;
+    private bool addedDialogAnswer4;
+
 
     private void Start()
     {
@@ -33,6 +36,8 @@ public class DialogEvents : MonoBehaviour
         schirmlinge = ItemDatabase.GetItem(32);
         addedDialogAnswer = false;
         addedDialogAnswer2 = false;
+        addedDialogAnswer3 = false;
+        addedDialogAnswer4 = false;
 
     }
 
@@ -40,6 +45,27 @@ public class DialogEvents : MonoBehaviour
     {
         if (LevelManager.CurrentLevelName == "HighForest")
         {
+            //check if player found pages
+            if (Inventory.CountOccurrences(ItemDatabase.GetItem(40)) > 2 && !addedDialogAnswer4)
+            {
+                npcManager.npcs["Thrimbald"].CurrentDialogState = 3;
+                npcManager.npcs["Thrimbald"].QuestStatus = 3;
+
+            }
+            
+            //Check if player found splitter
+            if (Inventory.CountOccurrences(ItemDatabase.GetItem(50)) > 0 && !addedDialogAnswer3 && npcManager.npcs["Thrimbald"].CurrentDialogState==4)
+            {
+                //var ans = new DialogueAnswers();
+                // ans.LinkedToSentenceId = 1;
+                // ans.AnswerDescription =
+                //     "Ich habe übringens diesen Seltsamen Stein hier gefunden. Er scheint zu leuchten, weißt du etwas darüber?";
+                // ans.Decision = "";
+                // npcManager.npcs["Thrimbald"].allDialogs[2].dialogTexts[3].Answers.Add(ans);
+                addedDialogAnswer3 = true;
+                npcManager.npcs["Thrimbald"].CurrentDialogState = 5;
+                npcManager.npcs["Thrimbald"].QuestStatus = 1;
+            }
             if (Inventory.CountOccurrences(ItemDatabase.GetItem(33)) > 0 && !addedDialogAnswer)
             {
                 var ans = new DialogueAnswers();
@@ -63,7 +89,7 @@ public class DialogEvents : MonoBehaviour
                     "Ja, hier sind die Sachen";
                 npcManager.npcs["Asmilda"].allDialogs[2].dialogTexts[0].Answers.Add(ans);
                 npcManager.npcs["Asmilda"].CurrentDialogState =
-                    npcManager.npcs["Asmilda"].CurrentDialogState; //Update state after anser is added
+                    npcManager.npcs["Asmilda"].CurrentDialogState; //Update state after answer is added
                 addedDialogAnswer2 = true;
                 npcManager.npcs["Asmilda"].QuestStatus = 3;
             }
@@ -77,6 +103,7 @@ public class DialogEvents : MonoBehaviour
         thrimbald = npcManager.npcs["Thrimbald"];
         asmilda = npcManager.npcs["Asmilda"];
         jack = npcManager.npcs["Jack"];
+        oris = npcManager.npcs["Oris"];
         
         switch (eventName)
         {
@@ -89,18 +116,60 @@ public class DialogEvents : MonoBehaviour
             case "BigRatAttack":
                 npcManager.npcs["Debby"].IsAggressive = true;
                 break;
+            
+            //Die verlorenen Seiten
             case "Wizzard2":
                 thrimbald.CurrentDialogState = 2;
                 thrimbald.QuestStatus = 2;
-                questLogWindow.AddQuest("Die verlorenen Seiten", "Suche nach den 3 verlorenen Buchseiten für Thrimbald den Zauberer");
+                questLogWindow.AddQuest("Die verlorenen Seiten", "Suche nach den 3 verlorenen Buchseiten für Thrimbald");
                 break;
-            case "get apples":
-                apple = ItemDatabase.GetItem(10);
-                Inventory.Instance.AddItem(apple);
-                Inventory.Instance.AddItem(apple);
-                Inventory.Instance.AddItem(apple);
-                Inventory.Instance.AddItem(apple);
+            case "givePages":
+                Inventory.Instance.Remove(ItemDatabase.GetItem(40));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(40));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(40));
+                thrimbald.QuestStatus = 0;
                 break;
+            case "Wizzard4":
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                questLogWindow.RemoveQuest("Die verlorenen Seiten");
+                thrimbald.CurrentDialogState = 4;
+                break;
+                
+            //
+            case "sucheSchattenkristall":
+                questLogWindow.AddQuest("Der magische Splitter","Finde Oris den Schmied und frage ihn nach etwas Staub eines Schattenkristalls, damit Thrimbald die echtheit des Malyrios Splitters überprüfen kann");
+                thrimbald.CurrentDialogState = 6;
+                thrimbald.QuestStatus = 2;
+                oris.CurrentDialogState = 2;
+                oris.QuestStatus = 3;
+                break;
+            case "BuyDust":
+                if (Inventory.CountOccurrences(ItemDatabase.GetItem(16)) > 5)
+                {
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.AddItem(ItemDatabase.GetItem(42));
+                }
+                thrimbald.CurrentDialogState = 7;
+                thrimbald.QuestStatus = 3;
+                questLogWindow.UpdateQuestDescription("Der magische Splitter", "Bringe den Staub des Schattenkristalls zu Thrimbald, damit dieser die Echtheit des Malyrios Splitters überprüfen kann");
+                oris.QuestStatus = 0;
+                break;
+            case "Oris3":
+                oris.CurrentDialogState = 3;
+                break;
+            case "giveDust":
+                Inventory.Instance.Remove(ItemDatabase.GetItem(42));
+                break;
+            
+            //Hunter Quest
             case "JackToldPlayerAboutTommy":
                 tommy.CurrentDialogState = 2;
                 tommy.QuestStatus = 3;

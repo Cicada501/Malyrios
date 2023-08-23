@@ -20,6 +20,12 @@ public class PuzzleEditor : Editor
         for (int i = 0; i < puzzle.puzzleElements.Count; i++)
         {
             puzzle.puzzleElements[i].elementType = (PuzzleElement.ElementType)EditorGUILayout.EnumPopup("Element Type", puzzle.puzzleElements[i].elementType);
+            
+            // Wenn der Elementtyp Lever ist, erlaube die Auswahl eines PuzzleLever-Objekts
+            if (puzzle.puzzleElements[i].elementType == PuzzleElement.ElementType.Lever)
+            {
+                puzzle.puzzleElements[i].lever = (PuzzleLever)EditorGUILayout.ObjectField("Puzzle Lever", puzzle.puzzleElements[i].lever, typeof(PuzzleLever), true);
+            }
         }
 
         // Änderungen speichern

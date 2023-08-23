@@ -45,7 +45,6 @@ public class DialogueImporterWindow : EditorWindow
                     string json = File.ReadAllText(path);
                     DialogueList importedDialogue = new DialogueList();
                     var wrapper = JsonUtility.FromJson<DialogueTextListWrapper>(json);
-                    Debug.Log($" first Dialog text: {wrapper.dialogueTexts[0]}");
                     importedDialogue.dialogTexts = wrapper.dialogueTexts;
 
                     // Make sure an NPC is selected

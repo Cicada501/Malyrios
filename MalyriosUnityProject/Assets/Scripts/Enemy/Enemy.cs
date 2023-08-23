@@ -67,7 +67,10 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         animator = GetComponent<Animator>();
-        enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        if (GameObject.Find("EnemySpawner"))
+        {
+            enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        }
     }
 
     private void Update() //-------------------------------------------------
@@ -216,7 +219,7 @@ public class Enemy : MonoBehaviour
         #endregion
 
         //Because the enemy gets instantiated as child of the spawnpoint, transform.parent.transform can be used as spawnpoint
-        enemySpawner.Respawn(enemyType, transform.parent.transform);
+        if(enemySpawner)enemySpawner.Respawn(enemyType, transform.parent.transform);
         print($"{enemyType} respawn Cooldown started");
 
         //Disable Script after colliders (otherwise colliders dont get disabled)

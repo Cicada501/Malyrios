@@ -12911,6 +12911,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8343ff97fa8b7fe4cae13ad4a8da6778, type: 2}
   - {fileID: 11400000, guid: 8f501c5a5dc7fab47b5d81b12cbb5a22, type: 2}
   - {fileID: 11400000, guid: 415a8e89fcf86bd4095c9b4c30e0c83f, type: 2}
+  - {fileID: 11400000, guid: ea59057058add644e96a899849c8b6e7, type: 2}
+  - {fileID: 11400000, guid: eda9effc512dfb0438e106d2c8b80770, type: 2}
+  - {fileID: 11400000, guid: e97f390aa0712f64f975e3ae9a6b8bcd, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -15042,7 +15045,10 @@ MonoBehaviour:
   - {fileID: 6098212377636700761, guid: f4206ba3028e0fe4d93266420aa1f63a, type: 3}
   - {fileID: 6098212377636700761, guid: 0a498056347fdf84db82928fb60dc013, type: 3}
   - {fileID: 6098212377636700761, guid: bfff3d434439c4347a474e5ac1c19688, type: 3}
+  - {fileID: 6098212377636700761, guid: 45de95d9da8c9eb448a0ecaec42200e1, type: 3}
+  - {fileID: 6098212377636700761, guid: ae11ec74eba086649876bec32f351845, type: 3}
   inventoryUI: {fileID: 1931971255}
+  playerAttack: {fileID: 1975534756}
 --- !u!1 &919321781
 GameObject:
   m_ObjectHideFlags: 0
@@ -19319,8 +19325,20 @@ MonoBehaviour:
     Prefab: {fileID: 7104209319309316220, guid: 1db2587fb634df047b199b291c6bec76,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
+  - Name: Level1
+    Prefab: {fileID: 3961218565264814783, guid: c4910daa51bd46241b8f0b69b3e11d6e,
+      type: 3}
+    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
+  - Name: Level2
+    Prefab: {fileID: 3961218565264814783, guid: 971d3f73f92ca764fbc0df8e6f9dee0a,
+      type: 3}
+    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
+  - Name: Level3
+    Prefab: {fileID: 3961218565264814783, guid: 6f71e56cdda6a5f49ab9a27c9d5cc740,
+      type: 3}
+    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 1
+  spawnAtPlayerDebugLocation: 0
   loadingScreenBase: {fileID: 1459939526}
 --- !u!114 &1386037427
 MonoBehaviour:
@@ -23018,10 +23036,7 @@ MonoBehaviour:
   useButton: {fileID: 1077365594}
   activeItem: {fileID: 0}
   activeSlot: {fileID: 0}
-  Items:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  Items: []
   ItemIDs: 
 --- !u!114 &1975534755
 MonoBehaviour:
@@ -23064,6 +23079,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   cameraAnimator: {fileID: 1367976464}
+  EquippedWeaponID: 0
+  weaponSlot: {fileID: 1125508832}
 --- !u!4 &1975534759
 Transform:
   m_ObjectHideFlags: 0

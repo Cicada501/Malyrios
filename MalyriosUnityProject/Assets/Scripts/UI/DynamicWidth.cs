@@ -11,7 +11,12 @@ public class DynamicWidth : MonoBehaviour
     {
         int childCount = childB.transform.childCount; 
         float allSymbolsWidth = widthPerChild * childCount -5f; //always -5f because its always one spacing less than childCount
+        
         float newWidth = allSymbolsWidth + 40f;
+        if (newWidth < 150f)
+        {
+            newWidth = 150f;
+        }
 
         // Setzt die neue Breite des Containers
         container.sizeDelta = new Vector2(newWidth, container.sizeDelta.y);
