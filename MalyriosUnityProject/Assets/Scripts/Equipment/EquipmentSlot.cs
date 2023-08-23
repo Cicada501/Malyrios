@@ -32,8 +32,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         set => this.itemStack = value;
     }
     private InventoryUI inventoryUI;
-    private PlayerAttack playerAttack;
-    
+
 
     public void SetItem(BaseItem item)
     {
@@ -46,7 +45,10 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void RemoveItem()
     {
         child.GetComponent<Image>().enabled = false;
-        OnWeaponChanged?.Invoke(null);  //calls onWeaponChanged with null
+        if (this.gameObject.name == "WeaponSlot")
+        {
+            OnWeaponChanged?.Invoke(null); //calls onWeaponChanged with null
+        }
     }
 
     public Transform GetTransform()
@@ -59,10 +61,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child = transform.GetChild(0).gameObject;
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
-        playerAttack = ReferencesManager.Instance.playerAttack;
-        //LoadWeapon();
-        //inventoryUI = GameObject.Find("Canvas UI").GetComponent<InventoryUI>();
-        //inventoryUI.changeInventoryOpened();
     }
 
    
@@ -79,7 +77,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = weapon.Icon;
         Item = weapon;
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-        //TriggerSlotEvent();
     }
 
     private void TriggerSlotEvent()
