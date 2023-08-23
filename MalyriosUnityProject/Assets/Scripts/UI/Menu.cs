@@ -16,7 +16,7 @@ public class Menu : MonoBehaviour
     }
     public void ToggleMenuOpen()
     {
-        MenuPanel.SetActive(MenuPanel.activeSelf == false);
+        MenuPanel.SetActive(!MenuPanel.activeSelf);
     }
 
     public void CloseMenu()
@@ -39,8 +39,7 @@ public class Menu : MonoBehaviour
     }
     
     public void QuitGame()
-    {   
-        //Debug.Log("Quitting Game");
+    {
         Application.Quit();
     }
 }

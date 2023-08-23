@@ -92,7 +92,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(Item);
+        //Inventory.Instance.SetActiveItem(Item);
     }
     
     public void SetPuzzleStation(PuzzleStation station)
