@@ -97,13 +97,13 @@ public class AttributeManager : MonoBehaviour
         print($"removing Armor: {armor.ItemName}");
         if (!armor) return;
         this.baseAttributes.MaxHealth -= armor.HealthBonus;
-        this.baseAttributes.Strength = 0;
-        this.baseAttributes.CritChance = 0;
-        this.baseAttributes.CritDamage = 0;
-        this.baseAttributes.Balance = 0;
-        this.baseAttributes.MaxHealth = 1000;
-        this.baseAttributes.Mana = 0;
-        this.baseAttributes.Haste = 0;
+        this.baseAttributes.Mana -= armor.ManaBonus;
+        this.baseAttributes.CritChance -= armor.CritChanceBonus;
+        this.baseAttributes.CritDamage -= armor.CritDamageBonus;
+        this.baseAttributes.Balance -= armor.BalanceBonus;
+        this.baseAttributes.Strength -= armor.StrengthBonus;
+        this.baseAttributes.Haste -= armor.HasteBonus;
+        this.baseAttributes.Energy -= armor.EnergyBonus;
     }
 
     private void OnWeaponChanged(BaseWeapon wpn)
