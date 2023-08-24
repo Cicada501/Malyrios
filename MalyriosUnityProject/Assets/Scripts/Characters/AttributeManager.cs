@@ -10,7 +10,8 @@ public class AttributeManager : MonoBehaviour
     [SerializeField] private GameObject handArmorSlot = null;
     [SerializeField] private GameObject feetArmorSlot = null;
     [SerializeField] private GameObject weaponSlot = null;
-    
+
+    private StatsWindow statsWindow;
     private BaseAttributes baseAttributes;
 
     private ISlot headArmorItem;
@@ -28,6 +29,7 @@ public class AttributeManager : MonoBehaviour
     private void Awake()
     {
         this.baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
+        statsWindow = ReferencesManager.Instance.statsWindow;
         
         weaponItem = weaponSlot.GetComponent<ISlot>();
         headArmorItem = headArmorSlot.GetComponent<ISlot>();
@@ -76,6 +78,7 @@ public class AttributeManager : MonoBehaviour
 
         OnArmorAdd(newArmor);
         currentArmor = newArmor;
+        statsWindow.UpdateStatTexts();
     }
 
     private void OnArmorAdd(BaseArmor armor)
@@ -89,7 +92,6 @@ public class AttributeManager : MonoBehaviour
         this.baseAttributes.Haste += armor.HasteBonus;
         this.baseAttributes.Energy += armor.EnergyBonus;
         this.baseAttributes.Balance += armor.BalanceBonus;
-        //...
     }
 
     private void OnArmorRemove(BaseArmor armor)

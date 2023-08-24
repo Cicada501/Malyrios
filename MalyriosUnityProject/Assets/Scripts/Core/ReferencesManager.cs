@@ -37,6 +37,7 @@ public class ReferencesManager : MonoBehaviour
     public EquipmentSlot bodyArmorSlot;
     public EquipmentSlot handArmorSlot;
     public EquipmentSlot feetArmorSlot;
+    public StatsWindow statsWindow;
 
     private void Awake()
     {

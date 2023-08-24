@@ -38,14 +38,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
     }
-
-    private void Update()
-    {
-        if (this.gameObject.name == "WeaponSlot")
-        {
-            //print($"Equipped weapon: {Item.ItemName}");
-        }
-    }
+    
 
     public void SetItem(BaseItem item)
     {
