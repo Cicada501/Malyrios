@@ -39,7 +39,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child.GetComponent<DragNDrop>().MySlot = this;
     }
     
-
     public void SetItem(BaseItem item)
     {
         if (item.ItemType == BaseItem.ItemTypes.Weapon)
@@ -70,12 +69,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 break;
         }
     }
-
-    public Transform GetTransform()
-    {
-        return this.transform;
-    }
-
+   
     public void LoadWeapon(int id)
     {
         //if (this.gameObject.name == "WeaponSlot")
@@ -83,11 +77,28 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             AddWeapon(ItemDatabase.GetWeapon(id));
         }
     }
-    public void AddWeapon(BaseWeapon weapon)
+    void AddWeapon(BaseWeapon weapon)
     {
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = weapon.Icon;
         Item = weapon;
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+    }
+    
+    void AddArmor(BaseArmor armor)
+    {
+        transform.GetChild(0).gameObject.GetComponent<Image>().sprite = armor.Icon;
+        Item = armor;
+        transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+    }
+    
+    public void InvokeChangeWeapon(BaseWeapon weapon)
+    {
+        if (this.gameObject.name == "WeaponSlot" && !Item )
+        {
+            AddWeapon(weapon);
+        }
+
+        OnWeaponChanged?.Invoke(weapon);
     }
     
     //Used if "Use" Button of active item is pressed to change Armor
@@ -96,14 +107,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         AddArmor(armor);
         OnArmorChanged?.Invoke(armor, armor.ItemType);
     }
-
-    public void AddArmor(BaseArmor armor)
-    {
-        transform.GetChild(0).gameObject.GetComponent<Image>().sprite = armor.Icon;
-        Item = armor;
-        transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-    }
-
     
     //Used after Drag and Drop to Invoke Event of equipment change
     private void TriggerSlotEvent()
@@ -134,16 +137,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             default:
                 throw new ArgumentOutOfRangeException();
         }
-    }
-
-    public void InvokeChangeWeapon(BaseWeapon weapon)
-    {
-        if (this.gameObject.name == "WeaponSlot" && !Item )
-        {
-            AddWeapon(weapon);
-        }
-
-        OnWeaponChanged?.Invoke(weapon);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -187,9 +180,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         }
     }
 
-
-    
-
     public void OnTap()
     {
         Inventory.Instance.SetActiveItem(Item);
@@ -198,5 +188,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void SwapItems(ISlot otherSlot)
     {
         SlotHelper.SwapItems(this, otherSlot);
+    }
+    
+    public Transform GetTransform()
+    {
+        return this.transform;
+
     }
 }
