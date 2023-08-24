@@ -1037,7 +1037,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 821967885}
     - target: {fileID: 7586840571356539940, guid: b7c05cfc32757a0478be42b383a08de1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -19598,7 +19598,7 @@ MonoBehaviour:
   - Name: HighForest
     Prefab: {fileID: 3961218565264814783, guid: 1d586d233901b5e41968eed1236134f3,
       type: 3}
-    loadingScreen: {fileID: 21300000, guid: e3a1df45294a3544db294cf129e6f6e1, type: 3}
+    loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   - Name: Cave
     Prefab: {fileID: 7104209319309316220, guid: 1db2587fb634df047b199b291c6bec76,
       type: 3}
@@ -19606,15 +19606,15 @@ MonoBehaviour:
   - Name: Level1
     Prefab: {fileID: 3961218565264814783, guid: c4910daa51bd46241b8f0b69b3e11d6e,
       type: 3}
-    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
+    loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   - Name: Level2
     Prefab: {fileID: 3961218565264814783, guid: 971d3f73f92ca764fbc0df8e6f9dee0a,
       type: 3}
-    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
+    loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   - Name: Level3
     Prefab: {fileID: 3961218565264814783, guid: 6f71e56cdda6a5f49ab9a27c9d5cc740,
       type: 3}
-    loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
+    loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   player: {fileID: 1975534745}
   spawnAtPlayerDebugLocation: 0
   loadingScreenBase: {fileID: 1459939526}

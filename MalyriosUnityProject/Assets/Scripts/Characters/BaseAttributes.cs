@@ -32,15 +32,11 @@ namespace Malyrios.Character
         private int currentHealth;
         private void Awake()
         {
-            EquipmentSlot.OnItemSlotChanged += OnEquipmentSlotOnOnItemSlotChanged;
+            
             EquipmentSlot.OnArmorChanged += OnArmorChanged;
             
         }
-
-        private void OnEquipmentSlotOnOnItemSlotChanged(BaseItem item)
-        {
-            Debug.Log("W: ");
-        }
+        
 
         private void Start()
         {

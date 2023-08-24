@@ -11,8 +11,7 @@ using UnityEngine.UI;
 public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 {
     #region Events
-
-    public static event Action<BaseItem> OnItemSlotChanged;
+    
     public static event Action<BaseWeapon> OnWeaponChanged;
     public static event Action<BaseArmor> OnArmorChanged;
 
@@ -61,7 +60,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child.GetComponent<Image>().enabled = false;
         if (this.gameObject.name == "WeaponSlot")
         {
-            OnWeaponChanged?.Invoke(null); //calls onWeaponChanged with null
+            OnWeaponChanged?.Invoke(null);
         }
     }
 
@@ -84,6 +83,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
     }
     
+    //Used if "Use" Button of active item is pressed to change Armor
     public void InvokeChangeArmor(BaseArmor armor)
     {
         AddArmor(armor);
@@ -97,7 +97,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
     }
 
-
+    
+    //Used after Drag and Drop to Invoke Event of equipment change
     private void TriggerSlotEvent()
     {
         switch (this.itemType)
