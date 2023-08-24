@@ -37,15 +37,6 @@ namespace Malyrios.Character
             
             OnMaxHealthChanged?.Invoke(this.maxHealth);
         }
-
-        private void Update()
-        {
-            if (CurrentHealth > MaxHealth)
-            {
-                CurrentHealth = MaxHealth;
-            }
-        }
-        
         
         /// <summary>
         /// Gets or sets the max health.
@@ -56,9 +47,9 @@ namespace Malyrios.Character
             get => this.maxHealth;
             set
             {
-                //print($"set of MaxHealth is used, value is: {value}");
                 this.maxHealth = value;
                 OnMaxHealthChanged?.Invoke(this.maxHealth);
+                OnCurrentHealthChanged?.Invoke(currentHealth,maxHealth); //necessary to trigger update of Current health (slider = currentHealth/MaxHealth)
                 OnBaseAttributeChanged?.Invoke(this);
             }
         }
