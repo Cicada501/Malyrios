@@ -10,11 +10,14 @@ public class ItemDatabase : MonoBehaviour
     static BaseItem[] ItemsStatic = null;
     [SerializeField] BaseWeapon[] Weapons = null;
     static BaseWeapon[] WeaponsStatic = null;
+    [SerializeField] BaseArmor[] Armor = null;
+    static BaseArmor[] ArmorStatic = null;
 
     private void Awake()
     {
         WeaponsStatic = Weapons;
         ItemsStatic = Items;
+        ArmorStatic = Armor;
     }
 
     public static BaseItem GetItem(int id)
@@ -47,7 +50,24 @@ public class ItemDatabase : MonoBehaviour
             }
         }
 
-        Debug.LogError("No Weapon with iD " + id+ " in the WeaponDatabase (now it gets critical)");
+        Debug.LogWarning("No Weapon with iD " + id+ " in the WeaponDatabase (now it gets critical)");
+        return null;
+    }
+    
+    public static BaseArmor GetArmor(int id)
+    {
+        
+        if (id == 0) return null;
+
+        foreach (var armor in ArmorStatic)
+        {
+            if (armor.ItemID == id)
+            {
+                return armor;
+            }
+        }
+
+        Debug.LogWarning("No Armor with iD " + id+ " in the ArmorDatabase");
         return null;
     }
 }

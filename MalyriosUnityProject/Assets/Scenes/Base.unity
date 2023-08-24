@@ -13117,6 +13117,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
   - {fileID: 11400000, guid: 0e509836bde28fc44acf7bd52a04c512, type: 2}
+  Armor:
+  - {fileID: 11400000, guid: e962e8a5d4ced7b45a54996bc734e380, type: 2}
+  - {fileID: 11400000, guid: 453a7fbc581fac14bb1e97be4d624b90, type: 2}
+  - {fileID: 11400000, guid: a82a17fb3cf6fc94fa2649a914ccf8d5, type: 2}
 --- !u!4 &669727122
 Transform:
   m_ObjectHideFlags: 0
@@ -19492,6 +19496,7 @@ GameObject:
   - component: {fileID: 1386037430}
   - component: {fileID: 1386037431}
   - component: {fileID: 1386037432}
+  - component: {fileID: 1386037433}
   m_Layer: 13
   m_Name: GameManager
   m_TagString: Untagged
@@ -19696,6 +19701,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8100c55eece49b041962b0e386d5022c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1386037433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386037419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6799fecc15e214b8dd76b938272598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headArmorSlot: {fileID: 594212636}
+  bodyArmorSlot: {fileID: 559164491}
+  handArmorSlot: {fileID: 1042168772}
+  feetArmorSlot: {fileID: 998785843}
+  equippedHeadArmor: {fileID: 0}
+  equippedBodyArmor: {fileID: 0}
+  equippedHandArmor: {fileID: 0}
+  equippedFeetArmor: {fileID: 0}
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0

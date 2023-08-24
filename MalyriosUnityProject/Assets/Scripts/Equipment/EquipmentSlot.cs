@@ -72,9 +72,25 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
    
     public void LoadWeapon(int id)
     {
-        //if (this.gameObject.name == "WeaponSlot")
+        if (this.gameObject.name == "WeaponSlot") AddWeapon(ItemDatabase.GetWeapon(id));
+    }
+
+    public void LoadArmor(int id)
+    {
+        switch (this.gameObject.name)
         {
-            AddWeapon(ItemDatabase.GetWeapon(id));
+            case "HeadArmorSlot":
+                AddArmor(ItemDatabase.GetArmor(id));
+                break;
+            case "BodyArmorSlot":
+                AddArmor(ItemDatabase.GetArmor(id));
+                break;
+            case "HandArmorSlot":
+                AddArmor(ItemDatabase.GetArmor(id));
+                break;
+            case "FeetArmorSlot":
+                AddArmor(ItemDatabase.GetArmor(id));
+                break;
         }
     }
     void AddWeapon(BaseWeapon weapon)

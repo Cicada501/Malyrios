@@ -94,7 +94,11 @@ public class Inventory : MonoBehaviour
             {
                 AddItem(ItemDatabase.GetWeapon(itemID));
             }
-            else
+            else if (ItemDatabase.GetArmor(itemID)!= null)
+            {
+                AddItem(ItemDatabase.GetArmor(itemID));
+            }
+            else 
             {
                 Debug.Log($"Item with ID {itemID} not found");
             }

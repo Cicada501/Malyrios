@@ -48,6 +48,8 @@ public class GameInitializer : MonoBehaviour
         }
         questLogWindow.FixUI(10);
         PuzzleStationManager.Instance.LoadStations();
+        
+        //ReferencesManager.Instance.headArmorSlot.LoadArmor();
     }
 
     public void ResetAll()

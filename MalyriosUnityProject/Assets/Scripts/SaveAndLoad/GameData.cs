@@ -36,7 +36,8 @@ public class GameData : MonoBehaviour
 
     public void SaveData()
     {
-        //print($"Saving: {JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
+        PlayerPrefs.SetString("armor",JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor()));
+        print($"Saving: {JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor())}");
         PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
@@ -68,7 +69,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         // Load level name
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
         {
