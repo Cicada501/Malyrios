@@ -53,6 +53,11 @@ public class ActiveItemWindow : MonoBehaviour
             nameText.text = weapon.ItemName;
             descriptionText.text = weapon.GetDescription();
             itemImage.sprite = weapon.Icon;
+        }else if(item is BaseArmor armor)
+        {
+            nameText.text = armor.ItemName;
+            descriptionText.text = armor.GetDescription();
+            itemImage.sprite = armor.Icon;
         }
         else
         {

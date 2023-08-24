@@ -36,5 +36,52 @@ public class BaseArmor : BaseItem
             }
         }
     }
+    
+    public string GetDescription()
+    {
+        string description = $"<color=green>{this.itemName}</color>\n\n";
+
+        if (healthBonus > 0)
+        {
+            description += $"Health Bonus: {this.healthBonus}\n";
+        }
+
+        if (manaBonus > 0)
+        {
+            description += $"Mana Bonus: {this.manaBonus}\n";
+        }
+
+        if (strengthBonus > 0)
+        {
+            description += $"Strength Bonus: {this.strengthBonus}\n";
+        }
+
+        if (critChanceBonus > 0)
+        {
+            description += $"Crit Chance Bonus: {this.critChanceBonus}%\n";
+        }
+
+        if (critDamageBonus > 0)
+        {
+            description += $"Crit Damage Bonus: {this.critDamageBonus}%\n";
+        }
+
+        if (hasteBonus > 0)
+        {
+            description += $"Haste Bonus: {this.hasteBonus}\n";
+        }
+
+        if (energyBonus > 0)
+        {
+            description += $"Energy Bonus: {this.energyBonus}\n";
+        }
+
+        if (balanceBonus > 0)
+        {
+            description += $"Balance Bonus: {this.balanceBonus}\n";
+        }
+
+        return description;
+    }
 }
 
