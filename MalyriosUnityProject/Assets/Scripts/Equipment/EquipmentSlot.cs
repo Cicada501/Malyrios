@@ -13,7 +13,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     #region Events
     
     public static event Action<BaseWeapon> OnWeaponChanged;
-    public static event Action<BaseArmor> OnArmorChanged;
+    public static event Action<BaseArmor, BaseItem.ItemTypes> OnArmorChanged;
 
     #endregion
 
@@ -58,9 +58,23 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void RemoveItem()
     {
         child.GetComponent<Image>().enabled = false;
-        if (this.gameObject.name == "WeaponSlot")
+        switch (this.gameObject.name)
         {
-            OnWeaponChanged?.Invoke(null);
+            case "WeaponSlot":
+                OnWeaponChanged?.Invoke(null);
+                break;
+            case "HeadArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Head);
+                break;
+            case "BodyArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Body);
+                break;
+            case "HandArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Hand);
+                break;
+            case "FeetArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Feet);
+                break;
         }
     }
 
@@ -87,7 +101,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void InvokeChangeArmor(BaseArmor armor)
     {
         AddArmor(armor);
-        OnArmorChanged?.Invoke(armor);
+        OnArmorChanged?.Invoke(armor, armor.ItemType);
     }
 
     public void AddArmor(BaseArmor armor)
@@ -107,17 +121,22 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 OnWeaponChanged?.Invoke(Item as BaseWeapon);
                 break;
             case BaseItem.ItemTypes.Head:
-                
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Body:
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Feet:
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Hand:
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Plant:
                 break;
             case BaseItem.ItemTypes.Other:
+                break;
+            case BaseItem.ItemTypes.Rune:
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

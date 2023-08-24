@@ -30,13 +30,7 @@ namespace Malyrios.Character
 
 
         private int currentHealth;
-        private void Awake()
-        {
-            
-            EquipmentSlot.OnArmorChanged += OnArmorChanged;
-            
-        }
-        
+      
 
         private void Start()
         {
@@ -49,21 +43,6 @@ namespace Malyrios.Character
             if (CurrentHealth > MaxHealth)
             {
                 CurrentHealth = MaxHealth;
-            }
-        }
-        
-        private void OnArmorChanged(BaseArmor armor)
-        {
-            if (armor != null)
-            {
-                MaxHealth += armor.HealthBonus;
-                Mana += armor.ManaBonus;
-                Strength += armor.StrengthBonus;
-                CritChance += armor.CritChanceBonus;
-                CritDamage += armor.CritDamageBonus;
-                Haste += armor.HasteBonus;
-                Energy += armor.EnergyBonus;
-                Balance += armor.BalanceBonus;
             }
         }
         

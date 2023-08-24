@@ -15,6 +15,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private Transform playerTransform;
     private DragNDrop dragNDrop;
     private EquipmentSlot weaponSlot;
+    private EquipmentSlot headArmorSlot;
+    private EquipmentSlot bodyArmorSlot;
+    private EquipmentSlot handArmorSlot;
+    private EquipmentSlot feetArmorSlot;
 
 
     public BaseItem Item
@@ -35,6 +39,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
         this.dragNDrop.MySlot = this;
         weaponSlot = ReferencesManager.Instance.weaponSlot;
+        headArmorSlot = ReferencesManager.Instance.headArmorSlot;
+        bodyArmorSlot = ReferencesManager.Instance.bodyArmorSlot;
+        handArmorSlot = ReferencesManager.Instance.handArmorSlot;
+        feetArmorSlot = ReferencesManager.Instance.feetArmorSlot;
     }
 
     public void Initialize()
@@ -127,12 +135,27 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void UseItem()
     {
         if (this.item == null) return;
-        if (item.IsUsable)
+        if (!item.IsUsable) return;
+
+        switch (item.ItemType)
         {
             //check if item is weapon, if so only execute usage effect, if no weapon is equipped yet
-            if (item is BaseWeapon && weaponSlot.Item) return; //add debug later to tell player, that he has already a weapon equipped
-            item.ExecuteUsageEffect();
-            RemoveSingleItem();
+            case BaseItem.ItemTypes.Weapon when weaponSlot.Item:
+            case BaseItem.ItemTypes.Body when bodyArmorSlot.Item:
+            case BaseItem.ItemTypes.Head when headArmorSlot.Item:
+            case BaseItem.ItemTypes.Hand when handArmorSlot.Item:
+            case BaseItem.ItemTypes.Feet when feetArmorSlot.Item:
+                return; //add debug later to tell player, that he has already a weapon equipped
+            case BaseItem.ItemTypes.Plant:
+                break;
+            case BaseItem.ItemTypes.Other:
+                break;
+            case BaseItem.ItemTypes.Rune:
+                break;
+            default:
+                item.ExecuteUsageEffect();
+                RemoveSingleItem();
+                break;
         }
     }
 

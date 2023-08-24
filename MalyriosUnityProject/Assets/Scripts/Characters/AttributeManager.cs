@@ -38,22 +38,27 @@ public class AttributeManager : MonoBehaviour
         EquipmentSlot.OnArmorChanged += OnArmorChanged;
         EquipmentSlot.OnWeaponChanged += OnWeaponChanged;
     }
-    
-    private void OnArmorChanged(BaseArmor newArmor)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="newArmor">Beim Ausrüsten eines neuen Gegenstandes ist dies der Gegenstand. Beim Ablegen eines Gegenstandes ist dies null</param>
+    /// <param name="type">ItemType des items das angelegt oder abgelegt wird</param>
+    private void OnArmorChanged(BaseArmor newArmor, BaseItem.ItemTypes type)
     {
-        if (newArmor.ItemType == BaseItem.ItemTypes.Head)
+        print($"OnArmorChanged({newArmor?.ItemName ?? "null"}, {type})");
+        if (type == BaseItem.ItemTypes.Head) //type wird extra weiter gegeben, da im falle von Unequip newArmor = null ist und newArmor.ItemType nicht verwendet werden kann
         {
             OnArmorSwap(ref headArmor, newArmor);
         }
-        else if (newArmor.ItemType == BaseItem.ItemTypes.Body)
+        else if (type == BaseItem.ItemTypes.Body)
         {
             OnArmorSwap(ref bodyArmor, newArmor);
         }
-        else if (newArmor.ItemType == BaseItem.ItemTypes.Hand)
+        else if (type == BaseItem.ItemTypes.Hand)
         {
             OnArmorSwap(ref handArmor, newArmor);
         }
-        else if (newArmor.ItemType == BaseItem.ItemTypes.Feet)
+        else if (type == BaseItem.ItemTypes.Feet)
         {
             OnArmorSwap(ref feetArmor, newArmor);
         }
@@ -61,6 +66,9 @@ public class AttributeManager : MonoBehaviour
     
     private void OnArmorSwap(ref BaseArmor currentArmor, BaseArmor newArmor)
     {
+        print($"Swapping: {currentArmor?.ItemName ?? "null"} to {newArmor?.ItemName ?? "null"}");
+
+
         if (currentArmor)
         {
             OnArmorRemove(currentArmor);
@@ -74,19 +82,28 @@ public class AttributeManager : MonoBehaviour
     {
         if (!armor) return;
         this.baseAttributes.MaxHealth += armor.HealthBonus;
+        this.baseAttributes.Mana += armor.ManaBonus;
         this.baseAttributes.Strength += armor.StrengthBonus;
         this.baseAttributes.CritChance += armor.CritChanceBonus;
         this.baseAttributes.CritDamage += armor.CritDamageBonus;
+        this.baseAttributes.Haste += armor.HasteBonus;
+        this.baseAttributes.Energy += armor.EnergyBonus;
+        this.baseAttributes.Balance += armor.BalanceBonus;
         //...
     }
 
     private void OnArmorRemove(BaseArmor armor)
     {
+        print($"removing Armor: {armor.ItemName}");
         if (!armor) return;
         this.baseAttributes.MaxHealth -= armor.HealthBonus;
-        this.baseAttributes.Strength -= armor.StrengthBonus;
-        this.baseAttributes.CritChance -= armor.CritChanceBonus;
-        this.baseAttributes.CritDamage -= armor.CritDamageBonus;
+        this.baseAttributes.Strength = 0;
+        this.baseAttributes.CritChance = 0;
+        this.baseAttributes.CritDamage = 0;
+        this.baseAttributes.Balance = 0;
+        this.baseAttributes.MaxHealth = 1000;
+        this.baseAttributes.Mana = 0;
+        this.baseAttributes.Haste = 0;
     }
 
     private void OnWeaponChanged(BaseWeapon wpn)
