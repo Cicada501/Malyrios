@@ -95,21 +95,17 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         Inventory.Instance.activeSlot = this;
     }
 
-    /// <summary>
-    /// This method removes the Item in the slot completely
-    /// </summary>
-    public void RemoveItem()
-    {
-        this.item = null;
-        this.amountText.gameObject.SetActive(false);
-    }
+
 
     public Transform GetTransform()
     {
         return this.transform;
     }
 
-    public void RemoveSingleItem()
+    /// <summary>
+    /// This method removes the Item in the slot. If its a stack removes one, if its a single item, removes it completely
+    /// </summary>
+    public void RemoveItem()
     {
         Inventory.Instance.Items.Remove(this.itemStack.Peek());
         this.itemStack.Pop();
@@ -117,8 +113,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         Inventory.Instance.ItemIDs.Remove(item.ItemID);
         if (this.itemStack.Count <= 0)
         {
-            this.transform.GetChild(2).GetComponent<Image>().enabled = false;
-            RemoveItem();
+            Image img = dragNDrop.GetComponent<Image>();
+            img.enabled = false;
+            this.item = null;
+            this.amountText.gameObject.SetActive(false);
             ActiveItemWindow.Instance.HideActiveItemInfo();
         }
 
@@ -129,7 +127,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (this.item == null) return;
 
         SpawnItem.Spawn(item, this.playerTransform.position, 0.3f, -1.2f, 1.5f);
-        RemoveSingleItem();
+        RemoveItem();
     }
 
     public void UseItem()
@@ -154,7 +152,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 break;
             default:
                 item.ExecuteUsageEffect();
-                RemoveSingleItem();
+                RemoveItem();
                 break;
         }
     }

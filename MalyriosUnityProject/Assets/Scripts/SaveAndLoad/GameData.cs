@@ -45,7 +45,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));
 
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
-        //print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
+        print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));

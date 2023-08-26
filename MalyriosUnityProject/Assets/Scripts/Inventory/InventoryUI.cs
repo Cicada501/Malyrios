@@ -92,7 +92,7 @@ public class InventoryUI : MonoBehaviour
     private void OnItemRemoved(BaseItem item)
     {
         InventorySlot it = slots.FirstOrDefault(x => x.Item == item);
-        if (it != null) it.RemoveSingleItem();
+        if (it != null) it.RemoveItem();
     }
 
 

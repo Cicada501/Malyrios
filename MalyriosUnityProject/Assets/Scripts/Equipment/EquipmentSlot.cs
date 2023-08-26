@@ -176,7 +176,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         }
         else
         {
-            // If this equipment slot has no item, use your existing logic
+            // If this equipment slot has no item
             this.child.GetComponent<Image>().sprite =
                 eventData.pointerDrag.GetComponent<Image>().sprite;
         
