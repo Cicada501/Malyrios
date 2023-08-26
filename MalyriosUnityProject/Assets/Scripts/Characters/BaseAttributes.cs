@@ -29,8 +29,13 @@ namespace Malyrios.Character
         [SerializeField] private float balance = 0;
 
 
-        private int currentHealth;
-      
+        private int currentHealth = 1000;
+
+
+        private void Update()
+        {
+            print($"Health: {CurrentHealth}/{MaxHealth}");
+        }
 
         private void Start()
         {

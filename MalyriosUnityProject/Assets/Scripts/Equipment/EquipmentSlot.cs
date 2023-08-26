@@ -77,19 +77,24 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void LoadArmor(int id)
     {
+        var armor = ItemDatabase.GetArmor(id);
         switch (this.gameObject.name)
         {
             case "HeadArmorSlot":
-                AddArmor(ItemDatabase.GetArmor(id));
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Head);
                 break;
             case "BodyArmorSlot":
-                AddArmor(ItemDatabase.GetArmor(id));
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Body);
                 break;
             case "HandArmorSlot":
-                AddArmor(ItemDatabase.GetArmor(id));
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Hand);
                 break;
             case "FeetArmorSlot":
-                AddArmor(ItemDatabase.GetArmor(id));
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Feet);
                 break;
         }
     }
