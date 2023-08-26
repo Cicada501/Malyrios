@@ -6,12 +6,27 @@ using UnityEngine;
 
 public class ArmorData
 {
-    private int headArmorID;
+    public int headArmorID;
+    public int bodyArmorID;
+    public int handArmorID;
+    public int feetArmorID;
+
 
     public ArmorData(EquipmentManager manager)
     {
         headArmorID = manager.equippedHeadArmor.ItemID;
-        //...
+        bodyArmorID = manager.equippedBodyArmor.ItemID;
+        handArmorID = manager.equippedHandArmor.ItemID;
+        feetArmorID = manager.equippedFeetArmor.ItemID;
+        
+    }
+    
+    public ArmorData(int headID, int bodyID, int handID, int feetID)
+    {
+        headArmorID = headID;
+        bodyArmorID = bodyID;
+        handArmorID = handID;
+        feetArmorID = feetID;
     }
     
 }
@@ -48,7 +63,10 @@ public class EquipmentManager : MonoBehaviour
     private void Update()
     {
         equippedHeadArmor = headArmorSlot.Item as BaseArmor;
-        //...
+        equippedBodyArmor = bodyArmorSlot.Item as BaseArmor;
+        equippedHandArmor = handArmorSlot.Item as BaseArmor;
+        equippedFeetArmor = feetArmorSlot.Item as BaseArmor;
+        
     }
 
     public ArmorData SaveArmor()

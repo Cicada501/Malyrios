@@ -15,14 +15,15 @@ public class GameData : MonoBehaviour
     public List<NpcData> LoadedNpcData { get; private set; }
     public List<Quest> LoadedQuestLog { get; private set; }
     public List<PuzzleStationData> LoadedPuzzleStations { get; private set; }
-
+    public ArmorData LoadedArmorData { get; private set; }
+    
     private LevelManager levelManager;
     private GameObject player;
     private BaseAttributes baseAttributes;
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
     private PlayerAttack playerAttack;
-    
+
 
     private void Awake()
     {
@@ -69,7 +70,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         // Load level name
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
         {
@@ -175,6 +176,15 @@ public class GameData : MonoBehaviour
         else
         {
             LoadedPuzzleStations = new List<PuzzleStationData>();
+        }
+
+        if (PlayerPrefs.HasKey("armor") && PlayerPrefs.GetString("armor") != "")
+        {
+            LoadedArmorData = JsonUtility.FromJson<ArmorData>(PlayerPrefs.GetString("armor"));
+        }
+        else
+        {
+            LoadedArmorData = new ArmorData(150,160,170,180 );
         }
     }
 

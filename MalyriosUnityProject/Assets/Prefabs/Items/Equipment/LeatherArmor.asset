@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5667f8397a43b51408f0fb70e6906f1b, type: 3}
-  m_Name: LeatherShoes
+  m_Name: LeatherArmor
   m_EditorClassIdentifier: 
-  itemID: 61
-  itemName: Leder Schuhe
-  description: Einfache schuhe aus leder
-  icon: {fileID: -2099835803295952814, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
+  itemID: 65
+  itemName: "Leder R\xFCstung"
+  description: 
+  icon: {fileID: -7137982217975899962, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   dropChance: 0
   isStackable: 0
-  isUsable: 1
+  isUsable: 0
   maxStackAmount: 0
-  itemType: 3
+  itemType: 2
   itemPrefab: {fileID: 0}
-  healthBonus: 150
+  healthBonus: 200
   manaBonus: 0
-  strengthBonus: 0
+  strengthBonus: 20
   critChanceBonus: 0
   critDamageBonus: 0
-  hasteBonus: 40
-  energyBonus: 0
-  balanceBonus: 0
+  hasteBonus: 20
+  energyBonus: 20
+  balanceBonus: 20

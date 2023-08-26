@@ -49,7 +49,10 @@ public class GameInitializer : MonoBehaviour
         questLogWindow.FixUI(10);
         PuzzleStationManager.Instance.LoadStations();
         
-        //ReferencesManager.Instance.headArmorSlot.LoadArmor();
+        ReferencesManager.Instance.headArmorSlot.LoadArmor(gameData.LoadedArmorData.headArmorID);
+        ReferencesManager.Instance.bodyArmorSlot.LoadArmor(gameData.LoadedArmorData.bodyArmorID);
+        ReferencesManager.Instance.handArmorSlot.LoadArmor(gameData.LoadedArmorData.handArmorID);
+        ReferencesManager.Instance.feetArmorSlot.LoadArmor(gameData.LoadedArmorData.feetArmorID);
     }
 
     public void ResetAll()
