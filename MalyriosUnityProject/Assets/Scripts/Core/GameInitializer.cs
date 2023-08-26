@@ -49,10 +49,10 @@ public class GameInitializer : MonoBehaviour
         questLogWindow.FixUI(10);
         PuzzleStationManager.Instance.LoadStations();
         
-        ReferencesManager.Instance.headArmorSlot.LoadArmor(gameData.LoadedArmorData.headArmorID);
-        ReferencesManager.Instance.bodyArmorSlot.LoadArmor(gameData.LoadedArmorData.bodyArmorID);
-        ReferencesManager.Instance.handArmorSlot.LoadArmor(gameData.LoadedArmorData.handArmorID);
-        ReferencesManager.Instance.feetArmorSlot.LoadArmor(gameData.LoadedArmorData.feetArmorID);
+        if(gameData.LoadedArmorData.headArmorID!=0)ReferencesManager.Instance.headArmorSlot.LoadArmor(gameData.LoadedArmorData.headArmorID);
+        if(gameData.LoadedArmorData.bodyArmorID!=0)ReferencesManager.Instance.bodyArmorSlot.LoadArmor(gameData.LoadedArmorData.bodyArmorID);
+        if(gameData.LoadedArmorData.handArmorID!=0)ReferencesManager.Instance.handArmorSlot.LoadArmor(gameData.LoadedArmorData.handArmorID);
+        if(gameData.LoadedArmorData.feetArmorID!=0)ReferencesManager.Instance.feetArmorSlot.LoadArmor(gameData.LoadedArmorData.feetArmorID);
     }
 
     public void ResetAll()

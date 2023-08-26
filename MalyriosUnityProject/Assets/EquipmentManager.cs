@@ -14,10 +14,10 @@ public class ArmorData
 
     public ArmorData(EquipmentManager manager)
     {
-        headArmorID = manager.equippedHeadArmor.ItemID;
-        bodyArmorID = manager.equippedBodyArmor.ItemID;
-        handArmorID = manager.equippedHandArmor.ItemID;
-        feetArmorID = manager.equippedFeetArmor.ItemID;
+        headArmorID = manager.equippedHeadArmor ? manager.equippedHeadArmor.ItemID : 0;
+        bodyArmorID = manager.equippedBodyArmor ? manager.equippedBodyArmor.ItemID : 0;
+        handArmorID = manager.equippedHandArmor ? manager.equippedHandArmor.ItemID : 0;
+        feetArmorID = manager.equippedFeetArmor ? manager.equippedFeetArmor.ItemID : 0;
         
     }
     
