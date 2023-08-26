@@ -37,7 +37,6 @@ namespace Malyrios.Character
             
             OnMaxHealthChanged?.Invoke(this.maxHealth);
         }
-        
         /// <summary>
         /// Gets or sets the max health.
         /// Also fired an event OnMaxHealthChanged.
@@ -168,20 +167,6 @@ namespace Malyrios.Character
                 OnBalanceChaned?.Invoke(this.balance);
                 OnBaseAttributeChanged?.Invoke(this);
             }
-        }
-
-
-
-        public void LoadAttributes(BaseAttributes gameDataLoadedAttributes)
-        {
-            MaxHealth = gameDataLoadedAttributes.MaxHealth;
-            Mana = gameDataLoadedAttributes.Mana;
-            Strength = gameDataLoadedAttributes.Strength;
-            CritChance = gameDataLoadedAttributes.CritChance;
-            CritDamage = gameDataLoadedAttributes.CritDamage;
-            Haste = gameDataLoadedAttributes.Haste;
-            Energy = gameDataLoadedAttributes.Energy;
-            Balance = gameDataLoadedAttributes.Balance;
         }
     }
 }

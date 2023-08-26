@@ -19,7 +19,6 @@ public class GameData : MonoBehaviour
     
     private LevelManager levelManager;
     private GameObject player;
-    private BaseAttributes baseAttributes;
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
     private PlayerAttack playerAttack;
@@ -29,7 +28,6 @@ public class GameData : MonoBehaviour
     {
         levelManager = GetComponent<LevelManager>();
         player = ReferencesManager.Instance.player;
-        baseAttributes = player.GetComponent<BaseAttributes>();
         npcManager = ReferencesManager.Instance.npcManager;
         questLogWindow = ReferencesManager.Instance.questLogWindow;
         playerAttack = ReferencesManager.Instance.playerAttack;
@@ -50,19 +48,6 @@ public class GameData : MonoBehaviour
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
         PlayerPrefs.SetInt("EquippedWeaponID", playerAttack.EquippedWeaponID);
-        var attrData = new BaseAttributesData
-        {
-            maxHealth = baseAttributes.MaxHealth,
-            currentHealth = baseAttributes.CurrentHealth,
-            mana = baseAttributes.Mana,
-            strength = baseAttributes.Strength,
-            critChance = baseAttributes.CritChance,
-            critDamage = baseAttributes.CritDamage,
-            haste = baseAttributes.Haste,
-            energy = baseAttributes.Energy,
-            balance = baseAttributes.Balance
-        };
-        PlayerPrefs.SetString("AttributesData", JsonUtility.ToJson(attrData));
         PlayerPrefs.SetString("QuestLog", JsonUtility.ToJson(questLogWindow.SaveQuestLog()));
         
         PlayerPrefs.Save();
@@ -70,7 +55,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         // Load level name
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
         {
@@ -121,32 +106,6 @@ public class GameData : MonoBehaviour
 
         }
         
-        if (PlayerPrefs.HasKey("AttributesData") && PlayerPrefs.GetString("AttributesData") != "")
-        {
-            var attrData = JsonUtility.FromJson<BaseAttributesData>(PlayerPrefs.GetString("AttributesData"));
-            baseAttributes.MaxHealth = attrData.maxHealth;
-            baseAttributes.CurrentHealth = attrData.currentHealth;
-            baseAttributes.Mana = attrData.mana;
-            baseAttributes.Strength = attrData.strength;
-            baseAttributes.CritChance = attrData.critChance;
-            baseAttributes.CritDamage = attrData.critDamage;
-            baseAttributes.Haste = attrData.haste;
-            baseAttributes.Energy = attrData.energy;
-            baseAttributes.Balance = attrData.balance;
-        }
-
-        else
-        {
-            baseAttributes.MaxHealth = 1000;
-            baseAttributes.CurrentHealth = 1000;
-            baseAttributes.Mana = 0;
-            baseAttributes.Strength = 0;
-            baseAttributes.CritChance = 0;
-            baseAttributes.CritDamage = 0;
-            baseAttributes.Haste = 0;
-            baseAttributes.Energy = 0;
-            baseAttributes.Balance = 0;
-        }
 
         if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")
         {
