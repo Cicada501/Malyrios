@@ -48,6 +48,11 @@ public class Inventory : MonoBehaviour
         Debug.Log("Item Names: [" + string.Join(", ", itemNames) + "]");
     }
 
+    private void Update()
+    {
+        PrintInventory();
+    }
+
     public void RemoveAllItems()
     {
         List<BaseItem> itemsToRemove = new List<BaseItem>(Items);

@@ -187,10 +187,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         // If the current equipment slot has an item
         if (Item != null)
         {
-            print($"Inv Slot stack length:{originSlot.ItemStack.Count}, Equipmentslot itemStack length: {this.itemStack.Count}");
             // Swap the items
             SwapItems(originSlot);
-            print($"Inv Slot stack length:{originSlot.ItemStack.Count}, Equipmentslot itemStack length: {this.itemStack.Count}");
             TriggerSlotEvent();
             
         }

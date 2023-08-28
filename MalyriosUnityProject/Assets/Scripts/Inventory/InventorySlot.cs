@@ -67,6 +67,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
         
         this.itemStack.Push(baseItem);
+        
+    }
+
+    private void Update()
+    {
+        amountText.text = itemStack.Count.ToString();
+        amountText.gameObject.SetActive(itemStack.Count > 1);
     }
 
 
@@ -80,13 +87,17 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (this.itemStack.Count < this.item.MaxStackAmount)
         {
             this.itemStack.Push(item);
-            this.amountText.gameObject.SetActive(true);
-            this.amountText.text = this.itemStack.Count.ToString();
             return true;
         }
+        else
+        {
+            //Add Case here, where new stack is created
+        }
 
-        return false;
+        return false; 
     }
+    
+
 
 
     public void OnTap()
@@ -109,14 +120,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         Inventory.Instance.Items.Remove(this.itemStack.Peek());
         this.itemStack.Pop();
-        this.amountText.text = itemStack.Count.ToString();
         Inventory.Instance.ItemIDs.Remove(item.ItemID);
         if (this.itemStack.Count <= 0)
         {
             Image img = dragNDrop.GetComponent<Image>();
             img.enabled = false;
             this.item = null;
-            this.amountText.gameObject.SetActive(false);
             ActiveItemWindow.Instance.HideActiveItemInfo();
         }
 

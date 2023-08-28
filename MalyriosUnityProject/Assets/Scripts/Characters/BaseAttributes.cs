@@ -34,7 +34,7 @@ namespace Malyrios.Character
 
         private void Update()
         {
-            print($"Health: {CurrentHealth}/{MaxHealth}");
+            //print($"Health: {CurrentHealth}/{MaxHealth}");
         }
 
         private void Start()

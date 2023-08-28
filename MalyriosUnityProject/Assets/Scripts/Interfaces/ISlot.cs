@@ -32,8 +32,6 @@ namespace Malyrios.Core
     {
         public static void SwapItems(ISlot slot1, ISlot slot2)
         {
-            Debug.Log($"Stack1: {slot1.ItemStack.Count}, Stack2: {slot2.ItemStack.Count}");
-
             // Speichere temporär die Items aus den Slots
             BaseItem tempItem1 = slot1.Item;
             Stack<BaseItem> tempStack1 = new Stack<BaseItem>(slot1.ItemStack.ToArray());
@@ -45,7 +43,6 @@ namespace Malyrios.Core
             // Setze die Items im zweiten Slot auf die temporär gespeicherten Werte des ersten Slots
             slot2.SetItem(tempItem1);
             slot2.ItemStack = tempStack1;
-            Debug.Log($"Stack1: {slot1.ItemStack.Count}, Stack2: {slot2.ItemStack.Count} (after swap)");
         }
     }
 }
