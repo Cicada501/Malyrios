@@ -24,8 +24,6 @@ public class Inventory : MonoBehaviour
     
     public bool isEmpty = true;
     [SerializeField] private Button useButton;
-    public BaseItem activeItem = null;
-    public ISlot activeSlot;
     #region new inventory
 
     public List<BaseItem> Items = new List<BaseItem>();
@@ -33,7 +31,6 @@ public class Inventory : MonoBehaviour
 
     public event Action<BaseItem> OnItemAdded;
     public event Action<BaseItem> OnItemRemoved;
-    public event Action<BaseItem, ISlot.slotType> OnActiveItemSet;
 
     private BaseWeapon testWeapon;
 
@@ -115,26 +112,5 @@ public class Inventory : MonoBehaviour
         return occ;
     }
     
-    public void SetActiveItem(BaseItem item, ISlot.slotType slotType)
-    {
-        OnActiveItemSet?.Invoke(item, slotType);
-        
-        if (activeItem == null || activeItem != item)
-        {
-            activeItem = item;
-            if (item.IsUsable)
-            {
-                useButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                useButton.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            activeItem = null;
-        }
-        
-    }
+
 }

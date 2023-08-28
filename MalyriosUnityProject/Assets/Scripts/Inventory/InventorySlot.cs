@@ -91,8 +91,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(this.item, ISlot.slotType.InventorySlot);
-        Inventory.Instance.activeSlot = this;
+        ActiveItemWindow.Instance.SetActiveItem(this.item, ISlot.slotType.InventorySlot);
+        ActiveItemWindow.Instance.activeSlot = this;
     }
 
 
@@ -144,12 +144,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             case BaseItem.ItemTypes.Hand when handArmorSlot.Item:
             case BaseItem.ItemTypes.Feet when feetArmorSlot.Item:
                 return; //add debug later to tell player, that he has already a weapon equipped
-            case BaseItem.ItemTypes.Plant:
-                break;
-            case BaseItem.ItemTypes.Other:
-                break;
-            case BaseItem.ItemTypes.Rune:
-                break;
             default:
                 item.ExecuteUsageEffect();
                 RemoveItem();

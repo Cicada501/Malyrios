@@ -203,8 +203,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(Item, ISlot.slotType.EquipmentSlot);
-        Inventory.Instance.activeSlot = this;
+        ActiveItemWindow.Instance.SetActiveItem(Item, ISlot.slotType.EquipmentSlot);
+        ActiveItemWindow.Instance.activeSlot = this;
     }
     
     public void SwapItems(ISlot otherSlot)

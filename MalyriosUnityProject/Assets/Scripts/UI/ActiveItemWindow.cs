@@ -14,7 +14,9 @@ public class ActiveItemWindow : MonoBehaviour
 
 
     public static ActiveItemWindow Instance;
-
+    public BaseItem activeItem = null;
+    public ISlot activeSlot;
+    [SerializeField] private Button useButton;
 
     private void Awake()
     {
@@ -32,17 +34,13 @@ public class ActiveItemWindow : MonoBehaviour
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private Image itemImage;
 
-    private void Start()
-    {
-        Inventory.Instance.OnActiveItemSet += ChangeActiveItem;
-    }
 
     void ChangeActiveItem(BaseItem item, ISlot.slotType slotType)
     {
-        if (Inventory.Instance.activeItem == null)
+        if (activeItem == null)
         {
             ShowActiveItemInfo(item);
-        }else if (item.name == Inventory.Instance.activeItem.name)
+        }else if (item.name == activeItem.name)
         {
             HideActiveItemInfo();
         }
@@ -74,6 +72,29 @@ public class ActiveItemWindow : MonoBehaviour
         }
         
     }
+    
+    public void SetActiveItem(BaseItem item, ISlot.slotType slotType)
+    {
+        ChangeActiveItem(item, slotType);
+        
+        if (activeItem == null || activeItem != item)
+        {
+            activeItem = item;
+            if (item.IsUsable)
+            {
+                useButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                useButton.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            activeItem = null;
+        }
+        
+    }
 
     public void HideActiveItemInfo()
     {
@@ -82,14 +103,14 @@ public class ActiveItemWindow : MonoBehaviour
     
     public void UseButtonPressed()
     {
-        //check if Slot is EquipmentSlot / PuzzleSlot
-        Inventory.Instance.activeSlot.UseItem();
+
+        activeSlot.UseItem();
     }
 
     public void RemoveButtonPressed()
     {
-        //check if Slot is EquipmentSlot / PuzzleSlot
-        Inventory.Instance.activeSlot.DropItem();
+
+        activeSlot.DropItem();
     }
     
 }

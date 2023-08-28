@@ -14314,6 +14314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e36eb373a6520d4b82fa7059c41175c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeItem: {fileID: 0}
+  useButton: {fileID: 1077365594}
   window: {fileID: 116338914}
   nameText: {fileID: 1866731218}
   descriptionText: {fileID: 1656485204}
@@ -23342,8 +23344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEmpty: 1
   useButton: {fileID: 1077365594}
-  activeItem: {fileID: 0}
-  activeSlot: {fileID: 0}
   Items: []
   ItemIDs: 
 --- !u!114 &1975534755
