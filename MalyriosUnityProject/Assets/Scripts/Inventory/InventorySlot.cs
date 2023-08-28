@@ -91,7 +91,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(this.item);
+        Inventory.Instance.SetActiveItem(this.item, ISlot.slotType.InventorySlot);
         Inventory.Instance.activeSlot = this;
     }
 
@@ -126,7 +126,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         if (this.item == null) return;
 
-        SpawnItem.Spawn(item, this.playerTransform.position, 0.3f, -1.2f, 1.5f);
+        SpawnItem.Spawn(item,playerTransform.position);
         RemoveItem();
     }
 

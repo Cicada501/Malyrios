@@ -6,6 +6,12 @@ namespace Malyrios.Core
 {
     public interface  ISlot
     {
+        public enum slotType
+        {
+            InventorySlot,
+            EquipmentSlot,
+            PuzzleSlot
+        }
         BaseItem Item { get; set; }
         Stack<BaseItem> ItemStack { get; set; }
 
@@ -14,6 +20,8 @@ namespace Malyrios.Core
         Transform GetTransform();
         
         void SwapItems(ISlot otherSlot);
+        void UseItem();
+        void DropItem();
     }
 }
 

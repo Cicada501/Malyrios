@@ -194,26 +194,26 @@ public class Enemy : MonoBehaviour
         int dropchoice = Random.Range(0, 100);
         if (dropchoice > dropItemChance0 && dropchoice <= dropItemChance1 + dropItemChance0)
         {
-            SpawnItem.Spawn(dropItem, new Vector2(transform.position.x - 0.1f, transform.position.y));
+            SpawnItem.Spawn(dropItem,transform.position);
         }
         else if (dropchoice > dropItemChance1 + dropItemChance0 &&
                  dropchoice <= dropItemChance2 + dropItemChance1 + dropItemChance0)
         {
-            SpawnItem.Spawn(dropItem, transform.position);
-            SpawnItem.Spawn(dropItem, new Vector2(transform.position.x - 0.1f, transform.position.y));
+            SpawnItem.Spawn(dropItem,transform.position);
+            SpawnItem.Spawn(dropItem,transform.position);
         }
 
         //Item Rare
         dropchoice = Random.Range(0, 100);
         if (dropchoice > dropRareItemChance0 && dropchoice <= dropRareItemChance1 + dropRareItemChance0)
         {
-            SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
+            SpawnItem.Spawn(dropRareItem,transform.position);
         }
         else if (dropchoice > dropRareItemChance1 + dropRareItemChance0 &&
                  dropchoice <= dropRareItemChance2 + dropRareItemChance1 + dropRareItemChance0)
         {
-            SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.2f, transform.position.y));
-            SpawnItem.Spawn(dropRareItem, new Vector2(transform.position.x + 0.1f, transform.position.y));
+            SpawnItem.Spawn(dropRareItem,transform.position);
+            SpawnItem.Spawn(dropRareItem,transform.position);
         }
 
         #endregion

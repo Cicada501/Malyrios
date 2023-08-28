@@ -104,6 +104,16 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         SlotHelper.SwapItems(this, otherSlot);
     }
+
+    public void UseItem()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void DropItem()
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

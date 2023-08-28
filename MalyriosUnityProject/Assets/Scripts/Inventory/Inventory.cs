@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Malyrios.Core;
 using Malyrios.Items;
 using SaveAndLoad;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class Inventory : MonoBehaviour
     public bool isEmpty = true;
     [SerializeField] private Button useButton;
     public BaseItem activeItem = null;
-    public InventorySlot activeSlot = null;
+    public ISlot activeSlot;
     #region new inventory
 
     public List<BaseItem> Items = new List<BaseItem>();
@@ -32,7 +33,7 @@ public class Inventory : MonoBehaviour
 
     public event Action<BaseItem> OnItemAdded;
     public event Action<BaseItem> OnItemRemoved;
-    public event Action<BaseItem> OnActiveItemSet;
+    public event Action<BaseItem, ISlot.slotType> OnActiveItemSet;
 
     private BaseWeapon testWeapon;
 
@@ -114,9 +115,9 @@ public class Inventory : MonoBehaviour
         return occ;
     }
     
-    public void SetActiveItem(BaseItem item)
+    public void SetActiveItem(BaseItem item, ISlot.slotType slotType)
     {
-        OnActiveItemSet?.Invoke(item);
+        OnActiveItemSet?.Invoke(item, slotType);
         
         if (activeItem == null || activeItem != item)
         {

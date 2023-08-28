@@ -179,9 +179,9 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             SwapItems(originSlot);
             TriggerSlotEvent();
         }
+        // If this equipment slot has no item
         else
-        {
-            // If this equipment slot has no item
+        { 
             this.child.GetComponent<Image>().sprite =
                 eventData.pointerDrag.GetComponent<Image>().sprite;
         
@@ -203,14 +203,27 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(Item);
+        Inventory.Instance.SetActiveItem(Item, ISlot.slotType.EquipmentSlot);
+        Inventory.Instance.activeSlot = this;
     }
     
     public void SwapItems(ISlot otherSlot)
     {
         SlotHelper.SwapItems(this, otherSlot);
     }
-    
+
+    public void UseItem()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void DropItem()
+    {
+        SpawnItem.Spawn(Item,ReferencesManager.Instance.player.transform.position);
+        RemoveItem();
+        
+    }
+
     public Transform GetTransform()
     {
         return this.transform;

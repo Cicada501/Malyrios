@@ -1,13 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
+
 public class ActiveItemWindow : MonoBehaviour
 {
+
+
     public static ActiveItemWindow Instance;
+
 
     private void Awake()
     {
@@ -30,7 +37,7 @@ public class ActiveItemWindow : MonoBehaviour
         Inventory.Instance.OnActiveItemSet += ChangeActiveItem;
     }
 
-    void ChangeActiveItem(BaseItem item)
+    void ChangeActiveItem(BaseItem item, ISlot.slotType slotType)
     {
         if (Inventory.Instance.activeItem == null)
         {
@@ -75,11 +82,13 @@ public class ActiveItemWindow : MonoBehaviour
     
     public void UseButtonPressed()
     {
+        //check if Slot is EquipmentSlot / PuzzleSlot
         Inventory.Instance.activeSlot.UseItem();
     }
 
     public void RemoveButtonPressed()
     {
+        //check if Slot is EquipmentSlot / PuzzleSlot
         Inventory.Instance.activeSlot.DropItem();
     }
     
