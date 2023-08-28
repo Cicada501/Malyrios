@@ -32,17 +32,32 @@ namespace Malyrios.Core
     {
         public static void SwapItems(ISlot slot1, ISlot slot2)
         {
-            // Speichere temporär die Items aus den Slots
             BaseItem tempItem1 = slot1.Item;
             Stack<BaseItem> tempStack1 = new Stack<BaseItem>(slot1.ItemStack.ToArray());
 
-            // Setze die Items im ersten Slot auf die Werte des zweiten Slots
             slot1.SetItem(slot2.Item);
             slot1.ItemStack = new Stack<BaseItem>(slot2.ItemStack.ToArray());
-
-            // Setze die Items im zweiten Slot auf die temporär gespeicherten Werte des ersten Slots
+            
             slot2.SetItem(tempItem1);
             slot2.ItemStack = tempStack1;
+            
+            if (slot1 is InventorySlot)
+            {
+                
+                Inventory.Instance.Items.Remove(slot2.Item);
+                Inventory.Instance.ItemIDs.Remove(slot2.Item.ItemID);
+                
+                Inventory.Instance.Items.Add(slot1.Item);
+                Inventory.Instance.ItemIDs.Add(slot1.Item.ItemID);
+            }
+            if (slot2 is InventorySlot)
+            {
+                Inventory.Instance.Items.Remove(slot1.Item);
+                Inventory.Instance.ItemIDs.Remove(slot1.Item.ItemID);
+                
+                Inventory.Instance.Items.Add(slot2.Item);
+                Inventory.Instance.ItemIDs.Add(slot2.Item.ItemID);
+            }
         }
     }
 }

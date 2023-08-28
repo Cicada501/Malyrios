@@ -118,9 +118,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     /// </summary>
     public void RemoveItem()
     {
-        Inventory.Instance.Items.Remove(this.itemStack.Peek());
+        //Inventory.Instance.Items.Remove(this.itemStack.Peek());
         this.itemStack.Pop();
-        Inventory.Instance.ItemIDs.Remove(item.ItemID);
+        //Inventory.Instance.ItemIDs.Remove(item.ItemID);
         if (this.itemStack.Count <= 0)
         {
             Image img = dragNDrop.GetComponent<Image>();
@@ -136,7 +136,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (this.item == null) return;
 
         SpawnItem.Spawn(item,playerTransform.position);
-        RemoveItem();
+        Inventory.Instance.Remove(Item);
     }
 
     public void UseItem()
@@ -155,7 +155,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 return; //add debug later to tell player, that he has already a weapon equipped
             default:
                 item.ExecuteUsageEffect();
-                RemoveItem();
                 break;
         }
     }

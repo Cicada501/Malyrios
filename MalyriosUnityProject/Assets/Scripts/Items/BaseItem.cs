@@ -47,6 +47,7 @@ namespace Malyrios.Items
 
         public virtual void ExecuteUsageEffect()
         {
+            Inventory.Instance.Remove(this);
             PlayerHealth health = ReferencesManager.Instance.player.GetComponent<PlayerHealth>();
             BaseAttributes baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
             if (this.itemName == "Red Flower")

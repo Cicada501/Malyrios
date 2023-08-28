@@ -65,7 +65,6 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(BaseItem item)
     {
-        print("Adding an item");
         ItemIDs.Add(item.ItemID);
         Items.Add(item);
         OnItemAdded?.Invoke(item);
@@ -74,9 +73,7 @@ public class Inventory : MonoBehaviour
     
     public void Remove(BaseItem item)
     {
-        print($"try to remove: {item.ItemName}");
         ItemIDs.Remove(item.ItemID);
-        //Debug.Log("Item removed"+ItemIDs.Count);
         Items.Remove(item);
         OnItemRemoved?.Invoke(item);
         if (ItemIDs.Count == 0)
@@ -113,7 +110,6 @@ public class Inventory : MonoBehaviour
     {
         
         var occ = Instance.Items.Count(n => n == item);
-        //print($"I found {occ} {item.ItemName}s ");
         return occ;
     }
     
