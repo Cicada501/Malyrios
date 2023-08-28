@@ -112,6 +112,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = weapon.Icon;
         Item = weapon;
+        ItemStack.Push(weapon);
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
     }
     
@@ -119,6 +120,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = armor.Icon;
         Item = armor;
+        ItemStack.Push(armor);
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
     }
     
@@ -185,9 +187,12 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         // If the current equipment slot has an item
         if (Item != null)
         {
+            print($"Inv Slot stack length:{originSlot.ItemStack.Count}, Equipmentslot itemStack length: {this.itemStack.Count}");
             // Swap the items
             SwapItems(originSlot);
+            print($"Inv Slot stack length:{originSlot.ItemStack.Count}, Equipmentslot itemStack length: {this.itemStack.Count}");
             TriggerSlotEvent();
+            
         }
         // If this equipment slot has no item
         else
