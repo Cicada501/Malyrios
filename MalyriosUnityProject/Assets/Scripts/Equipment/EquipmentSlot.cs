@@ -41,9 +41,17 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     
     public void SetItem(BaseItem item)
     {
-        if (item.ItemType == BaseItem.ItemTypes.Weapon)
+        switch (item.ItemType)
         {
-            AddWeapon(item as BaseWeapon);
+            case BaseItem.ItemTypes.Weapon:
+                AddWeapon(item as BaseWeapon);
+                break;
+            case BaseItem.ItemTypes.Head:
+            case BaseItem.ItemTypes.Body:
+            case BaseItem.ItemTypes.Hand:
+            case BaseItem.ItemTypes.Feet:
+                AddArmor(item as BaseArmor);
+                break;
         }
     }
 
