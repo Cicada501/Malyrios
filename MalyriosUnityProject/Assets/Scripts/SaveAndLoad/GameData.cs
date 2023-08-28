@@ -10,7 +10,6 @@ public class GameData : MonoBehaviour
     public Vector3 LoadedPlayerPosition { get; private set; }
     public InventoryData LoadedInventoryData { get; private set; }
     public string LoadedLevelName { get; private set; }
-    public DecisionData LoadedDecisionData { get; private set; }
     public int LoadedEquippedWeaponID { get; private set; }
     public List<NpcData> LoadedNpcData { get; private set; }
     public List<Quest> LoadedQuestLog { get; private set; }
@@ -33,7 +32,7 @@ public class GameData : MonoBehaviour
         playerAttack = ReferencesManager.Instance.playerAttack;
     }
 
-    public void SaveData()
+    private void SaveData()
     {
         PlayerPrefs.SetString("armor",JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor()));
         print($"Saving: {JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor())}");
@@ -56,7 +55,8 @@ public class GameData : MonoBehaviour
     public void LoadData()
     {
         //PlayerPrefs.DeleteAll();
-        // Load level name
+        
+        //Level
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
         {
             LoadedLevelName = PlayerPrefs.GetString("currentLevelName");
@@ -67,7 +67,7 @@ public class GameData : MonoBehaviour
         }
 
 
-        // Load player position
+        //Player position
         if (PlayerPrefs.HasKey("currentPlayerPosition") && PlayerPrefs.GetString("currentLevelName") != "")
         {
             LoadedPlayerPosition = JsonUtility.FromJson<Vector3>(PlayerPrefs.GetString("currentPlayerPosition"));
@@ -77,7 +77,7 @@ public class GameData : MonoBehaviour
             LoadedPlayerPosition = new Vector3(0f, 0.5f,0f);
         }
 
-        // Load inventory data
+        //Inventory data (Item List)
         if (PlayerPrefs.HasKey("inventoryData")&&PlayerPrefs.GetString("inventoryData")!="")
         {
             LoadedInventoryData = JsonUtility.FromJson<InventoryData>(PlayerPrefs.GetString("inventoryData"));
@@ -86,27 +86,11 @@ public class GameData : MonoBehaviour
         {
             LoadedInventoryData = new InventoryData(Inventory.Instance);
         }
-
-        if (PlayerPrefs.HasKey("decisionData")&&PlayerPrefs.GetString("decisionData")!="")
-        {
-            LoadedDecisionData = JsonUtility.FromJson<DecisionData>(PlayerPrefs.GetString("decisionData"));
-        }
-        else
-        {
-            LoadedDecisionData = new DecisionData();
-        }
         
-        if (PlayerPrefs.HasKey("EquippedWeaponID"))
-        {
-            LoadedEquippedWeaponID = PlayerPrefs.GetInt("EquippedWeaponID");
-        }
-        else
-        {
-            LoadedEquippedWeaponID = 0;
-
-        }
+        //Equipped Weapon
+        LoadedEquippedWeaponID = PlayerPrefs.HasKey("EquippedWeaponID") ? PlayerPrefs.GetInt("EquippedWeaponID") : 0;
         
-
+        //NPC States
         if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")
         {
             var loadedNpcData = JsonUtility.FromJson<NPCManager.NpcDataList>(PlayerPrefs.GetString("currentNpcStates"));
@@ -117,6 +101,7 @@ public class GameData : MonoBehaviour
             LoadedNpcData = new List<NpcData>();
         }
         
+        //Questlog Entries
         if (PlayerPrefs.HasKey("QuestLog") && PlayerPrefs.GetString("QuestLog") != "")
         {
             var loadedQuestLog = JsonUtility.FromJson<QuestList>(PlayerPrefs.GetString("QuestLog"));
@@ -127,6 +112,7 @@ public class GameData : MonoBehaviour
             LoadedQuestLog = new List<Quest>();
         }
         
+        //Items in Puzzle Stations
         if (PlayerPrefs.HasKey("puzzleStations") && PlayerPrefs.GetString("puzzleStations") != "")
         {
             var loadedPuzzleStations = JsonUtility.FromJson<PuzzleStationDataList>(PlayerPrefs.GetString("puzzleStations"));
@@ -137,6 +123,7 @@ public class GameData : MonoBehaviour
             LoadedPuzzleStations = new List<PuzzleStationData>();
         }
 
+        //Equipped Armor
         if (PlayerPrefs.HasKey("armor") && PlayerPrefs.GetString("armor") != "")
         {
             LoadedArmorData = JsonUtility.FromJson<ArmorData>(PlayerPrefs.GetString("armor"));
