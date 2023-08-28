@@ -67,7 +67,9 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             case "FeetArmorSlot":
                 OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Feet);
                 break;
+                
         }
+        Item = null;
     }
    
     public void LoadWeapon(int id)
@@ -214,7 +216,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void UseItem()
     {
-        throw new NotImplementedException();
+        Inventory.Instance.AddItem(Item);
+        RemoveItem();
     }
 
     public void DropItem()

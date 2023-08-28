@@ -83,6 +83,7 @@ public class ActiveItemWindow : MonoBehaviour
             if (item.IsUsable)
             {
                 useButton.gameObject.SetActive(true);
+                useButton.GetComponentInChildren<TextMeshProUGUI>().text = slotType == ISlot.slotType.EquipmentSlot ? "unequip" : "Use";
             }
             else
             {
@@ -105,12 +106,14 @@ public class ActiveItemWindow : MonoBehaviour
     {
 
         activeSlot.UseItem();
+        HideActiveItemInfo();
     }
 
     public void RemoveButtonPressed()
     {
 
         activeSlot.DropItem();
+        HideActiveItemInfo();
     }
     
 }
