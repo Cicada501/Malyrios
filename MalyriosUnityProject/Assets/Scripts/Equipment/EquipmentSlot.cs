@@ -200,6 +200,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         
             Item = originSlot.Item;
             originSlot.RemoveItem();
+            Inventory.Instance.Items.Remove(Item);
+            Inventory.Instance.ItemIDs.Remove(Item.ItemID);
         
             // enable the image.
             transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;

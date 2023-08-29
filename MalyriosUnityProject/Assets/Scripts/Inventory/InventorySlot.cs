@@ -178,8 +178,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         }
         else
         {
-            // If this inventory slot has no item, use your existing logic
+            // If this inventory slot has no item
             SetItem(originSlot.Item);
+            Inventory.Instance.ItemIDs.Add(originSlot.Item.ItemID);
+            Inventory.Instance.Items.Add(originSlot.Item);
 
             if (originSlot.ItemStack != null && originSlot.ItemStack.Count > 0)
             {
