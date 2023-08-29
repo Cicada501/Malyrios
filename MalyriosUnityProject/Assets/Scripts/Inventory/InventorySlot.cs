@@ -114,7 +114,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     }
 
     /// <summary>
-    /// This method removes the Item in the slot. If its a stack removes one, if its a single item, removes it completely
+    /// This method removes the Item in the slot. If its a stack removes one, if its a single item, removes it completely.
+    /// Does not update Item List of Inventory, since it is called automatically when an item is removed from inventory.
+    /// If this method is not used from Inventory.Remove(), ItemIDs and Items List needs to be updated manually
     /// </summary>
     public void RemoveItem()
     {
@@ -136,7 +138,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (this.item == null) return;
 
         SpawnItem.Spawn(item,playerTransform.position);
-        Inventory.Instance.Remove(Item);
+        Inventory.Instance.ItemIDs.Remove(Item.ItemID);
+        Inventory.Instance.Items.Remove(Item);
+        RemoveItem();
     }
 
     public void UseItem()
