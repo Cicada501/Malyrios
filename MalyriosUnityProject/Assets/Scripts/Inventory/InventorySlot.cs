@@ -116,10 +116,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     }
 
     /// <summary>
-    /// This method removes the Item in the slot. If its a stack removes one, if its a single item, removes it completely.
-    /// Does not update Item List of Inventory, since it is called automatically when an item is removed from inventory.
-    /// If this method is not used from Inventory.Remove(), ItemIDs and Items List needs to be updated manually
-    /// </summary>
+    /// This method removes the Item in the slot. 
+    /// Also Removes the item from the inventory item lists. This Method is Called if OnItemRemoved is invoked to update the slot correctly
+    ///  </summary>
     public void RemoveItem()
     {
         Inventory.Instance.Items.Remove(this.itemStack.Peek());
@@ -153,6 +152,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         {
             //check if item is weapon/armor, if so only execute usage effect, if no weapon/armor is equipped yet
             case BaseItem.ItemTypes.Weapon when weaponSlot.Item:
+                weaponSlot.SwapItems(this);
+                break;
             case BaseItem.ItemTypes.Body when bodyArmorSlot.Item:
                 bodyArmorSlot.SwapItems(this);
                 break;
@@ -176,7 +177,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         DragNDrop dragNDrop = eventData.pointerDrag.GetComponent<DragNDrop>();
         ISlot originSlot = dragNDrop.MySlot;
 
-        if (originSlot.Item == null) return; // If the origin slot has no item, do nothing
+        if (originSlot.Item == null || ReferenceEquals(originSlot, this)) return; // If the origin slot has no item, do nothing
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
