@@ -38,7 +38,20 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
     }
-    
+
+    private void Update()
+    {
+        if (itemStack.Count == 0)
+        {
+            itemStack.Push(Item);
+        }
+
+        if (itemStack.Count > 1)
+        {
+            itemStack.Pop();
+        }
+    }
+
     public void SetItem(BaseItem item)
     {
         switch (item.ItemType)
