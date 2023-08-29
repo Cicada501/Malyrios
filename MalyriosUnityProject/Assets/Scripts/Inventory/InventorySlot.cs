@@ -145,18 +145,26 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void UseItem()
     {
+        print($"Using {item.ItemName}");
         if (this.item == null) return;
         if (!item.IsUsable) return;
 
         switch (item.ItemType)
         {
-            //check if item is weapon, if so only execute usage effect, if no weapon is equipped yet
+            //check if item is weapon/armor, if so only execute usage effect, if no weapon/armor is equipped yet
             case BaseItem.ItemTypes.Weapon when weaponSlot.Item:
             case BaseItem.ItemTypes.Body when bodyArmorSlot.Item:
+                bodyArmorSlot.SwapItems(this);
+                break;
             case BaseItem.ItemTypes.Head when headArmorSlot.Item:
+                headArmorSlot.SwapItems(this);
+                break;
             case BaseItem.ItemTypes.Hand when handArmorSlot.Item:
+                handArmorSlot.SwapItems(this);
+                break;
             case BaseItem.ItemTypes.Feet when feetArmorSlot.Item:
-                return; //add debug later to tell player, that he has already a weapon equipped
+                feetArmorSlot.SwapItems(this);
+                break;
             default:
                 item.ExecuteUsageEffect();
                 break;

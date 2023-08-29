@@ -27,6 +27,7 @@ public class BaseArmor : BaseItem
 
     public override void ExecuteUsageEffect()
     {
+        ActiveItemWindow.Instance.activeSlot.RemoveItem();
         var slots = GameObject.FindObjectsOfType<EquipmentSlot>();
         foreach (var slot in slots)
         {
