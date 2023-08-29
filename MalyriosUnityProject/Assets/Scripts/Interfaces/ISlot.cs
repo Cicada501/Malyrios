@@ -34,14 +34,16 @@ namespace Malyrios.Core
         {
             BaseItem tempItem1 = slot1.Item;
             Stack<BaseItem> tempStack1 = new Stack<BaseItem>(slot1.ItemStack.ToArray());
-
+            
+            slot1.RemoveItem();
             slot1.SetItem(slot2.Item);
             slot1.ItemStack = new Stack<BaseItem>(slot2.ItemStack.ToArray());
             
+            slot2.RemoveItem();
             slot2.SetItem(tempItem1);
             slot2.ItemStack = tempStack1;
             
-            if (slot1 is InventorySlot)
+            /*if (slot1 is InventorySlot)
             {
                 
                 Inventory.Instance.Items.Remove(slot2.Item);
@@ -57,7 +59,7 @@ namespace Malyrios.Core
                 
                 Inventory.Instance.Items.Add(slot2.Item);
                 Inventory.Instance.ItemIDs.Add(slot2.Item.ItemID);
-            }
+            }*/
         }
     }
 }

@@ -65,16 +65,12 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(BaseItem item)
     {
-        ItemIDs.Add(item.ItemID);
-        Items.Add(item);
         OnItemAdded?.Invoke(item);
         isEmpty = false;
     }
     
     public void Remove(BaseItem item)
     {
-        ItemIDs.Remove(item.ItemID);
-        Items.Remove(item);
         OnItemRemoved?.Invoke(item);
         if (ItemIDs.Count == 0)
         {

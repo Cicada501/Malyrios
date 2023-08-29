@@ -63,6 +63,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         Image img = dragNDrop.GetComponent<Image>();
         img.enabled = true;
         img.sprite = baseItem.Icon;
+        Inventory.Instance.ItemIDs.Add(baseItem.ItemID);
+        Inventory.Instance.Items.Add(baseItem);
 
         dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
         
@@ -120,9 +122,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     /// </summary>
     public void RemoveItem()
     {
-        //Inventory.Instance.Items.Remove(this.itemStack.Peek());
+        Inventory.Instance.Items.Remove(this.itemStack.Peek());
         this.itemStack.Pop();
-        //Inventory.Instance.ItemIDs.Remove(item.ItemID);
+        Inventory.Instance.ItemIDs.Remove(item.ItemID);
         if (this.itemStack.Count <= 0)
         {
             Image img = dragNDrop.GetComponent<Image>();
@@ -138,8 +140,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         if (this.item == null) return;
 
         SpawnItem.Spawn(item,playerTransform.position);
-        Inventory.Instance.ItemIDs.Remove(Item.ItemID);
-        Inventory.Instance.Items.Remove(Item);
         RemoveItem();
     }
 
@@ -180,8 +180,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         {
             // If this inventory slot has no item
             SetItem(originSlot.Item);
-            Inventory.Instance.ItemIDs.Add(originSlot.Item.ItemID);
-            Inventory.Instance.Items.Add(originSlot.Item);
 
             if (originSlot.ItemStack != null && originSlot.ItemStack.Count > 0)
             {
