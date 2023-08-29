@@ -14,7 +14,6 @@ namespace Malyrios.Core
         }
 
         BaseItem Item { get; set; }
-        Stack<BaseItem> ItemStack { get; set; }
 
         void SetItem(BaseItem item);
         void RemoveItem();
@@ -33,16 +32,13 @@ namespace Malyrios.Core
         public static void SwapItems(ISlot slot1, ISlot slot2)
         {
             BaseItem tempItem1 = slot1.Item;
-            Stack<BaseItem> tempStack1 = new Stack<BaseItem>(slot1.ItemStack.ToArray());
-            
+
             slot1.RemoveItem();
             slot1.SetItem(slot2.Item);
-            slot1.ItemStack = new Stack<BaseItem>(slot2.ItemStack.ToArray());
-            
+
             slot2.RemoveItem();
             slot2.SetItem(tempItem1);
-            slot2.ItemStack = tempStack1;
-            
+
             /*if (slot1 is InventorySlot)
             {
                 

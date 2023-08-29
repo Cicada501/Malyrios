@@ -10,7 +10,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 {
     [SerializeField] Text amountText = null;
 
-    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
     private BaseItem item;
     private Transform playerTransform;
     private DragNDrop dragNDrop;
@@ -25,12 +24,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         get => this.item;
         set => this.item = value;
-    }
-
-    public Stack<BaseItem> ItemStack
-    {
-        get => this.itemStack;
-        set => this.itemStack = value;
     }
 
     public void Start()
@@ -67,39 +60,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         Inventory.Instance.Items.Add(baseItem);
 
         dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
-        
-        this.itemStack.Push(baseItem);
-        
     }
-
-    private void Update()
-    {
-        amountText.text = itemStack.Count.ToString();
-        amountText.gameObject.SetActive(itemStack.Count > 1);
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="item"></param>
-    /// <returns></returns>
-    public bool AddItemToStack(BaseItem item)
-    {
-        if (this.itemStack.Count < this.item.MaxStackAmount)
-        {
-            this.itemStack.Push(item);
-            return true;
-        }
-        else
-        {
-            //Add Case here, where new stack is created
-        }
-
-        return false; 
-    }
-    
-
 
 
     public void OnTap()
@@ -107,7 +68,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         ActiveItemWindow.Instance.SetActiveItem(this.item, ISlot.slotType.InventorySlot);
         ActiveItemWindow.Instance.activeSlot = this;
     }
-
 
 
     public Transform GetTransform()
@@ -121,24 +81,19 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     ///  </summary>
     public void RemoveItem()
     {
-        Inventory.Instance.Items.Remove(this.itemStack.Peek());
-        this.itemStack.Pop();
+        Inventory.Instance.Items.Remove(Item);
         Inventory.Instance.ItemIDs.Remove(item.ItemID);
-        if (this.itemStack.Count <= 0)
-        {
-            Image img = dragNDrop.GetComponent<Image>();
-            img.enabled = false;
-            this.item = null;
-            ActiveItemWindow.Instance.HideActiveItemInfo();
-        }
-
+        Image img = dragNDrop.GetComponent<Image>();
+        img.enabled = false;
+        this.item = null;
+        ActiveItemWindow.Instance.HideActiveItemInfo();
     }
 
     public void DropItem()
     {
         if (this.item == null) return;
 
-        SpawnItem.Spawn(item,playerTransform.position);
+        SpawnItem.Spawn(item, playerTransform.position);
         RemoveItem();
     }
 
@@ -177,7 +132,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         DragNDrop dragNDrop = eventData.pointerDrag.GetComponent<DragNDrop>();
         ISlot originSlot = dragNDrop.MySlot;
 
-        if (originSlot.Item == null || ReferenceEquals(originSlot, this)) return; // If the origin slot has no item, do nothing
+        if (originSlot.Item == null || ReferenceEquals(originSlot, this))
+            return; // If the origin slot has no item, do nothing
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
@@ -190,17 +146,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             // If this inventory slot has no item
             SetItem(originSlot.Item);
 
-            if (originSlot.ItemStack != null && originSlot.ItemStack.Count > 0)
-            {
-                for (int i = 0; i < originSlot.ItemStack.Count - 1; i++)
-                {
-                    AddItemToStack(originSlot.ItemStack.Peek());
-                }
-            }
 
             originSlot.RemoveItem();
             originSlot.Item = null;
-            originSlot.ItemStack?.Clear();
 
             eventData.pointerDrag.GetComponent<Image>().enabled = false;
             originSlot.Item = null;

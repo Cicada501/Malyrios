@@ -24,12 +24,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public BaseItem Item { get; set; }
     
-    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
-    public Stack<BaseItem> ItemStack
-    {
-        get => this.itemStack;
-        set => this.itemStack = value;
-    }
+
     private InventoryUI inventoryUI;
     
     private void Start()
@@ -37,19 +32,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         child = transform.GetChild(0).gameObject;
         gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
         child.GetComponent<DragNDrop>().MySlot = this;
-    }
-
-    private void Update()
-    {
-        if (itemStack.Count == 0)
-        {
-            itemStack.Push(Item);
-        }
-
-        if (itemStack.Count > 1)
-        {
-            itemStack.Pop();
-        }
     }
 
     public void SetItem(BaseItem item)
@@ -125,7 +107,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = weapon.Icon;
         Item = weapon;
-        ItemStack.Push(weapon);
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
     }
     
@@ -133,7 +114,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = armor.Icon;
         Item = armor;
-        ItemStack.Push(armor);
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
     }
     

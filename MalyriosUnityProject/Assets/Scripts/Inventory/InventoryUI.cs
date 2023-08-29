@@ -62,21 +62,7 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateUiNew(BaseItem item)
     {
-        InventorySlot tryToStack =
-            slots.FirstOrDefault(x => x.Item != null && x.Item.ItemName == item.ItemName && x.Item.IsStackable);
-        if (tryToStack != null)
-        {
-            if (!tryToStack.AddItemToStack(item))
-            {
-                AddNewItem(item);
-            }
-        }
-        else
-        {
             AddNewItem(item);
-        }
-        
-        
     }
 
     private void AddNewItem(BaseItem item)
