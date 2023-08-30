@@ -48,7 +48,7 @@ namespace Malyrios.Items
             BaseAttributes baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
             if (this.itemName == "Red Flower")
             {
-                health.Heal(30);
+                health.Heal(150);
             }
             else if (this.itemName == "Schattenrose")
             {

@@ -175,7 +175,7 @@ MonoBehaviour:
   damagePopupText: {fileID: 7377629519318415158, guid: 955ee09356aac2e45b696dfe9154f5f9,
     type: 3}
   facingRight: 1
-  maxHealth: 100
+  maxHealth: 30
   enemyType: 5
   canMove: 0
 --- !u!70 &6543549353914867273
@@ -191,8 +191,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07349944, y: -0.03255844}
-  m_Size: {x: 0.097201824, y: 0.30138397}
+  m_Offset: {x: -0.02917184, y: -0.007349789}
+  m_Size: {x: 0.0903423, y: 0.25096667}
   m_Direction: 0
 --- !u!50 &6543549353914867278
 Rigidbody2D:
@@ -227,12 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e2763d48a851b4fbd491d5c74e51ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSlopeAngle: 45
   climbingGravityScale: 4
   fallingGravityScale: 4
-  defaultGravityScale: 4
   distanceThreshold: 0.5
-  printDist: 0
 --- !u!61 &2784073068375728789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -249,7 +246,7 @@ BoxCollider2D:
   m_Offset: {x: 0.03, y: -0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.6, y: 0.4}
     oldSize: {x: 0.57, y: 0.38}
     newSize: {x: 0.57, y: 0.38}
     adaptiveTilingThreshold: 0.5
@@ -283,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6543549354464219874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.051, z: 0}
+  m_LocalPosition: {x: 0.087, y: 0.011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
