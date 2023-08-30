@@ -39,23 +39,6 @@ namespace Malyrios.Core
             slot2.RemoveItem();
             slot2.SetItem(tempItem1);
 
-            /*if (slot1 is InventorySlot)
-            {
-                
-                Inventory.Instance.Items.Remove(slot2.Item);
-                Inventory.Instance.ItemIDs.Remove(slot2.Item.ItemID);
-                
-                Inventory.Instance.Items.Add(slot1.Item);
-                Inventory.Instance.ItemIDs.Add(slot1.Item.ItemID);
-            }
-            if (slot2 is InventorySlot)
-            {
-                Inventory.Instance.Items.Remove(slot1.Item);
-                Inventory.Instance.ItemIDs.Remove(slot1.Item.ItemID);
-                
-                Inventory.Instance.Items.Add(slot2.Item);
-                Inventory.Instance.ItemIDs.Add(slot2.Item.ItemID);
-            }*/
         }
     }
 }

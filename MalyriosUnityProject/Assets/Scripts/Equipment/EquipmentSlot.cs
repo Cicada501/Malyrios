@@ -39,7 +39,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         switch (item.ItemType)
         {
             case BaseItem.ItemTypes.Weapon:
-                AddWeapon(item as BaseWeapon);
+                InvokeChangeWeapon(item as BaseWeapon);
                 break;
             case BaseItem.ItemTypes.Head:
             case BaseItem.ItemTypes.Body:
