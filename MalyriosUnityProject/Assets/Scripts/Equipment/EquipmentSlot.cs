@@ -11,10 +11,9 @@ using UnityEngine.UI;
 public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 {
     #region Events
-
-    public static event Action<BaseItem> OnItemSlotChanged;
+    
     public static event Action<BaseWeapon> OnWeaponChanged;
-    public static event Action<BaseArmor> OnArmorChanged;
+    public static event Action<BaseArmor, BaseItem.ItemTypes> OnArmorChanged;
 
     #endregion
 
@@ -25,63 +24,117 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public BaseItem Item { get; set; }
     
-    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
-    public Stack<BaseItem> ItemStack
-    {
-        get => this.itemStack;
-        set => this.itemStack = value;
-    }
+
     private InventoryUI inventoryUI;
-    private PlayerAttack playerAttack;
     
+    private void Start()
+    {
+        child = transform.GetChild(0).gameObject;
+        gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
+        child.GetComponent<DragNDrop>().MySlot = this;
+    }
 
     public void SetItem(BaseItem item)
     {
-        if (item.ItemType == BaseItem.ItemTypes.Weapon)
+        switch (item.ItemType)
         {
-            AddWeapon(item as BaseWeapon);
+            case BaseItem.ItemTypes.Weapon:
+                InvokeChangeWeapon(item as BaseWeapon);
+                break;
+            case BaseItem.ItemTypes.Head:
+            case BaseItem.ItemTypes.Body:
+            case BaseItem.ItemTypes.Hand:
+            case BaseItem.ItemTypes.Feet:
+                InvokeChangeArmor(item as BaseArmor);
+                break;
         }
     }
 
     public void RemoveItem()
     {
         child.GetComponent<Image>().enabled = false;
-        OnWeaponChanged?.Invoke(null);  //calls onWeaponChanged with null
+        switch (this.gameObject.name)
+        {
+            case "WeaponSlot":
+                OnWeaponChanged?.Invoke(null);
+                break;
+            case "HeadArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Head);
+                break;
+            case "BodyArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Body);
+                break;
+            case "HandArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Hand);
+                break;
+            case "FeetArmorSlot":
+                OnArmorChanged?.Invoke(null, BaseItem.ItemTypes.Feet);
+                break;
+                
+        }
+        Item = null;
     }
-
-    public Transform GetTransform()
-    {
-        return this.transform;
-    }
-
-    private void Start()
-    {
-        child = transform.GetChild(0).gameObject;
-        gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
-        child.GetComponent<DragNDrop>().MySlot = this;
-        playerAttack = ReferencesManager.Instance.playerAttack;
-        //LoadWeapon();
-        //inventoryUI = GameObject.Find("Canvas UI").GetComponent<InventoryUI>();
-        //inventoryUI.changeInventoryOpened();
-    }
-
    
-
     public void LoadWeapon(int id)
     {
-        if (this.gameObject.name == "WeaponSlot")
+        if (this.gameObject.name == "WeaponSlot") AddWeapon(ItemDatabase.GetWeapon(id));
+    }
+
+    public void LoadArmor(int id)
+    {
+        var armor = ItemDatabase.GetArmor(id);
+        switch (this.gameObject.name)
         {
-            AddWeapon(ItemDatabase.GetWeapon(id));
+            case "HeadArmorSlot":
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Head);
+                break;
+            case "BodyArmorSlot":
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Body);
+                break;
+            case "HandArmorSlot":
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Hand);
+                break;
+            case "FeetArmorSlot":
+                AddArmor(armor);
+                OnArmorChanged?.Invoke(armor, BaseItem.ItemTypes.Feet);
+                break;
         }
     }
-    public void AddWeapon(BaseWeapon weapon)
+    void AddWeapon(BaseWeapon weapon)
     {
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = weapon.Icon;
         Item = weapon;
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-        //TriggerSlotEvent();
     }
+    
+    void AddArmor(BaseArmor armor)
+    {
+        transform.GetChild(0).gameObject.GetComponent<Image>().sprite = armor.Icon;
+        Item = armor;
+        transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+    }
+    
+    public void InvokeChangeWeapon(BaseWeapon weapon)
+    {
+        if (this.gameObject.name == "WeaponSlot" && !Item )
+        {
+            AddWeapon(weapon);
+        }
 
+        OnWeaponChanged?.Invoke(weapon);
+    }
+    
+    //Used if "Use" Button of active item is pressed to change Armor
+    public void InvokeChangeArmor(BaseArmor armor)
+    {
+        AddArmor(armor);
+        OnArmorChanged?.Invoke(armor, armor.ItemType);
+    }
+    
+    //Used after Drag and Drop to Invoke Event of equipment change
     private void TriggerSlotEvent()
     {
         switch (this.itemType)
@@ -90,27 +143,26 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 OnWeaponChanged?.Invoke(Item as BaseWeapon);
                 break;
             case BaseItem.ItemTypes.Head:
-                
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Body:
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Feet:
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Hand:
+                OnArmorChanged?.Invoke(Item as BaseArmor, itemType);
                 break;
             case BaseItem.ItemTypes.Plant:
                 break;
             case BaseItem.ItemTypes.Other:
                 break;
+            case BaseItem.ItemTypes.Rune:
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
-    }
-
-    public void InvokeChangeWeapon(BaseWeapon weapon)
-    {
-        AddWeapon(weapon);
-        OnWeaponChanged?.Invoke(weapon);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -131,16 +183,17 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             // Swap the items
             SwapItems(originSlot);
             TriggerSlotEvent();
+            
         }
+        // If this equipment slot has no item
         else
-        {
-            // If this equipment slot has no item, use your existing logic
+        { 
             this.child.GetComponent<Image>().sprite =
                 eventData.pointerDrag.GetComponent<Image>().sprite;
         
             Item = originSlot.Item;
             originSlot.RemoveItem();
-        
+
             // enable the image.
             transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
 
@@ -154,20 +207,33 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         }
     }
 
-
-    
-
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(Item);
+        ActiveItemWindow.Instance.SetActiveItem(Item, ISlot.slotType.EquipmentSlot);
+        ActiveItemWindow.Instance.activeSlot = this;
     }
     
     public void SwapItems(ISlot otherSlot)
     {
         SlotHelper.SwapItems(this, otherSlot);
     }
-}
 
-public class BaseArmor
-{
+    public void UseItem()
+    {
+        Inventory.Instance.AddItem(Item);
+        RemoveItem();
+    }
+
+    public void DropItem()
+    {
+        SpawnItem.Spawn(Item,ReferencesManager.Instance.player.transform.position);
+        RemoveItem();
+        
+    }
+
+    public Transform GetTransform()
+    {
+        return this.transform;
+
+    }
 }

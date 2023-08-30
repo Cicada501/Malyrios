@@ -1,13 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
+
 public class ActiveItemWindow : MonoBehaviour
 {
+
+
     public static ActiveItemWindow Instance;
+    public BaseItem activeItem = null;
+    public ISlot activeSlot;
+    [SerializeField] private Button useButton;
 
     private void Awake()
     {
@@ -25,17 +34,13 @@ public class ActiveItemWindow : MonoBehaviour
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private Image itemImage;
 
-    private void Start()
-    {
-        Inventory.Instance.OnActiveItemSet += ChangeActiveItem;
-    }
 
-    void ChangeActiveItem(BaseItem item)
+    void ChangeActiveItem(BaseItem item, ISlot.slotType slotType)
     {
-        if (Inventory.Instance.activeItem == null)
+        if (activeItem == null)
         {
             ShowActiveItemInfo(item);
-        }else if (item.name == Inventory.Instance.activeItem.name)
+        }else if (item.name == activeItem.name)
         {
             HideActiveItemInfo();
         }
@@ -53,12 +58,41 @@ public class ActiveItemWindow : MonoBehaviour
             nameText.text = weapon.ItemName;
             descriptionText.text = weapon.GetDescription();
             itemImage.sprite = weapon.Icon;
+        }else if(item is BaseArmor armor)
+        {
+            nameText.text = armor.ItemName;
+            descriptionText.text = armor.GetDescription();
+            itemImage.sprite = armor.Icon;
         }
         else
         {
             nameText.text = item.ItemName;
             descriptionText.text = item.Description;
             itemImage.sprite = item.Icon;
+        }
+        
+    }
+    
+    public void SetActiveItem(BaseItem item, ISlot.slotType slotType)
+    {
+        ChangeActiveItem(item, slotType);
+        
+        if (activeItem == null || activeItem != item)
+        {
+            activeItem = item;
+            if (item.IsUsable)
+            {
+                useButton.gameObject.SetActive(true);
+                useButton.GetComponentInChildren<TextMeshProUGUI>().text = slotType == ISlot.slotType.EquipmentSlot ? "unequip" : "Use";
+            }
+            else
+            {
+                useButton.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            activeItem = null;
         }
         
     }
@@ -70,12 +104,17 @@ public class ActiveItemWindow : MonoBehaviour
     
     public void UseButtonPressed()
     {
-        Inventory.Instance.activeSlot.UseItem();
+
+        activeSlot.UseItem();
+        HideActiveItemInfo();
     }
 
     public void RemoveButtonPressed()
     {
-        Inventory.Instance.activeSlot.DropItem();
+
+        activeSlot.DropItem();
+        HideActiveItemInfo();
     }
+    
 }
 

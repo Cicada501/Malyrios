@@ -16,11 +16,6 @@ namespace UI
         {
             optionPanel.SetActive(!optionPanel.activeSelf);
         }
-
-        public void CloseOptions()
-        {
-            optionPanel.SetActive(false);
-        }
         
     }
 }

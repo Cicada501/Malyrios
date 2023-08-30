@@ -10,10 +10,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 {
     [SerializeField] Text amountText = null;
 
-    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
     private BaseItem item;
     private Transform playerTransform;
     private DragNDrop dragNDrop;
+    private EquipmentSlot weaponSlot;
+    private EquipmentSlot headArmorSlot;
+    private EquipmentSlot bodyArmorSlot;
+    private EquipmentSlot handArmorSlot;
+    private EquipmentSlot feetArmorSlot;
 
 
     public BaseItem Item
@@ -22,17 +26,16 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         set => this.item = value;
     }
 
-    public Stack<BaseItem> ItemStack
-    {
-        get => this.itemStack;
-        set => this.itemStack = value;
-    }
-
     public void Start()
     {
         this.playerTransform = ReferencesManager.Instance.player.transform;
         this.dragNDrop = this.transform.GetChild(2).GetComponent<DragNDrop>();
         this.dragNDrop.MySlot = this;
+        weaponSlot = ReferencesManager.Instance.weaponSlot;
+        headArmorSlot = ReferencesManager.Instance.headArmorSlot;
+        bodyArmorSlot = ReferencesManager.Instance.bodyArmorSlot;
+        handArmorSlot = ReferencesManager.Instance.handArmorSlot;
+        feetArmorSlot = ReferencesManager.Instance.feetArmorSlot;
     }
 
     public void Initialize()
@@ -53,82 +56,74 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         Image img = dragNDrop.GetComponent<Image>();
         img.enabled = true;
         img.sprite = baseItem.Icon;
+        Inventory.Instance.ItemIDs.Add(baseItem.ItemID);
+        Inventory.Instance.Items.Add(baseItem);
 
         dragNDrop.MySlot = this; // Optional, wenn die Zuweisung bereits im Start erfolgte
-        
-        this.itemStack.Push(baseItem);
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="item"></param>
-    /// <returns></returns>
-    public bool AddItemToStack(BaseItem item)
-    {
-        if (this.itemStack.Count < this.item.MaxStackAmount)
-        {
-            this.itemStack.Push(item);
-            this.amountText.gameObject.SetActive(true);
-            this.amountText.text = this.itemStack.Count.ToString();
-            return true;
-        }
-
-        return false;
     }
 
 
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(this.item);
-        Inventory.Instance.activeSlot = this;
+        ActiveItemWindow.Instance.SetActiveItem(this.item, ISlot.slotType.InventorySlot);
+        ActiveItemWindow.Instance.activeSlot = this;
     }
 
-    /// <summary>
-    /// This method removes the Item in the slot completely
-    /// </summary>
-    public void RemoveItem()
-    {
-        this.item = null;
-        this.amountText.gameObject.SetActive(false);
-    }
 
     public Transform GetTransform()
     {
         return this.transform;
     }
 
-    public void RemoveSingleItem()
+    /// <summary>
+    /// This method removes the Item in the slot. 
+    /// Also Removes the item from the inventory item lists. This Method is Called if OnItemRemoved is invoked to update the slot correctly
+    ///  </summary>
+    public void RemoveItem()
     {
-        Inventory.Instance.Items.Remove(this.itemStack.Peek());
-        this.itemStack.Pop();
-        this.amountText.text = itemStack.Count.ToString();
+        Inventory.Instance.Items.Remove(Item);
         Inventory.Instance.ItemIDs.Remove(item.ItemID);
-        if (this.itemStack.Count <= 0)
-        {
-            this.transform.GetChild(2).GetComponent<Image>().enabled = false;
-            RemoveItem();
-            ActiveItemWindow.Instance.HideActiveItemInfo();
-        }
-
+        Image img = dragNDrop.GetComponent<Image>();
+        img.enabled = false;
+        this.item = null;
+        ActiveItemWindow.Instance.HideActiveItemInfo();
     }
 
     public void DropItem()
     {
         if (this.item == null) return;
 
-        SpawnItem.Spawn(item, this.playerTransform.position, 0.3f, -1.2f, 1.5f);
-        RemoveSingleItem();
+        SpawnItem.Spawn(item, playerTransform.position);
+        RemoveItem();
     }
 
     public void UseItem()
     {
+        print($"Using {item.ItemName}");
         if (this.item == null) return;
-        if (item.IsUsable)
+        if (!item.IsUsable) return;
+
+        switch (item.ItemType)
         {
-            item.ExecuteUsageEffect();
-            RemoveSingleItem();
+            //check if item is weapon/armor, if so only execute usage effect, if no weapon/armor is equipped yet
+            case BaseItem.ItemTypes.Weapon when weaponSlot.Item:
+                weaponSlot.SwapItems(this);
+                break;
+            case BaseItem.ItemTypes.Body when bodyArmorSlot.Item:
+                bodyArmorSlot.SwapItems(this);
+                break;
+            case BaseItem.ItemTypes.Head when headArmorSlot.Item:
+                headArmorSlot.SwapItems(this);
+                break;
+            case BaseItem.ItemTypes.Hand when handArmorSlot.Item:
+                handArmorSlot.SwapItems(this);
+                break;
+            case BaseItem.ItemTypes.Feet when feetArmorSlot.Item:
+                feetArmorSlot.SwapItems(this);
+                break;
+            default:
+                item.ExecuteUsageEffect();
+                break;
         }
     }
 
@@ -137,7 +132,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         DragNDrop dragNDrop = eventData.pointerDrag.GetComponent<DragNDrop>();
         ISlot originSlot = dragNDrop.MySlot;
 
-        if (originSlot.Item == null) return; // If the origin slot has no item, do nothing
+        if (originSlot.Item == null || ReferenceEquals(originSlot, this))
+            return; // If the origin slot has no item, do nothing
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
@@ -147,20 +143,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         }
         else
         {
-            // If this inventory slot has no item, use your existing logic
+            // If this inventory slot has no item
             SetItem(originSlot.Item);
 
-            if (originSlot.ItemStack != null && originSlot.ItemStack.Count > 0)
-            {
-                for (int i = 0; i < originSlot.ItemStack.Count - 1; i++)
-                {
-                    AddItemToStack(originSlot.ItemStack.Peek());
-                }
-            }
 
             originSlot.RemoveItem();
             originSlot.Item = null;
-            originSlot.ItemStack?.Clear();
 
             eventData.pointerDrag.GetComponent<Image>().enabled = false;
             originSlot.Item = null;

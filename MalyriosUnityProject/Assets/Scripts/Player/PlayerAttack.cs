@@ -161,22 +161,11 @@ public class PlayerAttack : MonoBehaviour
     /// <param name="weaponToEquip"></param>
     private void OnWeaponChanged([CanBeNull] BaseWeapon weaponToEquip)
     {
-        //when equipping a weapon (and not unequipping)
         if (weaponToEquip != null)
         {
-            //if already a weapon equipped
-            if (this.equippedWeapon != null)
-            {
-                //Debug.Log("Unequipping weapon: " + this.equippedWeapon.ItemName);
-                //StartCoroutine(SpawnUnequippedWeaponDelayed(equippedWeapon));
-                UnequipWeapon();
-                
-            }
             EquipWeapon(weaponToEquip);
             changeWeaponSound.Play();
-            
         }
-        //when unequipping a weapon
         else
         {
             UnequipWeapon();

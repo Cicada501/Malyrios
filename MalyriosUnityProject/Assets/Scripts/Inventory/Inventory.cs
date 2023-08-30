@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Malyrios.Core;
 using Malyrios.Items;
 using SaveAndLoad;
 using UnityEngine;
@@ -23,8 +24,6 @@ public class Inventory : MonoBehaviour
     
     public bool isEmpty = true;
     [SerializeField] private Button useButton;
-    public BaseItem activeItem = null;
-    public InventorySlot activeSlot = null;
     #region new inventory
 
     public List<BaseItem> Items = new List<BaseItem>();
@@ -32,7 +31,6 @@ public class Inventory : MonoBehaviour
 
     public event Action<BaseItem> OnItemAdded;
     public event Action<BaseItem> OnItemRemoved;
-    public event Action<BaseItem> OnActiveItemSet;
 
     private BaseWeapon testWeapon;
 
@@ -50,6 +48,11 @@ public class Inventory : MonoBehaviour
         Debug.Log("Item Names: [" + string.Join(", ", itemNames) + "]");
     }
 
+    private void Update()
+    {
+        PrintInventory();
+    }
+
     public void RemoveAllItems()
     {
         List<BaseItem> itemsToRemove = new List<BaseItem>(Items);
@@ -62,19 +65,12 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(BaseItem item)
     {
-        print("Adding an item");
-        ItemIDs.Add(item.ItemID);
-        Items.Add(item);
         OnItemAdded?.Invoke(item);
         isEmpty = false;
     }
     
     public void Remove(BaseItem item)
     {
-        print($"try to remove: {item.ItemName}");
-        ItemIDs.Remove(item.ItemID);
-        //Debug.Log("Item removed"+ItemIDs.Count);
-        Items.Remove(item);
         OnItemRemoved?.Invoke(item);
         if (ItemIDs.Count == 0)
         {
@@ -94,7 +90,11 @@ public class Inventory : MonoBehaviour
             {
                 AddItem(ItemDatabase.GetWeapon(itemID));
             }
-            else
+            else if (ItemDatabase.GetArmor(itemID)!= null)
+            {
+                AddItem(ItemDatabase.GetArmor(itemID));
+            }
+            else 
             {
                 Debug.Log($"Item with ID {itemID} not found");
             }
@@ -106,30 +106,8 @@ public class Inventory : MonoBehaviour
     {
         
         var occ = Instance.Items.Count(n => n == item);
-        //print($"I found {occ} {item.ItemName}s ");
         return occ;
     }
     
-    public void SetActiveItem(BaseItem item)
-    {
-        OnActiveItemSet?.Invoke(item);
-        
-        if (activeItem == null || activeItem != item)
-        {
-            activeItem = item;
-            if (item.IsUsable)
-            {
-                useButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                useButton.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            activeItem = null;
-        }
-        
-    }
+
 }

@@ -32,6 +32,13 @@ public class ReferencesManager : MonoBehaviour
     public List<GameObject> logicSymbols;
     public GameObject inventoryUI;
     public PlayerAttack playerAttack;
+    public EquipmentSlot weaponSlot;
+    public EquipmentSlot headArmorSlot;
+    public EquipmentSlot bodyArmorSlot;
+    public EquipmentSlot handArmorSlot;
+    public EquipmentSlot feetArmorSlot;
+    public StatsWindow statsWindow;
+
     private void Awake()
     {
         // Set the static instance variable to this instance of the script
