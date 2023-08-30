@@ -13,12 +13,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     private GameObject child;
     private GridLayoutGroup gridLayoutGroup;
     public BaseItem Item { get; set; }
-    private Stack<BaseItem> itemStack = new Stack<BaseItem>();
-    public Stack<BaseItem> ItemStack
-    {
-        get => this.itemStack;
-        set => this.itemStack = value;
-    }
+    
     private PuzzleStation puzzleStation;
     [SerializeField] private Image slotImage;
     
@@ -92,7 +87,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
     public void OnTap()
     {
-        Inventory.Instance.SetActiveItem(Item);
+        //Inventory.Instance.SetActiveItem(Item);
     }
     
     public void SetPuzzleStation(PuzzleStation station)
@@ -103,6 +98,16 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     public void SwapItems(ISlot otherSlot)
     {
         SlotHelper.SwapItems(this, otherSlot);
+    }
+
+    public void UseItem()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void DropItem()
+    {
+        throw new NotImplementedException();
     }
 }
 

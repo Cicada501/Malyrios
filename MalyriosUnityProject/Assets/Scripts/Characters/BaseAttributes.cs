@@ -29,8 +29,19 @@ namespace Malyrios.Character
         [SerializeField] private float balance = 0;
 
 
-        private int currentHealth;
+        private int currentHealth = 1000;
 
+
+        private void Update()
+        {
+            //print($"Health: {CurrentHealth}/{MaxHealth}");
+        }
+
+        private void Start()
+        {
+            
+            OnMaxHealthChanged?.Invoke(this.maxHealth);
+        }
         /// <summary>
         /// Gets or sets the max health.
         /// Also fired an event OnMaxHealthChanged.
@@ -40,9 +51,9 @@ namespace Malyrios.Character
             get => this.maxHealth;
             set
             {
-                //print($"set of MaxHealth is used, value is: {value}");
                 this.maxHealth = value;
                 OnMaxHealthChanged?.Invoke(this.maxHealth);
+                OnCurrentHealthChanged?.Invoke(currentHealth,maxHealth); //necessary to trigger update of Current health (slider = currentHealth/MaxHealth)
                 OnBaseAttributeChanged?.Invoke(this);
             }
         }
@@ -161,42 +172,6 @@ namespace Malyrios.Character
                 OnBalanceChaned?.Invoke(this.balance);
                 OnBaseAttributeChanged?.Invoke(this);
             }
-        }
-
-        private void Awake()
-        {
-            EquipmentSlot.OnItemSlotChanged += OnEquipmentSlotOnOnItemSlotChanged;
-        }
-
-        private void OnEquipmentSlotOnOnItemSlotChanged(BaseItem item)
-        {
-            Debug.Log("W: ");
-        }
-
-        private void Start()
-        {
-            //CurrentHealth = this.maxHealth;
-            OnMaxHealthChanged?.Invoke(this.maxHealth);
-        }
-
-        private void Update()
-        {
-            if (CurrentHealth > MaxHealth)
-            {
-                CurrentHealth = MaxHealth;
-            }
-        }
-
-        public void LoadAttributes(BaseAttributes gameDataLoadedAttributes)
-        {
-            MaxHealth = gameDataLoadedAttributes.MaxHealth;
-            Mana = gameDataLoadedAttributes.Mana;
-            Strength = gameDataLoadedAttributes.Strength;
-            CritChance = gameDataLoadedAttributes.CritChance;
-            CritDamage = gameDataLoadedAttributes.CritDamage;
-            Haste = gameDataLoadedAttributes.Haste;
-            Energy = gameDataLoadedAttributes.Energy;
-            Balance = gameDataLoadedAttributes.Balance;
         }
     }
 }

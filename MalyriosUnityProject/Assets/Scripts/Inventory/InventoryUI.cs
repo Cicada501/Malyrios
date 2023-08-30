@@ -62,21 +62,7 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateUiNew(BaseItem item)
     {
-        InventorySlot tryToStack =
-            slots.FirstOrDefault(x => x.Item != null && x.Item.ItemName == item.ItemName && x.Item.IsStackable);
-        if (tryToStack != null)
-        {
-            if (!tryToStack.AddItemToStack(item))
-            {
-                AddNewItem(item);
-            }
-        }
-        else
-        {
             AddNewItem(item);
-        }
-        
-        
     }
 
     private void AddNewItem(BaseItem item)
@@ -92,22 +78,7 @@ public class InventoryUI : MonoBehaviour
     private void OnItemRemoved(BaseItem item)
     {
         InventorySlot it = slots.FirstOrDefault(x => x.Item == item);
-        if (it != null) it.RemoveSingleItem();
-    }
-
-
-    private int GetOccurrence(Item item, List<Item> itemList)
-    {
-        int occurrences = 0;
-        foreach (Item _item in itemList)
-        {
-            if (_item == item)
-            {
-                occurrences++;
-            }
-        }
-
-        return occurrences;
+        if (it != null) it.RemoveItem();
     }
 
 
