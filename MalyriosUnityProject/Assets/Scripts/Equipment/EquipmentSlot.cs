@@ -45,7 +45,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
             case BaseItem.ItemTypes.Body:
             case BaseItem.ItemTypes.Hand:
             case BaseItem.ItemTypes.Feet:
-                AddArmor(item as BaseArmor);
+                InvokeChangeArmor(item as BaseArmor);
                 break;
         }
     }
