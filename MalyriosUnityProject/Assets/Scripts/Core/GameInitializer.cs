@@ -41,7 +41,7 @@ public class GameInitializer : MonoBehaviour
             player.transform.position = gameData.LoadedPlayerPosition;
         }
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
-        if(gameData.LoadedEquippedWeaponID!=0) playerAttack.LoadWeapon(gameData.LoadedEquippedWeaponID);
+        playerAttack.LoadWeapon(gameData.LoadedEquippedWeaponID);
         foreach (var quest in gameData.LoadedQuestLog)
         {
             questLogWindow.AddQuest(quest.questName, quest.questDescription);

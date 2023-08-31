@@ -12,6 +12,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     [SerializeField] private string levelName;
 
     private LevelManager levelManager;
+    private SaveActiveItems activeItemsData;
 
 
     void Start()
@@ -19,10 +20,13 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         player = ReferencesManager.Instance.player.transform;
         levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
         interactableText = ReferencesManager.Instance.interactableText;
+        activeItemsData = ReferencesManager.Instance.saveActiveItems;
 
     }
     public void Interact()
     {
+        activeItemsData.SaveItems();
+        ReferencesManager.Instance.levelManager.ShowLoadingScreen(levelName);
         levelManager.ChangeLevel(levelName);
     }
 

@@ -41,10 +41,6 @@ public class LevelManager : MonoBehaviour
     public void ChangeLevel(string levelName)
     {
         ShowLoadingScreen(levelName);
-        if (currentLevel)
-        {
-            activeItemsData.SaveItems();
-        }
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;

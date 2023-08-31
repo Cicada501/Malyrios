@@ -38,6 +38,7 @@ public class ReferencesManager : MonoBehaviour
     public EquipmentSlot handArmorSlot;
     public EquipmentSlot feetArmorSlot;
     public StatsWindow statsWindow;
+    public SaveActiveItems saveActiveItems;
 
     private void Awake()
     {

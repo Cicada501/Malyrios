@@ -61,9 +61,19 @@ public class PlayerAttack : MonoBehaviour
 
     public void LoadWeapon(int id)
     {
-        EquippedWeaponID = id;
-        EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));
-        weaponSlot.LoadWeapon(id);
+        if (id != 0)
+        {
+            EquippedWeaponID = id;
+            EquipWeapon(ItemDatabase.GetWeapon(EquippedWeaponID));
+            weaponSlot.LoadWeapon(id);
+        }
+        else
+        {
+            UnequipWeapon();
+            if(weaponSlot.Item!=null)
+            weaponSlot.RemoveItem();
+        }
+
     }
 
     // Update is called once per frame
@@ -83,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
         {
             isAttacking = false;
 
-            if (!InventoryUI.inventoryOpen)
+            if (!InventoryUI.inventoryOpen && equippedWeapon)
             {
                 Attack();
                 isAttacking = true;
@@ -185,8 +195,7 @@ public class PlayerAttack : MonoBehaviour
     {
         equippedWeapon = null;
         EquippedWeaponID = 0;
-        Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
-
+        if(weaponHolder.transform.childCount>0) Destroy(this.weaponHolder.transform.GetChild(0).gameObject);
     }
 
     //Quick and dirty fix for the problem that the unequipped weapon is not spawned correctly in the inventory if the slot of the new weapon and slot where the unequipped weapon goes are the same
