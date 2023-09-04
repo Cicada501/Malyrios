@@ -31,8 +31,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource[] landingSounds;
     [SerializeField] private AudioSource jumpingSound;
     [SerializeField] private AudioSource dashingSound;
-    [SerializeField] private AudioSource walkingSound;
+    [SerializeField] private AudioSource[] runSound;
     
+    private bool isRunning;
+    private float soundPlayTime;
+    private float soundPlayInterval = 0.3f;
 
     void Start()
     {
@@ -120,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
             canDash = true;
         }
         #endregion
+        
     }
 
     private IEnumerator StopDashing()
@@ -151,6 +155,21 @@ public class PlayerMovement : MonoBehaviour
         //Animation
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         playerAnimator.SetFloat("YVelocity", rb.velocity.y);
+        
+        if (Mathf.Abs(horizontalMove) > 0 && controller.m_Grounded && !isDashing && Time.time >= soundPlayTime)
+        {
+            if (!isRunning)
+            {
+                isRunning = true;
+                PlayRunSound();
+            }
+
+            soundPlayTime = Time.time + soundPlayInterval;
+        }
+        else
+        {
+            isRunning = false;
+        }
     }
 
     //called when jump button pressed
@@ -182,6 +201,13 @@ public class PlayerMovement : MonoBehaviour
         //print("LandingSound");
         int randomIndex = Random.Range(0, landingSounds.Length);
         landingSounds[randomIndex].Play();
+    }
+    
+    void PlayRunSound()
+    {
+        // Wenn der Spieler rennt, spiele einen zufälligen Laufsound ab
+        int randomIndex = Random.Range(0, runSound.Length);
+        runSound[randomIndex].Play();
     }
     
     private void OnDestroy()
