@@ -34,8 +34,11 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] AudioSource meeleeSound2 = null;
     [SerializeField] AudioSource meeleeSound3 = null;
-    [SerializeField] AudioSource hitmarkerSound = null;
+    [SerializeField] AudioSource hitSound1;
+    [SerializeField] AudioSource hitSound2;
+    [SerializeField] AudioSource hitSound3;
     [SerializeField] AudioSource changeWeaponSound = null;
+    private int hitSoundIndex = 0; 
 
     [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.5f;
@@ -112,7 +115,8 @@ public class PlayerAttack : MonoBehaviour
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
 
-        //Attack Sound
+        #region AttackSound
+
         soundChoice = Random.Range(0, 2);
         if (soundChoice == 0)
         {
@@ -127,6 +131,8 @@ public class PlayerAttack : MonoBehaviour
             meeleeSound3.Play();
         }
 
+        #endregion
+        
         //get list of all colliders in hit range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
         //remember the gameobject of the collider, to only hit it once if it has multiple colliders
@@ -134,9 +140,25 @@ public class PlayerAttack : MonoBehaviour
         if (hitEnemies.Length > 0)
         {
             enemyInDamagezone = true;
-            hitmarkerSound.Play();
-            //cameraAnimator.SetTrigger("EnemyHit");
 
+            #region HitSound
+            if (hitSoundIndex == 1)
+            {
+                hitSound1.Play();
+            }
+            else if (hitSoundIndex == 2)
+            {
+                hitSound2.Play();
+            }
+            else if (hitSoundIndex == 0)
+            {
+                hitSound3.Play();
+            }
+            hitSoundIndex = (hitSoundIndex + 1) % 3;
+            
+
+            #endregion
+            
             foreach (Collider2D enemy in hitEnemies)
             {
                 if (!enemiesGotHit.Contains(enemy.gameObject))
