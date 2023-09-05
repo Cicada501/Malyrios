@@ -63,7 +63,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "Level3";
+            LoadedLevelName = "HighForest";
         }
 
 
