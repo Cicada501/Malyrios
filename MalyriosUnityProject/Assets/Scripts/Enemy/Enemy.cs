@@ -84,6 +84,13 @@ public class Enemy : MonoBehaviour
     public void SetNextAttackTime()
     {
         nextAttackTime = Time.time + 1f / attacksPerSecond;
+
+        if (this.enemyType == EnemyTypes.Huntress)
+        {
+            var i = Random.Range(0, ReferencesManager.Instance.huntressAttackSound.Length);
+            ReferencesManager.Instance.huntressAttackSound[i].Play();
+        }
+       
     }
 
     private void Update() //-------------------------------------------------
@@ -165,6 +172,10 @@ public class Enemy : MonoBehaviour
     {
         var projectile = Instantiate(projectilePrefab, projectileSpawnPoint);
         projectile.GetComponent<Projectile>().parentEnemy = this;
+        if (this.enemyType == EnemyTypes.Huntress)
+        {
+            ReferencesManager.Instance.huntressSpearSpawnSound.Play();
+        }
     }
 
     public void PushBack()

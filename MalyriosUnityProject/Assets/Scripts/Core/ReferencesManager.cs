@@ -39,6 +39,8 @@ public class ReferencesManager : MonoBehaviour
     public EquipmentSlot feetArmorSlot;
     public StatsWindow statsWindow;
     public SaveActiveItems saveActiveItems;
+    public AudioSource[] huntressAttackSound;
+    public AudioSource huntressSpearSpawnSound;
 
     private void Awake()
     {

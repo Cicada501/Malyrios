@@ -79,6 +79,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8793110228135027706, guid: 4d3ec6465ebe53742be22e44be25c845,
     type: 3}
   projectileSpawnPoint: {fileID: 529603920491188586}
+  projectileSpawnSound: {fileID: 0}
+  attackSound: {fileID: 0}
 --- !u!212 &4391092655712466341
 SpriteRenderer:
   m_ObjectHideFlags: 0
