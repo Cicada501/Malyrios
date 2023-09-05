@@ -221,14 +221,11 @@ AnimatorStateMachine:
     m_State: {fileID: -8272247972494953037}
     m_Position: {x: 450, y: 160, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 7659439399031219422}
-    m_Position: {x: 520, y: 20, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -4570125450596519481}
     m_Position: {x: 230, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3613505774338540205}
-    m_Position: {x: 350, y: 260, z: 0}
+    m_Position: {x: 340, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4803896746870672652}
     m_Position: {x: 80, y: -50, z: 0}
@@ -596,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4064355ae9be9c94192d9bc468fa5213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicSpeed: 1
+  basicSpeed: 0.8
 --- !u!1101 &7312505669487715571
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -619,29 +616,3 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &7659439399031219422
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: huntress_attack2
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6b6c830df3889f5429e767dae61ac423, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 

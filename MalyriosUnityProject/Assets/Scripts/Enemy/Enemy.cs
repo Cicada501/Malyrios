@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     Transform player;
 
-    [SerializeField] bool facingRight = true;
+    [SerializeField]public bool facingRight = true;
     Animator animator;
 
     [SerializeField] int maxHealth = 100;
@@ -49,7 +49,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] public EnemyTypes enemyType;
     [HideInInspector]
     public bool canMove;
+    
+    
     public bool isRanged;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectileSpawnPoint;
 
     public enum EnemyTypes //Needed to respawn the enemy that died
     {
@@ -155,6 +159,12 @@ public class Enemy : MonoBehaviour
         {
             animator.SetBool("isEnraged", true);
         }
+    }
+
+    public void SpawnProjectile()
+    {
+        var projectile = Instantiate(projectilePrefab, projectileSpawnPoint);
+        projectile.GetComponent<Projectile>().parentEnemy = this;
     }
 
     public void PushBack()
