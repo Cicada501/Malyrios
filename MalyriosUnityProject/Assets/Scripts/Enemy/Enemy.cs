@@ -46,7 +46,9 @@ public class Enemy : MonoBehaviour
 
     private EnemySpawner enemySpawner;
     [SerializeField] public EnemyTypes enemyType;
+    [HideInInspector]
     public bool canMove;
+    public bool isRanged;
 
     public enum EnemyTypes //Needed to respawn the enemy that died
     {
