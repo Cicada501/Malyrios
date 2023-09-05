@@ -47,11 +47,7 @@ public class Inventory : MonoBehaviour
         Debug.Log("IDs: [" + string.Join(",", ItemIDs) + "]");
         Debug.Log("Item Names: [" + string.Join(", ", itemNames) + "]");
     }
-
-    private void Update()
-    {
-        PrintInventory();
-    }
+    
 
     public void RemoveAllItems()
     {

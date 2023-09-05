@@ -31,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource[] landingSounds;
     [SerializeField] private AudioSource jumpingSound;
     [SerializeField] private AudioSource dashingSound;
-    [SerializeField] private AudioSource[] runSound;
+    private AudioSource[] runSound;
+    [SerializeField] private AudioSource[] runSoundStone;
+    [SerializeField] private AudioSource[] runSoundGrass;
     
     private bool isRunning;
     private float soundPlayTime;
@@ -39,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        runSound = runSoundGrass;
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
@@ -213,5 +216,21 @@ public class PlayerMovement : MonoBehaviour
     private void OnDestroy()
     {
         controller.OnLandEvent.RemoveListener(PlayLandingSound);
+    }
+
+    public void ChangeRunSound(string groundType)
+    {
+        print($"run sound changing to {groundType}");
+        switch (groundType)
+        {
+            case "grass":
+            case "Grass":
+                runSound = runSoundGrass;
+                break;
+            case "stone": 
+            case "Stone":
+                runSound = runSoundStone;
+                break;
+        }
     }
 }
