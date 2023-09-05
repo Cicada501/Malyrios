@@ -44,6 +44,23 @@ public class Enemy_run : StateMachineBehaviour
                     return;
                 }
             }
+            
+            // Überprüfen, ob ein Abgrund vor dem Feind ist
+            Vector2 groundCheckPosition = rb.position + direction * raycastLength;
+            Vector2 groundDirection = Vector2.down;
+            float groundRaycastLength = .5f;
+
+            RaycastHit2D groundHit = Physics2D.Raycast(groundCheckPosition, groundDirection, groundRaycastLength);
+
+            // Draw the ray for debugging purposes
+            Debug.DrawRay(groundCheckPosition, groundDirection * groundRaycastLength, Color.green);
+
+            // Wenn kein Boden gefunden wird, stoppen Sie die Bewegung
+            if (groundHit.collider == null)
+            {
+                animator.SetBool("inFrontOfWall", true);
+                return;
+            }
 
             Vector2 newPos =
                 Vector2.MoveTowards(rb.position, target,
