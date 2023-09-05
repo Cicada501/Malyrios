@@ -23,7 +23,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attacksPerSecond = 1.5f;
     [SerializeField] public float attackRange;
     public float nextAttackTime;
-    float distToPlayer;
+    [HideInInspector]
+    public float distToPlayer;
 
     [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.1f;
@@ -76,6 +77,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SetNextAttackTime()
+    {
+        nextAttackTime = Time.time + 1f / attacksPerSecond;
+    }
+
     private void Update() //-------------------------------------------------
     {
         //Set is Attacking if attack animation plays
@@ -91,10 +97,10 @@ public class Enemy : MonoBehaviour
 
 
         //Recognize when Enemy has attacked, and set nextAttackTime
-        if (animator.GetBool("Attack") == true)
-        {
-            nextAttackTime = Time.time + 1f / attacksPerSecond;
-        }
+        // if (animator.GetBool("Attack"))
+        // {
+        //     nextAttackTime = Time.time + 1f / attacksPerSecond;
+        // }
 
         //Look at Player
         if (transform.position.x > player.position.x && facingRight && !isAttacking && !isDead)

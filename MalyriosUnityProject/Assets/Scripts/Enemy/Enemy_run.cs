@@ -30,24 +30,14 @@ public class Enemy_run : StateMachineBehaviour
             Vector2 direction = (target - rb.position).normalized;
             float raycastLength = .4f;
 
-            // Check for walls in front of the enemy
-            if (IsWallInFront(direction, raycastLength))
+            // Check for wall or cliff in front of the enemy
+            if (IsWallInFront(direction, raycastLength) ||IsCliffInFront(direction, raycastLength) )
             {
                 animator.SetBool("inFrontOfWall", true);
                 return;
             }
-
-            // Check for cliffs in front of the enemy
-            if (IsCliffInFront(direction, raycastLength))
-            {
-                animator.SetBool("inFrontOfWall", true);
-                return;
-            }
-
-            // Move towards the player
+            
             MoveTowardsPlayer(target);
-
-            // Check for attack conditions
             AttemptToAttackPlayer();
         }
     }
@@ -92,15 +82,31 @@ public class Enemy_run : StateMachineBehaviour
 
     private void AttemptToAttackPlayer()
     {
-        if (Vector2.Distance(rb.position, player.position) <= enemy.attackRange && !enemyAnimator.GetBool("isDead"))
+        
+    
+        if (!enemyAnimator.GetBool("isDead"))
         {
-            if (Time.time >= enemy.nextAttackTime)
+            if (enemy.isRanged && enemy.distToPlayer is > 1f and <= 5f)
             {
-                enemyAnimator.SetTrigger("Attack");
-                speed = 0f;
+                if (Time.time >= enemy.nextAttackTime)
+                {
+                    enemyAnimator.SetTrigger("RangedAttack");
+                    enemy.SetNextAttackTime();
+                    speed = 0f; 
+                }
+            }
+            else if (enemy.distToPlayer <= enemy.attackRange)
+            {
+                if (Time.time >= enemy.nextAttackTime)
+                {
+                    enemyAnimator.SetTrigger("Attack");
+                    enemy.SetNextAttackTime();
+                    speed = 0f;
+                }
             }
         }
     }
+
 
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

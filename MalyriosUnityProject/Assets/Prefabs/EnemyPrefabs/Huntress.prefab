@@ -73,7 +73,7 @@ MonoBehaviour:
   maxHealth: 100
   enemyType: 7
   canMove: 0
-  isRanged: 0
+  isRanged: 1
 --- !u!212 &4391092655712466341
 SpriteRenderer:
   m_ObjectHideFlags: 0
