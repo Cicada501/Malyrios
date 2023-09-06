@@ -72,6 +72,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 break;
                 
         }
+        SoundHolder.Instance.unequipItem.Play();
         Item = null;
     }
    
@@ -112,6 +113,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     
     void AddArmor(BaseArmor armor)
     {
+        SoundHolder.Instance.equipItem.Play();
         transform.GetChild(0).gameObject.GetComponent<Image>().sprite = armor.Icon;
         Item = armor;
         transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;

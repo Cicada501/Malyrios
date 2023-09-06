@@ -28,7 +28,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         slotImage.sprite = item.Icon;
         slotImage.enabled = true;
         Item = item;
-        
+        SoundHolder.Instance.placeRuneStone.Play();
     }
 
 

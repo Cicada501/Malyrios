@@ -82,6 +82,17 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+        //inventoryUI.activeSelf ? SoundHolder.Instance.invOpen.Play() : SoundHolder.Instance.invClose.Play();
+        
+        if (inventoryUI.activeSelf)
+        {
+            SoundHolder.Instance.invOpen.Play();
+        }
+        else
+        {
+            SoundHolder.Instance.invClose.Play();
+        }
+        
         equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
         
         //if puzzleStation is active, close it with inventory

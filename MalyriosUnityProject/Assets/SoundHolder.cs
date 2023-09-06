@@ -13,6 +13,11 @@ public class SoundHolder : MonoBehaviour
     public AudioSource closeGateSound;
     public AudioSource startFireballSound;
     public AudioSource fireballImpactSound;
+    public AudioSource invOpen;
+    public AudioSource invClose; 
+    public AudioSource equipItem; 
+    public AudioSource unequipItem; 
+    public AudioSource placeRuneStone; 
     private void Awake()
     {
         Instance = this;
