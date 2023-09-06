@@ -84,12 +84,6 @@ public class Enemy : MonoBehaviour
     public void SetNextAttackTime()
     {
         nextAttackTime = Time.time + 1f / attacksPerSecond;
-
-        if (this.enemyType == EnemyTypes.Huntress)
-        {
-            var i = Random.Range(0, ReferencesManager.Instance.huntressAttackSound.Length);
-            ReferencesManager.Instance.huntressAttackSound[i].Play();
-        }
        
     }
 
@@ -172,9 +166,27 @@ public class Enemy : MonoBehaviour
     {
         var projectile = Instantiate(projectilePrefab, projectileSpawnPoint);
         projectile.GetComponent<Projectile>().parentEnemy = this;
-        if (this.enemyType == EnemyTypes.Huntress)
+    }
+
+    public void PlayAttackSound()
+    {
+        switch (enemyType)
         {
-            ReferencesManager.Instance.huntressSpearSpawnSound.Play();
+            case EnemyTypes.Huntress:
+                var i = Random.Range(0, ReferencesManager.Instance.huntressAttackSound.Length);
+                ReferencesManager.Instance.huntressAttackSound[i].Play();
+                break;
+        }
+    }
+    public void PlayRangedAttackSound()
+    {
+        switch (enemyType)
+        {
+            case EnemyTypes.Huntress:
+                var i = Random.Range(0, ReferencesManager.Instance.huntressAttackSound.Length);
+                ReferencesManager.Instance.huntressAttackSound[i].Play();
+                ReferencesManager.Instance.huntressSpearSpawnSound.Play();
+                break;
         }
     }
 
