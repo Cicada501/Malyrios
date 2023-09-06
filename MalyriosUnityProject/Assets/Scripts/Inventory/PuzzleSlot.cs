@@ -28,7 +28,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
         slotImage.sprite = item.Icon;
         slotImage.enabled = true;
         Item = item;
-        SoundHolder.Instance.placeRuneStone.Play();
+
     }
 
 
@@ -56,6 +56,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
 
         // If the dragged item is not the same item type, you can't drag it on this item slot, so do nothing.
         if (slot.Item.ItemType != this.itemType) return;
+        SoundHolder.Instance.placeRuneStone.Play();
 
 
         eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
