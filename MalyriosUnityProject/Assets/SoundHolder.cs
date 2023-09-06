@@ -18,6 +18,8 @@ public class SoundHolder : MonoBehaviour
     public AudioSource equipItem; 
     public AudioSource unequipItem; 
     public AudioSource placeRuneStone; 
+    public AudioSource[] openButton;
+    public AudioSource closeButton;
     private void Awake()
     {
         Instance = this;

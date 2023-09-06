@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class QuestLogWindow : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class QuestLogWindow : MonoBehaviour
     public void ToggleQuestWindow()
     {
         questWindow.SetActive(!questWindow.activeSelf);
+        if (questWindow.activeSelf)
+        {
+            var i = Random.Range(0, SoundHolder.Instance.openButton.Length);
+            SoundHolder.Instance.openButton[i].Play();
+        }
+        else
+        {
+            SoundHolder.Instance.closeButton.Play();
+        }
     }
 
 

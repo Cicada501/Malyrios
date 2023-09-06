@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class AudioOptions : MonoBehaviour
 {
@@ -51,9 +52,18 @@ public class AudioOptions : MonoBehaviour
         }
     }
 
-    public void OpenAudioOptionsPanel()
+    public void ToggleAudioOptionsPanel()
     {
         audioOptionsPanel.SetActive(!audioOptionsPanel.activeSelf);
+        if (audioOptionsPanel.activeSelf)
+        {
+            var i = Random.Range(0, SoundHolder.Instance.openButton.Length);
+            SoundHolder.Instance.openButton[i].Play();
+        }
+        else
+        {
+            SoundHolder.Instance.closeButton.Play();
+        }
     }
 
     private void UpdatePlayerSoundsVolume(float volume)
