@@ -68,9 +68,9 @@ public class GameData : MonoBehaviour
     
     private void LoadAudioSettings()
     {
-        LoadedPlayerSoundsVolume = PlayerPrefs.GetFloat("playerSoundsVolume", 1f);
-        LoadedEnemySoundsVolume = PlayerPrefs.GetFloat("enemySoundsVolume", 1f);
-        LoadedMusicVolume = PlayerPrefs.GetFloat("musicVolume", 1f);
+        LoadedPlayerSoundsVolume = PlayerPrefs.GetFloat("playerSoundsVolume", .5f);
+        LoadedEnemySoundsVolume = PlayerPrefs.GetFloat("enemySoundsVolume", .5f);
+        LoadedMusicVolume = PlayerPrefs.GetFloat("musicVolume", .5f);
     }
 
     public void LoadData()

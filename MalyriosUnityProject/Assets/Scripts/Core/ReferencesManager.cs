@@ -42,6 +42,8 @@ public class ReferencesManager : MonoBehaviour
     public AudioSource[] huntressAttackSound;
     public AudioSource huntressSpearSpawnSound;
     public AudioSource werewolfAttackSound;
+    public AudioSource openGateSound;
+    public AudioSource closeGateSound;
 
     private void Awake()
     {
