@@ -45,6 +45,7 @@ public class FireBallProjectile : MonoBehaviour
         {
             
             ReferencesManager.Instance.fireballImpactSound.Play();
+            ReferencesManager.Instance.startFireballSound.Stop();
             //offset x value to have imact at right position
             var position = transform.position;
             var spawnImpactPoint = new Vector3(position.x + 0.4f, position.y, position.z);

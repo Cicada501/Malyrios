@@ -83,7 +83,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         
         //Level
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
@@ -92,7 +92,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "HighForest";
+            LoadedLevelName = "Level3";
         }
 
 
