@@ -24,21 +24,6 @@ public class AudioOptions : MonoBehaviour
     
     private void InitializeSliders()
     {
-        if (playerSounds.Length > 0)
-        {
-            playerSoundsSlider.value = playerSounds[0].volume;
-        }
-
-        if (enemySounds.Length > 0)
-        {
-            enemySoundsSlider.value = enemySounds[0].volume;
-        }
-
-        if (music.Length > 0)
-        {
-            musicSlider.value = music[0].volume;
-        }
-
         playerSoundsSlider.onValueChanged.AddListener(UpdatePlayerSoundsVolume);
         enemySoundsSlider.onValueChanged.AddListener(UpdateEnemySoundsVolume);
         musicSlider.onValueChanged.AddListener(UpdateMusicVolume);
@@ -80,8 +65,11 @@ public class AudioOptions : MonoBehaviour
     public void ApplyLoadedAudioSettings()
     {
         playerSoundsSlider.value = gameData.LoadedPlayerSoundsVolume;
+        UpdatePlayerSoundsVolume(gameData.LoadedPlayerSoundsVolume);
         enemySoundsSlider.value = gameData.LoadedEnemySoundsVolume;
+        UpdateEnemySoundsVolume(gameData.LoadedEnemySoundsVolume);
         musicSlider.value = gameData.LoadedMusicVolume;
+        UpdateMusicVolume(gameData.LoadedMusicVolume);
     }
 
     private void OnApplicationQuit()
