@@ -13,12 +13,16 @@ public class AudioOptions : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider environmentSlider;
     [SerializeField] private Slider playerAbilitiesSlider;
+    [SerializeField] private Slider inventorySlider;
+    [SerializeField] private Slider uiSlider;
 
     [SerializeField] private AudioSource[] playerSounds;
     [SerializeField] private AudioSource[] enemySounds;
     [SerializeField] private AudioSource[] music;
     [SerializeField] private AudioSource[] environment;
     [SerializeField] private AudioSource[] playerAbilities;
+    [SerializeField] private AudioSource[] inventory;
+    [SerializeField] private AudioSource[] ui;
     private GameData gameData;
     
     private void Start()
@@ -34,11 +38,29 @@ public class AudioOptions : MonoBehaviour
         musicSlider.onValueChanged.AddListener(UpdateMusicVolume);
         environmentSlider.onValueChanged.AddListener(UpdateEnvironmentVolume);
         playerAbilitiesSlider.onValueChanged.AddListener(UpdatePlayerAbilitiesVolume);
+        inventorySlider.onValueChanged.AddListener(UpdateInventoryVolume);
+        uiSlider.onValueChanged.AddListener(UpdateUiVolume);
     }
 
     private void UpdateEnvironmentVolume(float volume)
     {
         foreach (var source in environment)
+        {
+            source.volume = volume;
+        }
+    }
+    
+    private void UpdateInventoryVolume(float volume)
+    {
+        foreach (var source in inventory)
+        {
+            source.volume = volume;
+        }
+    }
+    
+    private void UpdateUiVolume(float volume)
+    {
+        foreach (var source in ui)
         {
             source.volume = volume;
         }
@@ -91,7 +113,7 @@ public class AudioOptions : MonoBehaviour
     }
     public void SaveCurrentAudioSettings()
     {
-        gameData.SaveAudioSettings(playerSoundsSlider.value, enemySoundsSlider.value, musicSlider.value, environmentSlider.value, playerAbilitiesSlider.value);
+        gameData.SaveAudioSettings(playerSoundsSlider.value, enemySoundsSlider.value, musicSlider.value, environmentSlider.value, playerAbilitiesSlider.value, inventorySlider.value, uiSlider.value);
     }
 
     public void ApplyLoadedAudioSettings()
@@ -110,6 +132,12 @@ public class AudioOptions : MonoBehaviour
         
         playerAbilitiesSlider.value = gameData.LoadedPlayerAbilitiesVolume;
         UpdatePlayerAbilitiesVolume(gameData.LoadedPlayerAbilitiesVolume);
+        
+        inventorySlider.value = gameData.LoadedInventoryVolume;
+        UpdateInventoryVolume(gameData.LoadedInventoryVolume);
+        
+        uiSlider.value = gameData.LoadedUiVolume;
+        UpdateUiVolume(gameData.LoadedUiVolume);
     }
 
     private void OnApplicationQuit()

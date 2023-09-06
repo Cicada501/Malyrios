@@ -21,12 +21,15 @@ public class GameData : MonoBehaviour
     public float LoadedMusicVolume { get; private set; } = 1f;
     public float LoadedEnvironmentVolume { get; set; }
     public float LoadedPlayerAbilitiesVolume { get; set; }
+    public float LoadedInventoryVolume { get; set; }
+    public float LoadedUiVolume { get; set; }
 
     private LevelManager levelManager;
     private GameObject player;
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
     private PlayerAttack playerAttack;
+    private bool resetOnRestart;
 
 
     private void Awake()
@@ -58,7 +61,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.Save();
     }
     
-    public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume, float environmentVolume, float playerAbilitiesVolume)
+    public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume, float environmentVolume, float playerAbilitiesVolume, float inventoryVolume, float uiVolume)
     {
         LoadedPlayerSoundsVolume = playerSoundsVolume;
         LoadedEnemySoundsVolume = enemySoundsVolume;
@@ -70,6 +73,8 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
         PlayerPrefs.SetFloat("environmentVolume", environmentVolume);
         PlayerPrefs.SetFloat("playerAbilitiesVolume", playerAbilitiesVolume);
+        PlayerPrefs.SetFloat("inventoryVolume", inventoryVolume);
+        PlayerPrefs.SetFloat("uiVolume", uiVolume);
     }
     
     private void LoadAudioSettings()
@@ -79,11 +84,16 @@ public class GameData : MonoBehaviour
         LoadedMusicVolume = PlayerPrefs.GetFloat("musicVolume", .5f);
         LoadedEnvironmentVolume = PlayerPrefs.GetFloat("environmentVolume", .5f);
         LoadedPlayerAbilitiesVolume = PlayerPrefs.GetFloat("playerAbilitiesVolume", .5f);
+        LoadedInventoryVolume = PlayerPrefs.GetFloat("inventoryVolume", .5f);
+        LoadedUiVolume = PlayerPrefs.GetFloat("uiVolume", .5f);
     }
 
     public void LoadData()
     {
-        PlayerPrefs.DeleteAll();
+        if (resetOnRestart)
+        {
+            PlayerPrefs.DeleteAll();
+        }
         
         //Level
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
@@ -92,7 +102,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "Level3";
+            LoadedLevelName = "Level1";
         }
 
 
