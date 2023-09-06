@@ -59,7 +59,6 @@ public class GameInitializer : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         LoadAndApplyData();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Inventory.Instance.RemoveAllItems();
         
 

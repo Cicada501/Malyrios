@@ -54,7 +54,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         
         //Level
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
