@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   damage: 100
+  destroyedAfterSeconds: 5
   parentEnemy: {fileID: 0}
 --- !u!212 &8793110228135027701
 SpriteRenderer:
