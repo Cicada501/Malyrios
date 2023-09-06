@@ -56,6 +56,11 @@ public class FireBall : MonoBehaviour
         cooldownPercent = 0;
     }
 
+    public void PlayFireballSound()
+    {
+        ReferencesManager.Instance.startFireballSound.Play();
+    }
+
 
     public void OnPointerDown(BaseEventData data)
     {

@@ -19,7 +19,9 @@ public class GameData : MonoBehaviour
     public float LoadedPlayerSoundsVolume { get; private set; } = 1f;
     public float LoadedEnemySoundsVolume { get; private set; } = 1f;
     public float LoadedMusicVolume { get; private set; } = 1f;
-    
+    public float LoadedEnvironmentVolume { get; set; }
+    public float LoadedPlayerAbilitiesVolume { get; set; }
+
     private LevelManager levelManager;
     private GameObject player;
     private NPCManager npcManager;
@@ -56,14 +58,18 @@ public class GameData : MonoBehaviour
         PlayerPrefs.Save();
     }
     
-    public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume)
+    public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume, float environmentVolume, float playerAbilitiesVolume)
     {
         LoadedPlayerSoundsVolume = playerSoundsVolume;
         LoadedEnemySoundsVolume = enemySoundsVolume;
         LoadedMusicVolume = musicVolume;
+        LoadedEnvironmentVolume = environmentVolume;
+        LoadedPlayerAbilitiesVolume = playerAbilitiesVolume;
         PlayerPrefs.SetFloat("playerSoundsVolume", playerSoundsVolume);
         PlayerPrefs.SetFloat("enemySoundsVolume", enemySoundsVolume);
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("environmentVolume", environmentVolume);
+        PlayerPrefs.SetFloat("playerAbilitiesVolume", playerAbilitiesVolume);
     }
     
     private void LoadAudioSettings()
@@ -71,6 +77,8 @@ public class GameData : MonoBehaviour
         LoadedPlayerSoundsVolume = PlayerPrefs.GetFloat("playerSoundsVolume", .5f);
         LoadedEnemySoundsVolume = PlayerPrefs.GetFloat("enemySoundsVolume", .5f);
         LoadedMusicVolume = PlayerPrefs.GetFloat("musicVolume", .5f);
+        LoadedEnvironmentVolume = PlayerPrefs.GetFloat("environmentVolume", .5f);
+        LoadedPlayerAbilitiesVolume = PlayerPrefs.GetFloat("playerAbilitiesVolume", .5f);
     }
 
     public void LoadData()

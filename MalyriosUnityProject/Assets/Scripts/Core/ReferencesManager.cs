@@ -44,7 +44,8 @@ public class ReferencesManager : MonoBehaviour
     public AudioSource werewolfAttackSound;
     public AudioSource openGateSound;
     public AudioSource closeGateSound;
-
+    public AudioSource startFireballSound;
+    public AudioSource fireballImpactSound;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script

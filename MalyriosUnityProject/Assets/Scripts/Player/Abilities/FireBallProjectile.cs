@@ -43,6 +43,8 @@ public class FireBallProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            
+            ReferencesManager.Instance.fireballImpactSound.Play();
             //offset x value to have imact at right position
             var position = transform.position;
             var spawnImpactPoint = new Vector3(position.x + 0.4f, position.y, position.z);
