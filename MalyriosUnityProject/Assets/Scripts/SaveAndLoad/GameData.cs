@@ -30,7 +30,7 @@ public class GameData : MonoBehaviour
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
     private PlayerAttack playerAttack;
-    public bool resetOnRestart;
+    private bool resetOnRestart;
     [SerializeField] private Toggle toggleResetOnRestart;
 
 
@@ -46,19 +46,7 @@ public class GameData : MonoBehaviour
     void Start()
     {
         resetOnRestart = toggleResetOnRestart.isOn;
-        if (toggleResetOnRestart != null)
-        {
-            toggleResetOnRestart.onValueChanged.AddListener((value) => resetOnRestart = value);
-        }
-        else
-        {
-            Debug.LogError("Toggle UI Element ist nicht zugewiesen.");
-        }
-    }
-    
-    private void Update()
-    {
-        print($"resetOnRestart: {resetOnRestart}");
+        if (toggleResetOnRestart != null)toggleResetOnRestart.onValueChanged.AddListener((value) => resetOnRestart = value);
     }
 
     private void SaveData()
@@ -77,6 +65,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
         PlayerPrefs.SetInt("EquippedWeaponID", playerAttack.EquippedWeaponID);
         PlayerPrefs.SetString("QuestLog", JsonUtility.ToJson(questLogWindow.SaveQuestLog()));
+        PlayerPrefs.SetString("resetOnRestart",resetOnRestart.ToString());
         
         PlayerPrefs.Save();
     }
@@ -110,10 +99,14 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
+        resetOnRestart = PlayerPrefs.GetString("resetOnRestart","False") == "True";
+        toggleResetOnRestart.isOn = resetOnRestart;
+        
         if (resetOnRestart)
         {
             PlayerPrefs.DeleteAll();
         }
+        resetOnRestart = toggleResetOnRestart.isOn = false;
         
         //Level
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")

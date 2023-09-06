@@ -8,18 +8,18 @@ public class ChangeWalkingSound : MonoBehaviour
     [SerializeField] private string changeSoundTo;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("Sound is changing");
         if (other.gameObject.CompareTag("Player"))
         {
+            print("Sound is changing");
             other.gameObject.GetComponent<PlayerMovement>().ChangeRunSound(changeSoundTo);
         }
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        print("Sound is changing back");
         if (other.gameObject.CompareTag("Player"))
         {
+            print("Sound is changing back");
             other.gameObject.GetComponent<PlayerMovement>().ChangeRunSound("grass");
         }
     }
