@@ -39,13 +39,6 @@ public class ReferencesManager : MonoBehaviour
     public EquipmentSlot feetArmorSlot;
     public StatsWindow statsWindow;
     public SaveActiveItems saveActiveItems;
-    public AudioSource[] huntressAttackSound;
-    public AudioSource huntressSpearSpawnSound;
-    public AudioSource werewolfAttackSound;
-    public AudioSource openGateSound;
-    public AudioSource closeGateSound;
-    public AudioSource startFireballSound;
-    public AudioSource fireballImpactSound;
     private void Awake()
     {
         // Set the static instance variable to this instance of the script

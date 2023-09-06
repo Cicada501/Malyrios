@@ -174,11 +174,11 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case EnemyTypes.Huntress:
-                var i = Random.Range(0, ReferencesManager.Instance.huntressAttackSound.Length);
-                ReferencesManager.Instance.huntressAttackSound[i].Play();
+                var i = Random.Range(0, SoundHolder.Instance.huntressAttackSound.Length);
+                SoundHolder.Instance.huntressAttackSound[i].Play();
                 break;
             case EnemyTypes.Werewolf:
-                ReferencesManager.Instance.werewolfAttackSound.Play();
+                SoundHolder.Instance.werewolfAttackSound.Play();
                 break;
         }
     }
@@ -187,9 +187,9 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case EnemyTypes.Huntress:
-                var i = Random.Range(0, ReferencesManager.Instance.huntressAttackSound.Length);
-                ReferencesManager.Instance.huntressAttackSound[i].Play();
-                ReferencesManager.Instance.huntressSpearSpawnSound.Play();
+                var i = Random.Range(0, SoundHolder.Instance.huntressAttackSound.Length);
+                SoundHolder.Instance.huntressAttackSound[i].Play();
+                SoundHolder.Instance.huntressSpearSpawnSound.Play();
                 break;
         }
     }

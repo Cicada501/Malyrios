@@ -58,7 +58,7 @@ public class FireBall : MonoBehaviour
 
     public void PlayFireballSound()
     {
-        ReferencesManager.Instance.startFireballSound.Play();
+        SoundHolder.Instance.startFireballSound.Play();
     }
 
 

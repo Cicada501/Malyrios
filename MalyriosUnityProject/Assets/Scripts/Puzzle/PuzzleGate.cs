@@ -15,14 +15,14 @@ public class PuzzleGate : MonoBehaviour
     public void OpenGate()
     {
         animator.Play("Open");
-        ReferencesManager.Instance.openGateSound.Play();
+        SoundHolder.Instance.openGateSound.Play();
         gateCollider.enabled = false;
     }
 
     public void CloseGate()
     {
         animator.Play("Close");
-        ReferencesManager.Instance.closeGateSound.Play();
+        SoundHolder.Instance.closeGateSound.Play();
         gateCollider.enabled = true;
     }
 }
