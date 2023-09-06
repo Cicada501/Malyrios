@@ -5,6 +5,7 @@ using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 
@@ -175,6 +176,9 @@ public class Enemy : MonoBehaviour
             case EnemyTypes.Huntress:
                 var i = Random.Range(0, ReferencesManager.Instance.huntressAttackSound.Length);
                 ReferencesManager.Instance.huntressAttackSound[i].Play();
+                break;
+            case EnemyTypes.Werewolf:
+                ReferencesManager.Instance.werewolfAttackSound.Play();
                 break;
         }
     }

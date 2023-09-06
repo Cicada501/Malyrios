@@ -41,6 +41,7 @@ public class ReferencesManager : MonoBehaviour
     public SaveActiveItems saveActiveItems;
     public AudioSource[] huntressAttackSound;
     public AudioSource huntressSpearSpawnSound;
+    public AudioSource werewolfAttackSound;
 
     private void Awake()
     {
