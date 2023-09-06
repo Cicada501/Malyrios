@@ -13,6 +13,7 @@ public class GameInitializer : MonoBehaviour
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
     private PlayerAttack playerAttack;
+    private AudioOptions audioOptions;
 
 
     private void Awake()
@@ -24,6 +25,7 @@ public class GameInitializer : MonoBehaviour
         npcManager = GetComponent<NPCManager>();
         questLogWindow = ReferencesManager.Instance.questLogWindow;
         playerAttack = ReferencesManager.Instance.playerAttack;
+        audioOptions = FindObjectOfType<AudioOptions>();
 
     }
 
@@ -53,6 +55,8 @@ public class GameInitializer : MonoBehaviour
         if(gameData.LoadedArmorData.bodyArmorID!=0)ReferencesManager.Instance.bodyArmorSlot.LoadArmor(gameData.LoadedArmorData.bodyArmorID);
         if(gameData.LoadedArmorData.handArmorID!=0)ReferencesManager.Instance.handArmorSlot.LoadArmor(gameData.LoadedArmorData.handArmorID);
         if(gameData.LoadedArmorData.feetArmorID!=0)ReferencesManager.Instance.feetArmorSlot.LoadArmor(gameData.LoadedArmorData.feetArmorID);
+        
+        audioOptions.ApplyLoadedAudioSettings();
     }
 
     public void ResetAll()

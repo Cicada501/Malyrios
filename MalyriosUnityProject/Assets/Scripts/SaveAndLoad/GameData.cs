@@ -16,6 +16,10 @@ public class GameData : MonoBehaviour
     public List<PuzzleStationData> LoadedPuzzleStations { get; private set; }
     public ArmorData LoadedArmorData { get; private set; }
     
+    public float LoadedPlayerSoundsVolume { get; private set; } = 1f;
+    public float LoadedEnemySoundsVolume { get; private set; } = 1f;
+    public float LoadedMusicVolume { get; private set; } = 1f;
+    
     private LevelManager levelManager;
     private GameObject player;
     private NPCManager npcManager;
@@ -50,6 +54,23 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("QuestLog", JsonUtility.ToJson(questLogWindow.SaveQuestLog()));
         
         PlayerPrefs.Save();
+    }
+    
+    public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume)
+    {
+        LoadedPlayerSoundsVolume = playerSoundsVolume;
+        LoadedEnemySoundsVolume = enemySoundsVolume;
+        LoadedMusicVolume = musicVolume;
+        PlayerPrefs.SetFloat("playerSoundsVolume", playerSoundsVolume);
+        PlayerPrefs.SetFloat("enemySoundsVolume", enemySoundsVolume);
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+    }
+    
+    private void LoadAudioSettings()
+    {
+        LoadedPlayerSoundsVolume = PlayerPrefs.GetFloat("playerSoundsVolume", 1f);
+        LoadedEnemySoundsVolume = PlayerPrefs.GetFloat("enemySoundsVolume", 1f);
+        LoadedMusicVolume = PlayerPrefs.GetFloat("musicVolume", 1f);
     }
 
     public void LoadData()
@@ -133,6 +154,8 @@ public class GameData : MonoBehaviour
             LoadedArmorData = new ArmorData(0,0,0,0 );
             //LoadedArmorData = new ArmorData(150,160,170,180 );
         }
+        
+        LoadAudioSettings();
     }
 
     private void OnApplicationQuit()
