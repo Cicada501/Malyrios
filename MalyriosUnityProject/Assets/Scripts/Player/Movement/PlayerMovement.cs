@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     
     //Sound
     [SerializeField] private AudioSource[] landingSounds;
-    [SerializeField] private AudioSource jumpingSound;
+    [SerializeField] private AudioSource[] jumpingSounds;
     [SerializeField] private AudioSource dashingSound;
     private AudioSource[] runSound;
     [SerializeField] private AudioSource[] runSoundStone;
@@ -180,7 +180,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isJumping || disableMovement) return;
         jump = true; //triggers the addforce next frame
-        jumpingSound.Play();
+
+        var i = Random.Range(0, jumpingSounds.Length);
+        jumpingSounds[i].Play();
         playerAnimator.SetTrigger("Jump");
         playerAnimator.SetBool("isJumping", isJumping);
     }
