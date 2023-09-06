@@ -21,14 +21,11 @@ public class Enemy_Idle : StateMachineBehaviour
     {
         if (rb != null && !animator.GetBool("isDead"))
         {
-            Debug.Log($"passed: rb != null and not dead dist to player is: {enemy.distToPlayer} ({enemy.gameObject.name})");
 
             if (enemy.isRanged && enemy.distToPlayer is > 1f and <= 5f)
             {
-                Debug.Log($"passed: isRanged and Dist check({enemy.gameObject.name})");
                 if (Time.time >= enemy.nextAttackTime)
                 {
-                    Debug.Log($"passed: nextAttacktime, attack triggeried({enemy.gameObject.name})");
                     animator.SetTrigger("RangedAttack");
                     enemy.SetNextAttackTime();
                 }

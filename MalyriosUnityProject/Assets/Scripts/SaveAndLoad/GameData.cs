@@ -4,6 +4,7 @@ using Malyrios.Character;
 using NPCs;
 using SaveAndLoad;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameData : MonoBehaviour
 {
@@ -29,7 +30,8 @@ public class GameData : MonoBehaviour
     private NPCManager npcManager;
     private QuestLogWindow questLogWindow;
     private PlayerAttack playerAttack;
-    private bool resetOnRestart;
+    public bool resetOnRestart;
+    [SerializeField] private Toggle toggleResetOnRestart;
 
 
     private void Awake()
@@ -40,18 +42,36 @@ public class GameData : MonoBehaviour
         questLogWindow = ReferencesManager.Instance.questLogWindow;
         playerAttack = ReferencesManager.Instance.playerAttack;
     }
+    
+    void Start()
+    {
+        resetOnRestart = toggleResetOnRestart.isOn;
+        if (toggleResetOnRestart != null)
+        {
+            toggleResetOnRestart.onValueChanged.AddListener((value) => resetOnRestart = value);
+        }
+        else
+        {
+            Debug.LogError("Toggle UI Element ist nicht zugewiesen.");
+        }
+    }
+    
+    private void Update()
+    {
+        print($"resetOnRestart: {resetOnRestart}");
+    }
 
     private void SaveData()
     {
         PlayerPrefs.SetString("armor",JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor()));
-        print($"Saving: {JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor())}");
+        //print($"Saving: {JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor())}");
         PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));
 
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
-        print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
+        //print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
