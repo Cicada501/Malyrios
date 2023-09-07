@@ -55,6 +55,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     [SerializeField] private Sprite stationNull;
     [SerializeField] private PuzzleGate gate;
 
+    private bool playerGotPunished;
+
     private void Awake()
     {
         id = gameObject.name + transform.position;
@@ -87,7 +89,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             this.GetComponent<SpriteRenderer>().sprite = stationTrue;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);
-            ;
+            playerGotPunished = false;
         }
         else if (value == false)
         {
@@ -95,6 +97,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             this.GetComponent<SpriteRenderer>().sprite = stationFalse;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.2f, 1f);
+            if(!playerGotPunished) PunishWrongAnswer();
         }
         else // value == null
         {
@@ -102,8 +105,51 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             this.GetComponent<SpriteRenderer>().sprite = stationNull;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 1f);
+            playerGotPunished = false;
         }
     }
+    
+    private void PunishWrongAnswer()
+    {
+        var player = ReferencesManager.Instance.player;
+    
+        Vector2 playerPosition = player.transform.position;
+        Vector2 stationPosition = this.transform.position;
+
+        Vector2 direction;
+        if (playerPosition.x > stationPosition.x)
+        {
+            // Spieler ist links von der Station, wirf ihn nach rechts oben
+            direction = new Vector2(1, 1);
+        }
+        else
+        {
+            // Spieler ist rechts von der Station, wirf ihn nach links oben
+            direction = new Vector2(-1, 1);
+        }
+    
+        direction.Normalize(); // Normalisiere den Vektor, um seine Länge auf 1 zu setzen
+
+        float forceMagnitude = 200; // Adjust the value based on your specific requirements
+        player.GetComponent<PlayerHealth>().TakeDamage(100);
+        player.GetComponent<PlayerMovement>().disableMovement = true;
+        player.GetComponent<Rigidbody2D>().AddForce(direction * forceMagnitude, ForceMode2D.Force);
+        playerGotPunished = true;
+        StartCoroutine(EnableMovementDelayed(.5f));
+    }
+    
+    IEnumerator EnableMovementDelayed(float time)
+    {
+        var player = ReferencesManager.Instance.player;
+
+        yield return new WaitForSeconds(time);
+
+
+        player.GetComponent<PlayerMovement>().disableMovement = false;
+    }
+
+
+
 
     public void Interact()
     {
