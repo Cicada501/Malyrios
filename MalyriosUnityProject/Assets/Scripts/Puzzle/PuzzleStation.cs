@@ -134,6 +134,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         player.GetComponent<PlayerHealth>().TakeDamage(100);
         player.GetComponent<PlayerMovement>().disableMovement = true;
         player.GetComponent<Rigidbody2D>().AddForce(direction * forceMagnitude, ForceMode2D.Force);
+        SoundHolder.Instance.wrongAnser.Play();
         playerGotPunished = true;
         StartCoroutine(EnableMovementDelayed(.5f));
     }

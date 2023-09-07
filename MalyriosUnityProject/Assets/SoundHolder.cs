@@ -20,6 +20,7 @@ public class SoundHolder : MonoBehaviour
     public AudioSource placeRuneStone; 
     public AudioSource[] openButton;
     public AudioSource closeButton;
+    public AudioSource wrongAnser;
     private void Awake()
     {
         Instance = this;
