@@ -39,6 +39,10 @@ public class ReferencesManager : MonoBehaviour
     public EquipmentSlot feetArmorSlot;
     public StatsWindow statsWindow;
     public SaveActiveItems saveActiveItems;
+    public GameObject shopWindow;
+    public GameObject shopItemPrefab;
+    public GameObject shopItemPrefabParent;
+
     private void Awake()
     {
         // Set the static instance variable to this instance of the script

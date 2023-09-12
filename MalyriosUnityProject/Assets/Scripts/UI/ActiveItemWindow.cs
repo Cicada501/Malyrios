@@ -35,7 +35,7 @@ public class ActiveItemWindow : MonoBehaviour
     [SerializeField] private Image itemImage;
 
 
-    void ChangeActiveItem(BaseItem item, ISlot.slotType slotType)
+    void ChangeActiveItem(BaseItem item)
     {
         if (activeItem == null)
         {
@@ -75,7 +75,7 @@ public class ActiveItemWindow : MonoBehaviour
     
     public void SetActiveItem(BaseItem item, ISlot.slotType slotType)
     {
-        ChangeActiveItem(item, slotType);
+        ChangeActiveItem(item);
         
         if (activeItem == null || activeItem != item)
         {

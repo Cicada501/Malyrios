@@ -25,6 +25,7 @@ public class DialogEvents : MonoBehaviour
     private NPC asmilda;
     private NPC jack;
     private NPC oris;
+    private NPC thea;
     private bool addedDialogAnswer3;
     private bool addedDialogAnswer4;
 
@@ -104,6 +105,7 @@ public class DialogEvents : MonoBehaviour
         asmilda = npcManager.npcs["Asmilda"];
         jack = npcManager.npcs["Jack"];
         oris = npcManager.npcs["Oris"];
+        thea = npcManager.npcs["Thea"];
         
         switch (eventName)
         {
@@ -240,6 +242,10 @@ public class DialogEvents : MonoBehaviour
                 Inventory.Instance.AddItem(ItemDatabase.GetWeapon(1));
                 tommy.gameObject.SetActive(false);
                
+                break;
+            case "TheaShop":
+                ShopWindow.Instance.activeShop = thea.GetComponent<Shop>();
+                ShopWindow.Instance.ShowShopWindow();
                 break;
             default:
                 return;
