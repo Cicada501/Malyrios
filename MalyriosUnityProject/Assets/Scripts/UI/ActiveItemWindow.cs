@@ -17,6 +17,7 @@ public class ActiveItemWindow : MonoBehaviour
     public BaseItem activeItem = null;
     public ISlot activeSlot;
     [SerializeField] private Button useButton;
+    private ISlot.slotType activeSlotType;
 
     private void Awake()
     {
@@ -77,13 +78,24 @@ public class ActiveItemWindow : MonoBehaviour
     {
         ChangeActiveItem(item);
         
+        //if item is not selected
         if (activeItem == null || activeItem != item)
         {
             activeItem = item;
+            
+            //if the ActiveItemWindow appears from Selecting an Item in the Shop
+            if (slotType == ISlot.slotType.ShopSlot)
+            {
+                activeSlotType = ISlot.slotType.ShopSlot;
+                useButton.GetComponentInChildren<TextMeshProUGUI>().text = "Buy";
+                return;
+            }
+            
             if (item.IsUsable)
             {
                 useButton.gameObject.SetActive(true);
                 useButton.GetComponentInChildren<TextMeshProUGUI>().text = slotType == ISlot.slotType.EquipmentSlot ? "unequip" : "Use";
+                
             }
             else
             {
@@ -104,17 +116,21 @@ public class ActiveItemWindow : MonoBehaviour
     
     public void UseButtonPressed()
     {
-
-        activeSlot.UseItem();
+        if (activeSlotType == ISlot.slotType.ShopSlot)
+        {
+            ShopWindow.Instance.Buy(activeItem);
+        }
+        else
+        {
+            activeSlot.UseItem();
+        }
+        
         HideActiveItemInfo();
     }
 
     public void RemoveButtonPressed()
     {
-
         activeSlot.DropItem();
         HideActiveItemInfo();
     }
-    
 }
-

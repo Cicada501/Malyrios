@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Malyrios.Core;
@@ -5,6 +6,7 @@ using Malyrios.Items;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ShopWindow : MonoBehaviour
 {
@@ -29,7 +31,7 @@ public class ShopWindow : MonoBehaviour
     private GameObject shopItemPrefab;
 
     private GameObject itemPrefabParent;
-    private List<GameObject> instantiatedShopItemPrefabs = new();
+    private readonly List<GameObject> instantiatedShopItemPrefabs = new();
 
     private void Start()
     {
@@ -63,10 +65,18 @@ public class ShopWindow : MonoBehaviour
         ActiveItemWindow.Instance.SetActiveItem(item, ISlot.slotType.ShopSlot); // Du musst den korrekten Slot-Typ hier setzen, falls "ShopSlot" nicht existiert
     }
 
-    
-    void Buy(BaseItem item)
+
+    public void Buy(BaseItem item)
     {
-        
+        var goldmünze = ItemDatabase.GetItem(16);
+        if (Inventory.CountOccurrences(goldmünze) >= item.ItemPrice)
+        {
+            Inventory.Instance.AddItem(item);
+            for (int i = 0; i < item.ItemPrice; i++)
+            {
+                Inventory.Instance.Remove(goldmünze);
+            }
+        }
     }
 
     public void ShowShopWindow()
