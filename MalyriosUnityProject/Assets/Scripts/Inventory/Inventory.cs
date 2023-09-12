@@ -24,8 +24,7 @@ public class Inventory : MonoBehaviour
     
     public bool isEmpty = true;
     [SerializeField] private Button useButton;
-    public int money;
-    
+
     #region new inventory
 
     public List<BaseItem> Items = new List<BaseItem>();
