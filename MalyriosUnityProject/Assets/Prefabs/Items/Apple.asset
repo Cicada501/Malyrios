@@ -17,8 +17,7 @@ MonoBehaviour:
   description: Looks like a normal apple
   icon: {fileID: -1747284187, guid: 84c915ee06df5704484b9dfea2655e27, type: 3}
   dropChance: 0
-  isStackable: 1
   isUsable: 0
-  maxStackAmount: 100
   itemType: 5
   itemPrefab: {fileID: 0}
+  itemPrice: 3

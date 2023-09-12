@@ -29,6 +29,7 @@ namespace Malyrios.Items
         [SerializeField] protected bool isUsable = false;
         [SerializeField] protected ItemTypes itemType = 0;
         [SerializeField] protected GameObject itemPrefab = null;
+        [SerializeField] protected int itemPrice = 0 ;
 
 
         public int ItemID => this.itemID;
@@ -39,6 +40,7 @@ namespace Malyrios.Items
         public bool IsUsable => this.isUsable;
         public ItemTypes ItemType => this.itemType;
         public GameObject ItemPrefab => this.itemPrefab;
+        public int ItemPrice => this.itemPrice;
 
 
         public virtual void ExecuteUsageEffect()

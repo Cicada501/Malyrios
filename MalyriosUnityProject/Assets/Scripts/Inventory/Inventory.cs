@@ -35,19 +35,6 @@ public class Inventory : MonoBehaviour
     private BaseWeapon testWeapon;
 
     #endregion
-    
-    void PrintInventory()
-    {
-        List<string> itemNames = new List<string>();
-        print($"items length: {Items.Count}");
-        foreach (var item in Items)
-        {
-            itemNames.Add(item != null ? item.ItemName : "Null");
-        }
-        Debug.Log("IDs: [" + string.Join(",", ItemIDs) + "]");
-        Debug.Log("Item Names: [" + string.Join(", ", itemNames) + "]");
-    }
-    
 
     public void RemoveAllItems()
     {
