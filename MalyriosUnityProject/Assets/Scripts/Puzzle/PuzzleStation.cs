@@ -88,7 +88,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {   if(gate!=null) gate.OpenGate();
             this.GetComponent<SpriteRenderer>().sprite = stationTrue;
             if (!inUse) return;
-            puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);
+            puzzleWindowImage.color = Color.HSVToRGB(45f / 360f, 0.2f, 1f);
             playerGotPunished = false;
         }
         else if (value == false)
@@ -96,7 +96,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             if(gate!=null) gate.CloseGate();
             this.GetComponent<SpriteRenderer>().sprite = stationFalse;
             if (!inUse) return;
-            puzzleWindowImage.color = Color.HSVToRGB(0f, 0.2f, 1f);
+            puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 0.2f);
             if(!playerGotPunished) PunishWrongAnswer();
         }
         else // value == null
