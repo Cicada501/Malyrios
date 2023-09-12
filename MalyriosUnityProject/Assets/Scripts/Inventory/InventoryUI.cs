@@ -100,6 +100,11 @@ public class InventoryUI : MonoBehaviour
         {
             activePuzzleStation.ClosePuzzleWindow();
         }
+
+        if (ShopWindow.Instance.shopWindow.activeSelf && !inventoryUI.activeSelf)
+        {
+            ShopWindow.Instance.ToggleShopWindow();
+        }
         //stats- and activeItemWindow are always closed, when inventory gets opened or closed
         activeItemInfoWindow.SetActive(false);
         statsWindow.SetActive(false);

@@ -25,7 +25,7 @@ public class ShopWindow : MonoBehaviour
     public static ShopWindow Instance;
     [HideInInspector]
     public Shop activeShop;
-    private GameObject shopWindow;
+    public GameObject shopWindow;
     private GameObject shopItemPrefab;
 
     private GameObject itemPrefabParent;
@@ -82,7 +82,7 @@ public class ShopWindow : MonoBehaviour
         {
             var soundIndex = Random.Range(0, SoundHolder.Instance.openButton.Length);
             SoundHolder.Instance.openButton[soundIndex].Play();
-            ReferencesManager.Instance.canvasUI.GetComponent<InventoryUI>().ChangeInventoryOpened();
+            ReferencesManager.Instance.canvasUI.GetComponent<InventoryUI>().ChangeInventoryOpened(false);
 
         }
         else
@@ -95,6 +95,7 @@ public class ShopWindow : MonoBehaviour
             {
                 Destroy(item);
             }
+            if(InventoryUI.inventoryOpen)ReferencesManager.Instance.canvasUI.GetComponent<InventoryUI>().ChangeInventoryOpened();
 
         }
     }
