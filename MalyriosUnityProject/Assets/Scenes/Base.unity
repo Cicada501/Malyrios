@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.37837005, b: 0.3572253, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19622,7 +19622,7 @@ MonoBehaviour:
   - {fileID: 6098212377636700761, guid: bfff3d434439c4347a474e5ac1c19688, type: 3}
   - {fileID: 6098212377636700761, guid: 45de95d9da8c9eb448a0ecaec42200e1, type: 3}
   - {fileID: 6098212377636700761, guid: ae11ec74eba086649876bec32f351845, type: 3}
-  inventoryUI: {fileID: 1931971255}
+  canvasUI: {fileID: 821967875}
   playerAttack: {fileID: 1975534756}
   weaponSlot: {fileID: 1125508832}
   headArmorSlot: {fileID: 594212636}
@@ -26090,7 +26090,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0796297, y: 1}
+    m_SensorSize: {x: 2.0276244, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -27945,14 +27945,14 @@ MonoBehaviour:
       - m_Target: {fileID: 821967880}
         m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
         m_MethodName: ChangeInventoryOpened
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1510320114
 MonoBehaviour:

@@ -30,7 +30,7 @@ public class ReferencesManager : MonoBehaviour
     public Transform itemSlotsParent;
     public DynamicWidth dynamicPuzzleWindowWidth;
     public List<GameObject> logicSymbols;
-    public GameObject inventoryUI;
+    public GameObject canvasUI;
     public PlayerAttack playerAttack;
     public EquipmentSlot weaponSlot;
     public EquipmentSlot headArmorSlot;

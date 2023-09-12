@@ -47,7 +47,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private List<PuzzleSlot> slots = new();
     private List<PuzzleElement> puzzleElements;
     private List<GameObject> symbolPrefabs;
-    private GameObject inventoryUI;
+    private InventoryUI inventoryUI;
     private bool windowOpen;
     private bool inUse;
     [SerializeField] private Sprite stationTrue;
@@ -66,7 +66,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         puzzleWindow = ReferencesManager.Instance.puzzleWindow;
         itemSlotsParent = ReferencesManager.Instance.itemSlotsParent;
         symbolPrefabs = ReferencesManager.Instance.logicSymbols;
-        inventoryUI = ReferencesManager.Instance.inventoryUI;
+        inventoryUI = ReferencesManager.Instance.canvasUI.GetComponent<InventoryUI>();
         itemIDsArray = new int[slotCount];
        
         puzzleWindowImage = puzzleWindow.GetComponent<Image>();
@@ -163,7 +163,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private void ShowPuzzleDialog()
     {
         puzzleWindow.SetActive(true);
-        inventoryUI.SetActive(true);
+        inventoryUI.ChangeInventoryOpened(false);
         windowOpen = true;
         interactableText.gameObject.SetActive(false);
         UpdateDisplayedValue();
@@ -260,7 +260,10 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     public void ClosePuzzleWindow()
     {
         puzzleWindow.SetActive(false);
-        inventoryUI.SetActive(false);
+        if (InventoryUI.inventoryOpen)
+        {
+            inventoryUI.ChangeInventoryOpened(false);
+        }
         windowOpen = false;
         inUse = false;
         FindObjectOfType<InventoryUI>().SetActivePuzzleStation(null);

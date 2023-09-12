@@ -95,7 +95,6 @@ public class PlayerAttack : MonoBehaviour
         if (time >= nextAttackTime)
         {
             isAttacking = false;
-
             if (!InventoryUI.inventoryOpen && equippedWeapon)
             {
                 Attack();
@@ -206,7 +205,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void EquipWeapon(BaseWeapon weapon)
     {
-        print($"weapon: {weapon}");
         GameObject go = Instantiate(weapon.ItemPrefab, weaponHolder.transform);
         this.swordAnimator = go.GetComponent<Animator>();
         this.equippedWeapon = weapon;

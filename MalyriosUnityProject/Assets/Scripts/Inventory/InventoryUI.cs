@@ -57,7 +57,6 @@ public class InventoryUI : MonoBehaviour
         {
             itemsLoaded = true;
         }
-
     }
 
 
@@ -78,7 +77,7 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-    public void ChangeInventoryOpened()
+    public void ChangeInventoryOpened(bool withEquipmentWindow = true)
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
@@ -93,10 +92,11 @@ public class InventoryUI : MonoBehaviour
             SoundHolder.Instance.invClose.Play();
         }
         
-        equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
+        if(withEquipmentWindow)equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
         
+        print($"activePuzzleStation? {activePuzzleStation}");
         //if puzzleStation is active, close it with inventory
-        if (activePuzzleStation)
+        if (activePuzzleStation && !inventoryUI.activeSelf)
         {
             activePuzzleStation.ClosePuzzleWindow();
         }
