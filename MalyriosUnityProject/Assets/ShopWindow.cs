@@ -29,7 +29,7 @@ public class ShopWindow : MonoBehaviour
     private GameObject shopItemPrefab;
 
     private GameObject itemPrefabParent;
-    private List<GameObject> instantiatedShopItemPrefabs;
+    private List<GameObject> instantiatedShopItemPrefabs = new();
 
     private void Start()
     {
@@ -88,9 +88,11 @@ public class ShopWindow : MonoBehaviour
         else
         {
             SoundHolder.Instance.closeButton.Play();
-            foreach (var item in instantiatedShopItemPrefabs)
+            
+            var itemsToDestroy = new List<GameObject>(instantiatedShopItemPrefabs);
+            instantiatedShopItemPrefabs.Clear();
+            foreach (var item in itemsToDestroy)
             {
-                instantiatedShopItemPrefabs.Remove(item);
                 Destroy(item);
             }
 
