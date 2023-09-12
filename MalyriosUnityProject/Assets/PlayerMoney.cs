@@ -16,10 +16,16 @@ public class PlayerMoney : MonoBehaviour
         currentMoney += amount;
         UpdateMoneyText();
     }
+    
+    public void RemoveMoney(int amount)
+    {
+        currentMoney -= amount;
+        UpdateMoneyText();
+    }
 
     private void UpdateMoneyText()
     {
-        moneyText.text = "Geld: " + currentMoney.ToString();
+        moneyText.text = currentMoney.ToString();
     }
 }
 

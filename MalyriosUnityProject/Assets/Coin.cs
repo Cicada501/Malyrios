@@ -16,20 +16,17 @@ public enum CoinType
     GreenGem = 10
 }
 
-public class CoinScript : MonoBehaviour
+public class Coin : MonoBehaviour
 {
     [SerializeField] private CoinType coinType;
-    [SerializeField] private PlayerMoney playerMoney;
+    private PlayerMoney playerMoney;
 
     private void Start()
     {
-        if(playerMoney == null)
-        {
-            playerMoney = FindObjectOfType<PlayerMoney>();
-        }
+        playerMoney = ReferencesManager.Instance.player.GetComponent<PlayerMoney>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -38,4 +35,3 @@ public class CoinScript : MonoBehaviour
         }
     }
 }
-
