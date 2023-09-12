@@ -106,7 +106,7 @@ public class GameData : MonoBehaviour
         {
             PlayerPrefs.DeleteAll();
         }
-        resetOnRestart = toggleResetOnRestart.isOn = false;
+        //resetOnRestart = toggleResetOnRestart.isOn = false;
         
         //Level
         if (PlayerPrefs.HasKey("currentLevelName") && PlayerPrefs.GetString("currentLevelName") != "")
