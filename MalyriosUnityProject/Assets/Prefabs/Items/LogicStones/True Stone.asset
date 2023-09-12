@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: True Stone
   m_EditorClassIdentifier: 
   itemID: 20
-  itemName: Stein der Wahrheit
-  description: "Dieser Stein R\xE4presentiert den wahrheitswehrt WAHR"
+  itemName: Lichtsigille
+  description: 'Dies ist ein Stein, auf dem die Lichtsigille eingraviert ist. Dies
+    ist eine der beiden Elementarsigillen. '
   icon: {fileID: -167172311, guid: bffb9a4fd8dc8bb4482be782b13e9ef9, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 0
-  maxStackAmount: 0
   itemType: 7
   itemPrefab: {fileID: 0}

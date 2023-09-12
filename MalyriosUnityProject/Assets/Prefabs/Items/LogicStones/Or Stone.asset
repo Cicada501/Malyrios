@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Or Stone
   m_EditorClassIdentifier: 
   itemID: 23
-  itemName: Stein der Disjunktion
-  description: Sobald eines der beiden Symbole neben dem stein "Wahr" ist, ist der
-    gesamte Ausdruck wahr
+  itemName: Lichtknoten Sigille
+  description: 'Dies ist ein Stein, auf dem die Lichtknoten Sigille eingraviert ist.
+    Diese Sigille  Verbindet zwei Elementarsigillen zur Lichtsigille, falls mindestens
+    eine der beiden eine Lichtsigille ist. '
   icon: {fileID: -1941972889, guid: c1965c0f91fa96845ae5452d2a892832, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 0
-  maxStackAmount: 0
   itemType: 7
   itemPrefab: {fileID: 0}
