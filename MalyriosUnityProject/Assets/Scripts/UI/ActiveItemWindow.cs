@@ -105,19 +105,26 @@ public class ActiveItemWindow : MonoBehaviour
                     break;
 
                 default:
-                    sellPriceText.text = ((int)(item.ItemPrice / 1.5f)).ToString();
-                    sellingInfo.SetActive(ShopWindow.Instance.activeShop);
-                    removeButton.gameObject.SetActive(!ShopWindow.Instance.activeShop);
-                    if (item.IsUsable)
+                    if (ShopWindow.Instance.activeShop)
                     {
                         useButton.gameObject.SetActive(true);
-                        useButton.GetComponentInChildren<TextMeshProUGUI>().text = "nutzen";
+                        useButton.GetComponentInChildren<TextMeshProUGUI>().text = "verkaufen";
+                        
+                        sellPriceText.text = ((int)(item.ItemPrice / 1.5f)).ToString();
+                        sellingInfo.SetActive(true);
+                        removeButton.gameObject.SetActive(false);
                     }
                     else
                     {
-                        useButton.gameObject.SetActive(false);
+                        sellingInfo.SetActive(false);
+                        removeButton.gameObject.SetActive(true);
+                        if (item.IsUsable)
+                        {
+                            useButton.gameObject.SetActive(true);
+                            useButton.GetComponentInChildren<TextMeshProUGUI>().text = "nutzen";
+                        }
                     }
-
+                    
                     break;
             }
         }
@@ -140,7 +147,15 @@ public class ActiveItemWindow : MonoBehaviour
         }
         else
         {
-            activeSlot.UseItem();
+            if (ShopWindow.Instance.activeShop)
+            {
+                Inventory.Instance.Remove(activeItem);
+                PlayerMoney.Instance.AddMoney((int)(activeItem.ItemPrice / 1.5f));
+            }
+            else
+            {
+                activeSlot.UseItem();
+            }
         }
 
         HideActiveItemInfo();
