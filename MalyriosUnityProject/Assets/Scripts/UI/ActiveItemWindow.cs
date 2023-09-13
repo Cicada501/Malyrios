@@ -105,8 +105,9 @@ public class ActiveItemWindow : MonoBehaviour
                     break;
 
                 default:
+                    sellPriceText.text = ((int)(item.ItemPrice / 1.5f)).ToString();
+                    sellingInfo.SetActive(ShopWindow.Instance.activeShop);
                     removeButton.gameObject.SetActive(!ShopWindow.Instance.activeShop);
-                    sellingInfo.SetActive(false);
                     if (item.IsUsable)
                     {
                         useButton.gameObject.SetActive(true);

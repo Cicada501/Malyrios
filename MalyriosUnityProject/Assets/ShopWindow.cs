@@ -100,6 +100,7 @@ public class ShopWindow : MonoBehaviour
                 Destroy(item);
             }
             if(InventoryUI.inventoryOpen)ReferencesManager.Instance.canvasUI.GetComponent<InventoryUI>().ChangeInventoryOpened();
+            activeShop = null;
 
         }
     }
