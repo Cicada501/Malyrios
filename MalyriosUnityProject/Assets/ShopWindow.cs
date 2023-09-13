@@ -68,15 +68,9 @@ public class ShopWindow : MonoBehaviour
 
     public void Buy(BaseItem item)
     {
-        var goldmünze = ItemDatabase.GetItem(16);
-        if (Inventory.CountOccurrences(goldmünze) >= item.ItemPrice)
-        {
-            Inventory.Instance.AddItem(item);
-            for (int i = 0; i < item.ItemPrice; i++)
-            {
-                Inventory.Instance.Remove(goldmünze);
-            }
-        }
+        if (PlayerMoney.Instance.CurrentMoney < item.ItemPrice) return;
+        Inventory.Instance.AddItem(item);
+        PlayerMoney.Instance.RemoveMoney(item.ItemPrice);
     }
 
     public void ShowShopWindow()

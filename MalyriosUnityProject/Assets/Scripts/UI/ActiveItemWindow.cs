@@ -88,6 +88,7 @@ public class ActiveItemWindow : MonoBehaviour
             {
                 activeSlotType = ISlot.slotType.ShopSlot;
                 useButton.GetComponentInChildren<TextMeshProUGUI>().text = "Buy";
+                //Disable "Remove button"
                 return;
             }
             
