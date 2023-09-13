@@ -8,20 +8,20 @@ using TMPro;
 using UnityEngine.UI;
 
 
-
 public class ActiveItemWindow : MonoBehaviour
 {
-
-
     public static ActiveItemWindow Instance;
     public BaseItem activeItem = null;
     public ISlot activeSlot;
     [SerializeField] private Button useButton;
+    [SerializeField] private Button removeButton;
+    [SerializeField] private GameObject sellingInfo;
+    [SerializeField] private TextMeshProUGUI sellPriceText;
     private ISlot.slotType activeSlotType;
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.LogWarning("More than one instance of ActiveItemWindow found!");
             return;
@@ -41,7 +41,8 @@ public class ActiveItemWindow : MonoBehaviour
         if (activeItem == null)
         {
             ShowActiveItemInfo(item);
-        }else if (item.name == activeItem.name)
+        }
+        else if (item.name == activeItem.name)
         {
             HideActiveItemInfo();
         }
@@ -50,6 +51,7 @@ public class ActiveItemWindow : MonoBehaviour
             ShowActiveItemInfo(item);
         }
     }
+
     private void ShowActiveItemInfo(BaseItem item)
     {
         window.SetActive(true);
@@ -59,7 +61,8 @@ public class ActiveItemWindow : MonoBehaviour
             nameText.text = weapon.ItemName;
             descriptionText.text = weapon.GetDescription();
             itemImage.sprite = weapon.Icon;
-        }else if(item is BaseArmor armor)
+        }
+        else if (item is BaseArmor armor)
         {
             nameText.text = armor.ItemName;
             descriptionText.text = armor.GetDescription();
@@ -71,50 +74,63 @@ public class ActiveItemWindow : MonoBehaviour
             descriptionText.text = item.Description;
             itemImage.sprite = item.Icon;
         }
-        
     }
-    
+
     public void SetActiveItem(BaseItem item, ISlot.slotType slotType)
     {
         ChangeActiveItem(item);
-        
+
         //if item is not selected
         if (activeItem == null || activeItem != item)
         {
             activeItem = item;
-            
+
             //if the ActiveItemWindow appears from Selecting an Item in the Shop
-            if (slotType == ISlot.slotType.ShopSlot)
+            switch (slotType)
             {
-                activeSlotType = ISlot.slotType.ShopSlot;
-                useButton.GetComponentInChildren<TextMeshProUGUI>().text = "Buy";
-                //Disable "Remove button"
-                return;
-            }
-            
-            if (item.IsUsable)
-            {
-                useButton.gameObject.SetActive(true);
-                useButton.GetComponentInChildren<TextMeshProUGUI>().text = slotType == ISlot.slotType.EquipmentSlot ? "unequip" : "Use";
-                
-            }
-            else
-            {
-                useButton.gameObject.SetActive(false);
+                case ISlot.slotType.ShopSlot:
+                    activeSlotType = ISlot.slotType.ShopSlot;
+                    useButton.gameObject.SetActive(true);
+                    useButton.GetComponentInChildren<TextMeshProUGUI>().text = "kaufen";
+                    removeButton.gameObject.SetActive(false);
+                    sellPriceText.text = ((int)(item.ItemPrice / 1.5f)).ToString();
+                    sellingInfo.SetActive(true);
+                    return;
+
+                case ISlot.slotType.EquipmentSlot:
+                    removeButton.gameObject.SetActive(!ShopWindow.Instance.activeShop);
+                    sellingInfo.SetActive(false);
+                    useButton.gameObject.SetActive(true);
+                    useButton.GetComponentInChildren<TextMeshProUGUI>().text = "anlegen";
+                    break;
+
+                default:
+                    removeButton.gameObject.SetActive(!ShopWindow.Instance.activeShop);
+                    sellingInfo.SetActive(false);
+                    if (item.IsUsable)
+                    {
+                        useButton.gameObject.SetActive(true);
+                        useButton.GetComponentInChildren<TextMeshProUGUI>().text = "nutzen";
+                    }
+                    else
+                    {
+                        useButton.gameObject.SetActive(false);
+                    }
+
+                    break;
             }
         }
         else
         {
             activeItem = null;
         }
-        
     }
 
     public void HideActiveItemInfo()
     {
         window.SetActive(false);
     }
-    
+
     public void UseButtonPressed()
     {
         if (activeSlotType == ISlot.slotType.ShopSlot)
@@ -125,7 +141,7 @@ public class ActiveItemWindow : MonoBehaviour
         {
             activeSlot.UseItem();
         }
-        
+
         HideActiveItemInfo();
     }
 

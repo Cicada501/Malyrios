@@ -17,8 +17,7 @@ MonoBehaviour:
   description: I wanna eat this flower!
   icon: {fileID: 21300000, guid: ce07823a45f1e144f989e6329e6898f6, type: 3}
   dropChance: 0
-  isStackable: 1
   isUsable: 1
-  maxStackAmount: 1000
   itemType: 5
   itemPrefab: {fileID: 0}
+  itemPrice: 12
