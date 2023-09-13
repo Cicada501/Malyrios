@@ -21,6 +21,12 @@ public class SoundHolder : MonoBehaviour
     public AudioSource[] openButton;
     public AudioSource closeButton;
     public AudioSource wrongAnser;
+    public AudioSource collectCoin;
+    public AudioSource correctAnswer;
+    public AudioSource levelComplete;
+    public AudioSource pickupItem;
+    public AudioSource buyItem;
+    public AudioSource sellItem;
     private void Awake()
     {
         Instance = this;

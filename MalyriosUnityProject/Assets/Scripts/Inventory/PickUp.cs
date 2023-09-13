@@ -61,6 +61,7 @@ public class PickUp : MonoBehaviour, IInteractable
         Inventory.Instance.AddItem(this.baseItem);
         gameObject.SetActive(false); //only set false instead of destroying to save and load what items where picked up
         interactableText.gameObject.SetActive(false);
+        SoundHolder.Instance.pickupItem.Play();
     }
 
     private void OnDrawGizmos()

@@ -56,6 +56,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     [SerializeField] private PuzzleGate gate;
 
     private bool playerGotPunished;
+    private bool playerGotRewarded;
 
     private void Awake()
     {
@@ -90,6 +91,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(45f / 360f, 0.2f, 1f);
             playerGotPunished = false;
+            if(!playerGotRewarded) SoundHolder.Instance.correctAnswer.Play();
+            playerGotRewarded = true;
         }
         else if (value == false)
         {
@@ -98,6 +101,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 0.2f);
             if(!playerGotPunished) PunishWrongAnswer();
+            playerGotRewarded = false;
         }
         else // value == null
         {
@@ -106,6 +110,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 1f);
             playerGotPunished = false;
+            playerGotRewarded = false;
         }
     }
     

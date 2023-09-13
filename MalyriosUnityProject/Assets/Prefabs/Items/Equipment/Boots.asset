@@ -17,11 +17,10 @@ MonoBehaviour:
   description: Those Boots look solid
   icon: {fileID: 1286797832676431586, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 1
-  maxStackAmount: 0
   itemType: 3
   itemPrefab: {fileID: 0}
+  itemPrice: 200
   healthBonus: 100
   manaBonus: 0
   strengthBonus: 10

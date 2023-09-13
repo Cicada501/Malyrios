@@ -30,6 +30,7 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            SoundHolder.Instance.collectCoin.Play();
             playerMoney.AddMoney((int)coinType);
             Destroy(gameObject);
         }

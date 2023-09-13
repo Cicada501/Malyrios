@@ -17,11 +17,10 @@ MonoBehaviour:
   description: 
   icon: {fileID: -8067971934180286087, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 1
-  maxStackAmount: 0
   itemType: 1
   itemPrefab: {fileID: 0}
+  itemPrice: 100
   healthBonus: 55
   manaBonus: 0
   strengthBonus: 0

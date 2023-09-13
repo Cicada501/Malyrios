@@ -30,6 +30,7 @@ public class ActiveItemWindow : MonoBehaviour
         Instance = this;
     }
 
+    private const float SELL_PRICE_FACTOR = 1.5f;
     [SerializeField] private GameObject window;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text descriptionText;
@@ -93,11 +94,12 @@ public class ActiveItemWindow : MonoBehaviour
                     useButton.gameObject.SetActive(true);
                     useButton.GetComponentInChildren<TextMeshProUGUI>().text = "kaufen";
                     removeButton.gameObject.SetActive(false);
-                    sellPriceText.text = ((int)(item.ItemPrice / 1.5f)).ToString();
+                    sellPriceText.text = ((int)(item.ItemPrice / SELL_PRICE_FACTOR)).ToString();
                     sellingInfo.SetActive(true);
                     return;
 
                 case ISlot.slotType.EquipmentSlot:
+                    activeSlotType = ISlot.slotType.EquipmentSlot;
                     removeButton.gameObject.SetActive(!ShopWindow.Instance.activeShop);
                     sellingInfo.SetActive(false);
                     useButton.gameObject.SetActive(true);
@@ -105,12 +107,13 @@ public class ActiveItemWindow : MonoBehaviour
                     break;
 
                 default:
+                    activeSlotType = ISlot.slotType.InventorySlot;
                     if (ShopWindow.Instance.activeShop)
                     {
                         useButton.gameObject.SetActive(true);
                         useButton.GetComponentInChildren<TextMeshProUGUI>().text = "verkaufen";
                         
-                        sellPriceText.text = ((int)(item.ItemPrice / 1.5f)).ToString();
+                        sellPriceText.text = ((int)(item.ItemPrice / SELL_PRICE_FACTOR)).ToString();
                         sellingInfo.SetActive(true);
                         removeButton.gameObject.SetActive(false);
                     }
@@ -151,6 +154,7 @@ public class ActiveItemWindow : MonoBehaviour
             {
                 Inventory.Instance.Remove(activeItem);
                 PlayerMoney.Instance.AddMoney((int)(activeItem.ItemPrice / 1.5f));
+                SoundHolder.Instance.sellItem.Play();
             }
             else
             {

@@ -71,6 +71,7 @@ public class ShopWindow : MonoBehaviour
         if (PlayerMoney.Instance.CurrentMoney < item.ItemPrice) return;
         Inventory.Instance.AddItem(item);
         PlayerMoney.Instance.RemoveMoney(item.ItemPrice);
+        SoundHolder.Instance.buyItem.Play();
     }
 
     public void ShowShopWindow()
