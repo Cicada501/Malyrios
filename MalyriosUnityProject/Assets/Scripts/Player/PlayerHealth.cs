@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     [SerializeField] private float flashTime;
     [SerializeField] private SpriteRenderer playerRenderer;
     [SerializeField] private Image healthFill;
+    [SerializeField] private GameObject deathScreen;
     
     private BaseAttributes baseAttributes;
 
@@ -81,14 +82,21 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
     public void Die()
     {
-        player.transform.position = currentSpawnPoint.position;
-        baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
-        //Delete resources from inventory
-        //Respawn bosses
+        deathScreen.SetActive(true);
+        player.GetComponent<PlayerMovement>().disableMovement = true;
     }
 
     public void Heal(int heal)
     {
         baseAttributes.CurrentHealth += heal;
+    }
+    
+    public void Respawn()
+    {
+        deathScreen.SetActive(false);
+        player.transform.position = currentSpawnPoint.position;
+        baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
+        player.GetComponent<PlayerMovement>().disableMovement = false;
+        // Aktiviere die Steuerungen oder andere Dinge, die du beim Respawn reaktivieren möchtest
     }
 }

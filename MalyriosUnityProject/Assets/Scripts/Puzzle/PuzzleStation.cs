@@ -118,7 +118,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private void PunishWrongAnswer()
     {
         var player = ReferencesManager.Instance.player;
-    
+        
         Vector2 playerPosition = player.transform.position;
         Vector2 stationPosition = this.transform.position;
 

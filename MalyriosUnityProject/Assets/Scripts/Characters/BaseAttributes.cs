@@ -34,7 +34,10 @@ namespace Malyrios.Character
 
         private void Update()
         {
-            //print($"Health: {CurrentHealth}/{MaxHealth}");
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
         }
 
         private void Start()
