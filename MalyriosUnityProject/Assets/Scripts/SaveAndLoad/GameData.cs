@@ -54,6 +54,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("armor",JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor()));
         //print($"Saving: {JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor())}");
         PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
+        print($"Saved stations:{JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));

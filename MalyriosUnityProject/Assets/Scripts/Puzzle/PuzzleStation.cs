@@ -61,6 +61,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private void Awake()
     {
         id = gameObject.name + transform.position;
+        print($"Set station id: {id}");
         puzzleElements = GetComponent<Puzzle>().puzzleElements;
         slotCount = puzzleElements.Count(element => element.elementType == PuzzleElement.ElementType.Empty);
         interactableText = ReferencesManager.Instance.interactableText;
