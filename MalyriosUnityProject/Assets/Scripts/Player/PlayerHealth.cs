@@ -25,6 +25,11 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     
     public Transform currentSpawnPoint;
     private Transform player;
+    
+    public Image deathScreenPanelImage;
+    [SerializeField] private Color deathScreenColor;
+
+    public bool isDead;
 
 
     // Use this for initialization
@@ -42,6 +47,9 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         //regHealth = baseAttributes.MaxHealth;
 
         currentSpawnPoint = player.transform;
+        
+        //deathScreenPanelImage = deathScreen.GetComponent<Image>();
+        deathScreenPanelImage.color = new Color(0.5f, 0.5f, 0.5f, 0f); // Setze die anfängliche Transparenz auf 0
     }
 
     private void FixedUpdate()
@@ -74,7 +82,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         this.baseAttributes.CurrentHealth -= damage;
         FlashOnDamage();
 
-        if (this.baseAttributes.CurrentHealth <= 0)
+        if (this.baseAttributes.CurrentHealth <= 0 &&!isDead)
         {
             Die();
         }
@@ -82,8 +90,10 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
     public void Die()
     {
+        isDead = true;
         deathScreen.SetActive(true);
         player.GetComponent<PlayerMovement>().disableMovement = true;
+        StartCoroutine(FadeInDeathScreen());
     }
 
     public void Heal(int heal)
@@ -93,10 +103,30 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     
     public void Respawn()
     {
+        isDead = false;
         deathScreen.SetActive(false);
         player.transform.position = currentSpawnPoint.position;
         baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
         player.GetComponent<PlayerMovement>().disableMovement = false;
         // Aktiviere die Steuerungen oder andere Dinge, die du beim Respawn reaktivieren möchtest
+    }
+    
+    private IEnumerator FadeInDeathScreen()
+    {
+        float elapsedTime = 0f;
+        float duration = 2f; // Dauer der Transition in Sekunden
+
+        Color startColor = new Color(deathScreenColor.a,deathScreenColor.b,deathScreenColor.g,0f); // Beginne mit 0 Transparenz
+        Color endColor = deathScreenColor; // Endet mit voller Transparenz
+
+        while (elapsedTime < duration)
+        {
+            deathScreenPanelImage.color = Color.Lerp(startColor, endColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        deathScreenPanelImage.color = endColor; // Stelle sicher, dass die Farbe am Ende der Transition korrekt gesetzt ist
+        // Deaktiviere die Steuerungen oder andere Dinge, die du während des Death Screens deaktivieren möchtest
     }
 }
