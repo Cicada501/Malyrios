@@ -31679,8 +31679,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gate
       value: 
-      objectReference: {fileID: 6323718444442391812, guid: 73c21f80bb3f2c94ba3595f627468b58,
-        type: 3}
+      objectReference: {fileID: 3457569384124686288}
     - target: {fileID: 3180313169260954087, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
       propertyPath: m_RootOrder
@@ -31738,6 +31737,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d13a40f80635654b96b8547a9cf22b4, type: 3}
+--- !u!114 &928712459537427870 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1962751726927956202, guid: 0d13a40f80635654b96b8547a9cf22b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719930048861332852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab93798f8cbcf743b150ed7b48551fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4322565855657174163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3180313169260954087, guid: 0d13a40f80635654b96b8547a9cf22b4,
@@ -31811,6 +31822,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4367622676416402187, guid: c794e979332cb9841ae6ebfc3cd92512,
+        type: 3}
+      propertyPath: station
+      value: 
+      objectReference: {fileID: 928712459537427870}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c794e979332cb9841ae6ebfc3cd92512, type: 3}
 --- !u!114 &1548256018707043069 stripped
@@ -32123,6 +32139,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 4367622676416402187, guid: c794e979332cb9841ae6ebfc3cd92512,
+        type: 3}
+      propertyPath: station
+      value: 
+      objectReference: {fileID: 928712459537427870}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c794e979332cb9841ae6ebfc3cd92512, type: 3}
 --- !u!114 &6683291502831874297 stripped
@@ -32378,3 +32399,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8663128405066615508}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3457569384124686288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6323718444442391812, guid: 73c21f80bb3f2c94ba3595f627468b58,
+    type: 3}
+  m_PrefabInstance: {fileID: 8663128405066615508}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe31d4bf78484ea4babdca060d78455a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

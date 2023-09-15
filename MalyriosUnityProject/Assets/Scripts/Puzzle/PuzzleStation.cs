@@ -82,7 +82,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         UpdateDisplayedValue();
     }
 
-    public void UpdateDisplayedValue()
+    public void UpdateDisplayedValue(bool allowPunish=false)
     {
         bool? value = GetTruthValue();
 
@@ -101,7 +101,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             this.GetComponent<SpriteRenderer>().sprite = stationFalse;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 0.2f);
-            if(!playerGotPunished) PunishWrongAnswer();
+            if(!playerGotPunished&& allowPunish) PunishWrongAnswer();
             playerGotRewarded = false;
         }
         else // value == null
@@ -242,7 +242,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             itemIDsArray[index] = itemID;
         }
 
-        UpdateDisplayedValue();
+        UpdateDisplayedValue(true);
     }
 
     private void OnTriggerStay2D(Collider2D other)
