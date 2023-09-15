@@ -913,7 +913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3541674669814308900}
   m_Layer: 0
-  m_Name: Level2LandingPoint
+  m_Name: Level 2LandingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57216,10 +57216,20 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.2980392
       objectReference: {fileID: 0}
+    - target: {fileID: 1648382968622251177, guid: b2b99d9acef7bdc4e9b67646f736e86d,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648382968622251177, guid: b2b99d9acef7bdc4e9b67646f736e86d,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1906398551
+      objectReference: {fileID: 0}
     - target: {fileID: 5502312995850881679, guid: b2b99d9acef7bdc4e9b67646f736e86d,
         type: 3}
       propertyPath: levelName
-      value: Level2
+      value: Level 2
       objectReference: {fileID: 0}
     - target: {fileID: 7619531850684549111, guid: b2b99d9acef7bdc4e9b67646f736e86d,
         type: 3}
@@ -57280,6 +57290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090731574524281052, guid: b2b99d9acef7bdc4e9b67646f736e86d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b99d9acef7bdc4e9b67646f736e86d, type: 3}
@@ -57399,7 +57414,7 @@ PrefabInstance:
     - target: {fileID: 5502312995850881679, guid: b2b99d9acef7bdc4e9b67646f736e86d,
         type: 3}
       propertyPath: levelName
-      value: Level2
+      value: Level 2
       objectReference: {fileID: 0}
     - target: {fileID: 7619531850684549111, guid: b2b99d9acef7bdc4e9b67646f736e86d,
         type: 3}

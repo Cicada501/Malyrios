@@ -27334,7 +27334,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.931579, y: 1}
+    m_SensorSize: {x: 1.9157895, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -27809,15 +27809,15 @@ MonoBehaviour:
     Prefab: {fileID: 7104209319309316220, guid: 1db2587fb634df047b199b291c6bec76,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 79195f4997f241245b5d211a91c1ee86, type: 3}
-  - Name: Level1
+  - Name: Level 1
     Prefab: {fileID: 3961218565264814783, guid: c4910daa51bd46241b8f0b69b3e11d6e,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
-  - Name: Level2
+  - Name: Level 2
     Prefab: {fileID: 3961218565264814783, guid: 971d3f73f92ca764fbc0df8e6f9dee0a,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
-  - Name: Level3
+  - Name: Level 3
     Prefab: {fileID: 3961218565264814783, guid: 6f71e56cdda6a5f49ab9a27c9d5cc740,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
