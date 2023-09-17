@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 35
   itemName: "Schriftrolle der St\xE4rke"
-  description: "Diese Schriftrolle strahlt eine Magiesche Energie aus, die es mir
-    kaum m\xF6glich macht zu wiederstehen, sie zu lesen. Effekt: +20 St\xE4rke"
+  description: "Diese Schriftrolle erh\xF6ht die St\xE4rke um 10. Somit macht jeder
+    Angriff mit einer Nahkampfwaffe 10 Schaden mehr"
   icon: {fileID: 21300000, guid: 5ea985c59ad03f94f9df883ef0c74df6, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 1
-  maxStackAmount: 0
   itemType: 6
   itemPrefab: {fileID: 0}
+  itemPrice: 30
