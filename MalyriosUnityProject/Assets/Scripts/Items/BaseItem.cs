@@ -75,7 +75,6 @@ namespace Malyrios.Items
             }
             else if (this.itemName == "Schriftrolle der Agilität")
             {
-                Debug.Log("used Haste scroll");
                 baseAttributes.Haste += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
