@@ -18,20 +18,20 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     [SerializeField] private Image healthFill;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject respawnButtionGO;
-    private BaseAttributes baseAttributes;
     [SerializeField] private Animator deathTextAnimator;
-    private Animator playerAnimator;
-
-    private Color playerOrigionalColor;
-    private Color barFillOrigionalColor;
-    
-    public Transform currentSpawnPoint;
-    private Transform player;
-    
-    public Image deathScreenPanelImage;
     [SerializeField] private Color deathScreenColor;
 
+    private Animator playerAnimator;
+    private BaseAttributes baseAttributes;
+    private Color playerOrigionalColor;
+    private Color barFillOrigionalColor;
+    private Transform player;
+    
+    public Transform currentSpawnPoint;
     public bool isDead;
+    public Image deathScreenPanelImage;
+    
+
 
 
     // Use this for initialization
@@ -44,27 +44,8 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         //Remember original colors to reset after Flash
         this.playerOrigionalColor = playerRenderer.color;
         this.barFillOrigionalColor = healthFill.color;
-
-        //UIManager.Instance.SetMaxHealth(this.baseAttributes.MaxHealth);
-
-        //regHealth = baseAttributes.MaxHealth;
-
-        currentSpawnPoint = player.transform;
         
-        //deathScreenPanelImage = deathScreen.GetComponent<Image>();
-        deathScreenPanelImage.color = new Color(0.5f, 0.5f, 0.5f, 0f); // Setze die anfängliche Transparenz auf 0
-    }
-
-    private void FixedUpdate()
-    {
-        //Debug.Log("Current Health: " + baseAttributes.CurrentHealth);
-
-        if (this.baseAttributes.CurrentHealth < this.baseAttributes.MaxHealth)
-        {
-            this.baseAttributes.CurrentHealth += (int)healthRegen;
-        }
-
-        //Debug.Log("CurrentSpawnPoint: " + currentSpawnPoint);
+        deathScreenPanelImage.color = new Color(0.5f, 0.5f, 0.5f, 0f); //Initial Transparency = 0
     }
 
     private void FlashOnDamage()
@@ -116,7 +97,6 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         player.transform.position = currentSpawnPoint.position;
         baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
         player.GetComponent<PlayerMovement>().disableMovement = false;
-        // Aktiviere die Steuerungen oder andere Dinge, die du beim Respawn reaktivieren möchtest
     }
     
     private IEnumerator FadeInDeathScreen()

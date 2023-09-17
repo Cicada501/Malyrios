@@ -45,8 +45,9 @@ public class LevelManager : MonoBehaviour
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;
+        player.GetComponent<PlayerHealth>().currentSpawnPoint = GameObject.Find("Startpoint").GetComponent<Transform>();
 
-        //get the Decision script (is on the same GameObject), to assign the 
+       
         var npcManager = GetComponent<NPCManager>();
         npcManager.npcs.Clear();
         foreach (var npc in currentLevel.GetComponentsInChildren<NPC>())

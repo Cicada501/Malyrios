@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         playerAnimator.SetFloat("YVelocity", rb.velocity.y);
         
-        if (Mathf.Abs(horizontalMove) > 0 && controller.m_Grounded && !isDashing && Time.time >= soundPlayTime)
+        if (Mathf.Abs(horizontalMove) > 0 && controller.m_Grounded && !isDashing && Time.time >= soundPlayTime &&!playerAnimator.GetComponent<PlayerHealth>().isDead)
         {
             if (!isRunning)
             {
