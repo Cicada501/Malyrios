@@ -57,6 +57,8 @@ public class GameInitializer : MonoBehaviour
         if(gameData.LoadedArmorData.feetArmorID!=0)ReferencesManager.Instance.feetArmorSlot.LoadArmor(gameData.LoadedArmorData.feetArmorID);
         
         audioOptions.ApplyLoadedAudioSettings();
+        SaveScrolls.Instance.scrollData = gameData.LoadedScrollData;
+        SaveScrolls.Instance.ApplyScrollEffects();
     }
 
     public void ResetAll()

@@ -17,6 +17,10 @@ public class GameData : MonoBehaviour
     public List<PuzzleStationData> LoadedPuzzleStations { get; private set; }
     public ArmorData LoadedArmorData { get; private set; }
     
+    public ScrollData LoadedScrollData { get; private set; } = new ScrollData();
+    
+    
+    //Volume
     public float LoadedPlayerSoundsVolume { get; private set; } = 1f;
     public float LoadedEnemySoundsVolume { get; private set; } = 1f;
     public float LoadedMusicVolume { get; private set; } = 1f;
@@ -24,6 +28,8 @@ public class GameData : MonoBehaviour
     public float LoadedPlayerAbilitiesVolume { get; set; }
     public float LoadedInventoryVolume { get; set; }
     public float LoadedUiVolume { get; set; }
+    
+    
 
     private LevelManager levelManager;
     private GameObject player;
@@ -52,21 +58,22 @@ public class GameData : MonoBehaviour
     private void SaveData()
     {
         PlayerPrefs.SetString("armor",JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor()));
-        //print($"Saving: {JsonUtility.ToJson(EquipmentManager.Instance.SaveArmor())}");
         PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
-        print($"Saved stations:{JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())}");
         PlayerPrefs.SetString("currentNpcStates",JsonUtility.ToJson(npcManager.SaveNpCs()));
         PlayerPrefs.SetString("currentLevelName", levelManager.GetCurrentLevelName());
         PlayerPrefs.SetString("currentPlayerPosition", JsonUtility.ToJson(player.transform.position));
 
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
-        //print($"saved inventory data: {JsonUtility.ToJson(inventoryData)}");
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
         DecisionData decisionData = new DecisionData();
         PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
         PlayerPrefs.SetInt("EquippedWeaponID", playerAttack.EquippedWeaponID);
         PlayerPrefs.SetString("QuestLog", JsonUtility.ToJson(questLogWindow.SaveQuestLog()));
         PlayerPrefs.SetString("resetOnRestart",resetOnRestart.ToString());
+        
+        PlayerPrefs.SetString("scrollData", JsonUtility.ToJson(SaveScrolls.Instance.scrollData));
+        print($"Saving: {JsonUtility.ToJson(SaveScrolls.Instance.scrollData)}");
+
         
         PlayerPrefs.Save();
     }
@@ -185,6 +192,15 @@ public class GameData : MonoBehaviour
         {
             LoadedArmorData = new ArmorData(0,0,0,0 );
             //LoadedArmorData = new ArmorData(150,160,170,180 );
+        }
+        
+        if (PlayerPrefs.HasKey("scrollData") && PlayerPrefs.GetString("scrollData") != "")
+        {
+            LoadedScrollData = JsonUtility.FromJson<ScrollData>(PlayerPrefs.GetString("scrollData"));
+        }
+        else
+        {
+            LoadedScrollData = new ScrollData();
         }
         
         LoadAudioSettings();

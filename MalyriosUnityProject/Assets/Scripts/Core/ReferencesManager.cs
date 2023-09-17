@@ -43,7 +43,6 @@ public class ReferencesManager : MonoBehaviour
     public GameObject shopWindow;
     public GameObject shopItemPrefab;
     public GameObject shopItemPrefabParent;
-    public BaseAttributes baseAttributes;
 
     private void Awake()
     {

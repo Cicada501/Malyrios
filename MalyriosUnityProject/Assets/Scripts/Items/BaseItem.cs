@@ -50,7 +50,7 @@ namespace Malyrios.Items
             BaseAttributes baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
             if (this.itemName == "Red Flower")
             {
-                health.Heal(150);
+                health.Heal(80+(int)baseAttributes.Balance);
             }
             else if (this.itemName == "Schattenrose")
             {
@@ -59,17 +59,20 @@ namespace Malyrios.Items
             }
             else if (this.itemName == "Schriftrolle des Lebens")
             {
+                SaveScrolls.Instance.scrollData.HealthScrollsUsed++;
                 baseAttributes.MaxHealth += 100;
                 baseAttributes.CurrentHealth += 100;
                 StatsWindow.Instance.UpdateStatTexts();
             }
             else if (this.itemName == "Schriftrolle der Stärke")
             {
+                SaveScrolls.Instance.scrollData.StrengthScrollsUsed++;
                 baseAttributes.Strength += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
             else if (this.itemName == "Schriftrolle der Intelligenz")
             {
+                SaveScrolls.Instance.scrollData.IntScrollsUsed++;
                 baseAttributes.Energy += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
@@ -80,6 +83,7 @@ namespace Malyrios.Items
             }
             else if (this.itemName == "Schriftrolle der Ausgeglichenheit")
             {
+                
                 baseAttributes.Balance += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
