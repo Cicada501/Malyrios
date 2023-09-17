@@ -17,8 +17,9 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     [SerializeField] private SpriteRenderer playerRenderer;
     [SerializeField] private Image healthFill;
     [SerializeField] private GameObject deathScreen;
-    
+    [SerializeField] private GameObject respawnButtionGO;
     private BaseAttributes baseAttributes;
+    [SerializeField] private Animator deathTextAnimator;
 
     private Color playerOrigionalColor;
     private Color barFillOrigionalColor;
@@ -93,6 +94,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         isDead = true;
         deathScreen.SetActive(true);
         player.GetComponent<PlayerMovement>().disableMovement = true;
+        deathTextAnimator.Play("youDiedText");
         StartCoroutine(FadeInDeathScreen());
     }
 
@@ -104,6 +106,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void Respawn()
     {
         isDead = false;
+        respawnButtionGO.SetActive(false);
         deathScreen.SetActive(false);
         player.transform.position = currentSpawnPoint.position;
         baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
@@ -127,6 +130,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         }
 
         deathScreenPanelImage.color = endColor; // Stelle sicher, dass die Farbe am Ende der Transition korrekt gesetzt ist
-        // Deaktiviere die Steuerungen oder andere Dinge, die du während des Death Screens deaktivieren möchtest
+        respawnButtionGO.SetActive(true);
+       
     }
 }

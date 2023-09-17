@@ -24,7 +24,7 @@ public class Enemy_run : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (enemy.canMove && rb != null)
+        if (enemy.canMove && rb != null && !player.GetComponent<PlayerHealth>().isDead)
         {
             Vector2 target = new Vector2(player.position.x, rb.position.y);
             Vector2 direction = (target - rb.position).normalized;

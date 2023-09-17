@@ -19,7 +19,7 @@ public class Enemy_Idle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (rb != null && !animator.GetBool("isDead"))
+        if (rb != null && !animator.GetBool("isDead") && !player.GetComponent<PlayerHealth>().isDead)
         {
 
             if (enemy.isRanged && enemy.distToPlayer is > 1f and <= 5f)
