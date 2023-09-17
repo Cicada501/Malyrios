@@ -15635,9 +15635,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc6d12a3e342ed7489271df5eeba5b74, type: 2}
   - {fileID: 11400000, guid: 7fc8bf596b4f3ac44a74110e03eda795, type: 2}
   - {fileID: 11400000, guid: 39182ca46138bc1499e79b63d51e0524, type: 2}
-  - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
   - {fileID: 11400000, guid: 5ecd9ccc0da7e4949bfb1c9cf3a53e42, type: 2}
-  - {fileID: 11400000, guid: cd50e8d7deaf65d4e8fedd6b03d63779, type: 2}
   - {fileID: 11400000, guid: 5741609d394e86e4187215fa42bef696, type: 2}
   - {fileID: 11400000, guid: 028b4ebea1518d34e8ea4ce125dbd2ac, type: 2}
   - {fileID: 11400000, guid: 0315f60a5d17cc94c8a82f2e3bc7773d, type: 2}
@@ -15648,6 +15646,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea59057058add644e96a899849c8b6e7, type: 2}
   - {fileID: 11400000, guid: eda9effc512dfb0438e106d2c8b80770, type: 2}
   - {fileID: 11400000, guid: e97f390aa0712f64f975e3ae9a6b8bcd, type: 2}
+  - {fileID: 11400000, guid: 8fc0a355687a35449ae2a96e2d9c71a5, type: 2}
+  - {fileID: 11400000, guid: cd50e8d7deaf65d4e8fedd6b03d63779, type: 2}
+  - {fileID: 11400000, guid: 3a93b4302fbbc40489bac24dd330f6c6, type: 2}
+  - {fileID: 11400000, guid: aa1be4d5b43cb6a469e50f82d32c557d, type: 2}
+  - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -20454,6 +20457,7 @@ MonoBehaviour:
   shopItemPrefab: {fileID: 801328494117419443, guid: 4e34474e9d0346642986bf89647cf9f0,
     type: 3}
   shopItemPrefabParent: {fileID: 993831161}
+  baseAttributes: {fileID: 0}
 --- !u!114 &914773981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28093,7 +28097,7 @@ MonoBehaviour:
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 0
+  spawnAtPlayerDebugLocation: 1
   loadingScreenBase: {fileID: 1459939526}
 --- !u!114 &1386037427
 MonoBehaviour:
@@ -35167,7 +35171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1975534761}
   joystick: {fileID: 1737049197}
-  runSpeed: 7
+  baseRunSpeed: 7
   playerAnimator: {fileID: 0}
   groundLayer:
     serializedVersion: 2

@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
+using Malyrios.Character;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //https://www.youtube.com/watch?v=dwcT-Dch0bA
 public class PlayerMovement : MonoBehaviour
@@ -7,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController2D controller;
     [SerializeField] Joystick joystick;
     private float horizontalMove = 0f;
-    [SerializeField] private float runSpeed;
+    [SerializeField] private float baseRunSpeed;
+    private float runSpeed;
     [SerializeField] Animator playerAnimator = null;
     private bool jump;
     private bool isJumping;
@@ -39,14 +43,19 @@ public class PlayerMovement : MonoBehaviour
     private float soundPlayTime;
     private float soundPlayInterval = 0.3f;
 
+    private void Awake()
+    {
+        BaseAttributes.OnHasteChanged += ChangeRunningSpeed;
+    }
+
     void Start()
     {
         runSound = runSoundGrass;
+        runSpeed = baseRunSpeed;
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
         controller.OnLandEvent.AddListener(PlayLandingSound);
-
     }
 
     void Update()
@@ -127,6 +136,11 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
         
+    }
+
+    private void ChangeRunningSpeed(float haste)
+    {
+        runSpeed = baseRunSpeed + haste / 10;
     }
 
     private IEnumerator StopDashing()

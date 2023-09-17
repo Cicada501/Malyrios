@@ -65,7 +65,23 @@ namespace Malyrios.Items
             }
             else if (this.itemName == "Schriftrolle der Stärke")
             {
-                baseAttributes.Strength += 20;
+                baseAttributes.Strength += 10;
+                StatsWindow.Instance.UpdateStatTexts();
+            }
+            else if (this.itemName == "Schriftrolle der Intelligenz")
+            {
+                baseAttributes.Energy += 10;
+                StatsWindow.Instance.UpdateStatTexts();
+            }
+            else if (this.itemName == "Schriftrolle der Agilität")
+            {
+                Debug.Log("used Haste scroll");
+                baseAttributes.Haste += 10;
+                StatsWindow.Instance.UpdateStatTexts();
+            }
+            else if (this.itemName == "Schriftrolle der Ausgeglichenheit")
+            {
+                baseAttributes.Balance += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
         }

@@ -141,7 +141,7 @@ namespace Malyrios.Character
             get => this.haste;
             set
             {
-                this.critChance = value;
+                this.haste = value;
                 OnHasteChanged?.Invoke(this.haste);
                 OnBaseAttributeChanged?.Invoke(this);
             }

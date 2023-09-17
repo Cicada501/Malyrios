@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Malyrios.Character;
 using Malyrios.Dialogue;
 using NPCs;
 using TMPro;
@@ -42,6 +43,7 @@ public class ReferencesManager : MonoBehaviour
     public GameObject shopWindow;
     public GameObject shopItemPrefab;
     public GameObject shopItemPrefabParent;
+    public BaseAttributes baseAttributes;
 
     private void Awake()
     {
