@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     [SerializeField] private GameObject respawnButtionGO;
     private BaseAttributes baseAttributes;
     [SerializeField] private Animator deathTextAnimator;
+    private Animator playerAnimator;
 
     private Color playerOrigionalColor;
     private Color barFillOrigionalColor;
@@ -38,6 +39,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     {
         player = GetComponent<Transform>();
         this.baseAttributes = GetComponent<BaseAttributes>();
+        playerAnimator = GetComponent<Animator>();
 
         //Remember original colors to reset after Flash
         this.playerOrigionalColor = playerRenderer.color;
@@ -92,9 +94,11 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void Die()
     {
         isDead = true;
+        playerAnimator.SetTrigger("Die");
         deathScreen.SetActive(true);
         player.GetComponent<PlayerMovement>().disableMovement = true;
         deathTextAnimator.Play("youDiedText");
+        SoundHolder.Instance.playerDeath.Play();
         StartCoroutine(FadeInDeathScreen());
     }
 
@@ -106,6 +110,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     public void Respawn()
     {
         isDead = false;
+        playerAnimator.SetTrigger("Respawn");
         respawnButtionGO.SetActive(false);
         deathScreen.SetActive(false);
         player.transform.position = currentSpawnPoint.position;

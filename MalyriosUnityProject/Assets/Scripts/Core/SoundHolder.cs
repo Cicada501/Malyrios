@@ -27,6 +27,7 @@ public class SoundHolder : MonoBehaviour
     public AudioSource pickupItem;
     public AudioSource buyItem;
     public AudioSource sellItem;
+    public AudioSource playerDeath;
     private void Awake()
     {
         Instance = this;
