@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class SaveScrolls : MonoBehaviour
 {
-
     public static SaveScrolls Instance;
 
     private void Awake()
@@ -24,18 +23,15 @@ public class SaveScrolls : MonoBehaviour
     public ScrollData scrollData = new();
 
     [SerializeField] private BaseAttributes baseAttributes;
-    
+
 
     public void ApplyScrollEffects()
     {
-        baseAttributes.MaxHealth += 100 * scrollData.HealthScrollsUsed;
-        baseAttributes.Strength += 10 * scrollData.StrengthScrollsUsed;
-        baseAttributes.Energy += 10 * scrollData.IntScrollsUsed;
-    }
-
-    private void Update()
-    {
-        print($"Scrolldata: {JsonUtility.ToJson(scrollData)}");
+        baseAttributes.MaxHealth += 100 * scrollData.healthScrollsUsed;
+        baseAttributes.Strength += 10 * scrollData.strengthScrollsUsed;
+        baseAttributes.Energy += 10 * scrollData.intScrollsUsed;
+        baseAttributes.Haste += 10 * scrollData.hasteScrollsUsed;
+        baseAttributes.Balance += 10 * scrollData.balanceScrollsUsed;
     }
 }
 
@@ -43,14 +39,18 @@ public class SaveScrolls : MonoBehaviour
 [System.Serializable]
 public class ScrollData
 {
-    public int HealthScrollsUsed;
-    public int StrengthScrollsUsed;
-    public int IntScrollsUsed;
+    public int healthScrollsUsed;
+    public int strengthScrollsUsed;
+    public int intScrollsUsed;
+    public int hasteScrollsUsed;
+    public int balanceScrollsUsed;
 
     public ScrollData()
     {
-        HealthScrollsUsed = 0;
-        StrengthScrollsUsed = 0;
-        IntScrollsUsed = 0;
+        healthScrollsUsed = 0;
+        strengthScrollsUsed = 0;
+        intScrollsUsed = 0;
+        hasteScrollsUsed = 0;
+        balanceScrollsUsed = 0;
     }
 }

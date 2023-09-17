@@ -59,31 +59,32 @@ namespace Malyrios.Items
             }
             else if (this.itemName == "Schriftrolle des Lebens")
             {
-                SaveScrolls.Instance.scrollData.HealthScrollsUsed++;
+                SaveScrolls.Instance.scrollData.healthScrollsUsed++;
                 baseAttributes.MaxHealth += 100;
                 baseAttributes.CurrentHealth += 100;
                 StatsWindow.Instance.UpdateStatTexts();
             }
             else if (this.itemName == "Schriftrolle der Stärke")
             {
-                SaveScrolls.Instance.scrollData.StrengthScrollsUsed++;
+                SaveScrolls.Instance.scrollData.strengthScrollsUsed++;
                 baseAttributes.Strength += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
             else if (this.itemName == "Schriftrolle der Intelligenz")
             {
-                SaveScrolls.Instance.scrollData.IntScrollsUsed++;
+                SaveScrolls.Instance.scrollData.intScrollsUsed++;
                 baseAttributes.Energy += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
             else if (this.itemName == "Schriftrolle der Agilität")
             {
+                SaveScrolls.Instance.scrollData.hasteScrollsUsed++;
                 baseAttributes.Haste += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
             else if (this.itemName == "Schriftrolle der Ausgeglichenheit")
             {
-                
+                SaveScrolls.Instance.scrollData.balanceScrollsUsed++;
                 baseAttributes.Balance += 10;
                 StatsWindow.Instance.UpdateStatTexts();
             }
