@@ -48,45 +48,49 @@ namespace Malyrios.Items
             ActiveItemWindow.Instance.activeSlot.RemoveItem();
             PlayerHealth health = ReferencesManager.Instance.player.GetComponent<PlayerHealth>();
             BaseAttributes baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
-            if (this.itemName == "Red Flower")
+            switch (this.itemName)
             {
-                health.Heal(80+(int)baseAttributes.Balance);
-            }
-            else if (this.itemName == "Schattenrose")
-            {
-                //Debug.Log("Hit me!");
-                health.TakeDamage(50);
-            }
-            else if (this.itemName == "Schriftrolle des Lebens")
-            {
-                SaveScrolls.Instance.scrollData.healthScrollsUsed++;
-                baseAttributes.MaxHealth += 100;
-                baseAttributes.CurrentHealth += 100;
-                StatsWindow.Instance.UpdateStatTexts();
-            }
-            else if (this.itemName == "Schriftrolle der Stärke")
-            {
-                SaveScrolls.Instance.scrollData.strengthScrollsUsed++;
-                baseAttributes.Strength += 10;
-                StatsWindow.Instance.UpdateStatTexts();
-            }
-            else if (this.itemName == "Schriftrolle der Intelligenz")
-            {
-                SaveScrolls.Instance.scrollData.intScrollsUsed++;
-                baseAttributes.Energy += 10;
-                StatsWindow.Instance.UpdateStatTexts();
-            }
-            else if (this.itemName == "Schriftrolle der Agilität")
-            {
-                SaveScrolls.Instance.scrollData.hasteScrollsUsed++;
-                baseAttributes.Haste += 10;
-                StatsWindow.Instance.UpdateStatTexts();
-            }
-            else if (this.itemName == "Schriftrolle der Ausgeglichenheit")
-            {
-                SaveScrolls.Instance.scrollData.balanceScrollsUsed++;
-                baseAttributes.Balance += 10;
-                StatsWindow.Instance.UpdateStatTexts();
+                case "Lebensblume":
+                    health.Heal(80+(int)baseAttributes.Balance);
+                    break;
+                case "Apfel":
+                    health.Heal(40+(int)baseAttributes.Balance);
+                    break;
+                case "Heiltrank":
+                    health.Heal(200+2*(int)baseAttributes.Balance);
+                    break;
+                case "Manatrank":
+                    baseAttributes.Mana += 100+(int)baseAttributes.Balance;
+                    break;
+                case "Schattenrose":
+                    health.TakeDamage(50);
+                    break;
+                case "Schriftrolle des Lebens":
+                    SaveScrolls.Instance.scrollData.healthScrollsUsed++;
+                    baseAttributes.MaxHealth += 100;
+                    baseAttributes.CurrentHealth += 100;
+                    StatsWindow.Instance.UpdateStatTexts();
+                    break;
+                case "Schriftrolle der Stärke":
+                    SaveScrolls.Instance.scrollData.strengthScrollsUsed++;
+                    baseAttributes.Strength += 10;
+                    StatsWindow.Instance.UpdateStatTexts();
+                    break;
+                case "Schriftrolle der Intelligenz":
+                    SaveScrolls.Instance.scrollData.intScrollsUsed++;
+                    baseAttributes.Energy += 10;
+                    StatsWindow.Instance.UpdateStatTexts();
+                    break;
+                case "Schriftrolle der Agilität":
+                    SaveScrolls.Instance.scrollData.hasteScrollsUsed++;
+                    baseAttributes.Haste += 10;
+                    StatsWindow.Instance.UpdateStatTexts();
+                    break;
+                case "Schriftrolle der Ausgeglichenheit":
+                    SaveScrolls.Instance.scrollData.balanceScrollsUsed++;
+                    baseAttributes.Balance += 10;
+                    StatsWindow.Instance.UpdateStatTexts();
+                    break;
             }
         }
     }

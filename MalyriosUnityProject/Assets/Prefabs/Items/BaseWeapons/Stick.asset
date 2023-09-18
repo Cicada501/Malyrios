@@ -18,14 +18,13 @@ MonoBehaviour:
     zu sein
   icon: {fileID: -1300850927814171035, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 1
-  maxStackAmount: 0
   itemType: 0
   itemPrefab: {fileID: 877694526288938081, guid: e33c8d709fb28d940a926f5957f346ae,
     type: 3}
-  minDamage: 3
-  maxDamage: 8
+  itemPrice: 0
+  minDamage: 8
+  maxDamage: 16
   attackSpeed: 1.5
   strength: 3
   critChance: 0

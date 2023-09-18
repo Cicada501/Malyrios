@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 10
   itemName: Apfel
-  description: Sieht lecker aus!
+  description: Heilt 40(+Ausgeglichenheit) Leben, wenn er gegessen wird
   icon: {fileID: -1747284187, guid: 84c915ee06df5704484b9dfea2655e27, type: 3}
   dropChance: 0
-  isUsable: 0
+  isUsable: 1
   itemType: 5
   itemPrefab: {fileID: 0}
-  itemPrice: 3
+  itemPrice: 5

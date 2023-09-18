@@ -15651,6 +15651,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a93b4302fbbc40489bac24dd330f6c6, type: 2}
   - {fileID: 11400000, guid: aa1be4d5b43cb6a469e50f82d32c557d, type: 2}
   - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
+  - {fileID: 11400000, guid: 5f88d7914eb9244429211998632d0216, type: 2}
+  - {fileID: 11400000, guid: 4371ab28c196ebe4c8cfd0037878d513, type: 2}
   Weapons:
   - {fileID: 11400000, guid: 3c3324aeb68bc7f4cbfa0e41634a0474, type: 2}
   - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
@@ -19154,7 +19156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &844762775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27604,7 +27606,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9873646, y: 1}
+    m_SensorSize: {x: 1.9765342, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -28229,7 +28231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1e79fec07aa1c48a30d7c7c63c9417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockedLevel: 1
+  unlockedLevel: 2
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0

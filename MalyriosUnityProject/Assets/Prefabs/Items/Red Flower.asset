@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Red Flower
   m_EditorClassIdentifier: 
   itemID: 5
-  itemName: Red Flower
-  description: I wanna eat this flower!
+  itemName: Lebensblume
+  description: Diese Blume Heilt 80 (+ Ausgeglichenheit)  Leben, wenn sie gegessen
+    wird
   icon: {fileID: 21300000, guid: ce07823a45f1e144f989e6329e6898f6, type: 3}
   dropChance: 0
   isUsable: 1
