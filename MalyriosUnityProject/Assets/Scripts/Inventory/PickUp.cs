@@ -11,6 +11,7 @@ public class PickUp : MonoBehaviour, IInteractable
     private LayerMask whatCanPickMeUp;
     private SpriteRenderer spriteRenderer;
     private bool showText;
+    private PlayerInteract playerInteract;
 
     public BaseItem BaseItem
     {
@@ -29,6 +30,8 @@ public class PickUp : MonoBehaviour, IInteractable
         {
             spriteRenderer.sprite = this.baseItem.Icon;
         }
+
+        playerInteract = ReferencesManager.Instance.player.GetComponent<PlayerInteract>();
     }
 
     private void Update()
@@ -52,8 +55,13 @@ public class PickUp : MonoBehaviour, IInteractable
 
     private void ShowPickUpDialog()
     {
-        interactableText.text = $"Pick Up {this.baseItem.ItemName}";
-        interactableText.gameObject.SetActive(true);
+        var interactable =  playerInteract.GetClosestInteractable();
+        if (interactable == this.gameObject)
+        {
+            interactableText.text = $"Pick Up {this.baseItem.ItemName}";
+            interactableText.gameObject.SetActive(true);
+        }
+
     }
 
     private void PickUpItem()

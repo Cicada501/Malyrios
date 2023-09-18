@@ -15,7 +15,7 @@ public class PlayerInteract : MonoBehaviour
     }
 
     
-    GameObject GetClosestInteractable(){
+    public GameObject GetClosestInteractable(){
         GameObject[] interactables;
         interactables = GameObject.FindGameObjectsWithTag("Interactable");
 
