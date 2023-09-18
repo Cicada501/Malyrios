@@ -44,6 +44,10 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         activeItemsData.SaveItems();
         ReferencesManager.Instance.levelManager.ShowLoadingScreen(levelName);
         levelManager.ChangeLevel(levelName);
+        if (ExtractNumber(levelName) > 0)
+        {
+            LevelUnlock.Instance.unlockedLevel = ExtractNumber(levelName);
+        }
     }
 
 

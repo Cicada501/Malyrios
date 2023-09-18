@@ -19,6 +19,7 @@ public class GameData : MonoBehaviour
     
     public ScrollData LoadedScrollData { get; private set; } = new ScrollData();
     
+    public int UnlockedLevel { get; set; }
     
 
     
@@ -65,9 +66,10 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("resetOnRestart",resetOnRestart.ToString());
         
         PlayerPrefs.SetString("scrollData", JsonUtility.ToJson(SaveScrolls.Instance.scrollData));
-        print($"Saving: {JsonUtility.ToJson(SaveScrolls.Instance.scrollData)}");
+        PlayerPrefs.SetInt("unlockedLevel",LevelUnlock.Instance.unlockedLevel);
 
-        
+
+
         PlayerPrefs.Save();
     }
 
@@ -129,7 +131,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "HighForest";
+            LoadedLevelName = "Level 1";
         }
 
 
@@ -209,8 +211,12 @@ public class GameData : MonoBehaviour
             LoadedScrollData = new ScrollData();
         }
         
+        UnlockedLevel = PlayerPrefs.HasKey("unlockedLevel") ? PlayerPrefs.GetInt("unlockedLevel") : 0;
+        
         LoadAudioSettings();
     }
+
+
 
     private void OnApplicationQuit()
     {

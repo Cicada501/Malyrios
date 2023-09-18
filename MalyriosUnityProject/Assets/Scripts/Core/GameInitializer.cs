@@ -59,6 +59,7 @@ public class GameInitializer : MonoBehaviour
         audioOptions.ApplyLoadedAudioSettings();
         SaveScrolls.Instance.scrollData = gameData.LoadedScrollData;
         SaveScrolls.Instance.ApplyScrollEffects();
+        LevelUnlock.Instance.unlockedLevel = gameData.UnlockedLevel;
     }
 
     public void ResetAll()
