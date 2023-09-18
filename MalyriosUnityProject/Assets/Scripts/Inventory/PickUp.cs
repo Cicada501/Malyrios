@@ -74,4 +74,12 @@ public class PickUp : MonoBehaviour, IInteractable
     {
         PickUpItem();
     }
+    
+    private void OnDisable()
+    {
+        if(interactableText != null)
+        {
+            interactableText.gameObject.SetActive(false);
+        }
+    }
 }

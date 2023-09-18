@@ -115,6 +115,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
+        //PlayerPrefs.DeleteAll();
         resetOnRestart = PlayerPrefs.GetString("resetOnRestart","False") == "True";
         toggleResetOnRestart.isOn = resetOnRestart;
         
