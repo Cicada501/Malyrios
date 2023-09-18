@@ -6,14 +6,18 @@ using UnityEngine;
 public class DeathCollider : MonoBehaviour
 
 {
-    Transform player;
-    private void Start() {
-    player = ReferencesManager.Instance.player.transform;
-        
+    PlayerHealth playerHealth;
+
+    private void Start()
+    {
+        playerHealth = ReferencesManager.Instance.player.GetComponent<PlayerHealth>();
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("Player")){
-            player.GetComponent<PlayerHealth>().Die();
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerHealth.Die();
         }
     }
 }
