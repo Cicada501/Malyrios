@@ -7,54 +7,38 @@ namespace UI
 {
     public class UIManager : MonoBehaviour
     {
-        #region Serialize Fields Health UI
-
         [Header("Health UI")]
         [SerializeField] private Slider healthBarSlider = null;
+        [SerializeField] private Slider manaBarSlider = null;
         [SerializeField] private RectTransform healthBarRect;
         [SerializeField] private RectTransform healthBarBackgroundRect;
         private float baseWidth = 300;  
-        #endregion
         
-        
-        
-
-        #region Singleton
-
-        public static UIManager Instance;
-
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-
             BaseAttributes.OnCurrentHealthChanged += OnCurrentHealthChanged;
+            BaseAttributes.OnManaChanged += OnManaChanged;
             BaseAttributes.OnMaxHealthChanged += OnMaxHealthChanged;
         }
-
-        #endregion
-
-        #region Monobehaviour
 
         private void OnDestroy()
         {
             BaseAttributes.OnCurrentHealthChanged -= OnCurrentHealthChanged;
+            BaseAttributes.OnManaChanged -= OnManaChanged;
             BaseAttributes.OnMaxHealthChanged -= OnMaxHealthChanged;
         }
-
-        #endregion
-
-        #region Attribute Events
+        
 
         public void OnCurrentHealthChanged(float health, int maxHealth)
         {
-            //print($"current health: {health}, max health: {maxHealth}");
             this.healthBarSlider.value = health / maxHealth;
         }
+        
+        public void OnManaChanged(int mana)
+        {
+            this.manaBarSlider.value = mana / 1000f;
+        }
 
-        #endregion
 
         public void OnMaxHealthChanged(int newMaxHealth)
         {

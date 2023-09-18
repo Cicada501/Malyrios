@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Character;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -28,12 +29,15 @@ public class FireBall : MonoBehaviour
     private Vector2 fireballSpeed;
     private bool castingFireball = false;
     private CharacterController2D controller;
+    private BaseAttributes baseAttributes;
+    [SerializeField] private int manaCost;
 
     private void Start()
     {
         abilityButtonImage = GameObject.Find("ButtonFireball").GetComponent<Image>();
         player = ReferencesManager.Instance.player;
         controller = GetComponent<CharacterController2D>();
+        baseAttributes = player.GetComponent<BaseAttributes>();
     }
 
 
@@ -54,6 +58,7 @@ public class FireBall : MonoBehaviour
         startTime = Now;
         ts = Now - startTime;
         cooldownPercent = 0;
+        baseAttributes.Mana -= manaCost;
     }
 
     public void PlayFireballSound()
@@ -64,7 +69,7 @@ public class FireBall : MonoBehaviour
 
     public void OnPointerDown(BaseEventData data)
     {
-        if (ts.Seconds >= fireballCooldownTime)
+        if (ts.Seconds >= fireballCooldownTime && baseAttributes.Mana>manaCost)
         {
             castingFireball = true;
             PointerEventData eventData = data as PointerEventData;

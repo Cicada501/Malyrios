@@ -28317,6 +28317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarSlider: {fileID: 736865376}
+  manaBarSlider: {fileID: 901977625}
   healthBarRect: {fileID: 736865375}
   healthBarBackgroundRect: {fileID: 20651431}
 --- !u!114 &1386037423
@@ -35623,11 +35624,12 @@ MonoBehaviour:
   fireBallSpawn: {fileID: 1188712773}
   fireball: {fileID: 3345006563635646337, guid: c3aa0dae0856d294286ad75685c4234b,
     type: 3}
-  fireballCooldownTime: 5
+  fireballCooldownTime: 1
   playerAnimator: {fileID: 1975534749}
   arrowPrefab: {fileID: 5025641209484738815, guid: 2725d57824eaaf1428fda931b312e343,
     type: 3}
   direction: {x: 0, y: 0}
+  manaCost: 150
 --- !u!114 &1975534752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35653,7 +35655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  mana: 0
+  mana: 1000
   strength: 0
   critChance: 20
   critDamage: 0
