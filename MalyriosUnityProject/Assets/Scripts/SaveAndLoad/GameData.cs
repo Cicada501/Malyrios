@@ -20,14 +20,7 @@ public class GameData : MonoBehaviour
     public ScrollData LoadedScrollData { get; private set; } = new ScrollData();
     
     
-    //Volume
-    public float LoadedPlayerSoundsVolume { get; private set; } = 1f;
-    public float LoadedEnemySoundsVolume { get; private set; } = 1f;
-    public float LoadedMusicVolume { get; private set; } = 1f;
-    public float LoadedEnvironmentVolume { get; set; }
-    public float LoadedPlayerAbilitiesVolume { get; set; }
-    public float LoadedInventoryVolume { get; set; }
-    public float LoadedUiVolume { get; set; }
+
     
     
 
@@ -77,6 +70,18 @@ public class GameData : MonoBehaviour
         
         PlayerPrefs.Save();
     }
+
+    #region AudioSettings
+    //Volume
+    public float LoadedPlayerSoundsVolume { get; private set; } = 1f;
+    public float LoadedEnemySoundsVolume { get; private set; } = 1f;
+    public float LoadedMusicVolume { get; private set; } = 1f;
+    public float LoadedEnvironmentVolume { get; set; }
+    public float LoadedPlayerAbilitiesVolume { get; set; }
+    public float LoadedInventoryVolume { get; set; }
+    public float LoadedUiVolume { get; set; }
+    
+
     
     public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume, float environmentVolume, float playerAbilitiesVolume, float inventoryVolume, float uiVolume)
     {
@@ -104,6 +109,7 @@ public class GameData : MonoBehaviour
         LoadedInventoryVolume = PlayerPrefs.GetFloat("inventoryVolume", .5f);
         LoadedUiVolume = PlayerPrefs.GetFloat("uiVolume", .5f);
     }
+    #endregion
 
     public void LoadData()
     {
@@ -123,7 +129,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "HighForest";
+            LoadedLevelName = "Level 1";
         }
 
 

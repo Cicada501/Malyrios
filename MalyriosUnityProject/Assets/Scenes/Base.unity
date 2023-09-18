@@ -19154,7 +19154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &844762775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20457,8 +20457,6 @@ MonoBehaviour:
   shopItemPrefab: {fileID: 801328494117419443, guid: 4e34474e9d0346642986bf89647cf9f0,
     type: 3}
   shopItemPrefabParent: {fileID: 993831161}
-  baseAttributes: {fileID: 1975534753}
-  saveScrolls: {fileID: 1386037434}
 --- !u!114 &914773981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27606,7 +27604,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 3.2670624, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -28099,7 +28097,7 @@ MonoBehaviour:
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   player: {fileID: 1975534745}
-  spawnAtPlayerDebugLocation: 1
+  spawnAtPlayerDebugLocation: 0
   loadingScreenBase: {fileID: 1459939526}
 --- !u!114 &1386037427
 MonoBehaviour:
@@ -28211,6 +28209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4315f5718f20cb34b8840cf484c8024f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollData:
+    healthScrollsUsed: 0
+    strengthScrollsUsed: 0
+    intScrollsUsed: 0
+    hasteScrollsUsed: 0
+    balanceScrollsUsed: 0
   baseAttributes: {fileID: 1975534753}
 --- !u!1 &1425818667
 GameObject:
@@ -35118,7 +35122,7 @@ MonoBehaviour:
   deathScreen: {fileID: 2049028761}
   respawnButtionGO: {fileID: 1790807680}
   deathTextAnimator: {fileID: 1696677979}
-  deathScreenColor: {r: 0, g: 0, b: 0, a: 0.8}
+  deathScreenColor: {r: 0, g: 0, b: 0, a: 0.7882353}
   currentSpawnPoint: {fileID: 0}
   isDead: 0
   deathScreenPanelImage: {fileID: 2097771902}
