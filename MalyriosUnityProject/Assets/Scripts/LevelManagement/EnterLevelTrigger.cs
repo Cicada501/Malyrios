@@ -19,10 +19,10 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     private BoxCollider2D boxCollider2D;
 
 
-    void Start()
+    void Awake()
     {
         player = ReferencesManager.Instance.player.transform;
-        levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
+        levelManager = ReferencesManager.Instance.levelManager;//GameObject.Find("GameManager").GetComponent<LevelManager>();
         interactableText = ReferencesManager.Instance.interactableText;
         activeItemsData = ReferencesManager.Instance.saveActiveItems;
         spriteRenderer = GetComponent<SpriteRenderer>();
