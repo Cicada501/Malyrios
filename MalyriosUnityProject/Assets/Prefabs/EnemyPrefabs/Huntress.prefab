@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem: {fileID: 11400000, guid: 900eca254d60b524aba5b7b980211d4d, type: 2}
-  dropRareItem: {fileID: 11400000, guid: 453a7fbc581fac14bb1e97be4d624b90, type: 2}
+  dropRareItem: {fileID: 11400000, guid: 3d7d9aee73331ce4da3b7f68019c5258, type: 2}
   dropItemChance0: 10
   dropItemChance1: 60
   dropItemChance2: 30
@@ -72,7 +72,7 @@ MonoBehaviour:
   damagePopupText: {fileID: 7377629519318415158, guid: 955ee09356aac2e45b696dfe9154f5f9,
     type: 3}
   facingRight: 1
-  maxHealth: 100
+  maxHealth: 120
   enemyType: 7
   canMove: 0
   isRanged: 1
