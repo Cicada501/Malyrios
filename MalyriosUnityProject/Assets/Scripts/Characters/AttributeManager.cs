@@ -47,7 +47,7 @@ public class AttributeManager : MonoBehaviour
     /// <param name="type">ItemType des items das angelegt oder abgelegt wird</param>
     private void OnArmorChanged(BaseArmor newArmor, BaseItem.ItemTypes type)
     {
-        print($"OnArmorChanged({newArmor?.ItemName ?? "null"}, {type})");
+        //print($"OnArmorChanged({newArmor?.ItemName ?? "null"}, {type})");
         if (type == BaseItem.ItemTypes.Head) //type wird extra weiter gegeben, da im falle von Unequip newArmor = null ist und newArmor.ItemType nicht verwendet werden kann
         {
             OnArmorSwap(ref headArmor, newArmor);

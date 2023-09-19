@@ -30,16 +30,13 @@ Transform:
   m_Children:
   - {fileID: 7203187541409929402}
   - {fileID: 8763783437821546286}
-  - {fileID: 5323753879770668036}
   - {fileID: 469805460852714072}
   - {fileID: 1982746968509659642}
   - {fileID: 4143589233150672685}
-  - {fileID: 7062409824415976393}
   - {fileID: 872617036674967295}
   - {fileID: 2448772315839294650}
   - {fileID: 9161394736980542421}
   - {fileID: 3386112021397191542}
-  - {fileID: 2890967214891704535}
   m_Father: {fileID: 6635262500317654717}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11979,6 +11976,9 @@ Transform:
   - {fileID: 2506242738010001241}
   - {fileID: 7840495620815478843}
   - {fileID: 2291886107586144349}
+  - {fileID: 7062409824415976393}
+  - {fileID: 2890967214891704535}
+  - {fileID: 5323753879770668036}
   m_Father: {fileID: 6635262500317654717}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73969,7 +73969,7 @@ PrefabInstance:
     - target: {fileID: 1601496149409453539, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
       propertyPath: m_Name
-      value: PuzzleStation (2)
+      value: Level3Station3
       objectReference: {fileID: 0}
     - target: {fileID: 1962751726927956202, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
@@ -73979,7 +73979,7 @@ PrefabInstance:
     - target: {fileID: 3180313169260954087, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3180313169260954087, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
@@ -74044,12 +74044,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7270835793319575564}
+    m_TransformParent: {fileID: 4446055808793928835}
     m_Modifications:
     - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
         type: 3}
@@ -74129,7 +74129,7 @@ PrefabInstance:
     - target: {fileID: 5909908989095222366, guid: c509d62a9f5079a4e93e2eb2f6309b6d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5909908989095222366, guid: c509d62a9f5079a4e93e2eb2f6309b6d,
         type: 3}
@@ -74289,7 +74289,7 @@ PrefabInstance:
     - target: {fileID: 1601496149409453539, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
       propertyPath: m_Name
-      value: PuzzleStation (1)
+      value: Level3Station2
       objectReference: {fileID: 0}
     - target: {fileID: 1962751726927956202, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
@@ -74299,7 +74299,7 @@ PrefabInstance:
     - target: {fileID: 3180313169260954087, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3180313169260954087, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
@@ -74459,12 +74459,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7270835793319575564}
+    m_TransformParent: {fileID: 4446055808793928835}
     m_Modifications:
     - target: {fileID: 2620715490897153051, guid: 3120cc3485fccb44e8c29b492ddbb516,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2620715490897153051, guid: 3120cc3485fccb44e8c29b492ddbb516,
         type: 3}
@@ -74534,12 +74534,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7270835793319575564}
+    m_TransformParent: {fileID: 4446055808793928835}
     m_Modifications:
     - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1082691229023657936, guid: ebfb1759202c1db418ed5d99c67e2350,
         type: 3}
@@ -74619,7 +74619,7 @@ PrefabInstance:
     - target: {fileID: 8091225048751266347, guid: 73c21f80bb3f2c94ba3595f627468b58,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8091225048751266347, guid: 73c21f80bb3f2c94ba3595f627468b58,
         type: 3}
@@ -74751,7 +74751,7 @@ PrefabInstance:
     - target: {fileID: 1601496149409453539, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
       propertyPath: m_Name
-      value: PuzzleStation
+      value: Level3Station1
       objectReference: {fileID: 0}
     - target: {fileID: 1962751726927956202, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
@@ -74930,10 +74930,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4966490006057167461, guid: 73c21f80bb3f2c94ba3595f627468b58,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8091225048751266347, guid: 73c21f80bb3f2c94ba3595f627468b58,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8091225048751266347, guid: 73c21f80bb3f2c94ba3595f627468b58,
         type: 3}
@@ -75197,10 +75202,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 4966490006057167461, guid: 73c21f80bb3f2c94ba3595f627468b58,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8091225048751266347, guid: 73c21f80bb3f2c94ba3595f627468b58,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8091225048751266347, guid: 73c21f80bb3f2c94ba3595f627468b58,
         type: 3}
@@ -75464,7 +75474,7 @@ PrefabInstance:
     - target: {fileID: 5909908989095222366, guid: c509d62a9f5079a4e93e2eb2f6309b6d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5909908989095222366, guid: c509d62a9f5079a4e93e2eb2f6309b6d,
         type: 3}

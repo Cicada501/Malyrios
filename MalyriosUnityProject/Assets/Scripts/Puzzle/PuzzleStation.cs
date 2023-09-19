@@ -60,7 +60,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        id = gameObject.name + transform.position;
+        id = gameObject.name;
         print($"Set station id: {id}");
         puzzleElements = GetComponent<Puzzle>().puzzleElements;
         slotCount = puzzleElements.Count(element => element.elementType == PuzzleElement.ElementType.Empty);
@@ -72,7 +72,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         itemIDsArray = new int[slotCount];
        
         puzzleWindowImage = puzzleWindow.GetComponent<Image>();
-        PuzzleStationManager.Instance.AddStation(this);
+        PuzzleStationManager.Instance.UpdateStation(this);
         
     }
 
@@ -243,6 +243,8 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         }
 
         UpdateDisplayedValue(true);
+        PuzzleStationManager.Instance.UpdateStation(this);
+        PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
     }
 
     private void OnTriggerStay2D(Collider2D other)

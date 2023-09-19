@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PuzzleStationManager : MonoBehaviour
@@ -17,20 +18,27 @@ public class PuzzleStationManager : MonoBehaviour
     private void Update()
     {
         print(stations.Count);
+        print(PlayerPrefs.GetString("puzzleStations"));
     }
 
 
-    public void AddStation(PuzzleStation station)
+    public void UpdateStation(PuzzleStation station)
     {
-        if (!stations.Exists(s => s.id == station.id))
+        bool stationExists = stations.Any(s => s.id == station.id);
+
+        if (!stationExists)
         {
             stations.Add(station);
+            Debug.Log("Station mit ID " + station.id + " hinzugefügt.");
         }
         else
         {
-            Console.WriteLine("Station mit dieser ID ist bereits vorhanden.");
+            var existingStation = stations.Find(s => s.id == station.id);
+            existingStation.itemIDsArray = station.itemIDsArray;
+            Debug.Log("Station mit ID " + station.id + " wurde aktualisiert.");
         }
     }
+
 
 
     public PuzzleStationDataList SaveStations()

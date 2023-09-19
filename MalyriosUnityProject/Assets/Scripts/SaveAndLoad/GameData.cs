@@ -115,7 +115,7 @@ public class GameData : MonoBehaviour
 
     public void LoadData()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         resetOnRestart = PlayerPrefs.GetString("resetOnRestart","False") == "True";
         toggleResetOnRestart.isOn = resetOnRestart;
         
@@ -132,7 +132,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "Level 3";
+            LoadedLevelName = "Level 1";
         }
 
 

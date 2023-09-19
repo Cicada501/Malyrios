@@ -27897,7 +27897,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2220216, y: 1}
+    m_SensorSize: {x: 2.0097466, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -35659,7 +35659,7 @@ MonoBehaviour:
   strength: 0
   critChance: 20
   critDamage: 0
-  haste: 0
+  haste: 30
   energy: 0
   balance: 0
 --- !u!114 &1975534754
