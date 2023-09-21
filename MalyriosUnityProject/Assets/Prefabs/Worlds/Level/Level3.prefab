@@ -74271,6 +74271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortalEnter
       objectReference: {fileID: 0}
+    - target: {fileID: 8090731574524281052, guid: b2b99d9acef7bdc4e9b67646f736e86d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b99d9acef7bdc4e9b67646f736e86d, type: 3}
 --- !u!4 &6739520612311307666 stripped
@@ -75096,6 +75101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PortalHighForest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090731574524281052, guid: b2b99d9acef7bdc4e9b67646f736e86d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b99d9acef7bdc4e9b67646f736e86d, type: 3}

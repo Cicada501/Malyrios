@@ -56,8 +56,8 @@ public class PuzzleStationManager : MonoBehaviour
 
     public void LoadStation(PuzzleStation station)
     {
-        var loadedPuzzleStations = JsonUtility.FromJson<PuzzleStationDataList>(PlayerPrefs.GetString("puzzleStations"));
-        loadedStationData = loadedPuzzleStations.puzzleStationDataList;
+        //var loadedPuzzleStations = JsonUtility.FromJson<PuzzleStationDataList>(PlayerPrefs.GetString("puzzleStations"));
+        //loadedStationData = loadedPuzzleStations.puzzleStationDataList;
         var data = loadedStationData.Find(data => data.id == station.id);
         if (data == null) return;
         station.itemIDsArray = data.itemIDsArray;

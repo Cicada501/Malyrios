@@ -2556,7 +2556,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2566,7 +2566,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2806,7 +2806,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2859,8 +2859,8 @@ Tilemap:
     m_Data: {fileID: -538111226, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
   - m_RefCount: 11
     m_Data: {fileID: -1354460714, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1276244968, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 13
     m_Data: {fileID: -1961934106, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
   - m_RefCount: 6
@@ -2882,11 +2882,11 @@ Tilemap:
   - m_RefCount: 13
     m_Data: {fileID: 104124247, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 1
+    m_Data: {fileID: -1276244968, guid: 7c5d3168cf737a146a1ce14fb08ed7be, type: 3}
+  - m_RefCount: 1
     m_Data: {fileID: 729163682, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -647147093, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 1631773078, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 1
@@ -17828,7 +17828,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 29
+      m_TileSpriteIndex: 37
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -17838,7 +17838,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 28
+      m_TileSpriteIndex: 36
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -65335,10 +65335,10 @@ Tilemap:
     m_Data: {fileID: -1641889363, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -647147093, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1094334760, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -586433234, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 13
     m_Data: {fileID: 1736491506, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 12
@@ -65351,10 +65351,10 @@ Tilemap:
     m_Data: {fileID: -14469678, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 11
     m_Data: {fileID: -396916728, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1094334760, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -586433234, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 5458
     m_Data:
@@ -65570,6 +65570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PortalHighForest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090731574524281052, guid: b2b99d9acef7bdc4e9b67646f736e86d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b99d9acef7bdc4e9b67646f736e86d, type: 3}
@@ -66915,6 +66920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PortalEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090731574524281052, guid: b2b99d9acef7bdc4e9b67646f736e86d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b99d9acef7bdc4e9b67646f736e86d, type: 3}

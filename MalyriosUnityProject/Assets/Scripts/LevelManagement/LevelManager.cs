@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
     public void ChangeLevel(string levelName)
     {
         ShowLoadingScreen(levelName);
-        PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())); //when changing level save stations, so that they are loaded correctly when going back
+        //PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations())); //when changing level save stations, so that they are loaded correctly when going back
         Destroy(currentLevel);
         currentLevel = Instantiate(level.Find(level1 => level1.Name == levelName).Prefab);
         CurrentLevelName = levelName;
