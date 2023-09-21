@@ -21,7 +21,7 @@ public class ShopWindow : MonoBehaviour
         }
 
         Instance = this;
-        print($"instance is on {gameObject.name}");
+        //print($"instance is on {gameObject.name}");
     }
 
     public static ShopWindow Instance;

@@ -38,7 +38,7 @@ namespace Malyrios.Character
             {
                 CurrentHealth = MaxHealth;
             }
-            print($"current mana: {mana}");
+            //print($"current mana: {mana}");
         }
 
         private void Start()

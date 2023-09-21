@@ -14,12 +14,7 @@ public class PuzzleStationManager : MonoBehaviour
     {
         Instance = this;
     }
-
-    private void Update()
-    {
-        print(stations.Count);
-        print(PlayerPrefs.GetString("puzzleStations"));
-    }
+    
 
 
     public void UpdateStation(PuzzleStation station)
@@ -29,13 +24,13 @@ public class PuzzleStationManager : MonoBehaviour
         if (!stationExists)
         {
             stations.Add(station);
-            Debug.Log("Station mit ID " + station.id + " hinzugefügt.");
+            //Debug.Log("Station mit ID " + station.id + " hinzugefügt.");
         }
         else
         {
             var existingStation = stations.Find(s => s.id == station.id);
             existingStation.itemIDsArray = station.itemIDsArray;
-            Debug.Log("Station mit ID " + station.id + " wurde aktualisiert.");
+            //Debug.Log("Station mit ID " + station.id + " wurde aktualisiert.");
         }
     }
 
@@ -61,7 +56,7 @@ public class PuzzleStationManager : MonoBehaviour
         var data = loadedStationData.Find(data => data.id == station.id);
         if (data == null) return;
         station.itemIDsArray = data.itemIDsArray;
-        print($"loading station: {station.id}, set itemIDArray: {data.itemIDsArray}");
+        //print($"loading station: {station.id}, set itemIDArray: {data.itemIDsArray}");
 
     }
     public void LoadStations()

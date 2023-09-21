@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private bool dashInput;
     private float lastImageXpos;
     private float distanceBetweenImages = 0.1f;
+    private BaseAttributes baseAttributes;
     
     //Sound
     [SerializeField] private AudioSource[] landingSounds;
@@ -56,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
         controller.OnLandEvent.AddListener(PlayLandingSound);
+        baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
+        ChangeRunningSpeed(baseAttributes.Haste);
     }
 
     void Update()
@@ -87,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         #region dash
         IEnumerator FreezeAndDash()
         {
+            print("FreezeAndDash");
             // Freeze player's position
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0f;
@@ -110,9 +114,10 @@ public class PlayerMovement : MonoBehaviour
         }
         
         
-        if (dashInput && canDash)
+        if (dashInput && canDash&& baseAttributes.Mana>50)
         {
             canDash = false;
+            baseAttributes.Mana -= 50;
             StartCoroutine(FreezeAndDash());
             dashingSound.Play();
         }
@@ -132,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (controller.m_Grounded && !isDashing)
         {
-            canDash = true;
+            
         }
         #endregion
         
@@ -148,6 +153,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);
         trailRenderer.emitting = false;
         isDashing = false;
+        print("isDashing = false");
+        canDash = true;
     }
     
 
