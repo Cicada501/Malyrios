@@ -100,12 +100,12 @@ public class DialogEvents : MonoBehaviour
 
     public void FireEvent(string eventName)
     {
-        tommy = npcManager.npcs["Tommy"];
-        thrimbald = npcManager.npcs["Thrimbald"];
-        asmilda = npcManager.npcs["Asmilda"];
-        jack = npcManager.npcs["Jack"];
-        oris = npcManager.npcs["Oris"];
-        thea = npcManager.npcs["Thea"];
+        npcManager.npcs.TryGetValue("Tommy", out tommy);
+        npcManager.npcs.TryGetValue("Thrimbald", out thrimbald);
+        npcManager.npcs.TryGetValue("Asmilda", out asmilda);
+        npcManager.npcs.TryGetValue("Jack", out jack);
+        npcManager.npcs.TryGetValue("Oris", out oris);
+        npcManager.npcs.TryGetValue("Thea", out thea);
         
         switch (eventName)
         {
