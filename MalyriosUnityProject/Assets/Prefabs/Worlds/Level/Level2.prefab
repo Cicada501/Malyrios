@@ -580,37 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b29af891fe8aa4c872e33faa483a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2565763917036109610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 500546769328167302}
-  m_Layer: 0
-  m_Name: Coins
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &500546769328167302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565763917036109610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6635262500317654717}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2859045917464098993
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +734,6 @@ Transform:
   - {fileID: 7869495929311747735}
   - {fileID: 7243242179417040874}
   - {fileID: 6324884797417251701}
-  - {fileID: 500546769328167302}
   - {fileID: 8777332318492413757}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -15191,8 +15159,8 @@ MonoBehaviour:
         Decision: 
     - SentenceId: 1
       Sentences:
-      - "Ah, das ist der Lichtknoten. Ein m\xE4chtiges und mysteri\xF6ses Zeichen,
-        das von den alten Magiern geschaffen wurde."
+      - "Das ist der Lichtknoten. Ein m\xE4chtiges und mysteri\xF6ses Zeichen, das
+        von den alten Magiern geschaffen wurde."
       Answers:
       - LinkedToSentenceId: 2
         AnswerDescription: Der Lichtknoten? Wie funktioniert er?
@@ -15211,10 +15179,10 @@ MonoBehaviour:
     - SentenceId: 3
       Sentences:
       - "Genau. Ebenso, wenn du zwei Licht-Sigillen einf\xFCgst. Aber zwei Schatten-Sigillen
-        werden auch durch den Lichtknoten zu einer Schatten-Sigille fusioniert."
+        werden auch durch den Lichtknoten zu einer Schatten-Sigille fusioniert. "
       Answers:
       - LinkedToSentenceId: 4
-        AnswerDescription: "Das klingt machtvoll. Aber warum sollte ich eine Licht-Sigille
+        AnswerDescription: "Das klingt interessant! Aber warum sollte ich eine Licht-Sigille
           \xFCberhaupt fusionierten, wenn sie alleine schon die macht hat ein Tor
           zu \xF6ffnen?"
         Decision: 
@@ -15230,7 +15198,7 @@ MonoBehaviour:
         Decision: 
     - SentenceId: 5
       Sentences:
-      - "Gern geschehen, junger Wanderer. Nutze den Lichtknoten mit Weisheit, und
+      - "Gern geschehen, junger Abenteurer. Nutze den Lichtknoten mit Weisheit, und
         m\xF6ge dein Pfad immer von Licht erhellt werden."
       Answers:
       - LinkedToSentenceId: -1
@@ -66369,7 +66337,7 @@ PrefabInstance:
     - target: {fileID: 7619531850684549111, guid: b2b99d9acef7bdc4e9b67646f736e86d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7619531850684549111, guid: b2b99d9acef7bdc4e9b67646f736e86d,
         type: 3}

@@ -32,7 +32,7 @@ public class Coin : MonoBehaviour
         {
             SoundHolder.Instance.collectCoin.Play();
             playerMoney.AddMoney((int)coinType);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

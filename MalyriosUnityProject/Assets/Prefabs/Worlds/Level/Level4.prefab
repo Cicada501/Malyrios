@@ -66354,6 +66354,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3923326203536610021}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7039170260579846113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6323718444442391812, guid: 73c21f80bb3f2c94ba3595f627468b58,
+    type: 3}
+  m_PrefabInstance: {fileID: 3923326203536610021}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe31d4bf78484ea4babdca060d78455a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4340063405346900538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67056,6 +67068,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level4Station3
       objectReference: {fileID: 0}
+    - target: {fileID: 1962751726927956202, guid: 0d13a40f80635654b96b8547a9cf22b4,
+        type: 3}
+      propertyPath: gate
+      value: 
+      objectReference: {fileID: 7039170260579846113}
     - target: {fileID: 3180313169260954087, guid: 0d13a40f80635654b96b8547a9cf22b4,
         type: 3}
       propertyPath: m_RootOrder
