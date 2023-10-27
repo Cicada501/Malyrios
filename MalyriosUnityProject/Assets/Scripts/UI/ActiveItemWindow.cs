@@ -140,6 +140,7 @@ public class ActiveItemWindow : MonoBehaviour
     public void HideActiveItemInfo()
     {
         window.SetActive(false);
+        activeItem = null;
     }
 
     public void UseButtonPressed()

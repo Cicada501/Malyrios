@@ -174,6 +174,6 @@ public class CharacterController2D : MonoBehaviour
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
-		UnityEditor.Handles.DrawWireDisc(m_GroundCheck.position, Vector3.back, k_GroundedRadius);
+		//UnityEditor.Handles.DrawWireDisc(m_GroundCheck.position, Vector3.back, k_GroundedRadius);
 	}
 }
