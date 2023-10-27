@@ -44,7 +44,17 @@ public class DialogEvents : MonoBehaviour
 
     private void Update()
     {
-        if (LevelManager.CurrentLevelName == "HighForest")
+        if (LevelManager.CurrentLevelName == "Level 4")
+        {
+            //wenn 3 speere im inventar und quest angenommen, thrimbald questatstus = 3
+           if(Inventory.CountOccurrences(ItemDatabase.GetItem(70)) > 2 &&
+              npcManager.npcs["Thrimbald"].CurrentDialogState == 2)
+           {
+               npcManager.npcs["Thrimbald"].QuestStatus = 3; 
+               npcManager.npcs["Thrimbald"].CurrentDialogState = 3; 
+           }
+        }
+        /*if (LevelManager.CurrentLevelName == "HighForest")
         {
             //check if player found pages
             if (Inventory.CountOccurrences(ItemDatabase.GetItem(40)) > 2 && !addedDialogAnswer4)
@@ -94,7 +104,7 @@ public class DialogEvents : MonoBehaviour
                 addedDialogAnswer2 = true;
                 npcManager.npcs["Asmilda"].QuestStatus = 3;
             }
-        }
+        }*/
     }
 
 
@@ -111,21 +121,23 @@ public class DialogEvents : MonoBehaviour
         {
             case "":
                 return;
-            case "learn Fireball":
-                fireballButton.SetActive(true);
-                PlayerData.LearnedFireball = true;
-                break;
-            case "BigRatAttack":
-                npcManager.npcs["Debby"].IsAggressive = true;
-                break;
-            
-            //Die verlorenen Seiten
+
+            //Die Suche nach den Speeren
             case "Wizzard2":
                 thrimbald.CurrentDialogState = 2;
                 thrimbald.QuestStatus = 2;
                 questLogWindow.AddQuest("Die Suche nach den Speeren", "Sammle 3 Speere der Jägerinnen und bringe sie Thrimbald dem Zauberer");
                 break;
-            
+            case "finishSpearQuest":
+                Inventory.Instance.Remove(ItemDatabase.GetItem(70));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(70));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(70));
+                thrimbald.QuestStatus = 0;
+                fireballButton.SetActive(true);
+                break;
+            case "Wizzard4": 
+                thrimbald.CurrentDialogState = 4;
+                break;
             case "TheaShop":
                 ShopWindow.Instance.activeShop = thea.GetComponent<Shop>();
                 ShopWindow.Instance.ShowShopWindow();

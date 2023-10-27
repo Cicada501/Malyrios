@@ -43,6 +43,7 @@ public class ReferencesManager : MonoBehaviour
     public GameObject shopWindow;
     public GameObject shopItemPrefab;
     public GameObject shopItemPrefabParent;
+    public GameObject fireballButton;
 
     private void Awake()
     {

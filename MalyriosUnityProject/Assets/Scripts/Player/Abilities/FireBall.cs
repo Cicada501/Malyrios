@@ -34,7 +34,7 @@ public class FireBall : MonoBehaviour
 
     private void Start()
     {
-        abilityButtonImage = GameObject.Find("ButtonFireball").GetComponent<Image>();
+        abilityButtonImage = ReferencesManager.Instance.fireballButton.GetComponent<Image>();
         player = ReferencesManager.Instance.player;
         controller = GetComponent<CharacterController2D>();
         baseAttributes = player.GetComponent<BaseAttributes>();

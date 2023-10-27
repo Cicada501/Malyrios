@@ -70,6 +70,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetInt("unlockedLevel",LevelUnlock.Instance.unlockedLevel);
         PlayerPrefs.SetInt("currentHealth", baseAttributes.CurrentHealth);
         PlayerPrefs.SetInt("Mana", baseAttributes.Mana);
+        PlayerPrefs.SetInt("LearnedFireball", ReferencesManager.Instance.fireballButton.activeSelf?0:1);
 
 
 
@@ -219,7 +220,7 @@ public class GameData : MonoBehaviour
         
         baseAttributes.CurrentHealth = PlayerPrefs.HasKey("currentHealth") ? PlayerPrefs.GetInt("currentHealth") : 1000;
         baseAttributes.Mana = PlayerPrefs.HasKey("Mana") ? PlayerPrefs.GetInt("Mana") : 1000;
-        
+        ReferencesManager.Instance.fireballButton.SetActive(PlayerPrefs.GetInt("LearnedFireball") == 1 ? true : false);
         LoadAudioSettings();
         
         
