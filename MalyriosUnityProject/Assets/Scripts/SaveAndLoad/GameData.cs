@@ -71,6 +71,8 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetInt("currentHealth", baseAttributes.CurrentHealth);
         PlayerPrefs.SetInt("Mana", baseAttributes.Mana);
         PlayerPrefs.SetInt("LearnedFireball", ReferencesManager.Instance.fireballButton.activeSelf?0:1);
+        PlayerPrefs.SetInt("CurrentMoney", PlayerMoney.Instance.CurrentMoney );
+        
 
 
 
@@ -221,6 +223,7 @@ public class GameData : MonoBehaviour
         baseAttributes.CurrentHealth = PlayerPrefs.HasKey("currentHealth") ? PlayerPrefs.GetInt("currentHealth") : 1000;
         baseAttributes.Mana = PlayerPrefs.HasKey("Mana") ? PlayerPrefs.GetInt("Mana") : 1000;
         ReferencesManager.Instance.fireballButton.SetActive(PlayerPrefs.GetInt("LearnedFireball") == 1 ? true : false);
+        PlayerMoney.Instance.CurrentMoney = PlayerPrefs.HasKey("CurrentMoney") ? PlayerPrefs.GetInt("CurrentMoney") : 0;
         LoadAudioSettings();
         
         

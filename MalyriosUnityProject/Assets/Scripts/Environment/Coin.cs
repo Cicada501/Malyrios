@@ -20,18 +20,22 @@ public class Coin : MonoBehaviour
 {
     [SerializeField] private CoinType coinType;
     private PlayerMoney playerMoney;
+    private bool isCollected;
 
     private void Start()
     {
         playerMoney = ReferencesManager.Instance.player.GetComponent<PlayerMoney>();
+        isCollected = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isCollected)
         {
             SoundHolder.Instance.collectCoin.Play();
             playerMoney.AddMoney((int)coinType);
+            print($"added {(int)coinType} Money");
+            isCollected = true;
             gameObject.SetActive(false);
         }
     }
