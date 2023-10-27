@@ -86208,6 +86208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4367622676416402187, guid: c794e979332cb9841ae6ebfc3cd92512,
         type: 3}
+      propertyPath: leverID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367622676416402187, guid: c794e979332cb9841ae6ebfc3cd92512,
+        type: 3}
       propertyPath: station
       value: 
       objectReference: {fileID: 928712459537427870}
@@ -87553,6 +87558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lever
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367622676416402187, guid: c794e979332cb9841ae6ebfc3cd92512,
+        type: 3}
+      propertyPath: leverID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4367622676416402187, guid: c794e979332cb9841ae6ebfc3cd92512,
         type: 3}

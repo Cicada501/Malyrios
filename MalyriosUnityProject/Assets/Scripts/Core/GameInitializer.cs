@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Malyrios.Character;
 using NPCs;
@@ -60,6 +61,19 @@ public class GameInitializer : MonoBehaviour
         SaveScrolls.Instance.scrollData = gameData.LoadedScrollData;
         SaveScrolls.Instance.ApplyScrollEffects();
         LevelUnlock.Instance.unlockedLevel = gameData.UnlockedLevel;
+        
+        foreach (var leverData in gameData.LoadedLeverStates.leverDataList)
+        {
+            print("loaded lever: "+leverData.leverID + "state: "+leverData.state);
+            var lever = Array.Find(FindObjectsOfType<PuzzleLever>(), l => l.leverID == leverData.leverID);
+            if (lever != null)
+            {
+                print("loaded lever(2): "+leverData.leverID + "state: "+leverData.state);
+                lever.state = leverData.state;
+                lever.ApplyLoadedState();
+            }
+        }
+
     }
 
     public void ResetAll()

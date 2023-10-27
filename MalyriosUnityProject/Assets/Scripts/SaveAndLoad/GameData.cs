@@ -21,6 +21,9 @@ public class GameData : MonoBehaviour
     
     public int UnlockedLevel { get; set; }
     
+    public LeverDataList LoadedLeverStates { get; private set; }
+
+    
 
     
     
@@ -73,6 +76,16 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetInt("LearnedFireball", ReferencesManager.Instance.fireballButton.activeSelf?0:1);
         PlayerPrefs.SetInt("CurrentMoney", PlayerMoney.Instance.CurrentMoney );
         
+
+        LeverDataList leverStates = new LeverDataList();
+        foreach (var lever in FindObjectsOfType<PuzzleLever>())
+        {
+            leverStates.leverDataList
+                .Add(new LeverData { state = lever.state, leverID = lever.leverID });
+        }
+        PlayerPrefs.SetString("leverStates", JsonUtility.ToJson(leverStates));
+        print("Saved Lever States:"+ JsonUtility.ToJson(leverStates));
+
 
 
 
@@ -224,6 +237,17 @@ public class GameData : MonoBehaviour
         baseAttributes.Mana = PlayerPrefs.HasKey("Mana") ? PlayerPrefs.GetInt("Mana") : 1000;
         ReferencesManager.Instance.fireballButton.SetActive(PlayerPrefs.GetInt("LearnedFireball") == 1 ? true : false);
         PlayerMoney.Instance.CurrentMoney = PlayerPrefs.HasKey("CurrentMoney") ? PlayerPrefs.GetInt("CurrentMoney") : 0;
+        
+        if (PlayerPrefs.HasKey("leverStates"))
+        {
+            LoadedLeverStates = JsonUtility.FromJson<LeverDataList>(PlayerPrefs.GetString("leverStates"));
+        }
+        else
+        {
+            LoadedLeverStates = new LeverDataList();
+        }
+
+        
         LoadAudioSettings();
         
         
