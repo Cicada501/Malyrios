@@ -142,6 +142,9 @@ public class DialogEvents : MonoBehaviour
                 ShopWindow.Instance.activeShop = thea.GetComponent<Shop>();
                 ShopWindow.Instance.ShowShopWindow();
                 break;
+            case "giveNote":
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(43));
+                break;
             default:
                 return;
         }
