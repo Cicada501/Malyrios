@@ -35509,6 +35509,7 @@ GameObject:
   - component: {fileID: 1975534748}
   - component: {fileID: 1975534762}
   - component: {fileID: 1975534763}
+  - component: {fileID: 1975534764}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -35832,7 +35833,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 189518967}
   m_CeilingCheck: {fileID: 927187158}
   m_CrouchDisableCollider: {fileID: 0}
-  k_GroundedRadius: 0.1
+  k_GroundedRadius: 0.04
   m_Grounded: 0
   m_FacingRight: 1
   OnLandEvent:
@@ -35853,7 +35854,6 @@ MonoBehaviour:
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
-  groundCheckColor: {r: 0.035519123, g: 0, b: 1, a: 0.05882353}
 --- !u!70 &1975534762
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -35867,8 +35867,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0032386854, y: -0.16924646}
-  m_Size: {x: 0.08197877, y: 0.3315071}
+  m_Offset: {x: 0, y: -0.17}
+  m_Size: {x: 0.08, y: 0.33}
   m_Direction: 0
 --- !u!114 &1975534763
 MonoBehaviour:
@@ -35883,6 +35883,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1654893047}
+--- !u!70 &1975534764
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975534745}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 8588ca21396c26646bac6c34703288e9, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.16}
+  m_Size: {x: 0.1, y: 0.28}
+  m_Direction: 0
 --- !u!1 &1983529887
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,7 +30,6 @@ public class CharacterController2D : MonoBehaviour
 
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
-	[SerializeField] private Color groundCheckColor;
 	private Animator playerAnimator;
 
 	
@@ -174,7 +173,7 @@ public class CharacterController2D : MonoBehaviour
 	
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = groundCheckColor;
-		Gizmos.DrawSphere(m_GroundCheck.position, k_GroundedRadius);
+		Gizmos.color = Color.red;
+		UnityEditor.Handles.DrawWireDisc(m_GroundCheck.position, Vector3.back, k_GroundedRadius);
 	}
 }
