@@ -53,9 +53,9 @@ namespace NPCs
             npcManager.AddNpc(this);
 
 
-            if (npcName == "Thrimbald" && CurrentDialogState==1)
+            if (npcName == "Thrimbald" && CurrentDialogState==1 && ReferencesManager.Instance.levelManager.GetCurrentLevelName()=="Level 4")
             {
-                //QuestStatus = 1;
+                QuestStatus = 1;
             }else if (npcName == "Jack" && CurrentDialogState == 1)
             {
                 QuestStatus = 1;

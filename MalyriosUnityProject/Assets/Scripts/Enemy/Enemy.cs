@@ -14,12 +14,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] BaseItem dropItem = null;
 
     [SerializeField] BaseItem dropRareItem = null;
-    [SerializeField] int dropItemChance0 = 10; //chance to drop 0 times Item
-    [SerializeField] int dropItemChance1 = 60; //chance to drop 1 times Item
-    [SerializeField] int dropItemChance2 = 30;
-    [SerializeField] int dropRareItemChance0 = 50;
-    [SerializeField] int dropRareItemChance1 = 40; //chance to drop 1 times RareItem
-    [SerializeField] int dropRareItemChance2 = 10; //chance to drop 2 times RareItem
+    [SerializeField] int dropItemChance0; //chance to drop 0 times Item
+    [SerializeField] int dropItemChance1; //chance to drop 1 times Item
+    [SerializeField] int dropItemChance2;
+    [SerializeField] int dropRareItemChance0;
+    [SerializeField] int dropRareItemChance1; //chance to drop 1 times RareItem
+    [SerializeField] int dropRareItemChance2; //chance to drop 2 times RareItem
 
     [SerializeField] float attacksPerSecond = 1.5f;
     [SerializeField] public float attackRange;
@@ -237,7 +237,7 @@ public class Enemy : MonoBehaviour
         #region dropItems
 
         //Item Normal
-        int dropchoice = Random.Range(0, 100);
+        int dropchoice = Random.Range(1, 101);
         if (dropchoice > dropItemChance0 && dropchoice <= dropItemChance1 + dropItemChance0)
         {
             SpawnItem.Spawn(dropItem,transform.position);
@@ -250,7 +250,7 @@ public class Enemy : MonoBehaviour
         }
 
         //Item Rare
-        dropchoice = Random.Range(0, 100);
+        dropchoice = Random.Range(1, 101);
         if (dropchoice > dropRareItemChance0 && dropchoice <= dropRareItemChance1 + dropRareItemChance0)
         {
             SpawnItem.Spawn(dropRareItem,transform.position);

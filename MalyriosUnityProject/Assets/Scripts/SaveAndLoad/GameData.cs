@@ -32,7 +32,7 @@ public class GameData : MonoBehaviour
     private PlayerAttack playerAttack;
     private bool resetOnRestart;
     [SerializeField] private Toggle toggleResetOnRestart;
-
+    private BaseAttributes baseAttributes;
 
     private void Awake()
     {
@@ -41,6 +41,7 @@ public class GameData : MonoBehaviour
         npcManager = ReferencesManager.Instance.npcManager;
         questLogWindow = ReferencesManager.Instance.questLogWindow;
         playerAttack = ReferencesManager.Instance.playerAttack;
+        baseAttributes = player.GetComponent<BaseAttributes>();
     }
     
     void Start()
@@ -67,6 +68,8 @@ public class GameData : MonoBehaviour
         
         PlayerPrefs.SetString("scrollData", JsonUtility.ToJson(SaveScrolls.Instance.scrollData));
         PlayerPrefs.SetInt("unlockedLevel",LevelUnlock.Instance.unlockedLevel);
+        PlayerPrefs.SetInt("currentHealth", baseAttributes.CurrentHealth);
+        PlayerPrefs.SetInt("Mana", baseAttributes.Mana);
 
 
 
@@ -214,7 +217,12 @@ public class GameData : MonoBehaviour
         
         UnlockedLevel = PlayerPrefs.HasKey("unlockedLevel") ? PlayerPrefs.GetInt("unlockedLevel") : 0;
         
+        baseAttributes.CurrentHealth = PlayerPrefs.HasKey("currentHealth") ? PlayerPrefs.GetInt("currentHealth") : 1000;
+        baseAttributes.Mana = PlayerPrefs.HasKey("Mana") ? PlayerPrefs.GetInt("Mana") : 1000;
+        
         LoadAudioSettings();
+        
+        
     }
 
 

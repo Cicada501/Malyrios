@@ -9653,7 +9653,6 @@ Transform:
   - {fileID: 525664512810460927}
   - {fileID: 6739520612311307666}
   - {fileID: 3781953612292277704}
-  - {fileID: 1692136353069379084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10613,90 +10612,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &5629918784878468438
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7614402873321989601}
-  - component: {fileID: 5520536286864905768}
-  m_Layer: 0
-  m_Name: QuestStatus
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7614402873321989601
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5629918784878468438}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.321, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 600140716504645677}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5520536286864905768
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5629918784878468438}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2022340889
-  m_SortingLayer: 8
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.24}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &5636349580149207079
 GameObject:
   m_ObjectHideFlags: 0
@@ -11360,254 +11275,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 600140716504645677}
+  - {fileID: 1692136353069379084}
   m_Father: {fileID: 6635262500317654717}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8109310489333917511
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 600140716504645677}
-  - component: {fileID: 7953245339281549868}
-  - component: {fileID: 5914211215672778435}
-  - component: {fileID: 2220399168849007035}
-  - component: {fileID: 8067626961015751745}
-  - component: {fileID: 788787138446655957}
-  - component: {fileID: 4050233236952052524}
-  m_Layer: 0
-  m_Name: Thrimbald
-  m_TagString: Interactable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &600140716504645677
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109310489333917511}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.613, y: 1.518, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7614402873321989601}
-  m_Father: {fileID: 6420575074032954158}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7953245339281549868
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109310489333917511}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -505455119
-  m_SortingLayer: 5
-  m_SortingOrder: 13
-  m_Sprite: {fileID: 4723107735738678597, guid: 3723a750e8ef5694ab5d822f8a4aaedc,
-    type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.5, y: 2.5}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!95 &5914211215672778435
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109310489333917511}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ee9036023a9d6fb4eb39ab8ece855fa4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2220399168849007035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109310489333917511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0fb46ace51b6f947ab6a24a25beb072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  talkRadius: 0.2
---- !u!58 &8067626961015751745
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109310489333917511}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
---- !u!114 &788787138446655957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109310489333917511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a633a69e416433041a45328bb5290582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfNpc: Thrimbald
-  dialogueText: []
---- !u!114 &4050233236952052524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109310489333917511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ccf0427be621bb49b16bc5805810f02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcName: Thrimbald
-  allDialogs:
-  - dialogTexts:
-    - SentenceId: 0
-      Sentences:
-      - ' Hallo mein Freund! Wie ich sehe konntest du auch den Lichtknoten meistern,
-        sehr gut!'
-      Answers:
-      - LinkedToSentenceId: 1
-        AnswerDescription: Ja, es war gar nicht so schwer, wie ich zuerst dachte.
-        Decision: 
-    - SentenceId: 1
-      Sentences:
-      - "Sch\xF6n, sch\xF6n. Nun es wird auch nicht einfacher."
-      Answers:
-      - LinkedToSentenceId: 11
-        AnswerDescription: "Worin besteht die n\xE4chste Herausforderung?"
-        Decision: 
-      - LinkedToSentenceId: 12
-        AnswerDescription: Was hat es mit diesem Hebel auf sich?
-        Decision: 
-    - SentenceId: 11
-      Sentences:
-      - Nun du wirst bald eine Runentafel erreichen, in die ein neuer Knoten eingraviert
-        ist. Der Gleichgewichtsknoten.
-      Answers:
-      - LinkedToSentenceId: 111
-        AnswerDescription: Gleichgewichtsknoten? Soll ich nun auch noch balancieren?!
-          Ich hoffe nicht, denn mein Gleichgewichtssinn ist nicht sehr gut
-        Decision: 
-    - SentenceId: 12
-      Sentences:
-      - "Dieser Habel ist mit einer der Sigilen auf der Runentafel verbunden. Wird
-        er aktiviert, so \xE4ndert sich diese Rune."
-      Answers:
-      - LinkedToSentenceId: 0
-        AnswerDescription: 
-        Decision: 
-    - SentenceId: 111
-      Sentences:
-      - Keine Angst, es geht nicht um den Gleichgewichtssinn, sondern darum, das
-        Gleichgewicht zwischen Licht und Schatten herzustellen.
-      Answers:
-      - LinkedToSentenceId: 1111
-        AnswerDescription: "Achso, na das klingt schon besser! Aber was hei\xDFt
-          das konkret?"
-        Decision: 
-    - SentenceId: 1111
-      Sentences:
-      - Wie jeder andere Knoten, kann der Gleichgewichtsknoten zwei Sigillen zu einer
-        Lichtsigille fusionieren. Doch der Gleichgewichtsknoten muss immer genau
-        einie Licht-Sigille und eine Schatten-Sigille neben sich haben, damit das
-        funktioniert.
-      Answers:
-      - LinkedToSentenceId: 11111
-        AnswerDescription: Ahh jetzt verstehe ich wieso sie ihn "Gleichgewichtsknoten"
-          genannt haben.
-        Decision: 
-      - LinkedToSentenceId: 11112
-        AnswerDescription: "Und was passiert, wenn ich zwei Lichtsigillen oder zwei
-          Schattensigillen einf\xFCge?"
-        Decision: 
-    - SentenceId: 11111
-      Sentences:
-      - "Ja, ein sehr passender Name. Nun gehe und versuche dein Gl\xFCck."
-      Answers:
-      - LinkedToSentenceId: -1
-        AnswerDescription: bis bald!
-        Decision: 
-    - SentenceId: 11112
-      Sentences:
-      - " In beiden F\xE4llen wird sich nur eine Schattensigille daraus bilden."
-      Answers:
-      - LinkedToSentenceId: -1
-        AnswerDescription: ' okay, dann werde ich diesen Gleichgewichtsknoten mal
-          suchen!'
-        Decision: 
-  enemy: {fileID: 0}
-  questStatusImage: {fileID: 5520536286864905768}
 --- !u!1 &8212558048483923726
 GameObject:
   m_ObjectHideFlags: 0
@@ -76423,7 +76094,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -76553,7 +76224,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 26
+      m_TileSpriteIndex: 29
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -79636,7 +79307,7 @@ Tilemap:
     m_Data: {fileID: 1650537066, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 369
     m_Data: {fileID: 1449635782, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 48
+  - m_RefCount: 47
     m_Data: {fileID: -1088548642, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 70
     m_Data: {fileID: -1376131773, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
@@ -79650,7 +79321,7 @@ Tilemap:
     m_Data: {fileID: -2053423360, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 75
     m_Data: {fileID: -586433234, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 142
+  - m_RefCount: 143
     m_Data: {fileID: 1094625688, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 1715425104, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
@@ -79664,13 +79335,13 @@ Tilemap:
     m_Data: {fileID: 104124247, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: 1951313126, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 63
+  - m_RefCount: 62
     m_Data: {fileID: 1736491506, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 32
     m_Data: {fileID: -137747864, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 26
     m_Data: {fileID: -14564084, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 125
+  - m_RefCount: 126
     m_Data: {fileID: -507596184, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: 729163682, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
@@ -80642,6 +80313,81 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3763203423175889509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3793592029339220553
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6420575074032954158}
+    m_Modifications:
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.613
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.518
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913292181728173326, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: m_Name
+      value: Thrimbald
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dea1638cbe44f88458aecfacd051937e, type: 3}
+--- !u!4 &600140716504645677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3793592029339220553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4010064208896718877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80727,12 +80473,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6635262500317654717}
+    m_TransformParent: {fileID: 6420575074032954158}
     m_Modifications:
     - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
         type: 3}
