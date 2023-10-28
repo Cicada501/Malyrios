@@ -73,7 +73,7 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetInt("unlockedLevel",LevelUnlock.Instance.unlockedLevel);
         PlayerPrefs.SetInt("currentHealth", baseAttributes.CurrentHealth);
         PlayerPrefs.SetInt("Mana", baseAttributes.Mana);
-        PlayerPrefs.SetInt("LearnedFireball", ReferencesManager.Instance.fireballButton.activeSelf?0:1);
+        PlayerPrefs.SetInt("LearnedFireball", ReferencesManager.Instance.fireballButton.activeSelf ? 1 : 0);
         PlayerPrefs.SetInt("CurrentMoney", PlayerMoney.Instance.CurrentMoney );
         
 
@@ -84,7 +84,6 @@ public class GameData : MonoBehaviour
                 .Add(new LeverData { state = lever.state, leverID = lever.leverID });
         }
         PlayerPrefs.SetString("leverStates", JsonUtility.ToJson(leverStates));
-        print("Saved Lever States:"+ JsonUtility.ToJson(leverStates));
 
 
 
@@ -151,7 +150,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "Level 4";
+            LoadedLevelName = "Level 3";
         }
 
 

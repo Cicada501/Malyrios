@@ -153,8 +153,8 @@ public class ActiveItemWindow : MonoBehaviour
         {
             if (ShopWindow.Instance.activeShop)
             {
+                PlayerMoney.Instance.AddMoney((int)(activeItem.ItemPrice / SELL_PRICE_FACTOR));
                 Inventory.Instance.Remove(activeItem);
-                PlayerMoney.Instance.AddMoney((int)(activeItem.ItemPrice / 1.5f));
                 SoundHolder.Instance.sellItem.Play();
             }
             else
