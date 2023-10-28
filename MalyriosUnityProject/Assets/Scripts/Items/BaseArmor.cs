@@ -44,42 +44,42 @@ public class BaseArmor : BaseItem
 
         if (healthBonus > 0)
         {
-            description += $"Health Bonus: {this.healthBonus}\n";
+            description += $"Leben: {this.healthBonus}\n";
         }
 
         if (manaBonus > 0)
         {
-            description += $"Mana Bonus: {this.manaBonus}\n";
+            description += $"Mana: {this.manaBonus}\n";
         }
 
         if (strengthBonus > 0)
         {
-            description += $"Strength Bonus: {this.strengthBonus}\n";
+            description += $"Stärke: {this.strengthBonus}\n";
         }
 
         if (critChanceBonus > 0)
         {
-            description += $"Crit Chance Bonus: {this.critChanceBonus}%\n";
+            description += $"Krit Wahrscheinlichkeit: {this.critChanceBonus}%\n";
         }
 
         if (critDamageBonus > 0)
         {
-            description += $"Crit Damage Bonus: {this.critDamageBonus}%\n";
+            description += $"Kritt Schaden: {this.critDamageBonus}%\n";
         }
 
         if (hasteBonus > 0)
         {
-            description += $"Haste Bonus: {this.hasteBonus}\n";
+            description += $"Schnelligkeit: {this.hasteBonus}\n";
         }
 
         if (energyBonus > 0)
         {
-            description += $"Energy Bonus: {this.energyBonus}\n";
+            description += $"Intelligenz: {this.energyBonus}\n";
         }
 
         if (balanceBonus > 0)
         {
-            description += $"Balance Bonus: {this.balanceBonus}\n";
+            description += $"Ausgeglichenheit: {this.balanceBonus}\n";
         }
 
         return description;

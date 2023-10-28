@@ -51,7 +51,7 @@ public class PuzzleLever : MonoBehaviour, IInteractable
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            interactableText.text = state ? "Disable" : "Activate";
+            interactableText.text = state ? "Deaktiviern" : "Aktivieren";
             interactableText.gameObject.SetActive(true);
         }
     }

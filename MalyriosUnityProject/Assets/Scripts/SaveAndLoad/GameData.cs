@@ -150,7 +150,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "Level 3";
+            LoadedLevelName = "Level 1";
         }
 
 
@@ -175,7 +175,7 @@ public class GameData : MonoBehaviour
         }
         
         //Equipped Weapon
-        LoadedEquippedWeaponID = PlayerPrefs.HasKey("EquippedWeaponID") ? PlayerPrefs.GetInt("EquippedWeaponID") : 1;
+        LoadedEquippedWeaponID = PlayerPrefs.HasKey("EquippedWeaponID") ? PlayerPrefs.GetInt("EquippedWeaponID") : 0;
         
         //NPC States
         if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")

@@ -4224,7 +4224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use
+  m_text: nutzen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 141e38a946860654a996580b024abc15, type: 2}
   m_sharedMaterial: {fileID: 5069842838492021315, guid: 141e38a946860654a996580b024abc15,
@@ -20254,7 +20254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Remove
+  m_text: entferne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 141e38a946860654a996580b024abc15, type: 2}
   m_sharedMaterial: {fileID: 5069842838492021315, guid: 141e38a946860654a996580b024abc15,
@@ -24748,8 +24748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181.1, y: -40}
-  m_SizeDelta: {x: 200, y: 20}
+  m_AnchoredPosition: {x: 148.93, y: -41}
+  m_SizeDelta: {x: 200, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154059985
 MonoBehaviour:
@@ -28664,8 +28664,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43.55, y: -40}
-  m_SizeDelta: {x: 75.1, y: 20}
+  m_AnchoredPosition: {x: 27.465, y: -40}
+  m_SizeDelta: {x: 42.93, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431142472
 MonoBehaviour:
@@ -28687,7 +28687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sell Price:'
+  m_text: 'Wert:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 141e38a946860654a996580b024abc15, type: 2}
   m_sharedMaterial: {fileID: 5069842838492021315, guid: 141e38a946860654a996580b024abc15,
@@ -32264,7 +32264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inventory
+  m_text: Inventar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 141e38a946860654a996580b024abc15, type: 2}
   m_sharedMaterial: {fileID: 5069842838492021315, guid: 141e38a946860654a996580b024abc15,
@@ -39388,6 +39388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Energy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768629049455387729, guid: a62663360e700a34c890cff14ef4f491,
+        type: 3}
+      propertyPath: m_text
+      value: Intelligenz
       objectReference: {fileID: 0}
     - target: {fileID: 8768629049455387729, guid: a62663360e700a34c890cff14ef4f491,
         type: 3}

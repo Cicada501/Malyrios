@@ -53,7 +53,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
 
     private void ShowEnterDialog()
     {
-        interactableText.text = $"Enter {levelName}";
+        interactableText.text = $"{levelName} betreten";
         interactableText.gameObject.SetActive(true);
     }
 

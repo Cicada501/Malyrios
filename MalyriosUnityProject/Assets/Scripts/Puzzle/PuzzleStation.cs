@@ -251,7 +251,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     {
         if (other.gameObject.CompareTag("Player") && !windowOpen)
         {
-            interactableText.text = "Open";
+            interactableText.text = "Öffnen";
             interactableText.gameObject.SetActive(true);
         }
     }

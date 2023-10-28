@@ -58,7 +58,7 @@ public class PickUp : MonoBehaviour, IInteractable
         var interactable =  playerInteract.GetClosestInteractable();
         if (interactable == this.gameObject)
         {
-            interactableText.text = $"Pick Up {this.baseItem.ItemName}";
+            interactableText.text = $"{this.baseItem.ItemName} aufheben";
             interactableText.gameObject.SetActive(true);
         }
 

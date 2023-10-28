@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 62
   itemName: Manatrank
-  description: Stellt 100 (+ Ausgeglichenheit)  Mana wieder her
+  description: Stellt 200 (+ Ausgeglichenheit)  Mana wieder her
   icon: {fileID: 21300000, guid: e8b4e5e778e3beb428acffb81ab51561, type: 3}
   dropChance: 0
   isUsable: 0
   itemType: 6
   itemPrefab: {fileID: 0}
-  itemPrice: 10
+  itemPrice: 8
