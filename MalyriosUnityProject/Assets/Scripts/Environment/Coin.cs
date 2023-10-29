@@ -34,7 +34,6 @@ public class Coin : MonoBehaviour
         {
             SoundHolder.Instance.collectCoin.Play();
             playerMoney.AddMoney((int)coinType);
-            print($"added {(int)coinType} Money");
             isCollected = true;
             gameObject.SetActive(false);
         }

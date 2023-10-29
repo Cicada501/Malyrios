@@ -91,9 +91,16 @@ public class PlayerAttack : MonoBehaviour
 
     public void TriggerAttack()
     {
+        if (this.equippedWeapon == null)
+        {
+            print("Showing massage");
+            ShowMessage.Instance.Say("Du Musst eine Waffe Ausrüsten um Anzugreifen");
+            return;
+        }
         //check if the attackrate allows the next attack
         if (time >= nextAttackTime)
         {
+
             isAttacking = false;
             if (!InventoryUI.inventoryOpen && equippedWeapon)
             {
@@ -110,7 +117,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
     {
-        if (this.equippedWeapon == null) return;
+
+            
         playerAnimator.SetTrigger("Attack");
         swordAnimator.SetTrigger("Attack");
 
