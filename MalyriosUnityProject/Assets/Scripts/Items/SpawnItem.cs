@@ -30,7 +30,6 @@ public class SpawnItem : MonoBehaviour
     public static void Spawn(BaseItem item, Vector3 position)
     {
         GameObject it = Instantiate(PhysicItem, position, Quaternion.identity);
-        print($"setting spawnItem item to: {item.ItemName}");
         it.GetComponent<PickUp>().BaseItem = item;
         it.GetComponent<Rigidbody2D>().AddForce(new Vector2(50f * Random.Range(1 - dropRandomnes, 1 + dropRandomnes) * playerTransform.localScale.x, 50f * forceY));
     }
