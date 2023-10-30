@@ -55610,6 +55610,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741826
+  - first: {x: 23, y: -3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 20
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 24, y: -3, z: 0}
     second:
       serializedVersion: 2
@@ -79250,7 +79260,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: cc0eb6b768ca8674493e58319409b2d0, type: 2}
   - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 254befeb3c31e4b4795ab872d593e1fe, type: 2}
-  - m_RefCount: 10
+  - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: f08c1e22a7cc2104fb2538d3d8b9abbc, type: 2}
   - m_RefCount: 75
     m_Data: {fileID: 11400000, guid: 2ede21f6d02ecf048bee36efb4f9eba1, type: 2}
@@ -79323,7 +79333,7 @@ Tilemap:
     m_Data: {fileID: -586433234, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 143
     m_Data: {fileID: 1094625688, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
-  - m_RefCount: 10
+  - m_RefCount: 11
     m_Data: {fileID: 1715425104, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   - m_RefCount: 23
     m_Data: {fileID: 1259820196, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
@@ -79370,7 +79380,7 @@ Tilemap:
   - m_RefCount: 12
     m_Data: {fileID: 1094334760, guid: 112d5fada6ad40943817a3849ec6b0bd, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 5753
+  - m_RefCount: 5754
     m_Data:
       e00: 1
       e01: 0
@@ -79407,7 +79417,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 5756
+  - m_RefCount: 5757
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -81190,6 +81200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Huntress
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391092655712466339, guid: b8968b478f3d203448ac3d3c00e465d6,
+        type: 3}
+      propertyPath: attacksPerSecond
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4391092655712466341, guid: b8968b478f3d203448ac3d3c00e465d6,
         type: 3}
