@@ -5,10 +5,8 @@ using TMPro;
 
 public class ShowMessage : MonoBehaviour
 {
-    // Singleton-Instanz
     public static ShowMessage Instance { get; private set; }
-
-    // Referenz zu TextMeshProUGUI-Element
+    
     [SerializeField]
     private TextMeshProUGUI messageText;
 
@@ -34,17 +32,16 @@ public class ShowMessage : MonoBehaviour
 
     public void Say(string message, float time = 3f)
     {
-        StopAllCoroutines(); // Stoppt alle laufenden Coroutines, um die Nachricht zurückzusetzen
         StartCoroutine(ShowAndHideMessage(message, time));
     }
 
     private IEnumerator ShowAndHideMessage(string message, float time)
     {
-        messageText.text = message; // Setzt den Nachrichtentext
-        messageText.enabled = true; // Zeigt den Text an
+        messageText.text = message; 
+        messageText.enabled = true; 
 
-        yield return new WaitForSeconds(time); // Wartet die angegebene Zeit
+        yield return new WaitForSeconds(time); 
 
-        messageText.enabled = false; // Versteckt den Text wieder
+        messageText.enabled = false;
     }
 }

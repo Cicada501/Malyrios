@@ -17,6 +17,7 @@ namespace Malyrios.Dialogue
         [SerializeField] private GameObject answerButton = null;
         [SerializeField] private Transform content = null;
         [SerializeField] private TextMeshProUGUI sentence = null;
+        [SerializeField] private Button fastForwardButton;  // Das Button-Objekt aus deinem Canvas, das du per Drag & Drop zuweisen kannst.
         private DialogEvents dialogEvents;
         private bool isWriting = false;
 
@@ -27,14 +28,18 @@ namespace Malyrios.Dialogue
         private Dialogue dialogueText;
         private Queue<string> sentenceQueue;
         private int linkedId;
+        private bool isFastForwardRequested = false;
 
         #endregion
 
         private void Start()
         {
+            print($"Dialogmanager is attatched to {gameObject.name}");
             this.sentenceQueue = new Queue<string>();
             this.gameObject.SetActive(false);
             dialogEvents = FindObjectOfType<DialogEvents>();
+            fastForwardButton.onClick.AddListener(FastForward);
+            fastForwardButton.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -131,10 +136,20 @@ namespace Malyrios.Dialogue
             if (!isWriting)
             {
                 isWriting = true;
+
+                // Aktiviere den Button, wenn die Schreibroutine beginnt.
+                fastForwardButton.gameObject.SetActive(true);
+            
                 this.sentence.text = $"{this.dialogueText.NameOfNpc}: ";
                 foreach (char letter in sentence)
                 {
                     this.sentence.text += letter;
+                    if (isFastForwardRequested)
+                    {
+                        // Wenn der Schnellvorlauf angefordert wurde, zeige den gesamten Text sofort an und beende die Schreibroutine.
+                        this.sentence.text = $"{this.dialogueText.NameOfNpc}: " + sentence;
+                        break;
+                    }
                     if (letter == '.')
                     {
                         yield return new WaitForSeconds(0.2f);
@@ -143,9 +158,20 @@ namespace Malyrios.Dialogue
                     yield return new WaitForSeconds(0.001f);
                 }
 
+                // Deaktiviere den Button, wenn die Schreibroutine beendet ist.
+                fastForwardButton.gameObject.SetActive(false);
+            
                 ShowAnswers();
                 isWriting = false;
+
+                // Setze den Schnellvorlauf-Indikator zurück.
+                isFastForwardRequested = false;
             }
+        }
+
+        private void FastForward()
+        {
+            isFastForwardRequested = true;
         }
 
         /// <summary>
