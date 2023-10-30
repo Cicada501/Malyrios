@@ -57,10 +57,10 @@ namespace Malyrios.Items
                     health.Heal(40+(int)baseAttributes.Balance);
                     break;
                 case "Heiltrank":
-                    health.Heal(200+2*(int)baseAttributes.Balance);
+                    health.Heal(400+2*(int)baseAttributes.Balance);
                     break;
                 case "Manatrank":
-                    baseAttributes.Mana += 100+(int)baseAttributes.Balance;
+                    baseAttributes.Mana += 400+(int)baseAttributes.Balance;
                     break;
                 case "Schattenrose":
                     health.TakeDamage(50);

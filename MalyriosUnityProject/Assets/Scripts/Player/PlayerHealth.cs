@@ -95,7 +95,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         respawnButtionGO.SetActive(false);
         deathScreen.SetActive(false);
         player.transform.position = currentSpawnPoint.position;
-        baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
+        baseAttributes.CurrentHealth = baseAttributes.MaxHealth/2;
         player.GetComponent<PlayerMovement>().disableMovement = false;
     }
     

@@ -80330,6 +80330,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6420575074032954158}
     m_Modifications:
+    - target: {fileID: 905463710167173477, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: allDialogs.Array.data[0].dialogTexts.Array.data[2].Sentences.Array.data[0]
+      value: Nun du wirst bald eine Runenstation erreichen, in die ein neuer Knoten
+        eingraviert ist. Der Gleichgewichtsknoten.
+      objectReference: {fileID: 0}
+    - target: {fileID: 905463710167173477, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: allDialogs.Array.data[0].dialogTexts.Array.data[3].Answers.Array.data[0].AnswerDescription
+      value: "Achso okay, danke f\xFCr die Erkl\xE4rung! Worin besteht die n\xE4chste
+        Herausforderung?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 905463710167173477, guid: dea1638cbe44f88458aecfacd051937e,
+        type: 3}
+      propertyPath: allDialogs.Array.data[0].dialogTexts.Array.data[3].Answers.Array.data[0].LinkedToSentenceId
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4391479217221958244, guid: dea1638cbe44f88458aecfacd051937e,
         type: 3}
       propertyPath: m_RootOrder
