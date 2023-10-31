@@ -61,7 +61,7 @@ public class DialogEvents : MonoBehaviour
             if (ww0 == null)ww0 = GameObject.Find("Werewolf_0").GetComponent<Enemy>();
             if (ww1 == null)ww1 = GameObject.Find("Werewolf_1").GetComponent<Enemy>();
 
-            if (ww0.isDead && ww1.isDead)
+            if (ww0.isDead && ww1.isDead && lirion.CurrentDialogState==2)
             {
                 lirion.CurrentDialogState = 3;
                 lirion.QuestStatus = 3;
@@ -164,6 +164,12 @@ public class DialogEvents : MonoBehaviour
                 questLogWindow.AddQuest("Besiege die Wölfe", "Besiege die Wölfe und erstette Lirion bericht, sodass er seine Reise fortsetzten kann");
                 lirion.QuestStatus = 2;
                 lirion.CurrentDialogState = 2;
+                break;
+            case "Lirion4":
+                questLogWindow.RemoveQuest("Besiege die Wölfe");
+                lirion.QuestStatus = 0;
+                Inventory.Instance.AddItem(ItemDatabase.GetArmor(170));
+                lirion.CurrentDialogState = 4;
                 break;
             default:
                 return;

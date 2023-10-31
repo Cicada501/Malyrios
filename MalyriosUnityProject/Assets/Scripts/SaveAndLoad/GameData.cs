@@ -219,7 +219,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedArmorData = new ArmorData(0,0,0,0 );
+            LoadedArmorData = new ArmorData(0,0,0,180 );
             //LoadedArmorData = new ArmorData(150,160,170,180 );
         }
         

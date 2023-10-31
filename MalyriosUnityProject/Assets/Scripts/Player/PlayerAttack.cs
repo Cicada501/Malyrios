@@ -105,7 +105,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 Attack();
                 isAttacking = true;
-                nextAttackTime = time + 2f / (equippedWeapon.AttackSpeed+baseAttributes.Haste/10);
+                nextAttackTime = time + 2f / (equippedWeapon.AttackSpeed+baseAttributes.Haste/20);
             }
         }
     }

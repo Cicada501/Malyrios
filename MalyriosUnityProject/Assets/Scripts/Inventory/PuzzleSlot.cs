@@ -93,7 +93,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     
     public void SetPuzzleStation(PuzzleStation station)
     {
-        print($"Set station for slot to {station.id}");
+        //print($"Set station for slot to {station.id}");
         puzzleStation = station;
     }
     

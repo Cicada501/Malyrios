@@ -38,6 +38,7 @@ namespace NPCs
             }
             else
             {
+                print($"setting {npcName} questimg to null");
                 questStatusImage.sprite = null;
             }
         }
