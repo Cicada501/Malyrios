@@ -93,7 +93,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (this.equippedWeapon == null)
         {
-            print("Showing massage");
             ShowMessage.Instance.Say("Du Musst eine Waffe Ausrüsten um Anzugreifen");
             return;
         }

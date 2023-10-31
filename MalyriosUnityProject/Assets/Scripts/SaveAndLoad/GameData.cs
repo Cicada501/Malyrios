@@ -177,7 +177,7 @@ public class GameData : MonoBehaviour
         }
         
         //Equipped Weapon
-        LoadedEquippedWeaponID = PlayerPrefs.HasKey("EquippedWeaponID") ? PlayerPrefs.GetInt("EquippedWeaponID") : 0;
+        LoadedEquippedWeaponID = PlayerPrefs.HasKey("EquippedWeaponID") ? PlayerPrefs.GetInt("EquippedWeaponID") : 1;
         
         //NPC States
         if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")

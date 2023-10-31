@@ -94,7 +94,6 @@ public class InventoryUI : MonoBehaviour
         
         if(withEquipmentWindow)equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
         
-        print($"activePuzzleStation? {activePuzzleStation}");
         //if puzzleStation is active, close it with inventory
         if (activePuzzleStation && !inventoryUI.activeSelf)
         {

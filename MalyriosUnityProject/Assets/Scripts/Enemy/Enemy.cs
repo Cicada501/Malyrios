@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
 
     bool isGrounded;
     bool isAttacking;
-    bool isDead;
+    public bool isDead;
 
     private EnemySpawner enemySpawner;
     [SerializeField] public EnemyTypes enemyType;

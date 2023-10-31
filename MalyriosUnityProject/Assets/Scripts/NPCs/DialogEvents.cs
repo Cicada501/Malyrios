@@ -26,8 +26,11 @@ public class DialogEvents : MonoBehaviour
     private NPC jack;
     private NPC oris;
     private NPC thea;
+    private NPC lirion;
     private bool addedDialogAnswer3;
     private bool addedDialogAnswer4;
+    private Enemy ww0;
+    private Enemy ww1;
 
 
     private void Start()
@@ -53,6 +56,17 @@ public class DialogEvents : MonoBehaviour
                npcManager.npcs["Thrimbald"].QuestStatus = 3; 
                npcManager.npcs["Thrimbald"].CurrentDialogState = 3; 
            }
+        }else if (LevelManager.CurrentLevelName == "Level 5")
+        {
+            if (ww0 == null)ww0 = GameObject.Find("Werewolf_0").GetComponent<Enemy>();
+            if (ww1 == null)ww1 = GameObject.Find("Werewolf_1").GetComponent<Enemy>();
+
+            if (ww0.isDead && ww1.isDead)
+            {
+                lirion.CurrentDialogState = 3;
+                lirion.QuestStatus = 3;
+            }
+          
         }
         /*if (LevelManager.CurrentLevelName == "HighForest")
         {
@@ -116,6 +130,7 @@ public class DialogEvents : MonoBehaviour
         npcManager.npcs.TryGetValue("Jack", out jack);
         npcManager.npcs.TryGetValue("Oris", out oris);
         npcManager.npcs.TryGetValue("Thea", out thea);
+        npcManager.npcs.TryGetValue("Lirion", out lirion);
         
         switch (eventName)
         {
@@ -144,6 +159,11 @@ public class DialogEvents : MonoBehaviour
                 break;
             case "giveNote":
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(43));
+                break;
+            case "Lirion2":
+                questLogWindow.AddQuest("Besiege die Wölfe", "Besiege die Wölfe und erstette Lirion bericht, sodass er seine Reise fortsetzten kann");
+                lirion.QuestStatus = 2;
+                lirion.CurrentDialogState = 2;
                 break;
             default:
                 return;
