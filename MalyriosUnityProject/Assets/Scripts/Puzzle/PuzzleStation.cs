@@ -311,29 +311,61 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                     break;
                 case PuzzleElement.ElementType.Empty:
                     string value = "";
-                    switch (itemIDsArray[emptySlotIndex])
+                    if (emptySlotIndex >= 0 && emptySlotIndex < itemIDsArray.Length)
                     {
-                        case 20:
-                            value = "TRUE";
-                            break;
-                        case 21:
-                            value = "FALSE";
-                            break;
-                        case 22:
-                            value = "AND";
-                            break;
-                        case 23:
-                            value = "OR";
-                            break;
-                        case 24:
-                            value = "XOR";
-                            break;
-                        case 25:
-                            value = "IMP";
-                            break;
-                        default:
-                            value = "Empty";
-                            break;
+                        switch (itemIDsArray[emptySlotIndex])
+                        {
+                            case 20:
+                                value = "TRUE";
+                                break;
+                            case 21:
+                                value = "FALSE";
+                                break;
+                            case 22:
+                                value = "AND";
+                                break;
+                            case 23:
+                                value = "OR";
+                                break;
+                            case 24:
+                                value = "XOR";
+                                break;
+                            case 25:
+                                value = "IMP";
+                                break;
+                            default:
+                                value = "Empty";
+                                break;
+                        }
+                    }else
+                    {
+                        //Resolve problem of array beeing to short, if only Slots in station (Empty, Empty, Empty)
+                        Array.Resize(ref itemIDsArray, itemIDsArray.Length + 1);
+                        itemIDsArray[itemIDsArray.Length - 1] = 0;
+                        switch (itemIDsArray[emptySlotIndex])
+                        {
+                            case 20:
+                                value = "TRUE";
+                                break;
+                            case 21:
+                                value = "FALSE";
+                                break;
+                            case 22:
+                                value = "AND";
+                                break;
+                            case 23:
+                                value = "OR";
+                                break;
+                            case 24:
+                                value = "XOR";
+                                break;
+                            case 25:
+                                value = "IMP";
+                                break;
+                            default:
+                                value = "Empty";
+                                break;
+                        }
                     }
 
                     formula.Append(value + " ");

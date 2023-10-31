@@ -34,7 +34,6 @@ namespace Malyrios.Dialogue
 
         private void Start()
         {
-            print($"Dialogmanager is attatched to {gameObject.name}");
             this.sentenceQueue = new Queue<string>();
             this.gameObject.SetActive(false);
             dialogEvents = FindObjectOfType<DialogEvents>();

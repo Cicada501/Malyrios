@@ -28532,6 +28532,10 @@ MonoBehaviour:
     Prefab: {fileID: 3961218565264814783, guid: 69d50c1cead807f47b16877c798f34e3,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
+  - Name: Level 5
+    Prefab: {fileID: 3961218565264814783, guid: 530497fbdf5b0c643bf82c3e854df300,
+      type: 3}
+    loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   player: {fileID: 1975534745}
   spawnAtPlayerDebugLocation: 0
   loadingScreenBase: {fileID: 1459939526}
@@ -28548,6 +28552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleResetOnRestart: {fileID: 1103874676}
+  startLevel: Level 5
 --- !u!114 &1386037428
 MonoBehaviour:
   m_ObjectHideFlags: 0

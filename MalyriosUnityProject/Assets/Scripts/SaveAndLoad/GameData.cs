@@ -37,6 +37,8 @@ public class GameData : MonoBehaviour
     [SerializeField] private Toggle toggleResetOnRestart;
     private BaseAttributes baseAttributes;
 
+    [SerializeField] private string startLevel;
+
     private void Awake()
     {
         levelManager = GetComponent<LevelManager>();
@@ -150,7 +152,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            LoadedLevelName = "Level 1";
+            LoadedLevelName = startLevel;
         }
 
 
