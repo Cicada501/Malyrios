@@ -58,11 +58,17 @@ public class DialogEvents : MonoBehaviour
            }
         }else if (LevelManager.CurrentLevelName == "Level 5")
         {
-            if (ww0 == null)ww0 = GameObject.Find("Werewolf_0").GetComponent<Enemy>();
-            if (ww1 == null)ww1 = GameObject.Find("Werewolf_1").GetComponent<Enemy>();
-
-            if (ww0.isDead && ww1.isDead && lirion.CurrentDialogState==2)
+            if(lirion == null)npcManager.npcs.TryGetValue("Lirion", out lirion);
+            if (ww0 == null && ww1 == null)
             {
+                ww0 = GameObject.Find("Werewolf_0").GetComponent<Enemy>();
+                ww1 = GameObject.Find("Werewolf_1").GetComponent<Enemy>();
+                return;
+            }
+            print($"ww0: {ww0}, ww1: {ww1}, lirion: {lirion}");
+            if (!ww0.enabled && !ww1.enabled && lirion.CurrentDialogState == 2)
+            {
+                print("werwolfs got killed");
                 lirion.CurrentDialogState = 3;
                 lirion.QuestStatus = 3;
             }
