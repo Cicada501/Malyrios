@@ -30,6 +30,11 @@ public class ActiveItemWindow : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        print(activeItem);
+    }
+
     private const float SELL_PRICE_FACTOR = 1.5f;
     [SerializeField] private GameObject window;
     [SerializeField] private TMP_Text nameText;
@@ -140,7 +145,6 @@ public class ActiveItemWindow : MonoBehaviour
     public void HideActiveItemInfo()
     {
         window.SetActive(false);
-        activeItem = null;
     }
 
     public void UseButtonPressed()
@@ -164,6 +168,7 @@ public class ActiveItemWindow : MonoBehaviour
         }
 
         HideActiveItemInfo();
+        activeItem = null;
     }
 
     public void RemoveButtonPressed()

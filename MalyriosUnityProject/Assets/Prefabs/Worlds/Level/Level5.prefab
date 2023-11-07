@@ -6100,6 +6100,7 @@ Transform:
   - {fileID: 5267869192540038338}
   - {fileID: 1544746256603242588}
   - {fileID: 7868393596743860278}
+  - {fileID: 7715681961458357010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73288,6 +73289,181 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 975214413128175224, guid: b814c1d95cf71d444a9fc43ef0a5074c,
     type: 3}
   m_PrefabInstance: {fileID: 4941455159152224954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5016720260378777736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6635262500317654717}
+    m_Modifications:
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 36.172028
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.446
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354446845198502815, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: m_Name
+      value: Thea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1].SentenceId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[2].SentenceId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[3].SentenceId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1].Answers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[2].Answers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[3].Answers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1].Sentences.Array.data[0]
+      value: You could bring me 5 Apples from the Market. Its down to the left
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[2].Sentences.Array.data[0]
+      value: You could bring me 5 Apples from the Market. Its down to the left
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[3].Sentences.Array.data[0]
+      value: You could bring me 5 Apples from the Market. Its down to the left
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1].Answers.Array.data[0].AnswerDescription
+      value: Okay, i go to get them
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1].Answers.Array.data[1].AnswerDescription
+      value: Nah that sounds booring
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[2].Answers.Array.data[0].AnswerDescription
+      value: Okay, i go to get them
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[2].Answers.Array.data[1].AnswerDescription
+      value: Nah that sounds booring
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[3].Answers.Array.data[0].AnswerDescription
+      value: Okay, i go to get them
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[3].Answers.Array.data[1].AnswerDescription
+      value: Nah that sounds booring
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1].Answers.Array.data[0].LinkedToSentenceId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1].Answers.Array.data[1].LinkedToSentenceId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[2].Answers.Array.data[1].LinkedToSentenceId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542766680725666723, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: dialogueText.Array.data[3].Answers.Array.data[1].LinkedToSentenceId
+      value: -1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d08a1052ee8974640b6150b65c98a416, type: 3}
+--- !u!4 &7715681961458357010 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3354446845198502810, guid: d08a1052ee8974640b6150b65c98a416,
+    type: 3}
+  m_PrefabInstance: {fileID: 5016720260378777736}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5459522575960649669
 PrefabInstance:
