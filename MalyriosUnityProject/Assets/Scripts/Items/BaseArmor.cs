@@ -40,46 +40,46 @@ public class BaseArmor : BaseItem
     
     public string GetDescription()
     {
-        string description = $"<color=green>{this.itemName}</color>\n\n";
+        string description = $"{this.description}\n\n";
 
         if (healthBonus > 0)
         {
-            description += $"Leben: {this.healthBonus}\n";
+            description += $"<color=red>Leben: {this.healthBonus}</color>\n";
         }
 
         if (manaBonus > 0)
         {
-            description += $"Mana: {this.manaBonus}\n";
+            description += $"<color=#3399ff>Mana: {this.manaBonus}</color>\n";
         }
 
         if (strengthBonus > 0)
         {
-            description += $"Stärke: {this.strengthBonus}\n";
+            description += $"<color=#804000>Stärke: {this.strengthBonus}</color>\n";
         }
 
         if (critChanceBonus > 0)
         {
-            description += $"Krit Wahrscheinlichkeit: {this.critChanceBonus}%\n";
+            description += $"<color=#cca300>Krit Chance: {this.critChanceBonus}%</color>\n";
         }
 
         if (critDamageBonus > 0)
         {
-            description += $"Kritt Schaden: {this.critDamageBonus}%\n";
+            description += $"<color=#e6005c>Kritt Schaden: {this.critDamageBonus}</color>\n";
         }
 
         if (hasteBonus > 0)
         {
-            description += $"Schnelligkeit: {this.hasteBonus}\n";
+            description += $"<color=#00b300>Schnelligkeit: {this.hasteBonus}</color>\n";
         }
 
         if (energyBonus > 0)
         {
-            description += $"Intelligenz: {this.energyBonus}\n";
+            description += $"<color=#ff3300>Intelligenz: {this.energyBonus}</color>\n";
         }
 
         if (balanceBonus > 0)
         {
-            description += $"Ausgeglichenheit: {this.balanceBonus}\n";
+            description += $"<color=blue>Ausgeglichenheit: {this.balanceBonus}</color>\n";
         }
 
         return description;

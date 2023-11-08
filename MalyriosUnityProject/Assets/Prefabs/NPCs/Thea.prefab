@@ -148,41 +148,6 @@ MonoBehaviour:
     - LinkedToSentenceId: -1
       AnswerDescription: Nein, danke
       Decision: 
-  - SentenceId: 1
-    Sentences:
-    - Ahh im happy to hear this! Since you' re here now, could you help me a little
-      with the preparations?
-    Answers:
-    - LinkedToSentenceId: 11
-      AnswerDescription: Okay, how can i help?
-      Decision: 
-  - SentenceId: 2
-    Sentences:
-    - Ohh what happend?? Did you lost your memories??
-    Answers:
-    - LinkedToSentenceId: -1
-      AnswerDescription: no
-      Decision: 
-  - SentenceId: 3
-    Sentences:
-    - 'Ohh i see someone is not in a good mood today ...
-
-      Maybe you want to
-      help me prepare the festival? This will bring you to other toughts'
-    Answers:
-    - LinkedToSentenceId: -1
-      AnswerDescription: Thanks!
-      Decision: 
-  - SentenceId: 11
-    Sentences:
-    - You could bring me 5 Apples from the Market. Its down to the left
-    Answers:
-    - LinkedToSentenceId: -1
-      AnswerDescription: Okay, i go to get them
-      Decision: 
-    - LinkedToSentenceId: -1
-      AnswerDescription: Nah that sounds booring
-      Decision: 
 --- !u!61 &6607079999526051914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -238,14 +203,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableItems:
+  - {fileID: 11400000, guid: cc47fad97eacbb54b82e92150ce6728f, type: 2}
   - {fileID: 11400000, guid: 8fc0a355687a35449ae2a96e2d9c71a5, type: 2}
-  - {fileID: 11400000, guid: cd50e8d7deaf65d4e8fedd6b03d63779, type: 2}
-  - {fileID: 11400000, guid: 3a93b4302fbbc40489bac24dd330f6c6, type: 2}
-  - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
-  - {fileID: 11400000, guid: aa1be4d5b43cb6a469e50f82d32c557d, type: 2}
   - {fileID: 11400000, guid: f03d4d3e1e4b400479d924b0db31db2d, type: 2}
+  - {fileID: 11400000, guid: cd50e8d7deaf65d4e8fedd6b03d63779, type: 2}
   - {fileID: 11400000, guid: 5f88d7914eb9244429211998632d0216, type: 2}
+  - {fileID: 11400000, guid: 3a93b4302fbbc40489bac24dd330f6c6, type: 2}
   - {fileID: 11400000, guid: 4371ab28c196ebe4c8cfd0037878d513, type: 2}
+  - {fileID: 11400000, guid: e52b042f1d8b0574695d9b4656637f88, type: 2}
+  - {fileID: 11400000, guid: 334f7bc2c651a5545a74d0b4f23eebd2, type: 2}
+  - {fileID: 11400000, guid: aa1be4d5b43cb6a469e50f82d32c557d, type: 2}
 --- !u!1 &3819674887485512969
 GameObject:
   m_ObjectHideFlags: 0

@@ -87384,6 +87384,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thea
       objectReference: {fileID: 0}
+    - target: {fileID: 8208724625085288144, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: availableItems.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208724625085288144, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: availableItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5cf47a4ea7edde042bf468847cb12469,
+        type: 2}
+    - target: {fileID: 8208724625085288144, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: availableItems.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: f03d4d3e1e4b400479d924b0db31db2d,
+        type: 2}
+    - target: {fileID: 8208724625085288144, guid: d08a1052ee8974640b6150b65c98a416,
+        type: 3}
+      propertyPath: availableItems.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: aa1be4d5b43cb6a469e50f82d32c557d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d08a1052ee8974640b6150b65c98a416, type: 3}
 --- !u!4 &8673335521449903618 stripped
