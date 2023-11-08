@@ -30,11 +30,6 @@ public class ActiveItemWindow : MonoBehaviour
         Instance = this;
     }
 
-    private void Update()
-    {
-        print(activeItem);
-    }
-
     private const float SELL_PRICE_FACTOR = 1.5f;
     [SerializeField] private GameObject window;
     [SerializeField] private TMP_Text nameText;

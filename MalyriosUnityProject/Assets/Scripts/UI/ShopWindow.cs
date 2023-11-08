@@ -27,6 +27,7 @@ public class ShopWindow : MonoBehaviour
     public static ShopWindow Instance;
     [HideInInspector]
     public Shop activeShop;
+    [HideInInspector]
     public GameObject shopWindow;
     private GameObject shopItemPrefab;
 
