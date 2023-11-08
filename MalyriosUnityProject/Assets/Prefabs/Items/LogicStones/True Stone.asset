@@ -16,8 +16,9 @@ MonoBehaviour:
   itemName: Lichtsigille
   description: 'Dies ist ein Stein, auf dem die Lichtsigille eingraviert ist. Dies
     ist eine der beiden Elementarsigillen. '
-  icon: {fileID: -167172311, guid: bffb9a4fd8dc8bb4482be782b13e9ef9, type: 3}
+  icon: {fileID: 21300000, guid: 749090cddddf03746a827e74c856e832, type: 3}
   dropChance: 0
   isUsable: 0
   itemType: 7
   itemPrefab: {fileID: 0}
+  itemPrice: 0
