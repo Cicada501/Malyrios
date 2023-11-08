@@ -65,7 +65,6 @@ public class DialogEvents : MonoBehaviour
                 ww1 = GameObject.Find("Werewolf_1").GetComponent<Enemy>();
                 return;
             }
-            print($"ww0: {ww0}, ww1: {ww1}, lirion: {lirion}");
             if (!ww0.enabled && !ww1.enabled && lirion.CurrentDialogState == 2)
             {
                 print("werwolfs got killed");
