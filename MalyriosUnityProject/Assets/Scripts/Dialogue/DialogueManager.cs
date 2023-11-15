@@ -87,6 +87,7 @@ namespace Malyrios.Dialogue
         public void EndDialogue()
         {
             isWriting = false;
+            fastForwardButton.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
             DeleteOldAnswers();
         }

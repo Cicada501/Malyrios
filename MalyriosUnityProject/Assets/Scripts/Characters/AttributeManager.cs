@@ -68,7 +68,7 @@ public class AttributeManager : MonoBehaviour
     
     private void OnArmorSwap(ref BaseArmor currentArmor, BaseArmor newArmor)
     {
-        print($"Swapping: {currentArmor?.ItemName ?? "null"} to {newArmor?.ItemName ?? "null"}");
+        //print($"Swapping: {currentArmor?.ItemName ?? "null"} to {newArmor?.ItemName ?? "null"}");
 
 
         if (currentArmor)
@@ -96,7 +96,7 @@ public class AttributeManager : MonoBehaviour
 
     private void OnArmorRemove(BaseArmor armor)
     {
-        print($"removing Armor: {armor.ItemName}");
+        //print($"removing Armor: {armor.ItemName}");
         if (!armor) return;
         this.baseAttributes.MaxHealth -= armor.HealthBonus;
         this.baseAttributes.Mana -= armor.ManaBonus;

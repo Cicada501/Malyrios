@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         #region dash
         IEnumerator FreezeAndDash()
         {
-            print("FreezeAndDash");
+            //print("FreezeAndDash");
             // Freeze player's position
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0f;
@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);
         trailRenderer.emitting = false;
         isDashing = false;
-        print("isDashing = false");
+        //print("isDashing = false");
         canDash = true;
     }
     
