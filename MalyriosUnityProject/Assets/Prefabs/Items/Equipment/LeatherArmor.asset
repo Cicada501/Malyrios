@@ -20,12 +20,12 @@ MonoBehaviour:
   isUsable: 1
   itemType: 2
   itemPrefab: {fileID: 0}
-  itemPrice: 100
+  itemPrice: 120
   healthBonus: 200
   manaBonus: 0
-  strengthBonus: 20
+  strengthBonus: 30
   critChanceBonus: 0
   critDamageBonus: 0
-  hasteBonus: 20
-  energyBonus: 20
+  hasteBonus: 0
+  energyBonus: 0
   balanceBonus: 20

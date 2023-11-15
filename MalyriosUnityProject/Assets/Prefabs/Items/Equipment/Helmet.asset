@@ -21,9 +21,9 @@ MonoBehaviour:
   itemType: 1
   itemPrefab: {fileID: 0}
   itemPrice: 100
-  healthBonus: 55
+  healthBonus: 100
   manaBonus: 0
-  strengthBonus: 0
+  strengthBonus: 15
   critChanceBonus: 0
   critDamageBonus: 0
   hasteBonus: 0
