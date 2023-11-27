@@ -18,6 +18,7 @@ namespace Malyrios.Dialogue
         [SerializeField] private Transform content = null;
         [SerializeField] private TextMeshProUGUI sentence = null;
         [SerializeField] private Button fastForwardButton;  // Das Button-Objekt aus deinem Canvas, das du per Drag & Drop zuweisen kannst.
+        [SerializeField] private GameObject[] buttonsOnTheLeft;
         private DialogEvents dialogEvents;
         private bool isWriting = false;
 
@@ -55,6 +56,10 @@ namespace Malyrios.Dialogue
             this.sentenceQueue.Clear();
             this.linkedId = 0;
             GetNextSentences(0); // Always start with 0 this is the entry point of a dialogue.
+            foreach (var button in buttonsOnTheLeft)
+            {
+                button.SetActive(false);
+            }
         }
 
         /// <summary>
@@ -90,6 +95,10 @@ namespace Malyrios.Dialogue
             fastForwardButton.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
             DeleteOldAnswers();
+            foreach (var button in buttonsOnTheLeft)
+            {
+                button.SetActive(true);
+            }
         }
 
         /// <summary>

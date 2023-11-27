@@ -15671,6 +15671,10 @@ MonoBehaviour:
   content: {fileID: 328885544}
   sentence: {fileID: 833461115}
   fastForwardButton: {fileID: 487427972}
+  buttonsOnTheLeft:
+  - {fileID: 238985885}
+  - {fileID: 1983529887}
+  - {fileID: 183874312}
 --- !u!114 &639142911
 MonoBehaviour:
   m_ObjectHideFlags: 0

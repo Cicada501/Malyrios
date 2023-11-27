@@ -14774,7 +14774,135 @@ MonoBehaviour:
         \xF6ffnen."
       Answers:
       - LinkedToSentenceId: -1
-        AnswerDescription: "Danke, Magier, f\xFCr deine Hilfe."
+        AnswerDescription: "Danke f\xFCr deine Hilfe!"
+        Decision: Wizzard2lvl1
+  - dialogTexts:
+    - SentenceId: 0
+      Sentences:
+      - Hallo!
+      Answers:
+      - LinkedToSentenceId: 1
+        AnswerDescription: Wieso hilfst du mir?
+        Decision: 
+      - LinkedToSentenceId: 21
+        AnswerDescription: Wer bist du?
+        Decision: 
+      - LinkedToSentenceId: 3
+        AnswerDescription: "Was ist das f\xFCr ein cooler Stab?"
+        Decision: 
+    - SentenceId: 1
+      Sentences:
+      - "Ich m\xF6chte nicht, dass die Magiergilde allein die Kontrolle \xFCber die
+        Tore hat. Deshalb versuche ich allen zu helfen, die hier vorbei kommen und
+        durch die Tore wollen."
+      Answers:
+      - LinkedToSentenceId: 11
+        AnswerDescription: Was ist die Magier Gilde?
+        Decision: 
+      - LinkedToSentenceId: 12
+        AnswerDescription: "Warum hat die Magier Gilde die Kontrolle \xFCber die
+          Tore?"
+        Decision: 
+    - SentenceId: 11
+      Sentences:
+      - "Die Magiergilde ist eine Vereinigung der m\xE4chtigsten Magier von Aresios.
+        Sie haben vor kurzem die Tore Aufgestellt, damit sie die Macht \xFCber Aresios
+        und alle Lebewesen hier haben."
+      Answers:
+      - LinkedToSentenceId: -1
+        AnswerDescription: Das ist ja schrecklich!
+        Decision: 
+    - SentenceId: 12
+      Sentences:
+      - "Sie haben diese Tore vor kurzem aufgestellt, um \xFCber Aresios zu herrschen."
+      Answers:
+      - LinkedToSentenceId: -1
+        AnswerDescription: Schade
+        Decision: 
+    - SentenceId: 21
+      Sentences:
+      - Mein Name ist Thrimbald. Ich bin einer der Magier, die sich der Magiergilde
+        widersetzt haben.
+      Answers:
+      - LinkedToSentenceId: 11
+        AnswerDescription: Was ist die Magier Gilde?
+        Decision: 
+      - LinkedToSentenceId: 1
+        AnswerDescription: Warum hast du dich der Magiergilde widersetzt?
+        Decision: 
+      - LinkedToSentenceId: 213
+        AnswerDescription: Cool! Ein Magier! Ich wollte schon immer einen Magier
+          treffen!
+        Decision: 
+    - SentenceId: 213
+      Sentences:
+      - Hehehe, nun nicht alle Magier sind gut. Warum wolltest du einen Magier treffen?
+      Answers:
+      - LinkedToSentenceId: 2131
+        AnswerDescription: Ich wollte schon immer mal Magie lernen! Kannst du mir
+          dabei helfen?
+        Decision: 
+      - LinkedToSentenceId: 2132
+        AnswerDescription: Ich wollte schon immer ein Baum sein! Kannst du mich in
+          einen Baum verwandeln?
+        Decision: 
+    - SentenceId: 2131
+      Sentences:
+      - "Noch bist du nicht bereit daf\xFCr, doch wenn du mir hilfst die Tore zu
+        \xF6ffnen, dann kann ich dir auch helfen Magie zu lernen!"
+      Answers:
+      - LinkedToSentenceId: -1
+        AnswerDescription: Okay!
+        Decision: 
+    - SentenceId: 2132
+      Sentences:
+      - "Magie sollte nicht f\xFCr solche Albernheiten verwendet werden."
+      Answers:
+      - LinkedToSentenceId: -1
+        AnswerDescription: Schade
+        Decision: 
+    - SentenceId: 3
+      Sentences:
+      - "Das ist mein Magierstab, er hilft mir dabei meine Zauberspr\xFCche gezielt
+        einzusetzen."
+      Answers:
+      - LinkedToSentenceId: 31
+        AnswerDescription: Der sieht soo cool aus! Kann ich den auch mal halten?
+        Decision: 
+      - LinkedToSentenceId: 2132
+        AnswerDescription: Kannst du mich damit in einen Baum verwandeln?
+        Decision: 
+      - LinkedToSentenceId: 33
+        AnswerDescription: Der brennt ja!
+        Decision: 
+    - SentenceId: 31
+      Sentences:
+      - "Nur Magier k\xF6nnen mit dem Stab umgehen."
+      Answers:
+      - LinkedToSentenceId: 311
+        AnswerDescription: Biiiiitteee
+        Decision: 
+    - SentenceId: 311
+      Sentences:
+      - Nein
+      Answers:
+      - LinkedToSentenceId: 3111
+        AnswerDescription: Biiiiiitttttee Bitteeee
+        Decision: 
+    - SentenceId: 3111
+      Sentences:
+      - Nein!
+      Answers:
+      - LinkedToSentenceId: -1
+        AnswerDescription: 
+        Decision: 
+    - SentenceId: 33
+      Sentences:
+      - "Das ist Feuer Magie! Ich bin beeindruckt, dass du die Flamme siehst. Nur
+        magisch veranlagte k\xF6nnen dieses Feuer sehen!"
+      Answers:
+      - LinkedToSentenceId: -1
+        AnswerDescription: 
         Decision: 
   enemy: {fileID: 0}
   questStatusImage: {fileID: 5520536286864905768}

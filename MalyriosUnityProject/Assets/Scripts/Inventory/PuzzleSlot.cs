@@ -99,6 +99,7 @@ public class PuzzleSlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     
     public void SwapItems(ISlot otherSlot)
     {
+        if(this ==otherSlot) return;
         SlotHelper.SwapItems(this, otherSlot);
     }
 

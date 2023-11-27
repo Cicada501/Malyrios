@@ -143,6 +143,9 @@ public class DialogEvents : MonoBehaviour
                 return;
 
             //Die Suche nach den Speeren
+            case "Wizzard2lvl1":
+                thrimbald.CurrentDialogState = 2;
+                break;
             case "Wizzard2":
                 thrimbald.CurrentDialogState = 2;
                 thrimbald.QuestStatus = 2;
