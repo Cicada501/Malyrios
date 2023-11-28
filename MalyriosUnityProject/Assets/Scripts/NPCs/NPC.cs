@@ -63,9 +63,20 @@ namespace NPCs
             }else if (npcName == "Lirion" && CurrentDialogState == 1 && levelManager.GetCurrentLevelName() == "Level 5")
             {
                 QuestStatus = 1;
+            }else if (npcName == "Thrimbald" && levelManager.GetCurrentLevelName() == "Level 2")
+            {
+                CurrentDialogState = 1;
             }
         }
-        
+
+        private void Update()
+        {
+            if (this.npcName=="Thrimbald")
+            {
+                //print(currentDialogState);
+            }
+        }
+
         public int QuestStatus // Getter and Setter for QuestStatus
         {
             get

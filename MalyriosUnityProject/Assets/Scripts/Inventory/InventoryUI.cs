@@ -15,7 +15,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject activeItemInfoWindow = null;
     [SerializeField] GameObject statsWindow;
     Inventory inventory;
-    private PuzzleStation activePuzzleStation;
+    public PuzzleStation activePuzzleStation;
 
     bool buttonPressed;
 

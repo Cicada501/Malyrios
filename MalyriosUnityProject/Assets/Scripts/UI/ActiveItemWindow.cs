@@ -86,6 +86,7 @@ public class ActiveItemWindow : MonoBehaviour
         {
             activeItem = item;
 
+            useButton.gameObject.SetActive(false);
             //if the ActiveItemWindow appears from Selecting an Item in the Shop
             switch (slotType)
             {
@@ -116,8 +117,14 @@ public class ActiveItemWindow : MonoBehaviour
                         sellPriceText.text = ((int)(item.ItemPrice / SELL_PRICE_FACTOR)).ToString();
                         sellingInfo.SetActive(true);
                         removeButton.gameObject.SetActive(false);
+                        
                     }
-                    else
+                    //if at station, allow "use" button to place runes in slots
+                    else if (FindObjectOfType<InventoryUI>().activePuzzleStation&& activeItem.ItemType == BaseItem.ItemTypes.Rune)
+                    {
+                        useButton.gameObject.SetActive(true);
+                        useButton.GetComponentInChildren<TextMeshProUGUI>().text = "nutzen";
+                    }else
                     {
                         sellingInfo.SetActive(false);
                         removeButton.gameObject.SetActive(true);

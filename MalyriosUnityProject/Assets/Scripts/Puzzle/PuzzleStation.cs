@@ -44,7 +44,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private TextMeshProUGUI interactableText;
     private Transform itemSlotsParent;
     [SerializeField] private GameObject itemSlotPrefab;
-    private List<PuzzleSlot> slots = new();
+    public List<PuzzleSlot> slots = new();
     private List<PuzzleElement> puzzleElements;
     private List<GameObject> symbolPrefabs;
     private InventoryUI inventoryUI;
