@@ -177,7 +177,7 @@ public class GameData : MonoBehaviour
         }
         
         //Equipped Weapon
-        LoadedEquippedWeaponID = PlayerPrefs.HasKey("EquippedWeaponID") ? PlayerPrefs.GetInt("EquippedWeaponID") : 1;
+        LoadedEquippedWeaponID = PlayerPrefs.HasKey("EquippedWeaponID") ? PlayerPrefs.GetInt("EquippedWeaponID") : 0;
         
         //NPC States
         if (PlayerPrefs.HasKey("currentNpcStates") && PlayerPrefs.GetString("currentNpcStates") != "")
@@ -219,8 +219,8 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            //LoadedArmorData = new ArmorData(0,0,0,0 );
-            LoadedArmorData = new ArmorData(150,160,170,180 );
+            LoadedArmorData = new ArmorData(0,0,0,0 );
+            //LoadedArmorData = new ArmorData(150,160,170,180 );
         }
         
         if (PlayerPrefs.HasKey("scrollData") && PlayerPrefs.GetString("scrollData") != "")

@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
-        controller.OnLandEvent.AddListener(PlayLandingSound);
+        controller.OnLandEvent.AddListener(OnLanding);
         baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
         ChangeRunningSpeed(baseAttributes.Haste);
     }
@@ -222,11 +222,47 @@ public class PlayerMovement : MonoBehaviour
         dashInput = false;
     }
 
-    void PlayLandingSound()
+    void OnLanding()
     {
-        //print("LandingSound");
+        //play landing sound
         int randomIndex = Random.Range(0, landingSounds.Length);
         landingSounds[randomIndex].Play();
+        
+        //squash player
+        StartCoroutine(ScaleOnLanding());
+    }
+    
+    IEnumerator ScaleOnLanding()
+    {
+        // Reduziere die Skalierung beim Landen
+        float elapsedTime = 0;
+        
+        float compressedScaleY = 0.85f;
+        float normalScaleY = transform.localScale.y;
+        float compressDuration = 0.12f;
+        float decompressDuration = 0.15f;
+        while(elapsedTime < compressDuration)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(normalScaleY, compressedScaleY, elapsedTime / compressDuration), transform.localScale.z);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Setze die Skalierung direkt auf den komprimierten Wert, falls nötig
+        transform.localScale = new Vector3(transform.localScale.x, compressedScaleY, transform.localScale.z);
+
+        // Erhöhe die Skalierung zurück zur Normalgröße
+        elapsedTime = 0;
+        
+        while(elapsedTime < decompressDuration)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(compressedScaleY, normalScaleY, elapsedTime / decompressDuration), transform.localScale.z);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Stelle sicher, dass die Skalierung auf den normalen Wert zurückgesetzt wird
+        transform.localScale = new Vector3(transform.localScale.x, normalScaleY, transform.localScale.z);
     }
     
     void PlayRunSound()
@@ -238,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnDestroy()
     {
-        controller.OnLandEvent.RemoveListener(PlayLandingSound);
+        controller.OnLandEvent.RemoveListener(OnLanding);
     }
 
     public void ChangeRunSound(string groundType)
