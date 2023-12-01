@@ -133,6 +133,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                             slot.SetItem(this.item); 
                             this.RemoveItem();
                             aps.UpdateItemID(slot.transform.GetPuzzleSlotIndex(), slot.Item.ItemID);
+                            SoundHolder.Instance.placeRuneStone.Play();
                             break;
                         }
                     }

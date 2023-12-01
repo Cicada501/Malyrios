@@ -44,8 +44,7 @@ public class SetSpawnPoint : MonoBehaviour
     }
     private IEnumerator HealPlayerOverTime() {
         while(isPlayerNearFire) {
-            // Stelle sicher, dass das Leben nicht mehr als 3/4 des maximalen Lebens ist
-            int healthToHeal = Mathf.Min(20, (baseAttributes.MaxHealth * 3 / 4) - baseAttributes.CurrentHealth);
+            int healthToHeal = Mathf.Min(20, (baseAttributes.MaxHealth * 1 / 2) - baseAttributes.CurrentHealth);
             int manaToHeal = Mathf.Min(20, 500 - baseAttributes.Mana);
 
             if(healthToHeal > 0) {
