@@ -234,7 +234,6 @@ public class PlayerMovement : MonoBehaviour
     
     IEnumerator ScaleOnLanding()
     {
-        // Reduziere die Skalierung beim Landen
         float elapsedTime = 0;
         
         float compressedScaleY = 0.85f;
@@ -247,27 +246,18 @@ public class PlayerMovement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        // Setze die Skalierung direkt auf den komprimierten Wert, falls nötig
-        transform.localScale = new Vector3(transform.localScale.x, compressedScaleY, transform.localScale.z);
-
-        // Erhöhe die Skalierung zurück zur Normalgröße
-        elapsedTime = 0;
         
+        elapsedTime = 0;
         while(elapsedTime < decompressDuration)
         {
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(compressedScaleY, normalScaleY, elapsedTime / decompressDuration), transform.localScale.z);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        // Stelle sicher, dass die Skalierung auf den normalen Wert zurückgesetzt wird
-        transform.localScale = new Vector3(transform.localScale.x, normalScaleY, transform.localScale.z);
     }
     
     void PlayRunSound()
     {
-        // Wenn der Spieler rennt, spiele einen zufälligen Laufsound ab
         int randomIndex = Random.Range(0, runSound.Length);
         runSound[randomIndex].Play();
     }

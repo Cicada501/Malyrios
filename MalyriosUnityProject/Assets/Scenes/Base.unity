@@ -18996,6 +18996,7 @@ MonoBehaviour:
   equipmentUI: {fileID: 1851447006}
   activeItemInfoWindow: {fileID: 116338914}
   statsWindow: {fileID: 9438562}
+  activePuzzleStation: {fileID: 0}
 --- !u!114 &821967881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28686,7 +28687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleResetOnRestart: {fileID: 1103874676}
-  startLevel: Level 1
+  startLevel: Level 2
 --- !u!114 &1386037428
 MonoBehaviour:
   m_ObjectHideFlags: 0
