@@ -17,7 +17,7 @@ public class GameData : MonoBehaviour
     public List<PuzzleStationData> LoadedPuzzleStations { get; private set; }
     public ArmorData LoadedArmorData { get; private set; }
     
-    public ScrollData LoadedScrollData { get; private set; } = new ScrollData();
+    public ScrollData LoadedScrollData { get; private set; } = new ();
     
 
     
@@ -65,8 +65,6 @@ public class GameData : MonoBehaviour
 
         InventoryData inventoryData = new InventoryData(Inventory.Instance);
         PlayerPrefs.SetString("inventoryData", JsonUtility.ToJson(inventoryData));
-        DecisionData decisionData = new DecisionData();
-        PlayerPrefs.SetString("decisionData", JsonUtility.ToJson(decisionData));
         PlayerPrefs.SetInt("EquippedWeaponID", playerAttack.EquippedWeaponID);
         PlayerPrefs.SetString("QuestLog", JsonUtility.ToJson(questLogWindow.SaveQuestLog()));
         PlayerPrefs.SetString("resetOnRestart",resetOnRestart.ToString());
