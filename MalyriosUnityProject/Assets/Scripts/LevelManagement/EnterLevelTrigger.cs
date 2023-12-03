@@ -14,9 +14,7 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
 
     private LevelManager levelManager;
     private SaveActiveItems activeItemsData;
-    [SerializeField] private bool highForestPortal;
-    private SpriteRenderer spriteRenderer;
-    private BoxCollider2D boxCollider2D;
+
 
 
     void Awake()
@@ -25,29 +23,15 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         levelManager = ReferencesManager.Instance.levelManager;//GameObject.Find("GameManager").GetComponent<LevelManager>();
         interactableText = ReferencesManager.Instance.interactableText;
         activeItemsData = ReferencesManager.Instance.saveActiveItems;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-    }
 
-    private void Update()
-    {
-        if (highForestPortal)
-        {
-            bool isActive = ExtractNumber(levelName) <= LevelUnlock.Instance.unlockedLevel;
-            spriteRenderer.enabled = isActive;
-            boxCollider2D.enabled = isActive;
-        }
     }
-
+    
     public void Interact()
     {
         activeItemsData.SaveItems();
         ReferencesManager.Instance.levelManager.ShowLoadingScreen(levelName);
         levelManager.ChangeLevel(levelName);
-        if (ExtractNumber(levelName) > 0)
-        {
-            LevelUnlock.Instance.unlockedLevel = ExtractNumber(levelName);
-        }
+
     }
 
 
@@ -70,17 +54,5 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
         interactableText.gameObject.SetActive(false);
     }
 
-    public static int ExtractNumber(string input)
-    {
-        Regex regex = new Regex(@"\d+");
-        Match match = regex.Match(input);
-        if (match.Success)
-        {
-            return int.Parse(match.Value);
-        }
-        else
-        {
-            return -1;
-        }
-    }
+
 }

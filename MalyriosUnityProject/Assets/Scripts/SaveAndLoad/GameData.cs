@@ -19,7 +19,7 @@ public class GameData : MonoBehaviour
     
     public ScrollData LoadedScrollData { get; private set; } = new ScrollData();
     
-    public int UnlockedLevel { get; set; }
+
     
     public LeverDataList LoadedLeverStates { get; private set; }
 
@@ -72,7 +72,6 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("resetOnRestart",resetOnRestart.ToString());
         
         PlayerPrefs.SetString("scrollData", JsonUtility.ToJson(SaveScrolls.Instance.scrollData));
-        PlayerPrefs.SetInt("unlockedLevel",LevelUnlock.Instance.unlockedLevel);
         PlayerPrefs.SetInt("currentHealth", baseAttributes.CurrentHealth);
         PlayerPrefs.SetInt("Mana", baseAttributes.Mana);
         PlayerPrefs.SetInt("LearnedFireball", ReferencesManager.Instance.fireballButton.activeSelf ? 1 : 0);
@@ -231,8 +230,6 @@ public class GameData : MonoBehaviour
         {
             LoadedScrollData = new ScrollData();
         }
-        
-        UnlockedLevel = PlayerPrefs.HasKey("unlockedLevel") ? PlayerPrefs.GetInt("unlockedLevel") : 0;
         
         baseAttributes.CurrentHealth = PlayerPrefs.HasKey("currentHealth") ? PlayerPrefs.GetInt("currentHealth") : 1000;
         baseAttributes.Mana = PlayerPrefs.HasKey("Mana") ? PlayerPrefs.GetInt("Mana") : 1000;
