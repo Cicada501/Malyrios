@@ -28804,7 +28804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1e79fec07aa1c48a30d7c7c63c9417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockedLevel: 2
 --- !u!1 &1425818667
 GameObject:
   m_ObjectHideFlags: 0
@@ -36418,6 +36417,7 @@ MonoBehaviour:
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
+  coyoteTime: 0.2
 --- !u!70 &1975534762
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

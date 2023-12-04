@@ -199,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
     //called when jump button pressed
     public void JumpButtonPressed()
     {
-        if (isJumping || disableMovement) return;
+        if (disableMovement) return;
         jump = true; //triggers the addforce next frame
 
         var i = Random.Range(0, jumpingSounds.Length);
