@@ -28671,6 +28671,10 @@ MonoBehaviour:
     Prefab: {fileID: 3961218565264814783, guid: 530497fbdf5b0c643bf82c3e854df300,
       type: 3}
     loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
+  - Name: Level 6
+    Prefab: {fileID: 3961218565264814783, guid: c41d1c43b9d2235418dd67ce468be4f8,
+      type: 3}
+    loadingScreen: {fileID: 21300000, guid: 84ea7d8b8596450479e436cb223831f6, type: 3}
   player: {fileID: 1975534745}
   spawnAtPlayerDebugLocation: 0
   loadingScreenBase: {fileID: 1459939526}

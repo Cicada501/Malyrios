@@ -18,16 +18,8 @@ public class GameData : MonoBehaviour
     public ArmorData LoadedArmorData { get; private set; }
     
     public ScrollData LoadedScrollData { get; private set; } = new ();
-    
-
-    
     public LeverDataList LoadedLeverStates { get; private set; }
-
-    
-
-    
-    
-
+ 
     private LevelManager levelManager;
     private GameObject player;
     private NPCManager npcManager;

@@ -234,15 +234,17 @@ public class PlayerMovement : MonoBehaviour
     
     IEnumerator ScaleOnLanding()
     {
-        float elapsedTime = 0;
+        var localScale = transform.localScale;
         
+        float elapsedTime = 0;
         float compressedScaleY = 0.85f;
-        float normalScaleY = transform.localScale.y;
+        float normalScaleY = localScale.y;
         float compressDuration = 0.12f;
         float decompressDuration = 0.15f;
         while(elapsedTime < compressDuration)
         {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(normalScaleY, compressedScaleY, elapsedTime / compressDuration), transform.localScale.z);
+            localScale = new Vector3(localScale.x, Mathf.Lerp(normalScaleY, compressedScaleY, elapsedTime / compressDuration), localScale.z);
+            transform.localScale = localScale;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -250,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
         elapsedTime = 0;
         while(elapsedTime < decompressDuration)
         {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(compressedScaleY, normalScaleY, elapsedTime / decompressDuration), transform.localScale.z);
+            localScale = new Vector3(transform.localScale.x, Mathf.Lerp(compressedScaleY, normalScaleY, elapsedTime / decompressDuration), localScale.z);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
