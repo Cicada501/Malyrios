@@ -7,7 +7,7 @@ using UnityEngine;
 public class SaveScrolls : MonoBehaviour
 {
     /// <summary>
-    /// This class is used to save the Attrbutes gained from scrolls. It is not possible to save Maxhealth and other Attributes, since they get influenced from equipped items.
+    /// This class is used to save the Attributes gained from scrolls. It is not possible to save Maxhealth and other Attributes, since they get influenced from equipped items.
     /// For example, if items are equipped that increase max health by 300, then this would be saved as MaxHealth and on start of the game, the maxHealth would be increased by 300 again from the equipped items
     /// </summary>
     public static SaveScrolls Instance;

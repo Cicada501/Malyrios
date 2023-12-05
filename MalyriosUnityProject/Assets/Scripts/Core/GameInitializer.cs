@@ -71,6 +71,7 @@ public class GameInitializer : MonoBehaviour
             }
         }
 
+        PlayerMoney.Instance.CurrentMoney = gameData.LoadedPlayerMoney;
     }
 
     public void ResetAll()
