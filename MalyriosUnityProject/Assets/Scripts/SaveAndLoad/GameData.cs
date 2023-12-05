@@ -21,7 +21,10 @@ public class SaveData
     public ScrollData ScrollData;
     public LeverDataList LeverStates;
     public int playerMoney;
-    
+    public int PlayerHealth;
+    public int PlayerMana;
+    public bool LearnedFireball;
+
     public float MusicVolume;
     public float PlayerSoundsVolume;
     public float EnemySoundsVolume;
@@ -40,7 +43,7 @@ public class GameData : MonoBehaviour
     private QuestLogWindow questLogWindow;
     private PlayerAttack playerAttack;
     private BaseAttributes baseAttributes;
-    
+
     public Vector3 LoadedPlayerPosition { get; private set; }
     public string LoadedLevelName { get; private set; }
     public InventoryData LoadedInventoryData { get; private set; }
@@ -51,9 +54,12 @@ public class GameData : MonoBehaviour
     public ArmorData LoadedArmorData { get; private set; }
     public ScrollData LoadedScrollData { get; private set; } = new ScrollData();
     public LeverDataList LoadedLeverStates { get; private set; }
-    
     public int LoadedPlayerMoney { get; private set; }
-    
+    public int LoadedPlayerCurrentHealth { get; private set; }
+    public int LoadedPlayerCurrentMana { get; private set; }
+    public bool LoadedLearnedFireball { get; private set; }
+
+
     public float LoadedMusicVolume { get; private set; } = 1f;
     public float LoadedPlayerSoundsVolume { get; private set; } = 1f;
     public float LoadedEnemySoundsVolume { get; private set; } = 1f;
@@ -80,7 +86,8 @@ public class GameData : MonoBehaviour
     void Start()
     {
         resetOnRestart = toggleResetOnRestart.isOn;
-        if (toggleResetOnRestart != null) toggleResetOnRestart.onValueChanged.AddListener((value) => resetOnRestart = value);
+        if (toggleResetOnRestart != null)
+            toggleResetOnRestart.onValueChanged.AddListener((value) => resetOnRestart = value);
     }
 
     public void SaveGame()
@@ -98,7 +105,10 @@ public class GameData : MonoBehaviour
             ScrollData = SaveScrolls.Instance.scrollData,
             LeverStates = new LeverDataList(), // Logik zum Speichern der LeverStates
             playerMoney = PlayerMoney.Instance.CurrentMoney,
-            
+            PlayerHealth = player.GetComponent<BaseAttributes>().CurrentHealth,
+            PlayerMana = player.GetComponent<BaseAttributes>().Mana,
+            LearnedFireball = ReferencesManager.Instance.fireballButton.activeSelf,
+
             MusicVolume = LoadedMusicVolume,
             PlayerSoundsVolume = LoadedPlayerSoundsVolume,
             EnemySoundsVolume = LoadedEnemySoundsVolume,
@@ -119,9 +129,11 @@ public class GameData : MonoBehaviour
             string json = File.ReadAllText(saveFilePath);
             SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
-            LoadedPlayerPosition = saveData.PlayerPosition != null ? saveData.PlayerPosition : new Vector3(0f, 0.5f, 0f);
+            LoadedPlayerPosition =
+                saveData.PlayerPosition != null ? saveData.PlayerPosition : new Vector3(0f, 0.5f, 0f);
             LoadedLevelName = !string.IsNullOrEmpty(saveData.LevelName) ? saveData.LevelName : startLevel;
-            LoadedInventoryData = saveData.Inventory != null ? saveData.Inventory : new InventoryData(Inventory.Instance);
+            LoadedInventoryData =
+                saveData.Inventory ?? new InventoryData(Inventory.Instance);
             LoadedEquippedWeaponID = saveData.EquippedWeaponID != 0 ? saveData.EquippedWeaponID : 0;
             LoadedNpcData = saveData.NpcData ?? new List<NpcData>();
             LoadedQuestLog = saveData.QuestLog ?? new List<Quest>();
@@ -130,6 +142,9 @@ public class GameData : MonoBehaviour
             LoadedScrollData = saveData.ScrollData ?? new ScrollData();
             LoadedLeverStates = saveData.LeverStates ?? new LeverDataList();
             LoadedPlayerMoney = saveData.playerMoney != 0 ? saveData.playerMoney : 0;
+            LoadedPlayerCurrentHealth = saveData.PlayerHealth != 0 ? saveData.PlayerHealth : 1000;
+            LoadedPlayerCurrentMana = saveData.PlayerMana != 0 ? saveData.PlayerMana : 1000;
+            LoadedLearnedFireball = saveData.LearnedFireball!=null ? saveData.LearnedFireball:false;
 
             // Audioeinstellungen mit Standardwerten
             LoadedMusicVolume = saveData.MusicVolume > 0 ? saveData.MusicVolume : 1f;
@@ -154,6 +169,9 @@ public class GameData : MonoBehaviour
             LoadedScrollData = new ScrollData();
             LoadedLeverStates = new LeverDataList();
             LoadedPlayerMoney = 0;
+            LoadedPlayerCurrentHealth = 1000;
+            LoadedPlayerCurrentMana = 1000;
+            LoadedLearnedFireball = false;
 
             // Standardwerte für Audioeinstellungen
             LoadedMusicVolume = 1f;
@@ -165,8 +183,9 @@ public class GameData : MonoBehaviour
             LoadedUiVolume = 1f;
         }
     }
-    
-    public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume, float environmentVolume, float playerAbilitiesVolume, float inventoryVolume, float uiVolume)
+
+    public void SaveAudioSettings(float playerSoundsVolume, float enemySoundsVolume, float musicVolume,
+        float environmentVolume, float playerAbilitiesVolume, float inventoryVolume, float uiVolume)
     {
         // Speichere die übergebenen Werte in den Eigenschaften
         LoadedPlayerSoundsVolume = playerSoundsVolume;

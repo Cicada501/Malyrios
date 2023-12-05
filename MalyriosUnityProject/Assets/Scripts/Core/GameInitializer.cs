@@ -72,6 +72,9 @@ public class GameInitializer : MonoBehaviour
         }
 
         PlayerMoney.Instance.CurrentMoney = gameData.LoadedPlayerMoney;
+        baseAttributes.CurrentHealth = gameData.LoadedPlayerCurrentHealth;
+        baseAttributes.Mana = gameData.LoadedPlayerCurrentMana;
+        ReferencesManager.Instance.fireballButton.SetActive(gameData.LoadedLearnedFireball);
     }
 
     public void ResetAll()
