@@ -75,7 +75,6 @@ public class GameData : MonoBehaviour
         questLogWindow = ReferencesManager.Instance.questLogWindow;
         playerAttack = ReferencesManager.Instance.playerAttack;
         baseAttributes = player.GetComponent<BaseAttributes>();
-        PlayerPrefs.DeleteAll();
     }
 
     void Start()
