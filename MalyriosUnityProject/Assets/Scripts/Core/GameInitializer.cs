@@ -38,19 +38,26 @@ public class GameInitializer : MonoBehaviour
     private void LoadAndApplyData()
     {
         gameData.LoadData();
+        print("Loaded Data");
         npcManager.LoadNpCs(gameData.LoadedNpcData);
+        print("set NPCData");
         levelManager.ChangeLevel(gameData.LoadedLevelName);
+        print("set CurrentLevel");
         if (!levelManager.spawnAtPlayerDebugLocation) {
             player.transform.position = gameData.LoadedPlayerPosition;
+            print("setPlayerPosition");
         }
         Inventory.Instance.UpdateInventory(gameData.LoadedInventoryData);
+        print("set InventoryData");
         playerAttack.LoadWeapon(gameData.LoadedEquippedWeaponID);
+        print("set LoadedWeapon");
         foreach (var quest in gameData.LoadedQuestLog)
         {
             questLogWindow.AddQuest(quest.questName, quest.questDescription);
         }
         questLogWindow.FixUI(10);
         PuzzleStationManager.Instance.LoadStations();
+        print("set PuzzleStations");
         
         if(gameData.LoadedArmorData.headArmorID!=0)ReferencesManager.Instance.headArmorSlot.LoadArmor(gameData.LoadedArmorData.headArmorID);
         if(gameData.LoadedArmorData.bodyArmorID!=0)ReferencesManager.Instance.bodyArmorSlot.LoadArmor(gameData.LoadedArmorData.bodyArmorID);

@@ -4,6 +4,7 @@ using System.IO;
 using Malyrios.Character;
 using NPCs;
 using SaveAndLoad;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,6 +71,8 @@ public class GameData : MonoBehaviour
 
     [SerializeField] private string startLevel;
     [SerializeField] private Toggle toggleResetOnRestart;
+    [SerializeField] private TextMeshProUGUI saveLoadText;
+
     private bool resetOnRestart;
 
     private void Awake()
@@ -103,7 +106,7 @@ public class GameData : MonoBehaviour
             PuzzleStations = PuzzleStationManager.Instance.SaveStations().puzzleStationDataList,
             ArmorData = EquipmentManager.Instance.SaveArmor(),
             ScrollData = SaveScrolls.Instance.scrollData,
-            LeverStates = new LeverDataList(), // Logik zum Speichern der LeverStates
+            LeverStates = new LeverDataList(), 
             playerMoney = PlayerMoney.Instance.CurrentMoney,
             PlayerHealth = player.GetComponent<BaseAttributes>().CurrentHealth,
             PlayerMana = player.GetComponent<BaseAttributes>().Mana,
@@ -119,6 +122,7 @@ public class GameData : MonoBehaviour
         };
 
         string json = JsonUtility.ToJson(saveData);
+        saveLoadText.text = "Saved: "+ json;
         File.WriteAllText(saveFilePath, json);
     }
 
@@ -127,6 +131,7 @@ public class GameData : MonoBehaviour
         if (File.Exists(saveFilePath))
         {
             string json = File.ReadAllText(saveFilePath);
+            saveLoadText.text = "Loaded: "+json;
             SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
             LoadedPlayerPosition =
@@ -146,17 +151,18 @@ public class GameData : MonoBehaviour
             LoadedPlayerCurrentMana = saveData.PlayerMana != 0 ? saveData.PlayerMana : 1000;
             LoadedLearnedFireball = saveData.LearnedFireball!=null ? saveData.LearnedFireball:false;
 
-            // Audioeinstellungen mit Standardwerten
-            LoadedMusicVolume = saveData.MusicVolume > 0 ? saveData.MusicVolume : 1f;
-            LoadedPlayerSoundsVolume = saveData.PlayerSoundsVolume > 0 ? saveData.PlayerSoundsVolume : 1f;
-            LoadedEnemySoundsVolume = saveData.EnemySoundsVolume > 0 ? saveData.EnemySoundsVolume : 1f;
-            LoadedEnvironmentVolume = saveData.EnvironmentVolume > 0 ? saveData.EnvironmentVolume : 1f;
-            LoadedPlayerAbilitiesVolume = saveData.PlayerAbilitiesVolume > 0 ? saveData.PlayerAbilitiesVolume : 1f;
-            LoadedInventoryVolume = saveData.InventoryVolume > 0 ? saveData.InventoryVolume : 1f;
+            // Audioeinstellungen
+            LoadedMusicVolume = saveData.MusicVolume > 0 ? saveData.MusicVolume : 0.5f;
+            LoadedPlayerSoundsVolume = saveData.PlayerSoundsVolume > 0 ? saveData.PlayerSoundsVolume : 0.5f;
+            LoadedEnemySoundsVolume = saveData.EnemySoundsVolume > 0 ? saveData.EnemySoundsVolume : 0.5f;
+            LoadedEnvironmentVolume = saveData.EnvironmentVolume > 0 ? saveData.EnvironmentVolume : 0.5f;
+            LoadedPlayerAbilitiesVolume = saveData.PlayerAbilitiesVolume > 0 ? saveData.PlayerAbilitiesVolume : 0.5f;
+            LoadedInventoryVolume = saveData.InventoryVolume > 0 ? saveData.InventoryVolume : 0.5f;
             LoadedUiVolume = saveData.UiVolume > 0 ? saveData.UiVolume : 1f;
         }
         else
         {
+            saveLoadText.text = "Es existiert keine Sicherungdatei";
             // Setze alle Daten auf Standardwerte, wenn keine SaveData vorhanden ist
             LoadedPlayerPosition = new Vector3(0f, 0.5f, 0f);
             LoadedLevelName = startLevel;
@@ -174,13 +180,13 @@ public class GameData : MonoBehaviour
             LoadedLearnedFireball = false;
 
             // Standardwerte für Audioeinstellungen
-            LoadedMusicVolume = 1f;
-            LoadedPlayerSoundsVolume = 1f;
-            LoadedEnemySoundsVolume = 1f;
-            LoadedEnvironmentVolume = 1f;
-            LoadedPlayerAbilitiesVolume = 1f;
-            LoadedInventoryVolume = 1f;
-            LoadedUiVolume = 1f;
+            LoadedMusicVolume = 0.5f;
+            LoadedPlayerSoundsVolume = 0.5f;
+            LoadedEnemySoundsVolume = 0.5f;
+            LoadedEnvironmentVolume = 0.5f;
+            LoadedPlayerAbilitiesVolume = 0.5f;
+            LoadedInventoryVolume = 0.5f;
+            LoadedUiVolume = 0.5f;
         }
     }
 
