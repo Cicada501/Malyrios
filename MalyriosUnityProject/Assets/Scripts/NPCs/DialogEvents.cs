@@ -73,7 +73,7 @@ public class DialogEvents : MonoBehaviour
             }
           
         }
-        /*if (LevelManager.CurrentLevelName == "HighForest")
+        if (LevelManager.CurrentLevelName == "HighForest")
         {
             //check if player found pages
             if (Inventory.CountOccurrences(ItemDatabase.GetItem(40)) > 2 && !addedDialogAnswer4)
@@ -123,7 +123,7 @@ public class DialogEvents : MonoBehaviour
                 addedDialogAnswer2 = true;
                 npcManager.npcs["Asmilda"].QuestStatus = 3;
             }
-        }*/
+        }
     }
 
 
@@ -178,6 +178,138 @@ public class DialogEvents : MonoBehaviour
                 lirion.QuestStatus = 0;
                 Inventory.Instance.AddItem(ItemDatabase.GetArmor(170));
                 lirion.CurrentDialogState = 4;
+                break;
+            case "learn Fireball":
+                fireballButton.SetActive(true);
+                PlayerData.LearnedFireball = true;
+                break;
+            case "BigRatAttack":
+                npcManager.npcs["Debby"].IsAggressive = true;
+                break;
+            
+            //Die verlorenen Seiten
+            case "Wizzard2HF":
+                thrimbald.CurrentDialogState = 2;
+                thrimbald.QuestStatus = 2;
+                questLogWindow.AddQuest("Die verlorenen Seiten", "Suche nach den 3 verlorenen Buchseiten für Thrimbald");
+                break;
+            case "givePages":
+                Inventory.Instance.Remove(ItemDatabase.GetItem(40));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(40));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(40));
+                thrimbald.QuestStatus = 0;
+                break;
+            case "Wizzard4HF":
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
+                questLogWindow.RemoveQuest("Die verlorenen Seiten");
+                thrimbald.CurrentDialogState = 4;
+                break;
+                
+            //
+            case "sucheSchattenkristall":
+                questLogWindow.AddQuest("Der magische Splitter","Finde Oris den Schmied und frage ihn nach etwas Staub eines Schattenkristalls, damit Thrimbald die echtheit des Malyrios Splitters überprüfen kann");
+                thrimbald.CurrentDialogState = 6;
+                thrimbald.QuestStatus = 2;
+                oris.CurrentDialogState = 2;
+                oris.QuestStatus = 3;
+                break;
+            case "BuyDust":
+                if (Inventory.CountOccurrences(ItemDatabase.GetItem(16)) > 4)
+                {
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.Remove(ItemDatabase.GetItem(16));
+                    Inventory.Instance.AddItem(ItemDatabase.GetItem(42));
+                }
+                thrimbald.CurrentDialogState = 7;
+                thrimbald.QuestStatus = 3;
+                questLogWindow.UpdateQuestDescription("Der magische Splitter", "Bringe den Staub des Schattenkristalls zu Thrimbald, damit dieser die Echtheit des Malyrios Splitters überprüfen kann");
+                oris.QuestStatus = 0;
+                break;
+            case "Oris3":
+                oris.CurrentDialogState = 3;
+                break;
+            case "giveDust":
+                Inventory.Instance.Remove(ItemDatabase.GetItem(42));
+                break;
+            
+            //Hunter Quest
+            case "JackToldPlayerAboutTommy":
+                tommy.CurrentDialogState = 2;
+                tommy.QuestStatus = 3;
+                jack.QuestStatus = 2;
+                jack.CurrentDialogState = 2;
+                questLogWindow.AddQuest("Ein Heilmittel für Tommy", "Suche den Sohn des Jägers, um ihn davon zu überzeugen, dess er ein sich in einen Menschen zurück verwandeln muss (Achtung: Er könnte gefährlich sein)");
+                break;
+            case "smallWerewolfAttack":
+                tommy.IsAggressive = true;
+                
+                break;
+            case "BringAntiWerewolfPotion":
+                jack.CurrentDialogState = 3;
+                asmilda.CurrentDialogState = 2;
+                asmilda.QuestStatus = 3;
+                tommy.CurrentDialogState = 3; //answer to give potin gets added, if inventory contains potion
+                tommy.QuestStatus = 2;
+                
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy", "Finde jemanden, der ein Heilmittel für Tommy (den Sohn des Jägers) herstellen kann");
+                break;
+            case "gettingIngredients":
+                asmilda.CurrentDialogState = 3;
+                asmilda.QuestStatus = 2;
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy",
+                    "Finde folgende Zutaten: 1x Schattenrose, 1x Werwolfblut, 2x Dunkelstaubschirmling und bringe sie zu Asmilda");
+                break;
+            case "craftAntiWerewolfPotion":
+                if (Inventory.CountOccurrences(schattenRose) > 0 && Inventory.CountOccurrences(werwolfBlut) > 0 &&
+                    Inventory.CountOccurrences(schirmlinge) > 1)
+                {
+                    Inventory.Instance.Remove(schattenRose);
+                    Inventory.Instance.Remove(werwolfBlut);
+                    Inventory.Instance.Remove(schirmlinge);
+                    Inventory.Instance.Remove(schirmlinge);
+                    Inventory.Instance.AddItem(ItemDatabase.GetItem(33));
+                }
+
+                asmilda.QuestStatus = 0;
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy", "Bring das Heilmittel zu Tommy");
+
+                break;
+            case "changeSonSprite":
+                jack.CurrentDialogState = 4;
+                tommy.gameObject.GetComponent<Animator>().SetTrigger("TurnIntoHuman");
+                var son = tommy.gameObject.transform;
+                son.localScale = new Vector3(1f, 1f, 1f);
+                var position = son.position;
+                position = new Vector3(position.x - 0.05f, position.y + 0.07f, 0f); //reposition after resize
+                son.position = position;
+                tommy.QuestStatus = 0;
+                jack.QuestStatus = 3;
+
+                questLogWindow.UpdateQuestDescription("Ein Heilmittel für Tommy",
+                    "berichte jack, dass du seinen Sohn gerettet hast");
+                break;
+            case "getSpell":
+                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
+                jack.CurrentDialogState = 5;
+                jack.QuestStatus = 0;
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(34));
+                tommy.gameObject.SetActive(false);
+                
+                break;
+            case "getSword":
+                questLogWindow.RemoveQuest("Ein Heilmittel für Tommy");
+                jack.CurrentDialogState = 5;
+                jack.QuestStatus = 0;
+                Inventory.Instance.AddItem(ItemDatabase.GetWeapon(1));
+                tommy.gameObject.SetActive(false);
+               
                 break;
             default:
                 return;
