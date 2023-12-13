@@ -10,7 +10,8 @@ namespace Malyrios.Core
         {
             InventorySlot,
             EquipmentSlot,
-            PuzzleSlot
+            PuzzleSlot,
+            ShopSlot
         }
 
         BaseItem Item { get; set; }

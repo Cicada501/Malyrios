@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Malyrios.Character;
 using UnityEngine;
 
 public class FireBallProjectile : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed = 1f;
     [SerializeField] GameObject impactEffect = null;
-    [SerializeField] private int fireballDamage;
+    [SerializeField] private int fireballBaseDamage;
 
     private Rigidbody2D rigidBody;
 
     //private Player player;
     private bool playerFlipped;
     private GameObject player;
+    [SerializeField] private int intScale;
 
     public Vector2 FireballDirection { get; set; }
 
@@ -43,13 +45,16 @@ public class FireBallProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            
+            SoundHolder.Instance.fireballImpactSound.Play();
+            SoundHolder.Instance.startFireballSound.Stop();
             //offset x value to have imact at right position
             var position = transform.position;
             var spawnImpactPoint = new Vector3(position.x + 0.4f, position.y, position.z);
             //Show impacteffect
             Instantiate(impactEffect, spawnImpactPoint, Quaternion.identity);
             //Deal damage
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(fireballDamage);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(fireballBaseDamage + (int)player.GetComponent<BaseAttributes>().Energy*intScale);
             //Destroy fireball
             Destroy(gameObject);
         }

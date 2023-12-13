@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: False Stone
   m_EditorClassIdentifier: 
   itemID: 21
-  itemName: Stein der Falschheit
-  description: FALSCH
+  itemName: Schattensigille
+  description: 'Dies ist ein Stein, auf dem die Schattensigille eingraviert ist.
+    Dies ist eine der beiden Elementarsigillen. '
   icon: {fileID: 1590227179, guid: bffb9a4fd8dc8bb4482be782b13e9ef9, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 0
-  maxStackAmount: 0
   itemType: 7
   itemPrefab: {fileID: 0}

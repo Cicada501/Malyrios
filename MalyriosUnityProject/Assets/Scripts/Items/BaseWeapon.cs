@@ -23,13 +23,12 @@ namespace Malyrios.Items
 
         public string GetDescription()
         {
-            return $"<color=green>{this.itemName}</color>\n\n" +
-                   $"Damage: {this.minDamage}-{this.maxDamage}\n" +
-                   $"Attack speed: {this.attackSpeed}\n" +
-                   $"DPS: {(((float)this.minDamage + (float)this.MaxDamage) / 2) / this.attackSpeed:0.00}\n" +
-                   $"Strength: {this.strength}\n" +
-                   $"Crit chance: {this.critChance}%\n" +
-                   $"Crit damage: {this.critDamage}%";
+            return $"{this.description}\n\n" +
+                   $"<color=red>Schaden: {this.minDamage}-{this.maxDamage}</color>\n" +
+                   $"<color=#00b300>Angriffsgeschwindigkeit: {this.attackSpeed}</color>\n" +
+                   $"<color=#804000>Stärke: {this.strength}</color>\n" +
+                   $"<color=#cca300>Kritt Chance: {this.critChance}%</color>\n" +
+                   $"<color=#e6005c>Krit Schaden: {this.critDamage}</color>";
         }
 
         public override void ExecuteUsageEffect()

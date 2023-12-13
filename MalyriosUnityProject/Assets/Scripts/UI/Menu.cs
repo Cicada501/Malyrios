@@ -17,6 +17,15 @@ public class Menu : MonoBehaviour
     public void ToggleMenuOpen()
     {
         MenuPanel.SetActive(!MenuPanel.activeSelf);
+        if (MenuPanel.activeSelf)
+        {
+            var i = Random.Range(0, SoundHolder.Instance.openButton.Length);
+            SoundHolder.Instance.openButton[i].Play();
+        }
+        else
+        {
+            SoundHolder.Instance.closeButton.Play();
+        }
     }
 
     public void CloseMenu()

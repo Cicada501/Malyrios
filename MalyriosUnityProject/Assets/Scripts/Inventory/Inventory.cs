@@ -24,6 +24,7 @@ public class Inventory : MonoBehaviour
     
     public bool isEmpty = true;
     [SerializeField] private Button useButton;
+
     #region new inventory
 
     public List<BaseItem> Items = new List<BaseItem>();
@@ -35,23 +36,6 @@ public class Inventory : MonoBehaviour
     private BaseWeapon testWeapon;
 
     #endregion
-    
-    void PrintInventory()
-    {
-        List<string> itemNames = new List<string>();
-        print($"items length: {Items.Count}");
-        foreach (var item in Items)
-        {
-            itemNames.Add(item != null ? item.ItemName : "Null");
-        }
-        Debug.Log("IDs: [" + string.Join(",", ItemIDs) + "]");
-        Debug.Log("Item Names: [" + string.Join(", ", itemNames) + "]");
-    }
-
-    private void Update()
-    {
-        PrintInventory();
-    }
 
     public void RemoveAllItems()
     {

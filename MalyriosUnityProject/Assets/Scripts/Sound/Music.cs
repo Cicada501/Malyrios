@@ -7,9 +7,6 @@ public class Music : MonoBehaviour
 {
 
     [SerializeField] AudioSource MusicNormal = null;
-    [SerializeField] AudioSource MusicDark = null;
-    [SerializeField] AudioSource MusicVillage = null;
-    [SerializeField] AudioSource MusicCave = null;
     string currentlyPlaying;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +17,7 @@ public class Music : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (changeMusic.CurrentlyPlaying == "Dark" && currentlyPlaying != "Dark")
         {
@@ -54,5 +51,5 @@ public class Music : MonoBehaviour
             MusicNormal.Play();
             currentlyPlaying = "Normal";
         }
-    }
+    }*/
 }

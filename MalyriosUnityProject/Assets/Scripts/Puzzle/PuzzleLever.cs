@@ -10,11 +10,13 @@ public class PuzzleLever : MonoBehaviour, IInteractable
     private Animator animator;
     private TextMeshProUGUI interactableText;
     [SerializeField] private PuzzleStation station;
+    public string leverID;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         interactableText = ReferencesManager.Instance.interactableText;
+        //leverID = gameObject.name + transform.position.x;
     }
      void UseLever()
     {
@@ -31,6 +33,15 @@ public class PuzzleLever : MonoBehaviour, IInteractable
 
     }
 
+     public void ApplyLoadedState()
+     {
+         if (state)
+         {
+             animator.Play("Activate");
+         }
+         station.UpdateDisplayedValue();
+     }
+
     public void Interact()
     {
         UseLever();
@@ -40,7 +51,7 @@ public class PuzzleLever : MonoBehaviour, IInteractable
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            interactableText.text = state ? "Disable" : "Activate";
+            interactableText.text = state ? "Deaktiviern" : "Aktivieren";
             interactableText.gameObject.SetActive(true);
         }
     }
@@ -53,3 +64,17 @@ public class PuzzleLever : MonoBehaviour, IInteractable
         }
     }
 }
+
+[System.Serializable]
+public class LeverData
+{
+    public bool state;
+    public string leverID;
+}
+
+[System.Serializable]
+public class LeverDataList
+{
+    public List<LeverData> leverDataList = new List<LeverData>();
+}
+

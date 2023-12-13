@@ -16,14 +16,22 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     [SerializeField] private float flashTime;
     [SerializeField] private SpriteRenderer playerRenderer;
     [SerializeField] private Image healthFill;
-    
-    private BaseAttributes baseAttributes;
+    [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject respawnButtionGO;
+    [SerializeField] private Animator deathTextAnimator;
+    [SerializeField] private Color deathScreenColor;
 
+    private Animator playerAnimator;
+    private BaseAttributes baseAttributes;
     private Color playerOrigionalColor;
     private Color barFillOrigionalColor;
+    private Transform player;
     
     public Transform currentSpawnPoint;
-    private Transform player;
+    public bool isDead;
+    public Image deathScreenPanelImage;
+    
+
 
 
     // Use this for initialization
@@ -31,28 +39,13 @@ public class PlayerHealth : MonoBehaviour, IHealthController
     {
         player = GetComponent<Transform>();
         this.baseAttributes = GetComponent<BaseAttributes>();
+        playerAnimator = GetComponent<Animator>();
 
         //Remember original colors to reset after Flash
         this.playerOrigionalColor = playerRenderer.color;
         this.barFillOrigionalColor = healthFill.color;
-
-        //UIManager.Instance.SetMaxHealth(this.baseAttributes.MaxHealth);
-
-        //regHealth = baseAttributes.MaxHealth;
-
-        currentSpawnPoint = player.transform;
-    }
-
-    private void FixedUpdate()
-    {
-        //Debug.Log("Current Health: " + baseAttributes.CurrentHealth);
-
-        if (this.baseAttributes.CurrentHealth < this.baseAttributes.MaxHealth)
-        {
-            this.baseAttributes.CurrentHealth += (int)healthRegen;
-        }
-
-        //Debug.Log("CurrentSpawnPoint: " + currentSpawnPoint);
+        
+        deathScreenPanelImage.color = new Color(0.5f, 0.5f, 0.5f, 0f); //Initial Transparency = 0
     }
 
     private void FlashOnDamage()
@@ -73,7 +66,7 @@ public class PlayerHealth : MonoBehaviour, IHealthController
         this.baseAttributes.CurrentHealth -= damage;
         FlashOnDamage();
 
-        if (this.baseAttributes.CurrentHealth <= 0)
+        if (this.baseAttributes.CurrentHealth <= 0 &&!isDead)
         {
             Die();
         }
@@ -81,14 +74,48 @@ public class PlayerHealth : MonoBehaviour, IHealthController
 
     public void Die()
     {
-        player.transform.position = currentSpawnPoint.position;
-        baseAttributes.CurrentHealth = baseAttributes.MaxHealth;
-        //Delete resources from inventory
-        //Respawn bosses
+        isDead = true;
+        playerAnimator.SetTrigger("Die");
+        deathScreen.SetActive(true);
+        player.GetComponent<PlayerMovement>().disableMovement = true;
+        deathTextAnimator.Play("youDiedText");
+        SoundHolder.Instance.playerDeath.Play();
+        StartCoroutine(FadeInDeathScreen());
     }
 
     public void Heal(int heal)
     {
         baseAttributes.CurrentHealth += heal;
+    }
+    
+    public void Respawn()
+    {
+        isDead = false;
+        playerAnimator.SetTrigger("Respawn");
+        respawnButtionGO.SetActive(false);
+        deathScreen.SetActive(false);
+        player.transform.position = currentSpawnPoint.position;
+        baseAttributes.CurrentHealth = baseAttributes.MaxHealth/2;
+        player.GetComponent<PlayerMovement>().disableMovement = false;
+    }
+    
+    private IEnumerator FadeInDeathScreen()
+    {
+        float elapsedTime = 0f;
+        float duration = 2f; // Dauer der Transition in Sekunden
+
+        Color startColor = new Color(deathScreenColor.a,deathScreenColor.b,deathScreenColor.g,0f); // Beginne mit 0 Transparenz
+        Color endColor = deathScreenColor; // Endet mit voller Transparenz
+
+        while (elapsedTime < duration)
+        {
+            deathScreenPanelImage.color = Color.Lerp(startColor, endColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        deathScreenPanelImage.color = endColor; // Stelle sicher, dass die Farbe am Ende der Transition korrekt gesetzt ist
+        respawnButtionGO.SetActive(true);
+       
     }
 }

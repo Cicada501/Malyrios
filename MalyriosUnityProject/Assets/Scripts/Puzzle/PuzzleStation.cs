@@ -44,10 +44,10 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private TextMeshProUGUI interactableText;
     private Transform itemSlotsParent;
     [SerializeField] private GameObject itemSlotPrefab;
-    private List<PuzzleSlot> slots = new();
+    public List<PuzzleSlot> slots = new();
     private List<PuzzleElement> puzzleElements;
     private List<GameObject> symbolPrefabs;
-    private GameObject inventoryUI;
+    private InventoryUI inventoryUI;
     private bool windowOpen;
     private bool inUse;
     [SerializeField] private Sprite stationTrue;
@@ -55,20 +55,24 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     [SerializeField] private Sprite stationNull;
     [SerializeField] private PuzzleGate gate;
 
+    private bool playerGotPunished;
+    private bool playerGotRewarded;
+
     private void Awake()
     {
-        id = gameObject.name + transform.position;
+        id = gameObject.name;
+        //print($"Set station id: {id}");
         puzzleElements = GetComponent<Puzzle>().puzzleElements;
         slotCount = puzzleElements.Count(element => element.elementType == PuzzleElement.ElementType.Empty);
         interactableText = ReferencesManager.Instance.interactableText;
         puzzleWindow = ReferencesManager.Instance.puzzleWindow;
         itemSlotsParent = ReferencesManager.Instance.itemSlotsParent;
         symbolPrefabs = ReferencesManager.Instance.logicSymbols;
-        inventoryUI = ReferencesManager.Instance.inventoryUI;
+        inventoryUI = ReferencesManager.Instance.canvasUI.GetComponent<InventoryUI>();
         itemIDsArray = new int[slotCount];
        
         puzzleWindowImage = puzzleWindow.GetComponent<Image>();
-        PuzzleStationManager.Instance.AddStation(this);
+        PuzzleStationManager.Instance.UpdateStation(this);
         
     }
 
@@ -78,7 +82,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         UpdateDisplayedValue();
     }
 
-    public void UpdateDisplayedValue()
+    public void UpdateDisplayedValue(bool allowPunish=false)
     {
         bool? value = GetTruthValue();
 
@@ -86,15 +90,19 @@ public class PuzzleStation : MonoBehaviour, IInteractable
         {   if(gate!=null) gate.OpenGate();
             this.GetComponent<SpriteRenderer>().sprite = stationTrue;
             if (!inUse) return;
-            puzzleWindowImage.color = Color.HSVToRGB(120f / 360f, 0.2f, 1f);
-            ;
+            puzzleWindowImage.color = Color.HSVToRGB(45f / 360f, 0.2f, 1f);
+            playerGotPunished = false;
+            if(!playerGotRewarded) SoundHolder.Instance.correctAnswer.Play();
+            playerGotRewarded = true;
         }
         else if (value == false)
         {
             if(gate!=null) gate.CloseGate();
             this.GetComponent<SpriteRenderer>().sprite = stationFalse;
             if (!inUse) return;
-            puzzleWindowImage.color = Color.HSVToRGB(0f, 0.2f, 1f);
+            puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 0.2f);
+            if(!playerGotPunished&& allowPunish) PunishWrongAnswer();
+            playerGotRewarded = false;
         }
         else // value == null
         {
@@ -102,8 +110,53 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             this.GetComponent<SpriteRenderer>().sprite = stationNull;
             if (!inUse) return;
             puzzleWindowImage.color = Color.HSVToRGB(0f, 0.0f, 1f);
+            playerGotPunished = false;
+            playerGotRewarded = false;
         }
     }
+    
+    private void PunishWrongAnswer()
+    {
+        var player = ReferencesManager.Instance.player;
+        
+        Vector2 playerPosition = player.transform.position;
+        Vector2 stationPosition = this.transform.position;
+
+        Vector2 direction;
+        if (playerPosition.x > stationPosition.x)
+        {
+            // Spieler ist links von der Station, wirf ihn nach rechts oben
+            direction = new Vector2(1, 1);
+        }
+        else
+        {
+            // Spieler ist rechts von der Station, wirf ihn nach links oben
+            direction = new Vector2(-1, 1);
+        }
+    
+        direction.Normalize(); // Normalisiere den Vektor, um seine Länge auf 1 zu setzen
+
+        float forceMagnitude = 200; // Adjust the value based on your specific requirements
+        player.GetComponent<PlayerHealth>().TakeDamage(100);
+        player.GetComponent<PlayerMovement>().disableMovement = true;
+        player.GetComponent<Rigidbody2D>().AddForce(direction * forceMagnitude, ForceMode2D.Force);
+        SoundHolder.Instance.wrongAnser.Play();
+        playerGotPunished = true;
+        StartCoroutine(EnableMovementDelayed(.5f));
+    }
+    
+    IEnumerator EnableMovementDelayed(float time)
+    {
+        var player = ReferencesManager.Instance.player;
+
+        yield return new WaitForSeconds(time);
+
+
+        player.GetComponent<PlayerMovement>().disableMovement = false;
+    }
+
+
+
 
     public void Interact()
     {
@@ -116,7 +169,7 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     private void ShowPuzzleDialog()
     {
         puzzleWindow.SetActive(true);
-        inventoryUI.SetActive(true);
+        inventoryUI.ChangeInventoryOpened(false);
         windowOpen = true;
         interactableText.gameObject.SetActive(false);
         UpdateDisplayedValue();
@@ -189,14 +242,16 @@ public class PuzzleStation : MonoBehaviour, IInteractable
             itemIDsArray[index] = itemID;
         }
 
-        UpdateDisplayedValue();
+        UpdateDisplayedValue(true);
+        PuzzleStationManager.Instance.UpdateStation(this);
+        PlayerPrefs.SetString("puzzleStations",JsonUtility.ToJson(PuzzleStationManager.Instance.SaveStations()));
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && !windowOpen)
         {
-            interactableText.text = "Open";
+            interactableText.text = "Öffnen";
             interactableText.gameObject.SetActive(true);
         }
     }
@@ -213,7 +268,10 @@ public class PuzzleStation : MonoBehaviour, IInteractable
     public void ClosePuzzleWindow()
     {
         puzzleWindow.SetActive(false);
-        inventoryUI.SetActive(false);
+        if (InventoryUI.inventoryOpen)
+        {
+            inventoryUI.ChangeInventoryOpened(false);
+        }
         windowOpen = false;
         inUse = false;
         FindObjectOfType<InventoryUI>().SetActivePuzzleStation(null);
@@ -253,29 +311,61 @@ public class PuzzleStation : MonoBehaviour, IInteractable
                     break;
                 case PuzzleElement.ElementType.Empty:
                     string value = "";
-                    switch (itemIDsArray[emptySlotIndex])
+                    if (emptySlotIndex >= 0 && emptySlotIndex < itemIDsArray.Length)
                     {
-                        case 20:
-                            value = "TRUE";
-                            break;
-                        case 21:
-                            value = "FALSE";
-                            break;
-                        case 22:
-                            value = "AND";
-                            break;
-                        case 23:
-                            value = "OR";
-                            break;
-                        case 24:
-                            value = "XOR";
-                            break;
-                        case 25:
-                            value = "IMP";
-                            break;
-                        default:
-                            value = "Empty";
-                            break;
+                        switch (itemIDsArray[emptySlotIndex])
+                        {
+                            case 20:
+                                value = "TRUE";
+                                break;
+                            case 21:
+                                value = "FALSE";
+                                break;
+                            case 22:
+                                value = "AND";
+                                break;
+                            case 23:
+                                value = "OR";
+                                break;
+                            case 24:
+                                value = "XOR";
+                                break;
+                            case 25:
+                                value = "IMP";
+                                break;
+                            default:
+                                value = "Empty";
+                                break;
+                        }
+                    }else
+                    {
+                        //Resolve problem of array beeing to short, if only Slots in station (Empty, Empty, Empty)
+                        Array.Resize(ref itemIDsArray, itemIDsArray.Length + 1);
+                        itemIDsArray[itemIDsArray.Length - 1] = 0;
+                        switch (itemIDsArray[emptySlotIndex])
+                        {
+                            case 20:
+                                value = "TRUE";
+                                break;
+                            case 21:
+                                value = "FALSE";
+                                break;
+                            case 22:
+                                value = "AND";
+                                break;
+                            case 23:
+                                value = "OR";
+                                break;
+                            case 24:
+                                value = "XOR";
+                                break;
+                            case 25:
+                                value = "IMP";
+                                break;
+                            default:
+                                value = "Empty";
+                                break;
+                        }
                     }
 
                     formula.Append(value + " ");

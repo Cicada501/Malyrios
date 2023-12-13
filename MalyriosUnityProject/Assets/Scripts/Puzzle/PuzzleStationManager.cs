@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PuzzleStationManager : MonoBehaviour
@@ -13,12 +14,27 @@ public class PuzzleStationManager : MonoBehaviour
     {
         Instance = this;
     }
-   
+    
 
-    public void AddStation(PuzzleStation station)
+
+    public void UpdateStation(PuzzleStation station)
     {
-        stations.Add(station);
+        bool stationExists = stations.Any(s => s.id == station.id);
+
+        if (!stationExists)
+        {
+            stations.Add(station);
+            //Debug.Log("Station mit ID " + station.id + " hinzugefügt.");
+        }
+        else
+        {
+            var existingStation = stations.Find(s => s.id == station.id);
+            existingStation.itemIDsArray = station.itemIDsArray;
+            //Debug.Log("Station mit ID " + station.id + " wurde aktualisiert.");
+        }
     }
+
+
 
     public PuzzleStationDataList SaveStations()
     {
@@ -35,8 +51,12 @@ public class PuzzleStationManager : MonoBehaviour
 
     public void LoadStation(PuzzleStation station)
     {
+        //var loadedPuzzleStations = JsonUtility.FromJson<PuzzleStationDataList>(PlayerPrefs.GetString("puzzleStations"));
+        //loadedStationData = loadedPuzzleStations.puzzleStationDataList;
         var data = loadedStationData.Find(data => data.id == station.id);
-        if (data != null) station.itemIDsArray = data.itemIDsArray;
+        if (data == null) return;
+        station.itemIDsArray = data.itemIDsArray;
+        //print($"loading station: {station.id}, set itemIDArray: {data.itemIDsArray}");
 
     }
     public void LoadStations()

@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Xor stone
   m_EditorClassIdentifier: 
   itemID: 24
-  itemName: Stein des Exklusiven oder
-  description: Wenn sich die beiden Werte unterscheiden, ist der Ausdruck Wahr
+  itemName: Gleichgewichtsknoten Sigille
+  description: "Dies ist ein Stein, auf dem die Knotensigille f\xFCr Gleichgewicht
+    eingraviert ist. Sie verbindet zwei elementare Sigillen zur Lichtsigille, wenn
+    eine Schattensigille und eine Lichtsigille vorhanden ist (und somit ein Gleichgewicht
+    von Licht und Schatten herrscht). Sobald zwei gleiche Sigillen von diesem Knoten
+    verbunden werden, wird dieses Konstrukt zu einer Schattensigille f\xFChren. "
   icon: {fileID: 1557435511, guid: c1965c0f91fa96845ae5452d2a892832, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 0
-  maxStackAmount: 0
   itemType: 7
   itemPrefab: {fileID: 0}

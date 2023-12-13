@@ -17,8 +17,7 @@ MonoBehaviour:
   description: "Diese schriftrolle erh\xF6ht das maximale Leben um 100 (dauerhaft)"
   icon: {fileID: 21300000, guid: a4f8dbce8e69fb44cae1802909dc8388, type: 3}
   dropChance: 0
-  isStackable: 1
   isUsable: 1
-  maxStackAmount: 10
   itemType: 6
   itemPrefab: {fileID: 0}
+  itemPrice: 30

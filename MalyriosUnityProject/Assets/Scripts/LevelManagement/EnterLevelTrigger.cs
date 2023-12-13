@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,31 +13,36 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     [SerializeField] private string levelName;
 
     private LevelManager levelManager;
+    private SaveActiveItems activeItemsData;
 
 
-    void Start()
+
+    void Awake()
     {
         player = ReferencesManager.Instance.player.transform;
-        levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
+        levelManager = ReferencesManager.Instance.levelManager;//GameObject.Find("GameManager").GetComponent<LevelManager>();
         interactableText = ReferencesManager.Instance.interactableText;
+        activeItemsData = ReferencesManager.Instance.saveActiveItems;
 
     }
+    
     public void Interact()
     {
+        activeItemsData.SaveItems();
+        ReferencesManager.Instance.levelManager.ShowLoadingScreen(levelName);
         levelManager.ChangeLevel(levelName);
+
     }
 
 
     private void ShowEnterDialog()
     {
-        
-        interactableText.text = $"Enter {levelName}";
+        interactableText.text = $"{levelName} betreten";
         interactableText.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.gameObject.CompareTag("Player"))
         {
             ShowEnterDialog();
@@ -47,4 +53,6 @@ public class EnterLevelTrigger : MonoBehaviour, IInteractable
     {
         interactableText.gameObject.SetActive(false);
     }
+
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Malyrios.Character;
 using Malyrios.Dialogue;
 using NPCs;
 using TMPro;
@@ -30,7 +31,7 @@ public class ReferencesManager : MonoBehaviour
     public Transform itemSlotsParent;
     public DynamicWidth dynamicPuzzleWindowWidth;
     public List<GameObject> logicSymbols;
-    public GameObject inventoryUI;
+    public GameObject canvasUI;
     public PlayerAttack playerAttack;
     public EquipmentSlot weaponSlot;
     public EquipmentSlot headArmorSlot;
@@ -38,6 +39,11 @@ public class ReferencesManager : MonoBehaviour
     public EquipmentSlot handArmorSlot;
     public EquipmentSlot feetArmorSlot;
     public StatsWindow statsWindow;
+    public SaveActiveItems saveActiveItems;
+    public GameObject shopWindow;
+    public GameObject shopItemPrefab;
+    public GameObject shopItemPrefabParent;
+    public GameObject fireballButton;
 
     private void Awake()
     {

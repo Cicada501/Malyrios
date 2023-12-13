@@ -83,7 +83,8 @@ MonoBehaviour:
   projectileSpeed: 2
   impactEffect: {fileID: 7923343753624210597, guid: 5a29cd63ef6022f4ab75ff2cf0d84684,
     type: 3}
-  fireballDamage: 120
+  fireballBaseDamage: 60
+  intScale: 4
 --- !u!212 &3465360530410501078
 SpriteRenderer:
   m_ObjectHideFlags: 0

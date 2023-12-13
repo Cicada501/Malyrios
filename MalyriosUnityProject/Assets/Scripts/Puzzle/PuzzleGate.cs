@@ -4,7 +4,9 @@ public class PuzzleGate : MonoBehaviour
 {
     private Animator animator;
     private BoxCollider2D gateCollider;
-    
+    private bool open;
+
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -13,14 +15,23 @@ public class PuzzleGate : MonoBehaviour
 
     public void OpenGate()
     {
-        animator.Play("Open");
-        
-        gateCollider.enabled = false;
+        if (!open)
+        {
+            animator.Play("Open");
+            SoundHolder.Instance.openGateSound.Play();
+            gateCollider.enabled = false;
+            open = true;
+        }
     }
 
     public void CloseGate()
     {
-        animator.Play("Close");
-        gateCollider.enabled = true;
+        if (open)
+        {
+            animator.Play("Close");
+            SoundHolder.Instance.closeGateSound.Play();
+            gateCollider.enabled = true;
+            open = false;
+        }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class changeMusic : MonoBehaviour
+/*public class changeMusic : MonoBehaviour
 {
     [SerializeField] private string changeMusicTo = null;
 
@@ -21,4 +21,4 @@ public class changeMusic : MonoBehaviour
             CurrentlyPlaying = changeMusicTo;
         }
     }
-}
+}*/

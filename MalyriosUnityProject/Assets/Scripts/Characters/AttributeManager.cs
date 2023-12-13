@@ -47,7 +47,7 @@ public class AttributeManager : MonoBehaviour
     /// <param name="type">ItemType des items das angelegt oder abgelegt wird</param>
     private void OnArmorChanged(BaseArmor newArmor, BaseItem.ItemTypes type)
     {
-        print($"OnArmorChanged({newArmor?.ItemName ?? "null"}, {type})");
+        //print($"OnArmorChanged({newArmor?.ItemName ?? "null"}, {type})");
         if (type == BaseItem.ItemTypes.Head) //type wird extra weiter gegeben, da im falle von Unequip newArmor = null ist und newArmor.ItemType nicht verwendet werden kann
         {
             OnArmorSwap(ref headArmor, newArmor);
@@ -68,7 +68,7 @@ public class AttributeManager : MonoBehaviour
     
     private void OnArmorSwap(ref BaseArmor currentArmor, BaseArmor newArmor)
     {
-        print($"Swapping: {currentArmor?.ItemName ?? "null"} to {newArmor?.ItemName ?? "null"}");
+        //print($"Swapping: {currentArmor?.ItemName ?? "null"} to {newArmor?.ItemName ?? "null"}");
 
 
         if (currentArmor)
@@ -96,7 +96,7 @@ public class AttributeManager : MonoBehaviour
 
     private void OnArmorRemove(BaseArmor armor)
     {
-        print($"removing Armor: {armor.ItemName}");
+        //print($"removing Armor: {armor.ItemName}");
         if (!armor) return;
         this.baseAttributes.MaxHealth -= armor.HealthBonus;
         this.baseAttributes.Mana -= armor.ManaBonus;

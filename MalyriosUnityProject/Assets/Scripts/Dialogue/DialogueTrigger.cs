@@ -35,7 +35,7 @@ namespace Malyrios.Dialogue
             bool inTalkRange = Physics2D.OverlapCircle(transform.position, this.talkRadius, this.whatCanTalkToMe);
             if (inTalkRange)
             {
-                interactableText.text = $"Talk";
+                interactableText.text = $"Reden";
                 interactableText.gameObject.SetActive(true);
                 turnedButtonOff = false;
             }

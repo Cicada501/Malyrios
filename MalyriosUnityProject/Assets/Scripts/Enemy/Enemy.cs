@@ -5,6 +5,7 @@ using Malyrios.Core;
 using Malyrios.Items;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 
@@ -13,17 +14,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] BaseItem dropItem = null;
 
     [SerializeField] BaseItem dropRareItem = null;
-    [SerializeField] int dropItemChance0 = 10; //chance to drop 0 times Item
-    [SerializeField] int dropItemChance1 = 60; //chance to drop 1 times Item
-    [SerializeField] int dropItemChance2 = 30;
-    [SerializeField] int dropRareItemChance0 = 50;
-    [SerializeField] int dropRareItemChance1 = 40; //chance to drop 1 times RareItem
-    [SerializeField] int dropRareItemChance2 = 10; //chance to drop 2 times RareItem
+    [SerializeField] int dropItemChance0; //chance to drop 0 times Item
+    [SerializeField] int dropItemChance1; //chance to drop 1 times Item
+    [SerializeField] int dropItemChance2;
+    [SerializeField] int dropRareItemChance0;
+    [SerializeField] int dropRareItemChance1; //chance to drop 1 times RareItem
+    [SerializeField] int dropRareItemChance2; //chance to drop 2 times RareItem
 
     [SerializeField] float attacksPerSecond = 1.5f;
     [SerializeField] public float attackRange;
     public float nextAttackTime;
-    float distToPlayer;
+    [HideInInspector]
+    public float distToPlayer;
 
     [SerializeField] Transform attackPoint = null;
     [SerializeField] float attackRadius = 0.1f;
@@ -34,7 +36,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     Transform player;
 
-    [SerializeField] bool facingRight = true;
+    [SerializeField]public bool facingRight = true;
     Animator animator;
 
     [SerializeField] int maxHealth = 100;
@@ -46,7 +48,13 @@ public class Enemy : MonoBehaviour
 
     private EnemySpawner enemySpawner;
     [SerializeField] public EnemyTypes enemyType;
+    [HideInInspector]
     public bool canMove;
+    
+    
+    public bool isRanged;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectileSpawnPoint;
 
     public enum EnemyTypes //Needed to respawn the enemy that died
     {
@@ -56,7 +64,8 @@ public class Enemy : MonoBehaviour
         Ogre,
         Djinn,
         Mandrake,
-        Boar
+        Boar,
+        Huntress
     }
 
     void Start()
@@ -71,6 +80,12 @@ public class Enemy : MonoBehaviour
         {
             enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         }
+    }
+
+    public void SetNextAttackTime()
+    {
+        nextAttackTime = Time.time + 1f / attacksPerSecond;
+       
     }
 
     private void Update() //-------------------------------------------------
@@ -88,10 +103,10 @@ public class Enemy : MonoBehaviour
 
 
         //Recognize when Enemy has attacked, and set nextAttackTime
-        if (animator.GetBool("Attack") == true)
-        {
-            nextAttackTime = Time.time + 1f / attacksPerSecond;
-        }
+        // if (animator.GetBool("Attack"))
+        // {
+        //     nextAttackTime = Time.time + 1f / attacksPerSecond;
+        // }
 
         //Look at Player
         if (transform.position.x > player.position.x && facingRight && !isAttacking && !isDead)
@@ -148,6 +163,37 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SpawnProjectile()
+    {
+        var projectile = Instantiate(projectilePrefab, projectileSpawnPoint);
+        projectile.GetComponent<Projectile>().parentEnemy = this;
+    }
+
+    public void PlayAttackSound()
+    {
+        switch (enemyType)
+        {
+            case EnemyTypes.Huntress:
+                var i = Random.Range(0, SoundHolder.Instance.huntressAttackSound.Length);
+                SoundHolder.Instance.huntressAttackSound[i].Play();
+                break;
+            case EnemyTypes.Werewolf:
+                SoundHolder.Instance.werewolfAttackSound.Play();
+                break;
+        }
+    }
+    public void PlayRangedAttackSound()
+    {
+        switch (enemyType)
+        {
+            case EnemyTypes.Huntress:
+                var i = Random.Range(0, SoundHolder.Instance.huntressAttackSound.Length);
+                SoundHolder.Instance.huntressAttackSound[i].Play();
+                SoundHolder.Instance.huntressSpearSpawnSound.Play();
+                break;
+        }
+    }
+
     public void PushBack()
     {
         //apply pushback to enemy
@@ -191,7 +237,7 @@ public class Enemy : MonoBehaviour
         #region dropItems
 
         //Item Normal
-        int dropchoice = Random.Range(0, 100);
+        int dropchoice = Random.Range(1, 101);
         if (dropchoice > dropItemChance0 && dropchoice <= dropItemChance1 + dropItemChance0)
         {
             SpawnItem.Spawn(dropItem,transform.position);
@@ -204,7 +250,7 @@ public class Enemy : MonoBehaviour
         }
 
         //Item Rare
-        dropchoice = Random.Range(0, 100);
+        dropchoice = Random.Range(1, 101);
         if (dropchoice > dropRareItemChance0 && dropchoice <= dropRareItemChance1 + dropRareItemChance0)
         {
             SpawnItem.Spawn(dropRareItem,transform.position);

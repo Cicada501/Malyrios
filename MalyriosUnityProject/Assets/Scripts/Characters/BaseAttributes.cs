@@ -20,7 +20,7 @@ namespace Malyrios.Character
         public static event Action<BaseAttributes> OnBaseAttributeChanged;
 
         [SerializeField] private int maxHealth = 1000;
-        [SerializeField] private int mana = 0;
+        [SerializeField] private int mana = 1000;
         [SerializeField] private int strength = 0;
         [SerializeField] private float critChance = 0;
         [SerializeField] private float critDamage = 0;
@@ -34,7 +34,11 @@ namespace Malyrios.Character
 
         private void Update()
         {
-            //print($"Health: {CurrentHealth}/{MaxHealth}");
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
+            //print($"current mana: {mana}");
         }
 
         private void Start()
@@ -138,7 +142,7 @@ namespace Malyrios.Character
             get => this.haste;
             set
             {
-                this.critChance = value;
+                this.haste = value;
                 OnHasteChanged?.Invoke(this.haste);
                 OnBaseAttributeChanged?.Invoke(this);
             }

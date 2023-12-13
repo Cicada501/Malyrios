@@ -13,12 +13,20 @@ MonoBehaviour:
   m_Name: Imp Stone
   m_EditorClassIdentifier: 
   itemID: 25
-  itemName: Stein der Implikation
-  description: Der Implikator
+  itemName: Folgeknoten Sigille
+  description: "Dies ist ein Stein, auf dem die Folgeknoten Sigille eingraviert ist.
+    Beim Folgeknoten, anders als bei anderen Knotensigillen, spielt die Anordnung
+    der elementaren Sigillen eine entscheidende Rolle. In den alten Legenden repr\xE4sentiert
+    die Licht-Sigille Wahrheit und die Schatten-Sigille das Unbekannte. Der Folgeknoten
+    wird von der linken Sigille eingeleitet. Was dort steht muss auch im Gesamten
+    erhalten bleiben. Steht links also ein Licht, so muss ihm ein weiteres Licht
+    folgen, denn nur Wahrheit kann Wahrheit erhalten. Beginnt der Knoten jedoch mit
+    einem Schatten, so ist das Resultat immer Licht, egal ob Schatten oder Licht
+    folgt. Denn das Unbekannte bleibt unbekannt, unabh\xE4ngig davon ob es von Wahrheit
+    oder Unbekanntem erg\xE4nzt wird."
   icon: {fileID: -1985840724, guid: c1965c0f91fa96845ae5452d2a892832, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 0
-  maxStackAmount: 0
   itemType: 7
   itemPrefab: {fileID: 0}
+  itemPrice: 0

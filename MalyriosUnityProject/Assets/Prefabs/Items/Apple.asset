@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   itemID: 10
-  itemName: Apple
-  description: Looks like a normal apple
-  icon: {fileID: -1747284187, guid: 84c915ee06df5704484b9dfea2655e27, type: 3}
+  itemName: Apfel
+  description: Heilt 40(+Ausgeglichenheit) Leben, wenn er gegessen wird
+  icon: {fileID: -6318862804120586534, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   dropChance: 0
-  isStackable: 1
-  isUsable: 0
-  maxStackAmount: 100
+  isUsable: 1
   itemType: 5
   itemPrefab: {fileID: 0}
+  itemPrice: 5

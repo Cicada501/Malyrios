@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DonProductions
-  productName: Malyrios41
+  companyName: DonathGames
+  productName: Malyrios50
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: a5b379f7a5ed6ab4b857c4766f7fd47d,
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: f2b4f9ed00b2d404eb0baed6147ab5c9,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -137,7 +137,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.2.7
+  bundleVersion: 0.1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -158,15 +158,16 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DonProds.Malyrios03
+    Android: com.DonathGames.MalyriosEV
+    Standalone: com.DonathGames.Malyrios
   buildNumber:
     Standalone: 0
     iPhone: 0
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 0
-  AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 0
+  overrideDefaultApplicationIdentifier: 1
+  AndroidBundleVersionCode: 11
+  AndroidMinSdkVersion: 28
+  AndroidTargetSdkVersion: 33
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -248,19 +249,19 @@ PlayerSettings:
   useCustomBaseGradleTemplate: 0
   useCustomGradlePropertiesTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 5
+  AndroidTargetArchitectures: 3
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
-  androidSplashScreen: {fileID: 2800000, guid: a5b379f7a5ed6ab4b857c4766f7fd47d, type: 3}
-  AndroidKeystoreName: '{inproject}: '
-  AndroidKeyaliasName: 
+  androidSplashScreen: {fileID: 2800000, guid: f2b4f9ed00b2d404eb0baed6147ab5c9, type: 3}
+  AndroidKeystoreName: '{inproject}: user.keystore'
+  AndroidKeyaliasName: malyrios code app
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -276,7 +277,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e5ed44645ae30c24bb00b1a219c13768, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7ebc09672becbe640a4fa165e8312258, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -804,7 +805,8 @@ PlayerSettings:
     iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}

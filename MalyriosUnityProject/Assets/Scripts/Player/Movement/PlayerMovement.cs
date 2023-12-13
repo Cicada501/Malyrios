@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
+using Malyrios.Character;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //https://www.youtube.com/watch?v=dwcT-Dch0bA
 public class PlayerMovement : MonoBehaviour
@@ -7,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController2D controller;
     [SerializeField] Joystick joystick;
     private float horizontalMove = 0f;
-    [SerializeField] private float runSpeed;
+    [SerializeField] private float baseRunSpeed;
+    private float runSpeed;
     [SerializeField] Animator playerAnimator = null;
     private bool jump;
     private bool isJumping;
@@ -26,21 +30,35 @@ public class PlayerMovement : MonoBehaviour
     private bool dashInput;
     private float lastImageXpos;
     private float distanceBetweenImages = 0.1f;
+    private BaseAttributes baseAttributes;
     
     //Sound
     [SerializeField] private AudioSource[] landingSounds;
-    [SerializeField] private AudioSource jumpingSound;
+    [SerializeField] private AudioSource[] jumpingSounds;
     [SerializeField] private AudioSource dashingSound;
-    [SerializeField] private AudioSource walkingSound;
+    private AudioSource[] runSound;
+    [SerializeField] private AudioSource[] runSoundStone;
+    [SerializeField] private AudioSource[] runSoundGrass;
     
+    private bool isRunning;
+    private float soundPlayTime;
+    private float soundPlayInterval = 0.3f;
+
+    private void Awake()
+    {
+        BaseAttributes.OnHasteChanged += ChangeRunningSpeed;
+    }
 
     void Start()
     {
+        runSound = runSoundGrass;
+        runSpeed = baseRunSpeed;
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
-        controller.OnLandEvent.AddListener(PlayLandingSound);
-
+        controller.OnLandEvent.AddListener(OnLanding);
+        baseAttributes = ReferencesManager.Instance.player.GetComponent<BaseAttributes>();
+        ChangeRunningSpeed(baseAttributes.Haste);
     }
 
     void Update()
@@ -72,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         #region dash
         IEnumerator FreezeAndDash()
         {
+            //print("FreezeAndDash");
             // Freeze player's position
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0f;
@@ -95,9 +114,10 @@ public class PlayerMovement : MonoBehaviour
         }
         
         
-        if (dashInput && canDash)
+        if (dashInput && canDash&& baseAttributes.Mana>50)
         {
             canDash = false;
+            baseAttributes.Mana -= 50;
             StartCoroutine(FreezeAndDash());
             dashingSound.Play();
         }
@@ -117,9 +137,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (controller.m_Grounded && !isDashing)
         {
-            canDash = true;
+            
         }
         #endregion
+        
+    }
+
+    private void ChangeRunningSpeed(float haste)
+    {
+        runSpeed = baseRunSpeed + haste / 10;
     }
 
     private IEnumerator StopDashing()
@@ -127,6 +153,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);
         trailRenderer.emitting = false;
         isDashing = false;
+        //print("isDashing = false");
+        canDash = true;
     }
     
 
@@ -151,14 +179,31 @@ public class PlayerMovement : MonoBehaviour
         //Animation
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         playerAnimator.SetFloat("YVelocity", rb.velocity.y);
+        
+        if (Mathf.Abs(horizontalMove) > 0 && controller.m_Grounded && !isDashing && Time.time >= soundPlayTime &&!playerAnimator.GetComponent<PlayerHealth>().isDead)
+        {
+            if (!isRunning)
+            {
+                isRunning = true;
+                PlayRunSound();
+            }
+
+            soundPlayTime = Time.time + soundPlayInterval;
+        }
+        else
+        {
+            isRunning = false;
+        }
     }
 
     //called when jump button pressed
     public void JumpButtonPressed()
     {
-        if (isJumping || disableMovement) return;
+        if (disableMovement) return;
         jump = true; //triggers the addforce next frame
-        jumpingSound.Play();
+
+        var i = Random.Range(0, jumpingSounds.Length);
+        jumpingSounds[i].Play();
         playerAnimator.SetTrigger("Jump");
         playerAnimator.SetBool("isJumping", isJumping);
     }
@@ -177,15 +222,66 @@ public class PlayerMovement : MonoBehaviour
         dashInput = false;
     }
 
-    void PlayLandingSound()
+    void OnLanding()
     {
-        //print("LandingSound");
+        //play landing sound
         int randomIndex = Random.Range(0, landingSounds.Length);
         landingSounds[randomIndex].Play();
+        
+        //squash player
+        StartCoroutine(ScaleOnLanding());
+    }
+    
+    IEnumerator ScaleOnLanding()
+    {
+        var localScale = transform.localScale;
+        
+        float elapsedTime = 0;
+        float compressedScaleY = 0.85f;
+        float normalScaleY = localScale.y;
+        float compressDuration = 0.12f;
+        float decompressDuration = 0.15f;
+        while(elapsedTime < compressDuration)
+        {
+            localScale = new Vector3(localScale.x, Mathf.Lerp(normalScaleY, compressedScaleY, elapsedTime / compressDuration), localScale.z);
+            transform.localScale = localScale;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        elapsedTime = 0;
+        while(elapsedTime < decompressDuration)
+        {
+            localScale = new Vector3(transform.localScale.x, Mathf.Lerp(compressedScaleY, normalScaleY, elapsedTime / decompressDuration), localScale.z);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+    
+    void PlayRunSound()
+    {
+        int randomIndex = Random.Range(0, runSound.Length);
+        runSound[randomIndex].Play();
     }
     
     private void OnDestroy()
     {
-        controller.OnLandEvent.RemoveListener(PlayLandingSound);
+        controller.OnLandEvent.RemoveListener(OnLanding);
+    }
+
+    public void ChangeRunSound(string groundType)
+    {
+        print($"run sound changing to {groundType}");
+        switch (groundType)
+        {
+            case "grass":
+            case "Grass":
+                runSound = runSoundGrass;
+                break;
+            case "stone": 
+            case "Stone":
+                runSound = runSoundStone;
+                break;
+        }
     }
 }

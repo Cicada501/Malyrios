@@ -196,6 +196,7 @@ MonoBehaviour:
   attacksPerSecond: 1
   attackRange: 0.5
   nextAttackTime: 0
+  distToPlayer: 0
   attackPoint: {fileID: 5108618909233067101}
   attackRadius: 0.1
   playerLayer:
@@ -205,9 +206,12 @@ MonoBehaviour:
   damagePopupText: {fileID: 7377629519318415158, guid: 955ee09356aac2e45b696dfe9154f5f9,
     type: 3}
   facingRight: 0
-  maxHealth: 30
+  maxHealth: 100
   enemyType: 6
   canMove: 0
+  isRanged: 0
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
 --- !u!50 &3882669429745213923
 Rigidbody2D:
   serializedVersion: 4

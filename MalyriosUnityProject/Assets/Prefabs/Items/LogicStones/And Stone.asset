@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: And Stone
   m_EditorClassIdentifier: 
   itemID: 22
-  itemName: Stein der Konjunktion
-  description: Nur wenn beide Werte Wahr sind, ist auch der Ausdruck 'Wahr'
+  itemName: Schattenknoten Sigille
+  description: 'Dies ist ein Stein, auf dem die Schattenknoten Sigille eingraviert
+    ist. Diese Sigille  Verbindet zwei Elementarsigillen zur Schattensigille, falls
+    mindestens eine der beiden eine Schattensigille ist. '
   icon: {fileID: -1130337562, guid: c1965c0f91fa96845ae5452d2a892832, type: 3}
   dropChance: 0
-  isStackable: 0
   isUsable: 0
-  maxStackAmount: 0
   itemType: 7
   itemPrefab: {fileID: 0}

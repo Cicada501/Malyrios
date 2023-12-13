@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Rat Skull
   m_EditorClassIdentifier: 
   itemID: 11
-  itemName: Rat Skull
-  description: Its just a rat skull
+  itemName: "Rattensch\xE4del"
+  description: "der Sch\xE4del einer Ratte"
   icon: {fileID: 5376606789694755941, guid: 22f5445e0e74f6e4eb17cd677da0d64f, type: 3}
   dropChance: 1
-  isStackable: 1
   isUsable: 0
-  maxStackAmount: 10
   itemType: 5
   itemPrefab: {fileID: 0}
+  itemPrice: 0

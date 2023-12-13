@@ -25,8 +25,12 @@ public class DialogEvents : MonoBehaviour
     private NPC asmilda;
     private NPC jack;
     private NPC oris;
+    private NPC thea;
+    private NPC lirion;
     private bool addedDialogAnswer3;
     private bool addedDialogAnswer4;
+    private Enemy ww0;
+    private Enemy ww1;
 
 
     private void Start()
@@ -43,6 +47,32 @@ public class DialogEvents : MonoBehaviour
 
     private void Update()
     {
+        if (LevelManager.CurrentLevelName == "Level 4")
+        {
+            //wenn 3 speere im inventar und quest angenommen, thrimbald questatstus = 3
+           if(Inventory.CountOccurrences(ItemDatabase.GetItem(70)) > 2 &&
+              npcManager.npcs["Thrimbald"].CurrentDialogState == 2)
+           {
+               npcManager.npcs["Thrimbald"].QuestStatus = 3; 
+               npcManager.npcs["Thrimbald"].CurrentDialogState = 3; 
+           }
+        }else if (LevelManager.CurrentLevelName == "Level 5")
+        {
+            if(lirion == null)npcManager.npcs.TryGetValue("Lirion", out lirion);
+            if (ww0 == null && ww1 == null)
+            {
+                ww0 = GameObject.Find("Werewolf_0").GetComponent<Enemy>();
+                ww1 = GameObject.Find("Werewolf_1").GetComponent<Enemy>();
+                return;
+            }
+            if (!ww0.enabled && !ww1.enabled && lirion.CurrentDialogState == 2)
+            {
+                print("werwolfs got killed");
+                lirion.CurrentDialogState = 3;
+                lirion.QuestStatus = 3;
+            }
+          
+        }
         if (LevelManager.CurrentLevelName == "HighForest")
         {
             //check if player found pages
@@ -99,16 +129,56 @@ public class DialogEvents : MonoBehaviour
 
     public void FireEvent(string eventName)
     {
-        tommy = npcManager.npcs["Tommy"];
-        thrimbald = npcManager.npcs["Thrimbald"];
-        asmilda = npcManager.npcs["Asmilda"];
-        jack = npcManager.npcs["Jack"];
-        oris = npcManager.npcs["Oris"];
+        npcManager.npcs.TryGetValue("Tommy", out tommy);
+        npcManager.npcs.TryGetValue("Thrimbald", out thrimbald);
+        npcManager.npcs.TryGetValue("Asmilda", out asmilda);
+        npcManager.npcs.TryGetValue("Jack", out jack);
+        npcManager.npcs.TryGetValue("Oris", out oris);
+        npcManager.npcs.TryGetValue("Thea", out thea);
+        npcManager.npcs.TryGetValue("Lirion", out lirion);
         
         switch (eventName)
         {
             case "":
                 return;
+
+            //Die Suche nach den Speeren
+            case "Wizzard2lvl1":
+                thrimbald.CurrentDialogState = 2;
+                break;
+            case "Wizzard2":
+                thrimbald.CurrentDialogState = 2;
+                thrimbald.QuestStatus = 2;
+                questLogWindow.AddQuest("Die Suche nach den Speeren", "Sammle 3 Speere der Jägerinnen und bringe sie Thrimbald dem Zauberer");
+                break;
+            case "finishSpearQuest":
+                Inventory.Instance.Remove(ItemDatabase.GetItem(70));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(70));
+                Inventory.Instance.Remove(ItemDatabase.GetItem(70));
+                thrimbald.QuestStatus = 0;
+                fireballButton.SetActive(true);
+                break;
+            case "Wizzard4": 
+                thrimbald.CurrentDialogState = 4;
+                break;
+            case "TheaShop":
+                ShopWindow.Instance.activeShop = thea.GetComponent<Shop>();
+                ShopWindow.Instance.ShowShopWindow();
+                break;
+            case "giveNote":
+                Inventory.Instance.AddItem(ItemDatabase.GetItem(43));
+                break;
+            case "Lirion2":
+                questLogWindow.AddQuest("Besiege die Wölfe", "Besiege die Wölfe und erstette Lirion bericht, sodass er seine Reise fortsetzten kann");
+                lirion.QuestStatus = 2;
+                lirion.CurrentDialogState = 2;
+                break;
+            case "Lirion4":
+                questLogWindow.RemoveQuest("Besiege die Wölfe");
+                lirion.QuestStatus = 0;
+                Inventory.Instance.AddItem(ItemDatabase.GetArmor(170));
+                lirion.CurrentDialogState = 4;
+                break;
             case "learn Fireball":
                 fireballButton.SetActive(true);
                 PlayerData.LearnedFireball = true;
@@ -118,7 +188,7 @@ public class DialogEvents : MonoBehaviour
                 break;
             
             //Die verlorenen Seiten
-            case "Wizzard2":
+            case "Wizzard2HF":
                 thrimbald.CurrentDialogState = 2;
                 thrimbald.QuestStatus = 2;
                 questLogWindow.AddQuest("Die verlorenen Seiten", "Suche nach den 3 verlorenen Buchseiten für Thrimbald");
@@ -129,7 +199,7 @@ public class DialogEvents : MonoBehaviour
                 Inventory.Instance.Remove(ItemDatabase.GetItem(40));
                 thrimbald.QuestStatus = 0;
                 break;
-            case "Wizzard4":
+            case "Wizzard4HF":
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
                 Inventory.Instance.AddItem(ItemDatabase.GetItem(16));
@@ -148,7 +218,7 @@ public class DialogEvents : MonoBehaviour
                 oris.QuestStatus = 3;
                 break;
             case "BuyDust":
-                if (Inventory.CountOccurrences(ItemDatabase.GetItem(16)) > 5)
+                if (Inventory.CountOccurrences(ItemDatabase.GetItem(16)) > 4)
                 {
                     Inventory.Instance.Remove(ItemDatabase.GetItem(16));
                     Inventory.Instance.Remove(ItemDatabase.GetItem(16));

@@ -15,7 +15,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject activeItemInfoWindow = null;
     [SerializeField] GameObject statsWindow;
     Inventory inventory;
-    private PuzzleStation activePuzzleStation;
+    public PuzzleStation activePuzzleStation;
 
     bool buttonPressed;
 
@@ -44,7 +44,7 @@ public class InventoryUI : MonoBehaviour
     {
         //called in start, because in awake the inventory instance is null. But because subscription of events must happen before the events get triggered, the script execution order of this script is set to -1
         inventory = Inventory.Instance;
-        inventory.OnItemAdded += UpdateUiNew;
+        inventory.OnItemAdded += AddNewItem;;
         inventory.OnItemRemoved += OnItemRemoved;
     }
 
@@ -57,13 +57,8 @@ public class InventoryUI : MonoBehaviour
         {
             itemsLoaded = true;
         }
-
     }
 
-    private void UpdateUiNew(BaseItem item)
-    {
-            AddNewItem(item);
-    }
 
     private void AddNewItem(BaseItem item)
     {
@@ -82,16 +77,32 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-    public void ChangeInventoryOpened()
+    public void ChangeInventoryOpened(bool withEquipmentWindow = true)
     {
         inventoryOpen = !inventoryOpen;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
-        equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
+        //inventoryUI.activeSelf ? SoundHolder.Instance.invOpen.Play() : SoundHolder.Instance.invClose.Play();
+        
+        if (inventoryUI.activeSelf)
+        {
+            SoundHolder.Instance.invOpen.Play();
+        }
+        else
+        {
+            SoundHolder.Instance.invClose.Play();
+        }
+        
+        if(withEquipmentWindow)equipmentUI.SetActive(inventoryUI.activeSelf); // if inventory open, then also open equipment, and on close, close equipment window
         
         //if puzzleStation is active, close it with inventory
-        if (activePuzzleStation)
+        if (activePuzzleStation && !inventoryUI.activeSelf)
         {
             activePuzzleStation.ClosePuzzleWindow();
+        }
+
+        if (ShopWindow.Instance.shopWindow.activeSelf && !inventoryUI.activeSelf)
+        {
+            ShopWindow.Instance.ToggleShopWindow();
         }
         //stats- and activeItemWindow are always closed, when inventory gets opened or closed
         activeItemInfoWindow.SetActive(false);

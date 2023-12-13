@@ -101,7 +101,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
     {
         print($"Using {item.ItemName}");
         if (this.item == null) return;
-        if (!item.IsUsable) return;
+        //if (!item.IsUsable) return;
 
         switch (item.ItemType)
         {
@@ -122,7 +122,26 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IOnSlotTap, ISlot
                 feetArmorSlot.SwapItems(this);
                 break;
             default:
-                item.ExecuteUsageEffect();
+                if (item.ItemType == BaseItem.ItemTypes.Rune)
+                {
+                    var aps = FindObjectOfType<InventoryUI>().activePuzzleStation;
+                    foreach (var slot in aps.slots)
+                    {
+                        //find first slot with no item and swap with the item of this slot
+                        if (slot.Item == null)
+                        {
+                            slot.SetItem(this.item); 
+                            this.RemoveItem();
+                            aps.UpdateItemID(slot.transform.GetPuzzleSlotIndex(), slot.Item.ItemID);
+                            SoundHolder.Instance.placeRuneStone.Play();
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    item.ExecuteUsageEffect();
+                }
                 break;
         }
     }
