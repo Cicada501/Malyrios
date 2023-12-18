@@ -54,16 +54,12 @@ namespace NPCs
             npcManager.AddNpc(this);
 
             var levelManager = ReferencesManager.Instance.levelManager;
-            if (npcName == "Thrimbald" && CurrentDialogState==1 && levelManager.GetCurrentLevelName()=="Level 4")
+
+
+            if (npcName == "Lirion" && CurrentDialogState == 1 && levelManager.GetCurrentLevelName() == "Level 5")
             {
                 QuestStatus = 1;
-            }else if (npcName == "Jack" && CurrentDialogState == 1 && levelManager.GetCurrentLevelName()=="High Forest")
-            {
-                QuestStatus = 1;
-            }else if (npcName == "Lirion" && CurrentDialogState == 1 && levelManager.GetCurrentLevelName() == "Level 5")
-            {
-                QuestStatus = 1;
-            }else if (npcName == "Thrimbald" && levelManager.GetCurrentLevelName() == "Level 2")
+            }if (npcName == "Thrimbald" && levelManager.GetCurrentLevelName() == "Level 2")
             {
                 CurrentDialogState = 1;
             }

@@ -124,11 +124,16 @@ public class GameData : MonoBehaviour
         string json = JsonUtility.ToJson(saveData);
         saveLoadText.text = "Saved: "+ json;
         File.WriteAllText(saveFilePath, json);
+
+        PlayerPrefs.SetInt("resetOnRestart",resetOnRestart?1:0);
+        PlayerPrefs.Save();
     }
 
     public void LoadData()
     {
-        if (File.Exists(saveFilePath))
+        resetOnRestart = PlayerPrefs.GetInt("resetOnRestart",0) == 1;
+        toggleResetOnRestart.isOn = resetOnRestart;
+        if (File.Exists(saveFilePath)&&!resetOnRestart)
         {
             string json = File.ReadAllText(saveFilePath);
             saveLoadText.text = "Loaded: "+json;

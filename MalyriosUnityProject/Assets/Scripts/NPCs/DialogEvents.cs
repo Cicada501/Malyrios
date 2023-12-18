@@ -75,6 +75,14 @@ public class DialogEvents : MonoBehaviour
         }
         if (LevelManager.CurrentLevelName == "HighForest")
         {
+            if (npcManager.npcs["Thrimbald"].CurrentDialogState == 1)
+            {
+                npcManager.npcs["Thrimbald"].QuestStatus = 1;
+            }
+            if (npcManager.npcs["Jack"].CurrentDialogState == 1)
+            {
+                npcManager.npcs["Jack"].QuestStatus = 1;
+            }
             //check if player found pages
             if (Inventory.CountOccurrences(ItemDatabase.GetItem(40)) > 2 && !addedDialogAnswer4)
             {

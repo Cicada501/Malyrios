@@ -229,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         landingSounds[randomIndex].Play();
         
         //squash player
-        StartCoroutine(ScaleOnLanding());
+        //StartCoroutine(ScaleOnLanding());
     }
     
     IEnumerator ScaleOnLanding()
